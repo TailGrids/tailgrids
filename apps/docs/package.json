@@ -4,6 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "registry:build": "tsx ./scripts/build-registry.ts && prettier --log-level silent --write ./registry.json",
+    "prebuild": "npm run registry:build",
     "build": "next build",
     "dev": "next dev",
     "start": "next start",
@@ -38,6 +40,8 @@
     "@types/react-dom": "19.2.2",
     "eslint": "^9.39.1",
     "eslint-config-next": "16.0.1",
-    "typescript": "5.9.2"
+    "typescript": "5.9.2",
+    "ora": "^9.0.0",
+    "tsx": "^4.20.6"
   }
 }

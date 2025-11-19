@@ -1,0 +1,24 @@
+# Source files
+src/
+.changeset/
+
+# Config files
+tsconfig.json
+tsup.config.ts
+.prettierrc
+.editorconfig
+
+# Development
+node_modules/
+*.log
+.DS_Store
+
+# Git
+.git/
+.github/
+.gitignore
+
+# Testing
+tests/
+*.test.ts
+*.spec.ts

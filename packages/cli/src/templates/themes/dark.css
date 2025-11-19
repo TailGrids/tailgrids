@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+
+@theme {
+  --color-primary-50: #eff3ff;
+  --color-primary-100: #dae2ff;
+  --color-primary-200: #becdff;
+  --color-primary-300: #91aeff;
+  --color-primary-400: #5e84fc;
+  --color-primary-500: #3758f9;
+  --color-primary-600: #2237ee;
+  --color-primary-700: #1a25db;
+  --color-primary-800: #1c20b1;
+  --color-primary-900: #1c228c;
+  --color-primary-950: #161755;
+
+  /* Base */
+  --color-neutral: var(--color-gray-900);
+  --color-neutral-100: var(--color-gray-900);
+  --color-neutral-200: var(--color-gray-700);
+  --color-neutral-300: var(--color-gray-800);
+  --color-neutral-400: var(--color-gray-400);
+  --color-neutral-500: var(--color-gray-500);
+  --color-neutral-700: var(--color-gray-200);
+  --color-neutral-800: var(--color-gray-200);
+  --color-neutral-900: var(--color-gray-100);
+
+  /* Success */
+  --color-success: var(--color-green-600);
+  --color-success-hover: var(--color-green-700);
+  --color-success-foreground: var(--color-white);
+  --color-success-border: var(--color-green-900);
+  --color-success-outline: var(--color-green-900);
+  --color-success-muted: rgba(34, 197, 94, 0.05);
+  --color-success-muted-hover: rgba(34, 197, 94, 0.15);
+  --color-success-muted-foreground: var(--color-green-600);
+  --color-success-muted-body: var(--color-green-600);
+  --color-success-ring: var(--color-green-100);
+
+  /* Danger */
+  --color-danger: var(--color-red-600);
+  --color-danger-hover: var(--color-red-700);
+  --color-danger-foreground: var(--color-white);
+  --color-danger-border: var(--color-red-900);
+  --color-danger-outline: var(--color-red-900);
+  --color-danger-muted: rgba(239, 68, 68, 0.05);
+  --color-danger-muted-hover: rgba(239, 68, 68, 0.15);
+  --color-danger-muted-foreground: var(--color-red-500);
+  --color-danger-muted-body: var(--color-red-500);
+  --color-danger-ring: var(--color-red-100);
+
+  /* Info */
+  --color-info: var(--color-sky-600);
+  --color-info-hover: var(--color-sky-700);
+  --color-info-foreground: var(--color-white);
+  --color-info-border: var(--color-sky-900);
+  --color-info-muted: rgba(14, 165, 233, 0.05);
+  --color-info-muted-foreground: var(--color-sky-500);
+  --color-info-muted-body: var(--color-sky-500);
+
+  /* Warning */
+  --color-warning: var(--color-yellow-600);
+  --color-warning-hover: var(--color-yellow-700);
+  --color-warning-foreground: var(--color-white);
+  --color-warning-border: var(--color-yellow-900);
+  --color-warning-muted: rgba(234, 179, 8, 0.05);
+  --color-warning-muted-foreground: var(--color-yellow-500);
+  --color-warning-muted-body: var(--color-yellow-500);
+
+  /* Default */
+  --color-default: var(--color-gray-500);
+  --color-default-hover: var(--color-gray-700);
+  --color-default-foreground: var(--color-white);
+  --color-default-border: var(--color-gray-900);
+  --color-default-muted: rgba(107, 114, 128, 0.1);
+  --color-default-muted-foreground: var(--color-gray-300);
+  --color-default-muted-body: var(--color-gray-400);
+
+  /* More color */
+  --color-cyan-muted: rgba(6, 182, 212, 0.15);
+  --color-cyan-muted-body: var(--color-cyan-500);
+
+  --color-sky-muted: rgb(14, 165, 233, 0.15);
+  --color-sky-muted-body: var(--color-sky-500);
+
+  --color-blue-muted: rgba(59, 130, 246, 0.15);
+  --color-blue-muted-body: var(--color-blue-500);
+
+  --color-violet-muted: rgba(139, 92, 246, 0.15);
+  --color-violet-muted-body: var(--color-violet-500);
+
+  --color-purple-muted: rgba(168, 85, 247, 0.15);
+  --color-purple-muted-body: var(--color-purple-500);
+
+  --color-pink-muted: rgba(236, 72, 153, 0.15);
+  --color-pink-muted-body: var(--color-pink-500);
+
+  --color-rose-muted: rgba(244, 63, 94, 0.15);
+  --color-rose-muted-body: var(--color-rose-500);
+
+  --color-orange-muted: rgba(249, 115, 22, 0.15);
+  --color-orange-muted-body: var(--color-orange-500);
+
+  --color-dropdown-bg: var(--color-gray-800);
+  --color-dropdown-foreground: rgba(255, 255, 255, 0.9);
+  --color-dropdown-item-hover: var(--color-gray-700);
+  --color-dropdown-separator: rgba(255, 255, 255, 0.1);
+
+  /* Shadows */
+  --shadow-xs: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  --shadow-sm: 0px 1px 3px 0px rgba(16, 24, 40, 0.1);
+  --shadow-md:
+    0px 4px 8px -2px rgba(16, 24, 40, 0.1),
+    0px 2px 4px -2px rgba(16, 24, 40, 0.06);
+  --shadow-lg:
+    0px 12px 16px -4px rgba(16, 24, 40, 0.08),
+    0px 4px 6px -2px rgba(16, 24, 40, 0.03);
+  --shadow-xl: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  --shadow-2xl: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  --shadow-3xl: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  --drop-shadow-theme-3xl: 0 32px 64px rgba(16, 24, 40, 0.14);
+  --popover-shadow: 0px 5px 5px -2px rgba(16, 24, 40, 0.04);
+  --shadow-hero: 0px -14px 100px 0px rgba(0, 0, 0, 0.05);
+
+  --animate-pulse-custom: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}

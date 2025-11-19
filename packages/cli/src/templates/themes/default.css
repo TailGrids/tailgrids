@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+
+@theme {
+  --color-primary-50: #eff3ff;
+  --color-primary-100: #dae2ff;
+  --color-primary-200: #becdff;
+  --color-primary-300: #91aeff;
+  --color-primary-400: #5e84fc;
+  --color-primary-500: #3758f9;
+  --color-primary-600: #2237ee;
+  --color-primary-700: #1a25db;
+  --color-primary-800: #1c20b1;
+  --color-primary-900: #1c228c;
+  --color-primary-950: #161755;
+
+  /* Base */
+  --color-neutral: white;
+  --color-neutral-100: var(--color-gray-100);
+  --color-neutral-200: var(--color-gray-200);
+  --color-neutral-300: var(--color-gray-300);
+  --color-neutral-400: var(--color-gray-400);
+  --color-neutral-500: var(--color-gray-500);
+  --color-neutral-700: var(--color-gray-700);
+  --color-neutral-800: var(--color-gray-800);
+  --color-neutral-900: var(--color-gray-900);
+
+  /* Success */
+  --color-success: var(--color-green-600);
+  --color-success-hover: var(--color-green-700);
+  --color-success-foreground: var(--color-white);
+  --color-success-border: var(--color-green-200);
+  --color-success-outline: var(--color-green-500);
+  --color-success-muted: var(--color-green-50);
+  --color-success-muted-hover: var(--color-green-200);
+  --color-success-muted-foreground: var(--color-green-800);
+  --color-success-muted-body: var(--color-green-700);
+  --color-success-ring: var(--color-green-100);
+
+  /* Danger */
+  --color-danger: var(--color-red-600);
+  --color-danger-hover: var(--color-red-700);
+  --color-danger-foreground: var(--color-white);
+  --color-danger-border: var(--color-red-200);
+  --color-danger-outline: var(--color-red-500);
+  --color-danger-muted: var(--color-red-50);
+  --color-danger-muted-hover: var(--color-red-200);
+  --color-danger-muted-foreground: var(--color-red-800);
+  --color-danger-muted-body: var(--color-red-700);
+  --color-danger-ring: var(--color-red-100);
+
+  /* Info */
+  --color-info: var(--color-sky-600);
+  --color-info-hover: var(--color-sky-700);
+  --color-info-foreground: var(--color-white);
+  --color-info-border: var(--color-sky-200);
+  --color-info-muted: var(--color-sky-50);
+  --color-info-muted-foreground: var(--color-sky-800);
+  --color-info-muted-body: var(--color-sky-700);
+
+  /* Warning */
+  --color-warning: var(--color-yellow-600);
+  --color-warning-hover: var(--color-yellow-700);
+  --color-warning-foreground: var(--color-white);
+  --color-warning-border: var(--color-yellow-200);
+  --color-warning-muted: var(--color-yellow-50);
+  --color-warning-muted-foreground: var(--color-yellow-800);
+  --color-warning-muted-body: var(--color-yellow-700);
+
+  /* Default */
+  --color-default: var(--color-gray-600);
+  --color-default-hover: var(--color-gray-700);
+  --color-default-foreground: var(--color-white);
+  --color-default-border: var(--color-gray-200);
+  --color-default-muted: var(--color-gray-50);
+  --color-default-muted-foreground: var(--color-gray-800);
+  --color-default-muted-body: var(--color-gray-700);
+
+  /* More color */
+  --color-cyan-muted: var(--color-cyan-50);
+  --color-cyan-muted-body: var(--color-cyan-700);
+
+  --color-sky-muted: var(--color-sky-50);
+  --color-sky-muted-body: var(--color-sky-700);
+
+  --color-blue-muted: var(--color-blue-50);
+  --color-blue-muted-body: var(--color-blue-700);
+
+  --color-violet-muted: var(--color-violet-50);
+  --color-violet-muted-body: var(--color-violet-700);
+
+  --color-purple-muted: var(--color-purple-50);
+  --color-purple-muted-body: var(--color-purple-700);
+
+  --color-pink-muted: var(--color-pink-50);
+  --color-pink-muted-body: var(--color-pink-700);
+
+  --color-rose-muted: var(--color-rose-50);
+  --color-rose-muted-body: var(--color-rose-700);
+
+  --color-orange-muted: var(--color-orange-50);
+  --color-orange-muted-body: var(--color-orange-700);
+
+  --color-dropdown-bg: white;
+  --color-dropdown-foreground: #1f2937;
+  --color-dropdown-item-hover: #f3f4f6;
+  --color-dropdown-separator: var(--color-gray-200);
+
+  /* Shadows */
+  --shadow-xs: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  --shadow-sm: 0px 1px 3px 0px rgba(16, 24, 40, 0.1);
+  --shadow-md:
+    0px 4px 8px -2px rgba(16, 24, 40, 0.1),
+    0px 2px 4px -2px rgba(16, 24, 40, 0.06);
+  --shadow-lg:
+    0px 12px 16px -4px rgba(16, 24, 40, 0.08),
+    0px 4px 6px -2px rgba(16, 24, 40, 0.03);
+  --shadow-xl: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  --shadow-2xl: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  --shadow-3xl: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  --drop-shadow-theme-3xl: 0 32px 64px rgba(16, 24, 40, 0.14);
+  --popover-shadow: 0px 5px 5px -2px rgba(16, 24, 40, 0.04);
+  --shadow-hero: 0px -14px 100px 0px rgba(0, 0, 0, 0.05);
+
+  --animate-pulse-custom: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}

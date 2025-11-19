@@ -1,0 +1,49 @@
+{
+  "name": "@tailgrids/cli",
+  "type": "module",
+  "version": "0.1.0-alpha",
+  "description": "CLI for adding TailGrids Core components to React projects.",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "tailgrids": "./dist/index.js"
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "dev:link": "npm run build && npm link --global",
+    "build": "tsup"
+  },
+  "keywords": [
+    "tailgrids",
+    "cli",
+    "tailwind",
+    "ui"
+  ],
+  "author": {
+    "name": "TailGrids",
+    "url": "https://tailgrids.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TailGrids/oss.git",
+    "directory": "/packages/cli"
+  },
+  "homepage": "https://tailgrids.com",
+  "devDependencies": {
+    "@repo/typescript-config": "*",
+    "@types/node": "^22.15.3",
+    "prettier": "^3.6.2",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2",
+    "tsx": "^4.20.6"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^7.8.6",
+    "chalk": "^5.6.2",
+    "commander": "^14.0.1",
+    "enquirer": "^2.4.1",
+    "ora": "^9.0.0"
+  }
+}

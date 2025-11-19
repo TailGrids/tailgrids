@@ -7,9 +7,13 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "cli:build": "npm run build -- --filter=@tailgrids/cli",
+    "check-types": "turbo run check-types",
+    "changeset:add": "changeset add",
+    "changeset:release": "changeset version"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.7",
     "prettier": "^3.6.2",
     "turbo": "^2.6.1",
     "typescript": "5.9.2"
