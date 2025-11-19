@@ -1,5 +1,6 @@
 {
   "title": "Components",
+  "defaultOpen": true,
   "pages": [
     "accordion",
     "alert",

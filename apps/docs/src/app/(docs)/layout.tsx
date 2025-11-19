@@ -1,7 +1,9 @@
 import { source } from "@/lib/source";
 import { DocsLayout } from "fumadocs-ui/layouts/docs";
-import { baseOptions } from "@/lib/layout.shared";
+import { baseOptions, ThemeToggleLink } from "@/lib/layout.shared";
 import GlobalHeader from "@/components/global-header";
+import { Container } from "lucide-react";
+import { ContainerWithGrid } from "@/components/ContainerGrid";
 
 export default function Layout({ children }: LayoutProps<"/">) {
   return (
@@ -12,9 +14,12 @@ export default function Layout({ children }: LayoutProps<"/">) {
         {...baseOptions()}
         sidebar={{
           collapsible: false,
+          // Enable responsive sidebar: drawer on mobile, persistent on desktop
+          enabled: true,
+          banner: <ThemeToggleLink />,
         }}
       >
-        {children}
+        <ContainerWithGrid>{children}</ContainerWithGrid>
       </DocsLayout>
     </>
   );

@@ -1,13 +1,21 @@
 "use client";
 
 import Link from "next/link";
-
-import { Github, Search, Menu, Moon, Sun } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useSearchContext } from "fumadocs-ui/provider";
 import { useSidebar } from "fumadocs-ui/provider";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import { GithubIcon, MoonIcon, SunIcon } from "@/icons";
+import {
+  DiscordIcon,
+  GithubIcon,
+  MoonIcon,
+  SearchIcon,
+  SunIcon,
+  XIcon,
+} from "@/icons";
+import VersionDropdown from "./version-dropdown";
+import HeaderNav from "./header-nav";
 
 export default function GlobalHeader() {
   const { setOpenSearch } = useSearchContext();
@@ -15,96 +23,90 @@ export default function GlobalHeader() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <header className="sticky top-0 z-30 w-full border-b border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-950">
-      <div className="mx-auto max-w-[1620px] flex h-16 w-full items-center justify-between gap-4 px-4 2xl:px-8">
-        {/* Mobile Menu Button & Logo */}
-        <div className="flex items-center gap-3">
-          {/* Mobile Sidebar Toggle */}
-          <button
-            type="button"
-            className="flex items-center justify-center text-gray-700 transition-colors hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400 lg:hidden"
-            onClick={() => setOpen(!open)}
-            aria-label="Toggle Sidebar"
-          >
-            <Menu className="size-6" />
-          </button>
+    <header className="sticky top-0 z-30 w-full   bg-white 0 dark:bg-gray-950">
+      <div className="border-b dark:border-gray-800 border-gray-200 ">
+        <div className="relative mx-auto max-w-[1620px] h-20 flex items-center px-4 2xl:px-8">
+          {/* LEFT SECTION */}
+          <div className="flex items-center gap-6 flex-1 min-w-0">
+            {/* Logo */}
+            <Link href="/" className="flex shrink-0 items-center gap-2">
+              <Image
+                src="/images/logo.svg"
+                width={150}
+                height={40}
+                className="block dark:hidden"
+                alt="TailGrids Logo"
+              />
+              <Image
+                src="/images/logo-white.svg"
+                width={150}
+                height={40}
+                className="hidden dark:block"
+                alt="TailGrids Logo"
+              />
+            </Link>
 
-          {/* Logo/Brand */}
-          <Link href="/" className="flex shrink-0 items-center gap-2">
-            <Image
-              src="/images/logo.svg"
-              alt="TailGrids Logo"
-              width={150}
-              height={40}
-            />
-          </Link>
-        </div>
+            <VersionDropdown />
 
-        {/* Search - Centered */}
-        <button
-          type="button"
-          className="mx-auto hidden max-w-md flex-1 items-center gap-2 rounded-lg border border-gray-300 bg-gray-50 px-4 py-2 text-sm text-gray-500 transition-colors hover:border-gray-400 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 dark:hover:border-gray-600 dark:hover:bg-gray-800 md:flex"
-          onClick={() => setOpenSearch(true)}
-        >
-          <Search className="size-4" />
-          <span>Search documentation...</span>
-          <kbd className="ml-auto rounded border border-gray-300 bg-white px-2 py-0.5 text-xs font-semibold text-gray-700 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300">
-            ⌘K
-          </kbd>
-        </button>
+            {/* Navigation */}
+            <HeaderNav />
+          </div>
 
-        {/* Mobile Buttons - Search & Theme Toggle */}
-        <div className="flex items-center gap-3 md:hidden">
-          <button
-            type="button"
-            className="flex items-center justify-center text-gray-700 transition-colors hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400"
-            onClick={() => setOpenSearch(true)}
-            aria-label="Search"
-          >
-            <Search className="size-5" />
-          </button>
+          {/* CENTER — SEARCH + THEME (CENTERED ABSOLUTE) */}
+          <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-3 xl:ml-25">
+            {/* Search */}
+            <button
+              onClick={() => setOpenSearch(true)}
+              className="hidden lg:flex h-11 w-[260px] xl:w-[350px]  dark:bg-white/5 items-center gap-3 rounded-xl border border-gray-200 bg-white px-3 text-gray-400 dark:border-[#111827] transition"
+            >
+              <SearchIcon className="size-5" />
+              <span className="hidden xl:flex text-sm flex-1">
+                Quick search...
+              </span>
+              <span className="hidden xl:flex h-6.5 w-10 items-center dark:border-[#111827] justify-center rounded-lg border border-gray-100 text-xs">
+                ⌘ K
+              </span>
+            </button>
 
-          <button
-            type="button"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="flex items-center justify-center text-gray-700 transition-colors hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400"
-            aria-label="Toggle Theme"
-          >
-            <Sun className="size-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-            <Moon className="absolute size-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          </button>
-        </div>
+            {/* Theme Toggle */}
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="hidden lg:flex size-11 shrink-0 items-center cursor-pointer justify-center dark:shadow-none dark:border-[#111827] dark:bg-white/5 rounded-xl shadow-navbar-icon  transition"
+            >
+              <SunIcon className="block dark:hidden text-gray-500" />
+              <MoonIcon className="hidden dark:block text-gray-400" />
+            </button>
+          </div>
 
-        {/* Right Side - Theme Toggle, GitHub & CTA */}
-        <div className="hidden items-center gap-4 md:flex">
-          <button
-            type="button"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="flex size-8 cursor-pointer items-center justify-center rounded-lg text-tg-text-color-tertiary shadow-navbar-icon duration-200 hover:bg-gray-100 hover:text-tg-title-color hover:shadow-none"
-            aria-label="Toggle Theme"
-          >
-            <SunIcon className="size-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-gray-400" />
-            <MoonIcon className="absolute size-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-gray-400" />
-          </button>
+          {/* RIGHT SECTION */}
+          <div className="flex justify-end items-center gap-4 flex-1 min-w-0">
+            <div className="hidden md:flex items-center gap-2">
+              <a className="flex size-8 items-center justify-center rounded-[9px] dark:shadow-none shadow-navbar-icon dark:hover:bg-gray-800 hover:bg-gray-100 hover:shadow-none cursor-pointer dark:bg-white/5 dark:border-[#111827] ">
+                <XIcon className="size-5 text-gray-400" />
+              </a>
 
-          <a
-            href="https://github.com/TailGrids/oss"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex size-8 cursor-pointer items-center justify-center rounded-lg text-tg-text-color-tertiary shadow-navbar-icon duration-200 hover:bg-gray-100 hover:text-tg-title-color hover:shadow-none"
-            aria-label="GitHub Repository"
-          >
-            <GithubIcon className="size-5" />
-          </a>
+              <a className="flex size-8 items-center justify-center dark:shadow-none shadow-navbar-icon dark:hover:bg-gray-800 hover:bg-gray-100 hover:shadow-none rounded-[9px] cursor-pointer dark:bg-white/5 dark:border-[#111827]">
+                <GithubIcon className="size-5 text-gray-400" />
+              </a>
 
-          <a
-            href="https://tailgrids.com/pro"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="custom-link-btn"
-          >
-            Tailgrids Pro
-          </a>
+              <a className="flex size-8 items-center justify-center rounded-[9px] dark:shadow-none shadow-navbar-icon dark:hover:bg-gray-800 hover:bg-gray-100 hover:shadow-none cursor-pointer dark:bg-white/5 dark:border-[#111827]">
+                <DiscordIcon className="size-5 text-gray-400" />
+              </a>
+
+              <a href="https://tailgrids.com/pro" className="custom-link-btn">
+                Tailgrids Pro
+              </a>
+            </div>
+
+            {/* Mobile Menu - Hidden on lg+ where sidebar is always visible */}
+            <button
+              type="button"
+              onClick={() => setOpen(!open)}
+              className="md:hidden text-gray-700 dark:text-gray-300 hover:text-primary-500"
+            >
+              <Menu className="size-6" />
+            </button>
+          </div>
         </div>
       </div>
     </header>

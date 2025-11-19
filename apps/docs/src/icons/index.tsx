@@ -181,3 +181,60 @@ export function MoonIcon({ ...props }: React.SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export function SearchIcon({ ...props }: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      {...props}
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M9.4375 2.3125C13.3726 2.3125 16.5634 5.5019 16.5635 9.43652C16.5635 11.1342 15.9681 12.6921 14.9766 13.916L17.4688 16.4082C17.7609 16.7011 17.7604 17.1761 17.4678 17.4688C17.175 17.7612 16.7 17.7612 16.4072 17.4688L13.915 14.9756C12.6911 15.9656 11.1343 16.5605 9.4375 16.5605C5.50258 16.5603 2.3125 13.3711 2.3125 9.43652C2.31258 5.50205 5.50263 2.31273 9.4375 2.3125ZM9.4375 3.8125C6.33077 3.81273 3.81258 6.33076 3.8125 9.43652C3.8125 12.5424 6.33072 15.0603 9.4375 15.0605C12.5445 15.0605 15.0635 12.5425 15.0635 9.43652C15.0634 6.33062 12.5444 3.8125 9.4375 3.8125Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+export function ChevronDownIcon({ ...props }: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+    >
+      <path
+        d="M3.83398 5.91666L8.00065 10.0833L12.1673 5.91666"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+export function CopyIcon({ ...props }: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={20}
+      height={20}
+      viewBox="0 0 20 20"
+      fill="none"
+      {...props}
+    >
+      <path
+        d="M14.334 14.39H7.265c-.69 0-1.25-.56-1.25-1.25V6.071m8.319 8.32v1.252c0 .69-.56 1.25-1.25 1.25H4.762c-.69 0-1.25-.56-1.25-1.25V7.321c0-.69.56-1.25 1.25-1.25h1.253m8.319 8.32h1.258c.69 0 1.25-.56 1.25-1.25V4.81c0-.69-.56-1.25-1.25-1.25H7.265c-.69 0-1.25.56-1.25 1.25v1.26"
+        stroke="currentColor"
+        strokeWidth={1.3}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}

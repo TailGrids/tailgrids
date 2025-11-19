@@ -1,5 +1,6 @@
 {
   "title": "Get Started",
+  "defaultOpen": true,
   "pages": [
     "introduction",
     "quick-start",

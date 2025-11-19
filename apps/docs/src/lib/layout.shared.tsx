@@ -1,6 +1,7 @@
 import { BlocksIcon, ComponentsIcon, FigmaIcon, TemplateIcon } from "@/icons";
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 import ProBadge from "@/components/pro-badge";
+import ThemeToggleLink from "@/components/theme-toggle-link";
 
 export function baseOptions(): BaseLayoutProps {
   return {
@@ -50,3 +51,5 @@ export function baseOptions(): BaseLayoutProps {
     ],
   };
 }
+
+export { ThemeToggleLink };
