@@ -1,9 +1,9 @@
-name: Publish to NPM
+name: Publish CLI to NPM
 
 on:
   push:
     branches:
-      - feat/cli
+      - main
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 

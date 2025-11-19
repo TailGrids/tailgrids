@@ -7,7 +7,7 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "cli:build": "npm run --workspace @pimjo_johurul/cli build",
+    "cli:build": "npm run build -- --filter=@tailgrids/cli",
     "check-types": "turbo run check-types",
     "changeset:add": "changeset add",
     "changeset:release": "changeset version"
