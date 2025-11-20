@@ -15,8 +15,8 @@ import {
   arrow,
   FloatingArrow,
   safePolygon,
+  type Placement,
 } from '@floating-ui/react';
-import type { Placement } from '@floating-ui/react';
 import { cn } from '@/utils/cn';
 
 interface TooltipOptions {
@@ -81,7 +81,7 @@ function useTooltip({
       ...data,
       arrowRef,
     }),
-    [open, setOpen, interactions, data],
+    [open, setOpen, interactions, data]
   );
 }
 
@@ -130,7 +130,7 @@ export const TooltipTrigger = React.forwardRef<
           ? children.props
           : {}),
         'data-state': context.open ? 'open' : 'closed',
-      } as React.HTMLProps<Element>),
+      } as React.HTMLProps<Element>)
     );
   }
 
@@ -165,7 +165,7 @@ export const TooltipContent = React.forwardRef<
         {...context.getFloatingProps(props)}
         className={cn(
           'bg-neutral rounded-lg border border-neutral-200 px-3 py-2 text-sm font-medium text-neutral-700 shadow-md',
-          className,
+          className
         )}
       >
         <FloatingArrow
