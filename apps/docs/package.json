@@ -13,6 +13,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@floating-ui/react": "^0.27.16",
+    "@tailwindcss/postcss": "^4.1.17",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
@@ -21,13 +23,13 @@
     "fumadocs-ui": "16.0.11",
     "lucide-react": "^0.552.0",
     "next": "^16.0.1",
+    "postcss": "^8.5.6",
     "react": "^19.2.0",
+    "react-aria-components": "^1.13.0",
     "react-dom": "^19.2.0",
     "react-stately": "^3.42.0",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.17",
-    "@tailwindcss/postcss": "^4.1.17",
-    "postcss": "^8.5.6"
+    "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
@@ -40,8 +42,8 @@
     "@types/react-dom": "19.2.2",
     "eslint": "^9.39.1",
     "eslint-config-next": "16.0.1",
-    "typescript": "5.9.2",
     "ora": "^9.0.0",
-    "tsx": "^4.20.6"
+    "tsx": "^4.20.6",
+    "typescript": "5.9.2"
   }
 }
