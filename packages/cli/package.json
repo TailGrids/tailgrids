@@ -13,9 +13,9 @@
   "scripts": {
     "dev": "tsup --watch",
     "dev:link": "npm run build && npm link --global",
-    "registry:build": "tsx ./scripts/build-registry.ts && prettier --log-level silent --write ./registry.json",
     "prebuild": "npm run registry:build",
-    "build": "tsup"
+    "build": "tsup",
+    "registry:build": "tsx ./scripts/build-registries.ts && prettier --log-level silent --write ./registries.json"
   },
   "keywords": [
     "tailgrids",

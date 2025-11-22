@@ -1,5 +1,12 @@
 # @tailgrids/icons
 
+## 1.1.1
+
+### Patch Changes
+
+- Added missing react import on generated icons
+- Fixed size prop type issue
+
 ## 1.1.0
 
 ### Minor Changes

@@ -35,8 +35,8 @@ async function buildIcons() {
         plugins: ['@svgr/plugin-jsx'],
         prettier: false,
         svgo: false,
-        template: ({ componentName, jsx, imports, exports }, { tpl }) => tpl`
-          ${imports}
+        template: ({ componentName, jsx, exports }, { tpl }) => tpl`
+          import * as React from 'react';
 
           const ${componentName} = ({ size = 24, ...props }) =>
             React.cloneElement(${jsx}, { width: size, height: size, ...props });
@@ -54,7 +54,7 @@ async function buildIcons() {
     const dtsContent = `
 import * as React from 'react';
 
-declare const ${name}: React.FC<React.SVGProps<SVGSVGElement>> & { size?: number };
+declare const ${name}: React.FC<React.SVGProps<SVGSVGElement> & { size?: number }>;
 export default ${name};
 `.trimStart();
 
@@ -72,7 +72,7 @@ export default ${name};
   const indexDts = exports
     .map(
       (n) =>
-        `export const ${n}: React.FC<React.SVGProps<SVGSVGElement>> & { size?: number };`
+        `export const ${n}: React.FC<React.SVGProps<SVGSVGElement> & { size?: number }>;`
     )
     .join('\n');
 

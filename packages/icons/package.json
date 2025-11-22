@@ -1,6 +1,6 @@
 {
   "name": "@tailgrids/icons",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "license": "MIT",
   "description": "Beautiful React icon components for Tailgrids",
   "main": "dist/index.js",
@@ -21,6 +21,9 @@
     "directory": "/packages/icons"
   },
   "homepage": "https://tailgrids.com",
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "dependencies": {
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",

@@ -10,7 +10,7 @@ import { useMenuTriggerState } from 'react-stately';
 
 const range = (start: number, end: number) =>
   Array.from({ length: end - start + 1 }, (_, i) =>
-    String(start + i).padStart(2, '0'),
+    String(start + i).padStart(2, '0')
   );
 
 export function TimePicker({
@@ -31,13 +31,17 @@ export function TimePicker({
     if (type === 'minute') setMinute(value);
     if (type === 'period') setPeriod(value);
 
-    const final: Record<string, string> = {
+    const final = {
       hour: type === 'hour' ? value : hour,
       minute: type === 'minute' ? value : minute,
       period: type === 'period' ? value : period,
     };
 
-    const date = toDate(final);
+    const date = toDate({
+      hour: final.hour,
+      minute: final.minute,
+      period: final.period,
+    });
 
     onSelect?.(date);
     triggerState.close();
@@ -88,7 +92,7 @@ function TimeColumn({
             'grid size-11.5 shrink-0 place-items-center rounded-lg text-sm transition',
             selected === value
               ? 'bg-blue-600 text-white'
-              : 'text-gray-800 hover:bg-gray-100',
+              : 'text-gray-800 hover:bg-gray-100'
           )}
         >
           {value}
@@ -102,7 +106,13 @@ export function TimePickerTrigger({ className, ...props }: ButtonProps) {
   return <Button className={cn('outline-none', className)} {...props} />;
 }
 
-function toDate({ hour, minute, period }: Record<string, string>) {
+type ToDateParams = {
+  hour: string;
+  minute: string;
+  period: string;
+};
+
+function toDate({ hour, minute, period }: ToDateParams) {
   let hour24 = parseInt(hour);
   if (period === 'AM' && hour24 === 12) {
     hour24 = 0; // Midnight case
