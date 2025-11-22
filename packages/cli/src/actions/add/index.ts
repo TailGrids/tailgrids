@@ -2,8 +2,8 @@ import { checkbox } from '@inquirer/prompts';
 import { installDependencies } from '../../utils/installing-dependencies.ts';
 import { logger } from '../../utils/logger.ts';
 import { addFiles } from './helpers.ts';
-import { getRegistry } from '../../utils/get-registry.ts';
 import type { Registry } from '../../types/registry.ts';
+import { REGISTRIES } from '../../registries.ts';
 
 type HandleAddCommandParams = {
   components: string[];
@@ -11,14 +11,14 @@ type HandleAddCommandParams = {
 
 export async function handleAddCommand({ components }: HandleAddCommandParams) {
   try {
-    const registry = await getRegistry();
+    const registries = REGISTRIES;
 
     let selectedComponentsId = components;
 
     if (!selectedComponentsId.length) {
       selectedComponentsId = await checkbox({
         message: 'Select components to add',
-        choices: registry.map((component) => ({
+        choices: registries.map((component) => ({
           name: component.name,
           description: component.description,
           value: component.id,
@@ -38,7 +38,7 @@ export async function handleAddCommand({ components }: HandleAddCommandParams) {
 
     for (const componentId of selectedComponentsId) {
       await handleComponentRegistry({
-        registry,
+        registries,
         componentId,
         processedComponentIds,
         allDependencies,
@@ -60,14 +60,14 @@ export async function handleAddCommand({ components }: HandleAddCommandParams) {
 
 type HandleComponentRegistryParams = {
   componentId: string;
-  registry: Registry;
+  registries: Registry[];
   processedComponentIds: Set<string>;
   allDependencies: Set<string>;
   allDevDependencies: Set<string>;
 };
 
 async function handleComponentRegistry({
-  registry,
+  registries,
   componentId,
   processedComponentIds,
   allDependencies,
@@ -75,7 +75,7 @@ async function handleComponentRegistry({
 }: HandleComponentRegistryParams) {
   if (processedComponentIds.has(componentId)) return;
 
-  const componentRegistry = registry.find(({ id }) => id === componentId);
+  const componentRegistry = registries.find(({ id }) => id === componentId);
 
   processedComponentIds.add(componentId);
 
@@ -97,7 +97,7 @@ async function handleComponentRegistry({
   if (componentRegistry.requires && componentRegistry.requires.length > 0) {
     for (const requiredId of componentRegistry.requires) {
       await handleComponentRegistry({
-        registry,
+        registries,
         componentId: requiredId,
         processedComponentIds,
         allDependencies,

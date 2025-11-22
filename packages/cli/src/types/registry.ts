@@ -4,7 +4,7 @@ export type Registry = {
   description: string;
   type: 'component' | 'block';
   files: {
-    type: 'block' | 'ui' | 'charts';
+    type: 'core';
     path: string;
     targetPath?: string;
   }[];

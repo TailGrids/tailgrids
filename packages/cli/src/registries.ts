@@ -1,4 +1,4 @@
-import type { Registry } from '@/types/registry';
+import type { Registry } from './types/registry.ts';
 
 export const REGISTRIES: Registry[] = [
   {
@@ -9,7 +9,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/accordion.tsx',
       },
     ],
@@ -23,7 +23,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/alert.tsx',
       },
     ],
@@ -37,7 +37,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/avatar/index.tsx',
       },
     ],
@@ -50,7 +50,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/avatar/avatar-group.tsx',
       },
     ],
@@ -64,7 +64,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/badge.tsx',
       },
     ],
@@ -78,7 +78,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/breadcrumbs.tsx',
       },
     ],
@@ -91,7 +91,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/button.tsx',
       },
     ],
@@ -104,7 +104,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/button-group.tsx',
       },
     ],
@@ -117,7 +117,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/checkbox.tsx',
       },
     ],
@@ -130,11 +130,11 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/date-picker/single-date.tsx',
       },
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/date-picker/range-date.tsx',
       },
     ],
@@ -148,7 +148,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/dropdown.tsx',
       },
     ],
@@ -162,7 +162,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/input.tsx',
       },
     ],
@@ -175,7 +175,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/link.tsx',
       },
     ],
@@ -188,7 +188,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/list.tsx',
       },
     ],
@@ -201,7 +201,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/otp-input.tsx',
       },
     ],
@@ -213,7 +213,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/pagination.tsx',
       },
     ],
@@ -226,7 +226,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/popover.tsx',
       },
     ],
@@ -239,7 +239,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/progress.tsx',
       },
     ],
@@ -251,7 +251,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/radio-input.tsx',
       },
     ],
@@ -264,7 +264,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/skeleton.tsx',
       },
     ],
@@ -276,7 +276,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/social-button.tsx',
       },
     ],
@@ -289,19 +289,19 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/spinner/index.tsx',
       },
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/spinner/default.svg',
       },
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/spinner/dotted.svg',
       },
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/spinner/dotted-round.svg',
       },
     ],
@@ -313,7 +313,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/table.tsx',
       },
     ],
@@ -326,7 +326,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/tabs.tsx',
       },
     ],
@@ -340,7 +340,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/text-area.tsx',
       },
     ],
@@ -353,7 +353,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/time-picker.tsx',
       },
     ],
@@ -366,7 +366,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/toast.tsx',
       },
     ],
@@ -380,7 +380,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/toggle.tsx',
       },
     ],
@@ -392,7 +392,7 @@ export const REGISTRIES: Registry[] = [
     type: 'component',
     files: [
       {
-        type: 'ui',
+        type: 'core',
         path: '/core/tooltip.tsx',
       },
     ],
