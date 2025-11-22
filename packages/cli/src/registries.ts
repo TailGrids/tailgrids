@@ -1,4 +1,4 @@
-import type { Registry } from '@/types/registry';
+import type { Registry } from './types/registry.ts';
 
 export const REGISTRIES: Registry[] = [
   {

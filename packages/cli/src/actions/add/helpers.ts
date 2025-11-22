@@ -3,7 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import chalk from 'chalk';
 import { directoryExists, getDefaultTargetPath } from '../../utils/index.ts';
-import { COMPONENT_RAW_BASE_URL } from '../../constants/urls.ts';
+import { COMPONENT_REGISTRY_RAW_BASE_URL } from '../../constants/urls.ts';
 import { logger } from '../../utils/logger.ts';
 
 interface FileConfig {
@@ -47,7 +47,7 @@ async function addFile(file: FileConfig) {
         srcExists,
       });
 
-  const downloadUrl = `${COMPONENT_RAW_BASE_URL}${sourcePath}`;
+  const downloadUrl = `${COMPONENT_REGISTRY_RAW_BASE_URL}${sourcePath}`;
 
   logger.log(
     `  ${chalk.blue('-')} ${path.basename(sourcePath)} → ${path.relative(

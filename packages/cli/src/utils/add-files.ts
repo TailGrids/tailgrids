@@ -1,7 +1,7 @@
 import ora from 'ora';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { COMPONENT_RAW_BASE_URL } from '../constants/urls.ts';
+import { COMPONENT_REGISTRY_RAW_BASE_URL } from '../constants/urls.ts';
 import { logger } from './logger.ts';
 import chalk from 'chalk';
 import { directoryExists, getDefaultTargetPath } from './index.ts';
@@ -47,7 +47,7 @@ async function installFile(file: FileConfig) {
         srcExists,
       });
 
-  const downloadUrl = `${COMPONENT_RAW_BASE_URL}${sourcePath}`;
+  const downloadUrl = `${COMPONENT_REGISTRY_RAW_BASE_URL}${sourcePath}`;
 
   logger.log(
     `  ${chalk.blue('-')} ${path.basename(sourcePath)} → ${path.relative(
