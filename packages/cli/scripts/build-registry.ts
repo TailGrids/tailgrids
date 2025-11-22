@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import { writeFile } from 'node:fs';
 import ora from 'ora';
-import { REGISTRIES } from '../registries.ts';
+import { REGISTRIES } from '../src/registries.ts';
 
 async function main() {
   const spinner = ora().start('Building registry...');
