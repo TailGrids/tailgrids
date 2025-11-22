@@ -1,6 +1,7 @@
 import fs from 'fs-extra';
 import path from 'path';
 import { transform } from '@svgr/core';
+import { transformSync } from '@babel/core';
 
 // Utility: Convert "arrow-left" → "ArrowLeft"
 function pascalCase(str: string): string {
@@ -31,7 +32,7 @@ async function buildIcons() {
     const componentCode = await transform(
       svgCode,
       {
-        jsxRuntime: 'automatic',
+        jsxRuntime: 'classic',
         plugins: ['@svgr/plugin-jsx'],
         prettier: false,
         svgo: false,
@@ -47,8 +48,16 @@ async function buildIcons() {
       { componentName: name }
     );
 
+    const jsCode =
+      transformSync(componentCode, {
+        plugins: [
+          ['@babel/plugin-transform-react-jsx', { runtime: 'classic' }],
+        ],
+        filename: `${name}.js`,
+      })?.code || componentCode;
+
     const jsPath = path.join(OUT_DIR, `${name}.js`);
-    await fs.writeFile(jsPath, componentCode, 'utf8');
+    await fs.writeFile(jsPath, jsCode, 'utf8');
 
     const dtsPath = path.join(OUT_DIR, `${name}.d.ts`);
     const dtsContent = `

@@ -1,5 +1,11 @@
 # @tailgrids/icons
 
+## 1.1.2
+
+### Patch Changes
+
+- Fix jsx compilation in generated svg
+
 ## 1.1.1
 
 ### Patch Changes
