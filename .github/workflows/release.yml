@@ -1,4 +1,4 @@
-name: Publish CLI to NPM
+name: Publish packages to NPM
 
 on:
   push:
@@ -9,7 +9,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   publish:
-    name: Publish CLI to NPM
+    name: Publish packages to NPM
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -32,8 +32,8 @@ jobs:
       - name: Install dependencies
         run: npm install --frozen-lockfile
 
-      - name: Build package
-        run: npm run cli:build
+      - name: Build packages
+        run: npm run build:packages
 
       - name: Create Release Pull Request or Publish
         id: changesets
