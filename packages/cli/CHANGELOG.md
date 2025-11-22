@@ -1,5 +1,11 @@
 # @tailgrids/cli
 
+## 0.1.1-alpha
+
+### Patch Changes
+
+- Fixes \_\_dirname not defined error
+
 ## 0.1.0-alpha
 
 ### Patch Changes

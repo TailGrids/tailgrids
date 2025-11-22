@@ -1,7 +1,7 @@
 {
   "name": "@tailgrids/cli",
   "type": "module",
-  "version": "0.1.0-alpha",
+  "version": "0.1.1-alpha",
   "description": "CLI for adding TailGrids Core components to React projects.",
   "license": "MIT",
   "publishConfig": {
@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "tsup --watch",
-    "dev:link": "npm run build && npm link --global",
+    "dev:link": "npm run build && npm link --local",
     "prebuild": "npm run registry:build",
     "build": "tsup",
     "registry:build": "tsx ./scripts/build-registries.ts && prettier --log-level silent --write ./registries.json"

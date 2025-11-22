@@ -6,6 +6,8 @@ import type { Ora } from 'ora';
 import type { Config } from './index.ts';
 import { getDirname } from '../../utils/get-dirname.ts';
 
+const __dirname = getDirname();
+
 export async function getAvailableThemesChoices() {
   const files = await fs.readdir(path.resolve(__dirname, './templates/themes'));
 
@@ -29,7 +31,6 @@ export async function getAvailableThemesChoices() {
 }
 
 export async function createCSSFile(theme: string, spinner: Ora) {
-  const __dirname = getDirname();
   const fileName = 'tailgrids.css';
 
   try {
