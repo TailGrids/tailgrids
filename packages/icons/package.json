@@ -8,6 +8,9 @@
   "scripts": {
     "build": "tsx ./src/index.ts"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "author": {
     "name": "TailGrids",
     "url": "https://tailgrids.com/"
