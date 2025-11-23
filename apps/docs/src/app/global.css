@@ -1,9 +1,15 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin '@tailwindcss/forms';
-@import 'fumadocs-ui/css/neutral.css';
-@import 'fumadocs-ui/css/preset.css';
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+
+:root {
+  --font-geist-mono: "Geist Mono", monospace;
+}
 
 @theme {
+  --font-mono: var(--font-geist-mono);
+
   --color-primary-50: #eff3ff;
   --color-primary-100: #dae2ff;
   --color-primary-200: #becdff;
@@ -108,6 +114,10 @@
   --color-dropdown-item-hover: #f3f4f6;
   --color-dropdown-separator: var(--color-gray-200);
 
+  /* Border colors for pattern */
+  --border-1: var(--color-gray-200);
+  --border-2: var(--color-gray-800);
+
   /* Shadows */
   --shadow-xs: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
   --shadow-sm: 0px 1px 3px 0px rgba(16, 24, 40, 0.1);
@@ -123,15 +133,202 @@
   --drop-shadow-theme-3xl: 0 32px 64px rgba(16, 24, 40, 0.14);
   --popover-shadow: 0px 5px 5px -2px rgba(16, 24, 40, 0.04);
   --shadow-hero: 0px -14px 100px 0px rgba(0, 0, 0, 0.05);
+  --shadow-navbar-icon:
+    0 1px 1px 0.5px rgba(51, 51, 51, 0.04),
+    0 3px 3px -1.5px rgba(51, 51, 51, 0.02),
+    0 6px 6px -3px rgba(51, 51, 51, 0.04),
+    0 12px 12px -6px rgba(51, 51, 51, 0.04),
+    0 24px 24px -12px rgba(51, 51, 51, 0.04),
+    0 48px 48px -24px rgba(51, 51, 51, 0.04), 0 0 0 1px #e5e7eb,
+    0 -1px 1px -0.5px rgba(51, 51, 51, 0.06) inset;
+  --shadow-terminal:
+    0 1px 1px 0.5px rgba(41, 41, 41, 0.04),
+    0 3px 3px -1.5px rgba(41, 41, 41, 0.02),
+    0 6px 6px -3px rgba(41, 41, 41, 0.04),
+    0 12px 12px -6px rgba(41, 41, 41, 0.04),
+    0 24px 24px -12px rgba(41, 41, 41, 0.04),
+    0 48px 48px -24px rgba(41, 41, 41, 0.04),
+    0 -1px 1px -0.5px rgba(51, 51, 51, 0.06) inset;
 
   --animate-pulse-custom: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-@layer base {
-  button:not(:disabled),
-  [role='button']:not(:disabled) {
-    cursor: pointer;
+/* Custom sidebar styles */
+/* Remove background from sidebar container */
+
+.bg-fd-card {
+  background-color: white;
+}
+.dark .bg-fd-card {
+  background-color: #030712; /* gray-800 */
+}
+.text-fd-primary {
+  color: #3758f9 !important; /* primary-500 */
+  background-color: transparent !important;
+}
+.dark .text-fd-primary {
+  color: #5e84fc !important; /* primary-400 */
+}
+.bg-fd-primary {
+  background-color: #3758f9;
+}
+
+.text-fd-primary:hover {
+  background-color: none !important;
+}
+.text-fd-muted-foreground {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+}
+.dark .text-fd-muted-foreground {
+  color: #9ca3af !important;
+}
+.text-fd-muted-foreground:hover {
+  background: none !important;
+  color: #3758f9 !important; /* primary-500 */
+}
+.dark .text-fd-muted-foreground:hover {
+  color: #5e84fc !important; /* primary-400 */
+}
+
+.text-fd-primary::before {
+  background-color: #3758f9 !important; /* primary-500 */
+}
+.dark .text-fd-primary::before {
+  background-color: #5e84fc !important; /* primary-400 */
+}
+/* Adjust layout for global header */
+body {
+  padding-top: 0 !important;
+}
+
+/* Add top padding to prevent overlap with sticky header */
+
+/* Ensure sidebar also respects header height */
+
+#nd-sidebar {
+  top: 5rem !important; /* 64px */
+  height: calc(100vh - 5rem) !important;
+  display: flex;
+  flex-direction: column;
+}
+/* #nd-sidebar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 170px;
+  width: 1px;
+  height: 200vh;
+  z-index: 9999;
+  background-color: var(--color-gray-200);
+} */
+
+/* Hide desktop sidebar on md devices, show from lg+ */
+/* @media (max-width: 1023px) {
+  #nd-sidebar {
+    display: none !important;
   }
+  #nd-docs-layout {
+    padding: 0 !important;
+  }
+} */
+
+/* Sidebar content should scroll */
+#nd-sidebar > div:first-child {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Sidebar footer stays at bottom */
+#nd-sidebar > div:last-child {
+  margin-top: auto;
+}
+
+#nd-sidebar-mobile {
+  background: white;
+}
+
+.dark #nd-sidebar-mobile {
+  background: rgb(3 7 18);
+}
+
+/* Hide search from sidebar - keep it only in header */
+#nd-sidebar > div:first-of-type {
+  /* styles here */
+  display: none;
+}
+#nd-sidebar > div:last-of-type {
+  /* styles here */
+  display: none;
+}
+
+/* Hide default theme toggle from fumadocs - using custom one */
+[data-theme-toggle] {
+  display: none !important;
+}
+.flex.flex-col.border-t.p-4.pt-2 [data-theme-toggle] {
+  display: none !important;
+}
+
+/* Position custom theme toggle next to collapse button */
+aside#nd-sidebar-mobile > div:first-child {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem;
+  gap: 0.5rem;
+}
+
+/* Make collapse button and theme toggle inline */
+aside#nd-sidebar-mobile > div:first-child > button {
+  flex-shrink: 0;
+}
+
+#nd-toc {
+  top: 5rem !important; /* 64px */
+  height: calc(100vh - 5rem) !important;
+}
+#nd-page {
+  padding-top: 0 !important;
+}
+
+.custom-link-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: var(--Colors-Brand-500, #3758f9);
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 14px;
+
+  box-shadow:
+    0 16px 8px 0 rgba(31, 31, 31, 0.01),
+    0 12px 6px 0 rgba(31, 31, 31, 0.04),
+    0 4px 4px 0 rgba(31, 31, 31, 0.07),
+    0 1.5px 3px 0 rgba(31, 31, 31, 0.08),
+    0 0 0 1px var(--Colors-Brand-600, #2237ee),
+    0 1px 3px 0 rgba(255, 255, 255, 0.3) inset;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.custom-link-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 20px 12px 0 rgba(31, 31, 31, 0.03),
+    0 12px 8px 0 rgba(31, 31, 31, 0.05),
+    0 5px 5px 0 rgba(31, 31, 31, 0.09),
+    0 0 0 1px var(--Colors-Brand-600, #2237ee),
+    0 1px 3px 0 rgba(255, 255, 255, 0.3) inset;
+}
+
+.custom-link-btn:active {
+  transform: translateY(0);
 }
 
 @keyframes pulse {

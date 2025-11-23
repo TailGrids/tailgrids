@@ -1,0 +1,58 @@
+---
+title: Quick Start
+description: Get up and running with TailGrids in minutes
+---
+
+# Quick Start
+
+Get started with TailGrids in just a few simple steps.
+
+## Installation
+
+Install the required dependencies:
+
+```bash
+npm install tailwindcss class-variance-authority clsx tailwind-merge
+```
+
+## Setup Tailwind CSS
+
+Make sure Tailwind CSS is configured in your project. Add to your `tailwind.config.js`:
+
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+## Add Utility Function
+
+Create a `cn` utility function for merging class names:
+
+```ts
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+## Use Components
+
+Now you can start using TailGrids components in your project:
+
+```tsx
+import { Button } from "@/components/button";
+
+export default function MyPage() {
+  return <Button variant="primary">Click me</Button>;
+}
+```
+
+## Next Steps

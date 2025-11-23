@@ -1,0 +1,34 @@
+---
+title: Badge
+description: Small labels for status, tags, and categories
+---
+
+# Badge
+
+Badges are used to highlight an item's status, category, or other metadata.
+
+## Usage
+
+```tsx
+import { Badge } from "@/registry/core/badge";
+
+<Badge>Default</Badge>;
+```
+
+## Examples
+
+### Variants
+
+```tsx
+<Badge variant="default">Default</Badge>
+<Badge variant="success">Success</Badge>
+<Badge variant="danger">Danger</Badge>
+<Badge variant="warning">Warning</Badge>
+```
+
+## Props
+
+| Prop        | Type     | Default     | Description            |
+| ----------- | -------- | ----------- | ---------------------- |
+| `variant`   | `string` | `'default'` | Badge style variant    |
+| `className` | `string` | -           | Additional CSS classes |

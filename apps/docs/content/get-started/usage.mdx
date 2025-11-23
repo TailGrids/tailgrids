@@ -1,0 +1,63 @@
+---
+title: Usage
+description: How to use TailGrids components effectively
+---
+
+# Usage
+
+Learn how to use TailGrids components in your projects.
+
+## Component Import
+
+Import components directly from your component registry:
+
+```tsx
+import { Button } from "@/registry/core/button";
+import { Input } from "@/registry/core/input";
+import { Badge } from "@/registry/core/badge";
+```
+
+## Styling and Variants
+
+Most components support multiple variants and sizes:
+
+```tsx
+<Button variant="primary" size="md">Primary Button</Button>
+<Button variant="danger" size="sm">Danger Button</Button>
+<Button variant="success" appearance="outline">Success Outline</Button>
+```
+
+## Composition
+
+Combine components to build complex UIs:
+
+```tsx
+<div className="space-y-4">
+  <Input placeholder="Enter your email" />
+  <Button variant="primary" className="w-full">
+    Subscribe
+  </Button>
+</div>
+```
+
+## Customization
+
+Override styles using the `className` prop:
+
+```tsx
+<Button variant="primary" className="rounded-full px-8">
+  Custom Styled Button
+</Button>
+```
+
+## TypeScript Support
+
+All components are fully typed for excellent TypeScript support:
+
+```tsx
+type ButtonProps = ComponentProps<"button"> & {
+  variant?: "primary" | "danger" | "success" | "ghost";
+  appearance?: "fill" | "outline";
+  size?: "xs" | "sm" | "md" | "lg";
+};
+```

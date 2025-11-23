@@ -1,0 +1,20 @@
+---
+title: Breadcrumbs
+description: Navigation trail showing the current page location
+---
+
+# Breadcrumbs
+
+Breadcrumbs help users understand their current location within the site hierarchy.
+
+## Usage
+
+```tsx
+import { Breadcrumbs } from "@/registry/core/breadcrumbs";
+
+<Breadcrumbs>
+  <BreadcrumbItem href="/">Home</BreadcrumbItem>
+  <BreadcrumbItem href="/docs">Docs</BreadcrumbItem>
+  <BreadcrumbItem>Current Page</BreadcrumbItem>
+</Breadcrumbs>;
+```

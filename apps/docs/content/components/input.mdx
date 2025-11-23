@@ -1,0 +1,44 @@
+---
+title: Input
+description: Text input fields for user data entry
+---
+
+# Input
+
+Input fields allow users to enter text data.
+
+## Usage
+
+```tsx
+import { Input } from "@/registry/core/input";
+
+<Input placeholder="Enter text..." />;
+```
+
+## Examples
+
+### Basic Input
+
+```tsx
+<Input type="text" placeholder="Your name" />
+<Input type="email" placeholder="email@example.com" />
+<Input type="password" placeholder="Password" />
+```
+
+### With Label
+
+```tsx
+<div>
+  <label htmlFor="email">Email</label>
+  <Input id="email" type="email" placeholder="you@example.com" />
+</div>
+```
+
+## Props
+
+| Prop          | Type      | Default  | Description            |
+| ------------- | --------- | -------- | ---------------------- |
+| `type`        | `string`  | `'text'` | Input type             |
+| `placeholder` | `string`  | -        | Placeholder text       |
+| `disabled`    | `boolean` | `false`  | Disable the input      |
+| `className`   | `string`  | -        | Additional CSS classes |

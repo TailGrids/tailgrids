@@ -1,0 +1,78 @@
+---
+title: Button
+description: Trigger actions and events with customizable button components
+---
+
+# Button
+
+Buttons allow users to trigger actions and make choices with a single tap or click.
+
+## Usage
+
+```tsx
+import { Button } from "@/registry/core/button";
+
+<Button variant="primary">Click me</Button>;
+```
+
+## Examples
+
+### Variants
+
+```tsx
+<Button variant="primary">Primary</Button>
+<Button variant="danger">Danger</Button>
+<Button variant="success">Success</Button>
+<Button variant="ghost">Ghost</Button>
+```
+
+### Appearances
+
+```tsx
+<Button variant="primary" appearance="fill">Filled</Button>
+<Button variant="primary" appearance="outline">Outline</Button>
+```
+
+### Sizes
+
+```tsx
+<Button size="xs">Extra Small</Button>
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+```
+
+### Icon Only
+
+```tsx
+<Button iconOnly>
+  <IconSearch />
+</Button>
+```
+
+### With Icons
+
+```tsx
+<Button>
+  <IconCheck />
+  Save Changes
+</Button>
+```
+
+## Props
+
+| Prop         | Type                                            | Default     | Description            |
+| ------------ | ----------------------------------------------- | ----------- | ---------------------- |
+| `variant`    | `'primary' \| 'danger' \| 'success' \| 'ghost'` | `'primary'` | Button style variant   |
+| `appearance` | `'fill' \| 'outline'`                           | `'fill'`    | Button appearance      |
+| `size`       | `'xs' \| 'sm' \| 'md' \| 'lg'`                  | `'md'`      | Button size            |
+| `iconOnly`   | `boolean`                                       | `false`     | Icon-only button style |
+| `disabled`   | `boolean`                                       | `false`     | Disable the button     |
+| `className`  | `string`                                        | -           | Additional CSS classes |
+
+## Accessibility
+
+- Keyboard accessible
+- Focus visible styles
+- Disabled state handling
+- Screen reader compatible

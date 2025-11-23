@@ -1,0 +1,62 @@
+---
+title: Upgrade Guide
+description: Guide for upgrading to the latest version
+---
+
+# Upgrade Guide
+
+Stay up to date with the latest TailGrids features and improvements.
+
+## Version 2.0 (Latest)
+
+### Breaking Changes
+
+- Updated to Tailwind CSS v4
+- React 19 support
+- Improved TypeScript types
+
+### Migration Steps
+
+1. Update dependencies:
+
+```bash
+npm install tailwindcss@latest react@latest react-dom@latest
+```
+
+2. Update your Tailwind configuration to v4 format if needed.
+
+3. Review component prop changes in the changelog.
+
+## Version 1.x to 2.0
+
+### Major Changes
+
+- Component API updates for better consistency
+- New design tokens system
+- Enhanced accessibility features
+
+### Component Updates
+
+**Button Component**
+
+```tsx
+// Old (v1.x)
+<Button color="blue">Click me</Button>
+
+// New (v2.0)
+<Button variant="primary">Click me</Button>
+```
+
+**Input Component**
+
+```tsx
+// Old (v1.x)
+<Input type="text" />
+
+// New (v2.0) - No changes, backward compatible
+<Input type="text" />
+```
+
+## Staying Updated
+
+Subscribe to our [changelog](https://github.com/TailGrids/oss/releases) to stay informed about new releases.

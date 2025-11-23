@@ -1,0 +1,20 @@
+---
+title: Pagination
+description: Navigate through pages of content
+---
+
+# Pagination
+
+Pagination allows users to navigate through pages of content.
+
+## Usage
+
+```tsx
+import { Pagination } from "@/registry/core/pagination";
+
+<Pagination
+  currentPage={1}
+  totalPages={10}
+  onPageChange={(page) => console.log(page)}
+/>;
+```

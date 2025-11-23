@@ -1,0 +1,59 @@
+---
+title: Framework Guides
+description: Integration guides for popular frameworks
+---
+
+# Framework Guides
+
+Learn how to integrate TailGrids with your favorite framework.
+
+## Next.js
+
+TailGrids works seamlessly with Next.js. Follow the [Quick Start](/get-started/quick-start) guide and ensure you have the App Router or Pages Router configured.
+
+### App Router
+
+```tsx
+// app/page.tsx
+import { Button } from "@/components/button";
+
+export default function Home() {
+  return (
+    <main>
+      <Button>Get Started</Button>
+    </main>
+  );
+}
+```
+
+## React
+
+For standard React applications:
+
+```bash
+npm install react react-dom
+npm install tailwindcss class-variance-authority clsx tailwind-merge
+```
+
+## Vite
+
+TailGrids works great with Vite:
+
+```bash
+npm create vite@latest my-app -- --template react-ts
+cd my-app
+npm install tailwindcss class-variance-authority clsx tailwind-merge
+```
+
+## Remix
+
+Integration with Remix is straightforward. Follow the standard setup and add components to your routes.
+
+## Astro
+
+TailGrids components can be used in Astro with the React integration:
+
+```bash
+npx astro add react
+npx astro add tailwind
+```

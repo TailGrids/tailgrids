@@ -1,0 +1,36 @@
+---
+title: Alert
+description: Display important messages and notifications to users
+---
+
+## Usage
+
+```tsx
+import { Alert } from "@/registry/core/alert";
+
+<Alert variant="info">This is an informational alert.</Alert>;
+```
+
+## Examples
+
+### Variants
+
+```tsx
+<Alert variant="success">Success message</Alert>
+<Alert variant="danger">Error message</Alert>
+<Alert variant="warning">Warning message</Alert>
+<Alert variant="info">Info message</Alert>
+```
+
+## Props
+
+| Prop        | Type                                           | Default  | Description             |
+| ----------- | ---------------------------------------------- | -------- | ----------------------- |
+| `variant`   | `'success' \| 'danger' \| 'warning' \| 'info'` | `'info'` | The alert style variant |
+| `className` | `string`                                       | -        | Additional CSS classes  |
+
+## Accessibility
+
+- Uses proper ARIA roles
+- Semantic color meanings
+- Screen reader compatible

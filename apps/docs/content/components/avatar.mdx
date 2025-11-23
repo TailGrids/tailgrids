@@ -1,0 +1,55 @@
+---
+title: Avatar
+description: Display user profile pictures and icons
+---
+
+# Avatar
+
+Avatars are used to represent users or entities in your application.
+
+## Usage
+
+```tsx
+import { Avatar } from "@/registry/core/avatar";
+
+<Avatar src="/avatar.jpg" alt="User name" />;
+```
+
+## Examples
+
+### Avatar Group
+
+Display multiple avatars together:
+
+```tsx
+import { AvatarGroup } from "@/registry/core/avatar/avatar-group";
+
+<AvatarGroup>
+  <Avatar src="/user1.jpg" alt="User 1" />
+  <Avatar src="/user2.jpg" alt="User 2" />
+  <Avatar src="/user3.jpg" alt="User 3" />
+</AvatarGroup>;
+```
+
+### Sizes
+
+```tsx
+<Avatar size="sm" src="/avatar.jpg" alt="Small" />
+<Avatar size="md" src="/avatar.jpg" alt="Medium" />
+<Avatar size="lg" src="/avatar.jpg" alt="Large" />
+```
+
+## Props
+
+| Prop       | Type                   | Default | Description                       |
+| ---------- | ---------------------- | ------- | --------------------------------- |
+| `src`      | `string`               | -       | Image source URL                  |
+| `alt`      | `string`               | -       | Alternative text                  |
+| `size`     | `'sm' \| 'md' \| 'lg'` | `'md'`  | Avatar size                       |
+| `fallback` | `ReactNode`            | -       | Fallback content when image fails |
+
+## Accessibility
+
+- Requires `alt` text for images
+- Fallback support for failed images
+- Proper semantic structure

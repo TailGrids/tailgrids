@@ -1,0 +1,31 @@
+---
+title: Accordion
+description: Vertically stacked sections of content that can be expanded or collapsed
+---
+
+## Usage
+
+```tsx
+import { Accordion } from "@/registry/core/accordion";
+
+<Accordion />;
+```
+
+## Examples
+
+### Basic Accordion
+
+A simple accordion with multiple sections.
+
+## Props
+
+| Prop           | Type                     | Default    | Description                                  |
+| -------------- | ------------------------ | ---------- | -------------------------------------------- |
+| `defaultValue` | `string`                 | -          | The default open section                     |
+| `type`         | `'single' \| 'multiple'` | `'single'` | Whether one or multiple sections can be open |
+
+## Accessibility
+
+- Uses semantic HTML
+- Keyboard navigation support
+- ARIA attributes for screen readers
