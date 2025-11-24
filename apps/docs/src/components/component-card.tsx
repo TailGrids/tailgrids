@@ -21,7 +21,7 @@ export default function ComponentCard({
   className,
   children,
   note,
-  step = 1,
+  step
 }: ComponentCardProps) {
   const [copied, setCopied] = useState(false);
 
@@ -37,11 +37,14 @@ export default function ComponentCard({
 
   return (
     <div className="flex gap-4 items-start mb-10 relative after:content-[''] after:absolute after:inset-0 after:ml-3 after:-z-10 after:bg-gray-200 after:top-10 after:w-px">
-      <div>
-        <span className="rounded-full border border-gray-200 inline-flex items-center justify-center size-7 text-gry-700 font-semibold text-sm">
-          {step}
-        </span>
-      </div>
+      {step && (
+        <div>
+          <span className="rounded-full border border-gray-200 inline-flex items-center justify-center size-7 text-gry-700 font-semibold text-sm">
+            {step}
+          </span>
+        </div>
+      )}
+
       <div className="flex-1">
         {(title || description) && (
           <div className="">
@@ -73,7 +76,7 @@ export default function ComponentCard({
                   </span>
                   <button
                     onClick={handleCopy}
-                    className="flex items-center gap-1.5 rounded cursor-pointer px-2 py-1  font-normal text-gray-500 text-sm "
+                    className="flex items-center gap-1.5 rounded cursor-pointer px-2 py-1  font-normal text-gray-500 text-sm"
                     aria-label="Copy command"
                   >
                     {copied ? (

@@ -12,8 +12,8 @@ export default function ThemeToggleLink() {
       className=" flex size-9 shrink-0 items-center cursor-pointer justify-center dark:shadow-none dark:border-[#111827] dark:bg-white/5 rounded-xl shadow-navbar-icon  transition"
       aria-label="Toggle Theme"
     >
-      <SunIcon className="size-4 text-gray-600 dark:text-gray-400 block dark:hidden" />
-      <MoonIcon className="size-4 text-gray-400 hidden dark:block" />
+      <SunIcon className="size-4 text-gray-600 dark:text-gray-400 dark:hidden" />
+      <MoonIcon className="size-4 text-gray-400 not-dark:hidden" />
     </button>
   );
 }
