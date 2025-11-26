@@ -1,19 +1,202 @@
 ---
 title: Popover
-description: Display content in a floating container
+description: A floating panel that opens on click, supports headings, descriptions, focus management, and arrow positioning.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import PopoverPreview from "@/components/preview/popover-preview";
 
 # Popover
 
-Popovers display additional content in a floating container.
+A floating panel that opens on click. Includes support for headings, descriptions, keyboard focus, arrow positioning, and controlled or uncontrolled behavior.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/popover-preview.tsx")}
+>
+  <PopoverPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install via Tailgrids CLI.
+
+```bash
+npx @tailgrids/cli add popover
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+
+Install required dependency:
+
+```bash
+npm i @floating-ui/react
+```
+
+Then copy the component into your project:
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/popover.tsx")}
+  lang="tsx"
+/>
+
+</Accordion>
+</Accordions>
 
 ## Usage
 
 ```tsx
-import { Popover } from "@/registry/core/popover";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeading,
+  PopoverDescription,
+  PopoverClose
+} from "@/registry/core/popover";
 
+export default function Example() {
+  return (
+    <Popover>
+      <PopoverTrigger>Open Popover</PopoverTrigger>
+
+      <PopoverContent>
+        <PopoverHeading>Popover Title</PopoverHeading>
+        <PopoverDescription>
+          This is a short description inside the popover.
+        </PopoverDescription>
+
+        <PopoverClose className="mt-4 text-sm underline">Close</PopoverClose>
+      </PopoverContent>
+    </Popover>
+  );
+}
+```
+
+---
+
+## Examples
+
+### Default
+
+```tsx
 <Popover>
-  <PopoverTrigger>Open</PopoverTrigger>
-  <PopoverContent>Popover content here</PopoverContent>
+  <PopoverTrigger>Options</PopoverTrigger>
+  <PopoverContent>
+    <PopoverHeading>Settings</PopoverHeading>
+    <PopoverDescription>Manage only the settings you need.</PopoverDescription>
+  </PopoverContent>
+</Popover>
+```
+
+### With Close Button
+
+```tsx
+<Popover>
+  <PopoverTrigger>Details</PopoverTrigger>
+  <PopoverContent>
+    <PopoverHeading>Profile</PopoverHeading>
+    <p className="text-sm">Edit your personal information.</p>
+
+    <PopoverClose className="mt-4 text-sm underline">Close</PopoverClose>
+  </PopoverContent>
+</Popover>
+```
+
+### Controlled Open State
+
+```tsx
+const [open, setOpen] = useState(false);
+
+<Popover open={open} onOpenChange={setOpen}>
+  <PopoverTrigger>Toggle</PopoverTrigger>
+  <PopoverContent>
+    <p>This popover is fully controlled.</p>
+  </PopoverContent>
 </Popover>;
 ```
+
+### Custom Placement
+
+```tsx
+<Popover placement="right-start">
+  <PopoverTrigger>Right Popover</PopoverTrigger>
+  <PopoverContent>Content positioned on the right.</PopoverContent>
+</Popover>
+```
+
+---
+
+## API Reference
+
+### Popover
+
+| Prop           | Type                         | Default    | Description                             |
+| -------------- | ---------------------------- | ---------- | --------------------------------------- |
+| `initialOpen`  | `boolean`                    | `false`    | Initial uncontrolled open state         |
+| `open`         | `boolean`                    | –          | Controlled open state                   |
+| `onOpenChange` | `(open: boolean) => void`    | –          | Called when open state changes          |
+| `placement`    | `Placement` (`@floating-ui`) | `"bottom"` | Position of popover relative to trigger |
+| `modal`        | `boolean`                    | `false`    | Trap focus while open                   |
+
+---
+
+### PopoverTrigger
+
+Wraps the clickable element that toggles the popover.
+
+| Prop      | Type      | Default | Description                    |
+| --------- | --------- | ------- | ------------------------------ |
+| `asChild` | `boolean` | `false` | Use any element as the trigger |
+
+---
+
+### PopoverContent
+
+Floating panel element that contains the popover UI.
+
+| Prop    | Type                        | Description                                             |
+| ------- | --------------------------- | ------------------------------------------------------- |
+| `style` | `React.CSSProperties`       | Inline style merged with floating-ui positioning styles |
+| `ref`   | `React.Ref<HTMLDivElement>` | Used by Floating UI to position content                 |
+
+---
+
+### PopoverHeading
+
+- Registers itself as the `aria-labelledby` for the popover.
+- Automatically binds/unbinds when mounted/unmounted.
+
+### PopoverDescription
+
+- Registers itself as `aria-describedby` for the popover.
+
+### PopoverClose
+
+A convenience button that closes the popover when clicked.
+
+---
+
+## Accessibility
+
+- Fully accessible using:
+  - `FloatingFocusManager` for focus handling
+  - `aria-labelledby` and `aria-describedby`
+  - Arrow key and tab navigation
+
+- Triggers expose `data-state="open" | "closed"`
+- Works with screen readers and assistive tech
+- Supports modal focus-trapping
+
+---
+
+## Notes
+
+- Uses `FloatingArrow` for accurate arrow positioning
+- Supports both controlled and uncontrolled states
+- Automatically flips, shifts, and offsets using Floating UI middleware
+- `asChild` allows integrating with custom buttons (Radix-style)

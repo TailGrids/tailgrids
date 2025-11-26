@@ -1,16 +1,180 @@
 ---
-title: Text Area
-description: Multi-line text input field
+title: TextArea
+description: A multiline text input with label, validation states, and hint support.
 ---
 
-# Text Area
+import { getFileContent } from "@/utils/get-file-content";
+import TextAreaPreview from "@/components/preview/text-area-preview";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
-Text areas allow users to enter multi-line text content.
+# TextArea
+
+A multiline text field with support for labels, validation states, hint messages, and custom styling.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/text-area-preview.tsx")}
+>
+  <TextAreaPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install from the command line:
+
+```bash
+npx @tailgrids/cli add text-area
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install required dependency:
+
+```bash
+npm i class-variance-authority
+```
+
+Copy the component into your project:
+
+<CodeBlockCard
+snippet={getFileContent("/src/registry/core/text-area.tsx")}
+lang="tsx"
+fileName="text-area.tsx"
+/> 
+</Accordion>
+</Accordions>
 
 ## Usage
 
 ```tsx
 import { TextArea } from "@/registry/core/text-area";
 
-<TextArea placeholder="Enter your message..." rows={4} />;
+export default () => (
+  <TextArea label="Message" placeholder="Write your message..." />
+);
 ```
+
+## Examples
+
+### Default
+
+```tsx
+<TextArea label="Message" placeholder="Write something..." />
+```
+
+### With Hint
+
+```tsx
+<TextArea
+  label="Bio"
+  hint="Tell us a little about yourself."
+  placeholder="Your bio..."
+/>
+```
+
+### Error State
+
+```tsx
+<TextArea
+  label="Feedback"
+  state="error"
+  hint="Feedback cannot be empty."
+  placeholder="Enter feedback..."
+/>
+```
+
+### Success State
+
+```tsx
+<TextArea
+  label="Description"
+  state="success"
+  hint="Looks good!"
+  placeholder="Enter a short description..."
+/>
+```
+
+### Disabled
+
+```tsx
+<TextArea label="Notes" disabled placeholder="Disabled textarea..." />
+```
+
+## API Reference
+
+### TextArea
+
+Extends `textarea` element props.
+
+| Prop        | Type                                | Default     | Description                             |
+| ----------- | ----------------------------------- | ----------- | --------------------------------------- |
+| `label`     | `string`                            | `-`         | Optional label displayed above textarea |
+| `hint`      | `string`                            | `-`         | Hint text displayed below textarea      |
+| `state`     | `'default' \| 'error' \| 'success'` | `'default'` | Visual validation state                 |
+| `className` | `string`                            | `-`         | Additional classes for customization    |
+
+## Accessibility
+
+- Label is automatically associated using a generated `id` and `htmlFor`.
+- Uses semantic `<textarea>` element.
+- Disabled state is visually and programmatically communicated.
+- Validation states use visible colors but allow assistive tech detection through messaging.
+
+## Notes
+
+- States are powered by `class-variance-authority` for easy extension.
+- Hint text automatically adjusts color based on validation state.
+- Component is fully controlled using native textarea props.
+
+````
+
+---
+
+# ✅ **Preview Component (`textarea-preview.tsx`)**
+
+```tsx
+import { TextArea } from "@/registry/core/textarea";
+
+export default function TextAreaPreview() {
+  return (
+    <div className="flex flex-col gap-6 w-full max-w-md">
+      <TextArea
+        label="Message"
+        placeholder="Write something..."
+      />
+
+      <TextArea
+        label="Bio"
+        hint="Tell us a little about yourself."
+        placeholder="Your bio..."
+      />
+
+      <TextArea
+        label="Feedback"
+        state="error"
+        hint="Feedback cannot be empty."
+        placeholder="Enter feedback..."
+      />
+
+      <TextArea
+        label="Description"
+        state="success"
+        hint="Looks good!"
+        placeholder="Enter a short description..."
+      />
+
+      <TextArea
+        label="Notes"
+        disabled
+        placeholder="Disabled textarea..."
+      />
+    </div>
+  );
+}
+````
+
+---
+
+If you want, I can also generate a **registry entry**, **CLI template**, or fully match the **Radix-style props tables**.

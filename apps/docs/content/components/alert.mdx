@@ -1,36 +1,122 @@
 ---
 title: Alert
-description: Display important messages and notifications to users
+description: Display important messages, notifications, or feedback to users with contextual styling and optional actions.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import { AlertPreview } from "@/components/preview/alert-preview";
+
+# Alert
+
+Display important messages, notifications, or feedback to users with contextual styling and optional actions.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/alert-preview.tsx")}
+>
+  <AlertPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+```npm
+npx @tailgrids/cli add alert
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the following dependencies:
+```npm
+npm i class-variance-authority @tailgrids/icons
+```
+
+Copy and paste the following code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/alert.tsx")}
+  lang="tsx"
+/>
+</Accordion>
+</Accordions>
 
 ## Usage
 
 ```tsx
-import { Alert } from "@/registry/core/alert";
+import Alert from "@/components/alert";
 
-<Alert variant="info">This is an informational alert.</Alert>;
+export default () => (
+  <Alert
+    variant="success"
+    title="Success"
+    message="Your changes have been saved successfully."
+    withIcon
+  />
+);
 ```
 
 ## Examples
 
-### Variants
+### With Actions
 
 ```tsx
-<Alert variant="success">Success message</Alert>
-<Alert variant="danger">Error message</Alert>
-<Alert variant="warning">Warning message</Alert>
-<Alert variant="info">Info message</Alert>
+<Alert
+  variant="danger"
+  title="Delete Account"
+  message="This action cannot be undone. This will permanently delete your account."
+  actions={{
+    primary: {
+      label: "Delete",
+      onClick: () => console.log("Deleted")
+    },
+    secondary: {
+      label: "Cancel"
+    }
+  }}
+/>
 ```
 
-## Props
+### Without Title
 
-| Prop        | Type                                           | Default  | Description             |
-| ----------- | ---------------------------------------------- | -------- | ----------------------- |
-| `variant`   | `'success' \| 'danger' \| 'warning' \| 'info'` | `'info'` | The alert style variant |
-| `className` | `string`                                       | -        | Additional CSS classes  |
+```tsx
+<Alert
+  variant="info"
+  message="A new software update is available. See what's new."
+  withIcon
+/>
+```
+
+## API Reference
+
+### Alert
+
+| Prop                | Type                                                     | Default     | Description                                |
+| ------------------- | -------------------------------------------------------- | ----------- | ------------------------------------------ |
+| `variant`           | `'success'`, `'danger'`, `'info'`, `'warning'`, `'gray'` | `'success'` | Visual style and color scheme              |
+| `title`             | `string`                                                 | -           | Optional heading for the alert             |
+| `message`           | `string`                                                 | -           | Main alert message (required)              |
+| `withIcon`          | `boolean`                                                | `false`     | Show icon indicator                        |
+| `open`              | `boolean`                                                | `true`      | Control visibility state                   |
+| `onClose`           | `() => void`                                             | -           | Callback fired when alert is closed        |
+| `actions`           | `object`                                                 | -           | Action buttons configuration               |
+| `actions.primary`   | `{ label: string; onClick: () => void }`                 | -           | Primary action button                      |
+| `actions.secondary` | `{ label: string }`                                      | -           | Secondary action button (triggers onClose) |
+
+## Variants
+
+The component includes five semantic variants, each with their own color scheme:
+
+- **success**: For successful operations or positive feedback
+- **danger**: For errors or destructive actions
+- **info**: For informational messages
+- **warning**: For warnings or important notices
+- **gray**: For neutral or general messages
 
 ## Accessibility
 
-- Uses proper ARIA roles
-- Semantic color meanings
-- Screen reader compatible
+- Close button includes `aria-label` for screen readers
+- Automatically refocuses after closing (reappears after 5 seconds)
+- Semantic color coding for different message types

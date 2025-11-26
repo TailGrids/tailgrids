@@ -1,16 +1,122 @@
 ---
 title: Toggle
-description: Switch between two states
+description: "A form control that allows a user to switch between two mutually exclusive states: on or off."
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import TogglePreview from "@/components/preview/toggle-preview";
 
 # Toggle
 
-Toggles allow users to switch between two states, like on/off.
+A form control, often known as a **Switch**, that allows a user to **switch between two mutually exclusive states**: typically "on" and "off."
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/toggle-preview.tsx")}
+>
+  <TogglePreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+
+```npm
+npx @tailgrids/cli add toggle
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Copy and paste the following code into your project.
+
+<CodeBlockCard
+snippet={getFileContent("/src/registry/core/toggle.tsx")}
+lang="tsx"
+fileName="toggle.tsx"
+/>
+</Accordion>
+</Accordions>
 
 ## Usage
 
 ```tsx
 import { Toggle } from "@/registry/core/toggle";
 
-<Toggle />;
+export default () => <Toggle label="Enable Feature X" defaultChecked />;
 ```
+
+## Examples
+
+### Small Size
+
+The default size for the toggle switch is `sm`.
+
+```tsx
+<Toggle label="Small Switch" size="sm" defaultChecked />
+```
+
+### Medium Size
+
+Use the `md` size for a larger switch, often used in prominent settings or for better touch target accessibility.
+
+```tsx
+<Toggle label="Medium Switch" size="md" />
+```
+
+### Without Label
+
+The label is optional. The component will still be accessible if wrapped in an appropriate fieldset or when an `aria-label` is provided.
+
+```tsx
+<Toggle aria-label="Dark Mode Toggle" defaultChecked />
+```
+
+### Controlled State
+
+You can control the state of the toggle using the `checked` prop in combination with `onChange`.
+
+```tsx
+const [isDark, setIsDark] = React.useState(false);
+
+const handleChange = e => {
+  setIsDark(e.target.checked);
+};
+
+return (
+  <Toggle
+    label="Dark Mode"
+    checked={isDark}
+    onChange={handleChange}
+    size="md"
+  />
+);
+```
+
+## API Reference
+
+### Toggle
+
+Extends `input` element props (excluding `size`).
+
+| Prop            | Type                      | Default | Description                                                                                                |
+| :-------------- | :------------------------ | :------ | :--------------------------------------------------------------------------------------------------------- |
+| `label`         | `string`                  | -       | Optional text label displayed next to the switch.                                                          |
+| `size`          | `'sm'`, `'md'`            | `'sm'`  | The size of the toggle switch.                                                                             |
+| `className`     | `string`                  | -       | Additional CSS classes for the **hidden input element** (use standard HTML props for the overall control). |
+| `...inputProps` | `ComponentProps<'input'>` | -       | All standard HTML `<input>` attributes, such as `defaultChecked`, `checked`, `onChange`, `disabled`, etc.  |
+
+## Accessibility
+
+- **Semantic Structure**: Built on a standard HTML `<input type="checkbox">` which provides native keyboard and accessibility support.
+- **Keyboard Interaction**: Users can toggle the switch using the **Space** key when the component is focused.
+- **Label Association**: The visible label is correctly associated with the hidden checkbox input via the `htmlFor` and `id` attributes, ensuring screen readers announce the label correctly.
+- **Screen Readers**: The actual checkbox element is visually hidden (`sr-only`), but is programmatically available for screen readers, ensuring a correct announcement of the control's state.
+
+## Notes
+
+- The component uses **CSS-only visual state management** through the `peer-checked` utility class on the wrapper `div`s, reacting to the state of the sibling hidden checkbox input.
+- The primary color is applied to the background of the track when the switch is **checked** (`peer-checked:bg-primary-500`).
+- The `size` prop adjusts the dimensions of the track and the thumb for both 'sm' and 'md' sizes.

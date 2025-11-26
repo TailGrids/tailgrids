@@ -1,20 +1,139 @@
 ---
 title: Pagination
-description: Navigate through pages of content
+description: A set of controls for navigating between pages of content.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import PaginationPreview from "@/components/preview/pagination-preview";
 
 # Pagination
 
-Pagination allows users to navigate through pages of content.
+A set of controls for navigating between pages of content. It handles different layouts for the previous/next buttons and dynamically manages page button display with ellipsis for a large number of pages.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/pagination-preview.tsx")}
+>
+  <PaginationPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+
+```npm
+npx @tailgrids/cli add pagination
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the following dependencies:
+
+```npm
+npm i class-variance-authority @tailgrids/icons
+```
+
+Copy and paste the following code into your project. Note that `PaginationButton` and `PaginationEllipsis` are internal components.
+
+<CodeBlockCard
+snippet={getFileContent("/src/registry/core/pagination.tsx")}
+lang="tsx"
+/>
+</Accordion>
+</Accordions>
 
 ## Usage
 
 ```tsx
 import { Pagination } from "@/registry/core/pagination";
 
-<Pagination
-  currentPage={1}
-  totalPages={10}
-  onPageChange={(page) => console.log(page)}
-/>;
+export default () => (
+  <Pagination
+    currentPage={2}
+    totalPages={10}
+    onPageChange={p => console.log(p)}
+  />
+);
 ```
+
+## Examples
+
+### Compact Variant
+
+Use the `compact` variant for a minimal style, often suited for smaller sections or footers.
+
+```tsx
+<Pagination
+  currentPage={2}
+  totalPages={10}
+  variant="compact"
+  onPageChange={p => console.log(p)}
+/>
+```
+
+### Full Side Layout
+
+This is the **default** layout, showing both the icon and the text label ("Previous"/"Next") for side buttons.
+
+```tsx
+<Pagination
+  currentPage={5}
+  totalPages={10}
+  sideLayout="full" // default
+  onPageChange={p => console.log(p)}
+/>
+```
+
+### Label-Only Side Layout
+
+Shows only the text label ("Previous"/"Next") on desktop, but hides it on mobile to save space.
+
+```tsx
+<Pagination
+  currentPage={5}
+  totalPages={10}
+  sideLayout="label"
+  onPageChange={p => console.log(p)}
+/>
+```
+
+### Icon-Only Side Layout
+
+Shows only the navigation icon for side buttons.
+
+```tsx
+<Pagination
+  currentPage={5}
+  totalPages={10}
+  sideLayout="icon"
+  onPageChange={p => console.log(p)}
+/>
+```
+
+## API Reference
+
+### Pagination
+
+| Prop           | Type                          | Default     | Description                                                   |
+| :------------- | :---------------------------- | :---------- | :------------------------------------------------------------ |
+| `currentPage`  | `number`                      | -           | The currently active page number (1-based index).             |
+| `totalPages`   | `number`                      | -           | The total number of available pages.                          |
+| `onPageChange` | `(page: number) => void`      | -           | Callback function triggered when a page button is clicked.    |
+| `variant`      | `'default'`, `'compact'`      | `'default'` | Determines the overall style of the pagination component.     |
+| `sideLayout`   | `'full'`, `'label'`, `'icon'` | `'full'`    | Controls the appearance of the "Previous" and "Next" buttons. |
+
+## Accessibility
+
+- Uses semantic `<nav>` with `role="navigation"` and `aria-label="Pagination"`.
+- All interactive page buttons and side buttons have descriptive `aria-label` attributes.
+- The currently active page is indicated using `aria-current="page"`.
+- Disabled states on side buttons clearly communicate when no previous or next page is available.
+
+## Notes
+
+- When `totalPages` is greater than 6, an **ellipsis** (`...`) is automatically inserted to collapse the page numbers, showing pages 1-3, the current page and its two neighbors, and the last two pages.
+- The component is **responsive**: page number buttons and text labels are hidden on smaller screens (`max-sm`) to show a compact "Page X of Y" display.
+- The `sideLayout` prop controls the visibility of the icon and text in the "Previous" and "Next" buttons, though on mobile, only the icon is shown for `full` and `icon` layouts, and the label is hidden for the `label` layout.

@@ -1,29 +1,142 @@
 ---
 title: Table
-description: Display tabular data in rows and columns
+description: Display structured data in rows and columns with customizable styling and layout options.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import TablePreview from "@/components/preview/table-preview";
 
 # Table
 
-Tables display data in a structured format with rows and columns.
+Display structured data in rows and columns with customizable styling and layout options.
 
-## Usage
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/table-preview.tsx")}
+>
+  <TablePreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+```npm
+npx @tailgrids/cli add table
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the following dependencies:
+```npm
+npm i class-variance-authority
+```
+
+Copy and paste the following code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/table.tsx")}
+  lang="tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the components and piece them together.
 
 ```tsx
-import { Table } from "@/registry/core/table";
+import {
+  TableRoot,
+  TableHeader,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell
+} from "@/registry/core/table";
 
-<Table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>John Doe</td>
-      <td>john@example.com</td>
-    </tr>
-  </tbody>
-</Table>;
+export default () => (
+  <TableRoot>
+    <TableHeader>
+      <TableRow>
+        <TableHead />
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell />
+      </TableRow>
+    </TableBody>
+  </TableRoot>
+);
 ```
+
+## API Reference
+
+### TableRoot
+
+The root table container with horizontal scroll support. Extends `table` element props.
+
+| Prop        | Type      | Default | Description                                    |
+| ----------- | --------- | ------- | ---------------------------------------------- |
+| `fullBleed` | `boolean` | `false` | Remove rounded corners for edge-to-edge layout |
+| `className` | `string`  | -       | Additional CSS classes                         |
+
+### TableHeader
+
+The table header container. Extends `thead` element props.
+
+| Prop        | Type     | Description            |
+| ----------- | -------- | ---------------------- |
+| `className` | `string` | Additional CSS classes |
+
+### TableBody
+
+The table body container. Extends `tbody` element props.
+
+| Prop        | Type     | Description            |
+| ----------- | -------- | ---------------------- |
+| `className` | `string` | Additional CSS classes |
+
+### TableHead
+
+A table header cell. Extends `th` element props.
+
+| Prop        | Type     | Description            |
+| ----------- | -------- | ---------------------- |
+| `className` | `string` | Additional CSS classes |
+
+### TableRow
+
+A table row. Extends `tr` element props.
+
+| Prop        | Type     | Description            |
+| ----------- | -------- | ---------------------- |
+| `className` | `string` | Additional CSS classes |
+
+### TableCell
+
+A table data cell. Extends `td` element props.
+
+| Prop        | Type     | Description            |
+| ----------- | -------- | ---------------------- |
+| `className` | `string` | Additional CSS classes |
+
+## Accessibility
+
+- Uses semantic HTML table elements
+- Proper heading structure with `<thead>` and `<th>` elements
+- Left-aligned text for better readability
+- Horizontal scroll container for responsive behavior
+- All standard table HTML attributes are supported
+
+## Notes
+
+- The root component includes a scroll container for horizontal overflow
+- Border-separate layout with custom spacing for clean visual separation
+- Header cells have smaller text size (12px) for hierarchy
+- All rows except the last have bottom borders
+- Full bleed mode removes rounded corners and side borders for edge-to-edge layouts
+- Works well with other components like Badge and Button for rich table content

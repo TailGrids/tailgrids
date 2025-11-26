@@ -1,5 +1,5 @@
-import { cn } from '@/utils/cn';
-import type { ComponentProps } from 'react';
+import { cn } from "@/utils/cn";
+import type { ComponentProps } from "react";
 import {
   Button,
   type ButtonProps,
@@ -10,37 +10,51 @@ import {
   type MenuTriggerProps,
   Popover,
   type PopoverProps,
-  Separator,
-} from 'react-aria-components';
+  Separator
+} from "react-aria-components";
 
 export function DropdownMenu(props: MenuTriggerProps) {
   return <MenuTrigger {...props} />;
 }
 
 export function DropdownMenuTrigger({ className, ...props }: ButtonProps) {
-  return <Button className={cn('outline-none', className)} {...props} />;
+  return <Button className={cn("outline-none", className)} {...props} />;
 }
 
 type DropdownContentProps = PopoverProps;
 
 export function DropdownMenuContent({
   children,
+  className,
   ...props
 }: DropdownContentProps) {
   return (
     <Popover {...props}>
-      <Menu className="outline-hidden">{children}</Menu>
+      <Menu
+        className={cn(
+          "outline-hidden shadow-md rounded-xl overflow-clip min-w-40 bg-dropdown-bg",
+          className
+        )}
+      >
+        {children}
+      </Menu>
     </Popover>
   );
 }
 
 type DropdownMenuItemProps = MenuItemProps;
 
-export function DropdownMenuItem(props: DropdownMenuItemProps) {
+export function DropdownMenuItem({
+  className,
+  ...props
+}: DropdownMenuItemProps) {
   return (
     <MenuItem
       {...props}
-      className="group text-dropdown-foreground focus:bg-dropdown-item-hover flex w-full cursor-default items-center gap-3 rounded-md px-3 py-2.5 outline-hidden"
+      className={cn(
+        "group text-dropdown-foreground focus:bg-dropdown-item-hover flex w-full cursor-default items-center gap-3 rounded-md px-3 py-2.5 outline-hidden",
+        className
+      )}
     />
   );
 }
@@ -48,10 +62,10 @@ export function DropdownMenuItem(props: DropdownMenuItemProps) {
 export function DropdownMenuSeparator({
   className,
   ...props
-}: ComponentProps<'hr'>) {
+}: ComponentProps<"hr">) {
   return (
     <Separator
-      className={cn('bg-dropdown-separator h-px border-none', className)}
+      className={cn("bg-dropdown-separator h-px border-none", className)}
       {...props}
     />
   );

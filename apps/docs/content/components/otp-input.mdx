@@ -1,16 +1,107 @@
 ---
 title: OTP Input
-description: One-time password input field
+description: A multi-field input for entering one-time passwords (OTP) with support for auto-focus, paste handling, labels, and hints.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import OtpInputPreview from "@/components/preview/otp-input-preview";
 
 # OTP Input
 
-OTP inputs are specialized for entering one-time passwords or verification codes.
+A multi-field input for entering one-time passwords (OTP) with support for auto-focus, paste handling, labels, and hints.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/otp-input-preview.tsx")}
+>
+  <OtpInputPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component via Tailgrids CLI.
+
+```npm
+npx @tailgrids/cli add otp-input
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install dependencies:
+
+```npm
+npm i class-variance-authority
+```
+
+Copy the component into your project.
+
+<CodeBlockCard
+snippet={getFileContent("/src/registry/core/otp-input.tsx")}
+lang="tsx"
+/> 
+</Accordion> 
+</Accordions>
 
 ## Usage
 
 ```tsx
-import { OTPInput } from "@/registry/core/otp-input";
+import { OtpInput } from "@/registry/core/otp-input";
 
-<OTPInput length={6} />;
+export default function Example() {
+  const [value, setValue] = useState("");
+
+  return (
+    <OtpInput
+      label="Verification Code"
+      digitLength={6}
+      value={value}
+      onChange={e => setValue(e.target.value)}
+      hint="Enter the 6-digit code sent to your email."
+    />
+  );
+}
 ```
+
+## API Reference
+
+### OtpInput
+
+Extends `input` element props (except `value`).
+
+| Prop          | Type                       | Default | Description                                   |
+| ------------- | -------------------------- | ------- | --------------------------------------------- |
+| `digitLength` | `4 \| 6`                   | `4`     | Number of OTP fields                          |
+| `label`       | `string`                   | -       | Optional field label                          |
+| `hint`        | `string`                   | -       | Helper text shown below the field             |
+| `value`       | `string`                   | -       | Controlled OTP value (auto-synced to fields)  |
+| `disabled`    | `boolean`                  | `false` | Disable all OTP inputs                        |
+| `className`   | `string`                   | -       | Appended to each input element                |
+| `onChange`    | `React.ChangeEventHandler` | -       | Returns concatenated OTP digits as one string |
+
+### Behavior
+
+- Each box only accepts a **single numeric digit**
+- Auto-focus moves to the next box as you type
+- Backspace moves backward when empty
+- Handles paste of full OTP (e.g., pasting `"123456"`)
+- Automatically pads if `value` prop is shorter
+
+## Accessibility
+
+- Each digit is a native `<input type="text" />`
+- Label is connected via `htmlFor`
+- Focus ring follows system and custom Tailgrids styles
+- Digits select their content when focused—making replacement easier
+- Screen readers read the label and each digit individually
+
+## Notes
+
+- The 6-digit layout includes a **visual divider** after the 3rd digit
+- Uses `order` to ensure correct visual grouping
+- Works seamlessly in controlled or uncontrolled mode
+- `onChange` always provides the **full OTP value**
+- Non-numeric keys are prevented except Backspace, Delete, Tab, Meta
+- Paste only works when the full OTP length matches exactly

@@ -1,16 +1,86 @@
 ---
 title: Progress
-description: Show completion status of tasks
+description: Display a linear progress bar with optional percentage label.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import ProgressPreview from "@/components/preview/progress-preview";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Progress
 
-Progress bars indicate the completion status of an ongoing task.
+A linear progress bar to indicate task completion with optional percentage label. Supports custom styling through className and accessible attributes.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/progress-preview.tsx")}
+>
+  <ProgressPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+
+```bash
+npx @tailgrids/cli add progress
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Copy the `Progress` component into your project. Requires no extra dependencies.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/progress.tsx")}
+  lang="tsx"
+/>
+</Accordion>
+</Accordions>
 
 ## Usage
 
 ```tsx
 import { Progress } from "@/registry/core/progress";
 
-<Progress value={60} />;
+export default () => <Progress progress={50} withLabel />;
 ```
+
+## Examples
+
+### Basic Progress
+
+```tsx
+<Progress progress={30} />
+```
+
+### Progress with Label
+
+```tsx
+<Progress progress={75} withLabel />
+```
+
+## API Reference
+
+### Progress
+
+Extends `div` element props.
+
+| Prop        | Type      | Default | Description                           |
+| ----------- | --------- | ------- | ------------------------------------- |
+| `progress`  | `number`  | -       | Completion percentage (0–100)         |
+| `withLabel` | `boolean` | `false` | Show percentage label next to the bar |
+| `className` | `string`  | -       | Custom classes for container styling  |
+
+## Accessibility
+
+- Uses `role="progressbar"` with `aria-valuenow`, `aria-valuemin`, `aria-valuemax`, and `aria-valuetext`.
+- Fully keyboard and screen-reader accessible.
+
+## Notes
+
+- The bar smoothly fills based on the `progress` prop.
+- Works well inside flex layouts.
+- Label is optional and aligns next to the progress bar.
+- Rounded corners and overflow handling are applied for cross-browser compatibility.

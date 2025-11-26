@@ -1,34 +1,106 @@
 ---
 title: Badge
-description: Small labels for status, tags, and categories
+description: Compact labels for displaying status, categories, or metadata with semantic colors and optional icons.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import BadgePreview from "@/components/preview/badge-preview";
 
 # Badge
 
-Badges are used to highlight an item's status, category, or other metadata.
+Compact labels for displaying status, categories, or metadata with semantic colors and optional icons.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/badge-preview.tsx")}
+>
+  <BadgePreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+```npm
+npx @tailgrids/cli add badge
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the following dependencies:
+```npm
+npm i class-variance-authority
+```
+
+Copy and paste the following code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/badge.tsx")}
+  lang="tsx"
+/>
+</Accordion>
+</Accordions>
 
 ## Usage
 
 ```tsx
-import { Badge } from "@/registry/core/badge";
+import { Badge } from "@/components/badge";
 
-<Badge>Default</Badge>;
+export default () => <Badge color="primary">New</Badge>;
 ```
 
 ## Examples
 
-### Variants
+### Sizes
 
 ```tsx
-<Badge variant="default">Default</Badge>
-<Badge variant="success">Success</Badge>
-<Badge variant="danger">Danger</Badge>
-<Badge variant="warning">Warning</Badge>
+<Badge size="sm">Small</Badge>
+<Badge size="md">Medium</Badge>
+<Badge size="lg">Large</Badge>
 ```
 
-## Props
+### With Icons
 
-| Prop        | Type     | Default     | Description            |
-| ----------- | -------- | ----------- | ---------------------- |
-| `variant`   | `string` | `'default'` | Badge style variant    |
-| `className` | `string` | -           | Additional CSS classes |
+```tsx
+import { CheckIcon, XIcon } from "lucide-react";
+
+<Badge prefixIcon={<CheckIcon />}>Verified</Badge>
+<Badge suffixIcon={<XIcon />}>Remove</Badge>
+<Badge prefixIcon={<CheckIcon />} suffixIcon={<XIcon />}>Both</Badge>
+```
+
+### Colors
+
+```tsx
+<Badge color="primary">Primary</Badge>
+<Badge color="success">Success</Badge>
+<Badge color="warning">Warning</Badge>
+// ...and more
+```
+
+## API Reference
+
+### Badge
+
+Extends `span` element props.
+
+| Prop         | Type                   | Default     | Description            |
+| ------------ | ---------------------- | ----------- | ---------------------- |
+| `size`       | `'sm'`, `'md'`, `'lg'` | `'sm'`      | Badge size             |
+| `color`      | See colors below       | `'primary'` | Color scheme           |
+| `prefixIcon` | `React.ReactNode`      | -           | Icon before the text   |
+| `suffixIcon` | `React.ReactNode`      | -           | Icon after the text    |
+| `className`  | `string`               | -           | Additional CSS classes |
+| `children`   | `React.ReactNode`      | -           | Badge content          |
+
+#### Color Options
+
+`'gray'`, `'primary'`, `'error'`, `'warning'`, `'success'`, `'cyan'`, `'sky'`, `'blue'`, `'violet'`, `'purple'`, `'pink'`, `'rose'`, `'orange'`
+
+## Notes
+
+- Icons are automatically sized to `12px` (0.75rem) via the `[&>svg]:size-3` class
+- Padding adjusts automatically based on the presence of prefix/suffix icons
+- All standard `span` HTML attributes are supported

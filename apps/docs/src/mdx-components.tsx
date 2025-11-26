@@ -18,6 +18,6 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     CodeBlockCard,
     CodeBlock,
     ComponentPreview,
-    getFileContent
+    getFileContent,
   };
 }

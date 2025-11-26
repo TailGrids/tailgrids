@@ -1,23 +1,246 @@
 ---
 title: Tabs
-description: Organize content into separate views
+description: Organize content into multiple panels with accessible tab navigation and multiple style variants.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import TabsPreview from "@/components/preview/tabs-preview";
 
 # Tabs
 
-Tabs organize content into separate views where only one view is visible at a time.
+Organize content into multiple panels with accessible tab navigation and multiple style variants.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/tabs-preview.tsx")}
+>
+  <TabsPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+```npm
+npx @tailgrids/cli add tabs
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the following dependencies:
+```npm
+npm i class-variance-authority
+```
+
+Copy and paste the following code into your project. Make sure you have the Badge component installed as well.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/tabs.tsx")}
+  lang="tsx"
+  fileName="tabs.tsx"
+/>
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/badge.tsx")}
+  lang="tsx"
+  fileName="badge.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the components and piece them together.
+
+```tsx
+import { TabRoot, TabList, TabTrigger, TabContent } from "@/registry/core/tabs";
+
+export default () => (
+  <TabRoot defaultValue="tab1">
+    <TabList>
+      <TabTrigger value="tab1" />
+      <TabTrigger value="tab2" />
+    </TabList>
+    <TabContent value="tab1" />
+    <TabContent value="tab2" />
+  </TabRoot>
+);
+```
 
 ## Usage
 
 ```tsx
-import { Tabs } from "@/registry/core/tabs";
+import { TabRoot, TabList, TabTrigger, TabContent } from "@/registry/core/tabs";
 
-<Tabs defaultValue="tab1">
-  <TabsList>
-    <TabsTrigger value="tab1">Tab 1</TabsTrigger>
-    <TabsTrigger value="tab2">Tab 2</TabsTrigger>
-  </TabsList>
-  <TabsContent value="tab1">Content 1</TabsContent>
-  <TabsContent value="tab2">Content 2</TabsContent>
-</Tabs>;
+export default () => (
+  <TabRoot defaultValue="overview">
+    <TabList>
+      <TabTrigger value="overview">Overview</TabTrigger>
+      <TabTrigger value="analytics">Analytics</TabTrigger>
+      <TabTrigger value="reports">Reports</TabTrigger>
+    </TabList>
+    <TabContent value="overview">
+      <p>Overview content goes here.</p>
+    </TabContent>
+    <TabContent value="analytics">
+      <p>Analytics content goes here.</p>
+    </TabContent>
+    <TabContent value="reports">
+      <p>Reports content goes here.</p>
+    </TabContent>
+  </TabRoot>
+);
 ```
+
+## Examples
+
+### Variants
+
+```tsx
+{
+  /* Default */
+}
+<TabRoot defaultValue="tab1" variant="default">
+  <TabList>
+    <TabTrigger value="tab1">Tab 1</TabTrigger>
+    <TabTrigger value="tab2">Tab 2</TabTrigger>
+  </TabList>
+  <TabContent value="tab1">Content 1</TabContent>
+  <TabContent value="tab2">Content 2</TabContent>
+</TabRoot>;
+
+{
+  /* Minimal */
+}
+<TabRoot defaultValue="tab1" variant="minimal">
+  <TabList>
+    <TabTrigger value="tab1">Tab 1</TabTrigger>
+    <TabTrigger value="tab2">Tab 2</TabTrigger>
+  </TabList>
+  <TabContent value="tab1">Content 1</TabContent>
+  <TabContent value="tab2">Content 2</TabContent>
+</TabRoot>;
+```
+
+### With Icons
+
+```tsx
+import { Home, BarChart, FileText } from "lucide-react";
+
+<TabRoot defaultValue="home">
+  <TabList>
+    <TabTrigger value="home" icon={<Home />}>
+      Home
+    </TabTrigger>
+    <TabTrigger value="analytics" icon={<BarChart />}>
+      Analytics
+    </TabTrigger>
+    <TabTrigger value="reports" icon={<FileText />}>
+      Reports
+    </TabTrigger>
+  </TabList>
+  <TabContent value="home">Home content</TabContent>
+  <TabContent value="analytics">Analytics content</TabContent>
+  <TabContent value="reports">Reports content</TabContent>
+</TabRoot>;
+```
+
+### With Badges
+
+```tsx
+<TabRoot defaultValue="inbox">
+  <TabList>
+    <TabTrigger value="inbox" badge={12}>
+      Inbox
+    </TabTrigger>
+    <TabTrigger value="drafts" badge={3}>
+      Drafts
+    </TabTrigger>
+    <TabTrigger value="sent">Sent</TabTrigger>
+  </TabList>
+  <TabContent value="inbox">Inbox content</TabContent>
+  <TabContent value="drafts">Drafts content</TabContent>
+  <TabContent value="sent">Sent content</TabContent>
+</TabRoot>
+```
+
+### Horizontal Direction
+
+```tsx
+<TabRoot defaultValue="tab1" direction="horizontal">
+  <TabList>
+    <TabTrigger value="tab1">Tab 1</TabTrigger>
+    <TabTrigger value="tab2">Tab 2</TabTrigger>
+    <TabTrigger value="tab3">Tab 3</TabTrigger>
+  </TabList>
+  <TabContent value="tab1">Content 1</TabContent>
+  <TabContent value="tab2">Content 2</TabContent>
+  <TabContent value="tab3">Content 3</TabContent>
+</TabRoot>
+```
+
+## API Reference
+
+### TabRoot
+
+The root container for tabs. Extends `div` element props.
+
+| Prop           | Type                         | Default      | Description                     |
+| -------------- | ---------------------------- | ------------ | ------------------------------- |
+| `defaultValue` | `string`                     | -            | Initially active tab (required) |
+| `variant`      | `'default'`, `'minimal'`     | `'default'`  | Visual style variant            |
+| `direction`    | `'vertical'`, `'horizontal'` | `'vertical'` | Layout direction                |
+| `className`    | `string`                     | -            | Additional CSS classes          |
+| `children`     | `React.ReactNode`            | -            | Tab components                  |
+
+### TabList
+
+Container for tab triggers. Extends `div` element props.
+
+| Prop        | Type              | Description            |
+| ----------- | ----------------- | ---------------------- |
+| `className` | `string`          | Additional CSS classes |
+| `children`  | `React.ReactNode` | TabTrigger components  |
+
+### TabTrigger
+
+Individual tab button. Extends `button` element props.
+
+| Prop        | Type               | Description                      |
+| ----------- | ------------------ | -------------------------------- |
+| `value`     | `string`           | Unique tab identifier (required) |
+| `icon`      | `React.ReactNode`  | Optional icon before text        |
+| `badge`     | `string \| number` | Optional badge after text        |
+| `className` | `string`           | Additional CSS classes           |
+| `children`  | `React.ReactNode`  | Tab label content                |
+
+### TabContent
+
+Content panel for each tab. Extends `div` element props.
+
+| Prop        | Type              | Description                                |
+| ----------- | ----------------- | ------------------------------------------ |
+| `value`     | `string`          | Tab identifier matching trigger (required) |
+| `className` | `string`          | Additional CSS classes                     |
+| `children`  | `React.ReactNode` | Panel content                              |
+
+## Accessibility
+
+- Uses proper ARIA attributes (`role="tab"`, `role="tabpanel"`, `aria-selected`, `aria-controls`, `aria-labelledby`)
+- Keyboard accessible with standard tab navigation
+- Active tab is clearly indicated with visual styling
+- Content panels are properly associated with their triggers
+- Hidden content uses `hidden` attribute for screen readers
+- Auto-generated unique IDs ensure proper associations
+
+## Notes
+
+- Only one tab panel is visible at a time
+- The `defaultValue` prop sets the initially active tab
+- Icons are automatically sized to `20px` (1.25rem)
+- Badges use the Badge component with primary color
+- Horizontal direction is responsive and wraps on small screens
+- Tab list scrolls horizontally if tabs overflow
+- State is managed internally with React context

@@ -1,401 +1,401 @@
-import type { Registry } from './types/registry.ts';
+import type { Registry } from "./types/registry.ts";
 
 export const REGISTRIES: Registry[] = [
   {
-    id: 'accordion',
-    name: 'Accordion',
+    id: "accordion",
+    name: "Accordion",
     description:
-      'Fully accessible accordion component with multiple style variants',
-    type: 'component',
+      "Fully accessible accordion component with multiple style variants",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/accordion.tsx',
-      },
+        type: "core",
+        path: "/core/accordion.tsx"
+      }
     ],
-    dependencies: ['class-variance-authority'],
+    dependencies: ["class-variance-authority"]
   },
   {
-    id: 'alert',
-    name: 'Alert',
+    id: "alert",
+    name: "Alert",
     description:
-      'Dismissible alert component with multiple variants, and action buttons.',
-    type: 'component',
+      "Dismissible alert component with multiple variants, and action buttons.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/alert.tsx',
-      },
+        type: "core",
+        path: "/core/alert.tsx"
+      }
     ],
-    dependencies: ['class-variance-authority'],
-    requires: ['button'],
+    dependencies: ["class-variance-authority"],
+    requires: ["button"]
   },
   {
-    id: 'avatar',
-    name: 'Avatar',
-    description: 'An image element with a fallback for representing a user.',
-    type: 'component',
+    id: "avatar",
+    name: "Avatar",
+    description: "An image element with a fallback for representing a user.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/avatar/index.tsx',
-      },
+        type: "core",
+        path: "/core/avatar/index.tsx"
+      }
     ],
-    dependencies: ['class-variance-authority'],
+    dependencies: ["class-variance-authority"]
   },
   {
-    id: 'avatar-group',
-    name: 'Avatar Group',
-    description: 'A component to group multiple avatars together.',
-    type: 'component',
-    files: [
-      {
-        type: 'core',
-        path: '/core/avatar/avatar-group.tsx',
-      },
-    ],
-    requires: ['avatar'],
-  },
-  {
-    id: 'badge',
-    name: 'Badge',
+    id: "badge",
+    name: "Badge",
     description:
-      'Badge component with multiple colors, sizes, and support for prefix/suffix icons.',
-    type: 'component',
+      "Badge component with multiple colors, sizes, and support for prefix/suffix icons.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/badge.tsx',
-      },
+        type: "core",
+        path: "/core/badge.tsx"
+      }
     ],
-    dependencies: ['class-variance-authority'],
+    dependencies: ["class-variance-authority"]
   },
   {
-    id: 'breadcrumbs',
-    name: 'Breadcrumbs',
+    id: "breadcrumbs",
+    name: "Breadcrumbs",
     description:
-      'Breadcrumbs component with multiple variants and support for icons.',
-    type: 'component',
+      "Breadcrumbs component with multiple variants and support for icons.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/breadcrumbs.tsx',
-      },
-    ],
+        type: "core",
+        path: "/core/breadcrumbs.tsx"
+      }
+    ]
   },
   {
-    id: 'button',
-    name: 'Button',
+    id: "button",
+    name: "Button",
     description:
-      'Button component with multiple variants, sizes, and support for icons.',
-    type: 'component',
+      "Button component with multiple variants, sizes, and support for icons.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/button.tsx',
-      },
+        type: "core",
+        path: "/core/button.tsx"
+      }
     ],
-    dependencies: ['class-variance-authority'],
+    dependencies: ["class-variance-authority"]
   },
   {
-    id: 'button-group',
-    name: 'Button Group',
-    description: 'A component with multiple buttons grouped together.',
-    type: 'component',
+    id: "button-group",
+    name: "Button Group",
+    description: "A component with multiple buttons grouped together.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/button-group.tsx',
-      },
+        type: "core",
+        path: "/core/button-group.tsx"
+      }
     ],
-    dependencies: ['class-variance-authority'],
+    dependencies: ["class-variance-authority"]
   },
   {
-    id: 'checkbox',
-    name: 'Checkbox',
-    description: 'A checkbox component with label and multiple states.',
-    type: 'component',
+    id: "checkbox",
+    name: "Checkbox",
+    description: "A checkbox component with label and multiple states.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/checkbox.tsx',
-      },
+        type: "core",
+        path: "/core/checkbox.tsx"
+      }
     ],
-    dependencies: ['class-variance-authority', '@tailgrids/icons'],
+    dependencies: ["class-variance-authority", "@tailgrids/icons"]
   },
   {
-    id: 'date-picker',
-    name: 'Date Picker',
-    description: 'A component to select a date or a range of dates.',
-    type: 'component',
+    id: "date-picker",
+    name: "Date Picker",
+    description: "A component to select a date or a range of dates.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/date-picker/single-date.tsx',
+        type: "core",
+        path: "/core/date-picker/single-date.tsx"
       },
       {
-        type: 'core',
-        path: '/core/date-picker/range-date.tsx',
-      },
+        type: "core",
+        path: "/core/date-picker/range-date.tsx"
+      }
     ],
-    dependencies: ['react-stately', 'date-fns'],
+    dependencies: ["react-stately", "date-fns"]
   },
   {
-    id: 'dropdown',
-    name: 'Dropdown',
+    id: "dropdown",
+    name: "Dropdown",
     description:
-      'A dropdown component with multiple variants and support for icons.',
-    type: 'component',
+      "A dropdown component with multiple variants and support for icons.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/dropdown.tsx',
-      },
+        type: "core",
+        path: "/core/dropdown.tsx"
+      }
     ],
-    dependencies: ['react-aria-components'],
+    dependencies: ["react-aria-components"]
   },
   {
-    id: 'input',
-    name: 'Input',
+    id: "input",
+    name: "Input",
     description:
-      'An input component with multiple variants and support for icons.',
-    type: 'component',
+      "An input component with multiple variants and support for icons.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/input.tsx',
-      },
+        type: "core",
+        path: "/core/input.tsx"
+      }
     ],
-    dependencies: ['class-variance-authority'],
+    dependencies: ["class-variance-authority"]
   },
   {
-    id: 'link',
-    name: 'Link',
-    description: 'A link component with multiple variants.',
-    type: 'component',
+    id: "link",
+    name: "Link",
+    description: "A link component with multiple variants.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/link.tsx',
-      },
+        type: "core",
+        path: "/core/link.tsx"
+      }
     ],
-    dependencies: ['class-variance-authority'],
+    dependencies: ["class-variance-authority"]
   },
   {
-    id: 'list',
-    name: 'List',
-    description: 'A list component with multiple variants.',
-    type: 'component',
+    id: "list",
+    name: "List",
+    description: "A list component with multiple variants.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/list.tsx',
-      },
+        type: "core",
+        path: "/core/list.tsx"
+      }
     ],
-    dependencies: ['class-variance-authority'],
+    dependencies: ["class-variance-authority"]
   },
   {
-    id: 'otp-input',
-    name: 'OTP Input',
-    description: 'A component for entering one-time passwords.',
-    type: 'component',
+    id: "modal",
+    name: "Modal",
+    description:
+      "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/otp-input.tsx',
-      },
-    ],
+        type: "core",
+        path: "/core/modal.tsx"
+      }
+    ]
   },
   {
-    id: 'pagination',
-    name: 'Pagination',
-    description: 'A component for navigating between pages.',
-    type: 'component',
+    id: "otp-input",
+    name: "OTP Input",
+    description: "A component for entering one-time passwords.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/pagination.tsx',
-      },
-    ],
-    dependencies: ['class-variance-authority'],
+        type: "core",
+        path: "/core/otp-input.tsx"
+      }
+    ]
   },
   {
-    id: 'popover',
-    name: 'Popover',
-    description: 'A popover component with multiple variants.',
-    type: 'component',
+    id: "pagination",
+    name: "Pagination",
+    description: "A component for navigating between pages.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/popover.tsx',
-      },
+        type: "core",
+        path: "/core/pagination.tsx"
+      }
     ],
-    dependencies: ['@floating-ui/react'],
+    dependencies: ["class-variance-authority"]
   },
   {
-    id: 'progress',
-    name: 'Progress',
-    description: 'A progress bar component with multiple variants.',
-    type: 'component',
+    id: "popover",
+    name: "Popover",
+    description: "A popover component with multiple variants.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/progress.tsx',
-      },
+        type: "core",
+        path: "/core/popover.tsx"
+      }
     ],
+    dependencies: ["@floating-ui/react"]
   },
   {
-    id: 'radio-input',
-    name: 'Radio Input',
-    description: 'A radio button component with label and multiple states.',
-    type: 'component',
+    id: "progress",
+    name: "Progress",
+    description: "A progress bar component with multiple variants.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/radio-input.tsx',
-      },
-    ],
-    dependencies: ['class-variance-authority'],
+        type: "core",
+        path: "/core/progress.tsx"
+      }
+    ]
   },
   {
-    id: 'skeleton',
-    name: 'Skeleton',
-    description: 'A component to indicate a loading state.',
-    type: 'component',
+    id: "radio-input",
+    name: "Radio Input",
+    description: "A radio button component with label and multiple states.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/skeleton.tsx',
-      },
+        type: "core",
+        path: "/core/radio-input.tsx"
+      }
     ],
+    dependencies: ["class-variance-authority"]
   },
   {
-    id: 'social-button',
-    name: 'Social Button',
-    description: 'A button component for social media actions.',
-    type: 'component',
+    id: "skeleton",
+    name: "Skeleton",
+    description: "A component to indicate a loading state.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/social-button.tsx',
-      },
-    ],
-    requires: ['button'],
+        type: "core",
+        path: "/core/skeleton.tsx"
+      }
+    ]
   },
   {
-    id: 'spinner',
-    name: 'Spinner',
-    description: 'A spinner component to indicate a loading state.',
-    type: 'component',
+    id: "social-button",
+    name: "Social Button",
+    description: "A button component for social media actions.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/spinner/index.tsx',
-      },
-      {
-        type: 'core',
-        path: '/core/spinner/default.svg',
-      },
-      {
-        type: 'core',
-        path: '/core/spinner/dotted.svg',
-      },
-      {
-        type: 'core',
-        path: '/core/spinner/dotted-round.svg',
-      },
+        type: "core",
+        path: "/core/social-button.tsx"
+      }
     ],
+    requires: ["button"]
   },
   {
-    id: 'table',
-    name: 'Table',
-    description: 'A table component with multiple variants.',
-    type: 'component',
+    id: "spinner",
+    name: "Spinner",
+    description: "A spinner component to indicate a loading state.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/table.tsx',
+        type: "core",
+        path: "/core/spinner/index.tsx"
       },
-    ],
-    dependencies: ['class-variance-authority'],
+      {
+        type: "core",
+        path: "/core/spinner/default.svg"
+      },
+      {
+        type: "core",
+        path: "/core/spinner/dotted.svg"
+      },
+      {
+        type: "core",
+        path: "/core/spinner/dotted-round.svg"
+      }
+    ]
   },
   {
-    id: 'tabs',
-    name: 'Tabs',
-    description: 'A tabs component with multiple variants.',
-    type: 'component',
+    id: "table",
+    name: "Table",
+    description: "A table component with multiple variants.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/tabs.tsx',
-      },
+        type: "core",
+        path: "/core/table.tsx"
+      }
     ],
-    dependencies: ['class-variance-authority'],
-    requires: ['badge'],
+    dependencies: ["class-variance-authority"]
   },
   {
-    id: 'text-area',
-    name: 'Text Area',
-    description: 'A text area component with multiple variants.',
-    type: 'component',
+    id: "tabs",
+    name: "Tabs",
+    description: "A tabs component with multiple variants.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/text-area.tsx',
-      },
+        type: "core",
+        path: "/core/tabs.tsx"
+      }
     ],
-    dependencies: ['class-variance-authority'],
+    dependencies: ["class-variance-authority"],
+    requires: ["badge"]
   },
   {
-    id: 'time-picker',
-    name: 'Time Picker',
-    description: 'A component to select a time.',
-    type: 'component',
+    id: "text-area",
+    name: "Text Area",
+    description: "A text area component with multiple variants.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/time-picker.tsx',
-      },
+        type: "core",
+        path: "/core/text-area.tsx"
+      }
     ],
-    dependencies: ['react-aria-components'],
+    dependencies: ["class-variance-authority"]
   },
   {
-    id: 'toast',
-    name: 'Toast',
-    description: 'A toast component for displaying notifications.',
-    type: 'component',
+    id: "time-picker",
+    name: "Time Picker",
+    description: "A component to select a time.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/toast.tsx',
-      },
+        type: "core",
+        path: "/core/time-picker.tsx"
+      }
     ],
-    dependencies: ['class-variance-authority'],
-    requires: ['avatar'],
+    dependencies: ["react-aria-components"]
   },
   {
-    id: 'toggle',
-    name: 'Toggle',
-    description: 'A toggle switch component.',
-    type: 'component',
+    id: "toast",
+    name: "Toast",
+    description: "A toast component for displaying notifications.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/toggle.tsx',
-      },
+        type: "core",
+        path: "/core/toast.tsx"
+      }
     ],
+    dependencies: ["class-variance-authority"],
+    requires: ["avatar"]
   },
   {
-    id: 'tooltip',
-    name: 'Tooltip',
-    description: 'A tooltip component.',
-    type: 'component',
+    id: "toggle",
+    name: "Toggle",
+    description: "A toggle switch component.",
+    type: "component",
     files: [
       {
-        type: 'core',
-        path: '/core/tooltip.tsx',
-      },
-    ],
-    dependencies: ['@floating-ui/react'],
+        type: "core",
+        path: "/core/toggle.tsx"
+      }
+    ]
   },
+  {
+    id: "tooltip",
+    name: "Tooltip",
+    description: "A tooltip component.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/tooltip.tsx"
+      }
+    ],
+    dependencies: ["@floating-ui/react"]
+  }
 ];

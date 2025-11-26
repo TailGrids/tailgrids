@@ -1,23 +1,23 @@
-import { cn } from '@/utils/cn';
-import { cva, type VariantProps } from 'class-variance-authority';
-import type { ComponentProps } from 'react';
+import { cn } from "@/utils/cn";
+import { cva, type VariantProps } from "class-variance-authority";
+import type { ComponentProps } from "react";
 
 const tableRootStyles = cva(
-  'min-w-full border-separate border-spacing-0 overflow-clip border-neutral-200 text-left dark:border-neutral-800',
+  "min-w-full border-separate border-spacing-0 overflow-clip border-neutral-200 text-left dark:border-neutral-800",
   {
     variants: {
       fullBleed: {
-        true: 'border-y',
-        false: 'rounded-lg border',
-      },
+        true: "border-y",
+        false: "rounded-lg border"
+      }
     },
     defaultVariants: {
-      fullBleed: false,
-    },
-  },
+      fullBleed: false
+    }
+  }
 );
 
-type TableRootProps = ComponentProps<'table'> &
+type TableRootProps = ComponentProps<"table"> &
   VariantProps<typeof tableRootStyles>;
 
 export function TableRoot({ className, fullBleed, ...props }: TableRootProps) {
@@ -32,35 +32,35 @@ export function TableRoot({ className, fullBleed, ...props }: TableRootProps) {
 }
 
 const tableHeaderStyles = cva(
-  'text-neutral-700 [&_th]:border-b [&_th]:border-neutral-200 [&_th]:text-xs',
+  "text-neutral-700 [&_th]:border-b [&_th]:border-neutral-200 [&_th]:text-xs"
 );
 
-export function TableHeader({ className, ...props }: ComponentProps<'thead'>) {
+export function TableHeader({ className, ...props }: ComponentProps<"thead">) {
   return <thead className={cn(tableHeaderStyles(), className)} {...props} />;
 }
 
 const tableBodyStyle = cva();
 
-export function TableBody({ className, ...props }: ComponentProps<'tbody'>) {
+export function TableBody({ className, ...props }: ComponentProps<"tbody">) {
   return <tbody className={cn(tableBodyStyle(), className)} {...props} />;
 }
 
-const tableHeadStyles = cva('px-5 py-3.5 font-medium');
+const tableHeadStyles = cva("px-5 py-3.5 font-medium");
 
-export function TableHead({ className, ...props }: ComponentProps<'th'>) {
+export function TableHead({ className, ...props }: ComponentProps<"th">) {
   return <th className={cn(tableHeadStyles(), className)} {...props} />;
 }
 
 const tableRowStyles = cva(
-  'not-last:[&>*]:border-neutral-200 not-last:[&>td]:border-b not-last:[&>th]:border-b',
+  "not-last:[&>*]:border-neutral-200 not-last:[&>td]:border-b not-last:[&>th]:border-b"
 );
 
-export function TableRow({ className, ...props }: ComponentProps<'tr'>) {
+export function TableRow({ className, ...props }: ComponentProps<"tr">) {
   return <tr className={cn(tableRowStyles(), className)} {...props} />;
 }
 
-const tableCellStyles = cva('px-5 py-3.5 font-medium text-neutral-500');
+const tableCellStyles = cva("px-5 py-3.5 font-medium text-neutral-500");
 
-export function TableCell({ className, ...props }: ComponentProps<'td'>) {
+export function TableCell({ className, ...props }: ComponentProps<"td">) {
   return <td className={cn(tableCellStyles(), className)} {...props} />;
 }

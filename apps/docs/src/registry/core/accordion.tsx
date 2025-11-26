@@ -1,21 +1,16 @@
-'use client';
+"use client";
 
-import { cn } from '@/utils/cn';
-import { cva } from 'class-variance-authority';
-import {
-  createContext,
-  useContext,
-  useId,
-  useState,
-  type ComponentProps,
-} from 'react';
+import { cn } from "@/utils/cn";
+import { cva } from "class-variance-authority";
+import { createContext, useContext, useId, useState } from "react";
+import { ArrowDown, Minus, PlusAdd } from "@tailgrids/icons";
 
 type Variant =
-  | 'style_one'
-  | 'style_two'
-  | 'style_three'
-  | 'style_four'
-  | 'style_five';
+  | "style_one"
+  | "style_two"
+  | "style_three"
+  | "style_four"
+  | "style_five";
 
 type RootContextType = {
   activeId: string | undefined;
@@ -29,22 +24,22 @@ function useRootContext() {
   const context = useContext(RootContext);
   if (!context) {
     throw new Error(
-      'useRootContext must be used within a RootContext Provider'
+      "useRootContext must be used within a RootContext Provider"
     );
   }
   return context;
 }
 
-const accordionRootStyle = cva('flex w-full flex-col', {
+const accordionRootStyle = cva("flex w-full flex-col", {
   variants: {
     variant: {
-      style_one: 'gap-5',
-      style_two: 'gap-4',
-      style_three: 'gap-3',
-      style_four: 'gap-4',
-      style_five: 'gap-x-4 gap-y-3',
-    },
-  },
+      style_one: "gap-5",
+      style_two: "gap-4",
+      style_three: "gap-3",
+      style_four: "gap-4",
+      style_five: "gap-x-4 gap-y-3"
+    }
+  }
 });
 
 type AccordionRootProps = {
@@ -56,12 +51,12 @@ type AccordionRootProps = {
 export function AccordionRoot({
   children,
   className,
-  variant = 'style_one',
+  variant = "style_one"
 }: AccordionRootProps) {
   const [activeId, setActiveId] = useState<string>();
 
   function toggleActiveId(id: string) {
-    setActiveId((currentActiveId) => (currentActiveId === id ? undefined : id));
+    setActiveId(currentActiveId => (currentActiveId === id ? undefined : id));
   }
 
   return (
@@ -69,7 +64,7 @@ export function AccordionRoot({
       value={{
         activeId: activeId,
         toggleActiveId,
-        variant,
+        variant
       }}
     >
       <div className={cn(accordionRootStyle({ variant }), className)}>
@@ -82,7 +77,7 @@ export function AccordionRoot({
 type ItemContextType = {
   triggerId: string;
   contentId: string;
-  dataState: 'open' | 'closed';
+  dataState: "open" | "closed";
 };
 
 const ItemContext = createContext<ItemContextType | null>(null);
@@ -91,22 +86,22 @@ function useItemContext() {
   const context = useContext(ItemContext);
   if (!context) {
     throw new Error(
-      'useItemContext must be used within a ItemContext Provider'
+      "useItemContext must be used within a ItemContext Provider"
     );
   }
   return context;
 }
 
-const accordionItemStyle = cva('w-full', {
+const accordionItemStyle = cva("w-full", {
   variants: {
     variant: {
-      style_one: 'overflow-clip rounded-xl border border-neutral-200',
-      style_two: 'border-b border-neutral-100',
-      style_three: 'bg-neutral overflow-clip rounded-xl',
-      style_four: 'overflow-clip rounded-xl bg-neutral-50',
-      style_five: 'overflow-clip rounded-xl bg-neutral-50',
-    },
-  },
+      style_one: "overflow-clip rounded-xl border border-neutral-200",
+      style_two: "border-b border-neutral-100",
+      style_three: "bg-neutral overflow-clip rounded-xl",
+      style_four: "overflow-clip rounded-xl bg-neutral-50",
+      style_five: "overflow-clip rounded-xl bg-neutral-50"
+    }
+  }
 });
 
 type AccordionItemProps = {
@@ -120,14 +115,14 @@ export function AccordionItem({ children, className }: AccordionItemProps) {
 
   const { activeId, variant } = useRootContext();
 
-  const dataState = activeId === triggerId ? 'open' : 'closed';
+  const dataState = activeId === triggerId ? "open" : "closed";
 
   return (
     <ItemContext.Provider
       value={{
         triggerId,
         contentId,
-        dataState,
+        dataState
       }}
     >
       <div
@@ -141,20 +136,20 @@ export function AccordionItem({ children, className }: AccordionItemProps) {
 }
 
 const accordionTriggerStyle = cva(
-  'group flex w-full items-start justify-between gap-2 text-left text-neutral-800',
+  "group flex w-full items-start justify-between gap-2 text-left text-neutral-800",
   {
     variants: {
       variant: {
         style_one:
-          'data-[state=open]:text-primary-500 p-5 data-[state=open]:pb-4 data-[state=open]:font-medium sm:p-6',
+          "data-[state=open]:text-primary-500 p-5 data-[state=open]:pb-4 data-[state=open]:font-medium sm:p-6",
         style_two:
-          'p-6 data-[state=open]:pb-4 data-[state=open]:font-medium max-sm:px-0 max-sm:py-5',
-        style_three: 'max-sm:p-5 max-sm:data-[state=open]:pb-4 sm:px-6 sm:py-5',
+          "p-6 data-[state=open]:pb-4 data-[state=open]:font-medium max-sm:px-0 max-sm:py-5",
+        style_three: "max-sm:p-5 max-sm:data-[state=open]:pb-4 sm:px-6 sm:py-5",
         style_four:
-          'font-medium max-sm:p-5 max-sm:data-[state=open]:pb-4 sm:px-6 sm:pt-6 sm:pb-5',
-        style_five: 'p-5 data-[state=open]:pb-5 sm:p-6',
-      },
-    },
+          "font-medium max-sm:p-5 max-sm:data-[state=open]:pb-4 sm:px-6 sm:pt-6 sm:pb-5",
+        style_five: "p-5 data-[state=open]:pb-5 sm:p-6"
+      }
+    }
   }
 );
 
@@ -165,7 +160,7 @@ type AccordionTriggerProps = {
 
 export function AccordionTrigger({
   children,
-  className,
+  className
 }: AccordionTriggerProps) {
   const { triggerId, contentId, dataState } = useItemContext();
   const { toggleActiveId, activeId, variant } = useRootContext();
@@ -184,10 +179,10 @@ export function AccordionTrigger({
         {children}
 
         <span className="flex h-lh items-center">
-          {variant === 'style_four' ? (
-            <ChevronIcon className="transition-all group-data-[state=open]:rotate-180" />
+          {variant === "style_four" ? (
+            <ArrowDown className="transition-all group-data-[state=open]:rotate-180" />
           ) : (
-            <>{dataState === 'open' ? <MinusIcon /> : <PlusIcon />}</>
+            <>{dataState === "open" ? <Minus /> : <PlusAdd />}</>
           )}
         </span>
       </button>
@@ -195,16 +190,16 @@ export function AccordionTrigger({
   );
 }
 
-const accordionContentStyle = cva('text-neutral-500', {
+const accordionContentStyle = cva("text-neutral-500", {
   variants: {
     variant: {
-      style_one: 'px-5 pb-5 sm:px-6 sm:pb-7',
-      style_two: 'p-6 pt-0 max-sm:px-5 max-sm:pb-5',
-      style_three: 'mx-5 border-t border-neutral-100 pt-4 pb-5 sm:mx-6',
-      style_four: 'mx-5 border-t border-neutral-200 pt-4 pb-5 sm:mx-6 sm:pb-6',
-      style_five: 'p-5 pt-0 sm:p-6 sm:pt-0',
-    },
-  },
+      style_one: "px-5 pb-5 sm:px-6 sm:pb-7",
+      style_two: "p-6 pt-0 max-sm:px-5 max-sm:pb-5",
+      style_three: "mx-5 border-t border-neutral-100 pt-4 pb-5 sm:mx-6",
+      style_four: "mx-5 border-t border-neutral-200 pt-4 pb-5 sm:mx-6 sm:pb-6",
+      style_five: "p-5 pt-0 sm:p-6 sm:pt-0"
+    }
+  }
 });
 
 type AccordionContentProps = {
@@ -214,7 +209,7 @@ type AccordionContentProps = {
 
 export function AccordionContent({
   children,
-  className,
+  className
 }: AccordionContentProps) {
   const { triggerId, contentId, dataState } = useItemContext();
   const { variant } = useRootContext();
@@ -226,64 +221,9 @@ export function AccordionContent({
       aria-labelledby={triggerId}
       data-state={dataState}
       className={cn(accordionContentStyle({ variant }), className)}
-      hidden={dataState === 'closed'}
+      hidden={dataState === "closed"}
     >
-      {dataState === 'open' && children}
+      {dataState === "open" && children}
     </div>
-  );
-}
-
-function PlusIcon(props: ComponentProps<'svg'>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      fill="none"
-      {...props}
-    >
-      <path
-        d="M12 5.25c.414 0 .75.336.75.75v5.25h5.251a.75.75 0 0 1 0 1.5H12.75v5.251a.75.75 0 0 1-1.5 0V12.75H6a.75.75 0 0 1 0-1.5h5.25V6c0-.414.336-.75.75-.75Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
-function MinusIcon(props: ComponentProps<'svg'>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="14"
-      height="2"
-      fill="none"
-      {...props}
-    >
-      <path
-        d="M1 .25A.75.75 0 0 0 .25 1c0 .414.336.75.75.75h12a.75.75 0 1 0 0-1.5H1Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
-function ChevronIcon(props: ComponentProps<'svg'>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="25"
-      height="24"
-      viewBox="0 0 25 24"
-      fill="none"
-      {...props}
-    >
-      <path
-        d="M6.25 8.875L12.5 15.125L18.75 8.875"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   );
 }

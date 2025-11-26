@@ -1,95 +1,94 @@
-import { useState } from 'react';
-import CloseIcon from '@/assets/close-icon.svg';
-import CheckRoundedIcon from '@/assets/check-rounded.svg';
-import { cva } from 'class-variance-authority';
-import { Button } from './button';
-import { cn } from '@/utils/cn';
+import { useState } from "react";
+import { cva } from "class-variance-authority";
+import { Button } from "./button";
+import { cn } from "@/utils/cn";
+import { Xmark2x, CheckMarkCircle } from "@tailgrids/icons";
 
 const wrapperStyles = cva(
-  'relative w-full max-w-4xl rounded-lg border px-5 py-4',
+  "relative w-full max-w-4xl rounded-lg border px-5 py-4",
   {
     variants: {
       variant: {
-        success: 'border-success-border bg-success-muted',
-        warning: 'border-warning-border bg-success-muted',
-        danger: 'border-danger-border bg-danger-muted',
-        info: 'border-info-border bg-info-muted',
-        gray: 'border-default-border bg-default-muted',
-      },
-    },
-  },
+        success: "border-success-border bg-success-muted",
+        warning: "border-warning-border bg-warning-muted",
+        danger: "border-danger-border bg-danger-muted",
+        info: "border-info-border bg-info-muted",
+        gray: "border-default-border bg-default-muted"
+      }
+    }
+  }
 );
 
 const iconWrapperStyles = cva(
-  'flex size-7 items-center justify-center rounded-lg',
+  "flex size-7 items-center justify-center rounded-lg",
   {
     variants: {
       variant: {
-        success: 'bg-success text-success-foreground',
-        warning: 'bg-warning text-warning-foreground',
-        danger: 'bg-danger text-danger-foreground',
-        info: 'bg-info text-info-foreground',
-        gray: 'bg-default text-default-foreground',
-      },
-    },
-  },
+        success: "bg-success text-success-foreground",
+        warning: "bg-warning text-warning-foreground",
+        danger: "bg-danger text-danger-foreground",
+        info: "bg-info text-info-foreground",
+        gray: "bg-default text-default-foreground"
+      }
+    }
+  }
 );
 
-const titleStyles = cva('font-semibold', {
+const titleStyles = cva("font-semibold", {
   variants: {
     variant: {
-      success: 'text-success-muted-foreground',
-      warning: 'text-warning-muted-foreground',
-      danger: 'text-danger-muted-foreground',
-      info: 'text-info-muted-foreground',
-      gray: 'text-default-muted-foreground',
-    },
-  },
+      success: "text-success-muted-foreground",
+      warning: "text-warning-muted-foreground",
+      danger: "text-danger-muted-foreground",
+      info: "text-info-muted-foreground",
+      gray: "text-default-muted-foreground"
+    }
+  }
 });
 
-const messageStyles = cva('text-sm', {
+const messageStyles = cva("text-sm", {
   variants: {
     variant: {
-      success: 'text-success-muted-body',
-      warning: 'text-warning-muted-body',
-      danger: 'text-danger-muted-body',
-      info: 'text-info-muted-body',
-      gray: 'text-default-muted-body',
-    },
-  },
+      success: "text-success-muted-body",
+      warning: "text-warning-muted-body",
+      danger: "text-danger-muted-body",
+      info: "text-info-muted-body",
+      gray: "text-default-muted-body"
+    }
+  }
 });
 
 const closeButtonStyles = cva(
-  'absolute top-3 right-3 flex items-center justify-center p-1',
+  "absolute top-3 right-3 flex items-center justify-center p-1",
   {
     variants: {
       variant: {
-        success: 'text-success',
-        warning: 'text-warning',
-        danger: 'text-danger',
-        info: 'text-info',
-        gray: 'text-default',
-      },
-    },
-  },
+        success: "text-success",
+        warning: "text-warning",
+        danger: "text-danger",
+        info: "text-info",
+        gray: "text-default"
+      }
+    }
+  }
 );
 
-const primaryButtonStyles = cva('', {
+const primaryButtonStyles = cva("", {
   variants: {
     variant: {
-      success: 'text-success-foreground',
-      danger: 'text-danger-foreground',
-      info: 'bg-info hover:bg-info-hover text-success-foreground',
-      warning: 'bg-warning hover:bg-warning-hover text-warning-foreground',
-      gray: 'bg-default hover:bg-default-hover text-default-foreground',
-    },
-  },
+      success: "text-success-foreground",
+      danger: "text-danger-foreground",
+      info: "bg-info hover:bg-info-hover text-success-foreground",
+      warning: "bg-warning hover:bg-warning-hover text-warning-foreground",
+      gray: "bg-default hover:bg-default-hover text-default-foreground"
+    }
+  }
 });
 
 type PropsType = {
   title?: string;
   message: string;
-  variant?: 'success' | 'danger' | 'info' | 'warning' | 'gray';
+  variant?: "success" | "danger" | "info" | "warning" | "gray";
   withIcon?: boolean;
   actions?: {
     primary?: {
@@ -107,11 +106,11 @@ type PropsType = {
 export default function Alert({
   title,
   message,
-  variant = 'success',
+  variant = "success",
   withIcon,
   open = true,
   onClose,
-  actions,
+  actions
 }: PropsType) {
   const [visible, setVisible] = useState(open);
 
@@ -131,17 +130,17 @@ export default function Alert({
       <button
         onClick={handleClose}
         className={closeButtonStyles({
-          variant,
+          variant
         })}
         aria-label="Close alert"
       >
-        <CloseIcon />
+        <Xmark2x />
       </button>
 
       <div className="grid grid-cols-[auto_1fr] items-center gap-x-3 gap-y-3.5">
         {withIcon && (
           <div className={iconWrapperStyles({ variant })}>
-            <CheckRoundedIcon />
+            <CheckMarkCircle />
           </div>
         )}
 
@@ -150,7 +149,7 @@ export default function Alert({
         <p
           className={messageStyles({
             variant,
-            className: cn(title ? 'col-span-full' : 'font-medium'),
+            className: cn(title ? "col-span-full" : "font-medium")
           })}
         >
           {message}
@@ -162,7 +161,7 @@ export default function Alert({
           {actions?.primary && (
             <Button
               size="xs"
-              className={cn('px-4.5', primaryButtonStyles({ variant }))}
+              className={cn("px-4.5", primaryButtonStyles({ variant }))}
               variant={getVariant(variant)}
               onClick={actions.primary.onClick}
             >
@@ -173,7 +172,7 @@ export default function Alert({
           {actions?.secondary && (
             <Button
               onClick={handleClose}
-              className="text-xs"
+              className="text-xs bg-neutral"
               appearance="outline"
             >
               {actions.secondary.label}
@@ -187,9 +186,9 @@ export default function Alert({
 
 function getVariant(variant: string) {
   switch (variant) {
-    case 'success':
-      return 'success';
-    case 'danger':
-      return 'danger';
+    case "success":
+      return "success";
+    case "danger":
+      return "danger";
   }
 }
