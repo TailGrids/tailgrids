@@ -1,6 +1,6 @@
 {
   "name": "@tailgrids/icons",
-  "version": "1.1.3",
+  "version": "1.2.0",
   "license": "MIT",
   "description": "Beautiful React icon components for Tailgrids",
   "main": "dist/index.js",
