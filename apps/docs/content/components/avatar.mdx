@@ -1,55 +1,162 @@
 ---
 title: Avatar
-description: Display user profile pictures and icons
+description: Displays a user's profile picture, initials, or a fallback icon, with optional status indicators and accompanying labels.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import AvatarPreview from "@/components/preview/avatar-preview";
 
 # Avatar
 
-Avatars are used to represent users or entities in your application.
+The Avatar component is used to display a user's profile image, initials, or a general fallback representation. It supports various sizes, user status indicators, and an optional name/email label group.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/avatar-preview.tsx")}
+>
+  <AvatarPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+```npm
+npx @tailgrids/cli add avatar
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the following dependencies:
+
+```npm
+npm i class-variance-authority
+```
+
+Copy and paste the following code into your project. The component includes `Avatar`, `Indicator`, `LabelGroup`, and `AvatarGroup`.
+
+<CodeBlockCard
+snippet={getFileContent("/src/registry/core/avatar.tsx")}
+lang="tsx"
+/>
+</Accordion>
+</Accordions>
 
 ## Usage
 
 ```tsx
 import { Avatar } from "@/registry/core/avatar";
 
-<Avatar src="/avatar.jpg" alt="User name" />;
+export default () => (
+  <Avatar
+    src="path/to/image.jpg"
+    alt="Profile picture of Johurul Haque"
+    fallback="JD"
+    size="md"
+    status="online"
+    label={{
+      name: "Johurul Haque",
+      email: "johurul@pimjo.com"
+    }}
+  />
+);
 ```
 
 ## Examples
 
-### Avatar Group
-
-Display multiple avatars together:
-
-```tsx
-import { AvatarGroup } from "@/registry/core/avatar/avatar-group";
-
-<AvatarGroup>
-  <Avatar src="/user1.jpg" alt="User 1" />
-  <Avatar src="/user2.jpg" alt="User 2" />
-  <Avatar src="/user3.jpg" alt="User 3" />
-</AvatarGroup>;
-```
-
 ### Sizes
 
+The Avatar component supports six predefined sizes: `xs`, `sm`, `md`, `lg`, `xl`, and `xxl`.
+
 ```tsx
-<Avatar size="sm" src="/avatar.jpg" alt="Small" />
-<Avatar size="md" src="/avatar.jpg" alt="Medium" />
-<Avatar size="lg" src="/avatar.jpg" alt="Large" />
+<div className="flex items-end gap-4">
+  <Avatar src="" fallback="XS" size="xs" />
+  <Avatar src="" fallback="SM" size="sm" />
+  <Avatar src="" fallback="MD" size="md" />
+  <Avatar src="" fallback="LG" size="lg" />
+  <Avatar src="" fallback="XL" size="xl" />
+  <Avatar src="" fallback="XXL" size="xxl" />
+</div>
 ```
 
-## Props
+### With Status Indicator
 
-| Prop       | Type                   | Default | Description                       |
-| ---------- | ---------------------- | ------- | --------------------------------- |
-| `src`      | `string`               | -       | Image source URL                  |
-| `alt`      | `string`               | -       | Alternative text                  |
-| `size`     | `'sm' \| 'md' \| 'lg'` | `'md'`  | Avatar size                       |
-| `fallback` | `ReactNode`            | -       | Fallback content when image fails |
+Use the `status` prop to show the user's current availability. Options are `online`, `offline`, or `busy`.
+
+```tsx
+<div className="flex gap-6">
+  <Avatar src="" fallback="JD" size="md" status="online" />
+  <Avatar src="" fallback="SU" size="md" status="offline" />
+  <Avatar src="" fallback="TS" size="md" status="busy" />
+</div>
+```
+
+### With Label Group
+
+The `label` prop accepts an object with `name` and `email` to display descriptive text next to the avatar.
+
+```tsx
+<div className="flex flex-col gap-4">
+  <Avatar
+    src=""
+    fallback="JS"
+    size="sm"
+    label={{ name: "Jane Smith", email: "jane@company.com" }}
+  />
+  <Avatar
+    src=""
+    fallback="JS"
+    size="lg"
+    label={{ name: "Jane Smith", email: "jane@company.com" }}
+  />
+</div>
+```
+
+### Avatar Group
+
+Use the **`AvatarGroup`** component to display a stack of multiple avatars, commonly used for representing members of a team or participants in a discussion.
+
+```tsx
+const members = [
+  { src: "img/avatar-1.jpg", alt: "User 1" },
+  { src: "img/avatar-2.jpg", alt: "User 2" },
+  { src: "img/avatar-3.jpg", alt: "User 3" },
+  { src: "img/avatar-4.jpg", alt: "User 4" }
+];
+
+<AvatarGroup data={members} size="md" />;
+```
+
+## API Reference
+
+### Avatar
+
+| Prop       | Type                                            | Default  | Description                                                                     |
+| :--------- | :---------------------------------------------- | :------- | :------------------------------------------------------------------------------ |
+| `size`     | `'xs'`, `'sm'`, `'md'`, `'lg'`, `'xl'`, `'xxl'` | `'md'`   | Defines the size of the avatar and the surrounding group gap/label size.        |
+| `src`      | `string`                                        | -        | URL of the profile image. If omitted, the `fallback` is displayed.              |
+| `alt`      | `string`                                        | -        | Alternate text for the image, important for accessibility.                      |
+| `fallback` | `string`                                        | -        | Initials or short text displayed when `src` is not provided. **Required**.      |
+| `status`   | `'none'`, `'online'`, `'offline'`, `'busy'`     | `'none'` | Displays a status indicator at the bottom-right corner.                         |
+| `label`    | `{ name: string, email: string }`               | -        | Optional object containing user name and email to display alongside the avatar. |
+
+### AvatarGroup
+
+| Prop   | Type                                  | Default | Description                               |
+| :----- | :------------------------------------ | :------ | :---------------------------------------- |
+| `size` | `'xs'`, `'sm'`, `'md'`                | `'md'`  | The size of the avatars within the group. |
+| `data` | `Array<{ src: string, alt: string }>` | -       | An array of user data objects to display. |
 
 ## Accessibility
 
-- Requires `alt` text for images
-- Fallback support for failed images
-- Proper semantic structure
+- **Alt Text**: The `alt` prop is used for the image, ensuring screen readers can announce the content of the avatar.
+- **Fallback**: When no image is present, the fallback initials are visually clear and provide context.
+- **Semantic HTML**: The component uses a `<figure>` and `<img>` (or `<span>` for fallback) for semantic correctness.
+
+## Notes
+
+- The `groupStyles` are applied to the wrapping `<figure>` element, which controls the spacing (`gap`) between the avatar and the `LabelGroup` if present.
+- The `status` indicator uses a white `ring` to visually separate it from the avatar's background.
+- The `AvatarGroup` component implements an overlapping effect using negative margin (`-space-x-2`) and adjusts the `z-index` of each avatar via inline styles to ensure the correct stacking order.

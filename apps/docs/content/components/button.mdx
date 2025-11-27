@@ -1,18 +1,54 @@
 ---
 title: Button
-description: Trigger actions and events with customizable button components
+description: Trigger actions and events with customizable buttons in multiple variants, sizes, and styles.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import ButtonPreview from "@/components/preview/button-preview";
 
 # Button
 
-Buttons allow users to trigger actions and make choices with a single tap or click.
+Trigger actions and events with customizable buttons in multiple variants, sizes, and styles.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/button-preview.tsx")}
+>
+  <ButtonPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+```npm
+npx @tailgrids/cli add button
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the following dependencies:
+```npm
+npm i class-variance-authority
+```
+
+Copy and paste the following code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/button.tsx")}
+  lang="tsx"
+/>
+</Accordion>
+</Accordions>
 
 ## Usage
 
 ```tsx
 import { Button } from "@/registry/core/button";
 
-<Button variant="primary">Click me</Button>;
+export default () => <Button variant="primary">Click me</Button>;
 ```
 
 ## Examples
@@ -29,8 +65,8 @@ import { Button } from "@/registry/core/button";
 ### Appearances
 
 ```tsx
-<Button variant="primary" appearance="fill">Filled</Button>
-<Button variant="primary" appearance="outline">Outline</Button>
+<Button appearance="fill">Filled</Button>
+<Button appearance="outline">Outline</Button>
 ```
 
 ### Sizes
@@ -42,37 +78,54 @@ import { Button } from "@/registry/core/button";
 <Button size="lg">Large</Button>
 ```
 
-### Icon Only
-
-```tsx
-<Button iconOnly>
-  <IconSearch />
-</Button>
-```
-
 ### With Icons
 
+Icons are automatically adjusted based on the `size` and `variant` props
+
 ```tsx
+import { PlusAdd, Download } from "@tailgrids/icons";
+
 <Button>
-  <IconCheck />
-  Save Changes
+  <PlusAdd />
+  Add Item
+</Button>
+
+<Button iconOnly>
+  <Download />
 </Button>
 ```
 
-## Props
+### Disabled
 
-| Prop         | Type                                            | Default     | Description            |
-| ------------ | ----------------------------------------------- | ----------- | ---------------------- |
-| `variant`    | `'primary' \| 'danger' \| 'success' \| 'ghost'` | `'primary'` | Button style variant   |
-| `appearance` | `'fill' \| 'outline'`                           | `'fill'`    | Button appearance      |
-| `size`       | `'xs' \| 'sm' \| 'md' \| 'lg'`                  | `'md'`      | Button size            |
-| `iconOnly`   | `boolean`                                       | `false`     | Icon-only button style |
-| `disabled`   | `boolean`                                       | `false`     | Disable the button     |
-| `className`  | `string`                                        | -           | Additional CSS classes |
+```tsx
+<Button disabled>Disabled Button</Button>
+```
+
+## API Reference
+
+Extends `button` element props.
+
+| Prop         | Type                                            | Default     | Description                      |
+| ------------ | ----------------------------------------------- | ----------- | -------------------------------- |
+| `variant`    | `'primary'`, `'danger'`, `'success'`, `'ghost'` | `'primary'` | Visual style variant             |
+| `appearance` | `'fill'`, `'outline'`                           | `'fill'`    | Filled or outlined style         |
+| `size`       | `'xs'`, `'sm'`, `'md'`, `'lg'`                  | `'md'`      | Button size                      |
+| `iconOnly`   | `boolean`                                       | `false`     | Icon-only button (square aspect) |
+| `className`  | `string`                                        | -           | Additional CSS classes           |
+| `children`   | `React.ReactNode`                               | -           | Button content                   |
+| `disabled`   | `boolean`                                       | `false`     | Disable button interaction       |
 
 ## Accessibility
 
-- Keyboard accessible
-- Focus visible styles
-- Disabled state handling
-- Screen reader compatible
+- Default `type="button"` prevents unintended form submissions
+- Includes focus ring styling with `focus:ring-3` for keyboard navigation
+- Disabled state removes pointer events and applies appropriate visual styling
+- Icons inherit text color for consistent styling
+- All standard button HTML attributes are supported
+
+## Notes
+
+- Icons are automatically adjusted based on the `size` and `variant` props
+- The `iconOnly` prop adjusts padding to create square buttons for icon-only usage
+- Ghost variant automatically adjusts focus ring size to `ring-2` for subtler appearance
+- Disabled buttons have `pointer-events-none` to prevent interaction

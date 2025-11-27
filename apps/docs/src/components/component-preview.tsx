@@ -54,7 +54,7 @@ export function ComponentPreview({
       <div className="bg-gray-50 dark:bg-gray-900 rounded-[1.75rem] border p-2.5 my-4">
         <TabsContent
           value="preview"
-          className="px-15 py-10 min-h-100 flex flex-col items-center justify-center rounded-[20px] border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950"
+          className="px-15 py-10 min-h-100 flex flex-col items-center justify-center rounded-[20px] border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 not-prose"
         >
           {children}
         </TabsContent>

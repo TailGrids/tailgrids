@@ -1,24 +1,121 @@
 ---
 title: Spinner
-description: Loading indicators for async operations
+description: Loading indicator to show ongoing processes with multiple styles and sizes.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import SpinnerPreview from "@/components/preview/spinner-preview";
 
 # Spinner
 
-Spinners indicate an ongoing process or loading state.
+Loading indicator to show ongoing processes with multiple styles and sizes.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/spinner-preview.tsx")}
+>
+  <SpinnerPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+```npm
+npx @tailgrids/cli add spinner
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the following dependencies:
+```npm
+npm i class-variance-authority
+```
+
+Copy and paste the following code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/spinner/index.tsx")}
+  lang="tsx"
+  fileName="spinner.tsx"
+/>
+
+You'll also need the spinner SVG assets referenced in the component (`default.svg`, `dotted.svg`, `dotted-round.svg`).
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/spinner/default.svg")}
+  lang="svg"
+  fileName="default.svg"
+/>
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/spinner/dotted.svg")}
+  lang="svg"
+  fileName="dotted.svg"
+/>
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/spinner/dotted-round.svg")}
+  lang="svg"
+  fileName="dotted-round.svg"
+/>
+
+</Accordion>
+</Accordions>
 
 ## Usage
 
 ```tsx
 import { Spinner } from "@/registry/core/spinner";
 
-<Spinner />;
+export default () => <Spinner />;
 ```
 
-## Variants
+## Examples
+
+### In Buttons
 
 ```tsx
-<Spinner variant="default" />
-<Spinner variant="dotted" />
-<Spinner variant="dotted-round" />
+import { Button } from "@/registry/core/button";
+
+<Button disabled>
+  <Spinner size="sm" />
+  Loading...
+</Button>;
 ```
+
+## API Reference
+
+### Spinner
+
+| Prop        | Type                                      | Default     | Description            |
+| ----------- | ----------------------------------------- | ----------- | ---------------------- |
+| `type`      | `'default'`, `'dotted'`, `'dotted-round'` | `'default'` | Spinner visual style   |
+| `size`      | `'sm'`, `'md'`, `'lg'`, `'xl'`, `'xxl'`   | `'md'`      | Spinner size           |
+| `className` | `string`                                  | -           | Additional CSS classes |
+
+### Sizes
+
+- **sm**: 20px (1.25rem)
+- **md**: 28px (1.75rem)
+- **lg**: 36px (2.25rem)
+- **xl**: 40px (2.5rem)
+- **xxl**: 48px (3rem)
+
+## Accessibility
+
+- Uses `role="presentation"` as the spinner is decorative
+- Includes `alt="Spinner"` for context
+- When used in buttons, ensure the button has descriptive text or aria-label
+- Consider using `aria-busy="true"` on parent containers during loading states
+- Animation respects `prefers-reduced-motion` through Tailwind's `animate-spin`
+
+## Notes
+
+- Uses CSS `animate-spin` for smooth rotation animation
+- Spinner images should be SVG format for crisp rendering at all sizes
+- Three different visual styles available for different design contexts
+- Commonly used in buttons, overlays, and page loading states
+- Works well with the Button component's disabled state

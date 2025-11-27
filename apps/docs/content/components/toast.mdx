@@ -1,18 +1,161 @@
 ---
 title: Toast
-description: Brief notification messages
+description: Display lightweight notifications with icon, message, actions, and dismiss controls.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import ToastPreview from "@/components/preview/toast-preview";
 
 # Toast
 
-Toasts display brief, temporary notifications to users.
+Lightweight notification component for alerts, confirmations, and messages. Includes variants, actions, undo behavior, and a dismiss button.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/toast-preview.tsx")}
+>
+  <ToastPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install using the CLI:
+```npm
+npx @tailgrids/cli add toast
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install required dependencies:
+
+```npm
+npm i class-variance-authority
+```
+
+Copy the component into your project:
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/toast.tsx")}
+  lang="tsx"
+  fileName="toast.tsx"
+/>
+
+<CodeBlockCard
+snippet={getFileContent("/src/registry/core/avatar.tsx")}
+lang="tsx"
+fileName="avatar.tsx"
+/> 
+</Accordion> 
+</Accordions>
 
 ## Usage
 
-```tsx
-import { toast } from "@/registry/core/toast";
+### Basic Toast
 
-toast.success("Success message");
-toast.error("Error message");
-toast.info("Info message");
+```tsx
+import { Toast } from "@/registry/core/toast";
+
+export default function Demo() {
+  return (
+    <Toast
+      variant="success"
+      description="Your settings have been saved successfully."
+    />
+  );
+}
 ```
+
+### Toast With Title & Actions
+
+```tsx
+<Toast
+  title="Payment Failed"
+  description="Your card was declined. Please try again."
+  variant="error"
+  actions={{
+    primary: {
+      label: "Retry",
+      onClick: () => console.log("Retry clicked")
+    },
+    dismiss: {
+      label: "Cancel",
+      onClick: () => console.log("Dismiss clicked")
+    }
+  }}
+/>
+```
+
+### Toast With Undo
+
+Used when no title is present.
+
+```tsx
+<Toast
+  description="Item deleted."
+  variant="warning"
+  undoAction={() => console.log("Undo clicked")}
+/>
+```
+
+### Avatar Toast (Message-style)
+
+```tsx
+import { AvatarToast } from "@/registry/core/toast";
+
+<AvatarToast
+  name="Alex Carter"
+  description="Sent you a message"
+  image="/images/user.jpg"
+  status="online"
+  time="2 minutes ago"
+/>;
+```
+
+## Variants
+
+```tsx
+<Toast variant="success" description="Operation completed." />
+<Toast variant="error" description="Something went wrong." />
+<Toast variant="warning" description="Check your input again." />
+<Toast variant="info" description="New update available." />
+<Toast variant="message" description="1 new message." />
+```
+
+## API Reference
+
+### Toast
+
+| Prop          | Type                                                                                      | Default | Description                                     |
+| ------------- | ----------------------------------------------------------------------------------------- | ------- | ----------------------------------------------- |
+| `variant`     | `"success"`, `"error"`, `"info"`, `"warning"`, `"message"`                                | —       | Controls icon and color theme                   |
+| `description` | `string`                                                                                  | —       | Main message text                               |
+| `title`       | `string`                                                                                  | —       | Optional title for more structured toasts       |
+| `undoAction`  | `() => void`                                                                              | —       | Shows an “Undo” button when no title is present |
+| `actions`     | `{ primary: { label: string; onClick?: fn }, dismiss?: { label: string; onClick?: fn } }` | —       | Shows action buttons when title is present      |
+
+### AvatarToast
+
+| Prop          | Type                                        | Description             |
+| ------------- | ------------------------------------------- | ----------------------- |
+| `name`        | `string`                                    | Sender name             |
+| `description` | `string`                                    | Message body            |
+| `image`       | `string`                                    | Avatar image source     |
+| `status`      | `"none"`, `"online"`, `"offline"`, `"busy"` | Avatar status indicator |
+| `time`        | `string`                                    | Timestamp label         |
+
+## Accessibility
+
+- Dismiss buttons include visually hidden labels for screen readers.
+- Buttons follow standard focus handling and keyboard navigation.
+- Variant icons use meaningful symbols for visual association.
+- Layout works for both compact and content-heavy notifications.
+
+## Notes
+
+- If a `title` is present, the layout switches to a vertical content stack.
+- For simple toasts (no title), `Undo` appears inline on the right.
+- Icon colors are determined by `variant`.
+- Supports combining with a Toaster system (positioned stack) if needed.

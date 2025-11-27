@@ -1,44 +1,155 @@
 ---
 title: Input
-description: Text input fields for user data entry
+description: Text input field for collecting user information with support for labels, hints, and validation states.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import InputPreview from "@/components/preview/input-preview";
+import { Input } from "@/registry/core/input";
 
 # Input
 
-Input fields allow users to enter text data.
+Text input field for collecting user information with support for labels, hints, and validation states.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/input-preview.tsx")}
+>
+  <InputPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+```npm
+npx @tailgrids/cli add input
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the following dependencies:
+```npm
+npm i class-variance-authority
+```
+
+Copy and paste the following code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/input.tsx")}
+  lang="tsx"
+/>
+</Accordion>
+</Accordions>
 
 ## Usage
 
 ```tsx
 import { Input } from "@/registry/core/input";
 
-<Input placeholder="Enter text..." />;
+export default () => <Input label="Email" placeholder="Enter your email" />;
 ```
 
 ## Examples
 
-### Basic Input
-
-```tsx
-<Input type="text" placeholder="Your name" />
-<Input type="email" placeholder="email@example.com" />
-<Input type="password" placeholder="Password" />
-```
-
 ### With Label
 
 ```tsx
-<div>
-  <label htmlFor="email">Email</label>
-  <Input id="email" type="email" placeholder="you@example.com" />
-</div>
+<Input label="Full Name" placeholder="John Doe" />
 ```
 
-## Props
+### With Hint
 
-| Prop          | Type      | Default  | Description            |
-| ------------- | --------- | -------- | ---------------------- |
-| `type`        | `string`  | `'text'` | Input type             |
-| `placeholder` | `string`  | -        | Placeholder text       |
-| `disabled`    | `boolean` | `false`  | Disable the input      |
-| `className`   | `string`  | -        | Additional CSS classes |
+```tsx
+<Input
+  label="Username"
+  placeholder="Choose a username"
+  hint="Must be 3-20 characters long"
+/>
+```
+
+### States
+
+<ComponentPreview codeSnippet={
+  `
+<Input
+    label="Email"
+    state="success"
+    placeholder="email@example.com"
+/>
+
+<Input
+    label="Email"
+    state="error"
+    placeholder="email@example.com"
+    hint="Please enter a valid email address"
+/>
+` }>
+<div className="flex flex-col gap-4">
+<Input label="Email" state="success" placeholder="email@example.com" />
+
+<Input
+  label="Email"
+  state="error"
+  placeholder="email@example.com"
+  hint="Please enter a valid email address"
+/>
+</div>
+</ComponentPreview>
+
+### Controlled
+
+```tsx
+import { useState } from "react";
+
+export default () => {
+  const [value, setValue] = useState("");
+
+  return (
+    <Input
+      label="Controlled Input"
+      value={value}
+      onChange={e => setValue(e.target.value)}
+      hint={`${value.length} characters`}
+    />
+  );
+};
+```
+
+## API Reference
+
+### Input
+
+Extends `input` element props.
+
+| Prop          | Type                                | Default     | Description               |
+| ------------- | ----------------------------------- | ----------- | ------------------------- |
+| `label`       | `string`                            | -           | Label text above input    |
+| `hint`        | `string`                            | -           | Helper text below input   |
+| `state`       | `'default'`, `'error'`, `'success'` | `'default'` | Visual state of the input |
+| `className`   | `string`                            | -           | Additional CSS classes    |
+| `type`        | `string`                            | `'text'`    | HTML input type           |
+| `placeholder` | `string`                            | -           | Placeholder text          |
+| `disabled`    | `boolean`                           | `false`     | Disable input interaction |
+| `value`       | `string`                            | -           | Controlled value          |
+| `onChange`    | `(e: ChangeEvent) => void`          | -           | Change event handler      |
+
+## Accessibility
+
+- Automatically generates unique IDs if not provided
+- Label is properly associated with input via `htmlFor`
+- Keyboard accessible with standard input behavior
+- Focus ring provides clear visual feedback with `ring-4` style
+- Disabled state applies to both input and hint text
+- Hint text uses semantic color coding for different states
+- All standard input HTML attributes are supported
+
+## Notes
+
+- The input uses `peer` class to enable styling of the hint text based on input state
+- Focus ring color matches the state (primary for default, danger for error, success for success)
+- Placeholder text uses muted color for better visual hierarchy
+- Disabled inputs have reduced opacity and prevent pointer events
+- Labels are non-selectable with `select-none` for better UX

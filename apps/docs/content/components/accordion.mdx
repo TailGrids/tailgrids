@@ -1,31 +1,128 @@
 ---
 title: Accordion
-description: Vertically stacked sections of content that can be expanded or collapsed
+description: A vertically stacked set of interactive headings that reveal associated content panels.
 ---
 
-## Usage
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import { AccordionPreview } from "@/components/preview/accordion-preview";
 
-```tsx
-import { Accordion } from "@/registry/core/accordion";
+# Accordion
 
-<Accordion />;
+A vertically stacked set of interactive headings that reveal associated content panels.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/accordion-preview.tsx")}
+>
+  <AccordionPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+
+```npm
+npx @tailgrids/cli add accordion
 ```
 
-## Examples
+</Accordion>
 
-### Basic Accordion
+<Accordion title="Manual">
+Install the following dependencies:
 
-A simple accordion with multiple sections.
+```npm
+npm i class-variance-authority @tailgrids/icons
+```
 
-## Props
+Copy and paste the following code into your project.
 
-| Prop           | Type                     | Default    | Description                                  |
-| -------------- | ------------------------ | ---------- | -------------------------------------------- |
-| `defaultValue` | `string`                 | -          | The default open section                     |
-| `type`         | `'single' \| 'multiple'` | `'single'` | Whether one or multiple sections can be open |
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/accordion.tsx")}
+  lang="tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the components and piece them together.
+
+```tsx
+import {
+  AccordionRoot,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent
+} from "@/components/accordion";
+
+export default () => (
+  <AccordionRoot>
+    <AccordionItem>
+      <AccordionTrigger />
+      <AccordionContent />
+    </AccordionItem>
+  </AccordionRoot>
+);
+```
+
+## API Reference
+
+### AccordionRoot
+
+The root container for the accordion.
+
+| Prop        | Type                                                                          | Default       | Description                            |
+| ----------- | ----------------------------------------------------------------------------- | ------------- | -------------------------------------- |
+| `variant`   | `'style_one'`, `'style_two'`, `'style_three'`, `'style_four'`, `'style_five'` | `'style_one'` | Visual style variant for the accordion |
+| `className` | `string`                                                                      | -             | Additional CSS classes                 |
+| `children`  | `React.ReactNode`                                                             | -             | Accordion items                        |
+
+### AccordionItem
+
+An individual accordion item containing a trigger and content.
+
+| Prop        | Type              | Description                    |
+| ----------- | ----------------- | ------------------------------ |
+| `className` | `string`          | Additional CSS classes         |
+| `children`  | `React.ReactNode` | Trigger and content components |
+
+### AccordionTrigger
+
+The button that toggles the accordion content.
+
+| Prop        | Type              | Description                      |
+| ----------- | ----------------- | -------------------------------- |
+| `className` | `string`          | Additional CSS classes           |
+| `children`  | `React.ReactNode` | Trigger content (typically text) |
+
+### AccordionContent
+
+The collapsible content area.
+
+| Prop        | Type              | Description                      |
+| ----------- | ----------------- | -------------------------------- |
+| `className` | `string`          | Additional CSS classes           |
+| `children`  | `React.ReactNode` | Content to display when expanded |
+
+## Variants
+
+The component comes with five pre-styled variants:
+
+- **style_one**: Bordered items with rounded corners
+- **style_two**: Bottom-bordered items
+- **style_three**: Neutral background with rounded corners
+- **style_four**: Light background with chevron icon
+- **style_five**: Light background with compact spacing
+
+```tsx
+<AccordionRoot variant="style_four">{/* items */}</AccordionRoot>
+```
 
 ## Accessibility
 
-- Uses semantic HTML
-- Keyboard navigation support
-- ARIA attributes for screen readers
+- Uses semantic HTML with proper heading hierarchy (`h3` elements)
+- Implements ARIA attributes (`aria-controls`, `aria-expanded`, `aria-labelledby`)
+- Keyboard accessible with proper focus management
+- Content is properly associated with triggers via `role="region"`

@@ -1,20 +1,131 @@
 ---
 title: Breadcrumbs
-description: Navigation trail showing the current page location
+description: Navigation component that shows the current page's location within a hierarchical structure.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import BreadcrumbsPreview from "@/components/preview/breadcrumbs-preview";
 
 # Breadcrumbs
 
-Breadcrumbs help users understand their current location within the site hierarchy.
+Navigation component that shows the current page's location within a hierarchical structure.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/breadcrumbs-preview.tsx"
+  )}
+>
+  <BreadcrumbsPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+```npm
+npx @tailgrids/cli add breadcrumbs
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Copy and paste the following code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/breadcrumbs.tsx")}
+  lang="tsx"
+/>
+</Accordion>
+</Accordions>
 
 ## Usage
 
 ```tsx
 import { Breadcrumbs } from "@/registry/core/breadcrumbs";
 
-<Breadcrumbs>
-  <BreadcrumbItem href="/">Home</BreadcrumbItem>
-  <BreadcrumbItem href="/docs">Docs</BreadcrumbItem>
-  <BreadcrumbItem>Current Page</BreadcrumbItem>
-</Breadcrumbs>;
+export default () => (
+  <Breadcrumbs
+    items={[
+      { href: "/", label: "Home" },
+      { href: "/products", label: "Products" },
+      { href: "/products/laptop", label: "Laptop" }
+    ]}
+  />
+);
 ```
+
+## Examples
+
+### With Icons
+
+```tsx
+import { Home, BoxCube3D } from "@tailgrids/icons";
+
+<Breadcrumbs
+  items={[
+    { href: "/", label: "Home", icon: <Home /> },
+    { href: "/products", label: "Products", icon: <BoxCube3D /> },
+    { href: "/products/laptop", label: "Laptop" }
+  ]}
+/>;
+```
+
+### Divider Types
+
+```tsx
+<Breadcrumbs
+  dividerType="chevron"
+  items={[
+    { href: "/", label: "Home" },
+    { href: "/docs", label: "Documentation" }
+  ]}
+/>
+
+<Breadcrumbs
+  dividerType="dot"
+  items={[
+    { href: "/", label: "Home" },
+    { href: "/blog", label: "Blog" }
+  ]}
+/>
+
+<Breadcrumbs
+  dividerType="slash"
+  items={[
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" }
+  ]}
+/>
+```
+
+## API Reference
+
+### Breadcrumbs
+
+| Prop          | Type                            | Default   | Description                          |
+| ------------- | ------------------------------- | --------- | ------------------------------------ |
+| `items`       | `BreadcrumbItem[]`              | -         | Array of breadcrumb items (required) |
+| `dividerType` | `'slash'`, `'chevron'`, `'dot'` | `'slash'` | Style of divider between items       |
+
+`BreadcrumbItem`
+
+| Property | Type              | Description                    |
+| -------- | ----------------- | ------------------------------ |
+| `href`   | `string`          | Link destination (required)    |
+| `label`  | `string`          | Display text (required)        |
+| `icon`   | `React.ReactNode` | Optional icon before the label |
+
+## Accessibility
+
+- Uses semantic `<ol>` and `<li>` elements for proper navigation structure
+- The last item is visually distinguished with darker text color
+- Icons inherit the current text color for consistent styling
+- All links are keyboard accessible
+
+## Notes
+
+- The last item in the breadcrumb trail is automatically styled with darker text to indicate the current page
+- Icons are automatically sized to `16px` (1rem) via the `[&>svg]:size-4` class
+- The component uses `contents` display on list items to maintain proper flex layout

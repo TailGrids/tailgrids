@@ -1,17 +1,170 @@
 ---
 title: Radio Input
-description: Select a single option from a set
+description: Allow users to select a single option from a set with accessible radio button inputs.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import RadioInputPreview from "@/components/preview/radio-input-preview";
 
 # Radio Input
 
-Radio buttons allow users to select one option from a set.
+Allow users to select a single option from a set with accessible radio button inputs.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/radio-input-preview.tsx")}
+>
+  <RadioInputPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+```npm
+npx @tailgrids/cli add radio-input
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the following dependencies:
+```npm
+npm i class-variance-authority
+```
+
+Copy and paste the following code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/radio-input.tsx")}
+  lang="tsx"
+/>
+</Accordion>
+</Accordions>
 
 ## Usage
-
 ```tsx
-import { RadioInput } from '@/registry/core/radio-input';
+import { RadioInput } from "@/registry/core/radio-input";
 
-<RadioInput name="option" value="1" label="Option 1" />
-<RadioInput name="option" value="2" label="Option 2" />
+export default () => (
+  <div>
+    <RadioInput name="plan" label="Basic Plan" value="basic" />
+    <RadioInput name="plan" label="Pro Plan" value="pro" />
+    <RadioInput name="plan" label="Enterprise Plan" value="enterprise" />
+  </div>
+);
 ```
+
+## Examples
+
+### Sizes
+```tsx
+<RadioInput size="sm" name="size" label="Small radio" value="sm" />
+<RadioInput size="md" name="size" label="Medium radio" value="md" />
+```
+
+### Without Label
+```tsx
+<RadioInput name="option" value="1" />
+```
+
+### Controlled
+```tsx
+import { useState } from "react";
+
+export default () => {
+  const [selected, setSelected] = useState("option1");
+
+  return (
+    <div className="flex flex-col gap-3">
+      <RadioInput
+        name="controlled"
+        label="Option 1"
+        value="option1"
+        checked={selected === "option1"}
+        onChange={(e) => setSelected(e.target.value)}
+      />
+      <RadioInput
+        name="controlled"
+        label="Option 2"
+        value="option2"
+        checked={selected === "option2"}
+        onChange={(e) => setSelected(e.target.value)}
+      />
+      <RadioInput
+        name="controlled"
+        label="Option 3"
+        value="option3"
+        checked={selected === "option3"}
+        onChange={(e) => setSelected(e.target.value)}
+      />
+    </div>
+  );
+};
+```
+
+### Disabled
+```tsx
+<RadioInput name="plan" label="Disabled option" value="disabled" disabled />
+<RadioInput name="plan" label="Disabled checked" value="checked" disabled checked />
+```
+
+### Default Checked
+```tsx
+<RadioInput name="plan" label="Basic Plan" value="basic" />
+<RadioInput name="plan" label="Pro Plan" value="pro" defaultChecked />
+<RadioInput name="plan" label="Enterprise Plan" value="enterprise" />
+```
+
+### Radio Group
+```tsx
+<fieldset>
+  <legend className="text-sm font-medium mb-3">Select a plan</legend>
+  <div className="flex flex-col gap-3">
+    <RadioInput name="plan" label="Basic - $9/month" value="basic" />
+    <RadioInput name="plan" label="Pro - $29/month" value="pro" />
+    <RadioInput name="plan" label="Enterprise - $99/month" value="enterprise" />
+  </div>
+</fieldset>
+```
+
+## API Reference
+
+### RadioInput
+
+Extends `input` element props (excluding `size`).
+
+| Prop             | Type              | Default | Description                                      |
+| ---------------- | ----------------- | ------- | ------------------------------------------------ |
+| `size`           | `'sm'`, `'md'`    | `'sm'`  | Radio button size                                |
+| `label`          | `string`          | -       | Label text next to radio                         |
+| `name`           | `string`          | -       | Radio group name (required for grouping)         |
+| `value`          | `string`          | -       | Radio button value                               |
+| `id`             | `string`          | -       | Custom input ID (auto-generated if not provided) |
+| `disabled`       | `boolean`         | `false` | Disable radio interaction                        |
+| `checked`        | `boolean`         | -       | Controlled checked state                         |
+| `defaultChecked` | `boolean`         | -       | Uncontrolled default checked state               |
+| `onChange`       | `(e: ChangeEvent) => void` | -       | Change event handler                     |
+| `className`      | `string`          | -       | Additional CSS classes for the label wrapper     |
+
+## Accessibility
+
+- Uses native `<input type="radio">` with screen reader support
+- Automatically generates unique IDs if not provided
+- Label is properly associated with input via `htmlFor`
+- Radio buttons with the same `name` are automatically grouped
+- Keyboard accessible with arrow key navigation within groups
+- Focus ring provides clear visual feedback
+- Disabled state is communicated via `aria-disabled` on the label
+- Hover states are disabled when radio is disabled
+
+## Notes
+
+- The radio input uses `sr-only` to hide it visually while keeping it accessible
+- The inner dot appears only when radio is checked
+- Focus ring appears on keyboard focus with `ring-4` style
+- Hover effects apply to both the radio and label for better UX
+- All radio buttons in a group must share the same `name` attribute
+- Only one radio in a group can be selected at a time
+- All standard input HTML attributes are supported (except `size` which is used for visual sizing)

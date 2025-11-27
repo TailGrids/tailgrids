@@ -20,7 +20,7 @@ export function CopyToClipboard({ content, showLabel, className }: PropsType) {
 
     setTimeout(() => {
       setIsCopied(false);
-    }, 4000);
+    }, 2000);
   }
 
   return (

@@ -1,16 +1,192 @@
 ---
 title: Skeleton
-description: Loading placeholder for content
+description: Placeholder loading state to indicate content is being fetched or processed.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import SkeletonPreview from "@/components/preview/skeleton-preview";
 
 # Skeleton
 
-Skeleton loaders provide visual placeholders while content is loading.
+Placeholder loading state to indicate content is being fetched or processed.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/skeleton-preview.tsx")}
+>
+  <SkeletonPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+```npm
+npx @tailgrids/cli add skeleton
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Copy and paste the following code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/skeleton.tsx")}
+  fileName="skeleton.tsx"
+  lang="tsx"
+/>
+
+Add the custom pulse animation to your `tailwind` config:
+
+<Accordions>
+  <Accordion title="v4">
+    ```css title="globals.css"
+@theme {
+        --animate-pulse-custom: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+        0%,
+        100% {
+            opacity: 0.5;
+        }
+
+        50% {
+            opacity: 0.7;
+        }
+}
+    ```
+  </Accordion>
+  <Accordion title="v3">
+```js title="tailwind.config.js"
+module.exports = {
+  theme: {
+    extend: {
+      animation: {
+        "pulse-custom": "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite"
+      }
+    }
+  }
+};
+```
+
+    ```css title="globals.css"
+@keyframes pulse {
+        0%,
+        100% {
+            opacity: 0.5;
+        }
+
+        50% {
+            opacity: 0.7;
+        }
+}
+    ```
+  </Accordion>
+</Accordions>
+
+</Accordion>
+</Accordions>
 
 ## Usage
 
 ```tsx
 import { Skeleton } from "@/registry/core/skeleton";
 
-<Skeleton className="h-12 w-full" />;
+export default () => <Skeleton className="h-4 w-48" />;
 ```
+
+## Examples
+
+### Text Lines
+
+```tsx
+<div className="space-y-2">
+  <Skeleton className="h-4 w-full" />
+  <Skeleton className="h-4 w-5/6" />
+  <Skeleton className="h-4 w-4/6" />
+</div>
+```
+
+### Card Skeleton
+
+```tsx
+<div className="border rounded-lg p-4 space-y-3">
+  <Skeleton className="h-8 w-8 rounded-lg" />
+  <Skeleton className="h-4 w-3/4" />
+  <Skeleton className="h-3 w-full" />
+  <Skeleton className="h-3 w-5/6" />
+</div>
+```
+
+### Avatar Skeleton
+
+```tsx
+<div className="flex items-center gap-3">
+  <Skeleton className="size-10 rounded-full" />
+  <div className="space-y-2">
+    <Skeleton className="h-4 w-24" />
+    <Skeleton className="h-3 w-32" />
+  </div>
+</div>
+```
+
+### Different Shapes
+
+```tsx
+{ /* Circle */ }
+<Skeleton className="size-12 rounded-full" />;
+
+{ /* Square */ }
+<Skeleton className="size-12 rounded-lg" />;
+
+{ /* Rectangle */ }
+<Skeleton className="h-32 w-48 rounded-lg" />;
+
+{ /* Line */ }
+<Skeleton className="h-4 w-full" />;
+```
+
+### Button Skeleton
+
+```tsx
+<Skeleton className="h-10 w-24 rounded-lg" />
+```
+
+### Table Skeleton
+
+```tsx
+<div className="space-y-3">
+  <Skeleton className="h-10 w-full rounded-lg" />
+  <Skeleton className="h-8 w-full" />
+  <Skeleton className="h-8 w-full" />
+  <Skeleton className="h-8 w-full" />
+</div>
+```
+
+## API Reference
+
+### Skeleton
+
+Extends `div` element props.
+
+| Prop        | Type     | Description            |
+| ----------- | -------- | ---------------------- |
+| `className` | `string` | Additional CSS classes |
+
+## Accessibility
+
+- Uses `div` element as a non-semantic placeholder
+- Should be replaced with actual content when data loads
+- Provides visual feedback during loading states
+- Animation respects `prefers-reduced-motion` user preference
+
+## Notes
+
+- Default height is `12px` (0.75rem) with `h-3` class
+- Default shape is fully rounded with `rounded-full` class
+- Uses a custom pulse animation for smooth loading effect
+- Override dimensions and shape with Tailwind utility classes
+- The animation uses `animate-pulse-custom` which should be defined in your Tailwind config
+- Gray background (`bg-neutral-200`) provides neutral placeholder appearance

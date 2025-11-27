@@ -1,17 +1,96 @@
 ---
 title: Social Button
-description: Buttons for social media integration
+description: Pre-styled buttons for social authentication and sharing with consistent width and icon styling.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import SocialButtonPreview from "@/components/preview/social-button-preview";
 
 # Social Button
 
-Social buttons are styled for social media login and sharing.
+Pre-styled buttons for social authentication and sharing with consistent width and icon styling.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/social-button-preview.tsx"
+  )}
+>
+  <SocialButtonPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+```npm
+npx @tailgrids/cli add social-button
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the following dependencies:
+```npm
+npm i class-variance-authority
+```
+
+Copy and paste the following code into your project. Make sure you have the Button component installed as well.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/social-button.tsx")}
+  lang="tsx"
+  fileName="social-button.tsx"
+/>
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/button.tsx")}
+  lang="tsx"
+  fileName="button.tsx"
+/>
+</Accordion>
+</Accordions>
 
 ## Usage
 
 ```tsx
-import { SocialButton } from '@/registry/core/social-button';
+import { SocialButton } from "@/registry/core/social-button";
 
-<SocialButton provider="google">Sign in with Google</SocialButton>
-<SocialButton provider="github">Sign in with GitHub</SocialButton>
+export default () => (
+  <SocialButton>
+    <GoogleIcon />
+    Continue with Google
+  </SocialButton>
+);
 ```
+
+## API Reference
+
+### SocialButton
+
+Extends `button` element props and inherits all Button component props.
+
+| Prop        | Type              | Default | Description                    |
+| ----------- | ----------------- | ------- | ------------------------------ |
+| `children`  | `React.ReactNode` | -       | Button content (icon and text) |
+| `className` | `string`          | -       | Additional CSS classes         |
+| `disabled`  | `boolean`         | `false` | Disable button interaction     |
+| `onClick`   | `() => void`      | -       | Click event handler            |
+
+## Accessibility
+
+- Built on top of the [Button](./button) component with all its accessibility features
+- Includes focus ring styling for keyboard navigation
+- Disabled state reduces icon opacity and prevents interaction
+- Icons inherit text color for consistent styling
+- All standard button HTML attributes are supported
+
+## Notes
+
+- Uses the Button component with `appearance="outline"` by default
+- Has a consistent max width of `336px` (21rem) via `max-w-84`
+- Full width within the max-width constraint via `w-full`
+- Icons maintain 60% opacity when button is disabled
+- Typically used with brand icons from social platforms
+- Common pattern in authentication flows and social sharing features

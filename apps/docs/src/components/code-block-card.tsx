@@ -9,22 +9,32 @@ type CodeBlockCardProps = {
   snippet: string;
   lang: string;
   showLineNumbers?: boolean;
+  fileName?: string;
 };
 
-function CodeBlockCard({ snippet, lang, showLineNumbers }: CodeBlockCardProps) {
+function CodeBlockCard({
+  snippet,
+  lang,
+  showLineNumbers,
+  fileName
+}: CodeBlockCardProps) {
   return (
     <div className="bg-gray-50 rounded-[1.75rem] border p-2.5 mb-4 dark:bg-gray-900">
       <div className="flex items-center gap-1.5 text-gray-500 dark:text-[#9CA3AF] px-5 pb-4 pt-1.5">
-        <h5 className="mr-auto text-sm font-mono font-[84]">terminal</h5>
+        <h5 className="mr-auto text-sm font-mono font-[84]">
+          {fileName || "terminal"}
+        </h5>
 
         <CopyToClipboard content={snippet.trim()} showLabel />
       </div>
 
-      <CodeBlock
-        snippet={snippet.trim()}
-        lang={lang}
-        showLineNumbers={showLineNumbers}
-      />
+      <div className="max-h-120 overflow-auto">
+        <CodeBlock
+          snippet={snippet.trim()}
+          lang={lang}
+          showLineNumbers={showLineNumbers}
+        />
+      </div>
     </div>
   );
 }

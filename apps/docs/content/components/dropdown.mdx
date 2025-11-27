@@ -1,25 +1,221 @@
 ---
 title: Dropdown
-description: Display a list of actions or options
+description: Display a menu of actions or options triggered by a button with full keyboard navigation support.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import DropdownPreview from "@/components/preview/dropdown-preview";
 
 # Dropdown
 
-Dropdowns display a list of choices on temporary surfaces.
+Display a menu of actions or options triggered by a button with full keyboard navigation support.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/dropdown-preview.tsx")}
+>
+  <DropdownPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+```npm
+npx @tailgrids/cli add dropdown
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the following dependencies:
+```npm
+npm i react-aria-components
+```
+
+Copy and paste the following code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/dropdown.tsx")}
+  lang="tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the components and piece them together.
+
+```tsx
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from "@/registry/core/dropdown";
+
+export default () => (
+  <DropdownMenu>
+    <DropdownMenuTrigger />
+    <DropdownMenuContent>
+      <DropdownMenuItem />
+      <DropdownMenuSeparator />
+      <DropdownMenuItem />
+    </DropdownMenuContent>
+  </DropdownMenu>
+);
+```
 
 ## Usage
 
 ```tsx
-import { Dropdown } from "@/registry/core/dropdown";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem
+} from "@/registry/core/dropdown";
+import { Button } from "@/registry/core/button";
 
-<Dropdown>
-  <DropdownItem>Option 1</DropdownItem>
-  <DropdownItem>Option 2</DropdownItem>
-</Dropdown>;
+export default () => (
+  <DropdownMenu>
+    <DropdownMenuTrigger>
+      <Button>Open Menu</Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent>
+      <DropdownMenuItem onAction={() => console.log("Edit")}>
+        Edit
+      </DropdownMenuItem>
+      <DropdownMenuItem onAction={() => console.log("Duplicate")}>
+        Duplicate
+      </DropdownMenuItem>
+      <DropdownMenuItem onAction={() => console.log("Delete")}>
+        Delete
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+);
 ```
+
+## Examples
+
+### With Separator
+
+```tsx
+<DropdownMenu>
+  <DropdownMenuTrigger>
+    <Button>Actions</Button>
+  </DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuItem>Edit</DropdownMenuItem>
+    <DropdownMenuItem>Duplicate</DropdownMenuItem>
+    <DropdownMenuSeparator />
+    <DropdownMenuItem>Delete</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+```
+
+### With Icons
+
+Icon size and color are adjusted
+
+```tsx
+import { Pencil, Copy, Trash } from "@tailgrids/icons";
+
+<DropdownMenu>
+  <DropdownMenuTrigger>
+    <Button>Actions</Button>
+  </DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuItem>
+      <Edit className="size-4" />
+      Edit
+    </DropdownMenuItem>
+    <DropdownMenuItem>
+      <Copy className="size-4" />
+      Duplicate
+    </DropdownMenuItem>
+    <DropdownMenuSeparator />
+    <DropdownMenuItem>
+      <Trash2 className="size-4" />
+      Delete
+    </DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>;
+```
+
+### Custom Trigger
+
+```tsx
+<DropdownMenu>
+  <DropdownMenuTrigger>
+    <button className="rounded-lg px-4 py-2 bg-neutral-100">
+      Custom Trigger
+    </button>
+  </DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuItem>Option 1</DropdownMenuItem>
+    <DropdownMenuItem>Option 2</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+```
+
+## API Reference
+
+### DropdownMenu
+
+The root component. Extends `MenuTriggerProps` from React Aria.
+
+### DropdownMenuTrigger
+
+The button that opens the dropdown menu. Extends `ButtonProps` from React Aria.
+
+| Prop        | Type              | Description            |
+| ----------- | ----------------- | ---------------------- |
+| `className` | `string`          | Additional CSS classes |
+| `children`  | `React.ReactNode` | Trigger content        |
+
+### DropdownMenuContent
+
+The popover container for menu items. Extends `PopoverProps` from React Aria.
+
+| Prop       | Type              | Description               |
+| ---------- | ----------------- | ------------------------- |
+| `children` | `React.ReactNode` | Menu items and separators |
+
+### DropdownMenuItem
+
+An individual menu item. Extends `MenuItemProps` from React Aria.
+
+| Prop        | Type              | Description                    |
+| ----------- | ----------------- | ------------------------------ |
+| `onAction`  | `() => void`      | Callback when item is selected |
+| `className` | `string`          | Additional CSS classes         |
+| `children`  | `React.ReactNode` | Item content                   |
+
+### DropdownMenuSeparator
+
+A horizontal divider between menu items. Extends `hr` element props.
+
+| Prop        | Type     | Description            |
+| ----------- | -------- | ---------------------- |
+| `className` | `string` | Additional CSS classes |
 
 ## Accessibility
 
-- Keyboard navigation
-- Focus management
-- ARIA attributes
+- Built on React Aria Components for robust accessibility
+- Full keyboard navigation (Arrow keys, Enter, Escape)
+- Automatic focus management
+- ARIA attributes for screen readers
+- Click outside to close
+- Escape key to dismiss
+
+## Notes
+
+- Uses React Aria Components for accessibility and interaction patterns
+- Menu automatically positions itself to stay within viewport
+- Focus returns to trigger when menu closes
+- Menu items support hover and focus states
+- Separators provide visual grouping of related actions

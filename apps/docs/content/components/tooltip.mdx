@@ -1,18 +1,163 @@
 ---
 title: Tooltip
-description: Display helpful information on hover
+description: A contextual popup that displays a short, informative description when a user hovers over, focuses on, or clicks an element.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import TooltipPreview from "@/components/preview/tooltip-preview";
 
 # Tooltip
 
-Tooltips display informative text when users hover over an element.
+A contextual popup that displays a short, informative description when a user **hovers over** or **focuses on** an element. It is built using the robust **`@floating-ui/react`** library.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/tooltip-preview.tsx")}
+>
+  <TooltipPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+```npm
+npx @tailgrids/cli add tooltip
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the following dependencies for positioning and interaction logic:
+
+```npm
+npm i @floating-ui/react
+```
+
+Copy and paste the following code into your project. Note that this component relies on several internal utility functions from your setup, such as `cn` and your icon library.
+
+<CodeBlockCard
+snippet={getFileContent("/src/registry/core/tooltip.tsx")}
+lang="tsx"
+/>
+</Accordion>
+</Accordions>
 
 ## Usage
 
-```tsx
-import { Tooltip } from "@/registry/core/tooltip";
+The **Tooltip** component uses a compound component pattern and must contain a **`TooltipTrigger`** and **`TooltipContent`**.
 
-<Tooltip content="Helpful information">
-  <button>Hover me</button>
-</Tooltip>;
+```tsx
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent
+} from "@/registry/core/tooltip";
+import { Info } from "@tailgrids/icons";
+
+export default () => (
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <button className="text-primary-500">
+        <Info className="size-5" />
+      </button>
+    </TooltipTrigger>
+    <TooltipContent>Helpful context.</TooltipContent>
+  </Tooltip>
+);
 ```
+
+## Examples
+
+### Custom Placement
+
+Use the `placement` prop on the **`Tooltip`** root to control where the content appears relative to the trigger.
+
+```tsx
+<Tooltip placement="right">
+  <TooltipTrigger>
+    <button>Hover me (Right)</button>
+  </TooltipTrigger>
+  <TooltipContent>I'm on the right!</TooltipContent>
+</Tooltip>
+```
+
+### Triggering with any Element (`asChild`)
+
+Use the `asChild` prop on **`TooltipTrigger`** to forward all required event handlers and `ref` to its single child element, allowing you to use any element (like an icon button, link, or custom component) as the trigger.
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <a href="#" className="font-semibold text-blue-600 hover:underline">
+      View Details
+    </a>
+  </TooltipTrigger>
+  <TooltipContent>Click to see the full report.</TooltipContent>
+</Tooltip>
+```
+
+### Controlled Tooltip
+
+You can manage the open state externally using the `open` and `onOpenChange` props.
+
+```tsx
+const [isOpen, setIsOpen] = React.useState(true);
+
+return (
+  <Tooltip open={isOpen} onOpenChange={setIsOpen}>
+    <TooltipTrigger>
+      <button>Toggle Manually</button>
+    </TooltipTrigger>
+    <TooltipContent>
+      I am always open until controlled otherwise.
+    </TooltipContent>
+  </Tooltip>
+);
+```
+
+## API Reference
+
+### Tooltip
+
+The root component that manages state and floating logic.
+
+| Prop           | Type                      | Default | Description                                                  |
+| :------------- | :------------------------ | :------ | :----------------------------------------------------------- |
+| `initialOpen`  | `boolean`                 | `false` | The initial open state for uncontrolled usage.               |
+| `placement`    | `Placement`               | `'top'` | The position of the tooltip content relative to the trigger. |
+| `open`         | `boolean`                 | -       | **(Controlled)** The open state. Overrides internal state.   |
+| `onOpenChange` | `(open: boolean) => void` | -       | **(Controlled)** Event handler when the open state changes.  |
+
+### TooltipTrigger
+
+The element that activates the tooltip.
+
+| Prop       | Type                           | Default | Description                                                                                             |
+| :--------- | :----------------------------- | :------ | :------------------------------------------------------------------------------------------------------ |
+| `asChild`  | `boolean`                      | `false` | When `true`, props are forwarded to the single child element instead of rendering a default `<button>`. |
+| `children` | `React.ReactNode`              | -       | The element that triggers the tooltip. Defaults to a `<button>`.                                        |
+| `...props` | `React.HTMLProps<HTMLElement>` | -       | Standard HTML props forwarded to the trigger element.                                                   |
+
+### TooltipContent
+
+The popup containing the descriptive content.
+
+| Prop       | Type                              | Default | Description                                                 |
+| :--------- | :-------------------------------- | :------ | :---------------------------------------------------------- |
+| `children` | `React.ReactNode`                 | -       | The content to be displayed inside the tooltip.             |
+| `...props` | `React.HTMLProps<HTMLDivElement>` | -       | Standard HTML props forwarded to the content wrapper `div`. |
+
+## Accessibility
+
+- **Role**: The content element uses `role="tooltip"` for screen readers.
+- **Interactions**: Tooltips open on **hover** and **focus** and dismiss when focus or hover is removed.
+- **Safe Polygon**: The `safePolygon` logic from `floating-ui` is used to keep the tooltip open if the user moves the pointer from the trigger element onto the tooltip content itself.
+- **Keyboard Support**: Users can trigger the tooltip using keyboard focus (Tab key).
+
+## Notes
+
+- The component uses **`FloatingPortal`** to render the content outside the DOM flow of the trigger, preventing clipping issues, while still maintaining correct positioning.
+- The content has an integrated **arrow** which is correctly positioned and styled to point toward the trigger.
+- **`offset`**, **`flip`**, and **`shift`** middleware ensure the tooltip stays in view and avoids being cut off by the viewport edges.

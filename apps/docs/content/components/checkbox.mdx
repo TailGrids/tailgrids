@@ -1,16 +1,120 @@
 ---
 title: Checkbox
-description: Allow users to select one or multiple options
+description: Allow users to select one or multiple options from a set with accessible checkbox inputs.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import CheckboxPreview from "@/components/preview/checkbox-preview";
+import { Checkbox } from "@/registry/core/checkbox";
 
 # Checkbox
 
-Checkboxes allow users to select one or more items from a set.
+Allow users to select one or multiple options from a set with accessible checkbox inputs.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/checkbox-preview.tsx")}
+>
+  <CheckboxPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+```npm
+npx @tailgrids/cli add checkbox
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the following dependencies:
+```npm
+npm i class-variance-authority
+```
+
+Copy and paste the following code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/checkbox.tsx")}
+  lang="tsx"
+/>
+
+You'll also need the check icon SVG referenced in the component.
+
+</Accordion>
+</Accordions>
 
 ## Usage
 
 ```tsx
 import { Checkbox } from "@/registry/core/checkbox";
 
-<Checkbox label="Accept terms" />;
+export default () => <Checkbox label="Accept terms and conditions" />;
 ```
+
+## Examples
+
+### With Label
+
+<ComponentPreview
+  codeSnippet={`
+    <Checkbox label="Remember Me" />
+`}
+>
+  <Checkbox label="Remember Me" />
+</ComponentPreview>
+
+### Controlled
+
+```tsx
+import { useState } from "react";
+
+export default () => {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <Checkbox
+      label="Subscribe to newsletter"
+      checked={checked}
+      onChange={e => setChecked(e.target.checked)}
+    />
+  );
+};
+```
+
+## API Reference
+
+### Checkbox
+
+Extends `input` element props.
+
+| Prop             | Type                       | Default | Description                                      |
+| ---------------- | -------------------------- | ------- | ------------------------------------------------ |
+| `size`           | `'sm'`, `'md'`             | `'sm'`  | Checkbox size                                    |
+| `label`          | `string`                   | -       | Label text next to checkbox                      |
+| `id`             | `string`                   | -       | Custom input ID (auto-generated if not provided) |
+| `disabled`       | `boolean`                  | `false` | Disable checkbox interaction                     |
+| `checked`        | `boolean`                  | -       | Controlled checked state                         |
+| `defaultChecked` | `boolean`                  | -       | Uncontrolled default checked state               |
+| `onChange`       | `(e: ChangeEvent) => void` | -       | Change event handler                             |
+
+## Accessibility
+
+- Uses native `<input type="checkbox">` with screen reader support
+- Automatically generates unique IDs if not provided
+- Label is properly associated with input via `htmlFor`
+- Keyboard accessible with standard checkbox behavior
+- Focus ring provides clear visual feedback
+- Disabled state is communicated via `aria-disabled` on the label
+- Hover states are disabled when checkbox is disabled
+
+## Notes
+
+- The checkbox input uses `sr-only` to hide it visually while keeping it accessible
+- Check icon appears only when checkbox is checked
+- Focus ring appears on keyboard focus with `ring-4` style
+- Hover effects apply to both the checkbox and label for better UX
+- All standard input HTML attributes are supported (except `size` which is used for visual sizing)

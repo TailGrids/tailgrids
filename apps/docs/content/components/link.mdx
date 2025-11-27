@@ -1,16 +1,118 @@
 ---
 title: Link
-description: Navigate between pages and external resources
+description: Styled anchor elements for navigation with support for icons and multiple variants.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import LinkPreview from "@/components/preview/link-preview";
 
 # Link
 
-Links allow users to navigate between pages and external resources.
+Styled anchor elements for navigation with support for icons and multiple variants.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/link-preview.tsx")}
+>
+  <LinkPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+```npm
+npx @tailgrids/cli add link
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the following dependencies:
+```npm
+npm i class-variance-authority
+```
+
+Copy and paste the following code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/link.tsx")}
+  lang="tsx"
+/>
+</Accordion>
+</Accordions>
 
 ## Usage
 
 ```tsx
 import { Link } from "@/registry/core/link";
 
-<Link href="/about">About Us</Link>;
+export default () => <Link href="/about">Learn more</Link>;
 ```
+
+## Examples
+
+### Variants
+
+```tsx
+<Link variant="primary" href="/docs">
+  Primary Link
+</Link>
+
+<Link variant="dark" href="/blog">
+  Dark Link
+</Link>
+```
+
+### Sizes
+
+```tsx
+<Link size="sm" href="/help">
+  Small Link
+</Link>
+
+<Link size="md" href="/contact">
+  Medium Link
+</Link>
+```
+
+### External Link
+
+```tsx
+<Link href="https://example.com" target="_blank" rel="noopener noreferrer">
+  Visit Website
+</Link>
+```
+
+## API Reference
+
+### Link
+
+Extends `a` element props.
+
+| Prop        | Type                  | Default  | Description                  |
+| ----------- | --------------------- | -------- | ---------------------------- |
+| `href`      | `string`              | -        | Link destination (required)  |
+| `variant`   | `'primary'`, `'dark'` | `'dark'` | Visual style variant         |
+| `size`      | `'sm'`, `'md'`        | `'sm'`   | Link size                    |
+| `className` | `string`              | -        | Additional CSS classes       |
+| `children`  | `React.ReactNode`     | -        | Link content                 |
+| `target`    | `string`              | -        | Link target (e.g., `_blank`) |
+| `rel`       | `string`              | -        | Link relationship            |
+
+## Accessibility
+
+- Uses semantic `<a>` elements for proper navigation
+- Supports all standard anchor attributes including `target` and `rel`
+- Keyboard accessible with standard link behavior
+- Hover states provide clear visual feedback
+- Icons inherit text color for consistent styling
+
+## Notes
+
+- Icons are automatically sized to `20px` (1.25rem) via the `[&>svg]:size-5` class
+- The component uses `inline-flex` for proper icon alignment with text
+- Smooth color transitions on hover for better UX
+- Works with any routing library by passing custom `href` props
+- All standard anchor HTML attributes are supported

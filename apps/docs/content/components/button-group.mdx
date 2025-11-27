@@ -1,20 +1,118 @@
 ---
 title: Button Group
-description: Group related buttons together
+description: Group related buttons together in a cohesive, connected layout.
 ---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import ButtonGroupPreview from "@/components/preview/button-group-preview";
 
 # Button Group
 
-Button groups combine related buttons in a single container.
+Group related buttons together in a cohesive, connected layout.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/button-group-preview.tsx"
+  )}
+>
+  <ButtonGroupPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions>
+<Accordion title="CLI">
+Install the component from your command line.
+```npm
+npx @tailgrids/cli add button-group
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the following dependencies:
+```npm
+npm i class-variance-authority
+```
+
+Copy and paste the following code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/button-group.tsx")}
+  lang="tsx"
+/>
+</Accordion>
+</Accordions>
 
 ## Usage
 
 ```tsx
 import { ButtonGroup } from "@/registry/core/button-group";
 
-<ButtonGroup>
-  <Button>Left</Button>
-  <Button>Middle</Button>
-  <Button>Right</Button>
-</ButtonGroup>;
+export default () => (
+  <ButtonGroup>
+    <button>Day</button>
+    <button>Week</button>
+    <button>Month</button>
+  </ButtonGroup>
+);
 ```
+
+## Examples
+
+### Variants
+
+```tsx
+<ButtonGroup variant="primary">
+  <button>Option 1</button>
+  <button>Option 2</button>
+  <button>Option 3</button>
+</ButtonGroup>
+
+<ButtonGroup variant="secondary">
+  <button>Option 1</button>
+  <button>Option 2</button>
+  <button>Option 3</button>
+</ButtonGroup>
+```
+
+### Sizes
+
+```tsx
+<ButtonGroup size="sm">
+  <button>Small</button>
+  <button>Group</button>
+</ButtonGroup>
+
+<ButtonGroup size="md">
+  <button>Medium</button>
+  <button>Group</button>
+</ButtonGroup>
+
+<ButtonGroup size="lg">
+  <button>Large</button>
+  <button>Group</button>
+</ButtonGroup>
+```
+
+## API Reference
+
+### ButtonGroup
+
+Extends `div` element props.
+
+| Prop        | Type                       | Default     | Description            |
+| ----------- | -------------------------- | ----------- | ---------------------- |
+| `variant`   | `'primary'`, `'secondary'` | `'primary'` | Visual style variant   |
+| `size`      | `'sm'`, `'md'`, `'lg'`     | `'md'`      | Button group size      |
+| `className` | `string`                   | -           | Additional CSS classes |
+| `children`  | `React.ReactNode`          | -           | Button elements        |
+
+## Notes
+
+- Use standard `<button>` elements as children for proper styling
+- The first and last buttons automatically receive rounded corners
+- Buttons are separated with dividers that match the variant color
+- Hover states are automatically applied to all buttons
+- All buttons share consistent padding and sizing based on the size prop
