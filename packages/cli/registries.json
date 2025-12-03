@@ -25,14 +25,6 @@
     "dependencies": ["class-variance-authority"]
   },
   {
-    "id": "avatar-group",
-    "name": "Avatar Group",
-    "description": "A component to group multiple avatars together.",
-    "type": "component",
-    "files": [{ "type": "core", "path": "/core/avatar/avatar-group.tsx" }],
-    "requires": ["avatar"]
-  },
-  {
     "id": "badge",
     "name": "Badge",
     "description": "Badge component with multiple colors, sizes, and support for prefix/suffix icons.",
@@ -113,6 +105,13 @@
     "type": "component",
     "files": [{ "type": "core", "path": "/core/list.tsx" }],
     "dependencies": ["class-variance-authority"]
+  },
+  {
+    "id": "modal",
+    "name": "Modal",
+    "description": "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
+    "type": "component",
+    "files": [{ "type": "core", "path": "/core/modal.tsx" }]
   },
   {
     "id": "otp-input",
