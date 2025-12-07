@@ -8,6 +8,7 @@
 
 @theme {
   --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-dm-sans);
 
   --color-primary-50: #eff3ff;
   --color-primary-100: #dae2ff;
