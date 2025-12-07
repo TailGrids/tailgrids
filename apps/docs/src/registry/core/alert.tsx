@@ -2,7 +2,7 @@ import { useState } from "react";
 import { cva } from "class-variance-authority";
 import { Button } from "./button";
 import { cn } from "@/utils/cn";
-import { Xmark2x, CheckMarkCircle } from "@tailgrids/icons";
+import { Xmark2x, CheckCircle1 } from "@tailgrids/icons";
 
 const wrapperStyles = cva(
   "relative w-full max-w-4xl rounded-lg border px-5 py-4",
@@ -140,7 +140,7 @@ export default function Alert({
       <div className="grid grid-cols-[auto_1fr] items-center gap-x-3 gap-y-3.5">
         {withIcon && (
           <div className={iconWrapperStyles({ variant })}>
-            <CheckMarkCircle />
+            <CheckCircle1 />
           </div>
         )}
 

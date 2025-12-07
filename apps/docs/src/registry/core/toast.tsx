@@ -4,10 +4,10 @@ import { Button } from "./button";
 import type { ComponentProps } from "react";
 import { Avatar } from "./avatar";
 import {
-  CheckMarkCircle,
-  Close2,
-  Info,
-  Messages,
+  CheckCircle1,
+  XmarkCircle,
+  InfoCircle,
+  Envelope1,
   Close
 } from "@tailgrids/icons";
 
@@ -161,14 +161,14 @@ export function AvatarToast({
 function getIcon(variant: PropsType["variant"]) {
   switch (variant) {
     case "success":
-      return <CheckMarkCircle />;
+      return <CheckCircle1 />;
     case "error":
-      return <Close2 />;
+      return <XmarkCircle />;
     case "warning":
-      return <Info />;
+      return <InfoCircle />;
     case "info":
-      return <Info />;
+      return <InfoCircle />;
     case "message":
-      return <Messages />;
+      return <Envelope1 />;
   }
 }

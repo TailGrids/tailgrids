@@ -3,7 +3,7 @@
 import { cn } from "@/utils/cn";
 import { cva } from "class-variance-authority";
 import { createContext, useContext, useId, useState } from "react";
-import { ArrowDown, Minus, PlusAdd } from "@tailgrids/icons";
+import { ChevronDown, Minus, Plus } from "@tailgrids/icons";
 
 type Variant =
   | "style_one"
@@ -180,9 +180,9 @@ export function AccordionTrigger({
 
         <span className="flex h-lh items-center">
           {variant === "style_four" ? (
-            <ArrowDown className="transition-all group-data-[state=open]:rotate-180" />
+            <ChevronDown className="transition-all group-data-[state=open]:rotate-180" />
           ) : (
-            <>{dataState === "open" ? <Minus /> : <PlusAdd />}</>
+            <>{dataState === "open" ? <Minus /> : <Plus />}</>
           )}
         </span>
       </button>

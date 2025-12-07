@@ -1,14 +1,14 @@
 import { Badge } from "@/registry/core/badge";
-import { CheckMark, CheckMarkCircle, Info } from "@tailgrids/icons";
+import { Check, CheckCircle1, InfoCircle } from "@tailgrids/icons";
 
 export default function BadgePreview() {
   return (
     <div className="flex flex-wrap items-center gap-3">
-      <Badge prefixIcon={<CheckMarkCircle />}>Verified</Badge>
-      <Badge color="success" prefixIcon={<CheckMark />}>
+      <Badge prefixIcon={<CheckCircle1 />}>Verified</Badge>
+      <Badge color="success" prefixIcon={<Check />}>
         Active
       </Badge>
-      <Badge color="warning" prefixIcon={<Info />}>
+      <Badge color="warning" prefixIcon={<InfoCircle />}>
         Pending
       </Badge>
     </div>

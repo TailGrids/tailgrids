@@ -2,7 +2,7 @@
 
 import copy from "copy-text-to-clipboard";
 import { useState } from "react";
-import { CheckMark, Copy } from "@tailgrids/icons";
+import { Check, Copy4 } from "@tailgrids/icons";
 import { cn } from "@/utils/cn";
 
 type PropsType = {
@@ -32,11 +32,7 @@ export function CopyToClipboard({ content, showLabel, className }: PropsType) {
       )}
       title={!showLabel ? "Copy to clipboard" : undefined}
     >
-      {isCopied ? (
-        <CheckMark className="size-5" />
-      ) : (
-        <Copy className="size-5" />
-      )}
+      {isCopied ? <Check className="size-5" /> : <Copy4 className="size-5" />}
 
       {showLabel && (
         <span className="text-[#6B7280]">

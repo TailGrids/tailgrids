@@ -2,7 +2,7 @@
 
 import { cn } from "@/utils/cn";
 import { cva } from "class-variance-authority";
-import { LongArrowLeft, LongArrowRight } from "@tailgrids/icons";
+import { ArrowLeft, ArrowRight } from "@tailgrids/icons";
 
 const wrapperStyles = cva(
   "mx-auto flex w-full items-center justify-center max-sm:max-w-82 max-sm:gap-5",
@@ -62,7 +62,7 @@ export function Pagination({
               "sm:rounded-r-none sm:border-r-0": variant === "compact"
             })}
           >
-            <LongArrowLeft
+            <ArrowLeft
               className={cn("shrink-0", sideLayout === "label" && "sm:hidden")}
             />
 
@@ -150,7 +150,7 @@ export function Pagination({
               <span className="max-sm:hidden">Next</span>
             )}
 
-            <LongArrowRight
+            <ArrowRight
               className={cn("shrink-0", sideLayout === "label" && "sm:hidden")}
             />
           </button>

@@ -1,5 +1,5 @@
 import { List } from "@/registry/core/list";
-import { Home, Settings, User, Logout } from "@tailgrids/icons";
+import { Home, Gear1, User2, Exit } from "@tailgrids/icons";
 
 export default function ListPreview() {
   return (
@@ -18,15 +18,15 @@ export default function ListPreview() {
           <span data-type="count">3</span>
         </li>
         <li data-active="true">
-          <Settings className="size-5" />
+          <Gear1 className="size-5" />
           Settings
         </li>
         <li>
-          <User className="size-5" />
+          <User2 className="size-5" />
           Profile
         </li>
         <li>
-          <Logout className="size-5" />
+          <Exit className="size-5" />
           Logout
         </li>
       </List>

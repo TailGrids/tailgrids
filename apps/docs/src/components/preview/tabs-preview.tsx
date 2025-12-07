@@ -1,11 +1,11 @@
 import { TabRoot, TabList, TabTrigger, TabContent } from "@/registry/core/tabs";
 import {
   Home,
-  Chart,
+  PieChart1,
   FileText,
-  Settings,
+  Gear1,
   UserMultiple1,
-  Inbox
+  Envelope1
 } from "@tailgrids/icons";
 
 export default function TabsPreview() {
@@ -80,13 +80,13 @@ export default function TabsPreview() {
             <TabTrigger value="home" icon={<Home />}>
               Home
             </TabTrigger>
-            <TabTrigger value="analytics" icon={<Chart />}>
+            <TabTrigger value="analytics" icon={<PieChart1 />}>
               Analytics
             </TabTrigger>
             <TabTrigger value="reports" icon={<FileText />}>
               Reports
             </TabTrigger>
-            <TabTrigger value="settings" icon={<Settings />}>
+            <TabTrigger value="settings" icon={<Gear1 />}>
               Settings
             </TabTrigger>
           </TabList>
@@ -104,7 +104,7 @@ export default function TabsPreview() {
         </h3>
         <TabRoot defaultValue="inbox" variant="minimal">
           <TabList>
-            <TabTrigger value="inbox" icon={<Inbox />} badge={12}>
+            <TabTrigger value="inbox" icon={<Envelope1 />} badge={12}>
               Inbox
             </TabTrigger>
             <TabTrigger value="drafts" badge={3}>
@@ -134,10 +134,10 @@ export default function TabsPreview() {
             <TabTrigger value="team" icon={<UserMultiple1 />}>
               Team
             </TabTrigger>
-            <TabTrigger value="analytics" icon={<Chart />}>
+            <TabTrigger value="analytics" icon={<PieChart1 />}>
               Analytics
             </TabTrigger>
-            <TabTrigger value="settings" icon={<Settings />}>
+            <TabTrigger value="settings" icon={<Gear1 />}>
               Settings
             </TabTrigger>
           </TabList>
