@@ -1,0 +1,14 @@
+{
+  "mode": "pre",
+  "tag": "beta",
+  "initialVersions": {
+    "docs": "0.0.0-alpha",
+    "@tailgrids/cli": "0.1.1-alpha",
+    "@repo/eslint-config": "0.0.0",
+    "@tailgrids/icons": "2.0.0",
+    "@repo/typescript-config": "0.0.0"
+  },
+  "changesets": [
+    "dirty-jars-clean"
+  ]
+}

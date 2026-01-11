@@ -1,7 +1,7 @@
 {
   "name": "@tailgrids/cli",
   "type": "module",
-  "version": "0.1.1-alpha",
+  "version": "0.2.0-beta.0",
   "description": "CLI for adding TailGrids Core components to React projects.",
   "license": "MIT",
   "publishConfig": {

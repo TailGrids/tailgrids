@@ -1,5 +1,11 @@
 # @tailgrids/cli
 
+## 0.2.0-beta.0
+
+### Minor Changes
+
+- Beta release of @tailgrids/cli package
+
 ## 0.1.1-alpha
 
 ### Patch Changes
