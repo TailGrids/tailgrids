@@ -59,14 +59,21 @@ Ready-to-use templates that combine components and blocks into complete pages an
 
 ---
 
-## 🧠 Built for Developers
+## 🧠 Built for Developers and Designers
 
-TailGrids focuses on developer experience and maintainability.
-- Clean, readable React components  
-- Utility-first styling with Tailwind CSS  
-- Easy to customize and extend  
-- No heavy dependencies  
-- Works with Vite, Next.js, CRA, and other React setups  
+TailGrids is built for real production teams - developers and designers alike.
+It ships with a **detailed, enterprise-ready Figma design system that designers genuinely enjoy** working with.
+
+For developers, TailGrids focuses on long-term maintainability and a great DX:
+
+* Clean, readable React components
+* Utility-first styling with Tailwind CSS
+* Easy to customize and extend
+* No heavy dependencies
+* Works with Vite, Next.js, CRA, and other React setups
+
+Balanced for design and engineering, without compromises.
+
 
 ---
 
