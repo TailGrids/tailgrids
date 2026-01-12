@@ -1,4 +1,4 @@
 {
   "title": "Documentation",
-  "pages": ["get-started", "components"]
+  "pages": ["get-started", "components", "--", "license"]
 }

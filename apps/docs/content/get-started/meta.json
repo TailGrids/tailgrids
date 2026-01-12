@@ -1,5 +1,5 @@
 {
   "title": "Get Started",
   "defaultOpen": true,
-  "pages": ["quick-start", "framework-guides", "global-variables", "license"]
+  "pages": ["quick-start", "framework-guides", "global-variables"]
 }

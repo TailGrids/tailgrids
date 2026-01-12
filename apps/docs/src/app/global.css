@@ -114,6 +114,13 @@
   --color-dropdown-item-hover: #f3f4f6;
   --color-dropdown-separator: var(--color-gray-200);
 
+  --color-tg-border-1: var(--border-1);
+  --color-tg-border-2: var(--border-2);
+  --color-tg-title-color: var(--color-gray-800);
+  --color-tg-text-color: var(--color-gray-700);
+  --color-tg-text-color-secondary: var(--color-gray-500);
+  --color-tg-text-color-tertiary: var(--color-gray-400);
+
   /* Border colors for pattern */
   --border-1: var(--color-gray-200);
   --border-2: var(--color-gray-800);
@@ -176,6 +183,7 @@
 .text-fd-primary {
   color: #3758f9 !important; /* primary-500 */
   background-color: transparent !important;
+  font-weight: 500;
 }
 .dark .text-fd-primary {
   color: #5e84fc !important; /* primary-400 */
@@ -202,7 +210,11 @@
 .dark .text-fd-muted-foreground:hover {
   color: #5e84fc !important; /* primary-400 */
 }
-
+#nd-sidebar div button {
+  font-size: 16px;
+  color: #374151;
+  font-weight: 600;
+}
 .text-fd-primary::before {
   background-color: #3758f9 !important; /* primary-500 */
 }
@@ -258,10 +270,12 @@ body {
 
 #nd-sidebar-mobile {
   background: white;
+  z-index: 999;
 }
 
 .dark #nd-sidebar-mobile {
   background: rgb(3 7 18);
+  z-index: 999;
 }
 
 /* Hide search from sidebar - keep it only in header */
@@ -309,7 +323,7 @@ aside#nd-sidebar-mobile > div:first-child > button {
   display: inline-block;
   padding: 10px 20px;
   border-radius: 12px;
-  background: var(--Colors-Brand-500, #3758f9);
+  background: #1f2937;
   color: #fff;
   font-weight: 500;
   text-decoration: none;
@@ -320,7 +334,7 @@ aside#nd-sidebar-mobile > div:first-child > button {
     0 12px 6px 0 rgba(31, 31, 31, 0.04),
     0 4px 4px 0 rgba(31, 31, 31, 0.07),
     0 1.5px 3px 0 rgba(31, 31, 31, 0.08),
-    0 0 0 1px var(--Colors-Brand-600, #2237ee),
+    0 0 0 1px #1f2937,
     0 1px 3px 0 rgba(255, 255, 255, 0.3) inset;
 
   transition:
@@ -328,15 +342,15 @@ aside#nd-sidebar-mobile > div:first-child > button {
     box-shadow 0.15s ease;
 }
 
-.custom-link-btn:hover {
+/* .custom-link-btn:hover {
   transform: translateY(-2px);
   box-shadow:
     0 20px 12px 0 rgba(31, 31, 31, 0.03),
     0 12px 8px 0 rgba(31, 31, 31, 0.05),
     0 5px 5px 0 rgba(31, 31, 31, 0.09),
-    0 0 0 1px var(--Colors-Brand-600, #2237ee),
+    0 0 0 1px #1f2937,
     0 1px 3px 0 rgba(255, 255, 255, 0.3) inset;
-}
+} */
 
 .custom-link-btn:active {
   transform: translateY(0);

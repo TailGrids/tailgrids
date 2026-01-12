@@ -22,7 +22,7 @@ export default function FooterAbout() {
           alt="TailGrids Logo"
         />
       </div>
-      <div className="mb-6 max-w-[438px] text-start text-base leading-6 text-gray-500 md:mb-12">
+      <div className="mb-6 max-w-[438px] text-start text-base leading-6 text-gray-500 dark:text-gray-400 md:mb-12">
         Browse and effortlessly copy-paste from over 800+ components and
         templates to craft high-quality, custom Tailwind CSS websites without
         coding.

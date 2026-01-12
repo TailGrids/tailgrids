@@ -5,6 +5,7 @@ import GlobalHeader from "@/components/global-header";
 
 import { ContainerWithGrid } from "@/components/ContainerGrid";
 import Footer from "@/components/Footer";
+import MobileNav from "@/components/mobile-nav";
 
 export default function Layout({ children }: LayoutProps<"/">) {
   return (
@@ -17,7 +18,8 @@ export default function Layout({ children }: LayoutProps<"/">) {
           collapsible: false,
           // Enable responsive sidebar: drawer on mobile, persistent on desktop
           enabled: true,
-          banner: <ThemeToggleLink />
+          banner: <ThemeToggleLink />,
+          footer: <MobileNav />
         }}
       >
         <ContainerWithGrid>

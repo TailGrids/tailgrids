@@ -2,7 +2,7 @@ import { BorderLine } from "../ui/ContainerWithGrid";
 
 export default function FooterBottom() {
   return (
-    <div className="relative mb-5 bg-gray-100 px-5 py-4 md:mb-15 md:px-10">
+    <div className="relative mb-5 bg-gray-100 dark:bg-gray-900 px-5 py-4 md:mb-15 md:px-10">
       <BorderLine position="top" />
       <BorderLine position="bottom" />
       <div>

@@ -12,44 +12,44 @@ const productsData = [
   {
     name: "Lineicons",
     logo: lineicons,
-    link: "https://lineicons.com/",
+    link: "https://lineicons.com/"
   },
   {
     name: "TailAdmin",
     logo: tailadmin,
-    link: "https://tailadmin.com/",
+    link: "https://tailadmin.com/"
   },
   {
     name: "Next.js Template",
     logo: nextjstemplates,
-    link: "https://nextjstemplates.com/",
+    link: "https://nextjstemplates.com/"
   },
   {
     name: "FormBold",
     logo: formbold,
-    link: "https://formbold.com/",
+    link: "https://formbold.com/"
   },
   {
     name: "Graygrids",
     logo: graygrids,
-    link: "https://graygrids.com/",
+    link: "https://graygrids.com/"
   },
   {
     name: "Uideck",
     logo: uideck,
-    link: "https://uideck.com/",
-  },
+    link: "https://uideck.com/"
+  }
 ];
 
 export default function FooterProducts() {
   return (
     <div>
-      <div className="px-5 pb-6 leading-6 font-normal tracking-[-0.2px] text-gray-700 sm:px-10">
+      <div className="px-5 pb-6 leading-6 font-normal tracking-[-0.2px] text-gray-700 dark:text-gray-300 sm:px-10">
         Explore our others products
       </div>
 
       {/* Logo Wall Section */}
-      <div className="relative bg-white">
+      <div className="relative bg-white dark:bg-gray-950">
         <BorderLine position="top" />
 
         <div className="grid grid-cols-2 divide-x divide-tg-border-1 md:grid-cols-4 lg:grid-cols-6">

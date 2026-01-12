@@ -13,9 +13,7 @@ export default function ProductsDropdown(props: ProductsDropdownProps) {
     <div
       className={cn(
         "relative top-full grid gap-4 rounded-20 border-tg-border-1 bg-white transition-all duration-200 max-lg:py-3 md:grid-cols-2 lg:absolute lg:left-1/2 lg:w-[654px] lg:-translate-x-1/2 lg:border lg:p-2 lg:shadow-lg 2xl:left-0",
-        props.isOpen
-          ? "lg:visible lg:opacity-100"
-          : "lg:invisible lg:opacity-0",
+        props.isOpen ? "lg:visible lg:opacity-100" : "lg:invisible lg:opacity-0"
       )}
     >
       <div>
@@ -25,7 +23,7 @@ export default function ProductsDropdown(props: ProductsDropdownProps) {
             key={index}
             className="flex gap-3 rounded-[14px] p-4 duration-200 hover:bg-gray-100"
           >
-            <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-white shadow-navbar-icon">
+            <div className="flex size-11 shrink-0 items-center justify-center border rounded-xl bg-white shadow-navbar-icon">
               {item.icon}
             </div>
             <div>
@@ -52,7 +50,7 @@ export default function ProductsDropdown(props: ProductsDropdownProps) {
             A Complete Redesign with Fresh Components
           </h3>
         </div>
-        <div>
+        <div className=" bg-cover bg-no-repeat">
           <ul className="mt-4 space-y-2">
             <li className="flex gap-2">
               <CheckmarkIcon className="size-5 text-green-600" />
@@ -74,8 +72,6 @@ export default function ProductsDropdown(props: ProductsDropdownProps) {
             </li>
           </ul>
         </div>
-
-        <div className="absolute inset-0 bg-[url(/images/navbar/graphic.png)] bg-cover bg-no-repeat"></div>
       </div>
     </div>
   );

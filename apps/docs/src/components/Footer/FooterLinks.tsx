@@ -10,7 +10,7 @@ export default function FooterLinks() {
           Resources
         </h3>
         <div className="flex flex-col gap-4.5">
-          {resourceLinks.map((link) => (
+          {resourceLinks.map(link => (
             <FooterLinkItem key={link.title} link={link} />
           ))}
         </div>
@@ -22,8 +22,8 @@ export default function FooterLinks() {
           Useful Links
         </h3>
 
-        <div className="flex flex-col items-start gap-3 text-base leading-6 font-normal tracking-[-0.2px] text-gray-700 md:gap-4.5">
-          {usefulLinks.map((link) => (
+        <div className="flex flex-col items-start gap-3 text-base leading-6 font-normal tracking-[-0.2px] text-gray-700 dark:text-gray-300 md:gap-4.5">
+          {usefulLinks.map(link => (
             <FooterLinkItem key={link.title} link={link} />
           ))}
         </div>
@@ -34,8 +34,8 @@ export default function FooterLinks() {
         <h3 className="text-start font-mono text-base leading-6 font-normal tracking-[-0.2px] text-gray-500">
           Help and Support
         </h3>
-        <div className="flex flex-col items-start gap-3 text-base leading-6 font-normal tracking-[-0.2px] text-gray-700 md:gap-4.5">
-          {helpAndSupportLinks.map((link) => (
+        <div className="flex flex-col items-start gap-3 text-base leading-6 font-normal tracking-[-0.2px] text-gray-700 dark:text-gray-300 md:gap-4.5">
+          {helpAndSupportLinks.map(link => (
             <FooterLinkItem key={link.title} link={link} />
           ))}
         </div>
