@@ -1,6 +1,6 @@
 ---
-title: Toggle
-description: "A form control that allows a user to switch between two mutually exclusive states: on or off."
+title: React Toggle Switch Component
+description: A React toggle switch component for enabling or disabling features. An accessible on/off control built on a checkbox, commonly used in settings and preferences.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import TogglePreview from "@/components/preview/toggle-preview";
 
 # Toggle
 
-A form control, often known as a **Switch**, that allows a user to **switch between two mutually exclusive states**: typically "on" and "off."
+The Toggle component, commonly referred to as a **switch**, allows users to turn a setting **on or off**. It represents a binary choice and is typically used for preferences, feature flags, and configuration options.
+
+This component is built on a native checkbox input and styled using Tailwind CSS. It supports labels, multiple sizes, controlled and uncontrolled usage, and full keyboard and screen reader accessibility.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/toggle-preview.tsx")}
@@ -21,7 +23,7 @@ A form control, often known as a **Switch**, that allows a user to **switch betw
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
 
 ```npm
 npx @tailgrids/cli add toggle
@@ -30,7 +32,7 @@ npx @tailgrids/cli add toggle
 </Accordion>
 
 <Accordion title="Manual">
-Copy and paste the following code into your project.
+Copy and paste the component code into your project.
 
 <CodeBlockCard
 snippet={getFileContent("/src/registry/core/toggle.tsx")}
@@ -60,7 +62,7 @@ The default size for the toggle switch is `sm`.
 
 ### Medium Size
 
-Use the `md` size for a larger switch, often used in prominent settings or for better touch target accessibility.
+Use the `md` size for better visibility and improved touch targets.
 
 ```tsx
 <Toggle label="Medium Switch" size="md" />
@@ -68,7 +70,7 @@ Use the `md` size for a larger switch, often used in prominent settings or for b
 
 ### Without Label
 
-The label is optional. The component will still be accessible if wrapped in an appropriate fieldset or when an `aria-label` is provided.
+The label is optional. When omitted, provide an accessible name using `aria-label`.
 
 ```tsx
 <Toggle aria-label="Dark Mode Toggle" defaultChecked />
@@ -76,7 +78,7 @@ The label is optional. The component will still be accessible if wrapped in an a
 
 ### Controlled State
 
-You can control the state of the toggle using the `checked` prop in combination with `onChange`.
+Use the `checked` and `onChange` props to fully control the toggle state.
 
 ```tsx
 const [isDark, setIsDark] = React.useState(false);
@@ -110,13 +112,16 @@ Extends `input` element props (excluding `size`).
 
 ## Accessibility
 
-- **Semantic Structure**: Built on a standard HTML `<input type="checkbox">` which provides native keyboard and accessibility support.
-- **Keyboard Interaction**: Users can toggle the switch using the **Space** key when the component is focused.
-- **Label Association**: The visible label is correctly associated with the hidden checkbox input via the `htmlFor` and `id` attributes, ensuring screen readers announce the label correctly.
-- **Screen Readers**: The actual checkbox element is visually hidden (`sr-only`), but is programmatically available for screen readers, ensuring a correct announcement of the control's state.
+- Built on a standard HTML `<input type="checkbox">` which provides native keyboard and accessibility support.
+- Toggle the switch using the **Space** key when the component is focused.
+- Visible label is properly associated via `htmlFor` and `id`
+- Input is visually hidden using `sr-only` but remains available to screen readers
+- Works correctly with assistive technologies and form semantics
 
 ## Notes
 
-- The component uses **CSS-only visual state management** through the `peer-checked` utility class on the wrapper `div`s, reacting to the state of the sibling hidden checkbox input.
+- Visual state is handled using CSS `peer` and `peer-checked` utilities
 - The primary color is applied to the background of the track when the switch is **checked** (`peer-checked:bg-primary-500`).
+- The thumb position animates based on the checked state
 - The `size` prop adjusts the dimensions of the track and the thumb for both 'sm' and 'md' sizes.
+- Designed for use inside forms, settings pages, and preference panels

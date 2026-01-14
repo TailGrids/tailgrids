@@ -1,6 +1,6 @@
 ---
-title: Dropdown
-description: Display a menu of actions or options triggered by a button with full keyboard navigation support.
+title: React Dropdown Component
+description: A React dropdown component that displays a menu of items when a button is clicked. Used to show actions, links, or options in a compact menu.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import DropdownPreview from "@/components/preview/dropdown-preview";
 
 # Dropdown
 
-Display a menu of actions or options triggered by a button with full keyboard navigation support.
+React Dropdown components are used to display a list of actions or options in a compact menu. They are commonly used for contextual actions, overflow menus, and option selectors.
+
+This Dropdown component is built with React and styled using Tailwind CSS. It uses React Aria for accessible keyboard and focus handling.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/dropdown-preview.tsx")}
@@ -21,7 +23,8 @@ Display a menu of actions or options triggered by a button with full keyboard na
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
+
 ```npm
 npx @tailgrids/cli add dropdown
 ```
@@ -29,12 +32,12 @@ npx @tailgrids/cli add dropdown
 </Accordion>
 
 <Accordion title="Manual">
-Install the following dependencies:
+Install the required dependency:
 ```npm
 npm i react-aria-components
 ```
 
-Copy and paste the following code into your project.
+Copy and paste the following component code into your project.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/dropdown.tsx")}
@@ -45,7 +48,7 @@ Copy and paste the following code into your project.
 
 ## Anatomy
 
-Import the components and piece them together.
+Import the component parts and combine them.
 
 ```tsx
 import {
@@ -69,6 +72,7 @@ export default () => (
 ```
 
 ## Usage
+Import the dropdown components and wrap a trigger with menu items.
 
 ```tsx
 import {
@@ -102,6 +106,7 @@ export default () => (
 ## Examples
 
 ### With Separator
+Use separators to group related actions.
 
 ```tsx
 <DropdownMenu>
@@ -119,7 +124,7 @@ export default () => (
 
 ### With Icons
 
-Icon size and color are adjusted
+Add icons to menu items for better visual context.
 
 ```tsx
 import { Pencil, Copy, Trash } from "@tailgrids/icons";
@@ -147,6 +152,7 @@ import { Pencil, Copy, Trash } from "@tailgrids/icons";
 ```
 
 ### Custom Trigger
+Use a custom element as the dropdown trigger.
 
 ```tsx
 <DropdownMenu>
@@ -208,14 +214,13 @@ A horizontal divider between menu items. Extends `hr` element props.
 - Built on React Aria Components for robust accessibility
 - Full keyboard navigation (Arrow keys, Enter, Escape)
 - Automatic focus management
-- ARIA attributes for screen readers
-- Click outside to close
-- Escape key to dismiss
+- Screen reader-friendly ARIA attributes
+- Click outside and Escape key close the menu
+- Focus returns to the trigger when the menu closes
 
 ## Notes
 
 - Uses React Aria Components for accessibility and interaction patterns
 - Menu automatically positions itself to stay within viewport
-- Focus returns to trigger when menu closes
 - Menu items support hover and focus states
 - Separators provide visual grouping of related actions

@@ -1,6 +1,6 @@
 ---
-title: Checkbox
-description: Allow users to select one or multiple options from a set with accessible checkbox inputs.
+title: React Checkbox Component
+description: A React checkbox component that lets users select one or more options from a set. Used to toggle choices on or off with accessible input and keyboard support.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -10,7 +10,9 @@ import { Checkbox } from "@/registry/core/checkbox";
 
 # Checkbox
 
-Allow users to select one or multiple options from a set with accessible checkbox inputs.
+React Checkbox components are used to let users select one or more options from a list. They are commonly used in forms, settings panels, and preference selections.
+
+This Checkbox component is built with React and styled using Tailwind CSS, providing consistent visuals while keeping native checkbox behavior.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/checkbox-preview.tsx")}
@@ -22,7 +24,7 @@ Allow users to select one or multiple options from a set with accessible checkbo
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
 ```npm
 npx @tailgrids/cli add checkbox
 ```
@@ -30,12 +32,12 @@ npx @tailgrids/cli add checkbox
 </Accordion>
 
 <Accordion title="Manual">
-Install the following dependencies:
+Install the required dependencies:
 ```npm
 npm i class-variance-authority
 ```
 
-Copy and paste the following code into your project.
+Copy and paste the following component code into your project.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/checkbox.tsx")}
@@ -48,6 +50,7 @@ You'll also need the check icon SVG referenced in the component.
 </Accordions>
 
 ## Usage
+Import the component and pass the required props.
 
 ```tsx
 import { Checkbox } from "@/registry/core/checkbox";
@@ -58,6 +61,7 @@ export default () => <Checkbox label="Accept terms and conditions" />;
 ## Examples
 
 ### With Label
+Use the label prop to display text next to the checkbox.
 
 <ComponentPreview
   codeSnippet={`
@@ -68,6 +72,7 @@ export default () => <Checkbox label="Accept terms and conditions" />;
 </ComponentPreview>
 
 ### Controlled
+Control the checked state using React state.
 
 ```tsx
 import { useState } from "react";
@@ -106,8 +111,8 @@ Extends `input` element props.
 - Uses native `<input type="checkbox">` with screen reader support
 - Automatically generates unique IDs if not provided
 - Label is properly associated with input via `htmlFor`
-- Keyboard accessible with standard checkbox behavior
-- Focus ring provides clear visual feedback
+- Fully keyboard accessible with standard checkbox behavior
+- Visible focus ring provides clear keyboard feedback
 - Disabled state is communicated via `aria-disabled` on the label
 - Hover states are disabled when checkbox is disabled
 

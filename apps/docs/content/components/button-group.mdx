@@ -1,6 +1,6 @@
 ---
-title: Button Group
-description: Group related buttons together in a cohesive, connected layout.
+title: React Button Group Component
+description: A React button group component for grouping related buttons together. Used to display connected actions in a horizontal or vertical layout with consistent styling.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import ButtonGroupPreview from "@/components/preview/button-group-preview";
 
 # Button Group
 
-Group related buttons together in a cohesive, connected layout.
+React Button Group components are used to group related actions together. They help present multiple buttons as a single unit, making it easier for users to understand available options.
+
+This Button Group component is built with React and styled using Tailwind CSS, providing consistent spacing, alignment, and visual grouping.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -23,7 +25,8 @@ Group related buttons together in a cohesive, connected layout.
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
+
 ```npm
 npx @tailgrids/cli add button-group
 ```
@@ -31,12 +34,12 @@ npx @tailgrids/cli add button-group
 </Accordion>
 
 <Accordion title="Manual">
-Install the following dependencies:
+Install the required dependencies:
 ```npm
 npm i class-variance-authority
 ```
 
-Copy and paste the following code into your project.
+Copy and paste the following component code into your project.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/button-group.tsx")}
@@ -46,6 +49,7 @@ Copy and paste the following code into your project.
 </Accordions>
 
 ## Usage
+Import the component and wrap related buttons inside it.
 
 ```tsx
 import { ButtonGroup } from "@/registry/core/button-group";
@@ -62,6 +66,7 @@ export default () => (
 ## Examples
 
 ### Variants
+Use variants to change the visual style of the button group.
 
 ```tsx
 <ButtonGroup variant="primary">
@@ -78,6 +83,7 @@ export default () => (
 ```
 
 ### Sizes
+Adjust the size to match surrounding UI elements.
 
 ```tsx
 <ButtonGroup size="sm">
@@ -112,7 +118,7 @@ Extends `div` element props.
 ## Notes
 
 - Use standard `<button>` elements as children for proper styling
-- The first and last buttons automatically receive rounded corners
-- Buttons are separated with dividers that match the variant color
-- Hover states are automatically applied to all buttons
-- All buttons share consistent padding and sizing based on the size prop
+- First and last buttons automatically receive rounded corners
+- Buttons are visually connected with dividers that match the variant
+- Hover states are applied consistently across all buttons
+- All buttons share consistent padding and sizing based on the `size` prop

@@ -1,6 +1,6 @@
 ---
-title: Skeleton
-description: Placeholder loading state to indicate content is being fetched or processed.
+title: React Skeleton Component
+description: A React skeleton component used as a loading placeholder while content is being fetched. Displays skeleton screens as an alternative to spinners.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import SkeletonPreview from "@/components/preview/skeleton-preview";
 
 # Skeleton
 
-Placeholder loading state to indicate content is being fetched or processed.
+React Skeleton components are used to show placeholder layouts while content is loading. They help users understand the structure of the page before data is available and reduce perceived loading time.
+
+This Skeleton component is built with React and styled using Tailwind CSS. It provides flexible shapes and sizes that can be combined to match real UI layouts such as text, cards, avatars, buttons, and tables.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/skeleton-preview.tsx")}
@@ -21,7 +23,7 @@ Placeholder loading state to indicate content is being fetched or processed.
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
 ```npm
 npx @tailgrids/cli add skeleton
 ```
@@ -29,7 +31,7 @@ npx @tailgrids/cli add skeleton
 </Accordion>
 
 <Accordion title="Manual">
-Copy and paste the following code into your project.
+Copy and paste the following component code into your project.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/skeleton.tsx")}
@@ -90,6 +92,7 @@ module.exports = {
 </Accordions>
 
 ## Usage
+Import the component and define the shape using utility classes.
 
 ```tsx
 import { Skeleton } from "@/registry/core/skeleton";

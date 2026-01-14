@@ -1,6 +1,6 @@
 ---
-title: Popover
-description: A floating panel that opens on click, supports headings, descriptions, focus management, and arrow positioning.
+title: React Popover Component
+description: A React popover component that displays a floating panel anchored to an element. Opens on click to show additional content with accessible focus handling.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import PopoverPreview from "@/components/preview/popover-preview";
 
 # Popover
 
-A floating panel that opens on click. Includes support for headings, descriptions, keyboard focus, arrow positioning, and controlled or uncontrolled behavior.
+React Popover components display floating content anchored to a trigger element. They are commonly used for contextual information, settings panels, and inline actions that don’t require full navigation.
+
+This Popover component is built with React and styled using Tailwind CSS. It uses Floating UI for positioning and provides accessible focus and keyboard handling.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/popover-preview.tsx")}
@@ -21,7 +23,7 @@ A floating panel that opens on click. Includes support for headings, description
 
 <Accordions>
 <Accordion title="CLI">
-Install via Tailgrids CLI.
+Install the component using the TailGrids CLI.
 
 ```bash
 npx @tailgrids/cli add popover
@@ -31,13 +33,13 @@ npx @tailgrids/cli add popover
 
 <Accordion title="Manual">
 
-Install required dependency:
+Install the required dependency:
 
 ```bash
 npm i @floating-ui/react
 ```
 
-Then copy the component into your project:
+Copy and paste the following component code into your project.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/popover.tsx")}
@@ -48,6 +50,7 @@ Then copy the component into your project:
 </Accordions>
 
 ## Usage
+Import the popover components and wrap a trigger with content.
 
 ```tsx
 import {
@@ -82,6 +85,7 @@ export default function Example() {
 ## Examples
 
 ### Default
+Basic popover with heading and description.
 
 ```tsx
 <Popover>
@@ -94,6 +98,7 @@ export default function Example() {
 ```
 
 ### With Close Button
+Include a close action inside the popover content.
 
 ```tsx
 <Popover>
@@ -108,6 +113,7 @@ export default function Example() {
 ```
 
 ### Controlled Open State
+Control the open state using React state.
 
 ```tsx
 const [open, setOpen] = useState(false);
@@ -121,6 +127,7 @@ const [open, setOpen] = useState(false);
 ```
 
 ### Custom Placement
+Change the popover position relative to the trigger.
 
 ```tsx
 <Popover placement="right-start">
@@ -162,7 +169,7 @@ Floating panel element that contains the popover UI.
 | Prop    | Type                        | Description                                             |
 | ------- | --------------------------- | ------------------------------------------------------- |
 | `style` | `React.CSSProperties`       | Inline style merged with floating-ui positioning styles |
-| `ref`   | `React.Ref<HTMLDivElement>` | Used by Floating UI to position content                 |
+| `ref`   | `React.Ref<HTMLDivElement>` | Used internally for positioning                 |
 
 ---
 
@@ -183,14 +190,12 @@ A convenience button that closes the popover when clicked.
 
 ## Accessibility
 
-- Fully accessible using:
-  - `FloatingFocusManager` for focus handling
-  - `aria-labelledby` and `aria-describedby`
-  - Arrow key and tab navigation
-
+- Uses `aria-labelledby` and `aria-describedby`
+- Keyboard accessible with Tab, Arrow, Shift+Tab, and Escape
+- Focus is managed automatically when the popover opens and closes
 - Triggers expose `data-state="open" | "closed"`
-- Works with screen readers and assistive tech
-- Supports modal focus-trapping
+- Works with screen readers and assistive technologies
+- Supports modal focus trapping when enabled
 
 ---
 

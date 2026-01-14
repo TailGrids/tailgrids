@@ -1,6 +1,6 @@
 ---
-title: Toast
-description: Display lightweight notifications with icon, message, actions, and dismiss controls.
+title: React Toast Component
+description: A React toast notification component for showing lightweight popup messages. Used to display success, error, or info feedback without interrupting users.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import ToastPreview from "@/components/preview/toast-preview";
 
 # Toast
 
-Lightweight notification component for alerts, confirmations, and messages. Includes variants, actions, undo behavior, and a dismiss button.
+React Toast components are used to show short, non-blocking messages that inform users about system events or actions. They are commonly used for success confirmations, error messages, warnings, and real-time updates.
+
+This Toast component supports multiple variants, optional titles, action buttons, undo behavior, and message-style notifications with avatars. It is designed for quick feedback.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/toast-preview.tsx")}
@@ -21,7 +23,7 @@ Lightweight notification component for alerts, confirmations, and messages. Incl
 
 <Accordions>
 <Accordion title="CLI">
-Install using the CLI:
+Install the component using the TailGrids CLI.
 ```npm
 npx @tailgrids/cli add toast
 ```
@@ -29,13 +31,13 @@ npx @tailgrids/cli add toast
 </Accordion>
 
 <Accordion title="Manual">
-Install required dependencies:
+Install the required dependency:
 
 ```npm
 npm i class-variance-authority
 ```
 
-Copy the component into your project:
+Copy the component code into your project.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/toast.tsx")}
@@ -69,6 +71,7 @@ export default function Demo() {
 ```
 
 ### Toast With Title & Actions
+Use this layout when the message requires clear structure and user actions.
 
 ```tsx
 <Toast
@@ -90,7 +93,7 @@ export default function Demo() {
 
 ### Toast With Undo
 
-Used when no title is present.
+Use this pattern for quick, reversible actions. Works only when no title is present.
 
 ```tsx
 <Toast
@@ -101,6 +104,7 @@ Used when no title is present.
 ```
 
 ### Avatar Toast (Message-style)
+Used for chat messages or social notifications.
 
 ```tsx
 import { AvatarToast } from "@/registry/core/toast";
@@ -151,11 +155,11 @@ import { AvatarToast } from "@/registry/core/toast";
 - Dismiss buttons include visually hidden labels for screen readers.
 - Buttons follow standard focus handling and keyboard navigation.
 - Variant icons use meaningful symbols for visual association.
-- Layout works for both compact and content-heavy notifications.
+- Layout works for both compact and content-rich messages
 
 ## Notes
 
 - If a `title` is present, the layout switches to a vertical content stack.
 - For simple toasts (no title), `Undo` appears inline on the right.
 - Icon colors are determined by `variant`.
-- Supports combining with a Toaster system (positioned stack) if needed.
+- Designed to work inside a toast stack or toaster system

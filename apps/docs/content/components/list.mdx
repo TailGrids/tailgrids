@@ -1,6 +1,6 @@
 ---
-title: List
-description: Display a collection of items in a vertical or horizontal layout with optional dividers and active states.
+title: React List Component
+description: A React list component for displaying a collection of items. Used to render vertical or horizontal lists with optional dividers and active states.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import ListPreview from "@/components/preview/list-preview";
 
 # List
 
-Display a collection of items in a vertical or horizontal layout with optional dividers and active states.
+React List components are used to display a collection of related items. They are commonly used for navigation menus, settings panels, item groups, and structured content lists.
+
+This List component is built with React and styled using Tailwind CSS. It supports vertical and horizontal layouts, dividers, and active item states.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/list-preview.tsx")}
@@ -21,7 +23,7 @@ Display a collection of items in a vertical or horizontal layout with optional d
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
 ```npm
 npx @tailgrids/cli add list
 ```
@@ -29,12 +31,12 @@ npx @tailgrids/cli add list
 </Accordion>
 
 <Accordion title="Manual">
-Install the following dependencies:
+Install the required dependencies:
 ```npm
 npm i class-variance-authority
 ```
 
-Copy and paste the following code into your project.
+Copy and paste the following component code into your project.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/list.tsx")}
@@ -44,6 +46,7 @@ Copy and paste the following code into your project.
 </Accordions>
 
 ## Usage
+Import the component and render list items as children.
 
 ```tsx
 import { List } from "@/registry/core/list";
@@ -60,6 +63,7 @@ export default () => (
 ## Examples
 
 ### Vertical List
+Use the vertical layout for stacked navigation or menus.
 
 ```tsx
 <List direction="vertical">
@@ -71,6 +75,7 @@ export default () => (
 ```
 
 ### Horizontal List
+Use the horizontal layout for inline navigation or filters.
 
 ```tsx
 <List direction="horizontal">
@@ -81,6 +86,7 @@ export default () => (
 ```
 
 ### Without Dividers
+Disable dividers when visual separation is not needed.
 
 ```tsx
 <List hideDividers>
@@ -91,6 +97,7 @@ export default () => (
 ```
 
 ### With Active State
+Mark an item as active to indicate the current selection.
 
 ```tsx
 <List>

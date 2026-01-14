@@ -1,6 +1,6 @@
 ---
-title: DatePicker
-description: A component for selecting a single date or a range of dates from a calendar interface.
+title: React DatePicker Component
+description: A React date picker component that lets users select a date or date range from a calendar. Used for forms, filters, and scheduling with keyboard-friendly interaction.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -10,7 +10,9 @@ import RangeDatePreview from "@/components/preview/date-picker/range-date-previe
 
 # DatePicker
 
-The DatePicker component provides an accessible and flexible way for users to select either a **single date** or a **range of dates** using a compact calendar interface.
+React DatePicker component provides an accessible and flexible way for users to select either a **single date** or a **range of dates** using a compact calendar interface. They are commonly used in forms, filters, booking flows, and scheduling features.
+
+This DatePicker component is built with React and styled using Tailwind CSS. It supports date selection with keyboard-friendly interaction.
 
 ## Installation
 
@@ -49,9 +51,9 @@ fileName="date-picker/range-date.tsx"
 
 ---
 
-## 🗓 Single Date Picker
+## Single Date Picker
 
-Used for selecting a single, specific date.
+Use this picker to select a single, specific date.
 
 ### Preview
 
@@ -90,14 +92,14 @@ Extends `HTMLDivElement` props (via `className`).
 | :------------ | :--------------------- | :-------------- | :----------------------------------------------------- |
 | `value`       | `Date \| null`         | `null`          | The currently selected date (controlled state).        |
 | `onChange`    | `(date: Date) => void` | -               | Callback function when a date is selected and applied. |
-| `placeholder` | `string`               | `'Select date'` | Text displayed in the input when no date is selected.  |
+| `placeholder` | `string`               | `'Select date'` | Placeholder text when no date is selected. |
 | `className`   | `string`               | -               | Custom class for the main wrapper `div`.               |
 
 ---
 
-## 📆 Range Date Picker
+## Range Date Picker
 
-Used for selecting a contiguous period defined by a start date and an end date.
+Use this picker to select a start and end date as a range.
 
 ### Preview
 
@@ -134,9 +136,10 @@ export default () => (
 
 ## Accessibility
 
-- **Keyboard Navigation**: The trigger buttons are focusable, allowing the calendar to be opened and closed with the keyboard. Month navigation buttons are accessible.
-- **Focus Management**: The calendar panel uses an external click handler to close, improving usability.
-- **Semantic Structure**: Uses standard `<button>` elements for all interactive controls (trigger, month navigators, and days).
+- Trigger buttons and calendar controls are keyboard accessible
+- Month navigation buttons support keyboard interaction
+- Uses standard `<button>` elements for all interactive controls
+- Focus is managed to allow closing the calendar without mouse input
 
 ## Notes
 

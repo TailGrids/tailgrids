@@ -1,6 +1,6 @@
 ---
-title: OTP Input
-description: A multi-field input for entering one-time passwords (OTP) with support for auto-focus, paste handling, labels, and hints.
+title: React OTP Input Component
+description: A React OTP input component for entering one-time passwords or verification codes. Uses multiple input fields with auto focus, paste handling, and accessible behavior.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import OtpInputPreview from "@/components/preview/otp-input-preview";
 
 # OTP Input
 
-A multi-field input for entering one-time passwords (OTP) with support for auto-focus, paste handling, labels, and hints.
+React OTP Input components are used to collect one-time passwords (OTP) or verification codes. They are commonly used in authentication flows such as login verification, password reset, and two-factor authentication.
+
+This OTP Input component is built with React and styled using Tailwind CSS. It splits the code into multiple-input fields and handles focus, paste, labels, and hints with keyboard interaction.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/otp-input-preview.tsx")}
@@ -21,7 +23,7 @@ A multi-field input for entering one-time passwords (OTP) with support for auto-
 
 <Accordions>
 <Accordion title="CLI">
-Install the component via Tailgrids CLI.
+Install the component using the TailGrids CLI.
 
 ```npm
 npx @tailgrids/cli add otp-input
@@ -30,13 +32,13 @@ npx @tailgrids/cli add otp-input
 </Accordion>
 
 <Accordion title="Manual">
-Install dependencies:
+Install the required dependencies:
 
 ```npm
 npm i class-variance-authority
 ```
 
-Copy the component into your project.
+Copy and paste the following component code into your project.
 
 <CodeBlockCard
 snippet={getFileContent("/src/registry/core/otp-input.tsx")}
@@ -46,6 +48,7 @@ lang="tsx"
 </Accordions>
 
 ## Usage
+Import the component and control the OTP value using state.
 
 ```tsx
 import { OtpInput } from "@/registry/core/otp-input";
@@ -85,7 +88,7 @@ Extends `input` element props (except `value`).
 
 - Each box only accepts a **single numeric digit**
 - Auto-focus moves to the next box as you type
-- Backspace moves backward when empty
+- Backspace moves focus to the previous input when empty
 - Handles paste of full OTP (e.g., pasting `"123456"`)
 - Automatically pads if `value` prop is shorter
 

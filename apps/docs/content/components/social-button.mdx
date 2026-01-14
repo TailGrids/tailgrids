@@ -1,6 +1,6 @@
 ---
-title: Social Button
-description: Pre-styled buttons for social authentication and sharing with consistent width and icon styling.
+title: React Social Login Buttons
+description: Pre-styled React social login buttons for authentication and sharing flows. Visual buttons only, commonly used for “Continue with Google” or GitHub actions.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import SocialButtonPreview from "@/components/preview/social-button-preview";
 
 # Social Button
 
-Pre-styled buttons for social authentication and sharing with consistent width and icon styling.
+React Social Button components are used to display branded action buttons for social authentication or sharing. They are commonly seen in sign-in flows such as “Continue with Google”, “Sign in with GitHub”, or similar third-party actions.
+
+This component focuses only on **visual presentation**. It does not handle authentication logic. It is built with React and styled using Tailwind CSS to ensure consistent sizing, alignment, and icon spacing across different providers.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -23,7 +25,7 @@ Pre-styled buttons for social authentication and sharing with consistent width a
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
 ```npm
 npx @tailgrids/cli add social-button
 ```
@@ -31,12 +33,12 @@ npx @tailgrids/cli add social-button
 </Accordion>
 
 <Accordion title="Manual">
-Install the following dependencies:
+Install the required dependencies:
 ```npm
 npm i class-variance-authority
 ```
 
-Copy and paste the following code into your project. Make sure you have the Button component installed as well.
+Copy and paste the following component code into your project. Make sure you have the `Button` component installed as well.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/social-button.tsx")}
@@ -53,6 +55,7 @@ Copy and paste the following code into your project. Make sure you have the Butt
 </Accordions>
 
 ## Usage
+Import the component and provide an icon and label.
 
 ```tsx
 import { SocialButton } from "@/registry/core/social-button";
@@ -84,7 +87,7 @@ Extends `button` element props and inherits all Button component props.
 - Includes focus ring styling for keyboard navigation
 - Disabled state reduces icon opacity and prevents interaction
 - Icons inherit text color for consistent styling
-- All standard button HTML attributes are supported
+- Supports all standard button HTML attributes
 
 ## Notes
 

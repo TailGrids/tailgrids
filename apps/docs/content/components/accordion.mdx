@@ -1,6 +1,6 @@
 ---
-title: Accordion
-description: A vertically stacked set of interactive headings that reveal associated content panels.
+title: React Accordion Components
+description: A React accordion component that lets users expand and collapse content sections. Built for accessibility, keyboard use, and flexible visual styles.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import { AccordionPreview } from "@/components/preview/accordion-preview";
 
 # Accordion
 
-A vertically stacked set of interactive headings that reveal associated content panels.
+React Accordion components let users show and hide sections of related content on a page. They are often used for FAQs, menus and submenus, settings panels, and other layouts where content needs to stay organized.
+
+This Accordion component is styled using Tailwind CSS, giving developers control over structure, layout, and styling.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/accordion-preview.tsx")}
@@ -21,7 +23,7 @@ A vertically stacked set of interactive headings that reveal associated content 
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
 
 ```npm
 npx @tailgrids/cli add accordion
@@ -30,13 +32,13 @@ npx @tailgrids/cli add accordion
 </Accordion>
 
 <Accordion title="Manual">
-Install the following dependencies:
+Install the required dependencies:
 
 ```npm
 npm i class-variance-authority @tailgrids/icons
 ```
 
-Copy and paste the following code into your project.
+Copy and paste the following component code into your project.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/accordion.tsx")}
@@ -47,7 +49,7 @@ Copy and paste the following code into your project.
 
 ## Anatomy
 
-Import the components and piece them together.
+Import the component parts and combine them.
 
 ```tsx
 import {
@@ -71,7 +73,7 @@ export default () => (
 
 ### AccordionRoot
 
-The root container for the accordion.
+Wraps all accordion items and controls the overall layout and style.
 
 | Prop        | Type                                                                          | Default       | Description                            |
 | ----------- | ----------------------------------------------------------------------------- | ------------- | -------------------------------------- |
@@ -81,7 +83,7 @@ The root container for the accordion.
 
 ### AccordionItem
 
-An individual accordion item containing a trigger and content.
+A single accordion item that groups a trigger and its content.
 
 | Prop        | Type              | Description                    |
 | ----------- | ----------------- | ------------------------------ |
@@ -90,7 +92,7 @@ An individual accordion item containing a trigger and content.
 
 ### AccordionTrigger
 
-The button that toggles the accordion content.
+Toggles the visibility of the accordion content.
 
 | Prop        | Type              | Description                      |
 | ----------- | ----------------- | -------------------------------- |
@@ -99,7 +101,7 @@ The button that toggles the accordion content.
 
 ### AccordionContent
 
-The collapsible content area.
+Holds the collapsible content for an accordion item.
 
 | Prop        | Type              | Description                      |
 | ----------- | ----------------- | -------------------------------- |
@@ -111,9 +113,9 @@ The collapsible content area.
 The component comes with five pre-styled variants:
 
 - **style_one**: Bordered items with rounded corners
-- **style_two**: Bottom-bordered items
+- **style_two**: Items with a bottom border
 - **style_three**: Neutral background with rounded corners
-- **style_four**: Light background with chevron icon
+- **style_four**: Light background with a chevron icon
 - **style_five**: Light background with compact spacing
 
 ```tsx
@@ -122,7 +124,7 @@ The component comes with five pre-styled variants:
 
 ## Accessibility
 
-- Uses semantic HTML with proper heading hierarchy (`h3` elements)
-- Implements ARIA attributes (`aria-controls`, `aria-expanded`, `aria-labelledby`)
-- Keyboard accessible with proper focus management
-- Content is properly associated with triggers via `role="region"`
+- Uses semantic HTML with a clear heading structure (`h3` elements)
+- Applies ARIA attributes (`aria-controls`, `aria-expanded`, `aria-labelledby`)
+- Supports keyboard interaction with focus handling
+- Associates each trigger with its content using `role="region"`

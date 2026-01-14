@@ -1,6 +1,6 @@
 ---
-title: TextArea
-description: A multiline text input with label, validation states, and hint support.
+title: React TextArea Component
+description: A React TextArea component for multi-line text input. Uses the native <textarea> element with support for labels, validation states, controlled values, and accessible form handling.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # TextArea
 
-A multiline text field with support for labels, validation states, hint messages, and custom styling.
+React TextArea components are used to collect longer, multi-line text input from users. They are commonly used for messages, descriptions, feedback forms, comments, and notes where a single-line input is not sufficient.
+
+This TextArea component is built with React and styled using Tailwind CSS. It supports labels, hint text, validation states, and works in both controlled and uncontrolled form setups.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/text-area-preview.tsx")}
@@ -21,8 +23,7 @@ A multiline text field with support for labels, validation states, hint messages
 
 <Accordions>
 <Accordion title="CLI">
-Install from the command line:
-
+Install the component using the TailGrids CLI.
 ```bash
 npx @tailgrids/cli add text-area
 ```
@@ -30,13 +31,13 @@ npx @tailgrids/cli add text-area
 </Accordion>
 
 <Accordion title="Manual">
-Install required dependency:
+Install the required dependency:
 
 ```bash
 npm i class-variance-authority
 ```
 
-Copy the component into your project:
+Copy and paste the following component code into your project.
 
 <CodeBlockCard
 snippet={getFileContent("/src/registry/core/text-area.tsx")}
@@ -47,6 +48,7 @@ fileName="text-area.tsx"
 </Accordions>
 
 ## Usage
+Import the component and pass the required props.
 
 ```tsx
 import { TextArea } from "@/registry/core/text-area";
@@ -119,62 +121,13 @@ Extends `textarea` element props.
 
 - Label is automatically associated using a generated `id` and `htmlFor`.
 - Uses semantic `<textarea>` element.
-- Disabled state is visually and programmatically communicated.
-- Validation states use visible colors but allow assistive tech detection through messaging.
+- Fully keyboard accessible
+- Disabled state is communicated visually and programmatically
+- Validation feedback is available through visible messaging
 
 ## Notes
 
 - States are powered by `class-variance-authority` for easy extension.
-- Hint text automatically adjusts color based on validation state.
-- Component is fully controlled using native textarea props.
-
-````
-
----
-
-# ✅ **Preview Component (`textarea-preview.tsx`)**
-
-```tsx
-import { TextArea } from "@/registry/core/textarea";
-
-export default function TextAreaPreview() {
-  return (
-    <div className="flex flex-col gap-6 w-full max-w-md">
-      <TextArea
-        label="Message"
-        placeholder="Write something..."
-      />
-
-      <TextArea
-        label="Bio"
-        hint="Tell us a little about yourself."
-        placeholder="Your bio..."
-      />
-
-      <TextArea
-        label="Feedback"
-        state="error"
-        hint="Feedback cannot be empty."
-        placeholder="Enter feedback..."
-      />
-
-      <TextArea
-        label="Description"
-        state="success"
-        hint="Looks good!"
-        placeholder="Enter a short description..."
-      />
-
-      <TextArea
-        label="Notes"
-        disabled
-        placeholder="Disabled textarea..."
-      />
-    </div>
-  );
-}
-````
-
----
-
-If you want, I can also generate a **registry entry**, **CLI template**, or fully match the **Radix-style props tables**.
+- Hint text color updates based on the current state
+- Fully compatible with controlled and uncontrolled form usage
+- Supports all standard textarea HTML attributes

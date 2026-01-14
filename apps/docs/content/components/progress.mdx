@@ -1,6 +1,6 @@
 ---
-title: Progress
-description: Display a linear progress bar with optional percentage label.
+title: React Progress Bar Component
+description: A React progress bar component that shows the progress or completion of a task. Displays a linear progress indicator with optional percentage label.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Progress
 
-A linear progress bar to indicate task completion with optional percentage label. Supports custom styling through className and accessible attributes.
+React Progress components are used to show the completion state of a task or process. They are commonly used for file uploads, form steps, loading states, and long-running actions where users need visual feedback.
+
+This Progress component is built with React and styled using Tailwind CSS. It displays a linear progress bar with an optional percentage label and supports custom styling through props.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/progress-preview.tsx")}
@@ -21,7 +23,7 @@ A linear progress bar to indicate task completion with optional percentage label
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
 
 ```bash
 npx @tailgrids/cli add progress
@@ -30,7 +32,7 @@ npx @tailgrids/cli add progress
 </Accordion>
 
 <Accordion title="Manual">
-Copy the `Progress` component into your project. Requires no extra dependencies.
+Copy the `Progress` component code into your project. No additional dependencies are required.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/progress.tsx")}
@@ -40,6 +42,7 @@ Copy the `Progress` component into your project. Requires no extra dependencies.
 </Accordions>
 
 ## Usage
+Import the component and pass the progress value.
 
 ```tsx
 import { Progress } from "@/registry/core/progress";
@@ -50,12 +53,14 @@ export default () => <Progress progress={50} withLabel />;
 ## Examples
 
 ### Basic Progress
+Use the progress bar without a label.
 
 ```tsx
 <Progress progress={30} />
 ```
 
 ### Progress with Label
+Display the percentage value next to the bar.
 
 ```tsx
 <Progress progress={75} withLabel />
@@ -75,12 +80,14 @@ Extends `div` element props.
 
 ## Accessibility
 
-- Uses `role="progressbar"` with `aria-valuenow`, `aria-valuemin`, `aria-valuemax`, and `aria-valuetext`.
+- Uses `role="progressbar`" for screen readers
+- Sets `aria-valuemin`, `aria-valuemax`, and `aria-valuenow`
+- `aria-valuetext` reflects the current progress value
 - Fully keyboard and screen-reader accessible.
 
 ## Notes
 
-- The bar smoothly fills based on the `progress` prop.
-- Works well inside flex layouts.
+- The progress bar fills smoothly based on the `progress` prop.
+- Works well inside flex and grid layouts
 - Label is optional and aligns next to the progress bar.
 - Rounded corners and overflow handling are applied for cross-browser compatibility.

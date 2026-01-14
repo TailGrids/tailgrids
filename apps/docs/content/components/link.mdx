@@ -1,6 +1,6 @@
 ---
-title: Link
-description: Styled anchor elements for navigation with support for icons and multiple variants.
+title: React Link Component
+description: A React link component for navigation between pages. Renders a semantic anchor element to create internal or external links with accessible behavior.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import LinkPreview from "@/components/preview/link-preview";
 
 # Link
 
-Styled anchor elements for navigation with support for icons and multiple variants.
+React Link components are used for navigation between pages or sections. They render semantic anchor elements and are commonly used for internal routing, external links, and inline navigation.
+
+This Link component is built with React and styled using Tailwind CSS. It supports different sizes, visual variants, and optional icons.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/link-preview.tsx")}
@@ -21,7 +23,7 @@ Styled anchor elements for navigation with support for icons and multiple varian
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
 ```npm
 npx @tailgrids/cli add link
 ```
@@ -29,12 +31,12 @@ npx @tailgrids/cli add link
 </Accordion>
 
 <Accordion title="Manual">
-Install the following dependencies:
+Install the required dependencies:
 ```npm
 npm i class-variance-authority
 ```
 
-Copy and paste the following code into your project.
+Copy and paste the following component code into your project.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/link.tsx")}
@@ -44,6 +46,7 @@ Copy and paste the following code into your project.
 </Accordions>
 
 ## Usage
+Import the component and pass the required props.
 
 ```tsx
 import { Link } from "@/registry/core/link";
@@ -54,6 +57,7 @@ export default () => <Link href="/about">Learn more</Link>;
 ## Examples
 
 ### Variants
+Use variants to change the visual style of the link.
 
 ```tsx
 <Link variant="primary" href="/docs">
@@ -66,6 +70,7 @@ export default () => <Link href="/about">Learn more</Link>;
 ```
 
 ### Sizes
+Choose a size that fits the surrounding text.
 
 ```tsx
 <Link size="sm" href="/help">
@@ -78,6 +83,7 @@ export default () => <Link href="/about">Learn more</Link>;
 ```
 
 ### External Link
+Use standard anchor attributes for external navigation.
 
 ```tsx
 <Link href="https://example.com" target="_blank" rel="noopener noreferrer">
@@ -115,4 +121,4 @@ Extends `a` element props.
 - The component uses `inline-flex` for proper icon alignment with text
 - Smooth color transitions on hover for better UX
 - Works with any routing library by passing custom `href` props
-- All standard anchor HTML attributes are supported
+- Supports all standard anchor attributes

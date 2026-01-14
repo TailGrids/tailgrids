@@ -1,6 +1,6 @@
 ---
-title: Spinner
-description: Loading indicator to show ongoing processes with multiple styles and sizes.
+title: React Spinner Component
+description: A React spinner component used as a loading indicator during ongoing processes. Displays animated spinners to show loading states in applications.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import SpinnerPreview from "@/components/preview/spinner-preview";
 
 # Spinner
 
-Loading indicator to show ongoing processes with multiple styles and sizes.
+React Spinner components are used to indicate that an action or process is currently in progress. They are commonly shown during data loading, form submission, page transitions, or background operations where immediate feedback is required.
+
+This Spinner component is built with React and styled using Tailwind CSS. It supports multiple visual styles and sizes, making it easy to adapt to buttons, inline UI, or full-page loading states.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/spinner-preview.tsx")}
@@ -21,7 +23,7 @@ Loading indicator to show ongoing processes with multiple styles and sizes.
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
 ```npm
 npx @tailgrids/cli add spinner
 ```
@@ -29,12 +31,12 @@ npx @tailgrids/cli add spinner
 </Accordion>
 
 <Accordion title="Manual">
-Install the following dependencies:
+Install the required dependencies:
 ```npm
 npm i class-variance-authority
 ```
 
-Copy and paste the following code into your project.
+Copy and paste the following component code into your project.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/spinner/index.tsx")}
@@ -66,6 +68,7 @@ You'll also need the spinner SVG assets referenced in the component (`default.sv
 </Accordions>
 
 ## Usage
+Import the component and render it where a loading state is needed.
 
 ```tsx
 import { Spinner } from "@/registry/core/spinner";
@@ -76,6 +79,7 @@ export default () => <Spinner />;
 ## Examples
 
 ### In Buttons
+Use spinners inside buttons to indicate pending actions.
 
 ```tsx
 import { Button } from "@/registry/core/button";

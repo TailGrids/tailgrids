@@ -1,6 +1,6 @@
 ---
-title: Time Picker
-description: A scroll-based time selection menu with hour, minute, and period columns.
+title: React Time Picker Component
+description: A React time picker component that allows users to select a time value. Used in forms to choose hours and minutes through an accessible time input.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Time Picker
 
-A simple and intuitive time selection component with scrollable hour, minute, and AM/PM columns. Uses `react-aria` primitives for accessibility and focus management.
+React Time Picker components allow users to select a specific time value using a clear, scrollable interface. They are commonly used in booking forms, scheduling flows, reminders, and time-based filters.
+
+This Time Picker is built with React and uses `react-aria` primitives for accessibility and focus management. It provides scrollable columns for hours, minutes, and AM/PM selection, making time selection fast and predictable.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -23,7 +25,7 @@ A simple and intuitive time selection component with scrollable hour, minute, an
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line:
+Install the component using the TailGrids CLI.
 ```bash
 npx @tailgrids/cli add time-picker
 ```
@@ -32,13 +34,13 @@ npx @tailgrids/cli add time-picker
 
 <Accordion title="Manual">
 
-Install required dependencies:
+Install the required dependencies:
 
 ```bash
 npm i react-aria-components react-stately
 ```
 
-Copy the component into your project:
+Copy and paste the component code into your project.
 
 <CodeBlockCard
 snippet={getFileContent("/src/registry/core/time-picker.tsx")}
@@ -51,6 +53,7 @@ fileName="time-picker.tsx"
 ## API Reference
 
 ### TimePicker
+The root container responsible for managing time selection state.
 
 | Prop       | Type                   | Default | Description                                        |
 | ---------- | ---------------------- | ------- | -------------------------------------------------- |
@@ -73,13 +76,15 @@ Not exported publicly. Renders the scrollable list for hours, minutes, and perio
 ## Accessibility
 
 - Uses `MenuTrigger` and `Popover` from `react-aria` for proper ARIA roles and keyboard support.
+- Full keyboard navigation support for all time values
 - Popover automatically manages focus and closes on selection.
-- Each time value is rendered as a button for full keyboard accessibility.
-- Scrollable regions keep navigation intuitive and friendly on touch devices.
+- Each selectable time value is rendered as a native `<button>`
+- Works correctly with screen readers and assistive technologies
 
 ## Notes
 
-- Hours are displayed in 12-hour format with AM/PM toggles.
-- All columns are scrollable and optimized for vertical picking.
+- Uses a 12-hour format with AM/PM selection
+- Hour, minute, and period columns are independently scrollable
 - The helper `toDate` converts the selected values into a valid JavaScript `Date`.
 - `onSelect` fires immediately when any part of the time is chosen (hour, minute, or period).
+- Optimized for mouse, keyboard, and touch interactions

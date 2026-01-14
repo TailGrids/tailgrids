@@ -1,6 +1,6 @@
 ---
-title: Button
-description: Trigger actions and events with customizable buttons in multiple variants, sizes, and styles.
+title: React Button Component
+description: A React button component that lets users trigger actions and events. Used for clicks, form actions, and user interactions with multiple styles and sizes.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import ButtonPreview from "@/components/preview/button-preview";
 
 # Button
 
-Trigger actions and events with customizable buttons in multiple variants, sizes, and styles.
+React Button components are used to trigger actions such as submitting forms, opening dialogs, or starting processes. They are a core part of user interaction across interfaces.
+
+This Button component is built with React and styled using Tailwind CSS, giving developers control over appearance, size, and interaction states.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/button-preview.tsx")}
@@ -21,7 +23,8 @@ Trigger actions and events with customizable buttons in multiple variants, sizes
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
+
 ```npm
 npx @tailgrids/cli add button
 ```
@@ -29,12 +32,13 @@ npx @tailgrids/cli add button
 </Accordion>
 
 <Accordion title="Manual">
-Install the following dependencies:
+Install the required dependencies:
+
 ```npm
 npm i class-variance-authority
 ```
 
-Copy and paste the following code into your project.
+Copy and paste the following component code into your project.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/button.tsx")}
@@ -44,6 +48,7 @@ Copy and paste the following code into your project.
 </Accordions>
 
 ## Usage
+Import the component and pass the required props.
 
 ```tsx
 import { Button } from "@/registry/core/button";
@@ -54,6 +59,7 @@ export default () => <Button variant="primary">Click me</Button>;
 ## Examples
 
 ### Variants
+Use variants to indicate the purpose of an action.
 
 ```tsx
 <Button variant="primary">Primary</Button>
@@ -63,6 +69,7 @@ export default () => <Button variant="primary">Click me</Button>;
 ```
 
 ### Appearances
+Use appearances to control the visual style.
 
 ```tsx
 <Button appearance="fill">Filled</Button>
@@ -70,6 +77,7 @@ export default () => <Button variant="primary">Click me</Button>;
 ```
 
 ### Sizes
+Choose a size that fits the surrounding UI.
 
 ```tsx
 <Button size="xs">Extra Small</Button>
@@ -96,6 +104,7 @@ import { PlusAdd, Download } from "@tailgrids/icons";
 ```
 
 ### Disabled
+Use the disabled state to prevent interaction.
 
 ```tsx
 <Button disabled>Disabled Button</Button>
@@ -117,7 +126,7 @@ Extends `button` element props.
 
 ## Accessibility
 
-- Default `type="button"` prevents unintended form submissions
+- Uses `type="button"` by default to avoid accidental form submission
 - Includes focus ring styling with `focus:ring-3` for keyboard navigation
 - Disabled state removes pointer events and applies appropriate visual styling
 - Icons inherit text color for consistent styling

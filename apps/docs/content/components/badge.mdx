@@ -1,6 +1,6 @@
 ---
-title: Badge
-description: Compact labels for displaying status, categories, or metadata with semantic colors and optional icons.
+title: React Badge Component
+description: A React badge component for showing status, labels, or counts. Used to display small indicators like notifications, categories, or metadata with color options and icons.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import BadgePreview from "@/components/preview/badge-preview";
 
 # Badge
 
-Compact labels for displaying status, categories, or metadata with semantic colors and optional icons.
+React Badge components are used to display small labels, counts, status indicators, or metadata with semantic colors and optional icons. They are commonly used for notifications, categories, tags, and metadata across interfaces.
+
+This Badge component is built with React and styled using Tailwind CSS, giving developers control over size, color, and icon placement.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/badge-preview.tsx")}
@@ -21,7 +23,8 @@ Compact labels for displaying status, categories, or metadata with semantic colo
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
+
 ```npm
 npx @tailgrids/cli add badge
 ```
@@ -29,12 +32,12 @@ npx @tailgrids/cli add badge
 </Accordion>
 
 <Accordion title="Manual">
-Install the following dependencies:
+Install the required dependencies:
 ```npm
 npm i class-variance-authority
 ```
 
-Copy and paste the following code into your project.
+Copy and paste the following component code into your project.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/badge.tsx")}
@@ -44,6 +47,7 @@ Copy and paste the following code into your project.
 </Accordions>
 
 ## Usage
+Import the component and pass the required props.
 
 ```tsx
 import { Badge } from "@/components/badge";
@@ -54,6 +58,7 @@ export default () => <Badge color="primary">New</Badge>;
 ## Examples
 
 ### Sizes
+Use different sizes to match the surrounding UI.
 
 ```tsx
 <Badge size="sm">Small</Badge>
@@ -62,6 +67,7 @@ export default () => <Badge color="primary">New</Badge>;
 ```
 
 ### With Icons
+Add icons before or after the badge text.
 
 ```tsx
 import { CheckIcon, XIcon } from "lucide-react";
@@ -72,6 +78,7 @@ import { CheckIcon, XIcon } from "lucide-react";
 ```
 
 ### Colors
+Use color variants to convey meaning or status.
 
 ```tsx
 <Badge color="primary">Primary</Badge>
@@ -88,8 +95,8 @@ Extends `span` element props.
 
 | Prop         | Type                   | Default     | Description            |
 | ------------ | ---------------------- | ----------- | ---------------------- |
-| `size`       | `'sm'`, `'md'`, `'lg'` | `'sm'`      | Badge size             |
-| `color`      | See colors below       | `'primary'` | Color scheme           |
+| `size`       | `'sm'`, `'md'`, `'lg'` | `'sm'`      | Sets the badge size    |
+| `color`      | See colors below       | `'primary'` | Sets the color scheme  |
 | `prefixIcon` | `React.ReactNode`      | -           | Icon before the text   |
 | `suffixIcon` | `React.ReactNode`      | -           | Icon after the text    |
 | `className`  | `string`               | -           | Additional CSS classes |

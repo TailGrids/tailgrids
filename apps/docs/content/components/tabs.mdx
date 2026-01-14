@@ -1,6 +1,6 @@
 ---
-title: Tabs
-description: Organize content into multiple panels with accessible tab navigation and multiple style variants.
+title: React Tabs Component
+description: A React tabs component for organizing content into panels. Allows users to switch between related views using accessible tabbed navigation.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import TabsPreview from "@/components/preview/tabs-preview";
 
 # Tabs
 
-Organize content into multiple panels with accessible tab navigation and multiple style variants.
+React Tabs components are used to organize related content into separate panels that share the same context. They are commonly used in dashboards, settings pages, profile views, and any interface where users need to switch between sections without leaving the page.
+
+This Tabs component is built with React and styled using Tailwind CSS. It supports multiple visual variants, icons, badges, and vertical or horizontal layouts while keeping tab behavior accessible and predictable.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/tabs-preview.tsx")}
@@ -21,7 +23,7 @@ Organize content into multiple panels with accessible tab navigation and multipl
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
 ```npm
 npx @tailgrids/cli add tabs
 ```
@@ -29,12 +31,12 @@ npx @tailgrids/cli add tabs
 </Accordion>
 
 <Accordion title="Manual">
-Install the following dependencies:
+Install the required dependencies:
 ```npm
 npm i class-variance-authority
 ```
 
-Copy and paste the following code into your project. Make sure you have the Badge component installed as well.
+Copy and paste the following component code into your project. Make sure you have the Badge component installed as well.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/tabs.tsx")}
@@ -52,7 +54,7 @@ Copy and paste the following code into your project. Make sure you have the Badg
 
 ## Anatomy
 
-Import the components and piece them together.
+Import the tab parts and compose them to build the layout.
 
 ```tsx
 import { TabRoot, TabList, TabTrigger, TabContent } from "@/registry/core/tabs";
@@ -70,6 +72,7 @@ export default () => (
 ```
 
 ## Usage
+Import the components and match each trigger with its content using the `same` value.
 
 ```tsx
 import { TabRoot, TabList, TabTrigger, TabContent } from "@/registry/core/tabs";
@@ -97,6 +100,7 @@ export default () => (
 ## Examples
 
 ### Variants
+Use variants to change the visual style of the tab list.
 
 ```tsx
 {

@@ -1,6 +1,6 @@
 ---
-title: Radio Input
-description: Allow users to select a single option from a set with accessible radio button inputs.
+title: React Radio Button Component
+description: A React radio button component for selecting a single option from a group. Uses native radio inputs with labels, keyboard support, and accessible behavior.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import RadioInputPreview from "@/components/preview/radio-input-preview";
 
 # Radio Input
 
-Allow users to select a single option from a set with accessible radio button inputs.
+React Radio Input components are used when users need to select **one option from a set**. They are commonly used in forms for plan selection, preferences, settings, and configuration choices.
+
+This Radio Input component is built with React and styled using Tailwind CSS. It uses native radio inputs for predictable behavior, supports labels, sizes, and works in both controlled and uncontrolled forms.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/radio-input-preview.tsx")}
@@ -21,7 +23,7 @@ Allow users to select a single option from a set with accessible radio button in
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
 ```npm
 npx @tailgrids/cli add radio-input
 ```
@@ -29,12 +31,12 @@ npx @tailgrids/cli add radio-input
 </Accordion>
 
 <Accordion title="Manual">
-Install the following dependencies:
+Install the required dependencies:
 ```npm
 npm i class-variance-authority
 ```
 
-Copy and paste the following code into your project.
+Copy and paste the following component code into your project.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/radio-input.tsx")}
@@ -44,6 +46,8 @@ Copy and paste the following code into your project.
 </Accordions>
 
 ## Usage
+Import the component and group radios using the same `name`.
+
 ```tsx
 import { RadioInput } from "@/registry/core/radio-input";
 
@@ -65,6 +69,8 @@ export default () => (
 ```
 
 ### Without Label
+Use this only when the label is provided through surrounding context.
+
 ```tsx
 <RadioInput name="option" value="1" />
 ```
@@ -118,6 +124,8 @@ export default () => {
 ```
 
 ### Radio Group
+Use semantic grouping for related options.
+
 ```tsx
 <fieldset>
   <legend className="text-sm font-medium mb-3">Select a plan</legend>
@@ -162,7 +170,7 @@ Extends `input` element props (excluding `size`).
 ## Notes
 
 - The radio input uses `sr-only` to hide it visually while keeping it accessible
-- The inner dot appears only when radio is checked
+- The inner dot is shown only when checked
 - Focus ring appears on keyboard focus with `ring-4` style
 - Hover effects apply to both the radio and label for better UX
 - All radio buttons in a group must share the same `name` attribute

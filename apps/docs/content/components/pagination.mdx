@@ -1,6 +1,6 @@
 ---
-title: Pagination
-description: A set of controls for navigating between pages of content.
+title: React Pagination Component
+description: A React pagination component for navigating between pages of content. Displays page numbers with previous and next controls to move through results.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import PaginationPreview from "@/components/preview/pagination-preview";
 
 # Pagination
 
-A set of controls for navigating between pages of content. It handles different layouts for the previous/next buttons and dynamically manages page button display with ellipsis for a large number of pages.
+React Pagination components are used to navigate through large sets of content split across multiple pages. They are commonly used in tables, search results, and content listings.
+
+This Pagination component is built with React and styled using Tailwind CSS. It supports different layouts for page buttons, previous and next controls, and automatic ellipsis handling.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/pagination-preview.tsx")}
@@ -21,7 +23,7 @@ A set of controls for navigating between pages of content. It handles different 
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
 
 ```npm
 npx @tailgrids/cli add pagination
@@ -30,13 +32,13 @@ npx @tailgrids/cli add pagination
 </Accordion>
 
 <Accordion title="Manual">
-Install the following dependencies:
+Install the required dependencies:
 
 ```npm
 npm i class-variance-authority @tailgrids/icons
 ```
 
-Copy and paste the following code into your project. Note that `PaginationButton` and `PaginationEllipsis` are internal components.
+Copy and paste the following component code into your project. Note that `PaginationButton` and `PaginationEllipsis` are internal components.
 
 <CodeBlockCard
 snippet={getFileContent("/src/registry/core/pagination.tsx")}
@@ -46,6 +48,7 @@ lang="tsx"
 </Accordions>
 
 ## Usage
+Import the component and control the active page using state.
 
 ```tsx
 import { Pagination } from "@/registry/core/pagination";
@@ -102,7 +105,7 @@ Shows only the text label ("Previous"/"Next") on desktop, but hides it on mobile
 
 ### Icon-Only Side Layout
 
-Shows only the navigation icon for side buttons.
+Uses icons only for previous and next buttons.
 
 ```tsx
 <Pagination
@@ -122,7 +125,7 @@ Shows only the navigation icon for side buttons.
 | `currentPage`  | `number`                      | -           | The currently active page number (1-based index).             |
 | `totalPages`   | `number`                      | -           | The total number of available pages.                          |
 | `onPageChange` | `(page: number) => void`      | -           | Callback function triggered when a page button is clicked.    |
-| `variant`      | `'default'`, `'compact'`      | `'default'` | Determines the overall style of the pagination component.     |
+| `variant`      | `'default'`, `'compact'`      | `'default'` | Overall pagination style.     |
 | `sideLayout`   | `'full'`, `'label'`, `'icon'` | `'full'`    | Controls the appearance of the "Previous" and "Next" buttons. |
 
 ## Accessibility
@@ -135,5 +138,5 @@ Shows only the navigation icon for side buttons.
 ## Notes
 
 - When `totalPages` is greater than 6, an **ellipsis** (`...`) is automatically inserted to collapse the page numbers, showing pages 1-3, the current page and its two neighbors, and the last two pages.
-- The component is **responsive**: page number buttons and text labels are hidden on smaller screens (`max-sm`) to show a compact "Page X of Y" display.
+- Page number buttons and text labels are hidden on smaller screens (`max-sm`) to show a compact "Page X of Y" display.
 - The `sideLayout` prop controls the visibility of the icon and text in the "Previous" and "Next" buttons, though on mobile, only the icon is shown for `full` and `icon` layouts, and the label is hidden for the `label` layout.

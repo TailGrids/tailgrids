@@ -1,6 +1,6 @@
 ---
-title: Table
-description: Display structured data in rows and columns with customizable styling and layout options.
+title: React Table Component
+description: A React table component for displaying structured data in rows and columns. Used to present tabular data in a clear, easy-to-scan layout.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import TablePreview from "@/components/preview/table-preview";
 
 # Table
 
-Display structured data in rows and columns with customizable styling and layout options.
+React Table components are used to display structured data in rows and columns. They are commonly used for lists, reports, dashboards, admin panels, and data-heavy interfaces where content needs to be easy to scan and compare.
+
+This Table component is built with React and styled using Tailwind CSS. It provides composable table parts, responsive horizontal scrolling, and flexible styling while keeping native table semantics.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/table-preview.tsx")}
@@ -21,7 +23,7 @@ Display structured data in rows and columns with customizable styling and layout
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
 ```npm
 npx @tailgrids/cli add table
 ```
@@ -29,12 +31,12 @@ npx @tailgrids/cli add table
 </Accordion>
 
 <Accordion title="Manual">
-Install the following dependencies:
+Install the required dependencies:
 ```npm
 npm i class-variance-authority
 ```
 
-Copy and paste the following code into your project.
+Copy and paste the following component code into your project.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/table.tsx")}
@@ -45,7 +47,7 @@ Copy and paste the following code into your project.
 
 ## Anatomy
 
-Import the components and piece them together.
+Import the table parts and compose them to build the layout.
 
 ```tsx
 import {
@@ -77,7 +79,7 @@ export default () => (
 
 ### TableRoot
 
-The root table container with horizontal scroll support. Extends `table` element props.
+Wraps the entire table and manages layout and overflow behavior. Extends `native` table element props.
 
 | Prop        | Type      | Default | Description                                    |
 | ----------- | --------- | ------- | ---------------------------------------------- |
@@ -126,11 +128,11 @@ A table data cell. Extends `td` element props.
 
 ## Accessibility
 
-- Uses semantic HTML table elements
-- Proper heading structure with `<thead>` and `<th>` elements
+- Uses native table elements (`table`, `thead`, `tbody`, `tr`, `th`, `td`)
+- Header cells use `<th>` for proper screen reader context
 - Left-aligned text for better readability
 - Horizontal scroll container for responsive behavior
-- All standard table HTML attributes are supported
+- Supports all standard table HTML attributes
 
 ## Notes
 
@@ -139,4 +141,4 @@ A table data cell. Extends `td` element props.
 - Header cells have smaller text size (12px) for hierarchy
 - All rows except the last have bottom borders
 - Full bleed mode removes rounded corners and side borders for edge-to-edge layouts
-- Works well with other components like Badge and Button for rich table content
+- Works well with Badge, Button, Avatar, and Dropdown components inside cells

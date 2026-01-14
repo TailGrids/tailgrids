@@ -1,6 +1,6 @@
 ---
-title: Input
-description: Text input field for collecting user information with support for labels, hints, and validation states.
+title: React Input Component
+description: A React input field component for collecting text input from users. Used in forms to enter data with labels, hints, validation states, and controlled input support.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -10,7 +10,9 @@ import { Input } from "@/registry/core/input";
 
 # Input
 
-Text input field for collecting user information with support for labels, hints, and validation states.
+React Input components are used to collect text input from users. They are commonly used in forms for entering names, emails, passwords, and other text-based data.
+
+This Input component is built with React and styled using Tailwind CSS. It supports labels, helper text, validation states, and both controlled and uncontrolled usage.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/input-preview.tsx")}
@@ -22,7 +24,7 @@ Text input field for collecting user information with support for labels, hints,
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
 ```npm
 npx @tailgrids/cli add input
 ```
@@ -30,12 +32,12 @@ npx @tailgrids/cli add input
 </Accordion>
 
 <Accordion title="Manual">
-Install the following dependencies:
+Install the required dependencies:
 ```npm
 npm i class-variance-authority
 ```
 
-Copy and paste the following code into your project.
+Copy and paste the following component code into your project.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/input.tsx")}
@@ -45,6 +47,7 @@ Copy and paste the following code into your project.
 </Accordions>
 
 ## Usage
+Import the component and pass the required props.
 
 ```tsx
 import { Input } from "@/registry/core/input";
@@ -55,12 +58,14 @@ export default () => <Input label="Email" placeholder="Enter your email" />;
 ## Examples
 
 ### With Label
+Use the `label` prop to describe the input field.
 
 ```tsx
 <Input label="Full Name" placeholder="John Doe" />
 ```
 
 ### With Hint
+Use the `hint` prop to show helper text below the input.
 
 ```tsx
 <Input
@@ -71,6 +76,7 @@ export default () => <Input label="Email" placeholder="Enter your email" />;
 ```
 
 ### States
+Use visual states to show validation feedback.
 
 <ComponentPreview codeSnippet={
   `
@@ -100,6 +106,7 @@ export default () => <Input label="Email" placeholder="Enter your email" />;
 </ComponentPreview>
 
 ### Controlled
+Control the input value using React state.
 
 ```tsx
 import { useState } from "react";
@@ -144,7 +151,7 @@ Extends `input` element props.
 - Focus ring provides clear visual feedback with `ring-4` style
 - Disabled state applies to both input and hint text
 - Hint text uses semantic color coding for different states
-- All standard input HTML attributes are supported
+- Supports all standard input accessibility attributes
 
 ## Notes
 

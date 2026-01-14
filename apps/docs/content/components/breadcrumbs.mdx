@@ -1,6 +1,6 @@
 ---
-title: Breadcrumbs
-description: Navigation component that shows the current page's location within a hierarchical structure.
+title: React Breadcrumbs Component
+description: A React breadcrumbs component that shows the current page’s location in a site hierarchy. Helps users understand navigation paths and move between parent pages.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import BreadcrumbsPreview from "@/components/preview/breadcrumbs-preview";
 
 # Breadcrumbs
 
-Navigation component that shows the current page's location within a hierarchical structure.
+React Breadcrumbs components show the current page’s location within a site hierarchy. They help users understand where they are and navigate back to parent pages.
+
+This Breadcrumbs component is built with React and styled using Tailwind CSS, giving developers control over layout, separators, and icons.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -23,7 +25,8 @@ Navigation component that shows the current page's location within a hierarchica
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
+
 ```npm
 npx @tailgrids/cli add breadcrumbs
 ```
@@ -31,7 +34,7 @@ npx @tailgrids/cli add breadcrumbs
 </Accordion>
 
 <Accordion title="Manual">
-Copy and paste the following code into your project.
+Copy and paste the following component code into your project.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/breadcrumbs.tsx")}
@@ -41,6 +44,7 @@ Copy and paste the following code into your project.
 </Accordions>
 
 ## Usage
+Import the component and pass the required props.
 
 ```tsx
 import { Breadcrumbs } from "@/registry/core/breadcrumbs";
@@ -59,6 +63,7 @@ export default () => (
 ## Examples
 
 ### With Icons
+Add icons to breadcrumb items to improve visual context.
 
 ```tsx
 import { Home, BoxCube3D } from "@tailgrids/icons";
@@ -73,6 +78,7 @@ import { Home, BoxCube3D } from "@tailgrids/icons";
 ```
 
 ### Divider Types
+Use different divider styles between breadcrumb items.
 
 ```tsx
 <Breadcrumbs
@@ -119,13 +125,13 @@ import { Home, BoxCube3D } from "@tailgrids/icons";
 
 ## Accessibility
 
-- Uses semantic `<ol>` and `<li>` elements for proper navigation structure
+- Uses semantic `<ol>` and `<li>` elements for navigation
 - The last item is visually distinguished with darker text color
 - Icons inherit the current text color for consistent styling
-- All links are keyboard accessible
+- All links support keyboard navigation
 
 ## Notes
 
 - The last item in the breadcrumb trail is automatically styled with darker text to indicate the current page
 - Icons are automatically sized to `16px` (1rem) via the `[&>svg]:size-4` class
-- The component uses `contents` display on list items to maintain proper flex layout
+- The component uses `contents` display on list items to support flexible layouts

@@ -1,6 +1,6 @@
 ---
-title: Tooltip
-description: A contextual popup that displays a short, informative description when a user hovers over, focuses on, or clicks an element.
+title: React Tooltip Component
+description: A React tooltip component that shows informative text on hover or focus. A floating popup used to describe UI elements, built for accessibility and precise positioning.
 ---
 
 import { getFileContent } from "@/utils/get-file-content";
@@ -9,7 +9,9 @@ import TooltipPreview from "@/components/preview/tooltip-preview";
 
 # Tooltip
 
-A contextual popup that displays a short, informative description when a user **hovers over** or **focuses on** an element. It is built using the robust **`@floating-ui/react`** library.
+The Tooltip component displays short, contextual information when a user **hovers over** or **focuses on** an element. It is commonly used to explain icons, buttons, or UI elements without taking up permanent space.
+
+This component is built with **React** and powered by **`@floating-ui/react`** for accurate positioning, collision handling, and accessible interactions.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/tooltip-preview.tsx")}
@@ -21,7 +23,7 @@ A contextual popup that displays a short, informative description when a user **
 
 <Accordions>
 <Accordion title="CLI">
-Install the component from your command line.
+Install the component using the TailGrids CLI.
 ```npm
 npx @tailgrids/cli add tooltip
 ```
@@ -29,13 +31,13 @@ npx @tailgrids/cli add tooltip
 </Accordion>
 
 <Accordion title="Manual">
-Install the following dependencies for positioning and interaction logic:
+Install the required dependency for positioning and interaction handling:
 
 ```npm
 npm i @floating-ui/react
 ```
 
-Copy and paste the following code into your project. Note that this component relies on several internal utility functions from your setup, such as `cn` and your icon library.
+Copy and paste the Tooltip component into your project. Note that this component relies on several internal utility functions from the setup, such as `cn` and icon library.
 
 <CodeBlockCard
 snippet={getFileContent("/src/registry/core/tooltip.tsx")}
@@ -72,7 +74,7 @@ export default () => (
 
 ### Custom Placement
 
-Use the `placement` prop on the **`Tooltip`** root to control where the content appears relative to the trigger.
+Control where the tooltip appears using the `placement` prop on the root.
 
 ```tsx
 <Tooltip placement="right">
@@ -85,7 +87,7 @@ Use the `placement` prop on the **`Tooltip`** root to control where the content 
 
 ### Triggering with any Element (`asChild`)
 
-Use the `asChild` prop on **`TooltipTrigger`** to forward all required event handlers and `ref` to its single child element, allowing you to use any element (like an icon button, link, or custom component) as the trigger.
+Use the `asChild` prop on **`TooltipTrigger`** to forward all required event handlers and `ref` to its single child element, allowing to use any element (like an icon button, link, or custom component) as the trigger.
 
 ```tsx
 <Tooltip>
@@ -100,7 +102,7 @@ Use the `asChild` prop on **`TooltipTrigger`** to forward all required event han
 
 ### Controlled Tooltip
 
-You can manage the open state externally using the `open` and `onOpenChange` props.
+You can fully control the open state using `open` and `onOpenChange`.
 
 ```tsx
 const [isOpen, setIsOpen] = React.useState(true);
@@ -151,10 +153,12 @@ The popup containing the descriptive content.
 
 ## Accessibility
 
-- **Role**: The content element uses `role="tooltip"` for screen readers.
-- **Interactions**: Tooltips open on **hover** and **focus** and dismiss when focus or hover is removed.
-- **Safe Polygon**: The `safePolygon` logic from `floating-ui` is used to keep the tooltip open if the user moves the pointer from the trigger element onto the tooltip content itself.
-- **Keyboard Support**: Users can trigger the tooltip using keyboard focus (Tab key).
+- Uses `role="tooltip"` for correct screen reader interpretation
+- Opens on hover and keyboard focus
+- Closes automatically when focus or pointer leaves
+- Fully keyboard accessible using the Tab key
+- Uses `safePolygon` logic to prevent accidental closing when moving the cursor
+- Screen readers announce tooltip content when the trigger is focused
 
 ## Notes
 
