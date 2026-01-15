@@ -9,7 +9,7 @@ import { DownArrowIcon, HamburgerIcon } from "../ui/icons";
 import ComponentsDropdown from "./ComponentsDropdown";
 import { menuData } from "./menuData";
 import MobileMenu from "./MobileMenu";
-import NavbarActionButtons from "./NavbarActionButtons";
+
 import ProductsDropdown from "./ProductsDropdown";
 import ResourcesDropdown from "./ResourcesDropdown";
 
@@ -77,7 +77,7 @@ export default function NavbarWrapper() {
                           {menuItem.title}
                           <span
                             className={cn("duration-200", {
-                              "-scale-y-100": isOpen,
+                              "-scale-y-100": isOpen
                             })}
                           >
                             <DownArrowIcon className="size-3.5" />
@@ -109,8 +109,6 @@ export default function NavbarWrapper() {
               })}
             </ul>
           </nav>
-
-          <NavbarActionButtons />
 
           <button
             className="flex size-10 items-center justify-center rounded-xl border border-tg-border-1 shadow-menu-button drop-shadow-menu-button lg:hidden"
