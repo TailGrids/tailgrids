@@ -1,7 +1,7 @@
 import FooterAbout from "./FooterAbout";
 import FooterBottom from "./FooterBottom";
 import FooterLinks from "./FooterLinks";
-import FooterProducts from "./FooterProducts";
+// import FooterProducts from "./FooterProducts"; // Reserved for future use
 
 export default function Footer() {
   return (
@@ -13,8 +13,8 @@ export default function Footer() {
           <FooterLinks />
         </div>
 
-        {/* Products Section */}
-        <FooterProducts />
+        {/* Products Section - Reserved for future use */}
+        {/* <FooterProducts /> */}
 
         {/* Bottom Bar */}
         <FooterBottom />

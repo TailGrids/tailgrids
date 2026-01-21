@@ -17,8 +17,6 @@ import Image from "next/image";
 import Link from "next/link";
 import HeaderNav from "./header-nav";
 import VersionDropdown from "./version-dropdown";
-import { User2 } from "@tailgrids/icons";
-import { Button } from "./ui/Button";
 
 export default function GlobalHeader() {
   const { setOpenSearch } = useSearchContext();
@@ -32,7 +30,10 @@ export default function GlobalHeader() {
           {/* LEFT SECTION */}
           <div className="flex items-center gap-6  min-w-0">
             {/* Logo */}
-            <Link href="/" className="flex shrink-0 items-center gap-2">
+            <Link
+              href="https://staging.tailgrids.com"
+              className="flex shrink-0 items-center gap-2"
+            >
               <Image
                 src={LogoLightMode}
                 width={150}
@@ -54,24 +55,6 @@ export default function GlobalHeader() {
             {/* Navigation */}
             <HeaderNav />
           </div>
-
-          {/* CENTER — SEARCH + THEME (CENTERED ABSOLUTE) */}
-          {/* <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-3 xl:ml-25"> */}
-          {/* Search */}
-          {/* <button
-              onClick={() => setOpenSearch(true)}
-              className="hidden lg:flex h-11 w-[260px] xl:w-[350px]  dark:bg-white/5 items-center gap-3 rounded-xl border border-gray-200 bg-white px-3 text-gray-400 dark:border-[#111827] transition"
-            >
-              <SearchIcon className="size-5" />
-              <span className="hidden xl:flex text-sm flex-1">
-                Quick search...
-              </span>
-              <span className="hidden xl:flex h-6.5 w-10 items-center dark:border-[#111827] justify-center rounded-lg border border-gray-100 text-xs">
-                ⌘ K
-              </span>
-            </button> */}
-
-          {/* </div> */}
 
           {/* RIGHT SECTION */}
           <div className="flex  justify-end items-center gap-5 flex-1 min-w-0">
@@ -111,15 +94,15 @@ export default function GlobalHeader() {
               </div>
               <div className="flex items-center gap-2">
                 <a
-                  href="https://tailgrids.com/pro"
+                  href="https://staging.tailgrids.com/signin"
                   className="text-gray-700 dark:text-gray-400 font-medium text-base hover:text-tg-text-color-secondary"
                 >
-                  Accounts
+                  Account
                 </a>
                 <a
                   className="custom-link-btn-blue ml-4
                   "
-                  href="https://tailgrids.com/pro"
+                  href="https://staging.tailgrids.com/pricing"
                 >
                   Pricing & Faq
                 </a>

@@ -13,29 +13,29 @@ export interface SocialLinkType extends FooterLinkItemType {
 
 export const resourceLinks: FooterLinkItemType[] = [
   {
-    title: "Update Logs",
-    url: "/docs/changelog",
+    title: "Change Logs",
+    url: "/changelog",
     external: false
   },
   {
     title: "Roadmap",
-    url: "/docs/roadmap",
+    url: "https://staging.tailgrids.com/roadmap",
     external: false
   },
   {
-    title: "Tailwind UI Components",
-    url: "/components",
+    title: "Tailgrids Blocks",
+    url: "https://staging.tailgrids.com/blocks",
     external: false
   },
   {
     title: "Tailwind CSS",
-    url: "https://tailwindcss.com/docs",
+    url: "https://tailwindcss.com/",
     external: true
   },
   {
     title: "Tailgrids - Tailwind Figma",
-    url: "https://www.figma.com/community/file/1022464084572022420",
-    external: true
+    url: "https://staging.tailgrids.com/figma",
+    external: false
   }
 ];
 
@@ -47,17 +47,17 @@ export const usefulLinks: FooterLinkItemType[] = [
   },
   {
     title: "Privacy Policy",
-    url: "/privacy-policy",
-    external: false
+    url: "https://staging.tailgrids.com/privacy-policy",
+    external: true
   },
   {
     title: "Refund Policy",
-    url: "/refund-policy",
-    external: false
+    url: "https://staging.tailgrids.com/refund-policy",
+    external: true
   },
   {
-    title: "Free Download",
-    url: "/download",
+    title: "Download",
+    url: "https://staging.tailgrids.com/pricing",
     external: false
   }
 ];
@@ -75,13 +75,13 @@ export const helpAndSupportLinks: FooterLinkItemType[] = [
   },
   {
     title: "FAQs",
-    url: "/pricing#faqs",
+    url: "https://staging.tailgrids.com/pricing#faqs",
     external: false
   },
   {
     title: "Community",
-    url: "/community",
-    external: false
+    url: "https://pimjo.com/community",
+    external: true
   }
 ];
 

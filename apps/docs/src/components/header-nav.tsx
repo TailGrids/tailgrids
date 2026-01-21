@@ -8,17 +8,12 @@ import { ChevronDown } from "lucide-react";
 import GradientImage from "@/assets/navbar/graphic.png";
 import {
   DashboardSquare1,
-  Layout6,
   Megaphone1,
   PieChart1,
   Cart2,
-  Sparkle,
   Layout14
 } from "@tailgrids/icons";
 import {
-  ColoredReactIcon,
-  ColoredVueIcon,
-  ColoredFigmaIcon,
   LongArrowUpRightIcon,
   CheckmarkIcon,
   CommunityIcon,
@@ -50,116 +45,122 @@ interface MenuItem {
 
 const menuData: MenuItem[] = [
   {
+    title: "Components",
+    path: "/components",
+    external: false
+  },
+  {
     title: "Blocks",
     isBlocksDropdown: true,
     children: [
       {
-        title: "Core Components",
-        path: "/docs",
-        desc: "Core UI Components to kickstart any web projects - Open-source",
-        icon: <DashboardSquare1 className="size-6" />,
+        title: "Application",
+        path: "https://staging.tailgrids.com/blocks#application",
+        desc: "Components crafted for build all kind of modern webapps and sites",
+        icon: <Layout14 className="size-6" />,
         external: false
       },
       {
-        title: "Application",
-        path: "https://tailgrids.com/blocks/application",
-        desc: "Components crafted for build all kind of modern webapps and sites",
-        icon: <Layout14 className="size-6" />,
-        external: true
-      },
-      {
         title: "Marketing",
-        path: "https://tailgrids.com/blocks/marketing",
+        path: "https://staging.tailgrids.com/blocks#marketing",
         desc: "All you need to create stunning and high-converting landing pages",
         icon: <Megaphone1 className="size-6" />,
-        external: true
+        external: false
       },
       {
         title: "Dashboard",
-        path: "https://tailgrids.com/blocks/dashboard",
+        path: "https://staging.tailgrids.com/blocks#dashboard",
         desc: "Build data-rich modern backends, dashboards and admin panels",
         icon: <PieChart1 className="size-6" />,
-        external: true
+        external: false
       },
       {
         title: "E-commerce",
-        path: "https://tailgrids.com/blocks/e-commerce",
+        path: "https://staging.tailgrids.com/blocks#e-commerce",
         desc: "Components and Pages need to build complete online store UI",
         icon: <Cart2 className="size-6" />,
-        external: true
+        external: false
       },
       {
         title: "AI Components",
-        path: "https://tailgrids.com/blocks/ai-components",
+        path: "https://staging.tailgrids.com/blocks#ai-components",
         desc: "All you need to create stunning AI tools & landing pages",
         icon: <AIIcon className="size-6" />,
-        external: true
+        external: false
+      },
+      {
+        title: "Core Components",
+        path: "/docs/components",
+        desc: "Core UI Components to kickstart any web projects - Open-source",
+        icon: <DashboardSquare1 className="size-6" />,
+        external: false
       }
     ]
   },
   {
     title: "Templates",
     path: "https://tailgrids.com/templates",
-    external: true
+    external: false
   },
-  {
-    title: "Products",
-    isProductsDropdown: true,
-    children: [
-      {
-        title: "Tailgrids React",
-        path: "https://tailgrids.com/react",
-        desc: "React components with Tailwind CSS",
-        icon: <ColoredReactIcon className="size-6" />,
-        external: true
-      },
-      {
-        title: "Tailgrids Vue",
-        path: "https://tailgrids.com/vue",
-        desc: "Vue components with Tailwind CSS",
-        icon: <ColoredVueIcon className="size-6" />,
-        external: true
-      },
-      {
-        title: "Tailgrids Figma",
-        path: "https://tailgrids.com/figma",
-        desc: "Figma design system",
-        icon: <ColoredFigmaIcon className="size-6" />,
-        external: true
-      }
-    ]
-  },
+  // Products dropdown - reserved for future use
+  // {
+  //   title: "Products",
+  //   isProductsDropdown: true,
+  //   children: [
+  //     {
+  //       title: "Tailgrids React",
+  //       path: "https://tailgrids.com/react",
+  //       desc: "React components with Tailwind CSS",
+  //       icon: <ColoredReactIcon className="size-6" />,
+  //       external: true
+  //     },
+  //     {
+  //       title: "Tailgrids Vue",
+  //       path: "https://tailgrids.com/vue",
+  //       desc: "Vue components with Tailwind CSS",
+  //       icon: <ColoredVueIcon className="size-6" />,
+  //       external: true
+  //     },
+  //     {
+  //       title: "Tailgrids Figma",
+  //       path: "https://tailgrids.com/figma",
+  //       desc: "Figma design system",
+  //       icon: <ColoredFigmaIcon className="size-6" />,
+  //       external: true
+  //     }
+  //   ]
+  // },
   {
     title: "Resources",
     isResourcesDropdown: true,
     children: [
       {
         title: "Community",
-        path: "https://tailgrids.com/community",
+        path: "https://staging.tailgrids.com/community",
         desc: "Connect, share, and grow with fellow users",
         icon: <CommunityIcon className="size-6" />,
-        external: true
+        external: false
       },
       {
         title: "Support",
-        path: "https://tailgrids.com/support",
+        path: "https://staging.tailgrids.com/support",
         desc: "Need help? Our team's here for you",
         icon: <ChatBubbleIcon className="size-6" />,
-        external: true
+        external: false
       },
       {
         title: "Roadmap",
-        path: "https://tailgrids.com/roadmap",
+        path: "https://staging.tailgrids.com/roadmap",
         desc: "Discover upcoming features and releases",
         icon: <RoadMapIcon className="size-6" />,
-        external: true
+        external: false
       },
       {
         title: "Blog",
-        path: "https://tailgrids.com/blog",
+        path: "https://staging.tailgrids.com/blog",
         desc: "Fresh news and product updates",
         icon: <PencilTextIcon className="size-6" />,
-        external: true
+        external: false
       }
     ]
   }

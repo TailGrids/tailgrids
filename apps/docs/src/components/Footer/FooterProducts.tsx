@@ -1,15 +1,15 @@
-import formboldWhite from "@/../public/images/products/formbold-white.svg";
-import formbold from "@/../public/images/products/formbold.svg";
-import graygridsWhite from "@/../public/images/products/graygrids-white.svg";
-import graygrids from "@/../public/images/products/graygrids.svg";
-import lineiconsWhite from "@/../public/images/products/lineicons-white.svg";
+import meku from "@/../public/images/products/meku.svg";
+import mekuWhite from "@/../public/images/products/meku-white.svg";
+import aymo from "@/../public/images/products/aymo.svg";
+import aymoWhite from "@/../public/images/products/aymo-white.svg";
 import lineicons from "@/../public/images/products/lineicons.svg";
-import nextjstemplatesWhite from "@/../public/images/products/nextjstemplates-white.svg";
+import lineiconsWhite from "@/../public/images/products/lineicons-white.svg";
 import nextjstemplates from "@/../public/images/products/nextjstemplates.svg";
-import tailadminWhite from "@/../public/images/products/tailadmin-white.svg";
+import nextjstemplatesWhite from "@/../public/images/products/nextjstemplates-white.svg";
 import tailadmin from "@/../public/images/products/tailadmin.svg";
-import uideckWhite from "@/../public/images/products/uideck-white.svg";
-import uideck from "@/../public/images/products/uideck.svg";
+import tailadminWhite from "@/../public/images/products/tailadmin-white.svg";
+import cozycommerce from "@/../public/images/products/cozycommerce.svg";
+import cozycommerceWhite from "@/../public/images/products/cozycommerce-white.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { BorderLine } from "../ui/ContainerWithGrid";
@@ -34,22 +34,22 @@ const productsData = [
     link: "https://nextjstemplates.com/"
   },
   {
-    name: "FormBold",
-    logo: formbold,
-    logoDark: formboldWhite,
-    link: "https://formbold.com/"
+    name: "meku",
+    logo: meku,
+    logoDark: mekuWhite,
+    link: "https://meku.dev/"
   },
   {
-    name: "Graygrids",
-    logo: graygrids,
-    logoDark: graygridsWhite,
-    link: "https://graygrids.com/"
+    name: "aymo",
+    logo: aymo,
+    logoDark: aymoWhite,
+    link: "https://aymo.ai/"
   },
   {
-    name: "Uideck",
-    logo: uideck,
-    logoDark: uideckWhite,
-    link: "https://uideck.com/"
+    name: "CozyCommerce",
+    logo: cozycommerce,
+    logoDark: cozycommerceWhite,
+    link: "https://cozycommerce.dev/"
   }
 ];
 

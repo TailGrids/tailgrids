@@ -1,56 +1,67 @@
 "use client";
-import { ChevronDownIcon } from "@/icons";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { ChevronDown } from "lucide-react";
+import { cn } from "@/lib/cn";
 
 export default function VersionDropdown() {
   const [open, setOpen] = useState(false);
   const [version, setVersion] = useState("v3.0");
-
-  const versions = ["v3.0", "v2.5", "v2.0", "v1.8"];
   const containerRef = useRef<HTMLDivElement | null>(null);
+
   useClickOutside(containerRef, () => setOpen(false));
 
   return (
-    <div className="relative inline-block" ref={containerRef}>
-      {/* Button */}
+    <div ref={containerRef} className="relative">
       <button
+        className="flex h-6 cursor-pointer items-center gap-1 rounded-lg border border-[#EDEDED] bg-[#F3F4F6] px-2 py-1 text-xs font-medium text-gray-700 transition duration-200 hover:bg-gray-200 dark:border-[#111827] dark:bg-white/5 dark:text-gray-400 dark:hover:bg-gray-800"
         onClick={() => setOpen(!open)}
-        className="flex items-center border-[#EDEDED] gap-1 cursor-pointer border  dark:text-gray-400 rounded-lg h-6 w-15 bg-[#F3F4F6] dark:bg-white/5 dark:border-[#111827] px-2 py-1.5 text-sm font-medium text-gray-700 transition"
-        aria-haspopup="true"
-        aria-expanded={open}
       >
         {version}
-        <ChevronDownIcon
-          className={`transition-transform ${open ? "rotate-180" : ""}`}
+        <ChevronDown
+          className={cn("size-3.5 shrink-0 duration-200", {
+            "rotate-180": open
+          })}
         />
       </button>
-
-      {/* Dropdown */}
-      {open && (
-        <div
-          role="menu"
-          aria-orientation="vertical"
-          className="absolute left-0 mt-2  w-24 p-1 rounded-lg bg-white dark:bg-gray-950  dark:border-[#111827] shadow-lg border border-gray-100 z-50"
+      <div
+        className={cn(
+          "absolute top-full left-0 z-50 mt-2 min-w-20 rounded-xl border border-tg-border-1 bg-white p-1 shadow-lg transition-all duration-200 dark:bg-gray-950 dark:border-gray-800",
+          open ? "visible opacity-100" : "invisible opacity-0"
+        )}
+      >
+        <Link
+          href="https://staging.tailgrids.com"
+          className="block rounded-lg px-3 py-1.5 text-xs font-medium text-tg-text-color duration-200 hover:bg-gray-100 hover:text-tg-title-color dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+          onClick={() => {
+            setVersion("v3.0");
+            setOpen(false);
+          }}
         >
-          {versions.map((v) => (
-            <button
-              key={v}
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                setVersion(v);
-                setOpen(false);
-              }}
-              role="menuitem"
-              tabIndex={0}
-              className="w-full text-left block px-3 py-1.5 dark:text-gray-400 dark:hover:bg-gray-800 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-            >
-              {v}
-            </button>
-          ))}
-        </div>
-      )}
+          v3.0
+        </Link>
+        <Link
+          href="https://staging.tailgrids.com/docs/changelog#current-version-230"
+          className="block rounded-lg px-3 py-1.5 text-xs font-medium text-tg-text-color duration-200 hover:bg-gray-100 hover:text-tg-title-color dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+          onClick={() => {
+            setVersion("v2.3");
+            setOpen(false);
+          }}
+        >
+          v2.3
+        </Link>{" "}
+        <Link
+          href="https://staging.tailgrids.com/docs/changelog#version-110"
+          className="block rounded-lg px-3 py-1.5 text-xs font-medium text-tg-text-color duration-200 hover:bg-gray-100 hover:text-tg-title-color dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+          onClick={() => {
+            setVersion("v1.1");
+            setOpen(false);
+          }}
+        >
+          v1.1
+        </Link>
+      </div>
     </div>
   );
 }
