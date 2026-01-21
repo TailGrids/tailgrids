@@ -6,9 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       disallow: "/"
     },
-    sitemap:
-      process.env.NEXT_PUBLIC_DEPLOYMENT_ENV === "production"
-        ? new URL("/sitemap.xml", process.env.NEXT_PUBLIC_SITE_URL).href
-        : undefined
+    // sitemap: new URL("/sitemap.xml", process.env.NEXT_PUBLIC_SITE_URL)
+    sitemap: undefined
   };
 }
