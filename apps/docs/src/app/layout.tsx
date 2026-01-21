@@ -19,9 +19,6 @@ const geistMono = Geist_Mono({
   style: ["normal"]
 });
 
-const isProductionDeployment =
-  process.env.NEXT_PUBLIC_DEPLOYMENT_ENV === "production";
-
 export const viewport = {
   width: "device-width",
   initialScale: 1,
@@ -34,24 +31,18 @@ export const metadata: Metadata = {
     template: "%s | Tailgrids Docs",
     default: "Tailgrids Docs"
   },
-  robots: isProductionDeployment
-    ? {
-        index: true,
-        follow: true,
-        nocache: true
-      }
-    : {
-        index: false,
-        follow: false,
-        nocache: true
-      }
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true
+  }
 };
 
 export default function Layout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${geistMono.variable} `}
+      className={`${dmSans.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
       <body className="flex flex-col min-h-screen bg-white dark:bg-[#030712] antialiased">
