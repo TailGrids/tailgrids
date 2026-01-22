@@ -4,9 +4,11 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      disallow: "/"
+      allow: "/"
     },
-    // sitemap: new URL("/sitemap.xml", process.env.NEXT_PUBLIC_SITE_URL)
-    sitemap: undefined
+    sitemap: new URL(
+      "/sitemap.xml",
+      process.env.NEXT_PUBLIC_SITE_URL
+    ).toString()
   };
 }
