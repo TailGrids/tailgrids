@@ -28,7 +28,7 @@ export function baseOptions(): BaseLayoutProps {
             <ProBadge />
           </span>
         ),
-        url: "https://staging.tailgrids.com/blocks",
+        url: "https://tailgrids.com/blocks",
         icon: <BlocksIcon className="size-6 shrink-0" />,
         external: false
       },
@@ -39,7 +39,7 @@ export function baseOptions(): BaseLayoutProps {
             <ProBadge />
           </span>
         ),
-        url: "https://staging.tailgrids.com/templates",
+        url: "https://tailgrids.com/templates",
         icon: <TemplateIcon className="size-6 shrink-0" />,
         external: false
       },
@@ -51,7 +51,7 @@ export function baseOptions(): BaseLayoutProps {
           </span>
         ),
         icon: <FigmaIcon className="size-6 shrink-0" />,
-        url: "https://staging.tailgrids.com/figma",
+        url: "https://tailgrids.com/figma",
         external: false
       }
     ]

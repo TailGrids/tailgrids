@@ -19,12 +19,12 @@ export const resourceLinks: FooterLinkItemType[] = [
   },
   {
     title: "Roadmap",
-    url: "https://staging.tailgrids.com/roadmap",
+    url: "https://tailgrids.com/roadmap",
     external: false
   },
   {
     title: "Tailgrids Blocks",
-    url: "https://staging.tailgrids.com/blocks",
+    url: "https://tailgrids.com/blocks",
     external: false
   },
   {
@@ -34,7 +34,7 @@ export const resourceLinks: FooterLinkItemType[] = [
   },
   {
     title: "Tailgrids - Tailwind Figma",
-    url: "https://staging.tailgrids.com/figma",
+    url: "https://tailgrids.com/figma",
     external: false
   }
 ];
@@ -47,17 +47,17 @@ export const usefulLinks: FooterLinkItemType[] = [
   },
   {
     title: "Privacy Policy",
-    url: "https://staging.tailgrids.com/privacy-policy",
+    url: "https://tailgrids.com/privacy-policy",
     external: true
   },
   {
     title: "Refund Policy",
-    url: "https://staging.tailgrids.com/refund-policy",
+    url: "https://tailgrids.com/refund-policy",
     external: true
   },
   {
     title: "Download",
-    url: "https://staging.tailgrids.com/pricing",
+    url: "https://tailgrids.com/pricing",
     external: false
   }
 ];
@@ -75,7 +75,7 @@ export const helpAndSupportLinks: FooterLinkItemType[] = [
   },
   {
     title: "FAQs",
-    url: "https://staging.tailgrids.com/pricing#faqs",
+    url: "https://tailgrids.com/pricing#faqs",
     external: false
   },
   {

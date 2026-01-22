@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
-import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/cn";
+import { ChevronDown } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 export default function VersionDropdown() {
   const [open, setOpen] = useState(false);
@@ -32,7 +32,7 @@ export default function VersionDropdown() {
         )}
       >
         <Link
-          href="https://staging.tailgrids.com"
+          href="https://tailgrids.com"
           className="block rounded-lg px-3 py-1.5 text-xs font-medium text-tg-text-color duration-200 hover:bg-gray-100 hover:text-tg-title-color dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
           onClick={() => {
             setVersion("v3.0");
@@ -42,7 +42,7 @@ export default function VersionDropdown() {
           v3.0
         </Link>
         <Link
-          href="https://staging.tailgrids.com/docs/changelog#current-version-230"
+          href="https://tailgrids.com/docs/changelog#current-version-230"
           className="block rounded-lg px-3 py-1.5 text-xs font-medium text-tg-text-color duration-200 hover:bg-gray-100 hover:text-tg-title-color dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
           onClick={() => {
             setVersion("v2.3");
@@ -52,7 +52,7 @@ export default function VersionDropdown() {
           v2.3
         </Link>{" "}
         <Link
-          href="https://staging.tailgrids.com/docs/changelog#version-110"
+          href="https://tailgrids.com/docs/changelog#version-110"
           className="block rounded-lg px-3 py-1.5 text-xs font-medium text-tg-text-color duration-200 hover:bg-gray-100 hover:text-tg-title-color dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
           onClick={() => {
             setVersion("v1.1");

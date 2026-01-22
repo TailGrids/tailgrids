@@ -1,28 +1,28 @@
 "use client";
 
+import GradientImage from "@/assets/navbar/graphic.png";
 import { cn } from "@/lib/cn";
+import {
+  Cart2,
+  DashboardSquare1,
+  Layout14,
+  Megaphone1,
+  PieChart1
+} from "@tailgrids/icons";
+import { ChevronDown } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ChevronDown } from "lucide-react";
-import GradientImage from "@/assets/navbar/graphic.png";
 import {
-  DashboardSquare1,
-  Megaphone1,
-  PieChart1,
-  Cart2,
-  Layout14
-} from "@tailgrids/icons";
-import {
-  LongArrowUpRightIcon,
+  AIIcon,
+  ChatBubbleIcon,
   CheckmarkIcon,
   CommunityIcon,
-  ChatBubbleIcon,
-  RoadMapIcon,
+  LongArrowUpRightIcon,
   PencilTextIcon,
-  AIIcon
+  RoadMapIcon
 } from "./ui/icons";
-import Image from "next/image";
 
 // Menu data with submenus
 interface SubMenuItem {
@@ -55,35 +55,35 @@ const menuData: MenuItem[] = [
     children: [
       {
         title: "Application",
-        path: "https://staging.tailgrids.com/blocks#application",
+        path: "https://tailgrids.com/blocks#application",
         desc: "Components crafted for build all kind of modern webapps and sites",
         icon: <Layout14 className="size-6" />,
         external: false
       },
       {
         title: "Marketing",
-        path: "https://staging.tailgrids.com/blocks#marketing",
+        path: "https://tailgrids.com/blocks#marketing",
         desc: "All you need to create stunning and high-converting landing pages",
         icon: <Megaphone1 className="size-6" />,
         external: false
       },
       {
         title: "Dashboard",
-        path: "https://staging.tailgrids.com/blocks#dashboard",
+        path: "https://tailgrids.com/blocks#dashboard",
         desc: "Build data-rich modern backends, dashboards and admin panels",
         icon: <PieChart1 className="size-6" />,
         external: false
       },
       {
         title: "E-commerce",
-        path: "https://staging.tailgrids.com/blocks#e-commerce",
+        path: "https://tailgrids.com/blocks#e-commerce",
         desc: "Components and Pages need to build complete online store UI",
         icon: <Cart2 className="size-6" />,
         external: false
       },
       {
         title: "AI Components",
-        path: "https://staging.tailgrids.com/blocks#ai-components",
+        path: "https://tailgrids.com/blocks#ai-components",
         desc: "All you need to create stunning AI tools & landing pages",
         icon: <AIIcon className="size-6" />,
         external: false
@@ -136,28 +136,28 @@ const menuData: MenuItem[] = [
     children: [
       {
         title: "Community",
-        path: "https://staging.tailgrids.com/community",
+        path: "https://tailgrids.com/community",
         desc: "Connect, share, and grow with fellow users",
         icon: <CommunityIcon className="size-6" />,
         external: false
       },
       {
         title: "Support",
-        path: "https://staging.tailgrids.com/support",
+        path: "https://tailgrids.com/support",
         desc: "Need help? Our team's here for you",
         icon: <ChatBubbleIcon className="size-6" />,
         external: false
       },
       {
         title: "Roadmap",
-        path: "https://staging.tailgrids.com/roadmap",
+        path: "https://tailgrids.com/roadmap",
         desc: "Discover upcoming features and releases",
         icon: <RoadMapIcon className="size-6" />,
         external: false
       },
       {
         title: "Blog",
-        path: "https://staging.tailgrids.com/blog",
+        path: "https://tailgrids.com/blog",
         desc: "Fresh news and product updates",
         icon: <PencilTextIcon className="size-6" />,
         external: false

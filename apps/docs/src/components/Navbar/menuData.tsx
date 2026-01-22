@@ -2,9 +2,6 @@ import {
   AIIcon,
   CartIcon,
   ChatBubbleIcon,
-  ColoredFigmaIcon,
-  ColoredReactIcon,
-  ColoredVueIcon,
   CommunityIcon,
   ConfettiIcon,
   Dashboard2Icon,
@@ -36,37 +33,37 @@ export const menuData: MenuItem[] = [
     children: [
       {
         title: "Core Components",
-        path: "https://staging.tailgrids.com/docs/components",
+        path: "https://tailgrids.com/docs/components",
         icon: <Dashboard2Icon className="size-6" />,
         desc: "Core UI Components to kickstart any web projects - Open-source"
       },
       {
         title: "Application",
-        path: "https://staging.tailgrids.com/blocks#application",
+        path: "https://tailgrids.com/blocks#application",
         icon: <LayoutIcon className="size-6" />,
         desc: "Components crafted for build all kind of modern webapps and sites"
       },
       {
         title: "Marketing",
-        path: "https://staging.tailgrids.com/blocks#marketing",
+        path: "https://tailgrids.com/blocks#marketing",
         icon: <MegaPhoneIcon className="size-6" />,
         desc: "All you need to create stunning and high-converting landing pages"
       },
       {
         title: "Dashboard",
-        path: "https://staging.tailgrids.com/blocks#dashboard",
+        path: "https://tailgrids.com/blocks#dashboard",
         icon: <PieChartIcon className="size-6" />,
         desc: "Build data-rich modern backends, dashboards and admin panels"
       },
       {
         title: "E-commerce",
-        path: "https://staging.tailgrids.com/blocks#e-commerce",
+        path: "https://tailgrids.com/blocks#e-commerce",
         icon: <CartIcon className="size-6" />,
         desc: "Components and Pages need to build complete online store UI"
       },
       {
         title: "AI Components",
-        path: "https://staging.tailgrids.com/blocks#ai-components",
+        path: "https://tailgrids.com/blocks#ai-components",
         icon: <AIIcon className="size-6" />,
         desc: "All you need to create stunning AI tools & landing pages"
       }

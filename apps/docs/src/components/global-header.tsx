@@ -31,7 +31,7 @@ export default function GlobalHeader() {
           <div className="flex items-center gap-6  min-w-0">
             {/* Logo */}
             <Link
-              href="https://staging.tailgrids.com"
+              href="https://tailgrids.com"
               className="flex shrink-0 items-center gap-2"
             >
               <Image
@@ -94,7 +94,7 @@ export default function GlobalHeader() {
               </div>
               <div className="flex items-center gap-2">
                 <a
-                  href="https://staging.tailgrids.com/signin"
+                  href="https://tailgrids.com/signin"
                   className="text-gray-700 dark:text-gray-400 font-medium text-base hover:text-tg-text-color-secondary"
                 >
                   Account
@@ -102,7 +102,7 @@ export default function GlobalHeader() {
                 <a
                   className="custom-link-btn-blue ml-4
                   "
-                  href="https://staging.tailgrids.com/pricing"
+                  href="https://tailgrids.com/pricing"
                 >
                   Pricing & Faq
                 </a>
