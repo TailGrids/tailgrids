@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import { BorderLine } from "../ui/ContainerWithGrid";
 import NavbarPromo from "./NavbarPromo";
-import NavbarWrapper from "./NavbarWrapper";
 
 export default function Navbar() {
   const navbarRef = useRef<HTMLDivElement>(null);
@@ -14,7 +13,7 @@ export default function Navbar() {
         const height = navbarRef.current.offsetHeight;
         document.documentElement.style.setProperty(
           "--navbar-height",
-          `${height}px`,
+          `${height}px`
         );
       }
     };
@@ -47,8 +46,6 @@ export default function Navbar() {
         <BorderLine position="right" className="h-full" />
 
         <NavbarPromo />
-
-        <NavbarWrapper />
       </div>
     </div>
   );
