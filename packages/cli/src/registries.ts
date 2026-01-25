@@ -181,19 +181,19 @@ export const REGISTRIES: Registry[] = [
     ],
     dependencies: ["class-variance-authority"]
   },
-  {
-    id: "modal",
-    name: "Modal",
-    description:
-      "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
-    type: "component",
-    files: [
-      {
-        type: "core",
-        path: "/core/modal.tsx"
-      }
-    ]
-  },
+  // {
+  //   id: "modal",
+  //   name: "Modal",
+  //   description:
+  //     "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
+  //   type: "component",
+  //   files: [
+  //     {
+  //       type: "core",
+  //       path: "/core/modal.tsx"
+  //     }
+  //   ]
+  // },
   {
     id: "otp-input",
     name: "OTP Input",
