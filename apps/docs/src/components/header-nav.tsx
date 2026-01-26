@@ -51,55 +51,70 @@ const menuData: MenuItem[] = [
   },
   {
     title: "Blocks",
-    isBlocksDropdown: true,
-    children: [
-      {
-        title: "Application",
-        path: "https://tailgrids.com/blocks#application",
-        desc: "Components crafted for build all kind of modern webapps and sites",
-        icon: <Layout14 className="size-6" />,
-        external: false
-      },
-      {
-        title: "Marketing",
-        path: "https://tailgrids.com/blocks#marketing",
-        desc: "All you need to create stunning and high-converting landing pages",
-        icon: <Megaphone1 className="size-6" />,
-        external: false
-      },
-      {
-        title: "Dashboard",
-        path: "https://tailgrids.com/blocks#dashboard",
-        desc: "Build data-rich modern backends, dashboards and admin panels",
-        icon: <PieChart1 className="size-6" />,
-        external: false
-      },
-      {
-        title: "E-commerce",
-        path: "https://tailgrids.com/blocks#e-commerce",
-        desc: "Components and Pages need to build complete online store UI",
-        icon: <Cart2 className="size-6" />,
-        external: false
-      },
-      {
-        title: "AI Components",
-        path: "https://tailgrids.com/blocks#ai-components",
-        desc: "All you need to create stunning AI tools & landing pages",
-        icon: <AIIcon className="size-6" />,
-        external: false
-      },
-      {
-        title: "Core Components",
-        path: "/docs/components",
-        desc: "Core UI Components to kickstart any web projects - Open-source",
-        icon: <DashboardSquare1 className="size-6" />,
-        external: false
-      }
-    ]
+    path: "https://tailgrids.com/blocks",
+    external: false
   },
+  // {
+  //   title: "Blocks",
+  //   isBlocksDropdown: true,
+  //   children: [
+  //     {
+  //       title: "Application",
+  //       path: "https://tailgrids.com/blocks#application",
+  //       desc: "Components crafted for build all kind of modern webapps and sites",
+  //       icon: <Layout14 className="size-6" />,
+  //       external: false
+  //     },
+  //     {
+  //       title: "Marketing",
+  //       path: "https://tailgrids.com/blocks#marketing",
+  //       desc: "All you need to create stunning and high-converting landing pages",
+  //       icon: <Megaphone1 className="size-6" />,
+  //       external: false
+  //     },
+  //     {
+  //       title: "Dashboard",
+  //       path: "https://tailgrids.com/blocks#dashboard",
+  //       desc: "Build data-rich modern backends, dashboards and admin panels",
+  //       icon: <PieChart1 className="size-6" />,
+  //       external: false
+  //     },
+  //     {
+  //       title: "E-commerce",
+  //       path: "https://tailgrids.com/blocks#e-commerce",
+  //       desc: "Components and Pages need to build complete online store UI",
+  //       icon: <Cart2 className="size-6" />,
+  //       external: false
+  //     },
+  //     {
+  //       title: "AI Components",
+  //       path: "https://tailgrids.com/blocks#ai-components",
+  //       desc: "All you need to create stunning AI tools & landing pages",
+  //       icon: <AIIcon className="size-6" />,
+  //       external: false
+  //     },
+  //     {
+  //       title: "Core Components",
+  //       path: "/docs/components",
+  //       desc: "Core UI Components to kickstart any web projects - Open-source",
+  //       icon: <DashboardSquare1 className="size-6" />,
+  //       external: false
+  //     }
+  //   ]
+  // },
   {
     title: "Templates",
     path: "https://tailgrids.com/templates",
+    external: false
+  },
+  {
+    title: "Figma",
+    path: "https://tailgrids.com/figma",
+    external: false
+  },
+  {
+    title: "Templates",
+    path: "https://tailgrids.com/figma",
     external: false
   },
   // Products dropdown - reserved for future use
@@ -177,7 +192,7 @@ export default function HeaderNav() {
 
   return (
     <nav className="hidden xl:flex">
-      <ul className="flex items-center gap-1">
+      <ul className="flex items-center gap-2">
         {menuData.map((menuItem, index) => {
           const hasDropdown = menuItem.children && menuItem.children.length > 0;
           const isOpen = openDropdown === menuItem.title;
@@ -195,14 +210,23 @@ export default function HeaderNav() {
                 <Link
                   href={menuItem.path}
                   target={menuItem.external ? "_blank" : "_self"}
-                  className="inline-flex items-center gap-0.5 rounded-lg px-2 py-1.5 text-sm font-medium text-tg-text-color duration-200 hover:bg-gray-100 hover:text-tg-title-color dark:text-gray-400 dark:hover:bg-gray-900 dark:hover:text-white"
+                  className={cn(
+                    "inline-flex items-center gap-0.5 rounded-lg px-2 py-1.5 text-sm font-medium text-tg-text-color duration-200 hover:bg-gray-100 hover:text-tg-title-color dark:text-gray-400 dark:hover:bg-gray-900 dark:hover:text-white",
+                    (pathname === menuItem.path ||
+                      pathname?.startsWith(menuItem.path + "/")) &&
+                      "bg-gray-100 text-tg-title-color dark:bg-gray-900 dark:text-white"
+                  )}
                 >
                   {menuItem.title}
                 </Link>
               ) : (
                 <>
                   <button
-                    className="inline-flex items-center gap-0.5 rounded-lg px-2 py-1.5 text-sm font-medium text-tg-text-color duration-200 hover:bg-gray-100 hover:text-tg-title-color dark:text-gray-400 dark:hover:bg-gray-900 dark:hover:text-white"
+                    className={cn(
+                      "inline-flex items-center gap-0.5 rounded-lg px-2 py-1.5 text-sm font-medium text-tg-text-color duration-200 hover:bg-gray-100 hover:text-tg-title-color dark:text-gray-400 dark:hover:bg-gray-900 dark:hover:text-white",
+                      isOpen &&
+                        "bg-gray-100 text-tg-title-color dark:bg-gray-900 dark:text-white"
+                    )}
                     onClick={() =>
                       setOpenDropdown(isOpen ? null : menuItem.title)
                     }

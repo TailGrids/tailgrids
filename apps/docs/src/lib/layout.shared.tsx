@@ -1,7 +1,13 @@
 import ProBadge from "@/components/pro-badge";
 import ThemeToggleLink from "@/components/theme-toggle-link";
-import { BlocksIcon, ComponentsIcon, FigmaIcon, TemplateIcon, BookOpenIcon } from "@/icons";
-import { Home } from "@tailgrids/icons";
+import {
+  BlocksIcon,
+  BoltIcon,
+  ComponentsIcon,
+  FigmaIcon,
+  TemplateIcon
+} from "@/icons";
+import { OpenBook, Bolt1 } from "@tailgrids/icons";
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 
 export function baseOptions(): BaseLayoutProps {
@@ -13,18 +19,18 @@ export function baseOptions(): BaseLayoutProps {
       {
         text: "Introduction",
         url: "/",
-        icon: <Home className="size-6 shrink-0" />
+        icon: <BoltIcon className="shrink-0" />
       },
       {
         text: "Installation",
         url: "/installation",
-        icon: <BookOpenIcon className="size-6 shrink-0 " />,
+        icon: <OpenBook className="shrink-0" />,
         active: "nested-url"
       },
       {
         text: "Core Components",
         url: "/components",
-        icon: <ComponentsIcon className="size-6 shrink-0 " />,
+        icon: <ComponentsIcon className="shrink-0 " />,
         active: "nested-url"
       },
       {
@@ -35,7 +41,7 @@ export function baseOptions(): BaseLayoutProps {
           </span>
         ),
         url: "https://tailgrids.com/blocks",
-        icon: <BlocksIcon className="size-6 shrink-0" />,
+        icon: <BlocksIcon className="shrink-0" />,
         external: false
       },
       {
@@ -46,7 +52,7 @@ export function baseOptions(): BaseLayoutProps {
           </span>
         ),
         url: "https://tailgrids.com/templates",
-        icon: <TemplateIcon className="size-6 shrink-0" />,
+        icon: <TemplateIcon className="shrink-0" />,
         external: false
       },
       {
@@ -56,7 +62,7 @@ export function baseOptions(): BaseLayoutProps {
             <ProBadge />
           </span>
         ),
-        icon: <FigmaIcon className="size-6 shrink-0" />,
+        icon: <FigmaIcon className="shrink-0" />,
         url: "https://tailgrids.com/figma",
         external: false
       }

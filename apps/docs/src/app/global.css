@@ -208,6 +208,10 @@
   font-size: 14px;
   font-weight: 500;
 }
+a > svg {
+  width: 20px;
+  height: 20px;
+}
 .dark .text-fd-muted-foreground {
   color: #9ca3af !important;
 }

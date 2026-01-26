@@ -100,6 +100,33 @@ export function FigmaIcon({ ...props }: React.SVGProps<SVGSVGElement>) {
   );
 }
 
+export function BoltIcon({ ...props }: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width={20}
+      height={20}
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <g clipPath="url(#clip0_15688_23575)">
+        <path
+          d="M10.938.667L2.234 12.053H9.27v7.28l8.495-11.387h-6.826V.666z"
+          stroke="currentColor"
+          strokeWidth={1.5}
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_15688_23575">
+          <path fill="#fff" d="M0 0H20V20H0z" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+}
+
 export function XIcon({ ...props }: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
