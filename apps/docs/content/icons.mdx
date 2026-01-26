@@ -1,0 +1,144 @@
+---
+title: Icons
+description: Free and open-source SVG icons for React projects. 240+ scalable vector icons built for React and Tailwind CSS.
+---
+
+# Free and open-source SVG icons
+
+TailGrids Icons provides free, open-source SVG icons for React projects. The icons are exported as reusable React SVG components and work as scalable vector icons. The library is built for React and Tailwind CSS, and all icons are typed for use in JSX and TSX projects. The icons are provided through the `@tailgrids/icons` npm package and are imported directly into components.
+
+Browse all available icons at [TailGrid Icons](https://tailgrids.com/icons).
+
+## Installation
+
+Install the icon package using a package manager.
+
+```npm
+npm i @tailgrids/icons
+```
+
+TypeScript types are included by default.
+
+## Usage
+
+### Basic Usage
+
+Import the icons you need and use them as React components:
+
+```tsx
+import { ArrowLeftSquare, FourK } from "@tailgrids/icons";
+
+function App() {
+  return (
+    <div>
+      <ArrowLeftSquare />
+      <FourK />
+    </div>
+  );
+}
+```
+
+Only imported icons are included in the final bundle.
+
+### With Custom Props
+
+Icons accept standard React and SVG props for customization:
+
+```tsx
+import { ArrowLeftSquare, FourK } from "@tailgrids/icons";
+
+function App() {
+  return (
+    <div>
+      {/* Custom size */}
+      <ArrowLeftSquare size={35} />
+
+      {/* With className for styling */}
+      <FourK
+        size={24}
+        className="hover:scale-110 transition-transform cursor-pointer"
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+All icon components accept the following props:
+
+| Prop        | Type               | Default     | Description                            |
+| ----------- | ------------------ | ----------- | -------------------------------------- |
+| `size`      | `number \| string` | `24`        | Icon size (width and height in pixels) |
+| `className` | `string`           | `undefined` | Additional CSS classes for styling     |
+| `...props`  | `SVGProps`         | -           | All standard SVG element props         |
+
+All icons also inherit standard SVG props through `React.SVGProps<SVGSVGElement>`, giving you full control over SVG attributes.
+
+## Styling SVG Icons with Tailwind CSS
+
+Icons can be styled using Tailwind utilities.
+
+```tsx
+import { ArrowLeftSquare } from "@tailgrids/icons";
+
+<ArrowLeftSquare className="w-6 h-6 text-gray-700 hover:text-black" />;
+```
+
+You can control:
+- Size
+- Color
+- Hover states
+- Transitions
+
+No additional configuration is required.
+
+## Free SVG Icons Built for React apps
+
+TailGrids Icons includes a growing set of free React SVG icons designed for modern UI development. Each icon is exported as a React component rather than a raw SVG file or an icon font. This makes icons easier to compose, style, and reuse across applications.
+
+- **240+ free SVG icons** as React components
+- **Scalable vector icons** with consistent stroke and proportions
+- **Optimized for Tailwind CSS** utility-based styling
+- **No icon fonts, no runtime dependencies**
+
+These icons can be used in dashboards, eCommerce, SaaS products, admin panels, marketing pages, and AI tools.
+
+## React vector icons as typed components
+
+Each icon in the library is implemented as a typed React component. This provides predictable usage and editor support when working in TypeScript projects. The approach works well for design systems and large React codebases.
+
+This design provides:
+
+- **Type-safe imports** with TypeScript
+- **Tree-shakable exports** to reduce bundle size
+- **SVG-based vector icons** that scale without quality loss
+- **Standard React and SVG props** for control over size, color, and behavior
+
+## Designed to match the TailGrids UI system
+
+These React SVG icons are designed to align with TailGrids components, blocks, and templates. When used together, icons and UI elements follow a consistent visual style throughout an application.
+
+If TailGrids is already used for layout and components, the icons can be added without causing a visual mismatch or requiring extra styling.
+
+## Frequently Asked Questions
+
+### What are React SVG icons?
+
+React SVG icons are SVG icons exported as React components. They are used directly in JSX and allow control over size, color, and behavior without managing separate SVG files.
+
+### Are TailGrids icons vector icons?
+
+Yes. All TailGrids icons are SVG-based vector icons. They scale cleanly at any size and remain sharp on all screens.
+
+### Can I use these SVG icons in commercial projects?
+
+Yes. TailGrids Icons are free and open source, and feel free to use them in commercial projects without attribution.
+
+### How are these icons different from icon fonts?
+
+SVG icons scale better than icon fonts and remain clear at all sizes. They also support accessibility features and are easier to style using React props and CSS.
+
+### Do these React icons work with Tailwind CSS?
+
+Yes. You can style it with Tailwind utility classes via the `className` prop, and it works well in any React-based project.
