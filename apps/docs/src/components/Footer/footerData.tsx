@@ -65,12 +65,12 @@ export const usefulLinks: FooterLinkItemType[] = [
 export const helpAndSupportLinks: FooterLinkItemType[] = [
   {
     title: "Support",
-    url: "/support",
+    url: "https://tailgrids.com/support",
     external: false
   },
   {
     title: "Docs",
-    url: "/docs",
+    url: "/",
     external: false
   },
   {
