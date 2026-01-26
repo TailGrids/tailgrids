@@ -2,20 +2,12 @@
 
 import GradientImage from "@/assets/navbar/graphic.png";
 import { cn } from "@/lib/cn";
-import {
-  Cart2,
-  DashboardSquare1,
-  Layout14,
-  Megaphone1,
-  PieChart1
-} from "@tailgrids/icons";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
-  AIIcon,
   ChatBubbleIcon,
   CheckmarkIcon,
   CommunityIcon,
@@ -147,7 +139,7 @@ const menuData: MenuItem[] = [
     children: [
       {
         title: "Community",
-        path: "https://tailgrids.com/community",
+        path: "https://pimjo.com/community",
         desc: "Connect, share, and grow with fellow users",
         icon: <CommunityIcon className="size-6" />,
         external: false
