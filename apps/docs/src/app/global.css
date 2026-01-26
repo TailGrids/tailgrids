@@ -293,6 +293,10 @@ body {
   z-index: 999;
 }
 
+#nd-sidebar p {
+  @apply text-base font-semibold text-[#374151];
+}
+
 /* Hide search from sidebar - keep it only in header */
 #nd-sidebar > div:first-of-type {
   /* styles here */
