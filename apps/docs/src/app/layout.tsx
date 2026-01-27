@@ -57,10 +57,7 @@ export default function Layout({ children }: LayoutProps<"/">) {
             enableSystem: false
           }}
           search={{
-            enabled: true,
-            options: {
-              api: "/docs/api/search"
-            }
+            enabled: false
           }}
         >
           {children}
