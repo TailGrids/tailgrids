@@ -19,7 +19,8 @@ import {
   CommunityIcon,
   ChatBubbleIcon,
   RoadMapIcon,
-  PencilTextIcon
+  PencilTextIcon,
+  ConfettiIcon
 } from "./ui/icons";
 
 interface SubMenuItem {
@@ -79,6 +80,13 @@ const mobileMenuData: MenuItem[] = [
         path: "https://tailgrids.com/roadmap",
         icon: <RoadMapIcon className="size-5" />,
         external: true
+      },
+      {
+        title: "Icons",
+        path: "https://tailgrids.com/icons",
+        desc: "Get started with our tailgrids free icons",
+        icon: <ConfettiIcon className="size-5" />,
+        external: false
       },
       {
         title: "Blog",

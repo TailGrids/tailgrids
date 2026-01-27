@@ -11,6 +11,7 @@ import {
   ChatBubbleIcon,
   CheckmarkIcon,
   CommunityIcon,
+  ConfettiIcon,
   LongArrowUpRightIcon,
   PencilTextIcon,
   RoadMapIcon
@@ -156,6 +157,13 @@ const menuData: MenuItem[] = [
         path: "https://tailgrids.com/roadmap",
         desc: "Discover upcoming features and releases",
         icon: <RoadMapIcon className="size-6" />,
+        external: false
+      },
+      {
+        title: "Icons",
+        path: "https://tailgrids.com/icons",
+        desc: "Get started with our tailgrids free icons",
+        icon: <ConfettiIcon className="size-6" />,
         external: false
       },
       {
