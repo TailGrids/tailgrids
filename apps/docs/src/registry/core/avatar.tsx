@@ -61,7 +61,7 @@ export function Avatar({
         {src ? (
           <img
             src={src}
-            className="h-full rounded-full object-cover"
+            className="h-full rounded-full size-10 object-cover"
             alt={alt}
           />
         ) : (
@@ -150,14 +150,14 @@ export function LabelGroup({ name, email, size }: LabelGroupProps) {
 }
 
 type AvatarGroupPropsType = {
-  size?: 'xs' | 'sm' | 'md';
+  size?: "xs" | "sm" | "md";
   data: {
     src: string;
     alt: string;
   }[];
 };
 
-export function AvatarGroup({ size = 'md', data }: AvatarGroupPropsType) {
+export function AvatarGroup({ size = "md", data }: AvatarGroupPropsType) {
   return (
     <div className="flex items-center -space-x-2">
       {data.map(({ src, alt }, i) => (
@@ -168,11 +168,10 @@ export function AvatarGroup({ size = 'md', data }: AvatarGroupPropsType) {
           fallback={alt.charAt(0)}
           className="rounded-full ring-[1.5px] ring-white"
           style={{
-            zIndex: i,
+            zIndex: i
           }}
         />
       ))}
     </div>
   );
 }
-

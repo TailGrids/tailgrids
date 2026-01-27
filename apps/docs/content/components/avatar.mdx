@@ -3,25 +3,29 @@ title: React Avatar Component
 description: A React avatar component for showing user profile images, initials, or fallback icons. Used to represent people, teams, or accounts with optional status indicators.
 ---
 
+import AvatarGroupPreview from "@/components/preview/avatar/avatar-group-preview";
+import AvatarLabelPreview from "@/components/preview/avatar/avatar-label-preview";
+import AvatarPreview from "@/components/preview/avatar/avatar-preview";
+import AvatarSizesPreview from "@/components/preview/avatar/avatar-sizes-preview";
+import AvatarStatusIndicatorPreview from "@/components/preview/avatar/avatar-status-indicator-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
-import AvatarPreview from "@/components/preview/avatar-preview";
 
 # Avatar
 
-React Avatar components are used to display user profile images, initials, or general fallback content. They are commonly used in user profiles, comment lists, team members, and account menus.
-
-This Avatar component is built with React and styled using Tailwind CSS, giving developers control over size, layout, and presentation. It supports various sizes, user status indicators, and an optional name/email label group.
+The Avatar component can be used to represent users or teams, displaying profile pictures, initials, or fallback content.
 
 <ComponentPreview
-  codeSnippet={getFileContent("/src/components/preview/avatar-preview.tsx")}
+  codeSnippet={getFileContent(
+    "/src/components/preview/avatar/avatar-preview.tsx"
+  )}
 >
   <AvatarPreview />
 </ComponentPreview>
 
 ## Installation
 
-<Accordions>
+<Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 ```npm
@@ -46,7 +50,8 @@ lang="tsx"
 </Accordion>
 </Accordions>
 
-## Usage
+## Anatomy
+
 Import the component and pass the required props.
 
 ```tsx
@@ -73,16 +78,49 @@ export default () => (
 
 The Avatar component supports six predefined sizes: `xs`, `sm`, `md`, `lg`, `xl`, and `xxl`.
 
-```tsx
-<div className="flex items-end gap-4">
-  <Avatar src="" fallback="XS" size="xs" />
-  <Avatar src="" fallback="SM" size="sm" />
-  <Avatar src="" fallback="MD" size="md" />
-  <Avatar src="" fallback="LG" size="lg" />
-  <Avatar src="" fallback="XL" size="xl" />
-  <Avatar src="" fallback="XXL" size="xxl" />
-</div>
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/avatar/avatar-sizes-preview.tsx"
+  )}
+>
+  <AvatarSizesPreview />
+</ComponentPreview>
+
+### Status Indicator
+
+The Avatar component supports three status indicators: `none`, `online`, `offline`, and `busy`.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/avatar/avatar-status-indicator-preview.tsx"
+  )}
+>
+  <AvatarStatusIndicatorPreview />
+</ComponentPreview>
+
+### Label
+
+The label is optional and can be used to display the user's name and email.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/avatar/avatar-label-preview.tsx"
+  )}
+>
+  <AvatarLabelPreview />
+</ComponentPreview>
+
+### Avatar Group
+
+Multiple avatars can be displayed in a group using the `AvatarGroup` component.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/avatar/avatar-group-preview.tsx"
+  )}
+>
+  <AvatarGroupPreview />
+</ComponentPreview>
 
 ### With Status Indicator
 
@@ -136,20 +174,20 @@ const members = [
 
 ### Avatar
 
-| Prop       | Type                                            | Default  | Description                                                                     |
-| :--------- | :---------------------------------------------- | :------- | :------------------------------------------------------------------------------ |
-| `size`     | `'xs'`, `'sm'`, `'md'`, `'lg'`, `'xl'`, `'xxl'` | `'md'`   | Sets the size of the avatar        |
-| `src`      | `string`                                        | -        | Image URL. If not provided, the fallback is shown             |
-| `alt`      | `string`                                        | -        | Image alt text for accessibility                      |
-| `fallback` | `string`                                        | -        | Initials or short text shown when `src` is not provided **Required**.      |
-| `status`   | `'none'`, `'online'`, `'offline'`, `'busy'`     | `'none'` | Displays a status indicator at the bottom-right corner                         |
+| Prop       | Type                                            | Default  | Description                                                            |
+| :--------- | :---------------------------------------------- | :------- | :--------------------------------------------------------------------- |
+| `size`     | `'xs'`, `'sm'`, `'md'`, `'lg'`, `'xl'`, `'xxl'` | `'md'`   | Sets the size of the avatar                                            |
+| `src`      | `string`                                        | -        | Image URL. If not provided, the fallback is shown                      |
+| `alt`      | `string`                                        | -        | Image alt text for accessibility                                       |
+| `fallback` | `string`                                        | -        | Initials or short text shown when `src` is not provided **Required**.  |
+| `status`   | `'none'`, `'online'`, `'offline'`, `'busy'`     | `'none'` | Displays a status indicator at the bottom-right corner                 |
 | `label`    | `{ name: string, email: string }`               | -        | Optional object containing name and email displayed next to the avatar |
 
 ### AvatarGroup
 
-| Prop   | Type                                  | Default | Description                               |
-| :----- | :------------------------------------ | :------ | :---------------------------------------- |
-| `size` | `'xs'`, `'sm'`, `'md'`                | `'md'`  | Sets the size of avatars in the group |
+| Prop   | Type                                  | Default | Description                             |
+| :----- | :------------------------------------ | :------ | :-------------------------------------- |
+| `size` | `'xs'`, `'sm'`, `'md'`                | `'md'`  | Sets the size of avatars in the group   |
 | `data` | `Array<{ src: string, alt: string }>` | -       | Array of avatar data objects to display |
 
 ## Accessibility
