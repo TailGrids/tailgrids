@@ -3,9 +3,11 @@ title: React Breadcrumbs Component
 description: A React breadcrumbs component that shows the current page’s location in a site hierarchy. Helps users understand navigation paths and move between parent pages.
 ---
 
+import BreadcrumbsPreview from "@/components/preview/breadcrumb/breadcrumbs-preview";
+import BreadcrumbsStylesPreview from "@/components/preview/breadcrumb/breadcrumbs-styles-preview";
+import BreadcrumbsWithIconPreview from "@/components/preview/breadcrumb/breadcrumbs-with-icon-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
-import BreadcrumbsPreview from "@/components/preview/breadcrumbs-preview";
 
 # Breadcrumbs
 
@@ -15,7 +17,7 @@ This Breadcrumbs component is built with React and styled using Tailwind CSS, gi
 
 <ComponentPreview
   codeSnippet={getFileContent(
-    "/src/components/preview/breadcrumbs-preview.tsx"
+    "/src/components/preview/breadcrumb/breadcrumbs-preview.tsx"
   )}
 >
   <BreadcrumbsPreview />
@@ -23,7 +25,7 @@ This Breadcrumbs component is built with React and styled using Tailwind CSS, gi
 
 ## Installation
 
-<Accordions>
+<Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 
@@ -44,6 +46,7 @@ Copy and paste the following component code into your project.
 </Accordions>
 
 ## Usage
+
 Import the component and pass the required props.
 
 ```tsx
@@ -63,62 +66,46 @@ export default () => (
 ## Examples
 
 ### With Icons
+
 Add icons to breadcrumb items to improve visual context.
 
-```tsx
-import { Home, BoxCube3D } from "@tailgrids/icons";
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/breadcrumb/breadcrumbs-with-icon-preview.tsx"
+  )}
+>
+  <BreadcrumbsWithIconPreview />
+</ComponentPreview>
 
-<Breadcrumbs
-  items={[
-    { href: "/", label: "Home", icon: <Home /> },
-    { href: "/products", label: "Products", icon: <BoxCube3D /> },
-    { href: "/products/laptop", label: "Laptop" }
-  ]}
-/>;
-```
+Note: Icons are automatically sized to `16px` (1rem) via the `[&>svg]:size-4` class.
 
 ### Divider Types
-Use different divider styles between breadcrumb items.
 
-```tsx
-<Breadcrumbs
-  dividerType="chevron"
-  items={[
-    { href: "/", label: "Home" },
-    { href: "/docs", label: "Documentation" }
-  ]}
-/>
+Use different divider styles between breadcrumb items using the `dividerType` prop.
 
-<Breadcrumbs
-  dividerType="dot"
-  items={[
-    { href: "/", label: "Home" },
-    { href: "/blog", label: "Blog" }
-  ]}
-/>
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/breadcrumb/breadcrumbs-styles-preview.tsx"
+  )}
+>
+  <BreadcrumbsStylesPreview />
+</ComponentPreview>
 
-<Breadcrumbs
-  dividerType="slash"
-  items={[
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" }
-  ]}
-/>
-```
+Note: The last item in the breadcrumb trail is automatically styled with darker text to indicate the current page.
 
 ## API Reference
 
 ### Breadcrumbs
 
 | Prop          | Type                            | Default   | Description                          |
-| ------------- | ------------------------------- | --------- | ------------------------------------ |
+| :------------ | :------------------------------ | :-------- | :----------------------------------- |
 | `items`       | `BreadcrumbItem[]`              | -         | Array of breadcrumb items (required) |
 | `dividerType` | `'slash'`, `'chevron'`, `'dot'` | `'slash'` | Style of divider between items       |
 
 `BreadcrumbItem`
 
 | Property | Type              | Description                    |
-| -------- | ----------------- | ------------------------------ |
+| :------- | :---------------- | :----------------------------- |
 | `href`   | `string`          | Link destination (required)    |
 | `label`  | `string`          | Display text (required)        |
 | `icon`   | `React.ReactNode` | Optional icon before the label |
@@ -129,9 +116,3 @@ Use different divider styles between breadcrumb items.
 - The last item is visually distinguished with darker text color
 - Icons inherit the current text color for consistent styling
 - All links support keyboard navigation
-
-## Notes
-
-- The last item in the breadcrumb trail is automatically styled with darker text to indicate the current page
-- Icons are automatically sized to `16px` (1rem) via the `[&>svg]:size-4` class
-- The component uses `contents` display on list items to support flexible layouts
