@@ -3,9 +3,12 @@ title: React Button Group Component
 description: A React button group component for grouping related buttons together. Used to display connected actions in a horizontal or vertical layout with consistent styling.
 ---
 
+import ButtonGroupCustomPreview from "@/components/preview/button-group/button-group-custom-preview";
+import ButtonGroupPreview from "@/components/preview/button-group/button-group-preview";
+import ButtonGroupSizesPreview from "@/components/preview/button-group/button-group-sizes-preview";
+import ButtonGroupVariantsPreview from "@/components/preview/button-group/button-group-variants-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
-import ButtonGroupPreview from "@/components/preview/button-group-preview";
 
 # Button Group
 
@@ -15,7 +18,7 @@ This Button Group component is built with React and styled using Tailwind CSS, p
 
 <ComponentPreview
   codeSnippet={getFileContent(
-    "/src/components/preview/button-group-preview.tsx"
+    "/src/components/preview/button-group/button-group-preview.tsx"
   )}
 >
   <ButtonGroupPreview />
@@ -23,7 +26,7 @@ This Button Group component is built with React and styled using Tailwind CSS, p
 
 ## Installation
 
-<Accordions>
+<Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 
@@ -35,6 +38,7 @@ npx @tailgrids/cli add button-group
 
 <Accordion title="Manual">
 Install the required dependencies:
+
 ```npm
 npm i class-variance-authority
 ```
@@ -49,6 +53,7 @@ Copy and paste the following component code into your project.
 </Accordions>
 
 ## Usage
+
 Import the component and wrap related buttons inside it.
 
 ```tsx
@@ -66,41 +71,40 @@ export default () => (
 ## Examples
 
 ### Variants
+
 Use variants to change the visual style of the button group.
 
-```tsx
-<ButtonGroup variant="primary">
-  <button>Option 1</button>
-  <button>Option 2</button>
-  <button>Option 3</button>
-</ButtonGroup>
-
-<ButtonGroup variant="secondary">
-  <button>Option 1</button>
-  <button>Option 2</button>
-  <button>Option 3</button>
-</ButtonGroup>
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/button-group/button-group-variants-preview.tsx"
+  )}
+>
+  <ButtonGroupVariantsPreview />
+</ComponentPreview>
 
 ### Sizes
+
 Adjust the size to match surrounding UI elements.
 
-```tsx
-<ButtonGroup size="sm">
-  <button>Small</button>
-  <button>Group</button>
-</ButtonGroup>
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/button-group/button-group-sizes-preview.tsx"
+  )}
+>
+  <ButtonGroupSizesPreview />
+</ComponentPreview>
 
-<ButtonGroup size="md">
-  <button>Medium</button>
-  <button>Group</button>
-</ButtonGroup>
+### Custom
 
-<ButtonGroup size="lg">
-  <button>Large</button>
-  <button>Group</button>
-</ButtonGroup>
-```
+Create a custom styled example using `className` to override styles.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/button-group/button-group-custom-preview.tsx"
+  )}
+>
+  <ButtonGroupCustomPreview />
+</ComponentPreview>
 
 ## API Reference
 
@@ -114,11 +118,3 @@ Extends `div` element props.
 | `size`      | `'sm'`, `'md'`, `'lg'`     | `'md'`      | Button group size      |
 | `className` | `string`                   | -           | Additional CSS classes |
 | `children`  | `React.ReactNode`          | -           | Button elements        |
-
-## Notes
-
-- Use standard `<button>` elements as children for proper styling
-- First and last buttons automatically receive rounded corners
-- Buttons are visually connected with dividers that match the variant
-- Hover states are applied consistently across all buttons
-- All buttons share consistent padding and sizing based on the `size` prop
