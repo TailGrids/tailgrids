@@ -52,6 +52,10 @@ export default function Layout({ children }: LayoutProps<"/">) {
 
       <body className="flex flex-col min-h-screen bg-white dark:bg-[#030712] antialiased">
         <RootProvider
+          theme={{
+            defaultTheme: "light",
+            enableSystem: false
+          }}
           search={{
             enabled: true,
             options: {

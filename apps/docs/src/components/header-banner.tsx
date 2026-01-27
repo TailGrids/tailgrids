@@ -27,11 +27,15 @@ export default function HeaderBanner() {
         <Image
           src={LogoBanner}
           alt="Logo Banner"
+          width={316}
+          height={183}
           className="lg:block dark:hidden hidden "
         />
         <Image
           src={LogoBannerDark}
           alt="Logo Banner"
+          width={316}
+          height={183}
           className="hidden lg:dark:block "
         />
       </div>
