@@ -297,6 +297,10 @@ body {
   @apply text-base font-semibold text-[#374151];
 }
 
+#nd-sidebar p {
+  @apply dark:text-white;
+}
+
 /* Hide search from sidebar - keep it only in header */
 #nd-sidebar > div:first-of-type {
   /* styles here */
