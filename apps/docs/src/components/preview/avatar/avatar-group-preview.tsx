@@ -1,6 +1,6 @@
 import { AvatarGroup } from "@/registry/core/avatar";
 
-export default function AvatarSizesPreview() {
+export default function AvatarGroupPreview() {
   const teamMembers = [
     {
       src: "/docs/images/avatar/avatar-1.webp",
@@ -16,9 +16,5 @@ export default function AvatarSizesPreview() {
     }
   ];
 
-  return (
-    <div className="flex items-center justify-center gap-10 w-full p-4">
-      <AvatarGroup data={teamMembers} size="md" />
-    </div>
-  );
+  return <AvatarGroup data={teamMembers} size="md" />;
 }
