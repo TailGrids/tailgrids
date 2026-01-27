@@ -5,9 +5,9 @@ import {
   AccordionTrigger
 } from "@/registry/core/accordion";
 
-export function AccordionPreview() {
+export function AccordionStyleFive() {
   return (
-    <AccordionRoot>
+    <AccordionRoot variant="style_five">
       <AccordionItem>
         <AccordionTrigger>What is your return policy?</AccordionTrigger>
         <AccordionContent>
@@ -21,14 +21,6 @@ export function AccordionPreview() {
         <AccordionContent>
           Standard shipping typically takes 5-7 business days. Express options
           are available at checkout.
-        </AccordionContent>
-      </AccordionItem>
-
-      <AccordionItem>
-        <AccordionTrigger>Do you ship internationally?</AccordionTrigger>
-        <AccordionContent>
-          Yes, we ship to over 50 countries worldwide. International shipping
-          rates vary by destination.
         </AccordionContent>
       </AccordionItem>
     </AccordionRoot>

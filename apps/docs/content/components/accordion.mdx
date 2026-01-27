@@ -3,28 +3,35 @@ title: React Accordion Components
 description: A React accordion component that lets users expand and collapse content sections. Built for accessibility, keyboard use, and flexible visual styles.
 ---
 
+import BlockCard from "@/components/block-card";
+import { AccordionCustom } from "@/components/preview/accordion/accordion-custom";
+import { AccordionPreview } from "@/components/preview/accordion/accordion-preview";
+import { AccordionStyleFive } from "@/components/preview/accordion/accordion-style-five";
+import { AccordionStyleFour } from "@/components/preview/accordion/accordion-style-four";
+import { AccordionStyleOne } from "@/components/preview/accordion/accordion-style-one";
+import { AccordionStyleThree } from "@/components/preview/accordion/accordion-style-three";
+import { AccordionStyleTwo } from "@/components/preview/accordion/accordion-style-two";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
-import { AccordionPreview } from "@/components/preview/accordion-preview";
 
 # Accordion
 
-React Accordion components let users show and hide sections of related content on a page. They are often used for FAQs, menus and submenus, settings panels, and other layouts where content needs to stay organized.
-
-This Accordion component is styled using Tailwind CSS, giving developers control over structure, layout, and styling.
+Accordions are UI components that allow users to toggle the visibility of content sections, helping organize information like FAQs and settings into a compact, manageable layout.
 
 <ComponentPreview
-  codeSnippet={getFileContent("/src/components/preview/accordion-preview.tsx")}
+  codeSnippet={getFileContent(
+    "/src/components/preview/accordion/accordion-preview.tsx"
+  )}
 >
   <AccordionPreview />
 </ComponentPreview>
 
 ## Installation
 
-<Accordions>
+<Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
-
+0
 ```npm
 npx @tailgrids/cli add accordion
 ```
@@ -69,6 +76,76 @@ export default () => (
 );
 ```
 
+## Examples
+
+### Style One (Default)
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/accordion/accordion-style-one.tsx"
+  )}
+>
+  <AccordionStyleOne />
+</ComponentPreview>
+
+### Style Two
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/accordion/accordion-style-two.tsx"
+  )}
+>
+  <AccordionStyleTwo />
+</ComponentPreview>
+
+### Style Three
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/accordion/accordion-style-three.tsx"
+  )}
+>
+  <AccordionStyleThree />
+</ComponentPreview>
+
+### Style Four
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/accordion/accordion-style-four.tsx"
+  )}
+>
+  <AccordionStyleFour />
+</ComponentPreview>
+
+### Style Five
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/accordion/accordion-style-five.tsx"
+  )}
+>
+  <AccordionStyleFive />
+</ComponentPreview>
+
+### Custom
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/accordion/accordion-custom.tsx"
+  )}
+>
+  <AccordionCustom />
+</ComponentPreview>
+
+{/* ## Related Blocks
+
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+  <BlockCard />
+  <BlockCard />
+</div> */}
+
 ## API Reference
 
 ### AccordionRoot
@@ -90,6 +167,10 @@ A single accordion item that groups a trigger and its content.
 | `className` | `string`          | Additional CSS classes         |
 | `children`  | `React.ReactNode` | Trigger and content components |
 
+| Data Attribute | Values               | Description                                          |
+| :------------- | :------------------- | :--------------------------------------------------- |
+| `data-state`   | `"open"`, `"closed"` | Indicates whether the item is expanded or collapsed. |
+
 ### AccordionTrigger
 
 Toggles the visibility of the accordion content.
@@ -98,6 +179,10 @@ Toggles the visibility of the accordion content.
 | ----------- | ----------------- | -------------------------------- |
 | `className` | `string`          | Additional CSS classes           |
 | `children`  | `React.ReactNode` | Trigger content (typically text) |
+
+| Data Attribute | Values               | Description                                          |
+| :------------- | :------------------- | :--------------------------------------------------- |
+| `data-state`   | `"open"`, `"closed"` | Indicates whether the item is expanded or collapsed. |
 
 ### AccordionContent
 
@@ -108,19 +193,9 @@ Holds the collapsible content for an accordion item.
 | `className` | `string`          | Additional CSS classes           |
 | `children`  | `React.ReactNode` | Content to display when expanded |
 
-## Variants
-
-The component comes with five pre-styled variants:
-
-- **style_one**: Bordered items with rounded corners
-- **style_two**: Items with a bottom border
-- **style_three**: Neutral background with rounded corners
-- **style_four**: Light background with a chevron icon
-- **style_five**: Light background with compact spacing
-
-```tsx
-<AccordionRoot variant="style_four">{/* items */}</AccordionRoot>
-```
+| Data Attribute | Values               | Description                                          |
+| :------------- | :------------------- | :--------------------------------------------------- |
+| `data-state`   | `"open"`, `"closed"` | Indicates whether the item is expanded or collapsed. |
 
 ## Accessibility
 
