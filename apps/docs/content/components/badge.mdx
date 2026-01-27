@@ -3,15 +3,17 @@ title: React Badge Component
 description: A React badge component for showing status, labels, or counts. Used to display small indicators like notifications, categories, or metadata with color options and icons.
 ---
 
+import BadgeColors from "@/components/preview/badge/badge-colors";
+import BadgeCustom from "@/components/preview/badge/badge-custom";
+import BadgeIcons from "@/components/preview/badge/badge-icons";
+import BadgePreview from "@/components/preview/badge/badge-preview";
+import BadgeSizes from "@/components/preview/badge/badge-sizes";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
-import BadgePreview from "@/components/preview/badge-preview";
 
 # Badge
 
-React Badge components are used to display small labels, counts, status indicators, or metadata with semantic colors and optional icons. They are commonly used for notifications, categories, tags, and metadata across interfaces.
-
-This Badge component is built with React and styled using Tailwind CSS, giving developers control over size, color, and icon placement.
+Use the Badge component to highlight status, counts, or small metadata labels with semantic colors and icons for clear visual emphasis and categorization.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/badge-preview.tsx")}
@@ -21,7 +23,7 @@ This Badge component is built with React and styled using Tailwind CSS, giving d
 
 ## Installation
 
-<Accordions>
+<Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 
@@ -47,6 +49,7 @@ Copy and paste the following component code into your project.
 </Accordions>
 
 ## Usage
+
 Import the component and pass the required props.
 
 ```tsx
@@ -58,34 +61,44 @@ export default () => <Badge color="primary">New</Badge>;
 ## Examples
 
 ### Sizes
-Use different sizes to match the surrounding UI.
 
-```tsx
-<Badge size="sm">Small</Badge>
-<Badge size="md">Medium</Badge>
-<Badge size="lg">Large</Badge>
-```
+The Badge component supports three predefined sizes: `sm`, `md`, and `lg`.
 
-### With Icons
-Add icons before or after the badge text.
-
-```tsx
-import { CheckIcon, XIcon } from "lucide-react";
-
-<Badge prefixIcon={<CheckIcon />}>Verified</Badge>
-<Badge suffixIcon={<XIcon />}>Remove</Badge>
-<Badge prefixIcon={<CheckIcon />} suffixIcon={<XIcon />}>Both</Badge>
-```
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/badge/badge-sizes.tsx")}
+>
+  <BadgeSizes />
+</ComponentPreview>
 
 ### Colors
-Use color variants to convey meaning or status.
 
-```tsx
-<Badge color="primary">Primary</Badge>
-<Badge color="success">Success</Badge>
-<Badge color="warning">Warning</Badge>
-// ...and more
-```
+Use color variants to match your exact need.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/badge/badge-colors.tsx")}
+>
+  <BadgeColors />
+</ComponentPreview>
+
+### With Icons
+
+Add icons before or after the badge text.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/badge/badge-icons.tsx")}
+>
+  <BadgeIcons />
+</ComponentPreview>
+
+### Custom
+
+Use custom styles or positioning to create unique badges for specific use cases.
+
+<ComponentPreview
+  codeSnippet={getFileContent("/src/components/preview/badge/badge-custom.tsx")}
+>
+  <BadgeCustom />
+</ComponentPreview>
 
 ## API Reference
 
@@ -93,18 +106,14 @@ Use color variants to convey meaning or status.
 
 Extends `span` element props.
 
-| Prop         | Type                   | Default     | Description            |
-| ------------ | ---------------------- | ----------- | ---------------------- |
-| `size`       | `'sm'`, `'md'`, `'lg'` | `'sm'`      | Sets the badge size    |
-| `color`      | See colors below       | `'primary'` | Sets the color scheme  |
-| `prefixIcon` | `React.ReactNode`      | -           | Icon before the text   |
-| `suffixIcon` | `React.ReactNode`      | -           | Icon after the text    |
-| `className`  | `string`               | -           | Additional CSS classes |
-| `children`   | `React.ReactNode`      | -           | Badge content          |
-
-#### Color Options
-
-`'gray'`, `'primary'`, `'error'`, `'warning'`, `'success'`, `'cyan'`, `'sky'`, `'blue'`, `'violet'`, `'purple'`, `'pink'`, `'rose'`, `'orange'`
+| Prop         | Type                                                                                                                                            | Default     | Description            |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ---------------------- |
+| `size`       | `'sm'`, `'md'`, `'lg'`                                                                                                                          | `'sm'`      | Sets the badge size    |
+| `color`      | `'gray'`, `'primary'`, `'error'`, `'warning'`, `'success'`, `'cyan'`, `'sky'`, `'blue'`, `'violet'`, `'purple'`, `'pink'`, `'rose'`, `'orange'` | `'primary'` | Sets the color scheme  |
+| `prefixIcon` | `React.ReactNode`                                                                                                                               | -           | Icon before the text   |
+| `suffixIcon` | `React.ReactNode`                                                                                                                               | -           | Icon after the text    |
+| `className`  | `string`                                                                                                                                        | -           | Additional CSS classes |
+| `children`   | `React.ReactNode`                                                                                                                               | -           | Badge content          |
 
 ## Notes
 
