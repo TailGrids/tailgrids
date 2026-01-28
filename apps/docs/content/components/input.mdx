@@ -3,10 +3,15 @@ title: React Input Component
 description: A React input field component for collecting text input from users. Used in forms to enter data with labels, hints, validation states, and controlled input support.
 ---
 
+import InputControlledPreview from "@/components/preview/input/input-controlled-preview";
+import InputCustomPreview from "@/components/preview/input/input-custom-preview";
+import InputPreview from "@/components/preview/input/input-preview";
+import InputStatesPreview from "@/components/preview/input/input-states-preview";
+import InputWithHintPreview from "@/components/preview/input/input-with-hint-preview";
+import InputWithLabelPreview from "@/components/preview/input/input-with-label-preview";
+import { Input } from "@/registry/core/input";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
-import InputPreview from "@/components/preview/input-preview";
-import { Input } from "@/registry/core/input";
 
 # Input
 
@@ -15,14 +20,16 @@ React Input components are used to collect text input from users. They are commo
 This Input component is built with React and styled using Tailwind CSS. It supports labels, helper text, validation states, and both controlled and uncontrolled usage.
 
 <ComponentPreview
-  codeSnippet={getFileContent("/src/components/preview/input-preview.tsx")}
+  codeSnippet={getFileContent(
+    "/src/components/preview/input/input-preview.tsx"
+  )}
 >
   <InputPreview />
 </ComponentPreview>
 
 ## Installation
 
-<Accordions>
+<Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 ```npm
@@ -47,83 +54,84 @@ Copy and paste the following component code into your project.
 </Accordions>
 
 ## Usage
+
 Import the component and pass the required props.
 
 ```tsx
 import { Input } from "@/registry/core/input";
 
-export default () => <Input label="Email" placeholder="Enter your email" />;
+export default InputPreview = () => (
+  <Input label="Email" placeholder="Enter your email" />
+);
 ```
 
 ## Examples
 
 ### With Label
+
 Use the `label` prop to describe the input field.
 
-```tsx
-<Input label="Full Name" placeholder="John Doe" />
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/input/input-with-label-preview.tsx"
+  )}
+>
+  <InputWithLabelPreview />
+</ComponentPreview>
+
+Note: Labels are non-selectable with `select-none` for better UX. Placeholder text uses muted color for better visual hierarchy.
 
 ### With Hint
+
 Use the `hint` prop to show helper text below the input.
 
-```tsx
-<Input
-  label="Username"
-  placeholder="Choose a username"
-  hint="Must be 3-20 characters long"
-/>
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/input/input-with-hint-preview.tsx"
+  )}
+>
+  <InputWithHintPreview />
+</ComponentPreview>
+
+Note: The input uses `peer` class to enable styling of the hint text based on input state.
 
 ### States
-Use visual states to show validation feedback.
 
-<ComponentPreview codeSnippet={
-  `
-<Input
-    label="Email"
-    state="success"
-    placeholder="email@example.com"
-/>
+Use visual states to show validation feedback, or disable the input.
 
-<Input
-    label="Email"
-    state="error"
-    placeholder="email@example.com"
-    hint="Please enter a valid email address"
-/>
-` }>
-<div className="flex flex-col gap-4">
-<Input label="Email" state="success" placeholder="email@example.com" />
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/input/input-states-preview.tsx"
+  )}
+>
+  <InputStatesPreview />
+</ComponentPreview>
 
-<Input
-  label="Email"
-  state="error"
-  placeholder="email@example.com"
-  hint="Please enter a valid email address"
-/>
-</div>
+Note: Focus ring color matches the state (primary for default, danger for error, success for success). Disabled inputs have reduced opacity and prevent pointer events.
+
+### Custom Style
+
+Use `className` to override default styles.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/input/input-custom-preview.tsx"
+  )}
+>
+  <InputCustomPreview />
 </ComponentPreview>
 
 ### Controlled
+
 Control the input value using React state.
 
-```tsx
-import { useState } from "react";
-
-export default () => {
-  const [value, setValue] = useState("");
-
-  return (
-    <Input
-      label="Controlled Input"
-      value={value}
-      onChange={e => setValue(e.target.value)}
-      hint={`${value.length} characters`}
-    />
-  );
-};
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/input/input-controlled-preview.tsx"
+  )}
+>
+  <InputControlledPreview />
+</ComponentPreview>
 
 ## API Reference
 
@@ -152,11 +160,3 @@ Extends `input` element props.
 - Disabled state applies to both input and hint text
 - Hint text uses semantic color coding for different states
 - Supports all standard input accessibility attributes
-
-## Notes
-
-- The input uses `peer` class to enable styling of the hint text based on input state
-- Focus ring color matches the state (primary for default, danger for error, success for success)
-- Placeholder text uses muted color for better visual hierarchy
-- Disabled inputs have reduced opacity and prevent pointer events
-- Labels are non-selectable with `select-none` for better UX
