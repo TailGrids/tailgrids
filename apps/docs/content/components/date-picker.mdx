@@ -5,7 +5,7 @@ description: A React date picker component that lets users select a date or date
 
 import DatePickerDefaultPreview from "@/components/preview/date-picker/date-picker-default-preview";
 import DatePickerPreselectedPreview from "@/components/preview/date-picker/date-picker-preselected-preview";
-import DatePickerRangePreview from "@/components/preview/date-picker/date-picker-range-preview";
+import RangeDatePickerPreview from "@/components/preview/date-picker/range-date-picker-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
@@ -87,10 +87,10 @@ Use this picker to select a start and end date as a range. The range picker defa
 
 <ComponentPreview
   codeSnippet={getFileContent(
-    "/src/components/preview/date-picker/date-picker-range-preview.tsx"
+    "/src/components/preview/date-picker/range-date-picker-preview.tsx"
   )}
 >
-  <DatePickerRangePreview />
+  <RangeDatePickerPreview />
 </ComponentPreview>
 
 Note: The **RangeDatePicker** automatically handles the logic of ensuring the user-selected first date is the `tempStartDate` and the second date is the `tempEndDate`, even if they are selected in reverse order.

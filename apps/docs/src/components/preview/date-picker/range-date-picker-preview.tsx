@@ -4,7 +4,7 @@ import { RangeDatePicker } from "@/registry/core/date-picker/range-date";
 import { format } from "date-fns";
 import { useState } from "react";
 
-export default function DatePickerRangePreview() {
+export default function RangeDatePickerPreview() {
   const [startDate, setStartDate] = useState<Date | null>(
     new Date(2028, 7, 25)
   );
