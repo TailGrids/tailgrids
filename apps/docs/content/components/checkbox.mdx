@@ -3,10 +3,14 @@ title: React Checkbox Component
 description: A React checkbox component that lets users select one or more options from a set. Used to toggle choices on or off with accessible input and keyboard support.
 ---
 
+import { ComponentPreview } from "@/components/component-preview";
+import CheckboxControlledPreview from "@/components/preview/checkbox/checkbox-controlled-preview";
+import CheckboxPreview from "@/components/preview/checkbox/checkbox-preview";
+import CheckboxSizesPreview from "@/components/preview/checkbox/checkbox-sizes-preview";
+import CheckboxWithLabelPreview from "@/components/preview/checkbox/checkbox-with-label-preview";
+import { Checkbox } from "@/registry/core/checkbox";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
-import CheckboxPreview from "@/components/preview/checkbox-preview";
-import { Checkbox } from "@/registry/core/checkbox";
 
 # Checkbox
 
@@ -15,25 +19,28 @@ React Checkbox components are used to let users select one or more options from 
 This Checkbox component is built with React and styled using Tailwind CSS, providing consistent visuals while keeping native checkbox behavior.
 
 <ComponentPreview
-  codeSnippet={getFileContent("/src/components/preview/checkbox-preview.tsx")}
+  codeSnippet={getFileContent(
+    "/src/components/preview/checkbox/checkbox-preview.tsx"
+  )}
 >
   <CheckboxPreview />
 </ComponentPreview>
 
 ## Installation
 
-<Accordions>
+<Accordions defaultValue="CLI">
 <Accordion title="CLI">
-Install the component using the Tailgrids CLI.
-```npm
+
+```bash
 npx @tailgrids/cli add checkbox
 ```
 
 </Accordion>
-
 <Accordion title="Manual">
+
 Install the required dependencies:
-```npm
+
+```bash
 npm i class-variance-authority
 ```
 
@@ -50,45 +57,56 @@ You'll also need the check icon SVG referenced in the component.
 </Accordions>
 
 ## Usage
+
 Import the component and pass the required props.
 
 ```tsx
 import { Checkbox } from "@/registry/core/checkbox";
 
-export default () => <Checkbox label="Accept terms and conditions" />;
+export default CheckboxPreview = () => (
+  <Checkbox label="Accept terms and conditions" />
+);
 ```
 
 ## Examples
 
+### Sizes
+
+The Checkbox component supports two sizes: `sm` (default) and `md`.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/checkbox/checkbox-sizes-preview.tsx"
+  )}
+>
+  <CheckboxSizesPreview />
+</ComponentPreview>
+
 ### With Label
+
 Use the label prop to display text next to the checkbox.
 
 <ComponentPreview
-  codeSnippet={`
-    <Checkbox label="Remember Me" />
-`}
+  codeSnippet={getFileContent(
+    "/src/components/preview/checkbox/checkbox-with-label-preview.tsx"
+  )}
 >
-  <Checkbox label="Remember Me" />
+  <CheckboxWithLabelPreview />
 </ComponentPreview>
 
+Note: Hover effects apply to both the checkbox and label for better UX.
+
 ### Controlled
+
 Control the checked state using React state.
 
-```tsx
-import { useState } from "react";
-
-export default () => {
-  const [checked, setChecked] = useState(false);
-
-  return (
-    <Checkbox
-      label="Subscribe to newsletter"
-      checked={checked}
-      onChange={e => setChecked(e.target.checked)}
-    />
-  );
-};
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/checkbox/checkbox-controlled-preview.tsx"
+  )}
+>
+  <CheckboxControlledPreview />
+</ComponentPreview>
 
 ## API Reference
 
@@ -115,11 +133,3 @@ Extends `input` element props.
 - Visible focus ring provides clear keyboard feedback
 - Disabled state is communicated via `aria-disabled` on the label
 - Hover states are disabled when checkbox is disabled
-
-## Notes
-
-- The checkbox input uses `sr-only` to hide it visually while keeping it accessible
-- Check icon appears only when checkbox is checked
-- Focus ring appears on keyboard focus with `ring-4` style
-- Hover effects apply to both the checkbox and label for better UX
-- All standard input HTML attributes are supported (except `size` which is used for visual sizing)
