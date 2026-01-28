@@ -3,10 +3,10 @@
 import { buttonStyles } from "@/registry/core/button";
 import {
   DropdownMenu,
-  DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
 } from "@/registry/core/dropdown";
 
 export default function DropdownPreview() {
