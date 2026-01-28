@@ -42,18 +42,18 @@ export const resourceLinks: FooterLinkItemType[] = [
 export const usefulLinks: FooterLinkItemType[] = [
   {
     title: "License",
-    url: "/license",
+    url: "https://tailgrids.com/license",
     external: false
   },
   {
     title: "Privacy Policy",
     url: "https://tailgrids.com/privacy-policy",
-    external: true
+    external: false
   },
   {
     title: "Refund Policy",
     url: "https://tailgrids.com/refund-policy",
-    external: true
+    external: false
   },
   {
     title: "Download",
