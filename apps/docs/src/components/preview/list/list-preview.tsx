@@ -1,5 +1,5 @@
 import { List } from "@/registry/core/list";
-import { Home, Gear1, User2, Exit } from "@tailgrids/icons";
+import { Exit, Gear1, Home, User2 } from "@tailgrids/icons";
 
 export default function ListPreview() {
   return (

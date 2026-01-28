@@ -3,9 +3,16 @@ title: React List Component
 description: A React list component for displaying a collection of items. Used to render vertical or horizontal lists with optional dividers and active states.
 ---
 
+import { CodeBlockCard } from "@/components/code-block-card";
+import { ComponentPreview } from "@/components/component-preview";
+import ListCustomPreview from "@/components/preview/list/list-custom-preview";
+import ListHorizontalPreview from "@/components/preview/list/list-horizontal-preview";
+import ListPreview from "@/components/preview/list/list-preview";
+import ListVerticalPreview from "@/components/preview/list/list-vertical-preview";
+import ListWithActiveStatePreview from "@/components/preview/list/list-with-active-state-preview";
+import ListWithoutDividersPreview from "@/components/preview/list/list-without-dividers-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
-import ListPreview from "@/components/preview/list-preview";
 
 # List
 
@@ -14,14 +21,14 @@ React List components are used to display a collection of related items. They ar
 This List component is built with React and styled using Tailwind CSS. It supports vertical and horizontal layouts, dividers, and active item states.
 
 <ComponentPreview
-  codeSnippet={getFileContent("/src/components/preview/list-preview.tsx")}
+  codeSnippet={getFileContent("/src/components/preview/list/list-preview.tsx")}
 >
   <ListPreview />
 </ComponentPreview>
 
 ## Installation
 
-<Accordions>
+<Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 ```npm
@@ -46,66 +53,92 @@ Copy and paste the following component code into your project.
 </Accordions>
 
 ## Usage
+
 Import the component and render list items as children.
 
 ```tsx
 import { List } from "@/registry/core/list";
 
-export default () => (
-  <List>
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
-  </List>
-);
+export default function Example() {
+  return (
+    <List>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </List>
+  );
+}
 ```
 
 ## Examples
 
 ### Vertical List
+
 Use the vertical layout for stacked navigation or menus.
 
-```tsx
-<List direction="vertical">
-  <li>Dashboard</li>
-  <li>Settings</li>
-  <li>Profile</li>
-  <li>Logout</li>
-</List>
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/list/list-vertical-preview.tsx"
+  )}
+>
+  <ListVerticalPreview />
+</ComponentPreview>
+
+Note: Vertical lists have a max width of 228px (14.25rem).
 
 ### Horizontal List
+
 Use the horizontal layout for inline navigation or filters.
 
-```tsx
-<List direction="horizontal">
-  <li>Home</li>
-  <li>About</li>
-  <li>Contact</li>
-</List>
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/list/list-horizontal-preview.tsx"
+  )}
+>
+  <ListHorizontalPreview />
+</ComponentPreview>
+
+Note: Horizontal lists have a max width of `fit-content`.
 
 ### Without Dividers
-Disable dividers when visual separation is not needed.
 
-```tsx
-<List hideDividers>
-  <li>Item 1</li>
-  <li>Item 2</li>
-  <li>Item 3</li>
-</List>
-```
+You can remove dividers when visual separation is not needed. Dividers can be hidden with the `hideDividers` prop.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/list/list-without-dividers-preview.tsx"
+  )}
+>
+  <ListWithoutDividersPreview />
+</ComponentPreview>
 
 ### With Active State
+
 Mark an item as active to indicate the current selection.
 
-```tsx
-<List>
-  <li>Dashboard</li>
-  <li data-active="true">Settings</li>
-  <li>Profile</li>
-</List>
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/list/list-with-active-state-preview.tsx"
+  )}
+>
+  <ListWithActiveStatePreview />
+</ComponentPreview>
+
+Note: Active items are styled with primary background and text color. Active state is communicated via `data-active` attribute.
+
+### Custom
+
+Combine icons, count badges, and different layouts to create rich list components.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/list/list-custom-preview.tsx"
+  )}
+>
+  <ListCustomPreview />
+</ComponentPreview>
+
+Note: Counts with `data-type="count"` are automatically positioned with `ml-auto`. Icons automatically inherit the current text color.
 
 ## API Reference
 
@@ -132,16 +165,6 @@ Use standard `<li>` elements as children with optional data attributes:
 
 - Uses semantic `<ul>` and `<li>` elements
 - Active state is communicated via `data-active` attribute
-- Hover states provide clear visual feedback
+- Hover states provide clear visual feedback and apply to all list items by default
 - Keyboard accessible when used with interactive elements
 - Icons inherit text color for consistent styling
-
-## Notes
-
-- Active items are styled with primary background and text color
-- Counts with `data-type="count"` are automatically positioned with `ml-auto`
-- Icons automatically inherit the current text color
-- Vertical lists have a max width of `228px` (14.25rem)
-- Horizontal lists have a max width of `fit-content`
-- Hover states apply to all list items by default
-- Dividers can be hidden with the `hideDividers` prop
