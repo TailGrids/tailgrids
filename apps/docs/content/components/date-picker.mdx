@@ -3,28 +3,35 @@ title: React DatePicker Component
 description: A React date picker component that lets users select a date or date range from a calendar. Used for forms, filters, and scheduling with keyboard-friendly interaction.
 ---
 
+import DatePickerDefaultPreview from "@/components/preview/date-picker/date-picker-default-preview";
+import DatePickerPreselectedPreview from "@/components/preview/date-picker/date-picker-preselected-preview";
+import RangeDatePickerPreview from "@/components/preview/date-picker/range-date-picker-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
-import SingleDatePreview from "@/components/preview/date-picker/single-date-preview";
-import RangeDatePreview from "@/components/preview/date-picker/range-date-preview";
 
 # DatePicker
 
-React DatePicker component provides an accessible and flexible way for users to select either a **single date** or a **range of dates** using a compact calendar interface. They are commonly used in forms, filters, booking flows, and scheduling features.
+React DatePicker components are used to select a single date or a range of dates from a calendar. They are commonly used in forms, filters, booking flows, and scheduling features.
 
 This DatePicker component is built with React and styled using Tailwind CSS. It supports date selection with keyboard-friendly interaction.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-picker/date-picker-default-preview.tsx"
+  )}
+>
+  <DatePickerDefaultPreview />
+</ComponentPreview>
 
 ## Installation
 
 The Date Picker relies on the `date-fns` library for date manipulation.
 
-<Accordions>
+<Accordions defaultValue="CLI">
 <Accordion title="CLI">
-Install both components from your command line.
 ```npm
 npx @tailgrids/cli add date-picker
 ```
-
 </Accordion>
 
 <Accordion title="Manual">
@@ -34,99 +41,86 @@ Install the required dependency:
 npm i date-fns
 ```
 
-Copy and paste the code for both `single-date.tsx` (for `DatePicker`) and `range-date.tsx` (for `RangeDatePicker`) into your project.
+Copy and paste the code into `single-date.tsx` (for `DatePicker`) and `range-date.tsx` (for `RangeDatePicker`) into your project.
 
 <CodeBlockCard
-snippet={getFileContent("/src/registry/core/date-picker/single-date.tsx")}
-lang="tsx"
-fileName="date-picker/single-date.tsx"
+  snippet={getFileContent("/src/registry/core/date-picker/single-date.tsx")}
+  lang="tsx"
+  fileName="date-picker/single-date.tsx"
 />
 <CodeBlockCard
-snippet={getFileContent("/src/registry/core/date-picker/range-date.tsx")}
-lang="tsx"
-fileName="date-picker/range-date.tsx"
+  snippet={getFileContent("/src/registry/core/date-picker/range-date.tsx")}
+  lang="tsx"
+  fileName="date-picker/range-date.tsx"
 />
 </Accordion>
 </Accordions>
 
----
+## Usage
 
-## Single Date Picker
-
-Use this picker to select a single, specific date.
-
-### Preview
-
-<ComponentPreview
-codeSnippet={getFileContent("/src/components/preview/date-picker/single-date-preview.tsx")}
-
->
-
-<SingleDatePreview />
-</ComponentPreview>
-
-### Usage
+The following example demonstrates how to use the single DatePicker component.
 
 ```tsx
 import { DatePicker } from "@/registry/core/date-picker/single-date";
 import * as React from "react";
 
-export default () => {
+export default function DatePickerUsage() {
   const [selectedDate, setSelectedDate] = React.useState<Date | null>(null);
 
   return (
     <DatePicker
       value={selectedDate}
       onChange={setSelectedDate}
-      placeholder="Pick a birthday"
+      placeholder="Pick a date"
     />
   );
-};
+}
 ```
 
-### API Reference (DatePicker)
+Note: Both normal and range pickers use a **temporary selection state** (`tempSelected`, `tempStartDate`, `tempEndDate`) that is only committed to the main state (`value`, `startDate`, `endDate`) and triggers `onChange`/`onDateChange` when the **Apply** or **Ok** button is pressed. This allows users to cancel their selection without affecting the form's data.
 
-Extends `HTMLDivElement` props (via `className`).
+## Examples
+
+### Range Date Picker
+
+Use this picker to select a start and end date as a range. The range picker defaults to a two-month view.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-picker/range-date-picker-preview.tsx"
+  )}
+>
+  <RangeDatePickerPreview />
+</ComponentPreview>
+
+Note: The **RangeDatePicker** automatically handles the logic of ensuring the user-selected first date is the `tempStartDate` and the second date is the `tempEndDate`, even if they are selected in reverse order.
+
+### Preselected Date
+
+An example of a DatePicker with a default value.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-picker/date-picker-preselected-preview.tsx"
+  )}
+>
+  <DatePickerPreselectedPreview />
+</ComponentPreview>
+
+## API Reference
+
+### DatePicker
+
+Extends `HTMLDivElement` props.
 
 | Prop          | Type                   | Default         | Description                                            |
 | :------------ | :--------------------- | :-------------- | :----------------------------------------------------- |
 | `value`       | `Date \| null`         | `null`          | The currently selected date (controlled state).        |
 | `onChange`    | `(date: Date) => void` | -               | Callback function when a date is selected and applied. |
-| `placeholder` | `string`               | `'Select date'` | Placeholder text when no date is selected. |
+| `placeholder` | `string`               | `'Select date'` | Placeholder text when no date is selected.             |
 | `className`   | `string`               | -               | Custom class for the main wrapper `div`.               |
 
----
-
-## Range Date Picker
-
-Use this picker to select a start and end date as a range.
-
-### Preview
-
-<ComponentPreview
-codeSnippet={getFileContent("/src/components/preview/date-picker/range-date-preview.tsx")}
->
-
-<RangeDatePreview />
-</ComponentPreview>
-
-### Usage
-
-The range picker defaults to a two-month view.
-
-```tsx
-import { RangeDatePicker } from "@/registry/core/date-picker/range-date";
-
-export default () => (
-  <RangeDatePicker
-    onDateChange={(start, end) => {
-      console.log("Start:", start, "End:", end);
-    }}
-  />
-);
-```
-
-### API Reference (RangeDatePicker)
+### RangeDatePicker
 
 | Prop               | Type                                                       | Default                           | Description                                                    |
 | :----------------- | :--------------------------------------------------------- | :-------------------------------- | :------------------------------------------------------------- |
@@ -136,12 +130,7 @@ export default () => (
 
 ## Accessibility
 
-- Trigger buttons and calendar controls are keyboard accessible
+- All buttons and calendar controls are keyboard accessible
 - Month navigation buttons support keyboard interaction
 - Uses standard `<button>` elements for all interactive controls
 - Focus is managed to allow closing the calendar without mouse input
-
-## Notes
-
-- Both pickers use a **temporary selection state** (`tempSelected`, `tempStartDate`, `tempEndDate`) that is only committed to the main state (`value`, `startDate`, `endDate`) and triggers `onChange`/`onDateChange` when the **Apply** or **Ok** button is pressed. This allows users to cancel their selection without affecting the form's data.
-- The **RangeDatePicker** automatically handles the logic of ensuring the user-selected first date is the `tempStartDate` and the second date is the `tempEndDate`, even if they are selected in reverse order.

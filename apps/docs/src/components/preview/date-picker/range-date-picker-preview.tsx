@@ -1,10 +1,10 @@
 "use client";
 
 import { RangeDatePicker } from "@/registry/core/date-picker/range-date";
-import { useState } from "react";
 import { format } from "date-fns";
+import { useState } from "react";
 
-export default function RangeDatePreview() {
+export default function RangeDatePickerPreview() {
   const [startDate, setStartDate] = useState<Date | null>(
     new Date(2028, 7, 25)
   );
