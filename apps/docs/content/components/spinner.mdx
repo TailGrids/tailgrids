@@ -3,9 +3,13 @@ title: React Spinner Component
 description: A React spinner component used as a loading indicator during ongoing processes. Displays animated spinners to show loading states in applications.
 ---
 
+import SpinnerButtonPreview from "@/components/preview/spinner/spinner-button-preview";
+import SpinnerCustomPreview from "@/components/preview/spinner/spinner-custom-preview";
+import SpinnerPreview from "@/components/preview/spinner/spinner-preview";
+import SpinnerSizesPreview from "@/components/preview/spinner/spinner-sizes-preview";
+import SpinnerTypesPreview from "@/components/preview/spinner/spinner-types-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
-import SpinnerPreview from "@/components/preview/spinner-preview";
 
 # Spinner
 
@@ -14,20 +18,21 @@ React Spinner components are used to indicate that an action or process is curre
 This Spinner component is built with React and styled using Tailwind CSS. It supports multiple visual styles and sizes, making it easy to adapt to buttons, inline UI, or full-page loading states.
 
 <ComponentPreview
-  codeSnippet={getFileContent("/src/components/preview/spinner-preview.tsx")}
+  codeSnippet={getFileContent(
+    "/src/components/preview/spinner/spinner-preview.tsx"
+  )}
 >
   <SpinnerPreview />
 </ComponentPreview>
 
 ## Installation
 
-<Accordions>
+<Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 ```npm
 npx @tailgrids/cli add spinner
 ```
-
 </Accordion>
 
 <Accordion title="Manual">
@@ -68,27 +73,66 @@ You'll also need the spinner SVG assets referenced in the component (`default.sv
 </Accordions>
 
 ## Usage
+
 Import the component and render it where a loading state is needed.
 
 ```tsx
 import { Spinner } from "@/registry/core/spinner";
 
-export default () => <Spinner />;
+export default function SpinnerExample() {
+  return <Spinner />;
+}
 ```
 
 ## Examples
 
+### Types
+
+The Spinner component has `default`, `dotted`, and `dotted-round` types.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/spinner/spinner-types-preview.tsx"
+  )}
+>
+  <SpinnerTypesPreview />
+</ComponentPreview>
+
+### Sizes
+
+The Spinner component supports five pre-defined sizes: `sm`, `md`, `lg`, `xl`, and `xxl`.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/spinner/spinner-sizes-preview.tsx"
+  )}
+>
+  <SpinnerSizesPreview />
+</ComponentPreview>
+
 ### In Buttons
-Use spinners inside buttons to indicate pending actions.
 
-```tsx
-import { Button } from "@/registry/core/button";
+Spinners can be integrated into buttons to provide visual feedback during loading or pending actions.
 
-<Button disabled>
-  <Spinner size="sm" />
-  Loading...
-</Button>;
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/spinner/spinner-button-preview.tsx"
+  )}
+>
+  <SpinnerButtonPreview />
+</ComponentPreview>
+
+### Custom
+
+You can customize the spinner's behavior and appearance using Tailwind CSS utility classes.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/spinner/spinner-custom-preview.tsx"
+  )}
+>
+  <SpinnerCustomPreview />
+</ComponentPreview>
 
 ## API Reference
 
@@ -115,11 +159,3 @@ import { Button } from "@/registry/core/button";
 - When used in buttons, ensure the button has descriptive text or aria-label
 - Consider using `aria-busy="true"` on parent containers during loading states
 - Animation respects `prefers-reduced-motion` through Tailwind's `animate-spin`
-
-## Notes
-
-- Uses CSS `animate-spin` for smooth rotation animation
-- Spinner images should be SVG format for crisp rendering at all sizes
-- Three different visual styles available for different design contexts
-- Commonly used in buttons, overlays, and page loading states
-- Works well with the Button component's disabled state
