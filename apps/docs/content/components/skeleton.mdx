@@ -3,9 +3,17 @@ title: React Skeleton Component
 description: A React skeleton component used as a loading placeholder while content is being fetched. Displays skeleton screens as an alternative to spinners.
 ---
 
+import SkeletonAvatarPreview from "@/components/preview/skeleton/skeleton-avatar-preview";
+import SkeletonBlogPreview from "@/components/preview/skeleton/skeleton-blog-preview";
+import SkeletonButtonPreview from "@/components/preview/skeleton/skeleton-button-preview";
+import SkeletonCardPreview from "@/components/preview/skeleton/skeleton-card-preview";
+import SkeletonChartPreview from "@/components/preview/skeleton/skeleton-chart-preview";
+import SkeletonListPreview from "@/components/preview/skeleton/skeleton-list-preview";
+import SkeletonPreview from "@/components/preview/skeleton/skeleton-preview";
+import SkeletonShapesPreview from "@/components/preview/skeleton/skeleton-shapes-preview";
+import SkeletonTablePreview from "@/components/preview/skeleton/skeleton-table-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
-import SkeletonPreview from "@/components/preview/skeleton-preview";
 
 # Skeleton
 
@@ -14,20 +22,21 @@ React Skeleton components are used to show placeholder layouts while content is 
 This Skeleton component is built with React and styled using Tailwind CSS. It provides flexible shapes and sizes that can be combined to match real UI layouts such as text, cards, avatars, buttons, and tables.
 
 <ComponentPreview
-  codeSnippet={getFileContent("/src/components/preview/skeleton-preview.tsx")}
+  codeSnippet={getFileContent(
+    "/src/components/preview/skeleton/skeleton-preview.tsx"
+  )}
 >
   <SkeletonPreview />
 </ComponentPreview>
 
 ## Installation
 
-<Accordions>
+<Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 ```npm
 npx @tailgrids/cli add skeleton
 ```
-
 </Accordion>
 
 <Accordion title="Manual">
@@ -44,47 +53,37 @@ Add the custom pulse animation to your `tailwind` config:
 <Accordions>
   <Accordion title="v4">
     ```css title="globals.css"
-@theme {
-        --animate-pulse-custom: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
+    @theme {
+      --animate-pulse-custom: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
 
-@keyframes pulse {
-        0%,
-        100% {
-            opacity: 0.5;
-        }
-
-        50% {
-            opacity: 0.7;
-        }
-}
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 0.7; }
+    }
     ```
+
   </Accordion>
   <Accordion title="v3">
-```js title="tailwind.config.js"
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        "pulse-custom": "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite"
+    ```js title="tailwind.config.js"
+    module.exports = {
+      theme: {
+        extend: {
+          animation: {
+            "pulse-custom": "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite"
+          }
+        }
       }
-    }
-  }
-};
-```
+    };
+    ```
 
     ```css title="globals.css"
-@keyframes pulse {
-        0%,
-        100% {
-            opacity: 0.5;
-        }
-
-        50% {
-            opacity: 0.7;
-        }
-}
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 0.7; }
+    }
     ```
+
   </Accordion>
 </Accordions>
 
@@ -92,81 +91,126 @@ module.exports = {
 </Accordions>
 
 ## Usage
-Import the component and define the shape using utility classes.
+
+The Skeleton component provides a base animation. You can customize its dimensions by adjusting the height and width classes to match your layout requirements.
 
 ```tsx
 import { Skeleton } from "@/registry/core/skeleton";
 
-export default () => <Skeleton className="h-4 w-48" />;
+export default function SkeletonUsage() {
+  return <Skeleton className="h-4 w-48" />;
+}
 ```
 
 ## Examples
 
 ### Text Lines
 
-```tsx
-<div className="space-y-2">
-  <Skeleton className="h-4 w-full" />
-  <Skeleton className="h-4 w-5/6" />
-  <Skeleton className="h-4 w-4/6" />
-</div>
-```
+Use text line skeletons to simulate paragraphs or blocks of text.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/skeleton/skeleton-preview.tsx"
+  )}
+>
+  <SkeletonPreview />
+</ComponentPreview>
 
 ### Card Skeleton
 
-```tsx
-<div className="border rounded-lg p-4 space-y-3">
-  <Skeleton className="h-8 w-8 rounded-lg" />
-  <Skeleton className="h-4 w-3/4" />
-  <Skeleton className="h-3 w-full" />
-  <Skeleton className="h-3 w-5/6" />
-</div>
-```
+A complete card layout simulation with image, title, and description placeholders.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/skeleton/skeleton-card-preview.tsx"
+  )}
+>
+  <SkeletonCardPreview />
+</ComponentPreview>
 
 ### Avatar Skeleton
 
-```tsx
-<div className="flex items-center gap-3">
-  <Skeleton className="size-10 rounded-full" />
-  <div className="space-y-2">
-    <Skeleton className="h-4 w-24" />
-    <Skeleton className="h-3 w-32" />
-  </div>
-</div>
-```
+Loading state for user profiles with avatar and text lines.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/skeleton/skeleton-avatar-preview.tsx"
+  )}
+>
+  <SkeletonAvatarPreview />
+</ComponentPreview>
 
 ### Different Shapes
 
-```tsx
-{ /* Circle */ }
-<Skeleton className="size-12 rounded-full" />;
+Various geometric shapes available for different UI elements.
 
-{ /* Square */ }
-<Skeleton className="size-12 rounded-lg" />;
-
-{ /* Rectangle */ }
-<Skeleton className="h-32 w-48 rounded-lg" />;
-
-{ /* Line */ }
-<Skeleton className="h-4 w-full" />;
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/skeleton/skeleton-shapes-preview.tsx"
+  )}
+>
+  <SkeletonShapesPreview />
+</ComponentPreview>
 
 ### Button Skeleton
 
-```tsx
-<Skeleton className="h-10 w-24 rounded-lg" />
-```
+A placeholder for button elements.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/skeleton/skeleton-button-preview.tsx"
+  )}
+>
+  <SkeletonButtonPreview />
+</ComponentPreview>
 
 ### Table Skeleton
 
-```tsx
-<div className="space-y-3">
-  <Skeleton className="h-10 w-full rounded-lg" />
-  <Skeleton className="h-8 w-full" />
-  <Skeleton className="h-8 w-full" />
-  <Skeleton className="h-8 w-full" />
-</div>
-```
+Simulate tabulated data loading rows.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/skeleton/skeleton-table-preview.tsx"
+  )}
+>
+  <SkeletonTablePreview />
+</ComponentPreview>
+
+### Blog Post Card
+
+A common layout for blog posts or articles with images.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/skeleton/skeleton-blog-preview.tsx"
+  )}
+>
+  <SkeletonBlogPreview />
+</ComponentPreview>
+
+### List Items
+
+Simulate a list of items with icons and metadata.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/skeleton/skeleton-list-preview.tsx"
+  )}
+>
+  <SkeletonListPreview />
+</ComponentPreview>
+
+### Chart Skeleton
+
+A dashboard-style skeleton for charts and data visualization.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/skeleton/skeleton-chart-preview.tsx"
+  )}
+>
+  <SkeletonChartPreview />
+</ComponentPreview>
 
 ## API Reference
 
@@ -184,12 +228,3 @@ Extends `div` element props.
 - Should be replaced with actual content when data loads
 - Provides visual feedback during loading states
 - Animation respects `prefers-reduced-motion` user preference
-
-## Notes
-
-- Default height is `12px` (0.75rem) with `h-3` class
-- Default shape is fully rounded with `rounded-full` class
-- Uses a custom pulse animation for smooth loading effect
-- Override dimensions and shape with Tailwind utility classes
-- The animation uses `animate-pulse-custom` which should be defined in your Tailwind config
-- Gray background (`bg-neutral-200`) provides neutral placeholder appearance
