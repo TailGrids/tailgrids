@@ -3,8 +3,11 @@ title: React Progress Bar Component
 description: A React progress bar component that shows the progress or completion of a task. Displays a linear progress indicator with optional percentage label.
 ---
 
+import ProgressBasicPreview from "@/components/preview/progress/progress-basic-preview";
+import ProgressCustomPreview from "@/components/preview/progress/progress-custom-preview";
+import ProgressPreview from "@/components/preview/progress/progress-preview";
+import ProgressWithLabelPreview from "@/components/preview/progress/progress-with-label-preview";
 import { getFileContent } from "@/utils/get-file-content";
-import ProgressPreview from "@/components/preview/progress-preview";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Progress
@@ -14,14 +17,16 @@ React Progress components are used to show the completion state of a task or pro
 This Progress component is built with React and styled using Tailwind CSS. It displays a linear progress bar with an optional percentage label and supports custom styling through props.
 
 <ComponentPreview
-  codeSnippet={getFileContent("/src/components/preview/progress-preview.tsx")}
+  codeSnippet={getFileContent(
+    "/src/components/preview/progress/progress-preview.tsx"
+  )}
 >
   <ProgressPreview />
 </ComponentPreview>
 
 ## Installation
 
-<Accordions>
+<Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 
@@ -42,29 +47,54 @@ Copy the `Progress` component code into your project. No additional dependencies
 </Accordions>
 
 ## Usage
+
 Import the component and pass the progress value.
 
 ```tsx
 import { Progress } from "@/registry/core/progress";
 
-export default () => <Progress progress={50} withLabel />;
+export default function ProgressBasic() {
+  return <Progress progress={50} withLabel />;
+}
 ```
 
 ## Examples
 
 ### Basic Progress
+
 Use the progress bar without a label.
 
-```tsx
-<Progress progress={30} />
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/progress/progress-basic-preview.tsx"
+  )}
+>
+  <ProgressBasicPreview />
+</ComponentPreview>
 
 ### Progress with Label
+
 Display the percentage value next to the bar.
 
-```tsx
-<Progress progress={75} withLabel />
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/progress/progress-with-label-preview.tsx"
+  )}
+>
+  <ProgressWithLabelPreview />
+</ComponentPreview>
+
+### Custom Progress
+
+Customize the appearance of the progress bar using class names.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/progress/progress-custom-preview.tsx"
+  )}
+>
+  <ProgressCustomPreview />
+</ComponentPreview>
 
 ## API Reference
 
@@ -84,10 +114,3 @@ Extends `div` element props.
 - Sets `aria-valuemin`, `aria-valuemax`, and `aria-valuenow`
 - `aria-valuetext` reflects the current progress value
 - Fully keyboard and screen-reader accessible.
-
-## Notes
-
-- The progress bar fills smoothly based on the `progress` prop.
-- Works well inside flex and grid layouts
-- Label is optional and aligns next to the progress bar.
-- Rounded corners and overflow handling are applied for cross-browser compatibility.
