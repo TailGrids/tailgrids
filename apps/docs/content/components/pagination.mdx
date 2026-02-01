@@ -3,9 +3,15 @@ title: React Pagination Component
 description: A React pagination component for navigating between pages of content. Displays page numbers with previous and next controls to move through results.
 ---
 
+import { ComponentPreview } from "@/components/component-preview";
+import PaginationCompactPreview from "@/components/preview/pagination/pagination-compact-preview";
+import PaginationCustomPreview from "@/components/preview/pagination/pagination-custom-preview";
+import PaginationDefaultPreview from "@/components/preview/pagination/pagination-default-preview";
+import PaginationFullSidePreview from "@/components/preview/pagination/pagination-full-side-preview";
+import PaginationIconSidePreview from "@/components/preview/pagination/pagination-icon-side-preview";
+import PaginationLabelSidePreview from "@/components/preview/pagination/pagination-label-side-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
-import PaginationPreview from "@/components/preview/pagination-preview";
 
 # Pagination
 
@@ -14,40 +20,42 @@ React Pagination components are used to navigate through large sets of content s
 This Pagination component is built with React and styled using Tailwind CSS. It supports different layouts for page buttons, previous and next controls, and automatic ellipsis handling.
 
 <ComponentPreview
-  codeSnippet={getFileContent("/src/components/preview/pagination-preview.tsx")}
+  codeSnippet={getFileContent(
+    "/src/components/preview/pagination/pagination-default-preview.tsx"
+  )}
 >
-  <PaginationPreview />
+  <PaginationDefaultPreview />
 </ComponentPreview>
 
 ## Installation
 
-<Accordions>
+<Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 
-```npm
+```bash
 npx @tailgrids/cli add pagination
 ```
 
 </Accordion>
-
 <Accordion title="Manual">
 Install the required dependencies:
 
-```npm
+```bash
 npm i class-variance-authority @tailgrids/icons
 ```
 
 Copy and paste the following component code into your project. Note that `PaginationButton` and `PaginationEllipsis` are internal components.
 
 <CodeBlockCard
-snippet={getFileContent("/src/registry/core/pagination.tsx")}
-lang="tsx"
+  snippet={getFileContent("/src/registry/core/pagination.tsx")}
+  lang="tsx"
 />
 </Accordion>
 </Accordions>
 
 ## Usage
+
 Import the component and control the active page using state.
 
 ```tsx
@@ -68,53 +76,61 @@ export default () => (
 
 Use the `compact` variant for a minimal style, often suited for smaller sections or footers.
 
-```tsx
-<Pagination
-  currentPage={2}
-  totalPages={10}
-  variant="compact"
-  onPageChange={p => console.log(p)}
-/>
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/pagination/pagination-compact-preview.tsx"
+  )}
+>
+  <PaginationCompactPreview />
+</ComponentPreview>
 
 ### Full Side Layout
 
 This is the **default** layout, showing both the icon and the text label ("Previous"/"Next") for side buttons.
 
-```tsx
-<Pagination
-  currentPage={5}
-  totalPages={10}
-  sideLayout="full" // default
-  onPageChange={p => console.log(p)}
-/>
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/pagination/pagination-full-side-preview.tsx"
+  )}
+>
+  <PaginationFullSidePreview />
+</ComponentPreview>
 
 ### Label-Only Side Layout
 
 Shows only the text label ("Previous"/"Next") on desktop, but hides it on mobile to save space.
 
-```tsx
-<Pagination
-  currentPage={5}
-  totalPages={10}
-  sideLayout="label"
-  onPageChange={p => console.log(p)}
-/>
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/pagination/pagination-label-side-preview.tsx"
+  )}
+>
+  <PaginationLabelSidePreview />
+</ComponentPreview>
 
 ### Icon-Only Side Layout
 
 Uses icons only for previous and next buttons.
 
-```tsx
-<Pagination
-  currentPage={5}
-  totalPages={10}
-  sideLayout="icon"
-  onPageChange={p => console.log(p)}
-/>
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/pagination/pagination-icon-side-preview.tsx"
+  )}
+>
+  <PaginationIconSidePreview />
+</ComponentPreview>
+
+### Custom
+
+A completely custom implementation with different layout and styling.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/pagination/pagination-custom-preview.tsx"
+  )}
+>
+  <PaginationCustomPreview />
+</ComponentPreview>
 
 ## API Reference
 
@@ -125,7 +141,7 @@ Uses icons only for previous and next buttons.
 | `currentPage`  | `number`                      | -           | The currently active page number (1-based index).             |
 | `totalPages`   | `number`                      | -           | The total number of available pages.                          |
 | `onPageChange` | `(page: number) => void`      | -           | Callback function triggered when a page button is clicked.    |
-| `variant`      | `'default'`, `'compact'`      | `'default'` | Overall pagination style.     |
+| `variant`      | `'default'`, `'compact'`      | `'default'` | Overall pagination style.                                     |
 | `sideLayout`   | `'full'`, `'label'`, `'icon'` | `'full'`    | Controls the appearance of the "Previous" and "Next" buttons. |
 
 ## Accessibility
@@ -134,9 +150,3 @@ Uses icons only for previous and next buttons.
 - All interactive page buttons and side buttons have descriptive `aria-label` attributes.
 - The currently active page is indicated using `aria-current="page"`.
 - Disabled states on side buttons clearly communicate when no previous or next page is available.
-
-## Notes
-
-- When `totalPages` is greater than 6, an **ellipsis** (`...`) is automatically inserted to collapse the page numbers, showing pages 1-3, the current page and its two neighbors, and the last two pages.
-- Page number buttons and text labels are hidden on smaller screens (`max-sm`) to show a compact "Page X of Y" display.
-- The `sideLayout` prop controls the visibility of the icon and text in the "Previous" and "Next" buttons, though on mobile, only the icon is shown for `full` and `icon` layouts, and the label is hidden for the `label` layout.
