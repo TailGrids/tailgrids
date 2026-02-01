@@ -2,14 +2,14 @@
 
 import {
   Popover,
-  PopoverTrigger,
+  PopoverClose,
   PopoverContent,
-  PopoverHeading,
   PopoverDescription,
-  PopoverClose
+  PopoverHeading,
+  PopoverTrigger
 } from "@/registry/core/popover";
 
-export default function PopoverPreview() {
+export default function PopoverDefaultPreview() {
   return (
     <Popover>
       <PopoverTrigger className="px-4 py-2 rounded-lg border">
