@@ -3,9 +3,16 @@ title: React Tabs Component
 description: A React tabs component for organizing content into panels. Allows users to switch between related views using accessible tabbed navigation.
 ---
 
+import { ComponentPreview } from "@/components/component-preview";
+import TabsCustomPreview from "@/components/preview/tabs/tabs-custom-preview";
+import TabsHorizontalPreview from "@/components/preview/tabs/tabs-horizontal-preview";
+import TabsPreview from "@/components/preview/tabs/tabs-preview";
+import TabsUsagePreview from "@/components/preview/tabs/tabs-usage-preview";
+import TabsVariantsPreview from "@/components/preview/tabs/tabs-variants-preview";
+import TabsWithBadgesPreview from "@/components/preview/tabs/tabs-with-badges-preview";
+import TabsWithIconsPreview from "@/components/preview/tabs/tabs-with-icons-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
-import TabsPreview from "@/components/preview/tabs-preview";
 
 # Tabs
 
@@ -14,14 +21,14 @@ React Tabs components are used to organize related content into separate panels 
 This Tabs component is built with React and styled using Tailwind CSS. It supports multiple visual variants, icons, badges, and vertical or horizontal layouts while keeping tab behavior accessible and predictable.
 
 <ComponentPreview
-  codeSnippet={getFileContent("/src/components/preview/tabs-preview.tsx")}
+  codeSnippet={getFileContent("/src/components/preview/tabs/tabs-preview.tsx")}
 >
   <TabsPreview />
 </ComponentPreview>
 
 ## Installation
 
-<Accordions>
+<Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 ```npm
@@ -59,7 +66,7 @@ Import the tab parts and compose them to build the layout.
 ```tsx
 import { TabRoot, TabList, TabTrigger, TabContent } from "@/registry/core/tabs";
 
-export default () => (
+export default TabsExample = () => (
   <TabRoot defaultValue="tab1">
     <TabList>
       <TabTrigger value="tab1" />
@@ -72,118 +79,86 @@ export default () => (
 ```
 
 ## Usage
-Import the components and match each trigger with its content using the `same` value.
 
-```tsx
-import { TabRoot, TabList, TabTrigger, TabContent } from "@/registry/core/tabs";
+Import the components and use the default variant to create a standard tabbed interface.
 
-export default () => (
-  <TabRoot defaultValue="overview">
-    <TabList>
-      <TabTrigger value="overview">Overview</TabTrigger>
-      <TabTrigger value="analytics">Analytics</TabTrigger>
-      <TabTrigger value="reports">Reports</TabTrigger>
-    </TabList>
-    <TabContent value="overview">
-      <p>Overview content goes here.</p>
-    </TabContent>
-    <TabContent value="analytics">
-      <p>Analytics content goes here.</p>
-    </TabContent>
-    <TabContent value="reports">
-      <p>Reports content goes here.</p>
-    </TabContent>
-  </TabRoot>
-);
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/tabs/tabs-usage-preview.tsx"
+  )}
+>
+  <TabsUsagePreview />
+</ComponentPreview>
+
+Note: Only one tab panel is visible at a time. The `defaultValue` prop sets the initially active tab.
 
 ## Examples
 
 ### Variants
-Use variants to change the visual style of the tab list.
 
-```tsx
-{
-  /* Default */
-}
-<TabRoot defaultValue="tab1" variant="default">
-  <TabList>
-    <TabTrigger value="tab1">Tab 1</TabTrigger>
-    <TabTrigger value="tab2">Tab 2</TabTrigger>
-  </TabList>
-  <TabContent value="tab1">Content 1</TabContent>
-  <TabContent value="tab2">Content 2</TabContent>
-</TabRoot>;
+Use the `variant` prop to control the visual style of the tab list. Supported values are `default` and `minimal`.
 
-{
-  /* Minimal */
-}
-<TabRoot defaultValue="tab1" variant="minimal">
-  <TabList>
-    <TabTrigger value="tab1">Tab 1</TabTrigger>
-    <TabTrigger value="tab2">Tab 2</TabTrigger>
-  </TabList>
-  <TabContent value="tab1">Content 1</TabContent>
-  <TabContent value="tab2">Content 2</TabContent>
-</TabRoot>;
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/tabs/tabs-variants-preview.tsx"
+  )}
+>
+  <TabsVariantsPreview />
+</ComponentPreview>
 
 ### With Icons
 
-```tsx
-import { Home, BarChart, FileText } from "lucide-react";
+You can pass an `icon` prop to the `TabTrigger` to display an icon before the tab label.
 
-<TabRoot defaultValue="home">
-  <TabList>
-    <TabTrigger value="home" icon={<Home />}>
-      Home
-    </TabTrigger>
-    <TabTrigger value="analytics" icon={<BarChart />}>
-      Analytics
-    </TabTrigger>
-    <TabTrigger value="reports" icon={<FileText />}>
-      Reports
-    </TabTrigger>
-  </TabList>
-  <TabContent value="home">Home content</TabContent>
-  <TabContent value="analytics">Analytics content</TabContent>
-  <TabContent value="reports">Reports content</TabContent>
-</TabRoot>;
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/tabs/tabs-with-icons-preview.tsx"
+  )}
+>
+  <TabsWithIconsPreview />
+</ComponentPreview>
+
+Note: Icons are automatically sized to `20px` (1.25rem).
 
 ### With Badges
 
-```tsx
-<TabRoot defaultValue="inbox">
-  <TabList>
-    <TabTrigger value="inbox" badge={12}>
-      Inbox
-    </TabTrigger>
-    <TabTrigger value="drafts" badge={3}>
-      Drafts
-    </TabTrigger>
-    <TabTrigger value="sent">Sent</TabTrigger>
-  </TabList>
-  <TabContent value="inbox">Inbox content</TabContent>
-  <TabContent value="drafts">Drafts content</TabContent>
-  <TabContent value="sent">Sent content</TabContent>
-</TabRoot>
-```
+Use the `badge` prop on `TabTrigger` to display a notification count or status indicator next to the label.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/tabs/tabs-with-badges-preview.tsx"
+  )}
+>
+  <TabsWithBadgesPreview />
+</ComponentPreview>
+
+Note: Badges use the Badge component with primary color.
 
 ### Horizontal Direction
 
-```tsx
-<TabRoot defaultValue="tab1" direction="horizontal">
-  <TabList>
-    <TabTrigger value="tab1">Tab 1</TabTrigger>
-    <TabTrigger value="tab2">Tab 2</TabTrigger>
-    <TabTrigger value="tab3">Tab 3</TabTrigger>
-  </TabList>
-  <TabContent value="tab1">Content 1</TabContent>
-  <TabContent value="tab2">Content 2</TabContent>
-  <TabContent value="tab3">Content 3</TabContent>
-</TabRoot>
-```
+Set the `direction` prop to `horizontal` on `TabRoot` to stack the tab list and content vertically, with tabs arranged horizontally.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/tabs/tabs-horizontal-preview.tsx"
+  )}
+>
+  <TabsHorizontalPreview />
+</ComponentPreview>
+
+Note: Horizontal direction is responsive and wraps on small screens. The tab list scrolls horizontally if tabs overflow.
+
+### Custom
+
+You can customize the tab appearance using standard Tailwind CSS classes or animation libraries like Framer Motion.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/tabs/tabs-custom-preview.tsx"
+  )}
+>
+  <TabsCustomPreview />
+</ComponentPreview>
 
 ## API Reference
 
@@ -220,6 +195,10 @@ Individual tab button. Extends `button` element props.
 | `className` | `string`           | Additional CSS classes           |
 | `children`  | `React.ReactNode`  | Tab label content                |
 
+| Data Attribute | Values              | Description                                    |
+| :------------- | :------------------ | :--------------------------------------------- |
+| `data-active`  | `"true"`, `"false"` | Indicates whether the tab is currently active. |
+
 ### TabContent
 
 Content panel for each tab. Extends `div` element props.
@@ -238,13 +217,3 @@ Content panel for each tab. Extends `div` element props.
 - Content panels are properly associated with their triggers
 - Hidden content uses `hidden` attribute for screen readers
 - Auto-generated unique IDs ensure proper associations
-
-## Notes
-
-- Only one tab panel is visible at a time
-- The `defaultValue` prop sets the initially active tab
-- Icons are automatically sized to `20px` (1.25rem)
-- Badges use the Badge component with primary color
-- Horizontal direction is responsive and wraps on small screens
-- Tab list scrolls horizontally if tabs overflow
-- State is managed internally with React context
