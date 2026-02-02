@@ -3,9 +3,14 @@ title: React Toast Component
 description: A React toast notification component for showing lightweight popup messages. Used to display success, error, or info feedback without interrupting users.
 ---
 
+import ToastAvatarPreview from "@/components/preview/toast/toast-avatar-preview";
+import ToastPreview from "@/components/preview/toast/toast-preview";
+import ToastVariantsPreview from "@/components/preview/toast/toast-variants-preview";
+import ToastWithTitlePreview from "@/components/preview/toast/toast-with-title-preview";
+import ToastWithUndoPreview from "@/components/preview/toast/toast-with-undo-preview";
+import { AvatarToast, Toast } from "@/registry/core/toast";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
-import ToastPreview from "@/components/preview/toast-preview";
 
 # Toast
 
@@ -14,14 +19,16 @@ React Toast components are used to show short, non-blocking messages that inform
 This Toast component supports multiple variants, optional titles, action buttons, undo behavior, and message-style notifications with avatars. It is designed for quick feedback.
 
 <ComponentPreview
-  codeSnippet={getFileContent("/src/components/preview/toast-preview.tsx")}
+  codeSnippet={getFileContent(
+    "/src/components/preview/toast/toast-preview.tsx"
+  )}
 >
   <ToastPreview />
 </ComponentPreview>
 
 ## Installation
 
-<Accordions>
+<Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 ```npm
@@ -49,84 +56,96 @@ Copy the component code into your project.
 snippet={getFileContent("/src/registry/core/avatar.tsx")}
 lang="tsx"
 fileName="avatar.tsx"
-/> 
-</Accordion> 
+/>
+</Accordion>
 </Accordions>
+
+## Anatomy
+
+Import the component and pass the required props.
+
+```tsx
+import { Toast, AvatarToast } from "@/registry/core/toast";
+
+export const ToastExample = () => (
+  <Toast
+    variant="success"
+    title="Success"
+    description="Your changes have been saved."
+  />
+);
+```
 
 ## Usage
 
 ### Basic Toast
 
-```tsx
-import { Toast } from "@/registry/core/toast";
+A simple toast notification with a description, used for brief updates.
 
-export default function Demo() {
-  return (
-    <Toast
-      variant="success"
-      description="Your settings have been saved successfully."
-    />
-  );
-}
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/toast/toast-preview.tsx"
+  )}
+>
+  <ToastPreview />
+</ComponentPreview>
 
 ### Toast With Title & Actions
-Use this layout when the message requires clear structure and user actions.
 
-```tsx
-<Toast
-  title="Payment Failed"
-  description="Your card was declined. Please try again."
-  variant="error"
-  actions={{
-    primary: {
-      label: "Retry",
-      onClick: () => console.log("Retry clicked")
-    },
-    dismiss: {
-      label: "Cancel",
-      onClick: () => console.log("Dismiss clicked")
-    }
-  }}
-/>
-```
+A structured toast layout that includes a title, description, and action buttons for user interaction.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/toast/toast-with-title-preview.tsx"
+  )}
+>
+  <ToastWithTitlePreview />
+</ComponentPreview>
+
+**Note:**
+If a `title` is present, the layout switches to a vertical content stack to accommodate more information.
 
 ### Toast With Undo
 
-Use this pattern for quick, reversible actions. Works only when no title is present.
+A specialized toast for reversible actions that includes an inline 'Undo' button.
 
-```tsx
-<Toast
-  description="Item deleted."
-  variant="warning"
-  undoAction={() => console.log("Undo clicked")}
-/>
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/toast/toast-with-undo-preview.tsx"
+  )}
+>
+  <ToastWithUndoPreview />
+</ComponentPreview>
+
+**Note:**
+For simple toasts (no title), the `Undo` button appears inline on the right side.
 
 ### Avatar Toast (Message-style)
-Used for chat messages or social notifications.
 
-```tsx
-import { AvatarToast } from "@/registry/core/toast";
+A message-style toast that includes an avatar, sender name, message description, and timestamp. Ideal for chat or social notifications.
 
-<AvatarToast
-  name="Alex Carter"
-  description="Sent you a message"
-  image="/images/user.jpg"
-  status="online"
-  time="2 minutes ago"
-/>;
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/toast/toast-avatar-preview.tsx"
+  )}
+>
+  <ToastAvatarPreview />
+</ComponentPreview>
 
 ## Variants
 
-```tsx
-<Toast variant="success" description="Operation completed." />
-<Toast variant="error" description="Something went wrong." />
-<Toast variant="warning" description="Check your input again." />
-<Toast variant="info" description="New update available." />
-<Toast variant="message" description="1 new message." />
-```
+The Toast component supports five predefined variants: `success`, `error`, `info`, `warning`, and `message`.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/toast/toast-variants-preview.tsx"
+  )}
+>
+  <ToastVariantsPreview />
+</ComponentPreview>
+
+**Note:**
+Icon colors and icons are automatically determined by the `variant` prop.
 
 ## API Reference
 
@@ -155,11 +174,7 @@ import { AvatarToast } from "@/registry/core/toast";
 - Dismiss buttons include visually hidden labels for screen readers.
 - Buttons follow standard focus handling and keyboard navigation.
 - Variant icons use meaningful symbols for visual association.
-- Layout works for both compact and content-rich messages
+- Layout works for both compact and content-rich messages.
 
-## Notes
-
-- If a `title` is present, the layout switches to a vertical content stack.
-- For simple toasts (no title), `Undo` appears inline on the right.
-- Icon colors are determined by `variant`.
-- Designed to work inside a toast stack or toaster system
+**Note:**
+The Toast component is designed to work inside a toast stack or toaster system for managing multiple notifications.
