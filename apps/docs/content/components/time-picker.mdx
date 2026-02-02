@@ -3,8 +3,10 @@ title: React Time Picker Component
 description: A React time picker component that allows users to select a time value. Used in forms to choose hours and minutes through an accessible time input.
 ---
 
+import TimePickerCustomTriggerPreview from "@/components/preview/time-picker/time-picker-custom-trigger-preview";
+import TimePickerLabelPreview from "@/components/preview/time-picker/time-picker-label-preview";
+import TimePickerPreview from "@/components/preview/time-picker/time-picker-preview";
 import { getFileContent } from "@/utils/get-file-content";
-import TimePickerPreview from "@/components/preview/time-picker-preview";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Time Picker
@@ -15,7 +17,7 @@ This Time Picker is built with React and uses `react-aria` primitives for access
 
 <ComponentPreview
   codeSnippet={getFileContent(
-    "/src/components/preview/time-picker-preview.tsx"
+    "/src/components/preview/time-picker/time-picker-preview.tsx"
   )}
 >
   <TimePickerPreview />
@@ -23,10 +25,10 @@ This Time Picker is built with React and uses `react-aria` primitives for access
 
 ## Installation
 
-<Accordions>
+<Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
-```bash
+```npm
 npx @tailgrids/cli add time-picker
 ```
 
@@ -36,55 +38,93 @@ npx @tailgrids/cli add time-picker
 
 Install the required dependencies:
 
-```bash
+```npm
 npm i react-aria-components react-stately
 ```
 
 Copy and paste the component code into your project.
 
 <CodeBlockCard
-snippet={getFileContent("/src/registry/core/time-picker.tsx")}
-lang="tsx"
-fileName="time-picker.tsx"
-/> 
-</Accordion> 
+  snippet={getFileContent("/src/registry/core/time-picker.tsx")}
+  lang="tsx"
+  fileName="time-picker.tsx"
+/>
+</Accordion>
 </Accordions>
+
+## Anatomy
+
+Import the component and pass the required props.
+
+```tsx
+import { TimePicker, TimePickerTrigger } from "@/registry/core/time-picker";
+
+export const TimePickerExample = () => (
+  <TimePicker onSelect={date => console.log(date)}>
+    <TimePickerTrigger>Select Time</TimePickerTrigger>
+  </TimePicker>
+);
+```
+
+## Examples
+
+### Basic Usage
+
+A standard time picker implementation using `react-aria` for accessibility. It provides a trigger button that opens a popover with scrollable columns for hours, minutes, and AM/PM selection.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/time-picker/time-picker-preview.tsx"
+  )}
+>
+  <TimePickerPreview />
+</ComponentPreview>
+
+### With Label
+
+You can combine the Time Picker with a label and other elements to create a complete form control.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/time-picker/time-picker-label-preview.tsx"
+  )}
+>
+  <TimePickerLabelPreview />
+</ComponentPreview>
+
+### Custom Trigger
+
+The `TimePickerTrigger` can be customized or replaced with any element that accepts refs and props.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/time-picker/time-picker-custom-trigger-preview.tsx"
+  )}
+>
+  <TimePickerCustomTriggerPreview />
+</ComponentPreview>
 
 ## API Reference
 
 ### TimePicker
-The root container responsible for managing time selection state.
 
 | Prop       | Type                   | Default | Description                                        |
-| ---------- | ---------------------- | ------- | -------------------------------------------------- |
-| `children` | `React.ReactNode`      | —       | Trigger element (usually `TimePickerTrigger`)      |
-| `onSelect` | `(date: Date) => void` | —       | Callback when hour/minute/period selection updates |
+| :--------- | :--------------------- | :------ | :------------------------------------------------- |
+| `children` | `React.ReactNode`      | -       | Trigger element (usually `TimePickerTrigger`)      |
+| `onSelect` | `(date: Date) => void` | -       | Callback when hour/minute/period selection updates |
 
 ### TimePickerTrigger
 
 Extends `Button` props from `react-aria-components`.
 
 | Prop        | Type          | Description                          |
-| ----------- | ------------- | ------------------------------------ |
+| :---------- | :------------ | :----------------------------------- |
 | `className` | `string`      | Custom styles for the trigger button |
 | `...props`  | `ButtonProps` | All button props supported           |
 
-### TimeColumn (internal)
-
-Not exported publicly. Renders the scrollable list for hours, minutes, and period.
-
 ## Accessibility
 
-- Uses `MenuTrigger` and `Popover` from `react-aria` for proper ARIA roles and keyboard support.
-- Full keyboard navigation support for all time values
-- Popover automatically manages focus and closes on selection.
-- Each selectable time value is rendered as a native `<button>`
-- Works correctly with screen readers and assistive technologies
-
-## Notes
-
-- Uses a 12-hour format with AM/PM selection
-- Hour, minute, and period columns are independently scrollable
-- The helper `toDate` converts the selected values into a valid JavaScript `Date`.
-- `onSelect` fires immediately when any part of the time is chosen (hour, minute, or period).
-- Optimized for mouse, keyboard, and touch interactions
+- **Keyboard Support**: Full keyboard navigation support for all time values.
+- **Screen Readers**: Works correctly with screen readers and assistive technologies.
+- **Focus Management**: Popover automatically manages focus and closes on selection to trigger.
+- **Semantic HTML**: Uses `MenuTrigger` and `Popover` from `react-aria` for proper ARIA roles.
