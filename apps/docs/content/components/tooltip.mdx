@@ -3,9 +3,12 @@ title: React Tooltip Component
 description: A React tooltip component that shows informative text on hover or focus. A floating popup used to describe UI elements, built for accessibility and precise positioning.
 ---
 
+import TooltipAsChildPreview from "@/components/preview/tooltip/tooltip-as-child-preview";
+import TooltipControlledPreview from "@/components/preview/tooltip/tooltip-controlled-preview";
+import TooltipDefaultPreview from "@/components/preview/tooltip/tooltip-default-preview";
+import TooltipPlacementPreview from "@/components/preview/tooltip/tooltip-placement-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
-import TooltipPreview from "@/components/preview/tooltip-preview";
 
 # Tooltip
 
@@ -14,14 +17,16 @@ The Tooltip component displays short, contextual information when a user **hover
 This component is built with **React** and powered by **`@floating-ui/react`** for accurate positioning, collision handling, and accessible interactions.
 
 <ComponentPreview
-  codeSnippet={getFileContent("/src/components/preview/tooltip-preview.tsx")}
+  codeSnippet={getFileContent(
+    "/src/components/preview/tooltip/tooltip-default-preview.tsx"
+  )}
 >
-  <TooltipPreview />
+  <TooltipDefaultPreview />
 </ComponentPreview>
 
 ## Installation
 
-<Accordions>
+<Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 ```npm
@@ -46,7 +51,7 @@ lang="tsx"
 </Accordion>
 </Accordions>
 
-## Usage
+## Anatomy
 
 The **Tooltip** component uses a compound component pattern and must contain a **`TooltipTrigger`** and **`TooltipContent`**.
 
@@ -56,68 +61,59 @@ import {
   TooltipTrigger,
   TooltipContent
 } from "@/registry/core/tooltip";
-import { Info } from "@tailgrids/icons";
+import { Info } from "lucide-react";
 
-export default () => (
-  <Tooltip>
-    <TooltipTrigger asChild>
-      <button className="text-primary-500">
-        <Info className="size-5" />
-      </button>
-    </TooltipTrigger>
-    <TooltipContent>Helpful context.</TooltipContent>
-  </Tooltip>
-);
+export default function TooltipUsageExample() {
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <button className="text-primary-500">
+          <Info className="size-5" />
+        </button>
+      </TooltipTrigger>
+      <TooltipContent>Helpful context.</TooltipContent>
+    </Tooltip>
+  );
+}
 ```
 
 ## Examples
 
-### Custom Placement
+### Placements
 
-Control where the tooltip appears using the `placement` prop on the root.
+The tooltip can be positioned in four directions: `top`, `bottom`, `left`, and `right` using the `placement` prop.
 
-```tsx
-<Tooltip placement="right">
-  <TooltipTrigger>
-    <button>Hover me (Right)</button>
-  </TooltipTrigger>
-  <TooltipContent>I'm on the right!</TooltipContent>
-</Tooltip>
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/tooltip/tooltip-placement-preview.tsx"
+  )}
+>
+  <TooltipPlacementPreview />
+</ComponentPreview>
 
 ### Triggering with any Element (`asChild`)
 
-Use the `asChild` prop on **`TooltipTrigger`** to forward all required event handlers and `ref` to its single child element, allowing to use any element (like an icon button, link, or custom component) as the trigger.
+Use the `asChild` prop on **`TooltipTrigger`** to forward all required event handlers and `ref` to its single child element, allowing you to use any element (like an icon button, link, or custom component) as the trigger.
 
-```tsx
-<Tooltip>
-  <TooltipTrigger asChild>
-    <a href="#" className="font-semibold text-blue-600 hover:underline">
-      View Details
-    </a>
-  </TooltipTrigger>
-  <TooltipContent>Click to see the full report.</TooltipContent>
-</Tooltip>
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/tooltip/tooltip-as-child-preview.tsx"
+  )}
+>
+  <TooltipAsChildPreview />
+</ComponentPreview>
 
 ### Controlled Tooltip
 
 You can fully control the open state using `open` and `onOpenChange`.
 
-```tsx
-const [isOpen, setIsOpen] = React.useState(true);
-
-return (
-  <Tooltip open={isOpen} onOpenChange={setIsOpen}>
-    <TooltipTrigger>
-      <button>Toggle Manually</button>
-    </TooltipTrigger>
-    <TooltipContent>
-      I am always open until controlled otherwise.
-    </TooltipContent>
-  </Tooltip>
-);
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/tooltip/tooltip-controlled-preview.tsx"
+  )}
+>
+  <TooltipControlledPreview />
+</ComponentPreview>
 
 ## API Reference
 
