@@ -3,9 +3,12 @@ title: React Toggle Switch Component
 description: A React toggle switch component for enabling or disabling features. An accessible on/off control built on a checkbox, commonly used in settings and preferences.
 ---
 
+import ToggleBasicPreview from "@/components/preview/toggle/toggle-basic-preview";
+import ToggleControlledPreview from "@/components/preview/toggle/toggle-controlled-preview";
+import ToggleNoLabelPreview from "@/components/preview/toggle/toggle-no-label-preview";
+import ToggleSizesPreview from "@/components/preview/toggle/toggle-sizes-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
-import TogglePreview from "@/components/preview/toggle-preview";
 
 # Toggle
 
@@ -14,14 +17,16 @@ The Toggle component, commonly referred to as a **switch**, allows users to turn
 This component is built on a native checkbox input and styled using Tailwind CSS. It supports labels, multiple sizes, controlled and uncontrolled usage, and full keyboard and screen reader accessibility.
 
 <ComponentPreview
-  codeSnippet={getFileContent("/src/components/preview/toggle-preview.tsx")}
+  codeSnippet={getFileContent(
+    "/src/components/preview/toggle/toggle-basic-preview.tsx"
+  )}
 >
-  <TogglePreview />
+  <ToggleBasicPreview />
 </ComponentPreview>
 
 ## Installation
 
-<Accordions>
+<Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 
@@ -47,61 +52,54 @@ fileName="toggle.tsx"
 ```tsx
 import { Toggle } from "@/registry/core/toggle";
 
-export default () => <Toggle label="Enable Feature X" defaultChecked />;
+export default function ToggleBasic() {
+  return <Toggle label="Enable Feature X" defaultChecked />;
+}
 ```
 
 ## Examples
 
-### Small Size
+### Sizes
 
-The default size for the toggle switch is `sm`.
+The toggle switch comes in `sm` and `md` sizes. The default size is `sm`.
 
-```tsx
-<Toggle label="Small Switch" size="sm" defaultChecked />
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/toggle/toggle-sizes-preview.tsx"
+  )}
+>
+  <ToggleSizesPreview />
+</ComponentPreview>
 
-### Medium Size
-
-Use the `md` size for better visibility and improved touch targets.
-
-```tsx
-<Toggle label="Medium Switch" size="md" />
-```
-
-### Without Label
+### Label
 
 The label is optional. When omitted, provide an accessible name using `aria-label`.
 
-```tsx
-<Toggle aria-label="Dark Mode Toggle" defaultChecked />
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/toggle/toggle-no-label-preview.tsx"
+  )}
+>
+  <ToggleNoLabelPreview />
+</ComponentPreview>
 
 ### Controlled State
 
 Use the `checked` and `onChange` props to fully control the toggle state.
 
-```tsx
-const [isDark, setIsDark] = React.useState(false);
-
-const handleChange = e => {
-  setIsDark(e.target.checked);
-};
-
-return (
-  <Toggle
-    label="Dark Mode"
-    checked={isDark}
-    onChange={handleChange}
-    size="md"
-  />
-);
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/toggle/toggle-controlled-preview.tsx"
+  )}
+>
+  <ToggleControlledPreview />
+</ComponentPreview>
 
 ## API Reference
 
 ### Toggle
 
-Extends `input` element props (excluding `size`).
+Extends `input` element props.
 
 | Prop            | Type                      | Default | Description                                                                                                |
 | :-------------- | :------------------------ | :------ | :--------------------------------------------------------------------------------------------------------- |
@@ -117,11 +115,3 @@ Extends `input` element props (excluding `size`).
 - Visible label is properly associated via `htmlFor` and `id`
 - Input is visually hidden using `sr-only` but remains available to screen readers
 - Works correctly with assistive technologies and form semantics
-
-## Notes
-
-- Visual state is handled using CSS `peer` and `peer-checked` utilities
-- The primary color is applied to the background of the track when the switch is **checked** (`peer-checked:bg-primary-500`).
-- The thumb position animates based on the checked state
-- The `size` prop adjusts the dimensions of the track and the thumb for both 'sm' and 'md' sizes.
-- Designed for use inside forms, settings pages, and preference panels
