@@ -9,7 +9,6 @@ export default function PaginationCompactPreview() {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    console.log(`Navigating to page ${page}`);
   };
 
   return (

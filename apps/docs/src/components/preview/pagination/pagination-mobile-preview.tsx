@@ -3,7 +3,7 @@
 import { ArrowLeft, ArrowRight } from "@tailgrids/icons";
 import { useState } from "react";
 
-export default function PaginationCustomPreview() {
+export default function PaginationMobilePreview() {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 10;
 
