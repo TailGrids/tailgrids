@@ -1,9 +1,10 @@
 "use client";
 
-import { CopyToClipboard } from "./copy-to-clipboard";
-import { CodeBlock } from "./code-block";
-import { SegmentedControl } from "./segmented-control";
+import { cn } from "@/lib/cn";
 import { useState } from "react";
+import { CodeBlock } from "./code-block";
+import { CopyToClipboard } from "./copy-to-clipboard";
+import { SegmentedControl } from "./segmented-control";
 
 const ITEMS = [
   {
@@ -20,11 +21,13 @@ type PropsType = {
   codeSnippetLang?: string;
   codeSnippet: string;
   children: React.ReactNode;
+  noPaddingOnPreviewForMobile?: boolean;
 };
 
 export function ComponentPreview({
   codeSnippet,
   codeSnippetLang = "tsx",
+  noPaddingOnPreviewForMobile,
   children
 }: PropsType) {
   const [activeTab, setActiveTab] = useState("preview");
@@ -47,7 +50,12 @@ export function ComponentPreview({
 
       <div className="bg-gray-50 dark:bg-gray-900 rounded-[1.75rem] border p-2.5 my-4">
         {activeTab === "preview" && (
-          <div className="px-15 py-10 min-h-100 flex flex-col items-center justify-center rounded-[20px] border border-gray-200 dark:border-gray-800 bg-white not-prose">
+          <div
+            className={cn(
+              "min-h-100 flex flex-col items-center justify-center rounded-[20px] border border-gray-200 dark:border-gray-800 bg-white not-prose",
+              noPaddingOnPreviewForMobile ? "p-0 sm:px-15 sm:py-10" : "px-15 py-10"
+            )}
+          >
             {children}
           </div>
         )}

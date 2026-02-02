@@ -4,12 +4,12 @@ description: A React pagination component for navigating between pages of conten
 ---
 
 import { ComponentPreview } from "@/components/component-preview";
-import PaginationCompactPreview from "@/components/preview/pagination/pagination-compact-preview";
-import PaginationCustomPreview from "@/components/preview/pagination/pagination-custom-preview";
-import PaginationDefaultPreview from "@/components/preview/pagination/pagination-default-preview";
-import PaginationFullSidePreview from "@/components/preview/pagination/pagination-full-side-preview";
-import PaginationIconSidePreview from "@/components/preview/pagination/pagination-icon-side-preview";
-import PaginationLabelSidePreview from "@/components/preview/pagination/pagination-label-side-preview";
+import PaginationCompactPreviewSource from "@/components/preview/pagination/pagination-compact-preview-source";
+import PaginationDefaultPreviewSource from "@/components/preview/pagination/pagination-default-preview-source";
+import PaginationFullSidePreviewSource from "@/components/preview/pagination/pagination-full-side-preview-source";
+import PaginationIconSidePreviewSource from "@/components/preview/pagination/pagination-icon-side-preview-source";
+import PaginationLabelSidePreviewSource from "@/components/preview/pagination/pagination-label-side-preview-source";
+import PaginationMobilePreview from "@/components/preview/pagination/pagination-mobile-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
@@ -23,8 +23,9 @@ This Pagination component is built with React and styled using Tailwind CSS. It 
   codeSnippet={getFileContent(
     "/src/components/preview/pagination/pagination-default-preview.tsx"
   )}
+  noPaddingOnPreviewForMobile
 >
-  <PaginationDefaultPreview />
+  <PaginationDefaultPreviewSource />
 </ComponentPreview>
 
 ## Installation
@@ -61,7 +62,7 @@ Import the component and control the active page using state.
 ```tsx
 import { Pagination } from "@/registry/core/pagination";
 
-export default () => (
+export default PaginationExample = () => (
   <Pagination
     currentPage={2}
     totalPages={10}
@@ -80,8 +81,9 @@ Use the `compact` variant for a minimal style, often suited for smaller sections
   codeSnippet={getFileContent(
     "/src/components/preview/pagination/pagination-compact-preview.tsx"
   )}
+  noPaddingOnPreviewForMobile
 >
-  <PaginationCompactPreview />
+  <PaginationCompactPreviewSource />
 </ComponentPreview>
 
 ### Full Side Layout
@@ -92,8 +94,9 @@ This is the **default** layout, showing both the icon and the text label ("Previ
   codeSnippet={getFileContent(
     "/src/components/preview/pagination/pagination-full-side-preview.tsx"
   )}
+  noPaddingOnPreviewForMobile
 >
-  <PaginationFullSidePreview />
+  <PaginationFullSidePreviewSource />
 </ComponentPreview>
 
 ### Label-Only Side Layout
@@ -104,8 +107,9 @@ Shows only the text label ("Previous"/"Next") on desktop, but hides it on mobile
   codeSnippet={getFileContent(
     "/src/components/preview/pagination/pagination-label-side-preview.tsx"
   )}
+  noPaddingOnPreviewForMobile
 >
-  <PaginationLabelSidePreview />
+  <PaginationLabelSidePreviewSource />
 </ComponentPreview>
 
 ### Icon-Only Side Layout
@@ -116,20 +120,21 @@ Uses icons only for previous and next buttons.
   codeSnippet={getFileContent(
     "/src/components/preview/pagination/pagination-icon-side-preview.tsx"
   )}
+  noPaddingOnPreviewForMobile
 >
-  <PaginationIconSidePreview />
+  <PaginationIconSidePreviewSource />
 </ComponentPreview>
 
-### Custom
+### Mobile Preview
 
-A completely custom implementation with different layout and styling.
+The pagination component is fully responsive, seamlessly adapting its layout and controls to ensure a consistent experience across various devices and screen sizes.
 
 <ComponentPreview
   codeSnippet={getFileContent(
-    "/src/components/preview/pagination/pagination-custom-preview.tsx"
+    "/src/components/preview/pagination/pagination-default-preview.tsx"
   )}
 >
-  <PaginationCustomPreview />
+  <PaginationMobilePreview />
 </ComponentPreview>
 
 ## API Reference

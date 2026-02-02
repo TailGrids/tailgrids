@@ -8,18 +8,13 @@ function GithubIcon() {
   );
 }
 
-export default function SocialButtonPreview() {
+const SocialButtonPreview = () => {
   return (
-    <div className="flex flex-col gap-3 max-w-sm w-full">
-      <SocialButton>
-        <GithubIcon />
-        Continue with GitHub
-      </SocialButton>
-
-      <SocialButton disabled>
-        <GithubIcon />
-        Continue with GitHub
-      </SocialButton>
-    </div>
+    <SocialButton>
+      <GithubIcon />
+      Continue with GitHub
+    </SocialButton>
   );
-}
+};
+
+export default SocialButtonPreview;

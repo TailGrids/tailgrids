@@ -1,15 +1,15 @@
 "use client";
 
 import { cn } from "@/utils/cn";
-import { cva } from "class-variance-authority";
 import { ArrowLeft, ArrowRight } from "@tailgrids/icons";
+import { cva } from "class-variance-authority";
 
 const wrapperStyles = cva(
-  "mx-auto flex w-full items-center justify-center max-sm:max-w-82 max-sm:gap-5",
+  "mx-auto flex w-full items-center justify-center max-sm:gap-5",
   {
     variants: {
       variant: {
-        default: "max-w-142.5 gap-0.5",
+        default: "gap-0.5",
         compact: "max-w-fit sm:divide-x sm:divide-neutral-300"
       }
     }
