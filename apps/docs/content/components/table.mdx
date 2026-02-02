@@ -3,9 +3,15 @@ title: React Table Component
 description: A React table component for displaying structured data in rows and columns. Used to present tabular data in a clear, easy-to-scan layout.
 ---
 
+import TableCourseProgressPreview from "@/components/preview/table/table-course-progress-preview";
+import TableFullBleedPreview from "@/components/preview/table/table-full-bleed-preview";
+import TableOrderHistoryPreview from "@/components/preview/table/table-order-history-preview";
+import TablePreview from "@/components/preview/table/table-preview";
+import TableRecentOrdersPreview from "@/components/preview/table/table-recent-orders-preview";
+import TableTransactionsPreview from "@/components/preview/table/table-transactions-preview";
+import TableUserManagementPreview from "@/components/preview/table/table-user-management-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
-import TablePreview from "@/components/preview/table-preview";
 
 # Table
 
@@ -14,14 +20,16 @@ React Table components are used to display structured data in rows and columns. 
 This Table component is built with React and styled using Tailwind CSS. It provides composable table parts, responsive horizontal scrolling, and flexible styling while keeping native table semantics.
 
 <ComponentPreview
-  codeSnippet={getFileContent("/src/components/preview/table-preview.tsx")}
+  codeSnippet={getFileContent(
+    "/src/components/preview/table/table-preview.tsx"
+  )}
 >
   <TablePreview />
 </ComponentPreview>
 
 ## Installation
 
-<Accordions>
+<Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 ```npm
@@ -59,7 +67,7 @@ import {
   TableCell
 } from "@/registry/core/table";
 
-export default () => (
+export default TablePreview = () => (
   <TableRoot>
     <TableHeader>
       <TableRow>
@@ -74,6 +82,86 @@ export default () => (
   </TableRoot>
 );
 ```
+
+## Usage
+
+```tsx
+import {
+  TableRoot,
+  TableHeader,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell
+} from "@/registry/core/table";
+
+export default function TableExample() {
+  return (
+    <TableRoot>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Header</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>Cell</TableCell>
+        </TableRow>
+      </TableBody>
+    </TableRoot>
+  );
+}
+```
+
+## Examples
+
+### Full Bleed
+
+The `fullBleed` prop removes rounded corners and side borders, making the table span the full width of its container. This is useful for edge-to-edge layouts.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/table/table-full-bleed-preview.tsx"
+  )}
+>
+  <TableFullBleedPreview />
+</ComponentPreview>
+
+### Recent Orders
+
+A dashboard widget style table for displaying recent orders with product thumbnails and "See All" navigation.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/table/table-recent-orders-preview.tsx"
+  )}
+>
+  <TableRecentOrdersPreview />
+</ComponentPreview>
+
+### Order History
+
+An order history table that displays order status with color-coded badges and includes a sorting interface.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/table/table-order-history-preview.tsx"
+  )}
+>
+  <TableOrderHistoryPreview />
+</ComponentPreview>
+
+### Transactions
+
+A financial transactions table including category icons, price formatting, and status indicators.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/table/table-transactions-preview.tsx"
+  )}
+>
+  <TableTransactionsPreview />
+</ComponentPreview>
 
 ## API Reference
 
@@ -133,12 +221,3 @@ A table data cell. Extends `td` element props.
 - Left-aligned text for better readability
 - Horizontal scroll container for responsive behavior
 - Supports all standard table HTML attributes
-
-## Notes
-
-- The root component includes a scroll container for horizontal overflow
-- Border-separate layout with custom spacing for clean visual separation
-- Header cells have smaller text size (12px) for hierarchy
-- All rows except the last have bottom borders
-- Full bleed mode removes rounded corners and side borders for edge-to-edge layouts
-- Works well with Badge, Button, Avatar, and Dropdown components inside cells
