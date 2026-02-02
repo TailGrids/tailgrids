@@ -1,4 +1,7 @@
+"use client";
+
 import { Badge } from "@/registry/core/badge";
+import { Pagination } from "@/registry/core/pagination";
 import {
   TableBody,
   TableCell,
@@ -8,6 +11,7 @@ import {
   TableRow
 } from "@/registry/core/table";
 import { ArrowUpDown, MoreVertical } from "lucide-react";
+import { useState } from "react";
 
 const DATA = [
   {
@@ -45,6 +49,14 @@ const DATA = [
 ];
 
 export default function TableOrderHistoryPreview() {
+  const [currentPage, setCurrentPage] = useState(5);
+  const totalPages = 10;
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    console.log(`Navigating to page ${page}`);
+  };
+
   return (
     <div className="w-full">
       <div className="mb-6 flex items-center justify-between">
@@ -61,7 +73,7 @@ export default function TableOrderHistoryPreview() {
         </button>
       </div>
 
-      <TableRoot fullBleed>
+      <TableRoot fullBleed className="mb-1">
         <TableHeader>
           <TableRow className="border-b border-neutral-200">
             <TableHead>Order ID</TableHead>
@@ -129,6 +141,15 @@ export default function TableOrderHistoryPreview() {
           ))}
         </TableBody>
       </TableRoot>
+
+      <div className="w-full mt-5">
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          sideLayout="full"
+          onPageChange={handlePageChange}
+        />
+      </div>
     </div>
   );
 }

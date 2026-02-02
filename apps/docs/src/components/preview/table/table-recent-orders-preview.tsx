@@ -86,7 +86,7 @@ export default function TableRecentOrdersPreview() {
         </div>
       </div>
 
-      <TableRoot>
+      <TableRoot className="mb-1">
         <TableHeader>
           <TableRow className="border-b border-neutral-100">
             <TableHead>Products</TableHead>
@@ -105,7 +105,7 @@ export default function TableRecentOrdersPreview() {
             >
               <TableCell>
                 <div className="flex items-center gap-3">
-                  <div className="size-12.5 rounded-md border border-neutral-100 flex items-center justify-center">
+                  <div className="size-12.5 rounded-md border border-neutral-100 flex items-center justify-center overflow-hidden">
                     <Image
                       src={item.image}
                       alt={item.product}
@@ -145,17 +145,6 @@ export default function TableRecentOrdersPreview() {
                       : item.status === "Canceled"
                         ? "error"
                         : "warning"
-                  }
-                  prefixIcon={
-                    <span
-                      className={`size-1.5 rounded-full ${
-                        item.status === "Delivered"
-                          ? "bg-green-500"
-                          : item.status === "Canceled"
-                            ? "bg-red-500"
-                            : "bg-orange-500"
-                      }`}
-                    />
                   }
                 >
                   {item.status}

@@ -84,7 +84,7 @@ export default function TableTransactionsPreview() {
         </div>
       </div>
 
-      <TableRoot>
+      <TableRoot className="mb-1">
         <TableHeader>
           <TableRow className="bg-neutral-50 border-none">
             <TableHead>Name</TableHead>
