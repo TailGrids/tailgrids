@@ -23,12 +23,10 @@
   --color-primary-950: #161755;
 
   /* Text Color */
-  --color-text-50: #374151;
-  --color-text-100: #6b7280;
-  --color-text-200: #9ca3af;
-
-  /* Title */
-  --color-title-50: #1f2937;
+  --color-text-title-color: #1f2937;
+  --color-text-color: #374151;
+  --color-text-secondary: #6b7280;
+  --color-text-tertiary: #9ca3af;
 
   /* White */
   --color-white-100: #ffffff;
@@ -43,15 +41,15 @@
   --border-color-base-200: #d1d5db;
   --border-color-base-300: #9ca3af;
 
-  /* Forground Color */
-  --color-forground-50: #030712;
-  --color-forground-100: #111827;
-  --color-forground-soft-50: #111827;
-  --color-forground-soft-100: #111827;
-  --color-forground-soft-200: #1f2937;
-  --color-forground-soft-300: #030712;
-  --color-forground-soft-400: #1f2937;
-  --color-forground-soft-500: #374151;
+  /* Foreground Color */
+  --color-foreground-50: #030712;
+  --color-foreground-100: #111827;
+  --color-foreground-soft-50: #111827;
+  --color-foreground-soft-100: #111827;
+  --color-foreground-soft-200: #1f2937;
+  --color-foreground-soft-300: #030712;
+  --color-foreground-soft-400: #1f2937;
+  --color-foreground-soft-500: #374151;
 
   /* Background Color */
   --color-background-50: #ffffff;
