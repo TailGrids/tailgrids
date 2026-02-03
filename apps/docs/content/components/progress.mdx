@@ -30,7 +30,7 @@ This Progress component is built with React and styled using Tailwind CSS. It di
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 
-```bash
+```npm
 npx @tailgrids/cli add progress
 ```
 
@@ -42,6 +42,7 @@ Copy the `Progress` component code into your project. No additional dependencies
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/progress.tsx")}
   lang="tsx"
+  fileName="components/ui/progress.tsx"
 />
 </Accordion>
 </Accordions>
@@ -62,7 +63,7 @@ export default function ProgressBasic() {
 
 ### Basic Progress
 
-Use the progress bar without a label.
+Display a sleek, linear progress indicator focused purely on visual feedback of completion state.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -74,7 +75,7 @@ Use the progress bar without a label.
 
 ### Progress with Label
 
-Display the percentage value next to the bar.
+Provide explicit feedback on the completeness of a task by toggling the `withLabel` prop to show the percentage.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -86,7 +87,7 @@ Display the percentage value next to the bar.
 
 ### Custom Progress
 
-Customize the appearance of the progress bar using class names.
+Customize the appearance of the progress bar using `className` prop.
 
 <ComponentPreview
   codeSnippet={getFileContent(

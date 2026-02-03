@@ -37,6 +37,7 @@ npx @tailgrids/cli add spinner
 
 <Accordion title="Manual">
 Install the required dependencies:
+
 ```npm
 npm i class-variance-authority
 ```
@@ -46,7 +47,7 @@ Copy and paste the following component code into your project.
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/spinner/index.tsx")}
   lang="tsx"
-  fileName="spinner.tsx"
+  fileName="components/ui/spinner.tsx"
 />
 
 You'll also need the spinner SVG assets referenced in the component (`default.svg`, `dotted.svg`, `dotted-round.svg`).
@@ -54,19 +55,19 @@ You'll also need the spinner SVG assets referenced in the component (`default.sv
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/spinner/default.svg")}
   lang="svg"
-  fileName="default.svg"
+  fileName="components/ui/spinner/default.svg"
 />
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/spinner/dotted.svg")}
   lang="svg"
-  fileName="dotted.svg"
+  fileName="components/ui/spinner/dotted.svg"
 />
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/spinner/dotted-round.svg")}
   lang="svg"
-  fileName="dotted-round.svg"
+  fileName="components/ui/spinner/dotted-round.svg"
 />
 
 </Accordion>
@@ -88,7 +89,7 @@ export default function SpinnerExample() {
 
 ### Types
 
-The Spinner component has `default`, `dotted`, and `dotted-round` types.
+Choose from three visual styles—`default`, `dotted`, and `dotted-round`—using the `type` prop to match your design language.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -100,7 +101,7 @@ The Spinner component has `default`, `dotted`, and `dotted-round` types.
 
 ### Sizes
 
-The Spinner component supports five pre-defined sizes: `sm`, `md`, `lg`, `xl`, and `xxl`.
+Scale your loading indicator from `sm` to `xxl` using the `size` prop to perfectly fit any UI context, from inline text to full-page loaders.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -112,7 +113,7 @@ The Spinner component supports five pre-defined sizes: `sm`, `md`, `lg`, `xl`, a
 
 ### In Buttons
 
-Spinners can be integrated into buttons to provide visual feedback during loading or pending actions.
+Enhance user experience by integrating spinners within buttons using the `sm` size to indicate active processing or pending actions.
 
 <ComponentPreview
   codeSnippet={getFileContent(

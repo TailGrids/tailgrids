@@ -29,9 +29,12 @@ The Date Picker relies on the `date-fns` library for date manipulation.
 
 <Accordions defaultValue="CLI">
 <Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+
 ```npm
 npx @tailgrids/cli add date-picker
 ```
+
 </Accordion>
 
 <Accordion title="Manual">
@@ -46,12 +49,12 @@ Copy and paste the code into `single-date.tsx` (for `DatePicker`) and `range-dat
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/date-picker/single-date.tsx")}
   lang="tsx"
-  fileName="date-picker/single-date.tsx"
+  fileName="components/ui/date-picker/single-date.tsx"
 />
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/date-picker/range-date.tsx")}
   lang="tsx"
-  fileName="date-picker/range-date.tsx"
+  fileName="components/ui/date-picker/range-date.tsx"
 />
 </Accordion>
 </Accordions>
@@ -83,7 +86,7 @@ Note: Both normal and range pickers use a **temporary selection state** (`tempSe
 
 ### Range Date Picker
 
-Use this picker to select a start and end date as a range. The range picker defaults to a two-month view.
+Enable date range selection with the `RangeDatePicker` component, which supports `defaultStartDate` and `defaultEndDate` for pre-configured ranges.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -97,7 +100,7 @@ Note: The **RangeDatePicker** automatically handles the logic of ensuring the us
 
 ### Preselected Date
 
-An example of a DatePicker with a default value.
+Initialize the calendar with a specific date by passing a `Date` object to the `value` prop in a controlled state.
 
 <ComponentPreview
   codeSnippet={getFileContent(

@@ -34,7 +34,7 @@ This Pagination component is built with React and styled using Tailwind CSS. It 
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 
-```bash
+```npm
 npx @tailgrids/cli add pagination
 ```
 
@@ -42,15 +42,16 @@ npx @tailgrids/cli add pagination
 <Accordion title="Manual">
 Install the required dependencies:
 
-```bash
+```npm
 npm i class-variance-authority @tailgrids/icons
 ```
 
-Copy and paste the following component code into your project. Note that `PaginationButton` and `PaginationEllipsis` are internal components.
+Copy and paste the following component code into your project.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/pagination.tsx")}
   lang="tsx"
+  fileName="components/ui/pagination.tsx"
 />
 </Accordion>
 </Accordions>
@@ -75,7 +76,7 @@ export default PaginationExample = () => (
 
 ### Compact Variant
 
-Use the `compact` variant for a minimal style, often suited for smaller sections or footers.
+Achieve a minimal visual footprint for tight layouts or secondary content by setting the `variant` prop to `compact`.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -88,7 +89,7 @@ Use the `compact` variant for a minimal style, often suited for smaller sections
 
 ### Full Side Layout
 
-This is the **default** layout, showing both the icon and the text label ("Previous"/"Next") for side buttons.
+The default `sideLayout` displays both text labels and icons for side navigation buttons, providing maximum clarity.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -101,7 +102,7 @@ This is the **default** layout, showing both the icon and the text label ("Previ
 
 ### Label-Only Side Layout
 
-Shows only the text label ("Previous"/"Next") on desktop, but hides it on mobile to save space.
+Prioritize text labels for previous and next buttons by setting the `sideLayout` to `label`. This layout automatically adjusts for mobile devices.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -114,7 +115,7 @@ Shows only the text label ("Previous"/"Next") on desktop, but hides it on mobile
 
 ### Icon-Only Side Layout
 
-Uses icons only for previous and next buttons.
+Use purely visual markers for navigation by setting the `sideLayout` prop to `icon`.
 
 <ComponentPreview
   codeSnippet={getFileContent(

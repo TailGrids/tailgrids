@@ -1,15 +1,15 @@
 import { cn } from "@/utils/cn";
-import { cva, type VariantProps } from "class-variance-authority";
-import { Button } from "./button";
-import type { ComponentProps } from "react";
-import { Avatar } from "./avatar";
 import {
   CheckCircle1,
-  XmarkCircle,
-  InfoCircle,
+  Close,
   Envelope1,
-  Close
+  InfoCircle,
+  XmarkCircle
 } from "@tailgrids/icons";
+import { cva, type VariantProps } from "class-variance-authority";
+import type { ComponentProps } from "react";
+import { Avatar } from "./avatar";
+import { Button } from "./button";
 
 const iconWrapperStyle = cva(
   "grid size-9 place-items-center rounded-md [&>svg]:size-6 [&>svg]:text-current",
@@ -31,7 +31,7 @@ type PropsType = VariantProps<typeof iconWrapperStyle> & {
   title?: string;
   undoAction?: () => void;
   actions?: {
-    primary: {
+    primary?: {
       label: string;
       onClick?: ComponentProps<"button">["onClick"];
     };
@@ -73,22 +73,27 @@ export function Toast({
         </p>
 
         {!title && undoAction && (
-          <button className="text-primary-500 ml-auto text-sm font-medium">
+          <button
+            onClick={undoAction}
+            className="text-primary-500 ml-auto text-sm font-medium"
+          >
             Undo
           </button>
         )}
 
         {title && actions && (
           <div className="mt-5 flex items-center gap-3">
-            <Button
-              size="sm"
-              variant="primary"
-              appearance="fill"
-              onClick={actions.primary.onClick}
-              className="py-2"
-            >
-              {actions.primary.label}
-            </Button>
+            {actions.primary && (
+              <Button
+                size="sm"
+                variant="primary"
+                appearance="fill"
+                onClick={actions.primary.onClick}
+                className="py-2"
+              >
+                {actions.primary.label}
+              </Button>
+            )}
 
             {actions.dismiss && (
               <Button
@@ -105,6 +110,7 @@ export function Toast({
         )}
 
         <button
+          onClick={actions?.dismiss?.onClick}
           className={cn({
             "ml-auto": !undoAction,
             "absolute top-2.5 right-2.5": title
@@ -124,6 +130,7 @@ type AvatarToastProps = {
   image?: string;
   status: "none" | "online" | "offline" | "busy";
   time: string;
+  dismiss?: () => void;
 };
 
 export function AvatarToast({
@@ -131,7 +138,8 @@ export function AvatarToast({
   description,
   image,
   status,
-  time
+  time,
+  dismiss
 }: AvatarToastProps) {
   return (
     <div className="bg-neutral relative flex min-w-89.5 items-start gap-4 rounded-lg border border-neutral-200 p-5 shadow-sm">
@@ -150,7 +158,7 @@ export function AvatarToast({
         <p className="text-primary-500 mt-2 text-xs">{time}</p>
       </div>
 
-      <button className="absolute top-2.5 right-2.5">
+      <button onClick={dismiss} className="absolute top-2.5 right-2.5">
         <span className="sr-only">Dismiss Toast</span>
         <Close />
       </button>

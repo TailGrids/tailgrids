@@ -7,7 +7,6 @@ import { ComponentPreview } from "@/components/component-preview";
 import TabsCustomPreview from "@/components/preview/tabs/tabs-custom-preview";
 import TabsHorizontalPreview from "@/components/preview/tabs/tabs-horizontal-preview";
 import TabsPreview from "@/components/preview/tabs/tabs-preview";
-import TabsUsagePreview from "@/components/preview/tabs/tabs-usage-preview";
 import TabsVariantsPreview from "@/components/preview/tabs/tabs-variants-preview";
 import TabsWithBadgesPreview from "@/components/preview/tabs/tabs-with-badges-preview";
 import TabsWithIconsPreview from "@/components/preview/tabs/tabs-with-icons-preview";
@@ -39,6 +38,7 @@ npx @tailgrids/cli add tabs
 
 <Accordion title="Manual">
 Install the required dependencies:
+
 ```npm
 npm i class-variance-authority
 ```
@@ -48,13 +48,13 @@ Copy and paste the following component code into your project. Make sure you hav
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/tabs.tsx")}
   lang="tsx"
-  fileName="tabs.tsx"
+  fileName="components/ui/tabs.tsx"
 />
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/badge.tsx")}
   lang="tsx"
-  fileName="badge.tsx"
+  fileName="components/ui/badge.tsx"
 />
 </Accordion>
 </Accordions>
@@ -82,13 +82,30 @@ export default TabsExample = () => (
 
 Import the components and use the default variant to create a standard tabbed interface.
 
-<ComponentPreview
-  codeSnippet={getFileContent(
-    "/src/components/preview/tabs/tabs-usage-preview.tsx"
-  )}
->
-  <TabsUsagePreview />
-</ComponentPreview>
+```tsx
+import { TabContent, TabList, TabRoot, TabTrigger } from "@/registry/core/tabs";
+
+export default function TabsExample() {
+  return (
+    <TabRoot defaultValue="overview">
+      <TabList>
+        <TabTrigger value="overview">Overview</TabTrigger>
+        <TabTrigger value="analytics">Analytics</TabTrigger>
+        <TabTrigger value="reports">Reports</TabTrigger>
+      </TabList>
+      <TabContent value="overview">
+        <p>Overview content goes here.</p>
+      </TabContent>
+      <TabContent value="analytics">
+        <p>Analytics content goes here.</p>
+      </TabContent>
+      <TabContent value="reports">
+        <p>Reports content goes here.</p>
+      </TabContent>
+    </TabRoot>
+  );
+}
+```
 
 Note: Only one tab panel is visible at a time. The `defaultValue` prop sets the initially active tab.
 
@@ -96,7 +113,7 @@ Note: Only one tab panel is visible at a time. The `defaultValue` prop sets the 
 
 ### Variants
 
-Use the `variant` prop to control the visual style of the tab list. Supported values are `default` and `minimal`.
+Customize the tab list's visual tone using the `variant` prop, with support for both `default` and `minimal` styles.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -108,7 +125,7 @@ Use the `variant` prop to control the visual style of the tab list. Supported va
 
 ### With Icons
 
-You can pass an `icon` prop to the `TabTrigger` to display an icon before the tab label.
+Improve navigation clarity by adding an `icon` directly to your `TabTrigger` components for a more intuitive interface.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -122,7 +139,7 @@ Note: Icons are automatically sized to `20px` (1.25rem).
 
 ### With Badges
 
-Use the `badge` prop on `TabTrigger` to display a notification count or status indicator next to the label.
+Display real-time counts or status indicators next to tab labels by using the `badge` prop on the `TabTrigger`.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -136,7 +153,7 @@ Note: Badges use the Badge component with primary color.
 
 ### Horizontal Direction
 
-Set the `direction` prop to `horizontal` on `TabRoot` to stack the tab list and content vertically, with tabs arranged horizontally.
+Switch to a standard horizontal tab arrangement by setting the `direction` prop to `horizontal` on the `TabRoot`.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -150,7 +167,7 @@ Note: Horizontal direction is responsive and wraps on small screens. The tab lis
 
 ### Custom
 
-You can customize the tab appearance using standard Tailwind CSS classes or animation libraries like Framer Motion.
+You can customize the tab appearance using standard Tailwind CSS classes.
 
 <ComponentPreview
   codeSnippet={getFileContent(

@@ -43,6 +43,7 @@ npx @tailgrids/cli add list
 
 <Accordion title="Manual">
 Install the required dependencies:
+
 ```npm
 npm i class-variance-authority
 ```
@@ -52,6 +53,7 @@ Copy and paste the following component code into your project.
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/list.tsx")}
   lang="tsx"
+  fileName="components/ui/list.tsx"
 />
 </Accordion>
 </Accordions>
@@ -106,7 +108,7 @@ Note: Horizontal lists have a max width of `fit-content`.
 
 ### Without Dividers
 
-You can remove dividers when visual separation is not needed. Dividers can be hidden with the `hideDividers` prop.
+Streamline your list's appearance by toggling the `hideDividers` prop to remove horizontal rules between items.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -118,7 +120,7 @@ You can remove dividers when visual separation is not needed. Dividers can be hi
 
 ### With Active State
 
-Mark an item as active to indicate the current selection.
+Highlight the currently selected item visually and semantically across your navigation or menus by applying the `data-active` attribute.
 
 <ComponentPreview
   codeSnippet={getFileContent(

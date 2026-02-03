@@ -3,7 +3,6 @@ title: React Link Component
 description: A React link component for navigation between pages. Renders a semantic anchor element to create internal or external links with accessible behavior.
 ---
 
-import { CodeBlockCard } from "@/components/code-block-card";
 import { ComponentPreview } from "@/components/component-preview";
 import LinkCustomPreview from "@/components/preview/link/link-custom-preview";
 import LinkExternalPreview from "@/components/preview/link/link-external-preview";
@@ -38,6 +37,7 @@ npx @tailgrids/cli add link
 
 <Accordion title="Manual">
 Install the required dependencies:
+
 ```npm
 npm i class-variance-authority
 ```
@@ -47,6 +47,7 @@ Copy and paste the following component code into your project.
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/link.tsx")}
   lang="tsx"
+  fileName="components/ui/link.tsx"
 />
 </Accordion>
 </Accordions>
@@ -67,7 +68,7 @@ export default function Example() {
 
 ### Variants
 
-Use variants to change the visual style of the link.
+Customize the link's visual weight using the `variant` prop, with options for `primary` and `dark` styles.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -79,7 +80,7 @@ Use variants to change the visual style of the link.
 
 ### Sizes
 
-Choose a size that fits the surrounding text.
+Adjust the link's scale to match your typography using the `size` prop, offering both `sm` and `md` options.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -91,7 +92,7 @@ Choose a size that fits the surrounding text.
 
 ### External Link
 
-Use standard anchor attributes for external navigation.
+Configure links for external navigation by applying standard `target="_blank"` and `rel` attributes.
 
 <ComponentPreview
   codeSnippet={getFileContent(

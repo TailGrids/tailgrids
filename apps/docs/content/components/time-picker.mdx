@@ -25,13 +25,14 @@ This Time Picker is built with React and uses `react-aria` primitives for access
 
 ## Installation
 
+The Time Picker relies on the `react-aria-components` and `react-stately` libraries.
+
 <Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 ```npm
 npx @tailgrids/cli add time-picker
 ```
-
 </Accordion>
 
 <Accordion title="Manual">
@@ -47,7 +48,7 @@ Copy and paste the component code into your project.
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/time-picker.tsx")}
   lang="tsx"
-  fileName="time-picker.tsx"
+  fileName="components/ui/time-picker.tsx"
 />
 </Accordion>
 </Accordions>
@@ -82,7 +83,7 @@ A standard time picker implementation using `react-aria` for accessibility. It p
 
 ### With Label
 
-You can combine the Time Picker with a label and other elements to create a complete form control.
+Combine the Time Picker with a descriptive `label` and other elements to create a complete, accessible form control.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -94,7 +95,7 @@ You can combine the Time Picker with a label and other elements to create a comp
 
 ### Custom Trigger
 
-The `TimePickerTrigger` can be customized or replaced with any element that accepts refs and props.
+The `TimePickerTrigger` can be flexibly customized or replaced with any element that accepts refs and standard event props.
 
 <ComponentPreview
   codeSnippet={getFileContent(

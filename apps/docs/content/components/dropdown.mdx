@@ -39,6 +39,7 @@ npx @tailgrids/cli add dropdown
 
 <Accordion title="Manual">
 Install the required dependency:
+
 ```npm
 npm i react-aria-components
 ```
@@ -48,6 +49,7 @@ Copy and paste the following component code into your project.
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/dropdown.tsx")}
   lang="tsx"
+  fileName="components/ui/dropdown.tsx"
 />
 </Accordion>
 </Accordions>
@@ -127,7 +129,7 @@ export const DropdownUsageExample = () => (
 
 ### With Separator
 
-Use separators to group related actions.
+Organize menu items into logical groups using the `DropdownMenuSeparator` component for better visual hierarchy.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -151,7 +153,7 @@ Add icons to menu items for better visual context.
 
 ### With Section
 
-Use sections to group related actions.
+Group related actions under descriptive headers using the `DropdownMenuSection` and `DropdownMenuHeader` components.
 
 <ComponentPreview
   codeSnippet={getFileContent(

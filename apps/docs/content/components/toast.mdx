@@ -49,13 +49,13 @@ Copy the component code into your project.
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/toast.tsx")}
   lang="tsx"
-  fileName="toast.tsx"
+  fileName="components/ui/toast.tsx"
 />
 
 <CodeBlockCard
 snippet={getFileContent("/src/registry/core/avatar.tsx")}
 lang="tsx"
-fileName="avatar.tsx"
+fileName="components/ui/avatar.tsx"
 />
 </Accordion>
 </Accordions>
@@ -134,7 +134,7 @@ A message-style toast that includes an avatar, sender name, message description,
 
 ## Variants
 
-The Toast component supports five predefined variants: `success`, `error`, `info`, `warning`, and `message`.
+Communicate various feedback types—`success`, `error`, `info`, `warning`, or `message`—to users using the `variant` prop.
 
 <ComponentPreview
   codeSnippet={getFileContent(

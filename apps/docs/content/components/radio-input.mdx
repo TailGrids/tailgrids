@@ -40,6 +40,7 @@ npx @tailgrids/cli add radio-input
 
 <Accordion title="Manual">
 Install the required dependencies:
+
 ```npm
 npm i class-variance-authority
 ```
@@ -49,6 +50,7 @@ Copy and paste the following component code into your project.
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/radio-input.tsx")}
   lang="tsx"
+  fileName="components/ui/radio-input.tsx"
 />
 </Accordion>
 </Accordions>
@@ -75,7 +77,7 @@ export default function RadioWithLabelPreview() {
 
 ### Sizes
 
-The Radio Input component supports two predefined sizes: `sm` and `md`.
+Adjust the scale of your radio buttons to match your design system using the `size` prop, offering `sm` and `md` options.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -86,6 +88,8 @@ The Radio Input component supports two predefined sizes: `sm` and `md`.
 </ComponentPreview>
 
 ### Without Label
+
+Create compact radio lists by omitting the `label` prop when descriptive context is provided by surrounding elements.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -99,7 +103,7 @@ Note: Use this only when the label is provided through surrounding context.
 
 ### Controlled
 
-Handle state manually with the `checked` and `onChange` props.
+Manage the selection state of your radio buttons programmatically using the `checked` and `onChange` props in a controlled form.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -111,7 +115,7 @@ Handle state manually with the `checked` and `onChange` props.
 
 ### Disabled
 
-Use the `disabled` prop to prevent interaction.
+Prevent user interaction and reflect an inactive state by setting the `disabled` prop to `true`.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -123,7 +127,7 @@ Use the `disabled` prop to prevent interaction.
 
 ### Default Checked
 
-Use `defaultChecked` to set the initial state.
+Specify an initial selection for uncontrolled radio inputs by applying the `defaultChecked` prop.
 
 <ComponentPreview
   codeSnippet={getFileContent(

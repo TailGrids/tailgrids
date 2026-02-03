@@ -3,7 +3,7 @@ import { TabContent, TabList, TabRoot, TabTrigger } from "@/registry/core/tabs";
 export default function TabsPreview() {
   return (
     <div className="w-full">
-      <TabRoot defaultValue="overview" variant="default">
+      <TabRoot defaultValue="overview">
         <TabList>
           <TabTrigger value="overview">Overview</TabTrigger>
           <TabTrigger value="analytics">Analytics</TabTrigger>

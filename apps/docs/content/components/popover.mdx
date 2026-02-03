@@ -29,11 +29,13 @@ This Popover component is built with React and styled using Tailwind CSS. It use
 
 ## Installation
 
+The Popover component relies on the `@floating-ui/react` library.
+
 <Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 
-```bash
+```npm
 npx @tailgrids/cli add popover
 ```
 
@@ -42,7 +44,7 @@ npx @tailgrids/cli add popover
 
 Install the required dependency:
 
-```bash
+```npm
 npm i @floating-ui/react
 ```
 
@@ -51,6 +53,7 @@ Copy and paste the following component code into your project.
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/popover.tsx")}
   lang="tsx"
+  fileName="components/ui/popover.tsx"
 />
 
 </Accordion>
@@ -120,7 +123,7 @@ export default function PopoverExample() {
 
 ### Default
 
-Basic popover with heading and description.
+Start with a clean, informative floating panel using the `PopoverHeading` and `PopoverDescription` components for structured information.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -132,7 +135,7 @@ Basic popover with heading and description.
 
 ### With Button
 
-Popover content with action buttons.
+Integrate interactive elements within your popover content to enable quick contextual actions without leaving the page.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -144,7 +147,7 @@ Popover content with action buttons.
 
 ### With Link
 
-Popover content with a link.
+Include navigational links within the `PopoverContent` to guide users to related resources or documentation.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -156,7 +159,7 @@ Popover content with a link.
 
 ### Controlled Open State
 
-Control the open state using React state.
+Manage the visibility of the popover programmatically using the `open` and `onOpenChange` props for more complex interactions.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -168,7 +171,7 @@ Control the open state using React state.
 
 ### Custom Placement
 
-Change the popover position relative to the trigger.
+Precision-position your popover using the `placement` prop, supporting various orientations like top, bottom, and sides relative to the trigger.
 
 <ComponentPreview
   codeSnippet={getFileContent(

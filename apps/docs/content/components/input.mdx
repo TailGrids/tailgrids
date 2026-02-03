@@ -40,6 +40,7 @@ npx @tailgrids/cli add input
 
 <Accordion title="Manual">
 Install the required dependencies:
+
 ```npm
 npm i class-variance-authority
 ```
@@ -49,6 +50,7 @@ Copy and paste the following component code into your project.
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/input.tsx")}
   lang="tsx"
+  fileName="components/ui/input.tsx"
 />
 </Accordion>
 </Accordions>
@@ -69,7 +71,7 @@ export default InputPreview = () => (
 
 ### With Label
 
-Use the `label` prop to describe the input field.
+Provide a clear description for your input using the `label` prop, which automatically links to the field for better accessibility.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -83,7 +85,7 @@ Note: Labels are non-selectable with `select-none` for better UX. Placeholder te
 
 ### With Hint
 
-Use the `hint` prop to show helper text below the input.
+Display supportive helper text below the input field using the `hint` prop to guide users through form completion.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -97,7 +99,7 @@ Note: The input uses `peer` class to enable styling of the hint text based on in
 
 ### States
 
-Use visual states to show validation feedback, or disable the input.
+Reflect different validation outcomes or prevent interaction using the `state` prop (supporting `default`, `error`, `success`) and the `disabled` attribute.
 
 <ComponentPreview
   codeSnippet={getFileContent(

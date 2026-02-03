@@ -43,7 +43,7 @@ npx @tailgrids/cli add button
 Install the required dependencies:
 
 ```npm
-npm i class-variance-authority
+npm i class-variance-authority @tailgrids/icons
 ```
 
 Copy and paste the following component code into your project.
@@ -51,6 +51,7 @@ Copy and paste the following component code into your project.
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/button.tsx")}
   lang="tsx"
+  fileName="components/ui/button.tsx"
 />
 </Accordion>
 </Accordions>
@@ -69,7 +70,7 @@ export const ButtonExample = () => <Button variant="primary">Click me</Button>;
 
 ### Variants
 
-Use variants to indicate the purpose of an action.
+Control the button's visual intent using the `variant` prop.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -83,7 +84,7 @@ Note: Ghost variant automatically adjusts focus ring size to `ring-2` for subtle
 
 ### Appearances
 
-Use appearances to control the visual style.
+Toggle between `fill` and `outline` styles using the `appearance` prop to match your design's depth and emphasis.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -95,7 +96,7 @@ Use appearances to control the visual style.
 
 ### Sizes
 
-Choose a size that fits the surrounding UI.
+Scale your buttons for different contexts with the `size` prop, supporting `xs`, `sm`, `md`, and `lg` options.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -107,7 +108,7 @@ Choose a size that fits the surrounding UI.
 
 ### With Icons
 
-Icons are automatically adjusted based on the `size` and `variant` props.
+Enhance actions with icons that scale automatically with the `size` and `variant` props. Use `iconOnly` to create perfectly square icon buttons.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -121,7 +122,7 @@ Note: The `iconOnly` prop adjusts padding to create square buttons for icon-only
 
 ### Disabled
 
-Use the disabled state to prevent interaction.
+Set the `disabled` prop to `true` to programmatically prevent user interaction while preserving layout consistency.
 
 <ComponentPreview
   codeSnippet={getFileContent(

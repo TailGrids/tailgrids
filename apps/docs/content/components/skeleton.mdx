@@ -44,7 +44,7 @@ Copy and paste the following component code into your project.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/skeleton.tsx")}
-  fileName="skeleton.tsx"
+  fileName="components/ui/skeleton.tsx"
   lang="tsx"
 />
 
@@ -92,7 +92,7 @@ Add the custom pulse animation to your `tailwind` config:
 
 ## Usage
 
-The Skeleton component provides a base animation. You can customize its dimensions by adjusting the height and width classes to match your layout requirements.
+The Skeleton component provides a base animation. You can customize its dimensions by adjusting the height and width using `className` prop to match your layout requirements.
 
 ```tsx
 import { Skeleton } from "@/registry/core/skeleton";
@@ -106,7 +106,7 @@ export default function SkeletonUsage() {
 
 ### Text Lines
 
-Use text line skeletons to simulate paragraphs or blocks of text.
+Simulate loading text content with flexible, responsive line placeholders that match your typography's rhythm.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -118,7 +118,7 @@ Use text line skeletons to simulate paragraphs or blocks of text.
 
 ### Card Skeleton
 
-A complete card layout simulation with image, title, and description placeholders.
+Pre-visualize complex card layouts to provide a smooth, low-latency transition as data loads into your interface.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -130,7 +130,7 @@ A complete card layout simulation with image, title, and description placeholder
 
 ### Avatar Skeleton
 
-Loading state for user profiles with avatar and text lines.
+Represent user profile sections during loading with combined circular and linear placeholders for a polished feel.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -142,7 +142,7 @@ Loading state for user profiles with avatar and text lines.
 
 ### Different Shapes
 
-Various geometric shapes available for different UI elements.
+Compose custom loading states using a variety of geometric shapes tailored to your specific UI component structures.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -154,7 +154,7 @@ Various geometric shapes available for different UI elements.
 
 ### Button Skeleton
 
-A placeholder for button elements.
+Reserve space for interactive actions with dedicated button-shaped skeletons that maintain layout stability.
 
 <ComponentPreview
   codeSnippet={getFileContent(

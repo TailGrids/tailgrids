@@ -31,17 +31,16 @@ This Checkbox component is built with React and styled using Tailwind CSS, provi
 <Accordions defaultValue="CLI">
 <Accordion title="CLI">
 
-```bash
+```npm
 npx @tailgrids/cli add checkbox
 ```
 
 </Accordion>
 <Accordion title="Manual">
-
 Install the required dependencies:
 
-```bash
-npm i class-variance-authority
+```npm
+npm i class-variance-authority @tailgrids/icons
 ```
 
 Copy and paste the following component code into your project.
@@ -49,6 +48,7 @@ Copy and paste the following component code into your project.
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/checkbox.tsx")}
   lang="tsx"
+  fileName="components/ui/checkbox.tsx"
 />
 
 You'll also need the check icon SVG referenced in the component.
@@ -72,7 +72,7 @@ export default CheckboxPreview = () => (
 
 ### Sizes
 
-The Checkbox component supports two sizes: `sm` (default) and `md`.
+Scale the checkbox to fit your UI using the `size` prop, offering both `sm` and `md` options.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -84,7 +84,7 @@ The Checkbox component supports two sizes: `sm` (default) and `md`.
 
 ### With Label
 
-Use the label prop to display text next to the checkbox.
+Provide clear context for your selection by adding descriptive text using the `label` prop.
 
 <ComponentPreview
   codeSnippet={getFileContent(
