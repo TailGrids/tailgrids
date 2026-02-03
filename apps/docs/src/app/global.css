@@ -23,10 +23,19 @@
   --color-primary-950: #161755;
 
   /* Text Color */
-  --color-title-50: #1f2937;
   --color-text-50: #374151;
   --color-text-100: #6b7280;
   --color-text-200: #9ca3af;
+
+  /* Title */
+  --color-title-50: #1f2937;
+
+  /* White */
+  --color-white-100: #ffffff;
+  --color-white-90: #ffffffcc;
+  --color-white-80: #ffffffcc;
+  --color-white-70: #ffffffb3;
+  --color-white-60: #ffffff99;
 
   /* Border Color */
   --border-color-base-50: #f3f4f6;
@@ -53,6 +62,7 @@
   --color-background-soft-300: #f3f4f6;
   --color-background-soft-400: #e5e7eb;
   --color-background-soft-500: #d1d5db;
+  --color-background-success-600: #16a34a;
 
   /* ======== Button Color =========*/
 
