@@ -40,8 +40,8 @@ type PropsType = VariantProps<typeof avatarStyles> & {
   status?: "none" | "online" | "offline" | "busy";
   fallback: string;
   label?: {
-    name: string;
-    email: string;
+    title: string;
+    subtitle?: string;
   };
 };
 
@@ -72,20 +72,20 @@ export function Avatar({
       </div>
 
       {label && (
-        <LabelGroup size={size} name={label.name} email={label.email} />
+        <LabelGroup size={size} title={label.title} subtitle={label.subtitle} />
       )}
     </figure>
   );
 }
 
 const indicatorStyles = cva(
-  "absolute right-0 bottom-0 rounded-full ring-[1.5px] ring-white",
+  "absolute right-0 bottom-0 rounded-full ring-[1.5px] ring-background-50",
   {
     variants: {
       status: {
-        online: "bg-success",
-        offline: "bg-danger",
-        busy: "bg-warning"
+        online: "bg-green-500",
+        offline: "bg-red-500",
+        busy: "bg-yellow-500"
       },
       size: {
         xs: "size-1.5",
@@ -109,7 +109,7 @@ function Indicator({ size, status }: IndicatorProps) {
   return <div className={indicatorStyles({ size, status })} />;
 }
 
-const nameStyles = cva("font-medium text-neutral-700", {
+const titleStyles = cva("font-medium text-text-color", {
   variants: {
     size: {
       xs: "text-xs",
@@ -122,7 +122,7 @@ const nameStyles = cva("font-medium text-neutral-700", {
   }
 });
 
-const emailStyles = cva("text-neutral-500", {
+const subtitleStyles = cva("text-text-secondary", {
   variants: {
     size: {
       xs: "text-xs",
@@ -135,16 +135,17 @@ const emailStyles = cva("text-neutral-500", {
   }
 });
 
-type LabelGroupProps = VariantProps<typeof nameStyles> & {
-  name: string;
-  email: string;
+type LabelGroupProps = VariantProps<typeof titleStyles> & {
+  title: string;
+  subtitle?: string;
 };
 
-export function LabelGroup({ name, email, size }: LabelGroupProps) {
+export function LabelGroup({ title, subtitle, size }: LabelGroupProps) {
   return (
     <figcaption>
-      <div className={nameStyles({ size })}>{name}</div>
-      <div className={emailStyles({ size })}>{email}</div>
+      <div className={titleStyles({ size })}>{title}</div>
+
+      {subtitle && <div className={subtitleStyles({ size })}>{subtitle}</div>}
     </figcaption>
   );
 }
@@ -172,7 +173,7 @@ export function AvatarGroup({
           src={src}
           alt={alt}
           fallback={alt.charAt(0)}
-          className="rounded-full ring-[1.5px] ring-white"
+          className="rounded-full ring-[1.5px] ring-background-50"
           style={{
             zIndex: i
           }}
