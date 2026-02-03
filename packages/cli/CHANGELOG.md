@@ -1,5 +1,11 @@
 # @tailgrids/cli
 
+## 1.0.1
+
+### Patch Changes
+
+- Update readme guide and package.json information
+
 ## 1.0.0
 
 ### Major Changes

@@ -22,6 +22,7 @@
   --color-primary-900: #1c228c;
   --color-primary-950: #161755;
 
+  /* ======= Ekhan theke ======= */
   /* Base */
   --color-neutral: white;
   --color-neutral-100: var(--color-gray-100);
@@ -113,6 +114,7 @@
   --color-dropdown-foreground: #1f2937;
   --color-dropdown-item-hover: #f3f4f6;
   --color-dropdown-separator: var(--color-gray-200);
+  /* ======= Ei porjonto ======= */
 
   --color-tg-border-1: var(--border-1);
   --color-tg-border-2: var(--border-2);

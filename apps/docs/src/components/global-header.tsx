@@ -97,6 +97,7 @@ export default function GlobalHeader() {
                 >
                   <SearchIcon className="size-6" />
                 </button>
+
                 {/* Theme Toggle */}
                 <button
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -134,6 +135,7 @@ export default function GlobalHeader() {
                   >
                     Account
                   </a>
+
                   <a
                     className="custom-link-btn-blue 
                   "
@@ -143,14 +145,10 @@ export default function GlobalHeader() {
                   </a>
                 </div>
               </div>
+
               {/* Mobile Menu - Hidden on lg+ where sidebar is always visible */}
               {/* Mobile Search Button */}
-              <button
-                onClick={() => setIsSearchOpen(true)}
-                className="hidden text-gray-700 dark:text-gray-300 hover:text-primary-500"
-              >
-                <SearchIcon className="size-6" />
-              </button>
+
               <button
                 type="button"
                 onClick={() => setOpen(!open)}

@@ -1,17 +1,17 @@
-import { useState, useEffect, useRef, useMemo } from 'react';
 import {
   addMonths,
-  subMonths,
-  format,
-  startOfMonth,
-  endOfMonth,
-  startOfWeek,
-  endOfWeek,
   eachDayOfInterval,
+  endOfMonth,
+  endOfWeek,
+  format,
   isSameDay,
   isSameMonth,
   isToday,
-} from 'date-fns';
+  startOfMonth,
+  startOfWeek,
+  subMonths
+} from "date-fns";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type PropsType = {
   value?: Date | null;
@@ -23,8 +23,8 @@ type PropsType = {
 export function DatePicker({
   value = null,
   onChange,
-  placeholder = 'Select date',
-  className = '',
+  placeholder = "Select date",
+  className = ""
 }: PropsType) {
   const [currentMonth, setCurrentMonth] = useState<Date>(value || new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(value);
@@ -40,17 +40,17 @@ export function DatePicker({
         setIsOpen(false);
       }
     };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
   }, []);
 
   const togglePicker = () => {
     setTempSelected(selectedDate);
-    setIsOpen((prev) => !prev);
+    setIsOpen(prev => !prev);
   };
 
-  const handlePrevMonth = () => setCurrentMonth((prev) => subMonths(prev, 1));
-  const handleNextMonth = () => setCurrentMonth((prev) => addMonths(prev, 1));
+  const handlePrevMonth = () => setCurrentMonth(prev => subMonths(prev, 1));
+  const handleNextMonth = () => setCurrentMonth(prev => addMonths(prev, 1));
 
   const handleCancel = () => {
     setTempSelected(selectedDate);
@@ -75,7 +75,7 @@ export function DatePicker({
   }, [currentMonth]);
 
   const selectedDateText = selectedDate
-    ? format(selectedDate, 'MMMM dd, yyyy')
+    ? format(selectedDate, "MMMM dd, yyyy")
     : placeholder;
 
   return (
@@ -115,9 +115,11 @@ export function DatePicker({
               >
                 ←
               </button>
+
               <h2 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-                {format(currentMonth, 'MMMM yyyy')}
+                {format(currentMonth, "MMMM yyyy")}
               </h2>
+
               <button
                 onClick={handleNextMonth}
                 className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800"
@@ -128,7 +130,7 @@ export function DatePicker({
 
             {/* Week Days */}
             <div className="mb-2 grid grid-cols-7 gap-2 text-center">
-              {['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map((d) => (
+              {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map(d => (
                 <span
                   key={d}
                   className="py-2 text-sm font-medium text-gray-500 dark:text-gray-400"
@@ -140,22 +142,22 @@ export function DatePicker({
 
             {/* Calendar Days */}
             <div className="grid grid-cols-7 gap-2 text-center">
-              {days.map((day) => {
+              {days.map(day => {
                 const inMonth = isSameMonth(day, currentMonth);
                 const selected = tempSelected && isSameDay(day, tempSelected);
                 const today = isToday(day);
 
                 let classes =
-                  'w-11 h-11 rounded-full text-sm font-medium transition-all cursor-pointer ';
+                  "w-11 h-11 rounded-full text-sm font-medium transition-all cursor-pointer ";
                 if (!inMonth)
-                  classes += 'text-gray-400 dark:text-gray-600 cursor-default';
+                  classes += "text-gray-400 dark:text-gray-600 cursor-default";
                 else if (selected)
-                  classes += 'bg-primary-600 text-white hover:bg-primary-700';
+                  classes += "bg-primary-600 text-white hover:bg-primary-700";
                 else if (today)
-                  classes += 'bg-primary-500 text-white hover:bg-primary-600';
+                  classes += "bg-primary-500 text-white hover:bg-primary-600";
                 else
                   classes +=
-                    'text-gray-800 dark:text-white/90 hover:bg-gray-100 dark:hover:bg-gray-800';
+                    "text-gray-800 dark:text-white/90 hover:bg-gray-100 dark:hover:bg-gray-800";
 
                 return (
                   <button
@@ -164,7 +166,7 @@ export function DatePicker({
                     onClick={() => inMonth && handleDateClick(day)}
                     className={classes}
                   >
-                    {format(day, 'd')}
+                    {format(day, "d")}
                   </button>
                 );
               })}
