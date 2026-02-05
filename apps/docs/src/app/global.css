@@ -68,37 +68,36 @@
   --color-button-primary-background: #3758f9;
   --color-button-primary-hover-background: #2237ee;
   --color-button-primary-text: #ffffff;
+  --color-button-primary-focus-ring: rgba(55, 88, 249, 0.2);
 
   /* Outline */
   --color-button-outline-background: #ffffff;
   --color-button-outline-hover-background: #f3f4f6;
   --color-button-outline-border: #d1d5db;
+  --color-button-outline-focus-ring: rgba(152, 162, 179, 0.14);
   --color-button-outline-text: #1f2937;
   --color-button-outline-hover-text: #111827;
   --color-button-outline-disabled-background: #f3f4f6;
   --color-button-outline-disabled-text: #9ca3af;
 
   /* Disable */
-  --color-button-disable-background: #f3f4f6;
-  --color-button-disable-border: #f3f4f6;
-  --color-button-disable-text: #9ca3af;
-
-  /* Disable Dark */
-  --color-button-disable-background: #1f2937;
-  --color-button-disable-border: #1f2937;
-  --color-button-disable-text: #4b5563;
+  --color-button-disabled-background: #f3f4f6;
+  --color-button-disabled-border: #f3f4f6;
+  --color-button-disabled-text: #9ca3af;
 
   /* Error */
   --color-button-error-background: #dc2626;
   --color-button-error-hover-background: #b91c1c;
   --color-button-error-border: #ef4444;
   --color-button-error-text: #ffffff;
+  --color-button-error-focus-ring: rgba(220, 38, 38, 0.2);
 
   /* Error Outline */
   --color-button-error-outline-background: #fef2f2;
   --color-button-error-outline-hover-background: #fecaca;
   --color-button-error-outline-border: #ef4444;
   --color-button-error-outline-focus-border: #dc2626;
+  --color-button-error-outline-focus-ring: rgba(220, 38, 38, 0.2);
   --color-button-error-outline-text: #b91c1c;
   --color-button-error-outline-hover-text: #b91c1c;
 
@@ -107,6 +106,7 @@
   --color-button-success-hover-background: #15803d;
   --color-button-success-border: #22c55e;
   --color-button-success-text: #ffffff;
+  --color-button-success-focus-ring: rgba(22, 163, 74, 0.2);
 
   /* Success Outline */
   --color-button-success-outline-background: #f0fdf4;
@@ -115,11 +115,13 @@
   --color-button-success-outline-focus-border: #16a34a;
   --color-button-success-outline-text: #15803d;
   --color-button-success-outline-hover-text: #15803d;
+  --color-button-success-outline-focus-ring: rgba(22, 163, 74, 0.2);
 
-  /* Button Icon */
-  --color-button-icon-color: #9ca3af;
-  --color-button-icon-hover-color: #6b7280;
-  --color-button-icon-hover-background: #f3f4f6;
+  /* Ghost */
+  --color-button-ghost-text: #9ca3af;
+  --color-button-ghost-hover-text: #6b7280;
+  --color-button-ghost-hover-background: #f3f4f6;
+  --color-button-ghost-focus-ring: #5e84fc;
 
   /* Button Group Primary */
   --color-button-group-primary-background: #ffffff;

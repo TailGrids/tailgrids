@@ -1,141 +1,141 @@
-import type { ComponentProps } from 'react';
-import { cva } from 'class-variance-authority';
-import { cn } from '@/utils/cn';
+import { cn } from "@/utils/cn";
+import { cva } from "class-variance-authority";
+import type { ComponentProps } from "react";
 
 export const buttonStyles = cva(
-  'flex items-center justify-center gap-3 rounded-lg font-medium transition focus:ring-3 disabled:pointer-events-none [&>svg]:text-current!',
+  "flex items-center justify-center gap-3 rounded-lg font-medium transition focus:ring-3 disabled:pointer-events-none [&>svg]:text-current!",
   {
     variants: {
       variant: {
-        primary: '',
-        danger: '',
-        success: '',
-        ghost: '',
+        primary: "",
+        danger: "",
+        success: "",
+        ghost: ""
       },
       appearance: {
-        fill: '',
-        outline: '',
+        fill: "",
+        outline: ""
       },
       iconOnly: {
-        true: '',
-        false: '',
+        true: "",
+        false: ""
       },
       size: {
-        xs: 'text-xs [&>svg]:size-5',
-        sm: 'text-sm [&>svg]:size-5',
-        md: '[&>svg]:size-6',
-        lg: '[&>svg]:size-6',
-      },
+        xs: "text-xs [&>svg]:size-5",
+        sm: "text-sm [&>svg]:size-5",
+        md: "[&>svg]:size-6",
+        lg: "[&>svg]:size-6"
+      }
     },
     compoundVariants: [
       {
-        variant: ['primary', 'danger', 'success'],
-        appearance: 'fill',
+        variant: ["primary", "danger", "success"],
+        appearance: "fill",
         className:
-          'text-neutral disabled:bg-neutral-100 disabled:text-neutral-400',
+          "text-white-100 disabled:bg-button-disabled-background disabled:text-button-disabled-text"
       },
       {
-        variant: ['primary', 'danger', 'success'],
-        appearance: 'outline',
+        variant: ["primary", "danger", "success"],
+        appearance: "outline",
         // Disabled styles
         className:
-          'disabled:bg-neutral border disabled:border-neutral-100 disabled:text-neutral-400',
+          "disabled:bg-button-outline-disabled-background border disabled:border-button-disabled-border disabled:text-button-outline-disabled-text"
       },
       {
-        variant: 'primary',
-        appearance: 'fill',
+        variant: "primary",
+        appearance: "fill",
         className:
-          'focus:ring-primary-500/20 bg-primary-500 hover:bg-primary-600 text-neutral',
+          "focus:ring-button-primary-focus-ring bg-button-primary-background hover:bg-button-primary-hover-background text-button-primary-text"
       },
       {
-        variant: 'primary',
-        appearance: 'outline',
+        variant: "primary",
+        appearance: "outline",
         className:
-          'border-neutral-300 text-neutral-800 hover:bg-neutral-100 hover:text-neutral-900 focus:ring-neutral-500/20',
+          "border-button-outline-border bg-button-outline-background text-button-outline-text hover:bg-button-outline-hover-background hover:text-button-outline-hover-text focus:ring-button-outline-focus-ring"
       },
       {
-        variant: 'danger',
-        appearance: 'fill',
+        variant: "danger",
+        appearance: "fill",
         className:
-          'bg-danger hover:bg-danger-hover focus:ring-danger/20 text-danger-foreground',
+          "bg-button-error-background hover:bg-button-error-hover-background focus:ring-button-error-focus-ring text-button-error-text"
       },
       {
-        variant: 'danger',
-        appearance: 'outline',
+        variant: "danger",
+        appearance: "outline",
         className:
-          'border-danger-outline bg-danger-muted text-danger-muted-body hover:bg-danger-muted-hover focus:ring-danger/20',
+          "border-button-error-outline-border bg-button-error-outline-background text-button-error-outline-text hover:bg-button-error-outline-hover-background hover:text-button-error-outline-hover-text focus:ring-button-error-outline-focus-ring"
       },
       {
-        variant: 'success',
-        appearance: 'fill',
+        variant: "success",
+        appearance: "fill",
         className:
-          'bg-success hover:bg-success-hover focus:ring-success/20 text-success-foreground',
+          "bg-button-success-background hover:bg-button-success-hover-background focus:ring-button-success-focus-ring text-button-success-text"
       },
       {
-        variant: 'success',
-        appearance: 'outline',
+        variant: "success",
+        appearance: "outline",
         className:
-          'border-success-outline bg-success-muted text-success-muted-body hover:bg-success-muted-hover focus:ring-success/20',
+          "border-button-success-outline-border bg-button-success-outline-background text-button-success-outline-text hover:bg-button-success-outline-hover-background focus:ring-button-success-outline-focus-ring"
       },
       {
-        variant: 'ghost',
+        variant: "ghost",
         className:
-          'focus:ring-primary-400 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-500 focus:ring-2',
+          "focus:ring-button-ghost-focus-ring text-button-ghost-text hover:bg-button-ghost-hover-background hover:text-button-ghost-hover-text focus:ring-2"
       },
       {
         iconOnly: true,
-        size: 'xs',
-        className: 'size-8',
+        size: "xs",
+        className: "size-8"
       },
       {
         iconOnly: true,
-        size: 'sm',
-        className: 'size-10',
+        size: "sm",
+        className: "size-10"
       },
       {
         iconOnly: false,
-        size: ['xs', 'sm'],
-        className: 'px-3.5',
+        size: ["xs", "sm"],
+        className: "px-3.5"
       },
       {
         iconOnly: true,
-        size: 'md',
-        className: 'size-11',
+        size: "md",
+        className: "size-11"
       },
       {
         iconOnly: false,
-        size: 'md',
-        className: 'px-4',
+        size: "md",
+        className: "px-4"
       },
       {
         iconOnly: true,
-        size: 'lg',
-        className: 'size-12',
+        size: "lg",
+        className: "size-12"
       },
       {
         iconOnly: false,
-        size: 'lg',
-        className: 'px-5',
+        size: "lg",
+        className: "px-5"
       },
       {
         iconOnly: false,
-        className: 'py-2.5',
-      },
+        className: "py-2.5"
+      }
     ],
     defaultVariants: {
-      variant: 'primary',
-      appearance: 'fill',
+      variant: "primary",
+      appearance: "fill",
       iconOnly: false,
-      size: 'md',
-    },
+      size: "md"
+    }
   }
 );
 
-type PropsType = ComponentProps<'button'> & {
-  variant?: 'primary' | 'danger' | 'success' | 'ghost';
-  appearance?: 'fill' | 'outline';
+type PropsType = ComponentProps<"button"> & {
+  variant?: "primary" | "danger" | "success" | "ghost";
+  appearance?: "fill" | "outline";
   iconOnly?: boolean;
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  size?: "xs" | "sm" | "md" | "lg";
 };
 
 export function Button({
@@ -155,7 +155,7 @@ export function Button({
           variant,
           appearance,
           iconOnly,
-          size,
+          size
         }),
         className
       )}
