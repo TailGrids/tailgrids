@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { SVGProps, useId, type ComponentProps } from "react";
 
 const checkboxStyles = cva(
-  "peer-focus:border-primary-300 group-hover:border-primary-500 peer-checked:bg-primary-500 peer-checked:border-primary-500! peer-focus:ring-primary-100 grid place-items-center border border-neutral-300 transition peer-focus:ring-4 peer-disabled:border-neutral-100 [&>svg]:hidden [&>svg]:text-white peer-checked:[&>svg]:block peer-disabled:[&>svg]:text-neutral-100",
+  "peer-focus:border-primary-300 group-hover:border-primary-500 peer-checked:bg-primary-500 peer-checked:border-primary-500! peer-focus:ring-primary-100 grid place-items-center border border-base-200 transition peer-focus:ring-4 peer-disabled:border-base-50 [&>svg]:hidden [&>svg]:text-white peer-checked:[&>svg]:block peer-disabled:[&>svg]:text-(--border-color-base-50)",
   {
     variants: {
       size: {
@@ -35,7 +35,7 @@ export function Checkbox({
     <label
       htmlFor={id}
       className={cn(
-        "group flex cursor-pointer items-center gap-3 select-none aria-disabled:pointer-events-none"
+        "group flex cursor-pointer items-center gap-3 select-none aria-disabled:cursor-not-allowed"
       )}
       aria-disabled={disabled}
     >
@@ -56,8 +56,8 @@ export function Checkbox({
       {label && (
         <span
           className={cn(
-            "text-sm text-neutral-700",
-            disabled && "text-neutral-300"
+            "text-sm text-text-color",
+            disabled && "text-(--border-color-base-200)"
           )}
         >
           {label}
