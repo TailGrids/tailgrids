@@ -22,6 +22,8 @@
   --color-primary-900: #1c228c;
   --color-primary-950: #161755;
 
+  --color-primary-text: white;
+
   /* Text Color */
   --color-text-title-color: #1f2937;
   --color-text-color: #374151;
@@ -122,16 +124,6 @@
   --color-button-ghost-hover-text: #6b7280;
   --color-button-ghost-hover-background: #f3f4f6;
   --color-button-ghost-focus-ring: #5e84fc;
-
-  /* Button Group Primary */
-  --color-button-group-primary-background: #ffffff;
-  --color-button-group-primary-hover-background: #3758f9;
-  --color-button-group-primary-text: #3758f9;
-  --color-button-group-primary-hover-text: #ffffff;
-
-  /* Button Group Secondary */
-  --color-button-group-secondary-background: #ffffff;
-  --color-button-group-secondary-text: #374151;
 
   /* ======== Badge Color =========*/
 
