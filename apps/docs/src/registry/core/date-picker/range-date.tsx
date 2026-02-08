@@ -179,7 +179,7 @@ export function RangeDatePicker({
                   variant="ghost"
                   iconOnly
                   onClick={handlePrevMonth}
-                  className="text-text-50 hover:text-text-50"
+                  className="text-text-50!"
                 >
                   <ChevronLeft />
                 </Button>
@@ -207,7 +207,7 @@ export function RangeDatePicker({
                   variant="ghost"
                   iconOnly
                   onClick={handleNextMonth}
-                  className="text-text-50 hover:text-text-50"
+                  className="text-text-50!"
                 >
                   <ChevronRight />
                 </Button>
