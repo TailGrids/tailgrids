@@ -356,6 +356,7 @@
 
   /* ======== Tooltip Color =========*/
   --color-tooltip-text: #374151;
+  --color-tooltip-border: #e5e7eb;
 
   /* ======== Popovers Color =========*/
   --color-popover-title-background: #f3f4f6;
