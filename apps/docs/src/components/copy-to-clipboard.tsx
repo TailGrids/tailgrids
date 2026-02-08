@@ -40,7 +40,7 @@ export function CopyToClipboard({ content, showLabel, className }: PropsType) {
       )}
 
       {showLabel && (
-        <span className="text-[#374151] font-medium -tracking-[0.2px]">
+        <span className="text-[#374151] font-medium -tracking-[0.2px] dark:text-gray-400">
           {isCopied ? "Copied" : "Copy"}{" "}
           <span className="sr-only">to clipboard</span>
         </span>
