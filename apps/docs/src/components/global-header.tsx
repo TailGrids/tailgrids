@@ -45,7 +45,7 @@ export default function GlobalHeader() {
     <>
       <header className="sticky top-0 z-50 w-full   bg-white 0 dark:bg-gray-950">
         <div className="border-b dark:border-gray-800 border-gray-200 ">
-          <div className="relative mx-auto max-w-[1620px] h-20 flex items-center px-4 2xl:px-8">
+          <div className="relative mx-auto max-w-405 h-20 flex items-center px-4 2xl:px-8">
             {/* LEFT SECTION */}
             <div className="flex items-center gap-6  min-w-0">
               {/* Logo */}
@@ -80,7 +80,7 @@ export default function GlobalHeader() {
               <div className="flex gap-3 items-center">
                 <button
                   onClick={() => setIsSearchOpen(true)}
-                  className="flex max-2xl:pr-1.5 max-2xl:pl-2 max-2xl:py-1 2xl:h-11 2xl:w-[260px]  dark:bg-white/5 items-center gap-1.5 2xl:gap-3 rounded-full 2xl:rounded-xl border border-gray-200 bg-white px-3 text-gray-400 dark:border-[#111827] transition hover:bg-gray-50"
+                  className="flex max-2xl:pr-1.5 max-2xl:pl-2 max-2xl:py-1 2xl:h-11 2xl:w-65  dark:bg-white/5 items-center gap-1.5 2xl:gap-3 rounded-full 2xl:rounded-xl border border-gray-200 bg-white px-3 text-gray-400 dark:border-[#111827] transition hover:bg-gray-50 dark:hover:bg-white/10"
                 >
                   <SearchIcon className="size-5" />
 
@@ -96,7 +96,7 @@ export default function GlobalHeader() {
                 {/* Theme Toggle */}
                 <button
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  className="hidden sm:flex size-10 shrink-0 items-center cursor-pointer justify-center dark:shadow-none dark:border-[#111827] dark:bg-white/5 rounded-xl shadow-navbar-icon  transition"
+                  className="hidden sm:flex size-10 shrink-0 items-center cursor-pointer justify-center dark:shadow-none dark:border-[#111827] dark:bg-white/5 rounded-xl shadow-navbar-icon  transition hover:bg-white/10"
                 >
                   <SunIcon className="block dark:hidden text-gray-500" />
                   <MoonIcon className="hidden dark:block text-gray-400" />
