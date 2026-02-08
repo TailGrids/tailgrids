@@ -14,13 +14,21 @@ import {
 import copy from "copy-text-to-clipboard";
 import { CheckIcon, FileText } from "lucide-react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { usePageContent } from "./page-content-provider";
 
 export function PageHeaderButtons() {
   const content = usePageContent();
+  const pathname = usePathname();
   const [isCopied, setIsCopied] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  // Extract component name from pathname
+  const slug = pathname.split("/")[2];
+  const componentName = slug
+    ? slug.charAt(0).toUpperCase() + slug.slice(1)
+    : "Component";
 
   const handleCopy = () => {
     copy(content);
@@ -28,9 +36,9 @@ export function PageHeaderButtons() {
     setTimeout(() => setIsCopied(false), 2000);
   };
 
-  const openInAI = (baseUrl: string) => {
-    const url = `${baseUrl}${encodeURIComponent(content)}`;
-    window.open(url, "_blank");
+  const getPrompt = (base: string) => {
+    const prompt = `I need help understanding the ${componentName} component from the TailGrids library. Here is the documentation:\n\n${content}`;
+    return `${base}${encodeURIComponent(prompt)}`;
   };
 
   const menuItems = [
@@ -46,22 +54,22 @@ export function PageHeaderButtons() {
     {
       label: "ChatGPT",
       icon: <Image src={chatGptIcon} alt="ChatGPT" className="size-5" />,
-      onAction: () => openInAI("https://chatgpt.com/?q=")
+      href: getPrompt("https://chatgpt.com/?q=")
     },
     {
       label: "Claude",
       icon: <Image src={claudeIcon} alt="Claude" className="size-5" />,
-      onAction: () => openInAI("https://claude.ai/new?q=")
+      href: getPrompt("https://claude.ai/new?q=")
     },
     {
       label: "v0",
       icon: <Image src={v0Icon} alt="v0" className="size-5" />,
-      onAction: () => openInAI("https://v0.dev/chat?q=")
+      href: getPrompt("https://v0.dev/chat?q=")
     },
     {
       label: "Grok",
       icon: <Image src={grokIcon} alt="Grok" className="size-5" />,
-      onAction: () => openInAI("https://grok.com/?q=")
+      href: getPrompt("https://x.com/i/grok?text=")
     }
   ];
 
@@ -93,6 +101,8 @@ export function PageHeaderButtons() {
             <DropdownMenuItem
               key={item.label}
               onAction={item.onAction}
+              href={item.href}
+              target={item.href ? "_blank" : undefined}
               className="rounded-lg cursor-pointer"
             >
               {item.icon}
