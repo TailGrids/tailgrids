@@ -1,23 +1,23 @@
-import * as React from 'react';
+import { cn } from "@/utils/cn";
 import {
-  useFloating,
+  arrow,
   autoUpdate,
-  offset,
   flip,
+  FloatingArrow,
+  FloatingFocusManager,
+  FloatingPortal,
+  offset,
   shift,
   useClick,
   useDismiss,
-  useRole,
+  useFloating,
+  useId,
   useInteractions,
   useMergeRefs,
-  type Placement,
-  FloatingPortal,
-  FloatingFocusManager,
-  useId,
-  arrow,
-  FloatingArrow,
-} from '@floating-ui/react';
-import { cn } from '@/utils/cn';
+  useRole,
+  type Placement
+} from "@floating-ui/react";
+import * as React from "react";
 
 interface PopoverOptions {
   initialOpen?: boolean;
@@ -29,10 +29,10 @@ interface PopoverOptions {
 
 function usePopover({
   initialOpen = false,
-  placement = 'bottom',
+  placement = "bottom",
   modal,
   open: controlledOpen,
-  onOpenChange: setControlledOpen,
+  onOpenChange: setControlledOpen
 }: PopoverOptions = {}) {
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen);
   const arrowRef = React.useRef(null);
@@ -53,21 +53,21 @@ function usePopover({
     middleware: [
       offset(5),
       flip({
-        crossAxis: placement.includes('-'),
-        fallbackAxisSideDirection: 'end',
-        padding: 5,
+        crossAxis: placement.includes("-"),
+        fallbackAxisSideDirection: "end",
+        padding: 5
       }),
       shift({ padding: 5 }),
       arrow({
-        element: arrowRef,
-      }),
-    ],
+        element: arrowRef
+      })
+    ]
   });
 
   const context = data.context;
 
   const click = useClick(context, {
-    enabled: controlledOpen == null,
+    enabled: controlledOpen == null
   });
   const dismiss = useDismiss(context);
   const role = useRole(context);
@@ -86,9 +86,9 @@ function usePopover({
       descriptionId,
       setLabelId,
       setDescriptionId,
-      context,
+      context
     }),
-    [open, setOpen, interactions, data, modal, labelId, descriptionId, context],
+    [open, setOpen, interactions, data, modal, labelId, descriptionId, context]
   );
 }
 
@@ -107,7 +107,7 @@ const usePopoverContext = () => {
   const context = React.useContext(PopoverContext);
 
   if (context == null) {
-    throw new Error('Popover components must be wrapped in <Popover />');
+    throw new Error("Popover components must be wrapped in <Popover />");
   }
 
   return context;
@@ -151,11 +151,11 @@ export const PopoverTrigger = React.forwardRef<
       context.getReferenceProps({
         ref,
         ...props,
-        ...(React.isValidElement(children) && typeof children.props === 'object'
+        ...(React.isValidElement(children) && typeof children.props === "object"
           ? children.props
           : {}),
-        'data-state': context.open ? 'open' : 'closed',
-      } as React.HTMLProps<Element>),
+        "data-state": context.open ? "open" : "closed"
+      } as React.HTMLProps<Element>)
     );
   }
 
@@ -164,7 +164,7 @@ export const PopoverTrigger = React.forwardRef<
       ref={ref}
       type="button"
       // The user can style the trigger based on the state
-      data-state={context.open ? 'open' : 'closed'}
+      data-state={context.open ? "open" : "closed"}
       {...context.getReferenceProps(props)}
     >
       {children}
@@ -190,12 +190,12 @@ export const PopoverContent = React.forwardRef<
           aria-labelledby={context.labelId}
           aria-describedby={context.descriptionId}
           {...context.getFloatingProps(props)}
-          className="bg-neutral max-w-97.5 rounded-xl border border-neutral-200 p-5 pt-3"
+          className="bg-background-100 max-w-97.5 rounded-xl border border-popover-border p-5 pt-3"
         >
           <FloatingArrow
             ref={context.arrowRef}
             context={floatingContext}
-            className="fill-neutral [&>path:last-of-type]:stroke-neutral-200"
+            className="fill-background-100 [&>path:last-of-type]:stroke-popover-border"
             width={18}
             height={18}
             d="M0 20C0 20 2.06906 19.9829 5.91817 15.4092C7.49986 13.5236 8.97939 12.3809 10.0002 12.3809C11.0202 12.3809 12.481 13.6451 14.0814 15.5472C17.952 20.1437 20 20 20 20H0Z"
@@ -227,8 +227,8 @@ export const PopoverHeading = React.forwardRef<
       ref={ref}
       id={id}
       className={cn(
-        '-mx-5 mb-5 border-b border-neutral-200 px-5 pb-3 font-semibold text-neutral-800',
-        className,
+        "-mx-5 mb-5 border-b border-popover-border px-5 pb-3 font-semibold text-title-50",
+        className
       )}
     >
       {props.children}
@@ -255,7 +255,7 @@ export const PopoverDescription = React.forwardRef<
       {...props}
       ref={ref}
       id={id}
-      className={cn('text-sm text-neutral-500', className)}
+      className={cn("text-sm text-text-100", className)}
     />
   );
 });
@@ -270,7 +270,7 @@ export const PopoverClose = React.forwardRef<
       type="button"
       ref={ref}
       {...props}
-      onClick={(event) => {
+      onClick={event => {
         props.onClick?.(event);
         setOpen(false);
       }}
