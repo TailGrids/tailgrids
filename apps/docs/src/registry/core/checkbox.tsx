@@ -56,7 +56,7 @@ export function Checkbox({
       {label && (
         <span
           className={cn(
-            "text-sm text-text-color",
+            "text-sm text-text-50",
             disabled && "text-(--border-color-base-200)"
           )}
         >

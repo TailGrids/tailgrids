@@ -109,7 +109,7 @@ function Indicator({ size, status }: IndicatorProps) {
   return <div className={indicatorStyles({ size, status })} />;
 }
 
-const titleStyles = cva("font-medium text-text-color", {
+const titleStyles = cva("font-medium text-text-50", {
   variants: {
     size: {
       xs: "text-xs",
@@ -122,7 +122,7 @@ const titleStyles = cva("font-medium text-text-color", {
   }
 });
 
-const subtitleStyles = cva("text-text-secondary", {
+const subtitleStyles = cva("text-text-100", {
   variants: {
     size: {
       xs: "text-xs",
