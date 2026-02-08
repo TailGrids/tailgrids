@@ -80,7 +80,7 @@ export default function GlobalHeader() {
               <div className="flex gap-3 items-center">
                 <button
                   onClick={() => setIsSearchOpen(true)}
-                  className="flex max-2xl:pr-1.5 max-2xl:pl-2 max-2xl:py-1 2xl:h-11 2xl:w-65  dark:bg-white/5 items-center gap-1.5 2xl:gap-3 rounded-full 2xl:rounded-xl border border-gray-200 bg-white px-3 text-gray-400 dark:border-[#111827] transition hover:bg-gray-50 dark:hover:bg-white/10"
+                  className="group flex md:h-10.5 max-2xl:pr-1.5 max-2xl:pl-2 max-2xl:py-1 2xl:h-11 2xl:w-65  dark:bg-white/5 items-center gap-1.5 2xl:gap-3 rounded-xl border border-gray-200 bg-white px-3 text-gray-400 dark:border-[#111827] transition hover:bg-gray-50 dark:hover:bg-white/10"
                 >
                   <SearchIcon className="size-5" />
 
@@ -88,7 +88,7 @@ export default function GlobalHeader() {
                     Quick search...
                   </span>
 
-                  <span className="flex h-6.5 w-10 items-center dark:border-[#111827] justify-center rounded-lg border border-gray-100 text-xs max-2xl:rounded-full">
+                  <span className="flex h-6.5 w-10 bg-white items-center dark:border-[#111827] justify-center rounded-lg border border-gray-100 text-xs  dark:bg-white/10 dark:group-hover:border-transparent">
                     ⌘ K
                   </span>
                 </button>
