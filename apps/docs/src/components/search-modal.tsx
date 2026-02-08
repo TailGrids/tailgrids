@@ -107,7 +107,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     if (items.length === 0) return null;
 
     return (
-      <div key={title}>
+      <div key={title} className="">
         <div className="py-3">
           <div className="px-5 py-3">
             <h3 className="text-sm leading-5 font-medium tracking-[0.2px] text-gray-400">
@@ -126,13 +126,13 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   onClick={() => onClose()}
                   className={`flex w-full items-center justify-between rounded-lg px-5 py-3 text-left transition-colors ${
                     selectedIndex === globalIndex
-                      ? "bg-gray-100"
-                      : "hover:bg-gray-50"
+                      ? "bg-gray-100 dark:bg-[#111827]"
+                      : "hover:bg-gray-50 dark:hover:bg-[#111827]"
                   }`}
                 >
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm leading-5 font-medium tracking-[0.2px] text-gray-700">
+                      <span className="text-sm leading-5 font-medium tracking-[0.2px] text-gray-700 dark:text-white/90">
                         {item.title}
                       </span>
 
@@ -164,10 +164,10 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
       {/* Modal */}
       <div
         ref={modalRef}
-        className="relative w-full max-w-[600px] overflow-hidden rounded-3xl bg-white p-3 shadow-2xl"
+        className="relative w-full max-w-150 overflow-hidden rounded-3xl bg-white p-3 shadow-2xl dark:bg-[#030712] dark:border-[#111827]"
       >
         {/* Search Input */}
-        <div className="flex h-12.5 items-center gap-3 rounded-xl border border-[#EDEDED] bg-gray-50 p-2.5 pl-5">
+        <div className="flex h-12.5 items-center gap-3 rounded-xl border border-[#EDEDED] bg-gray-50 p-2.5 pl-5 dark:bg-[#111827] dark:border-[#111827]">
           <svg
             width="16"
             height="16"
@@ -187,32 +187,35 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             placeholder="Type something to search..."
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            className="placeholder:text-md flex-1 bg-transparent text-base text-gray-900 outline-none placeholder:leading-6 placeholder:tracking-[-0.2px] placeholder:text-gray-400"
+            className="placeholder:text-md flex-1 bg-transparent text-base text-gray-900 outline-none placeholder:leading-6 placeholder:tracking-[-0.2px] placeholder:text-gray-400 dark:placeholder:text-[#6B7280] dark:text-white"
           />
-          <button
-            onClick={() => {
-              setSearchQuery("");
-            }}
-            className="inline-flex size-8 cursor-pointer items-center justify-center rounded-lg bg-transparent text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-500"
-            aria-label="Close search"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width={20}
-              height={20}
-              viewBox="0 0 20 20"
-              fill="none"
+
+          {searchQuery.length > 0 && (
+            <button
+              onClick={() => {
+                setSearchQuery("");
+              }}
+              className="inline-flex size-8 cursor-pointer items-center justify-center rounded-lg bg-transparent text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-500 dark:hover:bg-gray-800 dark:hover:text-white"
+              aria-label="Close search"
             >
-              <path
-                d="M13.736 4.99a.9.9 0 011.274 1.273L11.273 10l3.737 3.737a.9.9 0 01-1.274 1.274L10 11.274 6.262 15.01a.9.9 0 01-1.274-1.274L8.726 10 4.988 6.263a.9.9 0 011.274-1.274l3.737 3.738 3.737-3.738z"
-                fill="currentColor"
-              />
-            </svg>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={20}
+                height={20}
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <path
+                  d="M13.736 4.99a.9.9 0 011.274 1.273L11.273 10l3.737 3.737a.9.9 0 01-1.274 1.274L10 11.274 6.262 15.01a.9.9 0 01-1.274-1.274L8.726 10 4.988 6.263a.9.9 0 011.274-1.274l3.737 3.738 3.737-3.738z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          )}
         </div>
 
         {/* Results */}
-        <div className="max-h-[400px] overflow-y-auto">
+        <div className="max-h-100 overflow-y-auto">
           {allResults.length === 0 ? (
             <div className="px-5 py-8 text-center text-sm text-gray-500">
               {searchQuery
@@ -226,13 +229,13 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 (blocks.length > 0 ||
                   templates.length > 0 ||
                   pages.length > 0) && (
-                  <div className="space-5 border-t border-dashed border-gray-100" />
+                  <div className="space-5 border-t border-dashed border-gray-100 dark:border-[#1F2937]" />
                 )}
 
               {renderSection("Blocks", blocks, docs.length)}
               {blocks.length > 0 &&
                 (templates.length > 0 || pages.length > 0) && (
-                  <div className="space-5 border-t border-dashed border-gray-100" />
+                  <div className="space-5 border-t border-dashed border-gray-100 dark:border-[#1F2937]" />
                 )}
 
               {renderSection(
@@ -241,7 +244,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 docs.length + blocks.length
               )}
               {templates.length > 0 && pages.length > 0 && (
-                <div className="space-5 border-t border-dashed border-gray-100" />
+                <div className="space-5 border-t border-dashed border-gray-100 dark:border-[#1F2937]" />
               )}
 
               {renderSection(
@@ -254,34 +257,34 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
         </div>
 
         {/* Footer */}
-        <div className="border-t border-dashed border-gray-200 px-5 pt-5 pb-3">
+        <div className="border-t border-dashed border-gray-200 px-5 pt-5 pb-3 dark:border-[#1F2937]">
           <div className="flex items-center justify-center gap-x-6 text-xs text-gray-500">
             <div className="flex items-center gap-2">
-              <span className="text-xs leading-4 tracking-[-0.2px] text-gray-500">
+              <span className="text-xs leading-4 tracking-[-0.2px] text-gray-500 dark:text-[#9CA3AF]">
                 Navigate
               </span>
               <span className="flex items-center gap-1">
-                <kbd className="rounded-md bg-gray-100 p-1.5 text-[10px] font-medium">
+                <kbd className="rounded-md bg-gray-100 p-1.5 text-[10px] font-medium dark:bg-[#111827]">
                   <ArrowDownward className="size-3" />
                 </kbd>
-                <kbd className="rounded-md bg-gray-100 p-1.5 text-[10px] font-medium">
+                <kbd className="rounded-md bg-gray-100 p-1.5 text-[10px] font-medium dark:bg-[#111827]">
                   <ArrowUpward className="size-3" />
                 </kbd>
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <kbd className="rounded-md bg-gray-100 p-1.5 text-[10px] font-medium">
+              <kbd className="rounded-md bg-gray-100 p-1.5 text-[10px] font-medium dark:bg-[#111827]">
                 <TurnDownLeft className="size-3.5" />
               </kbd>
-              <span className="text-xs leading-4 tracking-[-0.2px] text-gray-500">
+              <span className="text-xs leading-4 tracking-[-0.2px] text-gray-500 dark:text-[#9CA3AF]">
                 Enter
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <kbd className="rounded-md bg-gray-100 p-1.5 text-xs leading-4 font-medium tracking-[-0.2px]">
+              <kbd className="rounded-md bg-gray-100 p-1.5 text-xs leading-4 font-medium tracking-[-0.2px] dark:bg-[#111827]">
                 esc
               </kbd>
-              <span className="text-xs leading-4 tracking-[-0.2px] text-gray-500">
+              <span className="text-xs leading-4 tracking-[-0.2px] text-gray-500 dark:text-[#9CA3AF]">
                 Close
               </span>
             </div>
