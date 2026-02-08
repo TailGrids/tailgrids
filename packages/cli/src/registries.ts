@@ -125,7 +125,8 @@ export const REGISTRIES: Registry[] = [
         path: "/core/date-picker/range-date.tsx"
       }
     ],
-    dependencies: ["react-stately", "date-fns"]
+    dependencies: ["react-stately", "date-fns", "@tailgrids/icons"],
+    requires: ["button"]
   },
   {
     id: "dropdown",
@@ -217,7 +218,8 @@ export const REGISTRIES: Registry[] = [
         path: "/core/pagination.tsx"
       }
     ],
-    dependencies: ["class-variance-authority"]
+    dependencies: ["class-variance-authority"],
+    requires: ["button"]
   },
   {
     id: "popover",

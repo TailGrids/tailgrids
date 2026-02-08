@@ -1,17 +1,20 @@
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { cn } from "@/utils/cn";
+import { Calendar, ChevronLeft, ChevronRight } from "@tailgrids/icons";
 import {
   addMonths,
-  subMonths,
-  format,
-  startOfMonth,
-  endOfMonth,
-  startOfWeek,
-  endOfWeek,
   eachDayOfInterval,
+  endOfMonth,
+  endOfWeek,
+  format,
   isSameDay,
   isSameMonth,
   isToday,
-} from 'date-fns';
+  startOfMonth,
+  startOfWeek,
+  subMonths
+} from "date-fns";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Button } from "../button";
 
 type PropsType = {
   value?: Date | null;
@@ -23,8 +26,8 @@ type PropsType = {
 export function DatePicker({
   value = null,
   onChange,
-  placeholder = 'Select date',
-  className = '',
+  placeholder = "Select date",
+  className = ""
 }: PropsType) {
   const [currentMonth, setCurrentMonth] = useState<Date>(value || new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(value);
@@ -40,17 +43,17 @@ export function DatePicker({
         setIsOpen(false);
       }
     };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
   }, []);
 
   const togglePicker = () => {
     setTempSelected(selectedDate);
-    setIsOpen((prev) => !prev);
+    setIsOpen(prev => !prev);
   };
 
-  const handlePrevMonth = () => setCurrentMonth((prev) => subMonths(prev, 1));
-  const handleNextMonth = () => setCurrentMonth((prev) => addMonths(prev, 1));
+  const handlePrevMonth = () => setCurrentMonth(prev => subMonths(prev, 1));
+  const handleNextMonth = () => setCurrentMonth(prev => addMonths(prev, 1));
 
   const handleCancel = () => {
     setTempSelected(selectedDate);
@@ -75,63 +78,60 @@ export function DatePicker({
   }, [currentMonth]);
 
   const selectedDateText = selectedDate
-    ? format(selectedDate, 'MMMM dd, yyyy')
+    ? format(selectedDate, "MMMM dd, yyyy")
     : placeholder;
 
   return (
     <div ref={pickerRef} className={`relative w-full max-w-sm ${className}`}>
       {/* Trigger Button */}
-      <button
+      <Button
+        appearance="outline"
         type="button"
         onClick={togglePicker}
-        className="focus:ring-primary-500 flex h-11 w-full items-center gap-2 rounded-lg border border-gray-300 px-4 py-2.5 text-left transition-all focus:ring-2 dark:border-gray-800"
+        className="flex w-full justify-start"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="17"
-          viewBox="0 0 16 17"
-          fill="none"
-        >
-          <path
-            d="M13.9163 7.24966H2.08331V14.8336C2.08349 15.1096 2.30728 15.3336 2.58331 15.3336H13.4163C13.6924 15.3336 13.9161 15.1096 13.9163 14.8336V7.24966ZM13.9163 3.99966C13.9161 3.72367 13.6924 3.49966 13.4163 3.49966H2.58331C2.30728 3.49966 2.08349 3.72367 2.08331 3.99966V5.74966H13.9163V3.99966ZM15.4163 14.8336C15.4161 15.9381 14.5208 16.8336 13.4163 16.8336H2.58331C1.47885 16.8336 0.583489 15.9381 0.583313 14.8336V3.99966C0.583489 2.89524 1.47885 1.99966 2.58331 1.99966H3.91632V1.29166C3.91632 0.877551 4.25226 0.541832 4.66632 0.541656C5.08053 0.541656 5.41632 0.877443 5.41632 1.29166V1.99966H10.5833V1.29166C10.5833 0.877443 10.9191 0.541656 11.3333 0.541656C11.7475 0.541657 12.0833 0.877443 12.0833 1.29166V1.99966H13.4163C14.5208 1.99966 15.4161 2.89524 15.4163 3.99966V14.8336Z"
-            fill="currentColor"
-          />
-        </svg>
-        <span className="text-sm font-normal text-gray-800 dark:text-white/90">
+        <Calendar className="text-text-100" />
+
+        <span className="text-sm font-normal text-title-50">
           {selectedDateText}
         </span>
-      </button>
+      </Button>
 
       {/* Calendar Popup */}
       {isOpen && (
-        <div className="absolute left-0 z-20 mt-2 w-full rounded-xl border border-gray-200 bg-white shadow-xl dark:border-gray-800 dark:bg-gray-900">
+        <div className="absolute left-0 z-20 mt-2 w-full rounded-xl border border-base-100 bg-background-50 shadow-xl">
           <div className="p-5">
             {/* Header */}
             <div className="mb-6 flex items-center justify-between">
-              <button
+              <Button
+                variant="ghost"
+                iconOnly
                 onClick={handlePrevMonth}
-                className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800"
+                className="text-text-50 hover:text-text-50"
               >
-                ←
-              </button>
-              <h2 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-                {format(currentMonth, 'MMMM yyyy')}
+                <ChevronLeft />
+              </Button>
+
+              <h2 className="text-lg font-semibold text-title-50">
+                {format(currentMonth, "MMMM yyyy")}
               </h2>
-              <button
+
+              <Button
+                variant="ghost"
+                iconOnly
                 onClick={handleNextMonth}
-                className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800"
+                className="text-text-50 hover:text-text-50"
               >
-                →
-              </button>
+                <ChevronRight />
+              </Button>
             </div>
 
             {/* Week Days */}
             <div className="mb-2 grid grid-cols-7 gap-2 text-center">
-              {['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map((d) => (
+              {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map(d => (
                 <span
                   key={d}
-                  className="py-2 text-sm font-medium text-gray-500 dark:text-gray-400"
+                  className="py-2 text-sm font-medium text-text-100"
                 >
                   {d}
                 </span>
@@ -140,31 +140,30 @@ export function DatePicker({
 
             {/* Calendar Days */}
             <div className="grid grid-cols-7 gap-2 text-center">
-              {days.map((day) => {
+              {days.map(day => {
                 const inMonth = isSameMonth(day, currentMonth);
                 const selected = tempSelected && isSameDay(day, tempSelected);
                 const today = isToday(day);
-
-                let classes =
-                  'w-11 h-11 rounded-full text-sm font-medium transition-all cursor-pointer ';
-                if (!inMonth)
-                  classes += 'text-gray-400 dark:text-gray-600 cursor-default';
-                else if (selected)
-                  classes += 'bg-primary-600 text-white hover:bg-primary-700';
-                else if (today)
-                  classes += 'bg-primary-500 text-white hover:bg-primary-600';
-                else
-                  classes +=
-                    'text-gray-800 dark:text-white/90 hover:bg-gray-100 dark:hover:bg-gray-800';
 
                 return (
                   <button
                     key={day.toISOString()}
                     disabled={!inMonth}
                     onClick={() => inMonth && handleDateClick(day)}
-                    className={classes}
+                    className={cn(
+                      "size-11 rounded-full text-sm font-medium transition-all",
+                      {
+                        "text-text-200 cursor-not-allowed": !inMonth,
+                        "bg-primary-600 text-white-100 hover:bg-primary-700":
+                          selected,
+                        "bg-primary-500 text-white-100 hover:bg-primary-600":
+                          today,
+                        "text-title-50 hover:bg-datepicker-selected-background":
+                          inMonth && !selected && !today
+                      }
+                    )}
                   >
-                    {format(day, 'd')}
+                    {format(day, "d")}
                   </button>
                 );
               })}
@@ -172,19 +171,18 @@ export function DatePicker({
           </div>
 
           {/* Action Buttons */}
-          <div className="flex gap-4 border-t border-gray-200 p-4 dark:border-gray-800">
-            <button
+          <div className="flex gap-4 border-t border-base-100 p-4">
+            <Button
               onClick={handleCancel}
-              className="flex-1 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-gray-700 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+              appearance="outline"
+              className="flex-1"
             >
               Cancel
-            </button>
-            <button
-              onClick={handleApply}
-              className="bg-primary-600 hover:bg-primary-700 flex-1 rounded-lg px-4 py-2.5 font-medium text-white transition-colors"
-            >
+            </Button>
+
+            <Button onClick={handleApply} className="flex-1">
               Apply
-            </button>
+            </Button>
           </div>
         </div>
       )}
