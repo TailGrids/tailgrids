@@ -3,6 +3,7 @@
 import { cn } from "@/utils/cn";
 import { ArrowLeft, ArrowRight } from "@tailgrids/icons";
 import { cva } from "class-variance-authority";
+import { Button } from "./button";
 
 const wrapperStyles = cva(
   "mx-auto flex w-full items-center justify-center max-sm:gap-5",
@@ -10,24 +11,25 @@ const wrapperStyles = cva(
     variants: {
       variant: {
         default: "gap-0.5",
-        compact: "max-w-fit sm:divide-x sm:divide-neutral-300"
+        compact: "max-w-fit sm:divide-x sm:divide-(--border-color-base-100)"
       }
     }
   }
 );
 
-const sideButtonStyles = cva(
-  "flex items-center justify-center gap-2 rounded-lg border border-neutral-300 hover:bg-neutral-100 disabled:pointer-events-none disabled:opacity-50 max-sm:size-10 sm:h-10 [&>svg]:size-5",
-  {
-    variants: {
-      sideLayout: {
-        full: "py-2 pr-4 pl-3.5",
-        label: "px-4 py-2",
-        icon: "p-2"
-      }
+const sideButtonStyles = cva("max-sm:size-10 sm:h-10", {
+  variants: {
+    sideLayout: {
+      full: "py-2 pr-4 pl-3.5",
+      label: "px-4 py-2",
+      icon: "p-2"
+    },
+    variant: {
+      default: "",
+      compact: "border-base-100"
     }
   }
-);
+});
 
 type PropsType = {
   currentPage: number;
@@ -50,15 +52,17 @@ export function Pagination({
     <nav
       role="navigation"
       aria-label="Pagination"
-      className="w-full text-sm font-medium text-neutral-900"
+      className="w-full text-sm font-medium text-text-50"
     >
       <ul className={wrapperStyles({ variant })}>
         <li className="mr-auto">
-          <button
+          <Button
+            appearance="outline"
+            size="sm"
             disabled={currentPage === 1}
             aria-label="Previous page"
             onClick={() => onPageChange?.(currentPage - 1)}
-            className={cn(sideButtonStyles({ sideLayout }), {
+            className={cn(sideButtonStyles({ sideLayout, variant }), {
               "sm:rounded-r-none sm:border-r-0": variant === "compact"
             })}
           >
@@ -69,7 +73,7 @@ export function Pagination({
             {sideLayout !== "icon" && (
               <span className="max-sm:hidden">Previous</span>
             )}
-          </button>
+          </Button>
         </li>
 
         {/* Only for mobile view */}
@@ -138,11 +142,13 @@ export function Pagination({
         })}
 
         <li className="ml-auto">
-          <button
+          <Button
+            size="sm"
+            appearance="outline"
             disabled={currentPage === totalPages}
             aria-label="Next page"
             onClick={() => onPageChange?.(currentPage + 1)}
-            className={cn(sideButtonStyles({ sideLayout }), {
+            className={cn(sideButtonStyles({ sideLayout, variant }), {
               "sm:rounded-l-none sm:border-l-0": variant === "compact"
             })}
           >
@@ -153,7 +159,7 @@ export function Pagination({
             <ArrowRight
               className={cn("shrink-0", sideLayout === "label" && "sm:hidden")}
             />
-          </button>
+          </Button>
         </li>
       </ul>
     </nav>
@@ -177,9 +183,9 @@ function PaginationButton({
       aria-current={isActive ? "page" : undefined}
       className={cn(
         "size-10 shrink-0 rounded-lg",
-        isActive ? "bg-neutral-100" : "hover:bg-neutral-100",
+        isActive ? "bg-background-soft-100" : "hover:bg-background-soft-100",
         paginationVariant === "compact" &&
-          "rounded-none border-y border-neutral-300"
+          "rounded-none border-y border-base-100"
       )}
       onClick={() => onPageChange?.(page)}
     >
@@ -196,7 +202,7 @@ function PaginationEllipsis({
   return (
     <button
       className={cn("pointer-events-none size-10 shrink-0", {
-        "border-y border-neutral-300": paginationVariant === "compact"
+        "border-y border-base-100": paginationVariant === "compact"
       })}
     >
       ...
