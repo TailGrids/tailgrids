@@ -47,7 +47,12 @@ export function Input({
   const id = useId();
 
   return (
-    <div className="grid grid-cols-1 gap-2 w-full">
+    <div
+      className={cn(
+        "grid grid-cols-1 gap-2 w-full",
+        inputProps.disabled && "cursor-not-allowed"
+      )}
+    >
       {label && (
         <label
           htmlFor={id}
