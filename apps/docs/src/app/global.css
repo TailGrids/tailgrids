@@ -25,6 +25,15 @@
   --color-primary-text: white;
 
   /* Text Color */
+  --color-text-50: #374151;
+  --color-text-100: #6b7280;
+  --color-text-200: #9ca3af;
+  --color-text-300: #e5e7eb;
+
+  /* Title */
+  --color-title-50: #1f2937;
+
+  /* Text Color */
   --color-text-title-color: #1f2937;
   --color-text-color: #374151;
   --color-text-secondary: #6b7280;
@@ -40,13 +49,14 @@
   /* Border Color */
   --border-color-base-50: #f3f4f6;
   --border-color-base-100: #e5e7eb;
-  --border-color-base-100-alt: #e5e7eb;
-  --border-color-base-200: #d1d5db;
+  --border-color-base-200: #e537eb;
   --border-color-base-300: #9ca3af;
 
-  /* Foreground Color */
+  /* Foreground Colors */
   --color-foreground-50: #030712;
   --color-foreground-100: #111827;
+
+  /* Gray */
   --color-foreground-soft-50: #111827;
   --color-foreground-soft-100: #111827;
   --color-foreground-soft-200: #1f2937;
@@ -54,15 +64,18 @@
   --color-foreground-soft-400: #1f2937;
   --color-foreground-soft-500: #374151;
 
-  /* Background Color */
+  /* Background Colors */
   --color-background-50: #ffffff;
   --color-background-100: #ffffff;
+
+  /* Gray colors */
   --color-background-soft-50: #f9fafb;
   --color-background-soft-100: #f3f4f6;
   --color-background-soft-200: #f3f4f6;
   --color-background-soft-300: #f3f4f6;
   --color-background-soft-400: #e5e7eb;
   --color-background-soft-500: #d1d5db;
+
   --color-background-success-600: #16a34a;
 
   /* ======== Button Color =========*/
