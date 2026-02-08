@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { cn } from '@/utils/cn';
+import { cn } from "@/utils/cn";
 
 type ProgressProps = {
   progress: number;
@@ -10,13 +10,13 @@ type ProgressProps = {
 
 export function Progress({ progress, withLabel, className }: ProgressProps) {
   return (
-    <div className={cn('flex max-w-80 items-center gap-3', className)}>
+    <div className={cn("flex max-w-80 items-center gap-3", className)}>
       <div
-        className="relative h-2 w-full rounded-full bg-neutral-200"
+        className="relative h-2 w-full rounded-full bg-(--border-color-base-100)"
         style={{
           // Fix overflow clipping in Safari
           // https://gist.github.com/domske/b66047671c780a238b51c51ffde8d3a0
-          transform: 'translateZ(0)',
+          transform: "translateZ(0)"
         }}
         aria-valuemax={100}
         aria-valuemin={0}
@@ -33,7 +33,7 @@ export function Progress({ progress, withLabel, className }: ProgressProps) {
       </div>
 
       {withLabel && (
-        <div className="text-sm leading-none font-medium text-neutral-700">
+        <div className="text-sm leading-none font-medium text-text-50">
           {progress}%
         </div>
       )}
