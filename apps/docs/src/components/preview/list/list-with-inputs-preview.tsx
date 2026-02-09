@@ -1,5 +1,6 @@
 import { Checkbox } from "@/registry/core/checkbox";
 import { List } from "@/registry/core/list";
+import { RadioInput } from "@/registry/core/radio-input";
 
 export default function ListWithInputsPreview() {
   const features = [
@@ -15,9 +16,8 @@ export default function ListWithInputsPreview() {
       {/* Checkbox List */}
       <List className="max-w-70">
         {features.map((feature, index) => (
-          <li key={index} className="gap-2">
-            <Checkbox />
-            <label className="cursor-pointer">{feature}</label>
+          <li key={index}>
+            <Checkbox label={feature} />
           </li>
         ))}
       </List>
@@ -25,13 +25,8 @@ export default function ListWithInputsPreview() {
       {/* Radio List */}
       <List className="max-w-70">
         {features.map((feature, index) => (
-          <li key={index} className="gap-2">
-            <input
-              type="radio"
-              name="radio-list"
-              className="size-4 accent-primary-500"
-            />
-            <label className="cursor-pointer">{feature}</label>
+          <li key={index}>
+            <RadioInput name="example-list" label={feature} />
           </li>
         ))}
       </List>

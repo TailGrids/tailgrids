@@ -35,7 +35,7 @@ export function Checkbox({
     <label
       htmlFor={id}
       className={cn(
-        "group flex cursor-pointer items-center gap-3 select-none aria-disabled:cursor-not-allowed"
+        "group flex cursor-pointer items-center gap-3 select-none aria-disabled:cursor-not-allowed w-full"
       )}
       aria-disabled={disabled}
     >

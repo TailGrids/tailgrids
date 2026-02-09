@@ -1,13 +1,13 @@
-import { cn } from '@/utils/cn';
+import { cn } from "@/utils/cn";
 import React, {
+  useEffect,
   useId,
   useRef,
   useState,
-  useEffect,
-  type ComponentProps,
-} from 'react';
+  type ComponentProps
+} from "react";
 
-type PropsType = Omit<ComponentProps<'input'>, 'value'> & {
+type PropsType = Omit<ComponentProps<"input">, "value"> & {
   digitLength?: 4 | 6;
   label?: string;
   hint?: string;
@@ -24,17 +24,17 @@ export default function OtpInput({
   value,
   ...props
 }: PropsType) {
-  const [otp, setOtp] = useState(Array(digitLength).fill(''));
+  const [otp, setOtp] = useState(Array(digitLength).fill(""));
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const id = useId();
 
   useEffect(() => {
     if (value !== undefined) {
-      const digits = value.split('').slice(0, digitLength);
+      const digits = value.split("").slice(0, digitLength);
       const paddedDigits = [
         ...digits,
-        ...Array(digitLength - digits.length).fill(''),
+        ...Array(digitLength - digits.length).fill("")
       ];
       setOtp(paddedDigits);
     }
@@ -42,9 +42,9 @@ export default function OtpInput({
 
   useEffect(() => {
     if (onChange) {
-      const otpValue = otp.join('');
+      const otpValue = otp.join("");
       const event = {
-        target: { value: otpValue },
+        target: { value: otpValue }
       } as React.ChangeEvent<HTMLInputElement>;
       onChange(event);
     }
@@ -53,28 +53,28 @@ export default function OtpInput({
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (
       !/^[0-9]{1}$/.test(e.key) &&
-      e.key !== 'Backspace' &&
-      e.key !== 'Delete' &&
-      e.key !== 'Tab' &&
+      e.key !== "Backspace" &&
+      e.key !== "Delete" &&
+      e.key !== "Tab" &&
       !e.metaKey
     ) {
       e.preventDefault();
     }
 
-    if (e.key === 'Delete' || e.key === 'Backspace') {
+    if (e.key === "Delete" || e.key === "Backspace") {
       const index = inputRefs.current.indexOf(e.target as HTMLInputElement);
 
       if (otp[index]) {
-        setOtp((prevOtp) => [
+        setOtp(prevOtp => [
           ...prevOtp.slice(0, index),
-          '',
-          ...prevOtp.slice(index + 1),
+          "",
+          ...prevOtp.slice(index + 1)
         ]);
       } else if (index > 0) {
-        setOtp((prevOtp) => [
+        setOtp(prevOtp => [
           ...prevOtp.slice(0, index - 1),
-          '',
-          ...prevOtp.slice(index),
+          "",
+          ...prevOtp.slice(index)
         ]);
         inputRefs.current[index - 1]?.focus();
       }
@@ -86,10 +86,10 @@ export default function OtpInput({
     const index = inputRefs.current.indexOf(target as HTMLInputElement);
 
     if (target.value) {
-      setOtp((prevOtp) => [
+      setOtp(prevOtp => [
         ...prevOtp.slice(0, index),
         target.value,
-        ...prevOtp.slice(index + 1),
+        ...prevOtp.slice(index + 1)
       ]);
 
       if (index < otp.length - 1) {
@@ -104,11 +104,11 @@ export default function OtpInput({
 
   const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
     e.preventDefault();
-    const text = e.clipboardData.getData('text');
+    const text = e.clipboardData.getData("text");
     if (!new RegExp(`^[0-9]{${otp.length}}$`).test(text)) {
       return;
     }
-    const digits = text.split('');
+    const digits = text.split("");
     setOtp(digits);
   };
 
@@ -117,13 +117,13 @@ export default function OtpInput({
       {label && (
         <label
           htmlFor={id}
-          className="mb-2 block text-sm font-medium text-neutral-700"
+          className="mb-2 block text-sm font-medium text-text-50"
         >
           {label}
         </label>
       )}
 
-      <div className="flex items-center gap-2 not-focus-within:text-neutral-400 focus-within:text-neutral-800">
+      <div className="flex items-center gap-2 not-focus-within:text-input-placeholder-text focus-within:text-text-50">
         {otp.map((digit, index) => (
           <input
             key={index}
@@ -135,15 +135,16 @@ export default function OtpInput({
             onKeyDown={handleKeyDown}
             onFocus={handleFocus}
             onPaste={handlePaste}
-            ref={(el) => {
+            ref={el => {
               inputRefs.current[index] = el;
             }}
             className={cn(
-              'bg-neutral focus:border-primary-300 focus:ring-primary-100 flex size-11 items-center justify-center rounded-lg border border-neutral-300 p-2 text-center text-base font-normal shadow-xs focus:ring-3 focus:outline-none disabled:border-neutral-200 disabled:bg-neutral-50 disabled:text-neutral-300',
-              className,
+              "bg-input-background focus:border-input-primary-focus-border focus:ring-input-primary-focus-border/20 flex size-11 items-center justify-center rounded-lg border border-base-300 p-2 text-center text-base font-normal shadow-xs focus:ring-3 focus:outline-none disabled:border-base-100 disabled:bg-background-soft-50 disabled:text-input-disabled-text",
+              digit && "text-text-50",
+              className
             )}
             style={{
-              order: digitLength === 6 && index > 2 ? index + 1 : index,
+              order: digitLength === 6 && index > 2 ? index + 1 : index
             }}
             disabled={disabled}
             {...props}
@@ -152,11 +153,11 @@ export default function OtpInput({
 
         {/* Divider */}
         {digitLength === 6 && (
-          <div className="order-3 mx-2 h-0.5 w-3 shrink-0 rounded-full bg-neutral-300" />
+          <div className="order-3 mx-2 h-0.5 w-3 shrink-0 rounded-full bg-background-soft-500" />
         )}
       </div>
 
-      {hint && <p className="mt-2 text-sm text-neutral-700">{hint}</p>}
+      {hint && <p className="mt-2 text-sm text-text-50">{hint}</p>}
     </div>
   );
 }

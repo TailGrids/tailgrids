@@ -30,6 +30,12 @@
   --color-text-200: #9ca3af;
   --color-text-300: #e5e7eb;
 
+  /* Context Color */
+  --color-error-500: #ef4444;
+  --color-success-500: #22c55e;
+  --color-warning-500: #eab308;
+  --color-info-500: #0ea5e9;
+
   /* Title */
   --color-title-50: #1f2937;
 
@@ -43,7 +49,7 @@
   /* Border Color */
   --border-color-base-50: #f3f4f6;
   --border-color-base-100: #e5e7eb;
-  --border-color-base-200: #e537eb;
+  --border-color-base-200: #e5e7eb;
   --border-color-base-300: #d1d5db;
 
   /* Foreground Colors */

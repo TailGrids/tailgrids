@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import type { ComponentProps } from "react";
 
 export const buttonStyles = cva(
-  "flex items-center justify-center gap-3 rounded-lg font-medium transition focus:ring-3 disabled:pointer-events-none [&>svg]:text-current!",
+  "flex items-center justify-center gap-3 rounded-lg font-medium transition focus:ring-3 disabled:pointer-events-none [&>svg]:text-current! outline-none",
   {
     variants: {
       variant: {
