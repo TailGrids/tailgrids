@@ -5,8 +5,9 @@ export default function ToastWithUndoPreview() {
   return (
     <Toast
       variant="warning"
-      description="Item moved to trash."
+      message="Item moved to trash."
       undoAction={() => console.log("Undo")}
+      hideIcon
     />
   );
 }

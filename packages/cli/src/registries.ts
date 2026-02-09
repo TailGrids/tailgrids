@@ -373,7 +373,7 @@ export const REGISTRIES: Registry[] = [
       }
     ],
     dependencies: ["class-variance-authority"],
-    requires: ["avatar"]
+    requires: ["avatar", "button", "link"]
   },
   {
     id: "toggle",

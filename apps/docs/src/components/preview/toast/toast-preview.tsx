@@ -2,7 +2,5 @@
 import { Toast } from "@/registry/core/toast";
 
 export default function ToastPreview() {
-  return (
-    <Toast variant="success" description="Your profile has been updated." />
-  );
+  return <Toast variant="success" message="Your profile has been updated." />;
 }

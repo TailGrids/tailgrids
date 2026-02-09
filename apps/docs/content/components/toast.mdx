@@ -70,8 +70,10 @@ import { Toast, AvatarToast } from "@/registry/core/toast";
 export const ToastExample = () => (
   <Toast
     variant="success"
-    title="Success"
-    description="Your changes have been saved."
+    message={{
+      title: "Success",
+      description: "Your changes have been saved."
+    }}
   />
 );
 ```
@@ -103,7 +105,7 @@ A structured toast layout that includes a title, description, and action buttons
 </ComponentPreview>
 
 **Note:**
-If a `title` is present, the layout switches to a vertical content stack to accommodate more information.
+When providing a `title` via the `message` object, the layout switches to a vertical content stack to accommodate more information. You can use `children` to render action buttons.
 
 ### Toast With Undo
 
@@ -120,7 +122,7 @@ A specialized toast for reversible actions that includes an inline 'Undo' button
 **Note:**
 For simple toasts (no title), the `Undo` button appears inline on the right side.
 
-### Avatar Toast (Message-style)
+### Avatar Toast
 
 A message-style toast that includes an avatar, sender name, message description, and timestamp. Ideal for chat or social notifications.
 
@@ -134,7 +136,7 @@ A message-style toast that includes an avatar, sender name, message description,
 
 ## Variants
 
-The Toast component supports five predefined variants: `success`, `error`, `info`, `warning`, and `message`.
+The Toast component supports five predefined variants: `success`, `error`, `info`, `warning`, and `default`.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -151,18 +153,19 @@ Icon colors and icons are automatically determined by the `variant` prop.
 
 ### Toast
 
-| Prop          | Type                                                                                      | Default | Description                                     |
-| ------------- | ----------------------------------------------------------------------------------------- | ------- | ----------------------------------------------- |
-| `variant`     | `"success"`, `"error"`, `"info"`, `"warning"`, `"message"`                                | —       | Controls icon and color theme                   |
-| `description` | `string`                                                                                  | —       | Main message text                               |
-| `title`       | `string`                                                                                  | —       | Optional title for more structured toasts       |
-| `undoAction`  | `() => void`                                                                              | —       | Shows an “Undo” button when no title is present |
-| `actions`     | `{ primary: { label: string; onClick?: fn }, dismiss?: { label: string; onClick?: fn } }` | —       | Shows action buttons when title is present      |
+| Prop         | Type                                                       | Default     | Description                                                         |
+| :----------- | :--------------------------------------------------------- | :---------- | :------------------------------------------------------------------ |
+| `variant`    | `"success"`, `"error"`, `"info"`, `"warning"`, `"default"` | `"default"` | Controls icon and color theme                                       |
+| `message`    | `string \| { title: string; description: string; }`        | —           | Main message content. Can be a string or an object with title.      |
+| `undoAction` | `() => void`                                               | —           | Shows an “Undo” button (only when `message` is a string)            |
+| `hideIcon`   | `boolean`                                                  | `false`     | Hides the status icon                                               |
+| `icon`       | `React.ReactNode`                                          | —           | Custom icon to override the default variant icon                    |
+| `children`   | `React.ReactNode`                                          | —           | Custom content rendered below the message (e.g. for action buttons) |
 
 ### AvatarToast
 
 | Prop          | Type                                        | Description             |
-| ------------- | ------------------------------------------- | ----------------------- |
+| :------------ | :------------------------------------------ | :---------------------- |
 | `name`        | `string`                                    | Sender name             |
 | `description` | `string`                                    | Message body            |
 | `image`       | `string`                                    | Avatar image source     |
