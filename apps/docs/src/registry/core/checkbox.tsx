@@ -27,6 +27,7 @@ export function Checkbox({
   id: inputId,
   size,
   disabled,
+  className,
   ...inputProps
 }: PropsType) {
   const id = useId();
@@ -35,7 +36,8 @@ export function Checkbox({
     <label
       htmlFor={id}
       className={cn(
-        "group flex cursor-pointer items-center gap-3 select-none aria-disabled:cursor-not-allowed w-full"
+        "group flex cursor-pointer items-center gap-3 select-none aria-disabled:cursor-not-allowed w-full",
+        className
       )}
       aria-disabled={disabled}
     >
@@ -75,11 +77,12 @@ function CheckIcon(props: SVGProps<SVGSVGElement>) {
       height={14}
       viewBox="0 0 14 14"
       fill="none"
+      className="stroke-checkbox-checked-icon-color"
       {...props}
     >
       <path
         d="M11.667 3.5L5.25 9.917 2.333 7"
-        stroke="#fff"
+        stroke="currentColor"
         strokeWidth={1.94437}
         strokeLinecap="round"
         strokeLinejoin="round"
