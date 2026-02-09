@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { SVGProps, useId, type ComponentProps } from "react";
 
 const checkboxStyles = cva(
-  "peer-focus:border-primary-300 group-hover:border-primary-500 peer-checked:bg-primary-500 peer-checked:border-primary-500! peer-focus:ring-primary-100 grid place-items-center border border-base-200 transition peer-focus:ring-4 peer-disabled:border-base-50 [&>svg]:hidden [&>svg]:text-white peer-checked:[&>svg]:block peer-disabled:[&>svg]:text-(--border-color-base-50)",
+  "peer-focus:border-primary-300 group-hover:border-primary-500 peer-checked:bg-primary-500 peer-checked:border-primary-500! peer-focus:ring-primary-100 grid place-items-center border border-base-200 transition peer-focus:ring-4 peer-disabled:border-base-50 [&>svg]:hidden [&>svg]:text-checkbox-checked-icon-color peer-checked:[&>svg]:block peer-disabled:[&>svg]:text-(--border-color-base-50)",
   {
     variants: {
       size: {

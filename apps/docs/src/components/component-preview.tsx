@@ -5,6 +5,7 @@ import { useState } from "react";
 import { CodeBlock } from "./code-block";
 import { CopyToClipboard } from "./copy-to-clipboard";
 import { SegmentedControl } from "./segmented-control";
+import { SelectTheme } from "./select-theme";
 
 const ITEMS = [
   {
@@ -40,6 +41,8 @@ export function ComponentPreview({
           value={activeTab}
           onChange={setActiveTab}
         />
+
+        <SelectTheme />
 
         <CopyToClipboard
           className="py-2 pr-3 pl-2.5 gap-2 font-medium rounded-[10px] border"

@@ -169,11 +169,7 @@ export default function Alert({
           )}
 
           {actions?.secondary && (
-            <Button
-              onClick={handleClose}
-              className="text-xs bg-neutral"
-              appearance="outline"
-            >
+            <Button size="xs" appearance="outline" onClick={handleClose}>
               {actions.secondary.label}
             </Button>
           )}

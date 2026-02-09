@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/components/theme-provider";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import type { Metadata } from "next";
@@ -60,7 +61,7 @@ export default function Layout({ children }: LayoutProps<"/">) {
             enabled: false
           }}
         >
-          {children}
+          <ThemeProvider>{children}</ThemeProvider>
         </RootProvider>
       </body>
     </html>
