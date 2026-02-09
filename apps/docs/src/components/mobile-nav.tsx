@@ -1,26 +1,15 @@
 "use client";
 
-import { cn } from "@/lib/cn";
+import { cn } from "@/utils/cn";
+import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 import {
-  DashboardSquare1,
-  Layout14,
-  Megaphone1,
-  PieChart1,
-  Cart2,
-  Sparkle
-} from "@tailgrids/icons";
-import {
-  ColoredReactIcon,
-  ColoredVueIcon,
-  ColoredFigmaIcon,
-  CommunityIcon,
   ChatBubbleIcon,
-  RoadMapIcon,
+  CommunityIcon,
+  ConfettiIcon,
   PencilTextIcon,
-  ConfettiIcon
+  RoadMapIcon
 } from "./ui/icons";
 
 interface SubMenuItem {

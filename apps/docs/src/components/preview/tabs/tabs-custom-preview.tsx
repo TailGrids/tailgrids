@@ -1,8 +1,8 @@
 "use client";
 
-import { cn } from "@/lib/cn";
 import { TabContent, TabList, TabRoot, TabTrigger } from "@/registry/core/tabs";
 import { Toggle } from "@/registry/core/toggle";
+import { cn } from "@/utils/cn";
 import { BarChart3, Bell, Shield, Users } from "lucide-react";
 
 export default function TabsCustomPreview() {

@@ -1,7 +1,7 @@
 "use client";
 
 import { componentImages } from "@/components/component-images";
-import { cn } from "@/lib/cn";
+import { cn } from "@/utils/cn";
 import Image from "next/image";
 import Link from "next/link";
 import { REGISTRIES } from "../../../../packages/cli/src/registries";

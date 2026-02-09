@@ -1,7 +1,7 @@
 "use client";
 
 import GradientImage from "@/assets/navbar/graphic.png";
-import { cn } from "@/lib/cn";
+import { cn } from "@/utils/cn";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";

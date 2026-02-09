@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/cn";
+import { cn } from "@/utils/cn";
 import { useState } from "react";
 import { CodeBlock } from "./code-block";
 import { CopyToClipboard } from "./copy-to-clipboard";
@@ -53,7 +53,9 @@ export function ComponentPreview({
           <div
             className={cn(
               "min-h-100 flex flex-col items-center justify-center rounded-[20px] border border-gray-200 dark:border-gray-800 bg-white not-prose",
-              noPaddingOnPreviewForMobile ? "p-0 sm:px-15 sm:py-10" : "px-15 py-10"
+              noPaddingOnPreviewForMobile
+                ? "p-0 sm:px-15 sm:py-10"
+                : "px-15 py-10"
             )}
           >
             {children}

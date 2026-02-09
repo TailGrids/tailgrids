@@ -72,7 +72,8 @@
       { "type": "core", "path": "/core/date-picker/single-date.tsx" },
       { "type": "core", "path": "/core/date-picker/range-date.tsx" }
     ],
-    "dependencies": ["react-stately", "date-fns"]
+    "dependencies": ["react-stately", "date-fns", "@tailgrids/icons"],
+    "requires": ["button"]
   },
   {
     "id": "dropdown",
@@ -119,7 +120,8 @@
     "description": "A component for navigating between pages.",
     "type": "component",
     "files": [{ "type": "core", "path": "/core/pagination.tsx" }],
-    "dependencies": ["class-variance-authority"]
+    "dependencies": ["class-variance-authority"],
+    "requires": ["button"]
   },
   {
     "id": "popover",
@@ -211,7 +213,7 @@
     "type": "component",
     "files": [{ "type": "core", "path": "/core/toast.tsx" }],
     "dependencies": ["class-variance-authority"],
-    "requires": ["avatar"]
+    "requires": ["avatar", "button", "link"]
   },
   {
     "id": "toggle",
