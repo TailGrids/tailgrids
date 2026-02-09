@@ -1,5 +1,28 @@
 import { SocialButton } from "@/registry/core/social-button";
 
+const SocialButtonShadowPreview = () => {
+  return (
+    <div className="flex flex-col gap-3 w-full max-w-84">
+      <SocialButton className="shadow-sm border-tg-border-1 hover:shadow-md transition-shadow">
+        <GoogleIcon />
+        Sign in with Google
+      </SocialButton>
+      <SocialButton className="shadow-sm border-tg-border-1 hover:shadow-md transition-shadow">
+        <FacebookIcon />
+        Sign in with Facebook
+      </SocialButton>
+      <SocialButton className="shadow-sm border-tg-border-1 hover:shadow-md transition-shadow">
+        <XIcon />
+        Sign in with X
+      </SocialButton>
+      <SocialButton className="shadow-sm border-tg-border-1 hover:shadow-md transition-shadow">
+        <AppleIcon />
+        Sign in with Apple
+      </SocialButton>
+    </div>
+  );
+};
+
 function GoogleIcon() {
   return (
     <svg className="size-5" viewBox="0 0 24 24">
@@ -46,28 +69,5 @@ function AppleIcon() {
     </svg>
   );
 }
-
-const SocialButtonShadowPreview = () => {
-  return (
-    <div className="flex flex-col gap-3 w-full max-w-84">
-      <SocialButton className="shadow-sm border-neutral-100 hover:shadow-md transition-shadow">
-        <GoogleIcon />
-        Sign in with Google
-      </SocialButton>
-      <SocialButton className="shadow-sm border-neutral-100 hover:shadow-md transition-shadow">
-        <FacebookIcon />
-        Sign in with Facebook
-      </SocialButton>
-      <SocialButton className="shadow-sm border-neutral-100 hover:shadow-md transition-shadow">
-        <XIcon />
-        Sign in with X
-      </SocialButton>
-      <SocialButton className="shadow-sm border-neutral-100 hover:shadow-md transition-shadow">
-        <AppleIcon />
-        Sign in with Apple
-      </SocialButton>
-    </div>
-  );
-};
 
 export default SocialButtonShadowPreview;

@@ -2,7 +2,7 @@ import { TabContent, TabList, TabRoot, TabTrigger } from "@/registry/core/tabs";
 
 export default function TabsPreview() {
   return (
-    <div className="w-full">
+    <div className="w-full max-w-lg mx-auto">
       <TabRoot defaultValue="overview" variant="default">
         <TabList>
           <TabTrigger value="overview">Overview</TabTrigger>
@@ -11,27 +11,27 @@ export default function TabsPreview() {
           <TabTrigger value="settings">Settings</TabTrigger>
         </TabList>
         <TabContent value="overview">
-          <h4 className="font-semibold text-neutral-800 mb-2">Overview</h4>
-          <p className="text-neutral-600">
+          <h4 className="font-semibold text-title-50 mb-2">Overview</h4>
+          <p className="text-text-100">
             Get a high-level view of your dashboard metrics and key performance
             indicators.
           </p>
         </TabContent>
         <TabContent value="analytics">
-          <h4 className="font-semibold text-neutral-800 mb-2">Analytics</h4>
-          <p className="text-neutral-600">
+          <h4 className="font-semibold text-title-50 mb-2">Analytics</h4>
+          <p className="text-text-100">
             Deep dive into your data with detailed analytics and insights.
           </p>
         </TabContent>
         <TabContent value="reports">
-          <h4 className="font-semibold text-neutral-800 mb-2">Reports</h4>
-          <p className="text-neutral-600">
+          <h4 className="font-semibold text-title-50 mb-2">Reports</h4>
+          <p className="text-text-100">
             Generate and view comprehensive reports for your business.
           </p>
         </TabContent>
         <TabContent value="settings">
-          <h4 className="font-semibold text-neutral-800 mb-2">Settings</h4>
-          <p className="text-neutral-600">
+          <h4 className="font-semibold text-title-50 mb-2">Settings</h4>
+          <p className="text-text-100">
             Configure your preferences and account settings.
           </p>
         </TabContent>

@@ -31,7 +31,7 @@ export default function TablePreview() {
     <div className="w-full">
       <TableRoot>
         <TableHeader>
-          <TableRow className="bg-[#F9FAFB] [&>th]:text-[#374151]">
+          <TableRow className="bg-background-soft-50 [&>th]:text-text-50">
             <TableHead scope="col">Product</TableHead>
             <TableHead scope="col">Price</TableHead>
             <TableHead scope="col">Stock</TableHead>
@@ -43,12 +43,12 @@ export default function TablePreview() {
             <TableRow key={item.price + item.product} className="text-sm">
               <TableCell
                 scope="row"
-                className="font-medium text-[#1F2937] whitespace-nowrap"
+                className="font-medium text-title-50 whitespace-nowrap"
               >
                 {item.product}
               </TableCell>
 
-              <TableCell className="font-semibold text-[#6B7280] -tracking-[0.2px] whitespace-nowrap">
+              <TableCell className="font-semibold text-text-100 -tracking-[0.2px] whitespace-nowrap">
                 {item.price}
               </TableCell>
 
@@ -58,7 +58,7 @@ export default function TablePreview() {
                   prefixIcon={
                     <span
                       className={`size-1.5 rounded-full ${
-                        item.inStock < 10 ? "bg-orange-500" : "bg-green-500"
+                        item.inStock < 10 ? "bg-warning-500" : "bg-success-500"
                       }`}
                     />
                   }

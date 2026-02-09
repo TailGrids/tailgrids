@@ -109,18 +109,6 @@ Use visual states to show validation feedback, or disable the input.
 
 Note: Focus ring color matches the state (primary for default, danger for error, success for success). Disabled inputs have reduced opacity and prevent pointer events.
 
-### Custom Style
-
-Use `className` to override default styles.
-
-<ComponentPreview
-  codeSnippet={getFileContent(
-    "/src/components/preview/input/input-custom-preview.tsx"
-  )}
->
-  <InputCustomPreview />
-</ComponentPreview>
-
 ### Controlled
 
 Control the input value using React state.
@@ -131,6 +119,18 @@ Control the input value using React state.
   )}
 >
   <InputControlledPreview />
+</ComponentPreview>
+
+### Custom Style
+
+Use `className` to override default styles.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/input/input-custom-preview.tsx"
+  )}
+>
+  <InputCustomPreview />
 </ComponentPreview>
 
 ## API Reference

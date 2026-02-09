@@ -8,9 +8,9 @@ import {
 
 export default function TooltipDefaultPreview() {
   return (
-    <div className="flex items-center justify-center p-8">
+    <div className="w-full max-w-lg mx-auto flex items-center justify-center p-8">
       <Tooltip>
-        <TooltipTrigger className="rounded-md bg-primary-500 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500/20">
+        <TooltipTrigger className="rounded-md bg-button-primary-background px-5 py-2.5 text-sm font-medium text-white transition hover:bg-button-primary-hover-background focus:outline-none focus:ring-2 focus:ring-button-primary-focus-ring">
           Hover me
         </TooltipTrigger>
         <TooltipContent>
