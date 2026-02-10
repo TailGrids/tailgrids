@@ -1,3 +1,4 @@
+import { PageContentProvider } from "@/components/page-content-provider";
 import { getPageImage, source } from "@/lib/source";
 import { getMDXComponents } from "@/mdx-components";
 import { createRelativeLink } from "fumadocs-ui/mdx";
@@ -12,19 +13,20 @@ export default async function Page(props: PageProps<"/[[...slug]]">) {
   if (!page) notFound();
 
   const MDX = page.data.body;
+  const rawContent = await page.data.getText("raw");
 
   return (
     <DocsPage toc={page.data.toc} full={page.data.full}>
-      {/* <DocsTitle>{page.data.title}</DocsTitle> */}
-      {/* <DocsDescription>{page.data.description}</DocsDescription> */}
-      <DocsBody>
-        <MDX
-          components={getMDXComponents({
-            // this allows you to link to other pages with relative file paths
-            a: createRelativeLink(source, page)
-          })}
-        />
-      </DocsBody>
+      <PageContentProvider content={rawContent}>
+        <DocsBody>
+          <MDX
+            components={getMDXComponents({
+              // this allows you to link to other pages with relative file paths
+              a: createRelativeLink(source, page)
+            })}
+          />
+        </DocsBody>
+      </PageContentProvider>
     </DocsPage>
   );
 }

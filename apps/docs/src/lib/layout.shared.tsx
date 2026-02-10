@@ -28,7 +28,7 @@ export function baseOptions(): BaseLayoutProps {
         active: "nested-url"
       },
       {
-        text: "Core Components",
+        text: "Components",
         url: "/components",
         icon: <ComponentsIcon className="shrink-0 " />,
         active: "nested-url"

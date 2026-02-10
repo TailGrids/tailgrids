@@ -1,8 +1,20 @@
 "use client";
 import { Button } from "@/registry/core/button";
 import { Toast } from "@/registry/core/toast";
+import { useEffect, useState } from "react";
 
 export default function ToastWithTitlePreview() {
+  const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    if (!show) {
+      const timer = setTimeout(() => setShow(true), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [show]);
+
+  if (!show) return null;
+
   return (
     <Toast
       message={{

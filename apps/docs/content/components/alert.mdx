@@ -3,7 +3,10 @@ title: React Alert Component
 description: A React alert component for showing success, warning, error, or info messages. Used to give clear feedback after user actions with optional icons and actions.
 ---
 
-import { AlertPreview } from "@/components/preview/alert-preview";
+import AlertActionsPreview from "@/components/preview/alert/alert-actions-preview";
+import AlertNoTitlePreview from "@/components/preview/alert/alert-no-title-preview";
+import { AlertPreview } from "@/components/preview/alert/alert-preview";
+import AlertVariantsPreview from "@/components/preview/alert/alert-variants-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
@@ -14,7 +17,9 @@ React Alert components are used to show important messages or feedback after use
 This Alert component is built with React and styled using Tailwind CSS, allowing control over layout, content, and visual style.
 
 <ComponentPreview
-  codeSnippet={getFileContent("/src/components/preview/alert-preview.tsx")}
+  codeSnippet={getFileContent(
+    "/src/components/preview/alert/alert-preview.tsx"
+  )}
 >
   <AlertPreview />
 </ComponentPreview>
@@ -42,16 +47,17 @@ Copy and paste the following component code into your project.
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/alert.tsx")}
   lang="tsx"
+  fileName="components/ui/alert.tsx"
 />
 </Accordion>
 </Accordions>
 
-## Usage
+## Anatomy
 
 Import the component and pass the required props.
 
 ```tsx
-import Alert from "@/components/tailgrids/core/alert";
+import Alert from "@/registry/core/alert";
 import { CheckCircle1 } from "@tailgrids/icons";
 
 export default () => (
@@ -66,43 +72,48 @@ export default () => (
 
 ## Examples
 
+### Variants
+
+The Alert component includes five semantic variants, each with their own color scheme: `success`, `danger`, `warning`, `info`, and `gray`.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/alert/alert-variants-preview.tsx"
+  )}
+>
+  <AlertVariantsPreview />
+</ComponentPreview>
+
 ### With Actions
 
-```tsx
-<Alert
-  variant="danger"
-  title="Delete Account"
-  message="This action cannot be undone. This will permanently delete your account."
-  actions={{
-    primary: {
-      label: "Delete",
-      onClick: () => console.log("Deleted")
-    },
-    secondary: {
-      label: "Cancel"
-    }
-  }}
-/>
-```
+Alerts can include primary and secondary actions to guide users toward next steps.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/alert/alert-actions-preview.tsx"
+  )}
+>
+  <AlertActionsPreview />
+</ComponentPreview>
 
 ### Without Title
 
-```tsx
-import { InfoTriangle } from "@tailgrids/icons";
+The `title` prop is optional. When omitted, the message takes precedence and adjusts its styling accordingly.
 
-<Alert
-  variant="info"
-  message="A new software update is available. See what's new."
-  icon={<InfoTriangle />}
-/>;
-```
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/alert/alert-no-title-preview.tsx"
+  )}
+>
+  <AlertNoTitlePreview />
+</ComponentPreview>
 
 ## API Reference
 
 ### Alert
 
 | Prop                | Type                                                     | Default     | Description                                |
-| ------------------- | -------------------------------------------------------- | ----------- | ------------------------------------------ |
+| :------------------ | :------------------------------------------------------- | :---------- | :----------------------------------------- |
 | `variant`           | `'success'`, `'danger'`, `'info'`, `'warning'`, `'gray'` | `'success'` | Sets the alert style                       |
 | `title`             | `string`                                                 | -           | Optional heading for the alert             |
 | `message`           | `string`                                                 | -           | Main Alert message (required)              |
@@ -113,18 +124,8 @@ import { InfoTriangle } from "@tailgrids/icons";
 | `actions.primary`   | `{ label: string; onClick: () => void }`                 | -           | Primary action button                      |
 | `actions.secondary` | `{ label: string }`                                      | -           | Secondary action button (triggers onClose) |
 
-## Variants
-
-The component includes five semantic variants, each with their own color scheme:
-
-- **success**: For successful operations or positive feedback
-- **danger**: For errors or destructive actions
-- **info**: For informational messages
-- **warning**: For warnings or important notices
-- **gray**: For neutral or general messages
-
 ## Accessibility
 
-- Close button includes `aria-label` for screen readers
-- Automatically refocuses after closing (reappears after 5 seconds)
-- Semantic color coding for different message types
+- **Close Button**: The close button includes an `aria-label="Close alert"` for screen reader accessibility.
+- **Visual Feedback**: Semantic color coding provides immediate visual context for the message type.
+- **Persistence**: The component automatically reappears after 5 seconds in this demo format for testing purposes.

@@ -39,6 +39,7 @@ npx @tailgrids/cli add badge
 
 <Accordion title="Manual">
 Install the required dependencies:
+
 ```npm
 npm i class-variance-authority
 ```
@@ -48,6 +49,7 @@ Copy and paste the following component code into your project.
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/badge.tsx")}
   lang="tsx"
+  fileName="badge.tsx"
 />
 </Accordion>
 </Accordions>
@@ -66,7 +68,7 @@ export const BadgeExample = () => <Badge color="primary">New</Badge>;
 
 ### Sizes
 
-The Badge component supports three predefined sizes: `sm`, `md`, and `lg`.
+Badge component supports three predefined sizes: `sm`, `md`, and `lg`.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/badge/badge-sizes.tsx")}
@@ -76,7 +78,7 @@ The Badge component supports three predefined sizes: `sm`, `md`, and `lg`.
 
 ### Colors
 
-Use color variants to match your exact need.
+The Badge component supports a wide range of semantic and vibrant color options like `primary`, `error`, and `success` etc.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/badge/badge-colors.tsx")}
@@ -86,7 +88,7 @@ Use color variants to match your exact need.
 
 ### With Icons
 
-Add icons before or after the badge text.
+Add icons before or after your text using the `prefixIcon` and `suffixIcon` props.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/badge/badge-icons.tsx")}

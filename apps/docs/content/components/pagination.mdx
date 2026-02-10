@@ -34,7 +34,7 @@ This Pagination component is built with React and styled using Tailwind CSS. It 
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
 
-```bash
+```npm
 npx @tailgrids/cli add pagination
 ```
 
@@ -42,15 +42,16 @@ npx @tailgrids/cli add pagination
 <Accordion title="Manual">
 Install the required dependencies:
 
-```bash
+```npm
 npm i class-variance-authority @tailgrids/icons
 ```
 
-Copy and paste the following component code into your project. Note that `PaginationButton` and `PaginationEllipsis` are internal components.
+Copy and paste the following component code into your project.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/pagination.tsx")}
   lang="tsx"
+  fileName="pagination.tsx"
 />
 </Accordion>
 </Accordions>
@@ -88,7 +89,7 @@ Use the `compact` variant for a minimal style, often suited for smaller sections
 
 ### Full Side Layout
 
-This is the **default** layout, showing both the icon and the text label ("Previous"/"Next") for side buttons.
+This is the `default` layout, showing both the icon and the text label ("Previous"/"Next") for side buttons.
 
 <ComponentPreview
   codeSnippet={getFileContent(

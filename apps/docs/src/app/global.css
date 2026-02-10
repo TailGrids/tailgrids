@@ -936,3 +936,18 @@ aside#nd-sidebar-mobile > div:first-child > button {
 [data-radix-portal] {
   z-index: 2147483647 !important;
 }
+
+/* Base color for all tabs */
+[role="tablist"] [role="tab"] {
+  @apply text-fd-muted-foreground!;
+}
+
+/* Hover color for tabs */
+[role="tablist"] [role="tab"]:hover {
+  @apply text-primary-500!;
+}
+
+/* Active tab color */
+[role="tablist"] [role="tab"][data-state="active"] {
+  @apply text-fd-primary!;
+}

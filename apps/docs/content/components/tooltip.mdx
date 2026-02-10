@@ -26,6 +26,8 @@ This component is built with **React** and powered by **`@floating-ui/react`** f
 
 ## Installation
 
+The Tooltip component relies on the `@floating-ui/react` library.
+
 <Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
@@ -47,6 +49,7 @@ Copy and paste the Tooltip component into your project. Note that this component
 <CodeBlockCard
 snippet={getFileContent("/src/registry/core/tooltip.tsx")}
 lang="tsx"
+  fileName="tooltip.tsx"
 />
 </Accordion>
 </Accordions>
@@ -132,20 +135,18 @@ The root component that manages state and floating logic.
 
 The element that activates the tooltip.
 
-| Prop       | Type                           | Default | Description                                                                                             |
-| :--------- | :----------------------------- | :------ | :------------------------------------------------------------------------------------------------------ |
-| `asChild`  | `boolean`                      | `false` | When `true`, props are forwarded to the single child element instead of rendering a default `<button>`. |
-| `children` | `React.ReactNode`              | -       | The element that triggers the tooltip. Defaults to a `<button>`.                                        |
-| `...props` | `React.HTMLProps<HTMLElement>` | -       | Standard HTML props forwarded to the trigger element.                                                   |
+| Prop       | Type              | Default | Description                                                                                             |
+| :--------- | :---------------- | :------ | :------------------------------------------------------------------------------------------------------ |
+| `asChild`  | `boolean`         | `false` | When `true`, props are forwarded to the single child element instead of rendering a default `<button>`. |
+| `children` | `React.ReactNode` | -       | The element that triggers the tooltip. Defaults to a `<button>`.                                        |
 
 ### TooltipContent
 
 The popup containing the descriptive content.
 
-| Prop       | Type                              | Default | Description                                                 |
-| :--------- | :-------------------------------- | :------ | :---------------------------------------------------------- |
-| `children` | `React.ReactNode`                 | -       | The content to be displayed inside the tooltip.             |
-| `...props` | `React.HTMLProps<HTMLDivElement>` | -       | Standard HTML props forwarded to the content wrapper `div`. |
+| Prop       | Type              | Default | Description                                     |
+| :--------- | :---------------- | :------ | :---------------------------------------------- |
+| `children` | `React.ReactNode` | -       | The content to be displayed inside the tooltip. |
 
 ## Accessibility
 

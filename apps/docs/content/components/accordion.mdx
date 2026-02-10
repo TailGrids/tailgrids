@@ -32,11 +32,9 @@ This Accordion component is styled using Tailwind CSS, giving developers control
 <Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
-0
 ```npm
 npx @tailgrids/cli add accordion
 ```
-
 </Accordion>
 
 <Accordion title="Manual">
@@ -51,6 +49,7 @@ Copy and paste the following component code into your project.
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/accordion.tsx")}
   lang="tsx"
+  fileName="accordion.tsx"
 />
 </Accordion>
 </Accordions>
@@ -81,6 +80,8 @@ export const AccordionExample = () => (
 
 ### Style One (Default)
 
+This is the default style for the accordion. No `variant` prop is required.
+
 <ComponentPreview
   codeSnippet={getFileContent(
     "/src/components/preview/accordion/accordion-style-one.tsx"
@@ -90,6 +91,8 @@ export const AccordionExample = () => (
 </ComponentPreview>
 
 ### Style Two
+
+Set `variant="style_two"` on `AccordionRoot` for this visual style.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -101,6 +104,8 @@ export const AccordionExample = () => (
 
 ### Style Three
 
+Set `variant="style_three"` on `AccordionRoot` for this variation.
+
 <ComponentPreview
   codeSnippet={getFileContent(
     "/src/components/preview/accordion/accordion-style-three.tsx"
@@ -110,6 +115,8 @@ export const AccordionExample = () => (
 </ComponentPreview>
 
 ### Style Four
+
+Set `variant="style_four"` on `AccordionRoot` for this layout.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -121,6 +128,8 @@ export const AccordionExample = () => (
 
 ### Style Five
 
+Set `variant="style_five"` on `AccordionRoot` for this design.
+
 <ComponentPreview
   codeSnippet={getFileContent(
     "/src/components/preview/accordion/accordion-style-five.tsx"
@@ -130,6 +139,8 @@ export const AccordionExample = () => (
 </ComponentPreview>
 
 ### Custom
+
+Use `className` to give a custom look to the component.
 
 <ComponentPreview
   codeSnippet={getFileContent(

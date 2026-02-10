@@ -3,12 +3,10 @@ title: React Social Login Buttons
 description: Pre-styled React social login buttons for authentication and sharing flows. Visual buttons only, commonly used for “Continue with Google” or GitHub actions.
 ---
 
-import SocialButtonBrandsPreview from "@/components/preview/social-button/social-button-brands-preview";
 import SocialButtonCustomPreview from "@/components/preview/social-button/social-button-custom-preview";
 import SocialButtonDisabledPreview from "@/components/preview/social-button/social-button-disabled-preview";
-import SocialButtonFilledPreview from "@/components/preview/social-button/social-button-filled-preview";
+import SocialButtonIconPreview from "@/components/preview/social-button/social-button-icon-preview";
 import SocialButtonPreview from "@/components/preview/social-button/social-button-preview";
-import SocialButtonShadowPreview from "@/components/preview/social-button/social-button-shadow-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
@@ -39,6 +37,7 @@ npx @tailgrids/cli add social-button
 
 <Accordion title="Manual">
 Install the required dependencies:
+
 ```npm
 npm i class-variance-authority
 ```
@@ -76,42 +75,16 @@ const SocialButtonUsage = () => (
 export default SocialButtonUsage;
 ```
 
-## Examples
-
-### Default
-
-Standard outline social buttons with various brand icons.
-
-<ComponentPreview
-  codeSnippet={getFileContent(
-    "/src/components/preview/social-button/social-button-brands-preview.tsx"
-  )}
->
-  <SocialButtonBrandsPreview />
-</ComponentPreview>
-
-### Filled
-
-Social buttons with a subtle background and border.
-
-<ComponentPreview
-  codeSnippet={getFileContent(
-    "/src/components/preview/social-button/social-button-filled-preview.tsx"
-  )}
->
-  <SocialButtonFilledPreview />
-</ComponentPreview>
-
-### Shadow
+### With Icon
 
 Social buttons with a card-like shadow effect.
 
 <ComponentPreview
   codeSnippet={getFileContent(
-    "/src/components/preview/social-button/social-button-shadow-preview.tsx"
+    "/src/components/preview/social-button/social-button-icon-preview.tsx"
   )}
 >
-  <SocialButtonShadowPreview />
+  <SocialButtonIconPreview />
 </ComponentPreview>
 
 ### Disabled

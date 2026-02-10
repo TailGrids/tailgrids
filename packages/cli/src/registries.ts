@@ -13,7 +13,7 @@ export const REGISTRIES: Registry[] = [
         path: "/core/accordion.tsx"
       }
     ],
-    dependencies: ["class-variance-authority"]
+    dependencies: ["class-variance-authority", "@tailgrids/icons"]
   },
   {
     id: "alert",
@@ -27,7 +27,7 @@ export const REGISTRIES: Registry[] = [
         path: "/core/alert.tsx"
       }
     ],
-    dependencies: ["class-variance-authority"],
+    dependencies: ["class-variance-authority", "@tailgrids/icons"],
     requires: ["button"]
   },
   {
@@ -68,7 +68,8 @@ export const REGISTRIES: Registry[] = [
         type: "core",
         path: "/core/breadcrumbs.tsx"
       }
-    ]
+    ],
+    dependencies: ["@tailgrids/icons"]
   },
   {
     id: "button",
@@ -218,7 +219,7 @@ export const REGISTRIES: Registry[] = [
         path: "/core/pagination.tsx"
       }
     ],
-    dependencies: ["class-variance-authority"],
+    dependencies: ["class-variance-authority", "@tailgrids/icons"],
     requires: ["button"]
   },
   {
@@ -270,6 +271,19 @@ export const REGISTRIES: Registry[] = [
         path: "/core/skeleton.tsx"
       }
     ]
+  },
+  {
+    id: "slider",
+    name: "Slider",
+    description: "A slider component to select a value from a range.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/slider.tsx"
+      }
+    ],
+    dependencies: ["react-aria", "react-stately"]
   },
   {
     id: "social-button",
@@ -372,7 +386,7 @@ export const REGISTRIES: Registry[] = [
         path: "/core/toast.tsx"
       }
     ],
-    dependencies: ["class-variance-authority"],
+    dependencies: ["class-variance-authority", "@tailgrids/icons"],
     requires: ["avatar", "button", "link"]
   },
   {

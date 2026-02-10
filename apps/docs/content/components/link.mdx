@@ -3,7 +3,6 @@ title: React Link Component
 description: A React link component for navigation between pages. Renders a semantic anchor element to create internal or external links with accessible behavior.
 ---
 
-import { CodeBlockCard } from "@/components/code-block-card";
 import { ComponentPreview } from "@/components/component-preview";
 import LinkCustomPreview from "@/components/preview/link/link-custom-preview";
 import LinkExternalPreview from "@/components/preview/link/link-external-preview";
@@ -38,6 +37,7 @@ npx @tailgrids/cli add link
 
 <Accordion title="Manual">
 Install the required dependencies:
+
 ```npm
 npm i class-variance-authority
 ```
@@ -47,6 +47,7 @@ Copy and paste the following component code into your project.
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/link.tsx")}
   lang="tsx"
+  fileName="link.tsx"
 />
 </Accordion>
 </Accordions>

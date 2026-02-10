@@ -4,9 +4,9 @@ description: A React TextArea component for multi-line text input. Uses the nati
 ---
 
 import TextAreaDisabledPreview from "@/components/preview/text-area/text-area-disabled-preview";
+import TextAreaErrorPreview from "@/components/preview/text-area/text-area-error-preview";
 import TextAreaPreview from "@/components/preview/text-area/text-area-preview";
-import TextAreaRowsPreview from "@/components/preview/text-area/text-area-rows-preview";
-import TextAreaStatesPreview from "@/components/preview/text-area/text-area-states-preview";
+import TextAreaSuccessPreview from "@/components/preview/text-area/text-area-success-preview";
 import TextAreaWithHintPreview from "@/components/preview/text-area/text-area-with-hint-preview";
 import TextAreaWithLabelPreview from "@/components/preview/text-area/text-area-with-label-preview";
 import { TextArea } from "@/registry/core/text-area";
@@ -97,23 +97,37 @@ Use the `hint` prop to show helper text below the text area.
 
 Note: The helper text uses `peer` class to enable styling based on text area state.
 
-### States
+### Success
 
-Use visual states to show validation feedback using `state` prop.
+Indicating successful validation or a positive outcome by using the `state="success"` prop.
 
 <ComponentPreview
   codeSnippet={getFileContent(
-    "/src/components/preview/text-area/text-area-states-preview.tsx"
+    "/src/components/preview/text-area/text-area-success-preview.tsx"
   )}
 >
-  <TextAreaStatesPreview />
+  <TextAreaSuccessPreview />
+</ComponentPreview>
+
+Note: The border and focus ring colors change to success green to indicate a valid state.
+
+### Error
+
+Highlight errors or validation failures to the user by setting the `state="error"` prop.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/text-area/text-area-error-preview.tsx"
+  )}
+>
+  <TextAreaErrorPreview />
 </ComponentPreview>
 
 Note: Focus ring color matches the state (primary for default, danger for error, success for success).
 
 ### Disabled
 
-Use the `disabled` prop to prevent interaction.
+Prevent user interaction and reflect an inactive state by setting the `disabled` prop to `true`.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -124,18 +138,6 @@ Use the `disabled` prop to prevent interaction.
 </ComponentPreview>
 
 Note: Disabled state applies reduced opacity to the text area and helper text.
-
-### Custom Rows
-
-Use the `rows` prop to control the initial height.
-
-<ComponentPreview
-  codeSnippet={getFileContent(
-    "/src/components/preview/text-area/text-area-rows-preview.tsx"
-  )}
->
-  <TextAreaRowsPreview />
-</ComponentPreview>
 
 ## API Reference
 

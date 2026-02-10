@@ -15,15 +15,15 @@ This guide shows how to install and use TailGrids with popular React-based frame
 
 Create a new Next.js project with TypeScript and Tailwind CSS:
 
-```bash
+```npm
 npx create-next-app@latest --ts --tailwind --import-alias "@/"
 ```
 
-### Run the CLI
+### Initialize TailGrids
 
-Initialize TailGrids in your project:
+Run the command in the CLI to initialize TailGrids in your project:
 
-```bash
+```npm
 npx @tailgrids/cli init
 ```
 
@@ -37,7 +37,7 @@ Which theme would you like to use? › Default
 
 Add your first component:
 
-```bash
+```npm
 npx @tailgrids/cli add button
 ```
 
@@ -47,11 +47,11 @@ Import and use it in your app:
 import { Button } from "@/components/core/button";
 
 export default function Home() {
-	return (
-		<div className="flex min-h-svh items-center justify-center">
-			<Button>Click me</Button>
-		</div>
-	);
+  return (
+    <div className="flex min-h-svh items-center justify-center">
+      <Button>Click me</Button>
+    </div>
+  );
 }
 ```
 
@@ -63,7 +63,7 @@ export default function Home() {
 
 Create a new React project using Vite with TypeScript:
 
-```bash
+```npm
 npm create vite@latest my-app -- --template react-ts
 cd my-app
 npm install
@@ -73,7 +73,7 @@ npm install
 
 Install Tailwind and the Vite plugin:
 
-```bash
+```npm
 npm install tailwindcss @tailwindcss/vite
 ```
 
@@ -85,9 +85,9 @@ Replace the contents of `src/index.css`:
 
 Ensure `index.css` is imported in `src/main.tsx`.
 
-### Configure path aliases (TypeScript)
+### Configure path aliases
 
-Vite uses multiple TypeScript config files. Update **both** files below.
+Vite uses multiple TypeScript config files. Update **all** the files below.
 
 #### tsconfig.json
 
@@ -120,11 +120,11 @@ Vite uses multiple TypeScript config files. Update **both** files below.
 }
 ```
 
-### Update vite.config.ts
+#### Update vite.config.ts
 
 Install Node types (required for path resolution):
 
-```bash
+```npm
 npm install -D @types/node
 ```
 
@@ -137,20 +137,20 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-	plugins: [react(), tailwindcss()],
-	resolve: {
-		alias: {
-			"@": path.resolve(__dirname, "./src")
-		}
-	}
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src")
+    }
+  }
 });
 ```
 
-### Run the CLI
+### Initialize TailGrids
 
-Initialize TailGrids:
+Run in the CLI:
 
-```bash
+```npm
 npx @tailgrids/cli init
 ```
 
@@ -160,7 +160,7 @@ Select your preferred theme when prompted.
 
 Add a component:
 
-```bash
+```npm
 npx @tailgrids/cli add button
 ```
 
@@ -170,11 +170,11 @@ Use it in your app:
 import { Button } from "@/components/core/button";
 
 function App() {
-	return (
-		<div className="flex min-h-svh items-center justify-center">
-			<Button>Click me</Button>
-		</div>
-	);
+  return (
+    <div className="flex min-h-svh items-center justify-center">
+      <Button>Click me</Button>
+    </div>
+  );
 }
 
 export default App;
@@ -184,6 +184,6 @@ export default App;
 
 ## Notes
 
-* The TailGrids CLI workflow is the same across all React-based frameworks.
-* Path aliases (`@/`) are recommended but optional. If you skip them, update imports accordingly.
-* More framework-specific guides (Astro, TanStack, Remix) can follow the same structure.
+- The TailGrids CLI workflow is the same across all React-based frameworks.
+- Path aliases (`@/`) are recommended but optional. If you skip them, update imports accordingly.
+- More framework-specific guides (Astro, TanStack, Remix) can follow the same structure.

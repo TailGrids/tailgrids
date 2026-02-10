@@ -5,7 +5,7 @@
     "description": "Fully accessible accordion component with multiple style variants",
     "type": "component",
     "files": [{ "type": "core", "path": "/core/accordion.tsx" }],
-    "dependencies": ["class-variance-authority"]
+    "dependencies": ["class-variance-authority", "@tailgrids/icons"]
   },
   {
     "id": "alert",
@@ -13,7 +13,7 @@
     "description": "Dismissible alert component with multiple variants, and action buttons.",
     "type": "component",
     "files": [{ "type": "core", "path": "/core/alert.tsx" }],
-    "dependencies": ["class-variance-authority"],
+    "dependencies": ["class-variance-authority", "@tailgrids/icons"],
     "requires": ["button"]
   },
   {
@@ -37,7 +37,8 @@
     "name": "Breadcrumbs",
     "description": "Breadcrumbs component with multiple variants and support for icons.",
     "type": "component",
-    "files": [{ "type": "core", "path": "/core/breadcrumbs.tsx" }]
+    "files": [{ "type": "core", "path": "/core/breadcrumbs.tsx" }],
+    "dependencies": ["@tailgrids/icons"]
   },
   {
     "id": "button",
@@ -120,8 +121,8 @@
     "description": "A component for navigating between pages.",
     "type": "component",
     "files": [{ "type": "core", "path": "/core/pagination.tsx" }],
-    "dependencies": ["class-variance-authority"],
-    "requires": ["button"]
+    "requires": ["button"],
+    "dependencies": ["class-variance-authority", "@tailgrids/icons"]
   },
   {
     "id": "popover",
@@ -152,6 +153,14 @@
     "description": "A component to indicate a loading state.",
     "type": "component",
     "files": [{ "type": "core", "path": "/core/skeleton.tsx" }]
+  },
+  {
+    "id": "slider",
+    "name": "Slider",
+    "description": "A slider component to select a value from a range.",
+    "type": "component",
+    "files": [{ "type": "core", "path": "/core/slider.tsx" }],
+    "dependencies": ["react-aria", "react-stately"]
   },
   {
     "id": "social-button",
@@ -212,7 +221,7 @@
     "description": "A toast component for displaying notifications.",
     "type": "component",
     "files": [{ "type": "core", "path": "/core/toast.tsx" }],
-    "dependencies": ["class-variance-authority"],
+    "dependencies": ["class-variance-authority", "@tailgrids/icons"],
     "requires": ["avatar", "button", "link"]
   },
   {
