@@ -30,7 +30,7 @@ export function PageHeaderButtons() {
     : "Component";
 
   const getPrompt = (base?: string) => {
-    const url = `https://tailgrids.com${pathname}`;
+    const url = `https://tailgrids.com/docs${pathname}`;
     const prompt = `I need help understanding the ${componentName} component from the TailGrids library. Here is the link: ${url}\n\nPlease explain the available props, styling options, and provide usage examples.`;
     if (base) {
       return `${base}${encodeURIComponent(prompt)}`;
