@@ -3,17 +3,145 @@ title: React Slider Component
 description: A React slider component used to let user select a value from a range.
 ---
 
-import SliderPreview from "@/components/preview/slider/slider-preview";
+import SliderDefaultPreview from "@/components/preview/slider/slider-default-preview";
+import SliderDisabledPreview from "@/components/preview/slider/slider-disabled-preview";
+import SliderRangePreview from "@/components/preview/slider/slider-range-preview";
+import SliderStepPreview from "@/components/preview/slider/slider-step-preview";
+import SliderValuePreview from "@/components/preview/slider/slider-value-preview";
 import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Slider
 
-React Slider components are used to let user select a value from a range.
+React Slider components are used to let user select a value from a range. Providing a smooth and interactive way to input numerical values.
 
 <ComponentPreview
   codeSnippet={getFileContent(
-    "/src/components/preview/slider/slider-preview.tsx"
+    "/src/components/preview/slider/slider-default-preview.tsx"
   )}
 >
-  <SliderPreview />
+  <SliderDefaultPreview />
 </ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+```npm
+npx @tailgrids/cli add slider
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the required dependencies:
+
+```npm
+npm i react-aria react-stately
+```
+
+Copy and paste the following component code into your project.
+
+<CodeBlockCard
+snippet={getFileContent("/src/registry/core/slider.tsx")}
+lang="tsx"
+  fileName="slider.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the component and pass the required props.
+
+```tsx
+import { Slider } from "@/registry/core/slider";
+
+export const SliderExample = () => (
+  <Slider defaultValue={[50]} maxValue={100} minValue={0} />
+);
+```
+
+## Examples
+
+### Default
+
+Basic single-thumb slider.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/slider/slider-default-preview.tsx"
+  )}
+>
+  <SliderDefaultPreview />
+</ComponentPreview>
+
+### Range
+
+Slider with two thumbs for selecting a range of values.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/slider/slider-range-preview.tsx"
+  )}
+>
+  <SliderRangePreview />
+</ComponentPreview>
+
+### Step
+
+Slider with a custom step value.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/slider/slider-step-preview.tsx"
+  )}
+>
+  <SliderStepPreview />
+</ComponentPreview>
+
+### Value Display
+
+Sliders with text and tooltip value displays using the `thumbValueType` prop.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/slider/slider-value-preview.tsx"
+  )}
+>
+  <SliderValuePreview />
+</ComponentPreview>
+
+### Disabled
+
+The disabled state of the slider.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/slider/slider-disabled-preview.tsx"
+  )}
+>
+  <SliderDisabledPreview />
+</ComponentPreview>
+
+## API Reference
+
+### Slider
+
+| Prop             | Type                                  | Default    | Description                                              |
+| :--------------- | :------------------------------------ | :--------- | :------------------------------------------------------- |
+| `defaultValue`   | `number \| number[]`                  | -          | The initial value of the slider.                         |
+| `minValue`       | `number`                              | `0`        | The smallest value allowed.                              |
+| `maxValue`       | `number`                              | `100`      | The largest value allowed.                               |
+| `step`           | `number`                              | `1`        | The increment between allowed values.                    |
+| `isDisabled`     | `boolean`                             | `false`    | Whether the slider is disabled.                          |
+| `thumbValueType` | `'hidden' \| 'text' \| 'tooltip'`     | `'hidden'` | How to display the current value next to the thumb.      |
+| `onChange`       | `(value: number \| number[]) => void` | -          | Handler that is called when the value changes.           |
+| `className`      | `string`                              | -          | Additional CSS classes to apply to the slider container. |
+
+## Accessibility
+
+- **Keyboard Support**: Full keyboard support for navigating and adjusting the slider.
+- **ARIA Labels**: Uses React Aria's `useSlider` and `useSliderThumb` to provide appropriate ARIA attributes for screen readers.
+- **Focus Management**: Proper focus ring and focus management for thumbs.
