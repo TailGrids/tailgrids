@@ -20,7 +20,7 @@ const wrapperStyles = cva(
 );
 
 const iconWrapperStyles = cva(
-  "flex size-7 items-center justify-center rounded-lg [&>svg]:size-4 text-background-100",
+  "flex size-7 items-center justify-center rounded-lg [&>svg]:size-4 text-white-100",
   {
     variants: {
       variant: {
@@ -73,7 +73,7 @@ const closeButtonStyles = cva(
   }
 );
 
-const primaryButtonStyles = cva("text-background-100", {
+const primaryButtonStyles = cva("text-white-100", {
   variants: {
     variant: {
       success:
