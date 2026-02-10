@@ -1,5 +1,14 @@
 import { SocialButton } from "@/registry/core/social-button";
 
+const SocialButtonCustomPreview = () => {
+  return (
+    <SocialButton className="max-w-xs border-primary-500 text-primary-500 hover:bg-primary-50">
+      <GoogleIcon />
+      Continue with Google
+    </SocialButton>
+  );
+};
+
 function GoogleIcon() {
   return (
     <svg className="size-5" viewBox="0 0 24 24">
@@ -22,14 +31,5 @@ function GoogleIcon() {
     </svg>
   );
 }
-
-const SocialButtonCustomPreview = () => {
-  return (
-    <SocialButton className="max-w-xs border-primary-500 text-primary-500 hover:bg-primary-50">
-      <GoogleIcon />
-      Continue with Google
-    </SocialButton>
-  );
-};
 
 export default SocialButtonCustomPreview;

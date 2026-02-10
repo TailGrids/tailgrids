@@ -2,7 +2,7 @@ import { Input } from "@/registry/core/input";
 
 export default function InputStatesPreview() {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="max-w-sm w-full mx-auto flex flex-col gap-4">
       <Input label="Email" state="success" placeholder="email@example.com" />
 
       <Input

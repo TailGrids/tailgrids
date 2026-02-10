@@ -51,7 +51,7 @@ export function RadioInput({
     <label
       htmlFor={id}
       className={cn(
-        "group flex cursor-pointer items-center gap-3 select-none aria-disabled:pointer-events-none w-full",
+        "group flex cursor-pointer items-center gap-3 select-none aria-disabled:pointer-events-none",
         className
       )}
       aria-disabled={disabled}

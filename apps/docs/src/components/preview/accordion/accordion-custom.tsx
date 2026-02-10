@@ -28,13 +28,13 @@ const items = [
 
 export function AccordionCustom() {
   return (
-    <AccordionRoot className="border border-neutral-200 rounded-xl gap-0">
+    <AccordionRoot className="border border-(--border-color-base-300) rounded-xl gap-0">
       {items.map(item => (
         <AccordionItem
           key={item.id}
-          className="border-0 border-b last-of-type:border-b-0 rounded-none"
+          className="border-0 border-b border-b-(--border-color-base-300) last-of-type:border-b-0 rounded-none"
         >
-          <AccordionTrigger className="data-[state=open]:text-neutral-800">
+          <AccordionTrigger className="data-[state=open]:text-title-50">
             {item.title}
           </AccordionTrigger>
           <AccordionContent>{item.content}</AccordionContent>

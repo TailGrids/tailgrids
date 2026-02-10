@@ -61,32 +61,30 @@ export default function TableOrderHistoryPreview() {
     <div className="w-full">
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h3 className="text-lg font-semibold text-neutral-900">
-            Order History
-          </h3>
-          <p className="text-sm text-neutral-500 mt-1">
+          <h3 className="text-lg font-semibold text-title-50">Order History</h3>
+          <p className="text-sm text-text-100 mt-1">
             Review all your past purchases in one convenient place.
           </p>
         </div>
-        <button className="p-2 hover:bg-neutral-100 rounded-full">
-          <MoreVertical className="h-5 w-5 text-neutral-500" />
+        <button className="p-2 hover:bg-background-soft-100 rounded-full">
+          <MoreVertical className="h-5 w-5 text-text-100" />
         </button>
       </div>
 
       <TableRoot fullBleed className="mb-1">
         <TableHeader>
-          <TableRow className="border-b border-neutral-200">
+          <TableRow className="border-b border-(--border-color-base-100)">
             <TableHead>Order ID</TableHead>
             <TableHead>Customer Name</TableHead>
             <TableHead>Product</TableHead>
             <TableHead>Amount</TableHead>
             <TableHead>
-              <div className="flex items-center gap-1 cursor-pointer hover:text-neutral-900">
+              <div className="flex items-center gap-1 cursor-pointer hover:text-title-50">
                 Status <ArrowUpDown className="h-3 w-3" />
               </div>
             </TableHead>
             <TableHead>
-              <div className="flex items-center gap-1 cursor-pointer whitespace-nowrap hover:text-neutral-900">
+              <div className="flex items-center gap-1 cursor-pointer whitespace-nowrap hover:text-title-50">
                 Order Date <ArrowUpDown className="h-3 w-3" />
               </div>
             </TableHead>
@@ -96,16 +94,16 @@ export default function TableOrderHistoryPreview() {
         <TableBody>
           {DATA.map(item => (
             <TableRow key={item.id} className="text-sm">
-              <TableCell className="font-medium text-[#1F2937] whitespace-nowrap">
+              <TableCell className="font-medium text-title-50 whitespace-nowrap">
                 {item.id}
               </TableCell>
-              <TableCell className="whitespace-nowrap text-[#6B7280]">
+              <TableCell className="whitespace-nowrap text-text-100">
                 {item.customer}
               </TableCell>
-              <TableCell className="text-[#374151] whitespace-nowrap">
+              <TableCell className="text-text-50 whitespace-nowrap">
                 {item.product}
               </TableCell>
-              <TableCell className="font-semibold text-[#6B7280] -tracking-[0.2px] whitespace-nowrap">
+              <TableCell className="font-semibold text-text-100 -tracking-[0.2px] whitespace-nowrap">
                 {item.amount}
               </TableCell>
 
@@ -122,10 +120,10 @@ export default function TableOrderHistoryPreview() {
                     <span
                       className={`size-1.5 rounded-full ${
                         item.status === "Shipped"
-                          ? "bg-green-500"
+                          ? "bg-success-500"
                           : item.status === "Cancelled"
-                            ? "bg-red-500"
-                            : "bg-orange-500"
+                            ? "bg-error-500"
+                            : "bg-warning-500"
                       }`}
                     />
                   }

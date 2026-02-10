@@ -17,7 +17,7 @@ export default function ListWithInputsPreview() {
       <List className="max-w-70">
         {features.map((feature, index) => (
           <li key={index}>
-            <Checkbox label={feature} />
+            <Checkbox label={feature} className="w-full" />
           </li>
         ))}
       </List>
@@ -26,7 +26,11 @@ export default function ListWithInputsPreview() {
       <List className="max-w-70">
         {features.map((feature, index) => (
           <li key={index}>
-            <RadioInput name="example-list" label={feature} />
+            <RadioInput
+              name="example-list"
+              label={feature}
+              className="w-full"
+            />
           </li>
         ))}
       </List>

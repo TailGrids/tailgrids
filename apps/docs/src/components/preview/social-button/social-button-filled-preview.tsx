@@ -1,5 +1,28 @@
 import { SocialButton } from "@/registry/core/social-button";
 
+const SocialButtonFilledPreview = () => {
+  return (
+    <div className="flex flex-col gap-3 w-full max-w-84">
+      <SocialButton className="bg-background-soft-50 border-tg-border-1 hover:bg-background-soft-400">
+        <GoogleIcon />
+        Sign in with Google
+      </SocialButton>
+      <SocialButton className="bg-background-soft-50 border-tg-border-1 hover:bg-background-soft-400">
+        <FacebookIcon />
+        Sign in with Facebook
+      </SocialButton>
+      <SocialButton className="bg-background-soft-50 border-tg-border-1 hover:bg-background-soft-400">
+        <XIcon />
+        Sign in with X
+      </SocialButton>
+      <SocialButton className="bg-background-soft-50 border-tg-border-1 hover:bg-background-soft-400">
+        <AppleIcon />
+        Sign in with Apple
+      </SocialButton>
+    </div>
+  );
+};
+
 function GoogleIcon() {
   return (
     <svg className="size-5" viewBox="0 0 24 24">
@@ -46,28 +69,5 @@ function AppleIcon() {
     </svg>
   );
 }
-
-const SocialButtonFilledPreview = () => {
-  return (
-    <div className="flex flex-col gap-3 w-full max-w-84">
-      <SocialButton className="bg-neutral-50 border-neutral-100 hover:bg-neutral-100">
-        <GoogleIcon />
-        Sign in with Google
-      </SocialButton>
-      <SocialButton className="bg-neutral-50 border-neutral-100 hover:bg-neutral-100">
-        <FacebookIcon />
-        Sign in with Facebook
-      </SocialButton>
-      <SocialButton className="bg-neutral-50 border-neutral-100 hover:bg-neutral-100">
-        <XIcon />
-        Sign in with X
-      </SocialButton>
-      <SocialButton className="bg-neutral-50 border-neutral-100 hover:bg-neutral-100">
-        <AppleIcon />
-        Sign in with Apple
-      </SocialButton>
-    </div>
-  );
-};
 
 export default SocialButtonFilledPreview;

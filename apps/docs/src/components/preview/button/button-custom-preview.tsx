@@ -9,7 +9,7 @@ export default function ButtonCustomPreview() {
         Saving...
       </Button>
 
-      <Button className="bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500/20 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+      <Button className="bg-badge-cyan-icon-color hover:bg-badge-cyan-text focus:ring-badge-cyan-background text-white-100 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
         Custom Design
       </Button>
     </div>

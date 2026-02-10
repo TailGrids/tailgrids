@@ -2,7 +2,7 @@ import { Skeleton } from "@/registry/core/skeleton";
 
 export default function SkeletonBlogPreview() {
   return (
-    <div className="w-full max-w-sm overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
+    <div className="w-full max-w-sm overflow-hidden rounded-lg border border-tg-border-1">
       <Skeleton className="h-48 w-full rounded-none" />
       <div className="space-y-3 p-4">
         <Skeleton className="h-6 w-3/4" />

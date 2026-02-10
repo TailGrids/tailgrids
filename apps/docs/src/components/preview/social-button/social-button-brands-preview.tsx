@@ -1,5 +1,28 @@
 import { SocialButton } from "@/registry/core/social-button";
 
+const SocialButtonBrandsPreview = () => {
+  return (
+    <div className="flex flex-col gap-3 w-full max-w-84">
+      <SocialButton>
+        <GoogleIcon />
+        Sign in with Google
+      </SocialButton>
+      <SocialButton>
+        <FacebookIcon />
+        Sign in with Facebook
+      </SocialButton>
+      <SocialButton>
+        <XIcon />
+        Sign in with X
+      </SocialButton>
+      <SocialButton>
+        <AppleIcon />
+        Sign in with Apple
+      </SocialButton>
+    </div>
+  );
+};
+
 function GoogleIcon() {
   return (
     <svg className="size-5" viewBox="0 0 24 24">
@@ -46,28 +69,5 @@ function AppleIcon() {
     </svg>
   );
 }
-
-const SocialButtonBrandsPreview = () => {
-  return (
-    <div className="flex flex-col gap-3 w-full max-w-84">
-      <SocialButton>
-        <GoogleIcon />
-        Sign in with Google
-      </SocialButton>
-      <SocialButton>
-        <FacebookIcon />
-        Sign in with Facebook
-      </SocialButton>
-      <SocialButton>
-        <XIcon />
-        Sign in with X
-      </SocialButton>
-      <SocialButton>
-        <AppleIcon />
-        Sign in with Apple
-      </SocialButton>
-    </div>
-  );
-};
 
 export default SocialButtonBrandsPreview;
