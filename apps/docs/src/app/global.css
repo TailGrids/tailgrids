@@ -2,7 +2,6 @@
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
 
-/* Theme imports - add new themes here */
 @import "./themes/light.css";
 @import "./themes/dark.css";
 
@@ -15,7 +14,7 @@
   --font-sans: var(--font-dm-sans);
 
   /* 
-   * Theme colors are defined in theme files (themes/light.css, etc.)
+   * Theme colors are defined in theme files
    * and mapped here to create Tailwind utilities.
    * 
    * The actual values are in the theme files, prefixed with --theme-
@@ -118,6 +117,9 @@
   --color-button-outline-disabled-text: var(
     --theme-button-outline-disabled-text
   );
+  --color-button-outline-disabled-border: var(
+    --theme-button-outline-disabled-border
+  );
 
   /* Disabled */
   --color-button-disabled-background: var(--theme-button-disabled-background);
@@ -186,7 +188,24 @@
   --color-button-ghost-hover-background: var(
     --theme-button-ghost-hover-background
   );
-  --color-button-ghost-focus-ring: var(--theme-button-ghost-focus-ring);
+
+  /* Button Group Primary */
+  --color-button-group-primary-background: var(
+    --theme-button-group-primary-background
+  );
+  --color-button-group-primary-hover-background: var(
+    --theme-button-group-primary-hover-background
+  );
+  --color-button-group-primary-text: var(--theme-button-group-primary-text);
+  --color-button-group-primary-hover-text: var(
+    --theme-button-group-primary-hover-text
+  );
+
+  /* Button Group Secondary */
+  --color-button-group-secondary-background: var(
+    --theme-button-group-secondary-background
+  );
+  --color-button-group-secondary-text: var(--theme-button-group-secondary-text);
 
   /* ======== Badge Color =========*/
 
@@ -408,6 +427,9 @@
   --color-datepicker-background: var(--theme-datepicker-background);
   --color-datepicker-selected-background: var(
     --theme-datepicker-selected-background
+  );
+  --color-datepicker-selected-hover-background: var(
+    --theme-datepicker-selected-hover-background
   );
 
   /* ======== Dropdown Color =========*/

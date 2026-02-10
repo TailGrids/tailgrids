@@ -3,10 +3,9 @@
 @import "tailwindcss";
 @plugin '@tailwindcss/forms';
 
-@theme {
+@theme inline {
   --font-sans: "DM Sans", sans-serif;
 
-  /* Primary */
   --color-primary-50: #eff3ff;
   --color-primary-100: #dae2ff;
   --color-primary-200: #becdff;
@@ -19,11 +18,23 @@
   --color-primary-900: #1c228c;
   --color-primary-950: #161755;
 
+  --color-primary-text: white;
+  --color-neutral-brand-color: #465fff;
+
   /* Text Color */
+  --color-text-50: #374151;
+  --color-text-100: #6b7280;
+  --color-text-200: #9ca3af;
+  --color-text-300: #e5e7eb;
+
+  /* Context Color */
+  --color-error-500: #ef4444;
+  --color-success-500: #22c55e;
+  --color-warning-500: #eab308;
+  --color-info-500: #0ea5e9;
+
+  /* Title */
   --color-title-50: #1f2937;
-  --color-text-color: #374151;
-  --color-text-secondary: #6b7280;
-  --color-text-tertiary: #9ca3af;
 
   /* White */
   --color-white-100: #ffffff;
@@ -35,12 +46,14 @@
   /* Border Color */
   --border-color-base-50: #f3f4f6;
   --border-color-base-100: #e5e7eb;
-  --border-color-base-200: #d1d5db;
-  --border-color-base-300: #9ca3af;
+  --border-color-base-200: #e5e7eb;
+  --border-color-base-300: #d1d5db;
 
-  /* Foreground Color */
+  /* Foreground Colors */
   --color-foreground-50: #030712;
   --color-foreground-100: #111827;
+
+  /* Gray */
   --color-foreground-soft-50: #111827;
   --color-foreground-soft-100: #111827;
   --color-foreground-soft-200: #1f2937;
@@ -48,15 +61,18 @@
   --color-foreground-soft-400: #1f2937;
   --color-foreground-soft-500: #374151;
 
-  /* Background Color */
+  /* Background Colors */
   --color-background-50: #ffffff;
   --color-background-100: #ffffff;
+
+  /* Gray colors */
   --color-background-soft-50: #f9fafb;
   --color-background-soft-100: #f3f4f6;
   --color-background-soft-200: #f3f4f6;
   --color-background-soft-300: #f3f4f6;
   --color-background-soft-400: #e5e7eb;
   --color-background-soft-500: #d1d5db;
+
   --color-background-success-600: #16a34a;
 
   /* ======== Button Color =========*/
@@ -74,8 +90,9 @@
   --color-button-outline-focus-ring: rgba(152, 162, 179, 0.14);
   --color-button-outline-text: #1f2937;
   --color-button-outline-hover-text: #111827;
-  --color-button-outline-disabled-background: #f3f4f6;
+  --color-button-outline-disabled-background: #ffffff;
   --color-button-outline-disabled-text: #9ca3af;
+  --color-button-outline-disabled-border: #f3f4f6;
 
   /* Disable */
   --color-button-disabled-background: #f3f4f6;
@@ -118,7 +135,6 @@
   --color-button-ghost-text: #9ca3af;
   --color-button-ghost-hover-text: #6b7280;
   --color-button-ghost-hover-background: #f3f4f6;
-  --color-button-ghost-focus-ring: #5e84fc;
 
   /* Button Group Primary */
   --color-button-group-primary-background: #ffffff;
@@ -308,7 +324,8 @@
 
   /* ======== Datepicker Color =========*/
   --color-datepicker-background: #ffffff;
-  --color-datepicker-selected-background: #f9fafb;
+  --color-datepicker-selected-background: #3758f9;
+  --color-datepicker-selected-hover-background: #f9fafb;
 
   /* ======== Dropdowns Color =========*/
   --color-dropdown-background: #ffffff;
@@ -353,6 +370,7 @@
 
   /* ======== Tooltip Color =========*/
   --color-tooltip-text: #374151;
+  --color-tooltip-border: #e5e7eb;
 
   /* ======== Popovers Color =========*/
   --color-popover-title-background: #f3f4f6;

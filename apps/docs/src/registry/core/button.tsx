@@ -39,7 +39,7 @@ export const buttonStyles = cva(
         appearance: "outline",
         // Disabled styles
         className:
-          "disabled:bg-button-outline-disabled-background border disabled:border-button-disabled-border disabled:text-button-outline-disabled-text"
+          "disabled:bg-button-outline-disabled-background border disabled:border-button-outline-disabled-border disabled:text-button-outline-disabled-text"
       },
       {
         variant: "primary",
@@ -80,7 +80,7 @@ export const buttonStyles = cva(
       {
         variant: "ghost",
         className:
-          "focus:ring-button-ghost-focus-ring text-button-ghost-text hover:bg-button-ghost-hover-background hover:text-button-ghost-hover-text focus:ring-2"
+          "focus:ring-primary-400 text-button-ghost-text hover:bg-button-ghost-hover-background hover:text-button-ghost-hover-text focus:ring-2"
       },
       {
         iconOnly: true,

@@ -124,13 +124,13 @@ export function RangeDatePicker({
             <button
               key={index}
               className={cn(
-                "grid place-items-center size-12 font-medium text-title-50 hover:bg-datepicker-selected-background",
+                "grid place-items-center size-12 font-medium text-title-50 hover:bg-datepicker-selected-hover-background",
                 {
                   "pointer-events-none text-text-200": !isCurrentMonth,
                   "rounded-l-full": isStart,
                   "rounded-r-full": isEnd,
                   "bg-primary-500! text-white-100": isStart || isEnd,
-                  "bg-datepicker-selected-background text-title-50":
+                  "bg-datepicker-selected-hover-background text-title-50":
                     isInRange && isCurrentMonth,
                   "rounded-full": !isStart && !isEnd && !isInRange
                 }

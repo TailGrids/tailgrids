@@ -55,7 +55,7 @@ export function ComponentPreview({
         {activeTab === "preview" && (
           <div
             className={cn(
-              "min-h-100 flex flex-col items-center justify-center rounded-[20px] border border-gray-200 dark:border-gray-800 bg-background-50 not-prose",
+              "min-h-100 flex flex-col items-center justify-center rounded-[20px] border border-gray-200 dark:border-gray-800 bg-background-soft-50 not-prose",
               noPaddingOnPreviewForMobile
                 ? "p-0 sm:px-15 sm:py-10"
                 : "px-15 py-10"

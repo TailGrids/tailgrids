@@ -16,9 +16,8 @@
   --theme-primary-900: #1c228c;
   --theme-primary-950: #161755;
 
-  --theme-neutral-brand-color: #465fff;
-
   --theme-primary-text: white;
+  --theme-neutral-brand-color: #465fff;
 
   /* Text Color */
   --theme-text-50: #374151;
@@ -89,8 +88,9 @@
   --theme-button-outline-focus-ring: rgba(152, 162, 179, 0.14);
   --theme-button-outline-text: #1f2937;
   --theme-button-outline-hover-text: #111827;
-  --theme-button-outline-disabled-background: #f3f4f6;
+  --theme-button-outline-disabled-background: #ffffff;
   --theme-button-outline-disabled-text: #9ca3af;
+  --theme-button-outline-disabled-border: #f3f4f6;
 
   /* Disable */
   --theme-button-disabled-background: #f3f4f6;
@@ -133,7 +133,16 @@
   --theme-button-ghost-text: #9ca3af;
   --theme-button-ghost-hover-text: #6b7280;
   --theme-button-ghost-hover-background: #f3f4f6;
-  --theme-button-ghost-focus-ring: #5e84fc;
+
+  /* Button Group Primary */
+  --theme-button-group-primary-background: #ffffff;
+  --theme-button-group-primary-hover-background: #3758f9;
+  --theme-button-group-primary-text: #3758f9;
+  --theme-button-group-primary-hover-text: #ffffff;
+
+  /* Button Group Secondary */
+  --theme-button-group-secondary-background: #ffffff;
+  --theme-button-group-secondary-text: #374151;
 
   /* ======== Badge Color =========*/
 

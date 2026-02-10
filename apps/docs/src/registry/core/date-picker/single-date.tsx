@@ -154,11 +154,11 @@ export function DatePicker({
                       "size-11 rounded-full text-sm font-medium transition-all",
                       {
                         "text-text-200 cursor-not-allowed": !inMonth,
-                        "bg-primary-600 text-white-100 hover:bg-primary-700":
+                        "bg-datepicker-selected-background text-white-100":
                           selected,
-                        "bg-primary-500 text-white-100 hover:bg-primary-600":
+                        "text-title-50 bg-datepicker-selected-hover-background":
                           today,
-                        "text-title-50 hover:bg-datepicker-selected-background":
+                        "text-title-50 hover:bg-datepicker-selected-hover-background":
                           inMonth && !selected && !today
                       }
                     )}
