@@ -21,7 +21,6 @@ export default function ToastAvatarPreview() {
       image="https://randomuser.me/api/portraits/men/40.jpg"
       status="online"
       time="Just now"
-      dismiss={() => setShow(false)}
     />
   );
 }
