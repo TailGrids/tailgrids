@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { useId, type ComponentProps } from "react";
 
 const radioStyles = cva(
-  "peer-focus:border-primary-300 group-hover:border-primary-500 peer-checked:border-primary-500 peer-focus:ring-primary-100 peer-checked:bg-primary-500 grid place-items-center rounded-full border border-base-300 transition peer-focus:ring-4 peer-disabled:bg-transparent peer-disabled:border-base-300",
+  "bg-checkbox-background peer-focus:border-primary-300 group-hover:border-checkbox-checked-border peer-checked:border-checkbox-checked-border! peer-focus:ring-checkbox-checked-border/20 peer-checked:bg-checkbox-checked-background grid place-items-center rounded-full border border-base-300 transition peer-focus:ring-4 peer-disabled:bg-transparent peer-disabled:border-base-300!",
   {
     variants: {
       size: {

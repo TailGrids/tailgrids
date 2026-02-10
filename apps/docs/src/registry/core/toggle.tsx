@@ -32,7 +32,7 @@ export function Toggle({
 
         <div
           className={cn(
-            "peer-checked:bg-primary-500 peer-focus:ring-primary-500/20 h-5 w-9 rounded-full bg-toggle-default-background peer-focus:ring-4 peer-disabled:bg-toggle-disabled-background",
+            "peer-checked:bg-toggle-active-background peer-focus:ring-toggle-active-background/20 h-5 w-9 rounded-full bg-toggle-default-background peer-focus:ring-4 peer-disabled:bg-toggle-disabled-background",
             {
               "h-5 w-9": size === "sm",
               "h-6 w-11": size === "md"

@@ -91,8 +91,8 @@ function TimeColumn({
           className={cn(
             "grid size-11.5 shrink-0 place-items-center rounded-lg text-sm transition",
             selected === value
-              ? "bg-blue-600 text-white-100"
-              : "text-title-50 hover:bg-datepicker-selected-background"
+              ? "bg-datepicker-selected-background text-white-100"
+              : "text-title-50 hover:bg-datepicker-selected-hover-background"
           )}
         >
           {value}

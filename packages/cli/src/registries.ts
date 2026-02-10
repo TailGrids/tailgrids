@@ -296,15 +296,15 @@ export const REGISTRIES: Registry[] = [
       },
       {
         type: "core",
-        path: "/core/spinner/default.svg"
+        path: "/core/spinner/default.tsx"
       },
       {
         type: "core",
-        path: "/core/spinner/dotted.svg"
+        path: "/core/spinner/dotted.tsx"
       },
       {
         type: "core",
-        path: "/core/spinner/dotted-round.svg"
+        path: "/core/spinner/dotted-round.tsx"
       }
     ]
   },

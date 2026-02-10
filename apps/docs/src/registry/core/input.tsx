@@ -8,7 +8,7 @@ const inputStyles = cva(
     variants: {
       state: {
         default:
-          "focus:border-primary-300 focus:ring-primary-300/20 border-base-300",
+          "focus:border-input-primary-focus-border focus:ring-input-primary-focus-border/20 border-base-300",
         error:
           "border-input-error-focus-border focus:ring-input-error-focus-border/20",
         success:

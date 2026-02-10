@@ -182,10 +182,9 @@ function PaginationButton({
       aria-label={`Go to page ${page}`}
       aria-current={isActive ? "page" : undefined}
       className={cn(
-        "size-10 shrink-0 rounded-lg",
-        isActive ? "bg-background-soft-100" : "hover:bg-background-soft-100",
+        "size-10 shrink-0 rounded-lg aria-[current=page]:bg-background-soft-100 hover:bg-background-soft-100",
         paginationVariant === "compact" &&
-          "rounded-none border-y border-base-100"
+          "rounded-none border-y border-base-100 bg-background-50"
       )}
       onClick={() => onPageChange?.(page)}
     >
@@ -202,7 +201,8 @@ function PaginationEllipsis({
   return (
     <button
       className={cn("pointer-events-none size-10 shrink-0", {
-        "border-y border-base-100": paginationVariant === "compact"
+        "border-y border-base-100 bg-background-50":
+          paginationVariant === "compact"
       })}
     >
       ...

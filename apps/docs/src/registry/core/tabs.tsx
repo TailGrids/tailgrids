@@ -164,7 +164,7 @@ const tabTriggerStyles = cva(
       direction: {
         vertical: "",
         horizontal:
-          "hover:bg-primary-50 hover:text-primary-500 rounded-lg p-3 max-sm:w-full max-sm:justify-center"
+          "hover:bg-tab-secondary-active-background hover:text-neutral-brand-color rounded-lg p-3 max-sm:w-full max-sm:justify-center"
       }
     },
     compoundVariants: [
@@ -178,19 +178,19 @@ const tabTriggerStyles = cva(
         direction: "vertical",
         variant: "minimal",
         className:
-          "data-[active=true]:text-primary-500 data-[active=true]:border-primary-500 py-3.5 data-[active=true]:border-b-2"
+          "data-[active=true]:text-neutral-brand-color data-[active=true]:border-primary-500 py-3.5 data-[active=true]:border-b-2"
       },
       {
         direction: "horizontal",
         variant: "default",
         className:
-          "data-[active=true]:bg-primary-50 data-[active=true]:text-primary-500"
+          "data-[active=true]:bg-tab-secondary-active-background data-[active=true]:text-neutral-brand-color"
       },
       {
         direction: "horizontal",
         variant: "minimal",
         className:
-          "data-[active=true]:border-primary-500 data-[active=true]:text-primary-500 data-[active=true]:border"
+          "data-[active=true]:border-primary-500 data-[active=true]:text-neutral-brand-color data-[active=true]:border"
       }
     ]
   }

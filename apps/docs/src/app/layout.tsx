@@ -44,6 +44,7 @@ export default function Layout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${dmSans.variable} ${geistMono.variable}`}
       suppressHydrationWarning
+      data-theme="light"
     >
       <head>
         <script src="https://accounts.google.com/gsi/client" async defer />

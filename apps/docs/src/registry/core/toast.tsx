@@ -52,7 +52,7 @@ export function Toast({
   return (
     <div
       className={cn(
-        "flex max-w-112.5 min-w-96.25 items-center gap-3 rounded-lg border border-base-100 p-3 shadow-sm",
+        "flex max-w-112.5 min-w-96.25 items-center gap-3 rounded-lg border border-base-100 p-3 shadow-sm bg-background-100",
         typeof message === "object" && "relative items-start",
         hideIcon && "py-2"
       )}
@@ -129,7 +129,7 @@ export function AvatarToast({
   time
 }: AvatarToastProps) {
   return (
-    <div className="bg-neutral relative flex min-w-89.5 items-start gap-4 rounded-lg border border-base-100 p-5 shadow-sm">
+    <div className="bg-background-100 relative flex min-w-89.5 items-start gap-4 rounded-lg border border-base-100 p-5 shadow-sm">
       <Avatar
         src={image}
         alt={"Image of " + name}

@@ -1,5 +1,5 @@
 import { cn } from "@/utils/cn";
-import { ArrowRight } from "@tailgrids/icons";
+import { ChevronRight } from "@tailgrids/icons";
 
 type PropsType = {
   items: {
@@ -46,7 +46,7 @@ export function Breadcrumbs({ items, dividerType = "slash" }: PropsType) {
 function Divider({ type }: { type: PropsType["dividerType"] }) {
   switch (type) {
     case "chevron":
-      return <ArrowRight className="size-4" />;
+      return <ChevronRight className="size-4" />;
 
     case "dot":
       return <span className="size-1 rounded-full bg-text-200" />;
