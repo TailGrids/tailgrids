@@ -271,6 +271,19 @@ export const REGISTRIES: Registry[] = [
     ]
   },
   {
+    id: "slider",
+    name: "Slider",
+    description: "A slider component to select a value from a range.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/slider.tsx"
+      }
+    ],
+    dependencies: ["react-aria", "react-stately"]
+  },
+  {
     id: "social-button",
     name: "Social Button",
     description: "A button component for social media actions.",
