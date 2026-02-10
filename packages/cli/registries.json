@@ -121,8 +121,8 @@
     "description": "A component for navigating between pages.",
     "type": "component",
     "files": [{ "type": "core", "path": "/core/pagination.tsx" }],
-    "requires": ["button"],
-    "dependencies": ["class-variance-authority", "@tailgrids/icons"]
+    "dependencies": ["class-variance-authority", "@tailgrids/icons"],
+    "requires": ["button"]
   },
   {
     "id": "popover",
