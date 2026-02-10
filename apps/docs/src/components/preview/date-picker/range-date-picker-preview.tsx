@@ -21,14 +21,14 @@ export default function RangeDatePickerPreview() {
       : "None selected";
 
   return (
-    <div className="flex flex-col items-center gap-8 w-full p-4">
+    <div className="flex flex-col items-center gap-8 p-4">
       <div className="w-full">
         <RangeDatePicker
           defaultStartDate={startDate || undefined}
           defaultEndDate={endDate || undefined}
           onDateChange={handleDateChange}
         />
-        <p className="mt-4 text-sm text-neutral-600">
+        <p className="mt-4 text-sm text-title-50">
           Selected Range: {formattedRange}
         </p>
       </div>

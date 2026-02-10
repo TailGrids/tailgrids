@@ -1,110 +1,450 @@
-@import 'tailwindcss';
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+@import "tailwindcss";
 @plugin '@tailwindcss/forms';
 
-@theme {
-  --color-primary-50: #eff3ff;
-  --color-primary-100: #dae2ff;
-  --color-primary-200: #becdff;
-  --color-primary-300: #91aeff;
-  --color-primary-400: #5e84fc;
-  --color-primary-500: #3758f9;
-  --color-primary-600: #2237ee;
-  --color-primary-700: #1a25db;
-  --color-primary-800: #1c20b1;
-  --color-primary-900: #1c228c;
-  --color-primary-950: #161755;
+@theme inline {
+  --font-sans: "DM Sans", sans-serif;
 
-  /* Base */
-  --color-neutral: var(--color-gray-900);
-  --color-neutral-100: var(--color-gray-900);
-  --color-neutral-200: var(--color-gray-700);
-  --color-neutral-300: var(--color-gray-800);
-  --color-neutral-400: var(--color-gray-400);
-  --color-neutral-500: var(--color-gray-500);
-  --color-neutral-700: var(--color-gray-200);
-  --color-neutral-800: var(--color-gray-200);
-  --color-neutral-900: var(--color-gray-100);
+  /* Primary */
+  --theme-primary-50: #eff3ff;
+  --theme-primary-100: #dae2ff;
+  --theme-primary-200: #becdff;
+  --theme-primary-300: #91aeff;
+  --theme-primary-400: #5e84fc;
+  --theme-primary-500: #3758f9;
+  --theme-primary-600: #2237ee;
+  --theme-primary-700: #1a25db;
+  --theme-primary-800: #1c20b1;
+  --theme-primary-900: #1c228c;
+  --theme-primary-950: #161755;
+
+  --theme-primary-text: white;
+  --theme-neutral-brand-color: #7592ff;
+
+  /* Text Color */
+  --theme-title-50: #ffffffcc;
+  --theme-text-50: #9ca3af;
+  --theme-text-100: #9ca3af;
+  --theme-text-200: #6b7280;
+  --theme-text-300: #e5e7eb;
+
+  /* White */
+  --theme-white-100: #ffffff;
+  --theme-white-90: #ffffffcc;
+  --theme-white-80: #ffffffcc;
+  --theme-white-70: #ffffffb3;
+  --theme-white-60: #ffffff99;
+
+  /* Context Color */
+  --theme-error-500: #ef4444;
+  --theme-success-500: #22c55e;
+  --theme-warning-500: #eab308;
+  --theme-info-500: #0ea5e9;
+
+  /* Border Color */
+  --theme-border-color-base-50: #1f2937;
+  --theme-border-color-base-100: #111827;
+  --theme-border-color-base-200: #374151;
+  --theme-border-color-base-300: #1f2937;
+
+  /* foreground Color */
+  --theme-foreground-50: #ffffff;
+  --theme-foreground-100: #ffffff;
+  --theme-foreground-soft-50: #f9fafb;
+  --theme-foreground-soft-100: #f3f4f6;
+  --theme-foreground-soft-200: #f3f4f6;
+  --theme-foreground-soft-300: #f3f4f6;
+  --theme-foreground-soft-400: #e5e7eb;
+  --theme-foreground-soft-500: #d1d5db;
+
+  /* Background Color */
+  --theme-background-50: #030712;
+  --theme-background-100: #111827;
+  --theme-background-soft-50: #111827;
+  --theme-background-soft-100: #111827;
+  --theme-background-soft-200: #1f2937;
+  --theme-background-soft-300: #030712;
+  --theme-background-soft-400: #1f2937;
+  --theme-background-soft-500: #374151;
+
+  --theme-background-success-600: #16a34a;
+
+  /* ======== Button Color For Dark =========*/
+
+  /* Button Primary Color */
+  --theme-button-primary-background: #3758f9;
+  --theme-button-primary-hover-background: #2237ee;
+  --theme-button-primary-text: #ffffff;
+  --theme-button-primary-focus-ring: rgba(55, 88, 249, 0.2);
+
+  /* Outline Dark */
+  --theme-button-outline-background: #111827;
+  --theme-button-outline-hover-background: #111827;
+  --theme-button-outline-border: #1f2937;
+  --theme-button-outline-focus-ring: rgba(152, 162, 179, 0.14);
+  --theme-button-outline-text: #e5e7eb;
+  --theme-button-outline-hover-text: #f3f4f6;
+  --theme-button-outline-disabled-background: #1f2937;
+  --theme-button-outline-disabled-text: #4b5563;
+  --theme-button-outline-disabled-border: #1f2937;
+
+  /* Disabled */
+  --theme-button-disabled-background: #1f2937;
+  --theme-button-disabled-border: #1f2937;
+  --theme-button-disabled-text: #4b5563;
+
+  /* Error */
+  --theme-button-error-background: #dc2626;
+  --theme-button-error-hover-background: #b91c1c;
+  --theme-button-error-border: #ef4444;
+  --theme-button-error-text: #ffffff;
+  --theme-button-error-focus-ring: rgba(220, 38, 38, 0.2);
+
+  /* Error Outline Dark */
+  --theme-button-error-outline-background: #ef44440d;
+  --theme-button-error-outline-border: #7f1d1d;
+  --theme-button-error-outline-focus-border: #991b1b;
+  --theme-button-error-outline-hover-background: #ef444426;
+  --theme-button-error-outline-text: #ef4444;
+  --theme-button-error-outline-hover-text: #f87171;
+  --theme-button-error-outline-focus-ring: rgba(220, 38, 38, 0.2);
 
   /* Success */
-  --color-success: var(--color-green-600);
-  --color-success-hover: var(--color-green-700);
-  --color-success-foreground: var(--color-white);
-  --color-success-border: var(--color-green-900);
-  --color-success-outline: var(--color-green-900);
-  --color-success-muted: rgba(34, 197, 94, 0.05);
-  --color-success-muted-hover: rgba(34, 197, 94, 0.15);
-  --color-success-muted-foreground: var(--color-green-600);
-  --color-success-muted-body: var(--color-green-600);
-  --color-success-ring: var(--color-green-100);
+  --theme-button-success-background: #16a34a;
+  --theme-button-success-border: #22c55e;
+  --theme-button-success-hover-background: #15803d;
+  --theme-button-success-text: #ffffff;
+  --theme-button-success-focus-ring: rgba(22, 163, 74, 0.2);
 
-  /* Danger */
-  --color-danger: var(--color-red-600);
-  --color-danger-hover: var(--color-red-700);
-  --color-danger-foreground: var(--color-white);
-  --color-danger-border: var(--color-red-900);
-  --color-danger-outline: var(--color-red-900);
-  --color-danger-muted: rgba(239, 68, 68, 0.05);
-  --color-danger-muted-hover: rgba(239, 68, 68, 0.15);
-  --color-danger-muted-foreground: var(--color-red-500);
-  --color-danger-muted-body: var(--color-red-500);
-  --color-danger-ring: var(--color-red-100);
+  /* Success Outline Dark */
+  --theme-button-success-outline-background: #22c55e0d;
+  --theme-button-success-outline-border: #14532d;
+  --theme-button-success-outline-focus-border: #166534;
+  --theme-button-success-outline-hover-background: #22c55e26;
+  --theme-button-success-outline-text: #22c55e;
+  --theme-button-success-outline-hover-text: #4ade80;
+  --theme-button-success-outline-focus-ring: rgba(22, 163, 74, 0.2);
 
-  /* Info */
-  --color-info: var(--color-sky-600);
-  --color-info-hover: var(--color-sky-700);
-  --color-info-foreground: var(--color-white);
-  --color-info-border: var(--color-sky-900);
-  --color-info-muted: rgba(14, 165, 233, 0.05);
-  --color-info-muted-foreground: var(--color-sky-500);
-  --color-info-muted-body: var(--color-sky-500);
+  /* Ghost */
+  --theme-button-ghost-text: #6b7280;
+  --theme-button-ghost-hover-text: #d1d5db;
+  --theme-button-ghost-hover-background: #111827;
 
-  /* Warning */
-  --color-warning: var(--color-yellow-600);
-  --color-warning-hover: var(--color-yellow-700);
-  --color-warning-foreground: var(--color-white);
-  --color-warning-border: var(--color-yellow-900);
-  --color-warning-muted: rgba(234, 179, 8, 0.05);
-  --color-warning-muted-foreground: var(--color-yellow-500);
-  --color-warning-muted-body: var(--color-yellow-500);
+  /* Button Group Primary */
+  --theme-button-group-primary-background: #ffffff00;
+  --theme-button-group-primary-hover-background: #3758f9;
+  --theme-button-group-primary-text: #3758f9;
+  --theme-button-group-primary-hover-text: #ffffff;
 
-  /* Default */
-  --color-default: var(--color-gray-500);
-  --color-default-hover: var(--color-gray-700);
-  --color-default-foreground: var(--color-white);
-  --color-default-border: var(--color-gray-900);
-  --color-default-muted: rgba(107, 114, 128, 0.1);
-  --color-default-muted-foreground: var(--color-gray-300);
-  --color-default-muted-body: var(--color-gray-400);
+  /* Button Group Secondary */
+  --theme-button-group-secondary-background: #ffffff03;
+  --theme-button-group-secondary-text: #9ca3af;
 
-  /* More color */
-  --color-cyan-muted: rgba(6, 182, 212, 0.15);
-  --color-cyan-muted-body: var(--color-cyan-500);
+  /* ======== Badge Color For Dark =========*/
 
-  --color-sky-muted: rgb(14, 165, 233, 0.15);
-  --color-sky-muted-body: var(--color-sky-500);
+  /* Badge Neutral */
+  --theme-badge-neutral-background: #4b5563;
+  --theme-badge-neutral-text: #e5e7eb;
+  --theme-badge-neutral-icon-color: #e5e7eb;
 
-  --color-blue-muted: rgba(59, 130, 246, 0.15);
-  --color-blue-muted-body: var(--color-blue-500);
+  /* Badge Primary */
+  --theme-badge-primary-background: #3758f926;
+  --theme-badge-primary-text: #5e84fc;
+  --theme-badge-primary-icon-color: #5e84fc;
 
-  --color-violet-muted: rgba(139, 92, 246, 0.15);
-  --color-violet-muted-body: var(--color-violet-500);
+  /* Badge Error */
+  --theme-badge-error-background: #ef444426;
+  --theme-badge-error-text: #ef4444;
+  --theme-badge-error-icon-color: #f87171;
 
-  --color-purple-muted: rgba(168, 85, 247, 0.15);
-  --color-purple-muted-body: var(--color-purple-500);
+  /* Badge Warning */
+  --theme-badge-warning-background: #f59e0b26;
+  --theme-badge-warning-text: #f59e0b;
+  --theme-badge-warning-icon-color: #fbbf24;
 
-  --color-pink-muted: rgba(236, 72, 153, 0.15);
-  --color-pink-muted-body: var(--color-pink-500);
+  /* Badge Success */
+  --theme-badge-success-background: #22c55e26;
+  --theme-badge-success-text: #22c55e;
+  --theme-badge-success-icon-color: #4ade80;
 
-  --color-rose-muted: rgba(244, 63, 94, 0.15);
-  --color-rose-muted-body: var(--color-rose-500);
+  /* Badge Cyan */
+  --theme-badge-cyan-background: #06b6d426;
+  --theme-badge-cyan-text: #06b6d4;
+  --theme-badge-cyan-icon-color: #22d3ee;
 
-  --color-orange-muted: rgba(249, 115, 22, 0.15);
-  --color-orange-muted-body: var(--color-orange-500);
+  /* Badge Sky */
+  --theme-badge-sky-background: #0ea5e926;
+  --theme-badge-sky-text: #0ea5e9;
+  --theme-badge-sky-icon-color: #38bdf8;
 
-  --color-dropdown-bg: var(--color-gray-800);
-  --color-dropdown-foreground: rgba(255, 255, 255, 0.9);
-  --color-dropdown-item-hover: var(--color-gray-700);
-  --color-dropdown-separator: rgba(255, 255, 255, 0.1);
+  /* Badge Blue */
+  --theme-badge-blue-background: #3b82f626;
+  --theme-badge-blue-text: #3b82f6;
+  --theme-badge-blue-icon-color: #60a5fa;
+
+  /* Badge Violet */
+  --theme-badge-violet-background: #8b5cf626;
+  --theme-badge-violet-text: #8b5cf6;
+  --theme-badge-violet-icon-color: #a78bfa;
+
+  /* Badge Purple */
+  --theme-badge-purple-background: #a855f726;
+  --theme-badge-purple-text: #a855f7;
+  --theme-badge-purple-icon-color: #c084fc;
+
+  /* Badge Pink */
+  --theme-badge-pink-background: #ec489926;
+  --theme-badge-pink-text: #ec4899;
+  --theme-badge-pink-icon-color: #f472b6;
+
+  /* Badge Rose */
+  --theme-badge-rose-background: #f43f5e26;
+  --theme-badge-rose-text: #f43f5e;
+  --theme-badge-rose-icon-color: #fb7185;
+
+  /* Badge Orange */
+  --theme-badge-orange-background: #f9731626;
+  --theme-badge-orange-text: #f97316;
+  --theme-badge-orange-icon-color: #fb923c;
+
+  /* ======== Sidebar For Dark =========*/
+
+  /* Nav Item */
+  --theme-sidebar-nav-default-background: #030712;
+  --theme-sidebar-nav-hover-background: #ffffff00;
+  --theme-sidebar-nav-secondary-hover-background: #ffffff0d;
+  --theme-sidebar-nav-hover-text: #d1d5db;
+  --theme-sidebar-nav-active-text: #5e84fc;
+  --theme-sidebar-nav-active-background: #3758f91f;
+  --theme-sidebar-nav-focused-background: #3758f91f;
+  --theme-sidebar-nav-default-text: #d1d5db;
+  --theme-sidebar-nav-icon: #9ca3af;
+
+  /* Sidebar Badge */
+  --theme-sidebar-badge-background: #3758f9;
+  --theme-sidebar-badge-text: #ffffff;
+
+  /* Sidebar Footer */
+  --theme-sidebar-footer-background: #ffffff08;
+  --theme-sidebar-footer-title: #ffffff;
+  --theme-sidebar-footer-subtitle: #9ca3af;
+  --theme-sidebar-footer-button-text: #ffffff;
+
+  /* ======== Card Color For Dark =========*/
+  --theme-card-background-50: #030712;
+  --theme-card-background-100: #1e2634;
+  --theme-card-background-200: #ffffff08;
+  --theme-card-background-300: #111827;
+
+  /* ======== Alert Success Color For Dark =========*/
+  --theme-alert-success-background: #22c55e0d;
+  --theme-alert-success-icon-background: #16a34a;
+  --theme-alert-success-border: #14532d;
+  --theme-alert-success-close-icon: #16a34a;
+  --theme-alert-success-title: #16a34a;
+  --theme-alert-success-description: #16a34a;
+  --theme-alert-success-button-background: #22c55e;
+  --theme-alert-success-button-hover-background: #16a34a;
+  --theme-alert-success-button-text: #22c55e;
+
+  /* ======== Alert Danger Color For Dark =========*/
+  --theme-alert-danger-background: #ef44440d;
+  --theme-alert-danger-icon-background: #dc2626;
+  --theme-alert-danger-border: #7f1d1d;
+  --theme-alert-danger-close-icon: #b91c1c;
+  --theme-alert-danger-title: #ef4444;
+  --theme-alert-danger-description: #ef4444;
+  --theme-alert-danger-button-background: #ef4444;
+  --theme-alert-danger-button-hover-background: #dc2626;
+  --theme-alert-danger-button-text: #ef4444;
+
+  /* ======== Alert Info Color For Dark =========*/
+  --theme-alert-info-background: #0ea5e90d;
+  --theme-alert-info-icon-background: #0284c7;
+  --theme-alert-info-border: #0c4a6e;
+  --theme-alert-info-close-icon: #0284c7;
+  --theme-alert-info-title: #0ea5e9;
+  --theme-alert-info-description: #0ea5e9;
+  --theme-alert-info-button-background: #0ea5e9;
+  --theme-alert-info-button-hover-background: #0284c7;
+  --theme-alert-info-button-text: #0ea5e9;
+
+  /* ======== Alert Warning Color For Dark =========*/
+  --theme-alert-warning-background: #eab3080d;
+  --theme-alert-warning-icon-background: #ca8a04;
+  --theme-alert-warning-border: #713f12;
+  --theme-alert-warning-close-icon: #ca8a04;
+  --theme-alert-warning-title: #eab308;
+  --theme-alert-warning-description: #eab308;
+  --theme-alert-warning-button-background: #eab308;
+  --theme-alert-warning-button-hover-background: #ca8a04;
+  --theme-alert-warning-button-text: #eab308;
+
+  /* ======== Alert Default Color For Dark =========*/
+  --theme-alert-default-background: #6b72801a;
+  --theme-alert-default-icon-background: #6b7280;
+  --theme-alert-default-border: #111827;
+  --theme-alert-default-close-icon: #4b5563;
+  --theme-alert-default-title: #d1d5db;
+  --theme-alert-default-description: #9ca3af;
+  --theme-alert-default-button-background: #6b7280;
+  --theme-alert-default-button-hover-background: #4b5563;
+  --theme-alert-default-button-text: #6b7280;
+
+  /* ======== Input Color For Dark =========*/
+  --theme-input-background: #ffffff0d;
+  --theme-input-label-text: #9ca3af;
+  --theme-input-disabled-text: #ffffff26;
+  --theme-input-placeholder-text: #6b7280;
+  --theme-input-primary-focus-border: #91aeff;
+  --theme-input-error-focus-border: #b91c1c;
+  --theme-input-success-focus-border: #15803d;
+  --theme-input-error: #dc2626;
+  --theme-input-success: #16a34a;
+
+  /* ======== Tab Color For Dark =========*/
+  --theme-tab-background: #111827;
+  --theme-tab-active-background: #1f2937;
+  --theme-tab-secondary-active-background: #7592ff33;
+
+  /* ======== Checkbox Color For Dark =========*/
+  --theme-checkbox-background: #ffffff00;
+  --theme-checkbox-checked-border: #3758f9;
+  --theme-checkbox-checked-background: #3758f9;
+  --theme-checkbox-checked-icon-color: #ffffff;
+
+  /* ======== Scrollbar Color For Dark =========*/
+  --theme-scrollbar-background: #374151;
+
+  /* ======== Datepicker Color For Dark =========*/
+  --theme-datepicker-background: #1f2937;
+  --theme-datepicker-selected-background: #3758f9;
+  --theme-datepicker-selected-hover-background: #ffffff0d;
+
+  /* ======== Dropdowns Color For Dark =========*/
+  --theme-dropdown-background: #1f2937;
+  --theme-dropdown-hover-background: #374151;
+  --theme-dropdown-secondary-background: #1e2635;
+  --theme-dropdown-divider: #353c49;
+
+  /* ======== Calendar Color For Dark =========*/
+  --theme-calendar-primary-badge: #3758f9;
+  --theme-calendar-primary-background: #dae2ff;
+  --theme-calendar-success-badge: #22c55e;
+  --theme-calendar-success-background: #dcfce7;
+  --theme-calendar-warning-badge: #f97316;
+  --theme-calendar-warning-background: #ffedd5;
+  --theme-calendar-danger-badge: #ef4444;
+  --theme-calendar-danger-background: #fee2e2;
+  --theme-calendar-info-badge: #0ba5ec;
+  --theme-calendar-info-background: #e0f2fe;
+  --theme-calendar-text: #374151;
+  --theme-calendar-menu-text: #6b7280;
+  --theme-calendar-dropdown-background: #232b39;
+
+  /* ======== Pricing Table Color For Dark =========*/
+  --theme-pricing-active-switcher-background: #ffffff1a;
+  --theme-pricing-active-card-background: #ffffff1a;
+  --theme-pricing-button-background: #ffffff1a;
+  --theme-pricing-icon-color: #3758f9;
+  --theme-pricing-icon-background: #465fff1a;
+
+  /* ======== FAQ's Color For Dark =========*/
+  --theme-faq-primary-active-background: #ffffff08;
+  --theme-faq-secondary-active-background: #dae2ff;
+  --theme-faq-secondary-active-border: #becdff;
+  --theme-faq-secondary-active-title: #1f2937;
+  --theme-faq-secondary-active-text: #4b5563;
+
+  /* ======== Chat List Color For Dark =========*/
+  --theme-chat-list-background-primary: #ffffff0d;
+  --theme-chat-list-background-primary-alt: #ffffff0d;
+  --theme-chat-list-background-secondary: #3758f9;
+  --theme-chat-list-background-secondary-alt: #3758f933;
+
+  /* ======== Tooltip Color For Dark =========*/
+  --theme-tooltip-text: #ffffff;
+  --theme-tooltip-border: #374151;
+
+  /* ======== Popovers Color For Dark =========*/
+  --theme-popover-title-background: #1f2937;
+  --theme-popover-border: #374151;
+
+  /* ======== Skeleton Color For Dark =========*/
+  --theme-skeleton-gradient-50: #ffffff26;
+  --theme-skeleton-gradient-100: #ffffff0d;
+  --theme-skeleton-gradient-200: #ffffff26;
+
+  /* ======== 404 Page Color For Dark =========*/
+  --theme-404-background: #11182766;
+  --theme-404-foreground: #ffffff26;
+
+  /* ======== Blogs Color For Dark =========*/
+  --theme-blog-shape: #ffffff26;
+
+  /* ======== Modal Color For Dark =========*/
+  --theme-modal-button-success-background: #22c55e;
+  --theme-modal-button-info-background: #0ea5e9;
+  --theme-modal-button-warning-background: #eab308;
+  --theme-modal-button-error-background: #ef4444;
+
+  /* ======== Section Title Color For Dark =========*/
+  --theme-section-title-badge: #3758f9;
+  --theme-section-title-badge-background: #3758f926;
+
+  /* ======== Mobile Nav Menu Button Color For Dark =========*/
+  --theme-mobile-nav-icon: #d1d5db;
+  --theme-mobile-nav-background: #030712;
+  --theme-mobile-nav-hover-background: #111827;
+
+  /* ======== Footer Color For Dark =========*/
+  --theme-footer-card-background: #111827;
+  --theme-footer-background: #030712;
+
+  /* ======== Bento Color For Dark =========*/
+  --theme-bento-card-background: #1f2937;
+  --theme-bento-gradient-shade-1: #11182700;
+  --theme-bento-gradient-shade-2: #ffffff1a;
+  --theme-bento-gradient-shade-3: #ffffff1a;
+
+  /* ======== CTA Color For Dark =========*/
+  --theme-cta-icon-background: #1f2937;
+  --theme-cta-background: #030712;
+
+  /* ======== Hero Color For Dark =========*/
+  --theme-hero-background: #111827;
+  --theme-hero-card-background: #1f2937;
+  --theme-hero-card-2-background: #374151;
+  --theme-hero-gradient-shade-1: #11182700;
+  --theme-hero-gradient-shade-2: #111827;
+
+  /* ======== Toggle Color For Dark =========*/
+  --theme-toggle-default-background: #4b5563;
+  --theme-toggle-disabled-foreground: #ffffff66;
+  --theme-toggle-disabled-background: #1f2937;
+  --theme-toggle-active-background: #3758f9;
+
+  /* ======== Map Color For Dark =========*/
+  --theme-map-fill: #6b7280;
+
+  /* ======== AI Sidebar Gradient Color For Dark =========*/
+  --theme-ai-sidebar-primary-gradient-shade-1: #030712;
+  --theme-ai-sidebar-primary-gradient-shade-2: #03071200;
+  --theme-ai-sidebar-secondary-gradient-shade-1: #030712;
+  --theme-ai-sidebar-secondary-gradient-shade-2: #03071200;
+
+  /* ======== AI Sidebar Hover/Title/Hero Color For Dark =========*/
+  --theme-ai-sidebar-hover-primary-shade-1: #111827;
+  --theme-ai-sidebar-hover-primary-shade-2: #11182700;
+  --theme-ai-sidebar-hover-secondary-shade-1: #111827;
+  --theme-ai-sidebar-hover-secondary-shade-2: #11182700;
+  --theme-ai-sidebar-hover-primary-background: #111827;
+  --theme-ai-sidebar-hover-secondary-background: #111827;
+  --theme-ai-title-gradient-shade-1: #ffffff;
+  --theme-ai-title-gradient-shade-2: #ffffff4d;
+  --theme-ai-hero-blend-1: #111827;
+  --theme-ai-hero-blend-2: #11182700;
 
   /* Shadows */
   --shadow-xs: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
@@ -127,7 +467,7 @@
 
 @layer base {
   button:not(:disabled),
-  [role='button']:not(:disabled) {
+  [role="button"]:not(:disabled) {
     cursor: pointer;
   }
 }

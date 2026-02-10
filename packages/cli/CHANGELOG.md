@@ -1,5 +1,11 @@
 # @tailgrids/cli
 
+## 1.1.0
+
+### Minor Changes
+
+- Update templates and registry to support the new CSS variable-based theming system and dark mode.
+
 ## 1.0.1
 
 ### Patch Changes

@@ -1,23 +1,23 @@
-import * as React from 'react';
+import { cn } from "@/utils/cn";
 import {
-  useFloating,
+  arrow,
   autoUpdate,
-  offset,
   flip,
+  FloatingArrow,
+  FloatingPortal,
+  offset,
+  safePolygon,
   shift,
-  useHover,
-  useFocus,
   useDismiss,
-  useRole,
+  useFloating,
+  useFocus,
+  useHover,
   useInteractions,
   useMergeRefs,
-  FloatingPortal,
-  arrow,
-  FloatingArrow,
-  safePolygon,
-  type Placement,
-} from '@floating-ui/react';
-import { cn } from '@/utils/cn';
+  useRole,
+  type Placement
+} from "@floating-ui/react";
+import * as React from "react";
 
 interface TooltipOptions {
   initialOpen?: boolean;
@@ -28,9 +28,9 @@ interface TooltipOptions {
 
 function useTooltip({
   initialOpen = false,
-  placement = 'top',
+  placement = "top",
   open: controlledOpen,
-  onOpenChange: setControlledOpen,
+  onOpenChange: setControlledOpen
 }: TooltipOptions = {}) {
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen);
   const arrowRef = React.useRef(null);
@@ -47,15 +47,15 @@ function useTooltip({
     middleware: [
       offset(10),
       flip({
-        crossAxis: placement.includes('-'),
-        fallbackAxisSideDirection: 'start',
-        padding: 5,
+        crossAxis: placement.includes("-"),
+        fallbackAxisSideDirection: "start",
+        padding: 5
       }),
       shift({ padding: 5 }),
       arrow({
-        element: arrowRef,
-      }),
-    ],
+        element: arrowRef
+      })
+    ]
   });
 
   const context = data.context;
@@ -63,13 +63,13 @@ function useTooltip({
   const hover = useHover(context, {
     move: false,
     enabled: controlledOpen == null,
-    handleClose: safePolygon(),
+    handleClose: safePolygon()
   });
   const focus = useFocus(context, {
-    enabled: controlledOpen == null,
+    enabled: controlledOpen == null
   });
   const dismiss = useDismiss(context);
-  const role = useRole(context, { role: 'tooltip' });
+  const role = useRole(context, { role: "tooltip" });
 
   const interactions = useInteractions([hover, focus, dismiss, role]);
 
@@ -79,7 +79,7 @@ function useTooltip({
       setOpen,
       ...interactions,
       ...data,
-      arrowRef,
+      arrowRef
     }),
     [open, setOpen, interactions, data]
   );
@@ -93,7 +93,7 @@ const useTooltipContext = () => {
   const context = React.useContext(TooltipContext);
 
   if (context == null) {
-    throw new Error('Tooltip components must be wrapped in <Tooltip />');
+    throw new Error("Tooltip components must be wrapped in <Tooltip />");
   }
 
   return context;
@@ -126,10 +126,10 @@ export const TooltipTrigger = React.forwardRef<
       context.getReferenceProps({
         ref,
         ...props,
-        ...(React.isValidElement(children) && typeof children.props === 'object'
+        ...(React.isValidElement(children) && typeof children.props === "object"
           ? children.props
           : {}),
-        'data-state': context.open ? 'open' : 'closed',
+        "data-state": context.open ? "open" : "closed"
       } as React.HTMLProps<Element>)
     );
   }
@@ -137,7 +137,7 @@ export const TooltipTrigger = React.forwardRef<
   return (
     <button
       ref={ref}
-      data-state={context.open ? 'open' : 'closed'}
+      data-state={context.open ? "open" : "closed"}
       {...context.getReferenceProps(props)}
     >
       {children}
@@ -160,18 +160,18 @@ export const TooltipContent = React.forwardRef<
         ref={ref}
         style={{
           ...context.floatingStyles,
-          ...style,
+          ...style
         }}
         {...context.getFloatingProps(props)}
         className={cn(
-          'bg-neutral rounded-lg border border-neutral-200 px-3 py-2 text-sm font-medium text-neutral-700 shadow-md',
+          "bg-background-100 rounded-lg px-3 py-2 text-sm font-medium text-tooltip-text shadow-md border border-tooltip-border",
           className
         )}
       >
         <FloatingArrow
           ref={context.arrowRef}
           context={context.context}
-          className="fill-neutral [&>path:last-of-type]:stroke-neutral-200"
+          className="fill-background-100 [&>path:last-of-type]:stroke-tooltip-border"
           width={18}
           height={18}
           d="M0 20C0 20 2.06906 19.9829 5.91817 15.4092C7.49986 13.5236 8.97939 12.3809 10.0002 12.3809C11.0202 12.3809 12.481 13.6451 14.0814 15.5472C17.952 20.1437 20 20 20 20H0Z"

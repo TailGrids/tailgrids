@@ -20,7 +20,7 @@ export default function PopoverLinkPreview() {
         </PopoverDescription>
         <a
           href="#"
-          className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-700"
+          className="inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-700"
         >
           Learn more
           <svg

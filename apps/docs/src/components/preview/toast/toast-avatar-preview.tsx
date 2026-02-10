@@ -16,9 +16,9 @@ export default function ToastAvatarPreview() {
 
   return (
     <AvatarToast
-      name="Emily Stone"
+      name="Random User"
       description="Sent you a message"
-      image="https://randomuser.me/api/portraits/women/40.jpg"
+      image="https://randomuser.me/api/portraits/men/40.jpg"
       status="online"
       time="Just now"
       dismiss={() => setShow(false)}

@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/utils/cn";
 import { ArrowLeft, ArrowRight } from "@tailgrids/icons";
 import { useState } from "react";
 
@@ -14,24 +15,28 @@ export default function PaginationMobilePreview() {
   };
 
   return (
-    <div className="flex items-center justify-between w-full max-w-sm mx-auto">
+    <div className="mx-auto flex w-full max-w-sm items-center justify-between">
       <button
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-200 bg-white text-neutral-600 hover:bg-neutral-50 disabled:opacity-50 disabled:hover:bg-white"
+        className={cn(
+          "flex h-10 w-10 items-center justify-center rounded-lg border border-button-outline-border bg-button-outline-background text-button-outline-text outline-none transition hover:bg-button-outline-hover-background hover:text-button-outline-hover-text focus:ring-3 focus:ring-button-outline-focus-ring disabled:bg-button-outline-disabled-background disabled:border-button-disabled-border disabled:text-button-outline-disabled-text"
+        )}
         aria-label="Previous Page"
       >
         <ArrowLeft className="h-5 w-5" />
       </button>
 
-      <span className="text-sm font-medium text-neutral-700">
+      <span className="text-sm font-medium text-text-50">
         Page {currentPage} of {totalPages}
       </span>
 
       <button
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-200 bg-white text-neutral-600 hover:bg-neutral-50 disabled:opacity-50 disabled:hover:bg-white"
+        className={cn(
+          "flex h-10 w-10 items-center justify-center rounded-lg border border-button-outline-border bg-button-outline-background text-button-outline-text outline-none transition hover:bg-button-outline-hover-background hover:text-button-outline-hover-text focus:ring-3 focus:ring-button-outline-focus-ring disabled:bg-button-outline-disabled-background disabled:border-button-disabled-border disabled:text-button-outline-disabled-text"
+        )}
         aria-label="Next Page"
       >
         <ArrowRight className="h-5 w-5" />

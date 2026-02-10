@@ -61,17 +61,15 @@ export default function TableCourseProgressPreview() {
   return (
     <div className="w-full">
       <div className="mb-6 flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-neutral-900">
-          Course Progress
-        </h3>
-        <button className="p-2 hover:bg-neutral-100 rounded-full">
-          <MoreVertical className="h-5 w-5 text-neutral-500" />
+        <h3 className="text-lg font-semibold text-title-50">Course Progress</h3>
+        <button className="p-2 hover:bg-background-soft-100 rounded-full">
+          <MoreVertical className="h-5 w-5 text-text-100" />
         </button>
       </div>
 
       <TableRoot fullBleed>
         <TableHeader>
-          <TableRow className="border-b border-neutral-200">
+          <TableRow className="border-b border-(--border-color-base-100)">
             <TableHead className="min-w-60">Course Name</TableHead>
             <TableHead>Instructor</TableHead>
             <TableHead className="w-1/3">Progress</TableHead>
@@ -92,41 +90,41 @@ export default function TableCourseProgressPreview() {
                     alt={item.course}
                     className="h-10 w-12.5 rounded-lg object-cover"
                   />
-                  <span className="font-medium text-[#1F2937] whitespace-nowrap">
+                  <span className="font-medium text-title-50 whitespace-nowrap">
                     {item.course}
                   </span>
                 </div>
               </TableCell>
 
-              <TableCell className="text-[#374151] whitespace-nowrap">
+              <TableCell className="text-text-50 whitespace-nowrap">
                 {item.instructor}
               </TableCell>
 
               <TableCell>
                 <div className="flex items-center gap-3 min-w-50">
-                  <div className="flex-1 bg-neutral-100 rounded-full h-2 overflow-hidden">
+                  <div className="flex-1 bg-background-soft-100 rounded-full h-2 overflow-hidden">
                     <div
-                      className="h-full bg-blue-600 rounded-full"
+                      className="h-full bg-primary-600 rounded-full"
                       style={{ width: `${item.progress}%` }}
                     ></div>
                   </div>
-                  <span className="font-semibold text-[#6B7280] -tracking-[0.2px] min-w-[3ch]">
+                  <span className="font-semibold text-text-100 -tracking-[0.2px] min-w-[3ch]">
                     {item.progress}%
                   </span>
                 </div>
               </TableCell>
 
-              <TableCell className="text-xs -tracking-[0.2px] text-[#6B7280] whitespace-nowrap">
+              <TableCell className="text-xs -tracking-[0.2px] text-text-100 whitespace-nowrap">
                 {item.date}
               </TableCell>
 
               <TableCell>
                 {item.certificate ? (
-                  <span className="text-[#374151] whitespace-nowrap">
+                  <span className="text-text-50 whitespace-nowrap">
                     {item.certificate}
                   </span>
                 ) : (
-                  <span className="text-neutral-400">—</span>
+                  <span className="text-text-200">—</span>
                 )}
               </TableCell>
             </TableRow>

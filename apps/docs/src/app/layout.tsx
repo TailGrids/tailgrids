@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/components/theme-provider";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import type { Metadata } from "next";
@@ -43,6 +44,7 @@ export default function Layout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${dmSans.variable} ${geistMono.variable}`}
       suppressHydrationWarning
+      data-theme="light"
     >
       <head>
         <script src="https://accounts.google.com/gsi/client" async defer />
@@ -60,7 +62,7 @@ export default function Layout({ children }: LayoutProps<"/">) {
             enabled: false
           }}
         >
-          {children}
+          <ThemeProvider>{children}</ThemeProvider>
         </RootProvider>
       </body>
     </html>

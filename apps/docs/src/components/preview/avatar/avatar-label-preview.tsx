@@ -14,7 +14,7 @@ export default function AvatarPreview() {
         fallback="J"
         size="md"
         status="online"
-        label={{ name: "Ahmed Tusar", email: "tusar@pimjo.com" }}
+        label={{ title: "Random Person", subtitle: "random@example.com" }}
       />
     </div>
   );

@@ -1,4 +1,4 @@
-import { cn } from "@/lib/cn";
+import { cn } from "@/utils/cn";
 import type { LinkProps } from "next/link";
 import Link from "next/link";
 import React from "react";
@@ -62,7 +62,7 @@ const ButtonComponent = React.forwardRef<
     "inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-xl px-4.5 text-sm font-medium duration-200",
     "focus-visible:outline-none",
     "disabled:pointer-events-none",
-    fullWidth && "w-full",
+    fullWidth && "w-full"
   );
 
   const variants = {
@@ -75,13 +75,13 @@ const ButtonComponent = React.forwardRef<
     outline:
       "border border-dark-3 bg-transparent text-lp-gray-950 dark:text-white",
     "danger-outline":
-      "border border-red-100 bg-transparent text-red-500 hover:text-red-700 hover:bg-red-50 hover:border-red-100",
+      "border border-red-100 bg-transparent text-red-500 hover:text-red-700 hover:bg-red-50 hover:border-red-100"
   };
 
   const loadingSpinner = (
     <span
       className={cn(
-        "size-[1lh] animate-spin rounded-full border-2 border-current border-t-transparent",
+        "size-[1lh] animate-spin rounded-full border-2 border-current border-t-transparent"
       )}
       aria-hidden="true"
     />
@@ -91,7 +91,7 @@ const ButtonComponent = React.forwardRef<
     className: cn(baseStyles, variants[variant], className),
     "aria-label": ariaLabel,
     "aria-disabled": disabled || isLoading,
-    "aria-busy": isLoading,
+    "aria-busy": isLoading
   };
 
   const content = (

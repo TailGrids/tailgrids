@@ -1,11 +1,11 @@
 import { cn } from "@/utils/cn";
+import { useState } from "react";
 import {
   Button,
   MenuTrigger,
   Popover,
   type ButtonProps
 } from "react-aria-components";
-import { useState } from "react";
 import { useMenuTriggerState } from "react-stately";
 
 const range = (start: number, end: number) =>
@@ -50,7 +50,7 @@ export function TimePicker({
   return (
     <MenuTrigger>
       {children}
-      <Popover className="bg-neutral rounded-xl border border-neutral-200 p-3 shadow-xl outline-none">
+      <Popover className="bg-background-50 rounded-xl border border-base-100 p-3 shadow-xl outline-none">
         <div className="grid max-w-fit min-w-41.5 grid-cols-3 gap-1">
           <TimeColumn
             values={range(1, 12)}
@@ -91,8 +91,8 @@ function TimeColumn({
           className={cn(
             "grid size-11.5 shrink-0 place-items-center rounded-lg text-sm transition",
             selected === value
-              ? "bg-blue-600 text-white"
-              : "text-gray-800 hover:bg-gray-100"
+              ? "bg-datepicker-selected-background text-white-100"
+              : "text-title-50 hover:bg-datepicker-selected-hover-background"
           )}
         >
           {value}

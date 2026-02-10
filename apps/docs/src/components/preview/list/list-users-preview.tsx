@@ -40,18 +40,18 @@ export default function ListUsersPreview() {
               fallback={user.name.charAt(0)}
             />
             <span
-              className={`absolute bottom-0 right-0 size-3 rounded-full border-2 border-white ${
+              className={`absolute bottom-0 right-0 size-3 rounded-full border-2 border-white-100 ${
                 user.status === "online"
-                  ? "bg-green-500"
+                  ? "bg-success-500"
                   : user.status === "offline"
-                    ? "bg-red-500"
-                    : "bg-yellow-500"
+                    ? "bg-alert-danger-button-background"
+                    : "bg-warning-500"
               }`}
             />
           </div>
           <div className="flex flex-col">
-            <span className="font-medium text-neutral-800">{user.name}</span>
-            <span className="text-sm text-neutral-500">{user.email}</span>
+            <span className="font-medium text-title-50">{user.name}</span>
+            <span className="text-sm text-text-200">{user.email}</span>
           </div>
         </li>
       ))}

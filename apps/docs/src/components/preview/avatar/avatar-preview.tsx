@@ -8,7 +8,7 @@ export default function AvatarPreview() {
         fallback="J"
         size="md"
         status="online"
-        label={{ name: "Johurul Haque", email: "johurul@pimjo.com" }}
+        label={{ title: "Random Person", subtitle: "random@example.com" }}
       />
     </div>
   );

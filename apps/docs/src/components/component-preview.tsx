@@ -1,10 +1,11 @@
 "use client";
 
-import { cn } from "@/lib/cn";
+import { cn } from "@/utils/cn";
 import { useState } from "react";
 import { CodeBlock } from "./code-block";
 import { CopyToClipboard } from "./copy-to-clipboard";
 import { SegmentedControl } from "./segmented-control";
+import { SelectTheme } from "./select-theme";
 
 const ITEMS = [
   {
@@ -41,6 +42,8 @@ export function ComponentPreview({
           onChange={setActiveTab}
         />
 
+        <SelectTheme />
+
         <CopyToClipboard
           className="py-2 pr-3 pl-2.5 gap-2 font-medium rounded-[10px] border"
           content={codeSnippet}
@@ -52,8 +55,10 @@ export function ComponentPreview({
         {activeTab === "preview" && (
           <div
             className={cn(
-              "min-h-100 flex flex-col items-center justify-center rounded-[20px] border border-gray-200 dark:border-gray-800 bg-white not-prose",
-              noPaddingOnPreviewForMobile ? "p-0 sm:px-15 sm:py-10" : "px-15 py-10"
+              "min-h-100 flex flex-col items-center justify-center rounded-[20px] border border-gray-200 dark:border-gray-800 bg-background-soft-50 not-prose",
+              noPaddingOnPreviewForMobile
+                ? "p-0 sm:px-15 sm:py-10"
+                : "px-15 py-10"
             )}
           >
             {children}

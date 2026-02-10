@@ -4,17 +4,18 @@ export default function RadioDisabledPreview() {
   return (
     <div className="flex flex-col gap-3">
       <RadioInput
-        name="disabled"
+        name="disabled-radio-input"
         label="Disabled option"
         value="disabled"
         disabled
       />
+
       <RadioInput
-        name="disabled-checked"
+        name="disabled-radio-input"
         label="Disabled checked"
         value="checked"
         disabled
-        checked
+        defaultChecked
       />
     </div>
   );

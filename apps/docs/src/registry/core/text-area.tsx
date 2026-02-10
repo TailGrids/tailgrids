@@ -3,28 +3,33 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { useId, type ComponentProps } from "react";
 
 const textAreaStyles = cva(
-  "bg-neutral peer h-32 w-full rounded-lg border px-4 py-3.5 text-neutral-800 outline-none placeholder:text-neutral-400 focus:ring-4 disabled:border-neutral-200 disabled:bg-neutral-50 disabled:text-neutral-300 disabled:placeholder:text-neutral-300",
+  "bg-input-background peer h-32 w-full rounded-lg border px-4 py-3.5 text-title-50 outline-none placeholder:text-input-placeholder-text focus:ring-4 disabled:border-base-100 disabled:bg-background-soft-50 disabled:text-input-disabled-text disabled:placeholder:text-input-disabled-text",
   {
     variants: {
       state: {
         default:
-          "focus:border-primary-300 focus:ring-primary-100 border-neutral-300",
-        error: "border-danger-outline focus:ring-danger-ring",
-        success: "border-success-outline focus:ring-success-ring"
+          "focus:border-input-primary-focus-border focus:ring-input-primary-focus-border/20 border-base-300",
+        error:
+          "border-input-error-focus-border focus:ring-input-error-focus-border/20",
+        success:
+          "border-input-success-focus-border focus:ring-input-success-focus-border/20"
       }
     }
   }
 );
 
-const hintStyles = cva("text-sm font-normal peer-disabled:text-neutral-300", {
-  variants: {
-    state: {
-      default: "text-neutral-700",
-      error: "text-red-500",
-      success: "text-green-500"
+const hintStyles = cva(
+  "text-sm font-normal peer-disabled:text-input-disabled-text",
+  {
+    variants: {
+      state: {
+        default: "text-text-50",
+        error: "text-input-error",
+        success: "text-input-success"
+      }
     }
   }
-});
+);
 
 type PropsType = ComponentProps<"textarea"> &
   VariantProps<typeof textAreaStyles> & {
@@ -46,7 +51,7 @@ export function TextArea({
       {label && (
         <label
           htmlFor={id}
-          className="max-w-fit text-sm font-medium text-neutral-700 select-none"
+          className="max-w-fit text-sm font-medium text-text-50 select-none"
         >
           {label}
         </label>

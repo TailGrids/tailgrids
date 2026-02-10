@@ -73,7 +73,8 @@
       { "type": "core", "path": "/core/date-picker/single-date.tsx" },
       { "type": "core", "path": "/core/date-picker/range-date.tsx" }
     ],
-    "dependencies": ["react-stately", "date-fns"]
+    "dependencies": ["react-stately", "date-fns", "@tailgrids/icons"],
+    "requires": ["button"]
   },
   {
     "id": "dropdown",
@@ -120,7 +121,8 @@
     "description": "A component for navigating between pages.",
     "type": "component",
     "files": [{ "type": "core", "path": "/core/pagination.tsx" }],
-    "dependencies": ["class-variance-authority", "@tailgrids/icons"]
+    "dependencies": ["class-variance-authority", "@tailgrids/icons"],
+    "requires": ["button"]
   },
   {
     "id": "popover",
@@ -175,9 +177,9 @@
     "type": "component",
     "files": [
       { "type": "core", "path": "/core/spinner/index.tsx" },
-      { "type": "core", "path": "/core/spinner/default.svg" },
-      { "type": "core", "path": "/core/spinner/dotted.svg" },
-      { "type": "core", "path": "/core/spinner/dotted-round.svg" }
+      { "type": "core", "path": "/core/spinner/default.tsx" },
+      { "type": "core", "path": "/core/spinner/dotted.tsx" },
+      { "type": "core", "path": "/core/spinner/dotted-round.tsx" }
     ]
   },
   {
@@ -220,7 +222,7 @@
     "type": "component",
     "files": [{ "type": "core", "path": "/core/toast.tsx" }],
     "dependencies": ["class-variance-authority", "@tailgrids/icons"],
-    "requires": ["avatar"]
+    "requires": ["avatar", "button", "link"]
   },
   {
     "id": "toggle",

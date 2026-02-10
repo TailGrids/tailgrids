@@ -1,8 +1,8 @@
-import defaultSpinner from "./default.svg";
-import dottedSpinner from "./dotted.svg";
-import dottedRoundSpinner from "./dotted-round.svg";
 import { cn } from "@/utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
+import { DefaultSpinner } from "./default";
+import { DottedSpinner } from "./dotted";
+import { DottedRoundSpinner } from "./dotted-round";
 
 type SpinnerType = "default" | "dotted" | "dotted-round";
 
@@ -31,25 +31,23 @@ export function Spinner({
   size = "md",
   type = "default"
 }: PropsType) {
-  const src = getSpinnerSrc(type);
-
-  return (
-    <img
-      src={typeof src === "string" ? src : src.src}
-      role="presentation"
-      alt="Spinner"
-      className={cn(spinnerStyles({ size }), className)}
-    />
-  );
-}
-
-function getSpinnerSrc(type: SpinnerType) {
   switch (type) {
     case "dotted":
-      return dottedSpinner;
+      return (
+        <DottedSpinner className={cn(spinnerStyles({ size }), className)} />
+      );
     case "dotted-round":
-      return dottedRoundSpinner;
+      return (
+        <DottedRoundSpinner
+          className={cn(spinnerStyles({ size }), className)}
+        />
+      );
     default:
-      return defaultSpinner;
+      return (
+        <DefaultSpinner
+          className={cn(spinnerStyles({ size }), className)}
+          percentage={50}
+        />
+      );
   }
 }

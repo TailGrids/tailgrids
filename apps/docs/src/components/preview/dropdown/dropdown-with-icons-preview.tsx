@@ -13,7 +13,7 @@ import { Copy, Pencil, Trash2 } from "lucide-react";
 export default function DropdownWithIconsPreview() {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="border rounded-full p-3 hover:bg-gray-100">
+      <DropdownMenuTrigger className="border rounded-full p-3 hover:bg-background-soft-50">
         <MenuMeatballs1 />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="p-1.5 border">

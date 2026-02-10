@@ -1,16 +1,19 @@
 import { SocialButton } from "@/registry/core/social-button";
 
-const SocialButtonIconPreview = () => {
+const SocialButtonBrandsPreview = () => {
   return (
-    <div className="flex justify-center flex-wrap gap-3 w-full">
-      <SocialButton className="max-w-30 ">
+    <div className="flex flex-col gap-3 w-full max-w-84">
+      <SocialButton>
         <GoogleIcon />
+        Sign in with Google
       </SocialButton>
-      <SocialButton className="max-w-30">
-        <XIcon />
-      </SocialButton>
-      <SocialButton className="max-w-30">
+      <SocialButton>
         <GithubIcon />
+        Sign in with GitHub
+      </SocialButton>
+      <SocialButton>
+        <XIcon />
+        Sign in with X
       </SocialButton>
     </div>
   );
@@ -55,4 +58,4 @@ function GithubIcon() {
   );
 }
 
-export default SocialButtonIconPreview;
+export default SocialButtonBrandsPreview;

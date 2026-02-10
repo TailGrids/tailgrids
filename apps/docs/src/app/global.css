@@ -2,118 +2,611 @@
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
 
+@import "./themes/light.css";
+@import "./themes/dark.css";
+
 :root {
   --font-geist-mono: "Geist Mono", monospace;
 }
 
-@theme {
+@theme inline {
   --font-mono: var(--font-geist-mono);
   --font-sans: var(--font-dm-sans);
 
-  --color-primary-50: #eff3ff;
-  --color-primary-100: #dae2ff;
-  --color-primary-200: #becdff;
-  --color-primary-300: #91aeff;
-  --color-primary-400: #5e84fc;
-  --color-primary-500: #3758f9;
-  --color-primary-600: #2237ee;
-  --color-primary-700: #1a25db;
-  --color-primary-800: #1c20b1;
-  --color-primary-900: #1c228c;
-  --color-primary-950: #161755;
+  /* 
+   * Theme colors are defined in theme files
+   * and mapped here to create Tailwind utilities.
+   * 
+   * The actual values are in the theme files, prefixed with --theme-
+   * to avoid circular references.
+   */
+  --color-primary-50: var(--theme-primary-50);
+  --color-primary-100: var(--theme-primary-100);
+  --color-primary-200: var(--theme-primary-200);
+  --color-primary-300: var(--theme-primary-300);
+  --color-primary-400: var(--theme-primary-400);
+  --color-primary-500: var(--theme-primary-500);
+  --color-primary-600: var(--theme-primary-600);
+  --color-primary-700: var(--theme-primary-700);
+  --color-primary-800: var(--theme-primary-800);
+  --color-primary-900: var(--theme-primary-900);
+  --color-primary-950: var(--theme-primary-950);
 
-  /* Base */
-  --color-neutral: white;
-  --color-neutral-100: var(--color-gray-100);
-  --color-neutral-200: var(--color-gray-200);
-  --color-neutral-300: var(--color-gray-300);
-  --color-neutral-400: var(--color-gray-400);
-  --color-neutral-500: var(--color-gray-500);
-  --color-neutral-700: var(--color-gray-700);
-  --color-neutral-800: var(--color-gray-800);
-  --color-neutral-900: var(--color-gray-900);
+  --color-neutral-brand-color: var(--theme-neutral-brand-color);
 
-  /* Success */
-  --color-success: var(--color-green-600);
-  --color-success-hover: var(--color-green-700);
-  --color-success-foreground: var(--color-white);
-  --color-success-border: var(--color-green-200);
-  --color-success-outline: var(--color-green-500);
-  --color-success-muted: var(--color-green-50);
-  --color-success-muted-hover: var(--color-green-200);
-  --color-success-muted-foreground: var(--color-green-800);
-  --color-success-muted-body: var(--color-green-700);
-  --color-success-ring: var(--color-green-100);
+  --color-primary-text: var(--theme-primary-text);
 
-  /* Danger */
-  --color-danger: var(--color-red-600);
-  --color-danger-hover: var(--color-red-700);
-  --color-danger-foreground: var(--color-white);
-  --color-danger-border: var(--color-red-200);
-  --color-danger-outline: var(--color-red-500);
-  --color-danger-muted: var(--color-red-50);
-  --color-danger-muted-hover: var(--color-red-200);
-  --color-danger-muted-foreground: var(--color-red-800);
-  --color-danger-muted-body: var(--color-red-700);
-  --color-danger-ring: var(--color-red-100);
+  /* Text Colors */
+  --color-text-50: var(--theme-text-50);
+  --color-text-100: var(--theme-text-100);
+  --color-text-200: var(--theme-text-200);
+  --color-text-300: var(--theme-text-300);
 
-  /* Info */
-  --color-info: var(--color-sky-600);
-  --color-info-hover: var(--color-sky-700);
-  --color-info-foreground: var(--color-white);
-  --color-info-border: var(--color-sky-200);
-  --color-info-muted: var(--color-sky-50);
-  --color-info-muted-foreground: var(--color-sky-800);
-  --color-info-muted-body: var(--color-sky-700);
+  /* Context Color */
+  --color-error-500: var(--theme-error-500);
+  --color-success-500: var(--theme-success-500);
+  --color-warning-500: var(--theme-warning-500);
+  --color-info-500: var(--theme-info-500);
 
-  /* Warning */
-  --color-warning: var(--color-yellow-600);
-  --color-warning-hover: var(--color-yellow-700);
-  --color-warning-foreground: var(--color-white);
-  --color-warning-border: var(--color-yellow-200);
-  --color-warning-muted: var(--color-yellow-50);
-  --color-warning-muted-foreground: var(--color-yellow-800);
-  --color-warning-muted-body: var(--color-yellow-700);
+  /* Title Colors */
+  --color-title-50: var(--theme-title-50);
 
-  /* Default */
-  --color-default: var(--color-gray-600);
-  --color-default-hover: var(--color-gray-700);
-  --color-default-foreground: var(--color-white);
-  --color-default-border: var(--color-gray-200);
-  --color-default-muted: var(--color-gray-50);
-  --color-default-muted-foreground: var(--color-gray-800);
-  --color-default-muted-body: var(--color-gray-700);
+  /* White Colors */
+  --color-white-100: var(--theme-white-100);
+  --color-white-90: var(--theme-white-90);
+  --color-white-80: var(--theme-white-80);
+  --color-white-70: var(--theme-white-70);
+  --color-white-60: var(--theme-white-60);
 
-  /* More color */
-  --color-cyan-muted: var(--color-cyan-50);
-  --color-cyan-muted-body: var(--color-cyan-700);
+  /* Border Colors */
+  --border-color-base-50: var(--theme-border-color-base-50);
+  --border-color-base-100: var(--theme-border-color-base-100);
+  --border-color-base-200: var(--theme-border-color-base-200);
+  --border-color-base-300: var(--theme-border-color-base-300);
 
-  --color-sky-muted: var(--color-sky-50);
-  --color-sky-muted-body: var(--color-sky-700);
+  /* Foreground Colors */
+  --color-foreground-50: var(--theme-foreground-50);
+  --color-foreground-100: var(--theme-foreground-100);
 
-  --color-blue-muted: var(--color-blue-50);
-  --color-blue-muted-body: var(--color-blue-700);
+  /* Foreground Gray Colors */
+  --color-foreground-soft-50: var(--theme-foreground-soft-50);
+  --color-foreground-soft-100: var(--theme-foreground-soft-100);
+  --color-foreground-soft-200: var(--theme-foreground-soft-200);
+  --color-foreground-soft-300: var(--theme-foreground-soft-300);
+  --color-foreground-soft-400: var(--theme-foreground-soft-400);
+  --color-foreground-soft-500: var(--theme-foreground-soft-500);
 
-  --color-violet-muted: var(--color-violet-50);
-  --color-violet-muted-body: var(--color-violet-700);
+  /* Background Colors */
+  --color-background-50: var(--theme-background-50);
+  --color-background-100: var(--theme-background-100);
 
-  --color-purple-muted: var(--color-purple-50);
-  --color-purple-muted-body: var(--color-purple-700);
+  /* Background Gray Colors */
+  --color-background-soft-50: var(--theme-background-soft-50);
+  --color-background-soft-100: var(--theme-background-soft-100);
+  --color-background-soft-200: var(--theme-background-soft-200);
+  --color-background-soft-300: var(--theme-background-soft-300);
+  --color-background-soft-400: var(--theme-background-soft-400);
+  --color-background-soft-500: var(--theme-background-soft-500);
 
-  --color-pink-muted: var(--color-pink-50);
-  --color-pink-muted-body: var(--color-pink-700);
+  --color-background-success-600: var(--theme-background-success-600);
 
-  --color-rose-muted: var(--color-rose-50);
-  --color-rose-muted-body: var(--color-rose-700);
+  /* ======== Button Color =========*/
 
-  --color-orange-muted: var(--color-orange-50);
-  --color-orange-muted-body: var(--color-orange-700);
+  /* Primary  */
+  --color-button-primary-background: var(--theme-button-primary-background);
+  --color-button-primary-hover-background: var(
+    --theme-button-primary-hover-background
+  );
+  --color-button-primary-text: var(--theme-button-primary-text);
+  --color-button-primary-focus-ring: var(--theme-button-primary-focus-ring);
 
-  --color-dropdown-bg: white;
-  --color-dropdown-foreground: #1f2937;
-  --color-dropdown-item-hover: #f3f4f6;
-  --color-dropdown-separator: var(--color-gray-200);
+  /* Outline */
+  --color-button-outline-background: var(--theme-button-outline-background);
+  --color-button-outline-hover-background: var(
+    --theme-button-outline-hover-background
+  );
+  --color-button-outline-border: var(--theme-button-outline-border);
+  --color-button-outline-focus-ring: var(--theme-button-outline-focus-ring);
+  --color-button-outline-text: var(--theme-button-outline-text);
+  --color-button-outline-hover-text: var(--theme-button-outline-hover-text);
 
+  /* Outline Disabled */
+  --color-button-outline-disabled-background: var(
+    --theme-button-outline-disabled-background
+  );
+  --color-button-outline-disabled-text: var(
+    --theme-button-outline-disabled-text
+  );
+  --color-button-outline-disabled-border: var(
+    --theme-button-outline-disabled-border
+  );
+
+  /* Disabled */
+  --color-button-disabled-background: var(--theme-button-disabled-background);
+  --color-button-disabled-border: var(--theme-button-disabled-border);
+  --color-button-disabled-text: var(--theme-button-disabled-text);
+
+  /* Error */
+  --color-button-error-background: var(--theme-button-error-background);
+  --color-button-error-hover-background: var(
+    --theme-button-error-hover-background
+  );
+  --color-button-error-border: var(--theme-button-error-border);
+  --color-button-error-text: var(--theme-button-error-text);
+  --color-button-error-focus-ring: var(--theme-button-error-focus-ring);
+
+  /* Error Outline */
+  --color-button-error-outline-background: var(
+    --theme-button-error-outline-background
+  );
+  --color-button-error-outline-hover-background: var(
+    --theme-button-error-outline-hover-background
+  );
+  --color-button-error-outline-border: var(--theme-button-error-outline-border);
+  --color-button-error-outline-focus-border: var(
+    --theme-button-error-outline-focus-border
+  );
+  --color-button-error-outline-focus-ring: var(
+    --theme-button-error-outline-focus-ring
+  );
+  --color-button-error-outline-text: var(--theme-button-error-outline-text);
+  --color-button-error-outline-hover-text: var(
+    --theme-button-error-outline-hover-text
+  );
+  --color-button-success-background: var(--theme-button-success-background);
+  --color-button-success-hover-background: var(
+    --theme-button-success-hover-background
+  );
+  --color-button-success-border: var(--theme-button-success-border);
+  --color-button-success-text: var(--theme-button-success-text);
+  --color-button-success-focus-ring: var(--theme-button-success-focus-ring);
+
+  /* Success Outline */
+  --color-button-success-outline-background: var(
+    --theme-button-success-outline-background
+  );
+  --color-button-success-outline-hover-background: var(
+    --theme-button-success-outline-hover-background
+  );
+  --color-button-success-outline-border: var(
+    --theme-button-success-outline-border
+  );
+  --color-button-success-outline-focus-border: var(
+    --theme-button-success-outline-focus-border
+  );
+  --color-button-success-outline-text: var(--theme-button-success-outline-text);
+  --color-button-success-outline-hover-text: var(
+    --theme-button-success-outline-hover-text
+  );
+  --color-button-success-outline-focus-ring: var(
+    --theme-button-success-outline-focus-ring
+  );
+
+  /* Ghost */
+  --color-button-ghost-text: var(--theme-button-ghost-text);
+  --color-button-ghost-hover-text: var(--theme-button-ghost-hover-text);
+  --color-button-ghost-hover-background: var(
+    --theme-button-ghost-hover-background
+  );
+
+  /* Button Group Primary */
+  --color-button-group-primary-background: var(
+    --theme-button-group-primary-background
+  );
+  --color-button-group-primary-hover-background: var(
+    --theme-button-group-primary-hover-background
+  );
+  --color-button-group-primary-text: var(--theme-button-group-primary-text);
+  --color-button-group-primary-hover-text: var(
+    --theme-button-group-primary-hover-text
+  );
+
+  /* Button Group Secondary */
+  --color-button-group-secondary-background: var(
+    --theme-button-group-secondary-background
+  );
+  --color-button-group-secondary-text: var(--theme-button-group-secondary-text);
+
+  /* ======== Badge Color =========*/
+
+  /* Badge Neutral */
+  --color-badge-neutral-background: var(--theme-badge-neutral-background);
+  --color-badge-neutral-text: var(--theme-badge-neutral-text);
+  --color-badge-neutral-icon-color: var(--theme-badge-neutral-icon-color);
+
+  /* Badge Primary */
+  --color-badge-primary-background: var(--theme-badge-primary-background);
+  --color-badge-primary-text: var(--theme-badge-primary-text);
+  --color-badge-primary-icon-color: var(--theme-badge-primary-icon-color);
+
+  /* Badge Error */
+  --color-badge-error-background: var(--theme-badge-error-background);
+  --color-badge-error-text: var(--theme-badge-error-text);
+  --color-badge-error-icon-color: var(--theme-badge-error-icon-color);
+
+  /* Badge Warning */
+  --color-badge-warning-background: var(--theme-badge-warning-background);
+  --color-badge-warning-text: var(--theme-badge-warning-text);
+  --color-badge-warning-icon-color: var(--theme-badge-warning-icon-color);
+
+  /* Badge Success */
+  --color-badge-success-background: var(--theme-badge-success-background);
+  --color-badge-success-text: var(--theme-badge-success-text);
+  --color-badge-success-icon-color: var(--theme-badge-success-icon-color);
+
+  /* Badge Cyan */
+  --color-badge-cyan-background: var(--theme-badge-cyan-background);
+  --color-badge-cyan-text: var(--theme-badge-cyan-text);
+  --color-badge-cyan-icon-color: var(--theme-badge-cyan-icon-color);
+
+  /* Badge Sky */
+  --color-badge-sky-background: var(--theme-badge-sky-background);
+  --color-badge-sky-text: var(--theme-badge-sky-text);
+  --color-badge-sky-icon-color: var(--theme-badge-sky-icon-color);
+
+  /* Badge Blue */
+  --color-badge-blue-background: var(--theme-badge-blue-background);
+  --color-badge-blue-text: var(--theme-badge-blue-text);
+  --color-badge-blue-icon-color: var(--theme-badge-blue-icon-color);
+
+  /* Badge Violet */
+  --color-badge-violet-background: var(--theme-badge-violet-background);
+  --color-badge-violet-text: var(--theme-badge-violet-text);
+  --color-badge-violet-icon-color: var(--theme-badge-violet-icon-color);
+
+  /* Badge Purple */
+  --color-badge-purple-background: var(--theme-badge-purple-background);
+  --color-badge-purple-text: var(--theme-badge-purple-text);
+  --color-badge-purple-icon-color: var(--theme-badge-purple-icon-color);
+
+  /* Badge Pink */
+  --color-badge-pink-background: var(--theme-badge-pink-background);
+  --color-badge-pink-text: var(--theme-badge-pink-text);
+  --color-badge-pink-icon-color: var(--theme-badge-pink-icon-color);
+
+  /* Badge Rose */
+  --color-badge-rose-background: var(--theme-badge-rose-background);
+  --color-badge-rose-text: var(--theme-badge-rose-text);
+  --color-badge-rose-icon-color: var(--theme-badge-rose-icon-color);
+
+  /* Badge Orange */
+  --color-badge-orange-background: var(--theme-badge-orange-background);
+  --color-badge-orange-text: var(--theme-badge-orange-text);
+  --color-badge-orange-icon-color: var(--theme-badge-orange-icon-color);
+
+  /* ======== Sidebar =========*/
+
+  /* Nav Item */
+  --color-sidebar-nav-default-background: var(
+    --theme-sidebar-nav-default-background
+  );
+  --color-sidebar-nav-hover-background: var(
+    --theme-sidebar-nav-hover-background
+  );
+  --color-sidebar-nav-secondary-hover-background: var(
+    --theme-sidebar-nav-secondary-hover-background
+  );
+  --color-sidebar-nav-hover-text: var(--theme-sidebar-nav-hover-text);
+  --color-sidebar-nav-active-text: var(--theme-sidebar-nav-active-text);
+  --color-sidebar-nav-active-background: var(
+    --theme-sidebar-nav-active-background
+  );
+  --color-sidebar-nav-focused-background: var(
+    --theme-sidebar-nav-focused-background
+  );
+  --color-sidebar-nav-default-text: var(--theme-sidebar-nav-default-text);
+  --color-sidebar-nav-icon: var(--theme-sidebar-nav-icon);
+
+  /* Sidebar Badge */
+  --color-sidebar-badge-background: var(--theme-sidebar-badge-background);
+  --color-sidebar-badge-text: var(--theme-sidebar-badge-text);
+
+  /* Sidebar Footer */
+  --color-sidebar-footer-background: var(--theme-sidebar-footer-background);
+  --color-sidebar-footer-title: var(--theme-sidebar-footer-title);
+  --color-sidebar-footer-subtitle: var(--theme-sidebar-footer-subtitle);
+  --color-sidebar-footer-button-text: var(--theme-sidebar-footer-button-text);
+
+  /* ======== Card Color =========*/
+  --color-card-background-50: var(--theme-card-background-50);
+  --color-card-background-100: var(--theme-card-background-100);
+  --color-card-background-200: var(--theme-card-background-200);
+  --color-card-background-300: var(--theme-card-background-300);
+
+  /* ======== Alert Success Color =========*/
+  --color-alert-success-background: var(--theme-alert-success-background);
+  --color-alert-success-icon-background: var(
+    --theme-alert-success-icon-background
+  );
+  --color-alert-success-border: var(--theme-alert-success-border);
+  --color-alert-success-close-icon: var(--theme-alert-success-close-icon);
+  --color-alert-success-title: var(--theme-alert-success-title);
+  --color-alert-success-description: var(--theme-alert-success-description);
+  --color-alert-success-button-background: var(
+    --theme-alert-success-button-background
+  );
+  --color-alert-success-button-hover-background: var(
+    --theme-alert-success-button-hover-background
+  );
+  --color-alert-success-button-text: var(--theme-alert-success-button-text);
+
+  /* ======== Alert Danger Color =========*/
+  --color-alert-danger-background: var(--theme-alert-danger-background);
+  --color-alert-danger-icon-background: var(
+    --theme-alert-danger-icon-background
+  );
+  --color-alert-danger-border: var(--theme-alert-danger-border);
+  --color-alert-danger-close-icon: var(--theme-alert-danger-close-icon);
+  --color-alert-danger-title: var(--theme-alert-danger-title);
+  --color-alert-danger-description: var(--theme-alert-danger-description);
+  --color-alert-danger-button-background: var(
+    --theme-alert-danger-button-background
+  );
+  --color-alert-danger-button-hover-background: var(
+    --theme-alert-danger-button-hover-background
+  );
+  --color-alert-danger-button-text: var(--theme-alert-danger-button-text);
+
+  /* ======== Alert Info Color =========*/
+  --color-alert-info-background: var(--theme-alert-info-background);
+  --color-alert-info-icon-background: var(--theme-alert-info-icon-background);
+  --color-alert-info-border: var(--theme-alert-info-border);
+  --color-alert-info-close-icon: var(--theme-alert-info-close-icon);
+  --color-alert-info-title: var(--theme-alert-info-title);
+  --color-alert-info-description: var(--theme-alert-info-description);
+  --color-alert-info-button-background: var(
+    --theme-alert-info-button-background
+  );
+  --color-alert-info-button-hover-background: var(
+    --theme-alert-info-button-hover-background
+  );
+  --color-alert-info-button-text: var(--theme-alert-info-button-text);
+
+  /* ======== Alert Warning Color =========*/
+  --color-alert-warning-background: var(--theme-alert-warning-background);
+  --color-alert-warning-icon-background: var(
+    --theme-alert-warning-icon-background
+  );
+  --color-alert-warning-border: var(--theme-alert-warning-border);
+  --color-alert-warning-close-icon: var(--theme-alert-warning-close-icon);
+  --color-alert-warning-title: var(--theme-alert-warning-title);
+  --color-alert-warning-description: var(--theme-alert-warning-description);
+  --color-alert-warning-button-background: var(
+    --theme-alert-warning-button-background
+  );
+  --color-alert-warning-button-hover-background: var(
+    --theme-alert-warning-button-hover-background
+  );
+  --color-alert-warning-button-text: var(--theme-alert-warning-button-text);
+
+  /* ======== Alert Default Color =========*/
+  --color-alert-default-background: var(--theme-alert-default-background);
+  --color-alert-default-icon-background: var(
+    --theme-alert-default-icon-background
+  );
+  --color-alert-default-border: var(--theme-alert-default-border);
+  --color-alert-default-close-icon: var(--theme-alert-default-close-icon);
+  --color-alert-default-title: var(--theme-alert-default-title);
+  --color-alert-default-description: var(--theme-alert-default-description);
+  --color-alert-default-button-background: var(
+    --theme-alert-default-button-background
+  );
+  --color-alert-default-button-hover-background: var(
+    --theme-alert-default-button-hover-background
+  );
+  --color-alert-default-button-text: var(--theme-alert-default-button-text);
+
+  /* ======== Input Color =========*/
+  --color-input-background: var(--theme-input-background);
+  --color-input-label-text: var(--theme-input-label-text);
+  --color-input-disabled-text: var(--theme-input-disabled-text);
+  --color-input-placeholder-text: var(--theme-input-placeholder-text);
+  --color-input-primary-focus-border: var(--theme-input-primary-focus-border);
+  --color-input-error-focus-border: var(--theme-input-error-focus-border);
+  --color-input-success-focus-border: var(--theme-input-success-focus-border);
+  --color-input-error: var(--theme-input-error);
+  --color-input-success: var(--theme-input-success);
+
+  /* ======== Tab Color =========*/
+  --color-tab-background: var(--theme-tab-background);
+  --color-tab-active-background: var(--theme-tab-active-background);
+  --color-tab-secondary-active-background: var(
+    --theme-tab-secondary-active-background
+  );
+
+  /* ======== Checkbox Color =========*/
+  --color-checkbox-background: var(--theme-checkbox-background);
+  --color-checkbox-checked-border: var(--theme-checkbox-checked-border);
+  --color-checkbox-checked-background: var(--theme-checkbox-checked-background);
+  --color-checkbox-checked-icon-color: var(--theme-checkbox-checked-icon-color);
+
+  /* ======== Scrollbar Color =========*/
+  --color-scrollbar-background: var(--theme-scrollbar-background);
+
+  /* ======== Datepicker Color =========*/
+  --color-datepicker-background: var(--theme-datepicker-background);
+  --color-datepicker-selected-background: var(
+    --theme-datepicker-selected-background
+  );
+  --color-datepicker-selected-hover-background: var(
+    --theme-datepicker-selected-hover-background
+  );
+
+  /* ======== Dropdown Color =========*/
+  --color-dropdown-background: var(--theme-dropdown-background);
+  --color-dropdown-hover-background: var(--theme-dropdown-hover-background);
+  --color-dropdown-secondary-background: var(
+    --theme-dropdown-secondary-background
+  );
+  --color-dropdown-divider: var(--theme-dropdown-divider);
+
+  /* ======== Calendar Color =========*/
+  --color-calendar-primary-badge: var(--theme-calendar-primary-badge);
+  --color-calendar-primary-background: var(--theme-calendar-primary-background);
+  --color-calendar-success-badge: var(--theme-calendar-success-badge);
+  --color-calendar-success-background: var(--theme-calendar-success-background);
+  --color-calendar-warning-badge: var(--theme-calendar-warning-badge);
+  --color-calendar-warning-background: var(--theme-calendar-warning-background);
+  --color-calendar-danger-badge: var(--theme-calendar-danger-badge);
+  --color-calendar-danger-background: var(--theme-calendar-danger-background);
+  --color-calendar-info-badge: var(--theme-calendar-info-badge);
+  --color-calendar-info-background: var(--theme-calendar-info-background);
+  --color-calendar-text: var(--theme-calendar-text);
+  --color-calendar-menu-text: var(--theme-calendar-menu-text);
+  --color-calendar-dropdown-background: var(
+    --theme-calendar-dropdown-background
+  );
+
+  /* ======== Pricing Color =========*/
+  --color-pricing-active-switcher-background: var(
+    --theme-pricing-active-switcher-background
+  );
+  --color-pricing-active-card-background: var(
+    --theme-pricing-active-card-background
+  );
+  --color-pricing-button-background: var(--theme-pricing-button-background);
+  --color-pricing-icon-color: var(--theme-pricing-icon-color);
+  --color-pricing-icon-background: var(--theme-pricing-icon-background);
+
+  /* ======== FAQ Color =========*/
+  --color-faq-primary-active-background: var(
+    --theme-faq-primary-active-background
+  );
+  --color-faq-secondary-active-background: var(
+    --theme-faq-secondary-active-background
+  );
+  --color-faq-secondary-active-border: var(--theme-faq-secondary-active-border);
+  --color-faq-secondary-active-title: var(--theme-faq-secondary-active-title);
+  --color-faq-secondary-active-text: var(--theme-faq-secondary-active-text);
+
+  /* ======== Chat List Color =========*/
+  --color-chat-list-background-primary: var(
+    --theme-chat-list-background-primary
+  );
+  --color-chat-list-background-primary-alt: var(
+    --theme-chat-list-background-primary-alt
+  );
+  --color-chat-list-background-secondary: var(
+    --theme-chat-list-background-secondary
+  );
+  --color-chat-list-background-secondary-alt: var(
+    --theme-chat-list-background-secondary-alt
+  );
+
+  /* ======== Tooltip Color =========*/
+  --color-tooltip-text: var(--theme-tooltip-text);
+  --color-tooltip-border: var(--theme-tooltip-border);
+
+  /* ======== Popover Color =========*/
+  --color-popover-title-background: var(--theme-popover-title-background);
+  --color-popover-border: var(--theme-popover-border);
+
+  /* ======== Skeleton Color =========*/
+  --color-skeleton-gradient-50: var(--theme-skeleton-gradient-50);
+  --color-skeleton-gradient-100: var(--theme-skeleton-gradient-100);
+  --color-skeleton-gradient-200: var(--theme-skeleton-gradient-200);
+
+  /* ======== 404 Color =========*/
+  --color-404-background: var(--theme-404-background);
+  --color-404-foreground: var(--theme-404-foreground);
+
+  /* ======== Blog Color =========*/
+  --color-blog-shape: var(--theme-blog-shape);
+
+  /* ======== Modal Color =========*/
+  --color-modal-button-success-background: var(
+    --theme-modal-button-success-background
+  );
+  --color-modal-button-info-background: var(
+    --theme-modal-button-info-background
+  );
+  --color-modal-button-warning-background: var(
+    --theme-modal-button-warning-background
+  );
+  --color-modal-button-error-background: var(
+    --theme-modal-button-error-background
+  );
+
+  /* ======== Section Title Color =========*/
+  --color-section-title-badge: var(--theme-section-title-badge);
+  --color-section-title-badge-background: var(
+    --theme-section-title-badge-background
+  );
+
+  /* ======== Mobile Nav Menu Button Color =========*/
+  --color-mobile-nav-icon: var(--theme-mobile-nav-icon);
+  --color-mobile-nav-background: var(--theme-mobile-nav-background);
+  --color-mobile-nav-hover-background: var(--theme-mobile-nav-hover-background);
+
+  /* ======== Footer Color =========*/
+  --color-footer-card-background: var(--theme-footer-card-background);
+  --color-footer-background: var(--theme-footer-background);
+
+  /* ======== Bento Color =========*/
+  --color-bento-card-background: var(--theme-bento-card-background);
+  --color-bento-gradient-shade-1: var(--theme-bento-gradient-shade-1);
+  --color-bento-gradient-shade-2: var(--theme-bento-gradient-shade-2);
+  --color-bento-gradient-shade-3: var(--theme-bento-gradient-shade-3);
+
+  /* ======== CTA Color =========*/
+  --color-cta-icon-background: var(--theme-cta-icon-background);
+  --color-cta-background: var(--theme-cta-background);
+
+  /* ======== Hero Color =========*/
+  --color-hero-background: var(--theme-hero-background);
+  --color-hero-card-background: var(--theme-hero-card-background);
+  --color-hero-card-2-background: var(--theme-hero-card-2-background);
+  --color-hero-gradient-shade-1: var(--theme-hero-gradient-shade-1);
+  --color-hero-gradient-shade-2: var(--theme-hero-gradient-shade-2);
+
+  /* ======== Toggle Color =========*/
+  --color-toggle-default-background: var(--theme-toggle-default-background);
+  --color-toggle-disabled-foreground: var(--theme-toggle-disabled-foreground);
+  --color-toggle-disabled-background: var(--theme-toggle-disabled-background);
+  --color-toggle-active-background: var(--theme-toggle-active-background);
+
+  /* ======== Map Color =========*/
+  --color-map-fill: var(--theme-map-fill);
+
+  /* ======== AI Sidebar Gradient Color =========*/
+  --color-ai-sidebar-primary-gradient-shade-1: var(
+    --theme-ai-sidebar-primary-gradient-shade-1
+  );
+  --color-ai-sidebar-primary-gradient-shade-2: var(
+    --theme-ai-sidebar-primary-gradient-shade-2
+  );
+  --color-ai-sidebar-secondary-gradient-shade-1: var(
+    --theme-ai-sidebar-secondary-gradient-shade-1
+  );
+  --color-ai-sidebar-secondary-gradient-shade-2: var(
+    --theme-ai-sidebar-secondary-gradient-shade-2
+  );
+
+  /* ======== AI Sidebar Menu Color =========*/
+  --color-ai-sidebar-hover-primary-shade-1: var(
+    --theme-ai-sidebar-hover-primary-shade-1
+  );
+  --color-ai-sidebar-hover-primary-shade-2: var(
+    --theme-ai-sidebar-hover-primary-shade-2
+  );
+  --color-ai-sidebar-hover-secondary-shade-1: var(
+    --theme-ai-sidebar-hover-secondary-shade-1
+  );
+  --color-ai-sidebar-hover-secondary-shade-2: var(
+    --theme-ai-sidebar-hover-secondary-shade-2
+  );
+  --color-ai-sidebar-hover-primary-background: var(
+    --theme-ai-sidebar-hover-primary-background
+  );
+  --color-ai-sidebar-hover-secondary-background: var(
+    --theme-ai-sidebar-hover-secondary-background
+  );
+  --color-ai-title-gradient-shade-1: var(--theme-ai-title-gradient-shade-1);
+  --color-ai-title-gradient-shade-2: var(--theme-ai-title-gradient-shade-2);
+  --color-ai-hero-blend-1: var(--theme-ai-hero-blend-1);
+  --color-ai-hero-blend-2: var(--theme-ai-hero-blend-2);
+
+  /* ======== Website Color ========= */
   --color-tg-border-1: var(--border-1);
   --color-tg-border-2: var(--border-2);
   --color-tg-title-color: var(--color-gray-800);
@@ -121,11 +614,10 @@
   --color-tg-text-color-secondary: var(--color-gray-500);
   --color-tg-text-color-tertiary: var(--color-gray-400);
 
-  /* Border colors for pattern */
   --border-1: var(--color-gray-200);
   --border-2: var(--color-gray-800);
 
-  /* Shadows */
+  /* Shadows (theme-independent) */
   --shadow-xs: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
   --shadow-sm: 0px 1px 3px 0px rgba(16, 24, 40, 0.1);
   --shadow-md:

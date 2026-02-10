@@ -10,7 +10,7 @@ export default function DatePickerDefaultPreview() {
     <div className="flex flex-col items-center gap-4 w-full p-4">
       <div className="max-w-xs w-full">
         <DatePicker value={date} onChange={setDate} placeholder="Pick a date" />
-        <p className="mt-4 text-sm text-neutral-600">
+        <p className="mt-4 text-sm text-title-50">
           Selected: {date ? date.toDateString() : "None"}
         </p>
       </div>

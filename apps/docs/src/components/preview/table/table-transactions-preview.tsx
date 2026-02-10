@@ -22,7 +22,7 @@ const DATA = [
     category: "Finance",
     status: "Success",
     icon: "P",
-    iconColor: "bg-blue-600"
+    iconColor: "bg-primary-600"
   },
   {
     id: 2,
@@ -42,7 +42,7 @@ const DATA = [
     category: "Finance",
     status: "Success",
     icon: "K",
-    iconColor: "bg-green-500"
+    iconColor: "bg-success-500"
   },
   {
     id: 4,
@@ -52,7 +52,7 @@ const DATA = [
     category: "Social media",
     status: "Pending",
     icon: "f",
-    iconColor: "bg-blue-500"
+    iconColor: "bg-primary-500"
   },
   {
     id: 5,
@@ -62,7 +62,7 @@ const DATA = [
     category: "E-commerce",
     status: "Success",
     icon: "a",
-    iconColor: "bg-orange-500"
+    iconColor: "bg-warning-500"
   }
 ];
 
@@ -70,7 +70,7 @@ export default function TableTransactionsPreview() {
   return (
     <div className="w-full">
       <div className="mb-6 flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-neutral-900">
+        <h3 className="text-lg font-semibold text-title-50">
           Latest Transactions
         </h3>
         <div className="flex gap-2">
@@ -79,14 +79,14 @@ export default function TableTransactionsPreview() {
               placeholder="Search..."
               className="pl-8 pr-3 py-1.5 text-sm w-48 sm:w-64"
             />
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-neutral-400" />
+            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-text-200" />
           </div>
         </div>
       </div>
 
       <TableRoot className="mb-1">
         <TableHeader>
-          <TableRow className="bg-neutral-50 border-none">
+          <TableRow className="bg-background-soft-50 border-none">
             <TableHead>Name</TableHead>
             <TableHead>Date</TableHead>
             <TableHead>Price</TableHead>
@@ -100,7 +100,7 @@ export default function TableTransactionsPreview() {
           {DATA.map(item => (
             <TableRow
               key={item.id}
-              className="text-sm border-b border-neutral-100 last:border-none"
+              className="text-sm border-b border-(--border-color-base-50) last:border-none"
             >
               <TableCell>
                 <div className="flex items-center gap-3">
@@ -109,21 +109,21 @@ export default function TableTransactionsPreview() {
                   >
                     {item.icon}
                   </div>
-                  <span className="font-medium text-[#1F2937] whitespace-nowrap">
+                  <span className="font-medium text-title-50 whitespace-nowrap">
                     {item.name}
                   </span>
                 </div>
               </TableCell>
 
-              <TableCell className="text-xs -tracking-[0.2px] text-[#6B7280] whitespace-nowrap">
+              <TableCell className="text-xs -tracking-[0.2px] text-text-100 whitespace-nowrap">
                 {item.date}
               </TableCell>
 
-              <TableCell className="font-semibold text-[#6B7280] -tracking-[0.2px] whitespace-nowrap">
+              <TableCell className="font-semibold text-text-100 -tracking-[0.2px] whitespace-nowrap">
                 {item.price}
               </TableCell>
 
-              <TableCell className="text-[#374151] whitespace-nowrap">
+              <TableCell className="text-text-50 whitespace-nowrap">
                 {item.category}
               </TableCell>
 
@@ -140,10 +140,10 @@ export default function TableTransactionsPreview() {
                     <span
                       className={`size-1.5 rounded-full ${
                         item.status === "Success"
-                          ? "bg-green-500"
+                          ? "bg-success-500"
                           : item.status === "Failed"
-                            ? "bg-red-500"
-                            : "bg-orange-500"
+                            ? "bg-error-500"
+                            : "bg-warning-500"
                       }`}
                     />
                   }
@@ -153,7 +153,7 @@ export default function TableTransactionsPreview() {
               </TableCell>
 
               <TableCell>
-                <button className="text-neutral-400 hover:text-neutral-600">
+                <button className="text-text-200 hover:text-text-100">
                   <MoreHorizontal className="h-5 w-5" />
                 </button>
               </TableCell>

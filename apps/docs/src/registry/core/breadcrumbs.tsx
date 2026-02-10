@@ -1,5 +1,5 @@
 import { cn } from "@/utils/cn";
-import { ArrowRight } from "@tailgrids/icons";
+import { ChevronRight } from "@tailgrids/icons";
 
 type PropsType = {
   items: {
@@ -22,7 +22,7 @@ export function Breadcrumbs({ items, dividerType = "slash" }: PropsType) {
       {items.map((item, index) => (
         <li
           key={item.href}
-          className="contents text-neutral-500 [&_svg]:text-current!"
+          className="contents text-text-100 [&_svg]:text-current!"
         >
           {index > 0 && <Divider type={dividerType} />}
 
@@ -30,7 +30,7 @@ export function Breadcrumbs({ items, dividerType = "slash" }: PropsType) {
             href={item.href}
             className={cn(
               "flex items-center gap-1 text-sm [&>svg]:size-4",
-              index + 1 === items.length && "text-neutral-800"
+              index + 1 === items.length && "text-title-50"
             )}
           >
             {item.icon}
@@ -46,10 +46,10 @@ export function Breadcrumbs({ items, dividerType = "slash" }: PropsType) {
 function Divider({ type }: { type: PropsType["dividerType"] }) {
   switch (type) {
     case "chevron":
-      return <ArrowRight className="size-4" />;
+      return <ChevronRight className="size-4" />;
 
     case "dot":
-      return <span className="size-1 rounded-full bg-neutral-400" />;
+      return <span className="size-1 rounded-full bg-text-200" />;
 
     default:
       return <span>/</span>;

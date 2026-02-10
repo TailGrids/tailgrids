@@ -2,13 +2,13 @@ import { cn } from "@/utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
 import type { ComponentProps } from "react";
 
-const linkStyles = cva(
+export const linkStyles = cva(
   "inline-flex items-center font-medium transition [&>svg]:size-5 [&>svg]:text-current!",
   {
     variants: {
       variant: {
         primary: "text-primary-500 hover:text-primary-600",
-        dark: "text-neutral-800 hover:text-neutral-500"
+        dark: "text-button-outline-text hover:text-text-100"
       },
       size: {
         sm: "gap-1.5 text-sm",

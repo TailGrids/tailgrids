@@ -126,7 +126,8 @@ export const REGISTRIES: Registry[] = [
         path: "/core/date-picker/range-date.tsx"
       }
     ],
-    dependencies: ["react-stately", "date-fns"]
+    dependencies: ["react-stately", "date-fns", "@tailgrids/icons"],
+    requires: ["button"]
   },
   {
     id: "dropdown",
@@ -218,7 +219,8 @@ export const REGISTRIES: Registry[] = [
         path: "/core/pagination.tsx"
       }
     ],
-    dependencies: ["class-variance-authority", "@tailgrids/icons"]
+    dependencies: ["class-variance-authority", "@tailgrids/icons"],
+    requires: ["button"]
   },
   {
     id: "popover",
@@ -308,15 +310,15 @@ export const REGISTRIES: Registry[] = [
       },
       {
         type: "core",
-        path: "/core/spinner/default.svg"
+        path: "/core/spinner/default.tsx"
       },
       {
         type: "core",
-        path: "/core/spinner/dotted.svg"
+        path: "/core/spinner/dotted.tsx"
       },
       {
         type: "core",
-        path: "/core/spinner/dotted-round.svg"
+        path: "/core/spinner/dotted-round.tsx"
       }
     ]
   },
@@ -385,7 +387,7 @@ export const REGISTRIES: Registry[] = [
       }
     ],
     dependencies: ["class-variance-authority", "@tailgrids/icons"],
-    requires: ["avatar"]
+    requires: ["avatar", "button", "link"]
   },
   {
     id: "toggle",

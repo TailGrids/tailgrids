@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import type { ComponentProps } from "react";
 
 const listGroupStyles = cva(
-  "[&>li]:data-[active=true]:bg-primary-50 [&>li]:data-[active=true]:text-primary-500 flex w-full overflow-clip rounded-lg border border-neutral-200 text-sm text-neutral-500 [&_span]:data-[type=count]:ml-auto [&_svg]:text-current [&>li]:relative [&>li]:flex [&>li]:items-center [&>li]:gap-3 [&>li]:px-3 [&>li]:py-2.5 [&>li]:hover:bg-neutral-100 [&>li]:hover:text-neutral-700",
+  "[&>li]:data-[active=true]:bg-primary-50 [&>li]:data-[active=true]:text-primary-500 flex w-full overflow-clip rounded-lg border border-base-100 text-sm text-text-100 [&_span]:data-[type=count]:ml-auto [&_svg]:text-current [&>li]:relative [&>li]:flex [&>li]:items-center [&>li]:gap-3 [&>li]:px-3 [&>li]:py-2.5 [&>li]:hover:bg-background-soft-100 [&>li]:hover:text-text-50",
   {
     variants: {
       hideDividers: {
@@ -18,12 +18,12 @@ const listGroupStyles = cva(
       {
         hideDividers: false,
         direction: "vertical",
-        className: "max-w-57 divide-y divide-neutral-200"
+        className: "max-w-57 divide-y divide-base-100"
       },
       {
         hideDividers: false,
         direction: "horizontal",
-        className: "divide-x divide-neutral-200"
+        className: "divide-x divide-base-100"
       }
     ]
   }

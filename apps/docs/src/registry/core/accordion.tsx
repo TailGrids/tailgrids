@@ -1,9 +1,9 @@
 "use client";
 
 import { cn } from "@/utils/cn";
+import { ChevronDown, Minus, Plus } from "@tailgrids/icons";
 import { cva } from "class-variance-authority";
 import { createContext, useContext, useId, useState } from "react";
-import { ChevronDown, Minus, Plus } from "@tailgrids/icons";
 
 type Variant =
   | "style_one"
@@ -30,7 +30,7 @@ function useRootContext() {
   return context;
 }
 
-const accordionRootStyle = cva("flex w-full flex-col", {
+const accordionRootStyle = cva("flex w-full flex-col overflow-clip", {
   variants: {
     variant: {
       style_one: "gap-5",
@@ -95,11 +95,12 @@ function useItemContext() {
 const accordionItemStyle = cva("w-full", {
   variants: {
     variant: {
-      style_one: "overflow-clip rounded-xl border border-neutral-200",
-      style_two: "border-b border-neutral-100",
-      style_three: "bg-neutral overflow-clip rounded-xl",
-      style_four: "overflow-clip rounded-xl bg-neutral-50",
-      style_five: "overflow-clip rounded-xl bg-neutral-50"
+      style_one:
+        "overflow-clip rounded-xl border border-base-100 bg-background-100",
+      style_two: "border-b border-base-50",
+      style_three: "overflow-clip rounded-xl bg-background-100",
+      style_four: "overflow-clip rounded-xl bg-background-soft-50",
+      style_five: "overflow-clip rounded-xl bg-background-soft-50"
     }
   }
 });
@@ -136,7 +137,7 @@ export function AccordionItem({ children, className }: AccordionItemProps) {
 }
 
 const accordionTriggerStyle = cva(
-  "group flex w-full items-start justify-between gap-2 text-left text-neutral-800",
+  "group flex w-full items-start justify-between gap-2 text-left text-title-50",
   {
     variants: {
       variant: {
@@ -190,13 +191,13 @@ export function AccordionTrigger({
   );
 }
 
-const accordionContentStyle = cva("text-neutral-500", {
+const accordionContentStyle = cva("text-text-100", {
   variants: {
     variant: {
       style_one: "px-5 pb-5 sm:px-6 sm:pb-7",
       style_two: "p-6 pt-0 max-sm:px-5 max-sm:pb-5",
-      style_three: "mx-5 border-t border-neutral-100 pt-4 pb-5 sm:mx-6",
-      style_four: "mx-5 border-t border-neutral-200 pt-4 pb-5 sm:mx-6 sm:pb-6",
+      style_three: "mx-5 border-t border-base-50 pt-4 pb-5 sm:mx-6",
+      style_four: "mx-5 border-t border-base-200 pt-4 pb-5 sm:mx-6 sm:pb-6",
       style_five: "p-5 pt-0 sm:p-6 sm:pt-0"
     }
   }

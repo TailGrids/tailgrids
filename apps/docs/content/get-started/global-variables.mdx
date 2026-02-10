@@ -8,10 +8,15 @@ description: CSS Variable file to be used in globally
 Copy and paste it in your main css file. These variables are being referenced across multiple core components.
 
 ```css
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
 @import "tailwindcss";
 @plugin '@tailwindcss/forms';
 
 @theme {
+  --font-sans: "DM Sans", sans-serif;
+
+  /* Primary */
   --color-primary-50: #eff3ff;
   --color-primary-100: #dae2ff;
   --color-primary-200: #becdff;
@@ -24,101 +29,418 @@ Copy and paste it in your main css file. These variables are being referenced ac
   --color-primary-900: #1c228c;
   --color-primary-950: #161755;
 
-  /* Base */
-  --color-neutral: white;
-  --color-neutral-100: var(--color-gray-100);
-  --color-neutral-200: var(--color-gray-200);
-  --color-neutral-300: var(--color-gray-300);
-  --color-neutral-400: var(--color-gray-400);
-  --color-neutral-500: var(--color-gray-500);
-  --color-neutral-700: var(--color-gray-700);
-  --color-neutral-800: var(--color-gray-800);
-  --color-neutral-900: var(--color-gray-900);
+  /* Text Color */
+  --color-title-50: #1f2937;
+  --color-text-color: #374151;
+  --color-text-secondary: #6b7280;
+  --color-text-tertiary: #9ca3af;
+
+  /* White */
+  --color-white-100: #ffffff;
+  --color-white-90: #ffffffcc;
+  --color-white-80: #ffffffcc;
+  --color-white-70: #ffffffb3;
+  --color-white-60: #ffffff99;
+
+  /* Border Color */
+  --border-color-base-50: #f3f4f6;
+  --border-color-base-100: #e5e7eb;
+  --border-color-base-200: #d1d5db;
+  --border-color-base-300: #9ca3af;
+
+  /* Foreground Color */
+  --color-foreground-50: #030712;
+  --color-foreground-100: #111827;
+  --color-foreground-soft-50: #111827;
+  --color-foreground-soft-100: #111827;
+  --color-foreground-soft-200: #1f2937;
+  --color-foreground-soft-300: #030712;
+  --color-foreground-soft-400: #1f2937;
+  --color-foreground-soft-500: #374151;
+
+  /* Background Color */
+  --color-background-50: #ffffff;
+  --color-background-100: #ffffff;
+  --color-background-soft-50: #f9fafb;
+  --color-background-soft-100: #f3f4f6;
+  --color-background-soft-200: #f3f4f6;
+  --color-background-soft-300: #f3f4f6;
+  --color-background-soft-400: #e5e7eb;
+  --color-background-soft-500: #d1d5db;
+  --color-background-success-600: #16a34a;
+
+  /* ======== Button Color =========*/
+
+  /* Primary */
+  --color-button-primary-background: #3758f9;
+  --color-button-primary-hover-background: #2237ee;
+  --color-button-primary-text: #ffffff;
+  --color-button-primary-focus-ring: rgba(55, 88, 249, 0.2);
+
+  /* Outline */
+  --color-button-outline-background: #ffffff;
+  --color-button-outline-hover-background: #f3f4f6;
+  --color-button-outline-border: #d1d5db;
+  --color-button-outline-focus-ring: rgba(152, 162, 179, 0.14);
+  --color-button-outline-text: #1f2937;
+  --color-button-outline-hover-text: #111827;
+  --color-button-outline-disabled-background: #f3f4f6;
+  --color-button-outline-disabled-text: #9ca3af;
+
+  /* Disable */
+  --color-button-disabled-background: #f3f4f6;
+  --color-button-disabled-border: #f3f4f6;
+  --color-button-disabled-text: #9ca3af;
+
+  /* Error */
+  --color-button-error-background: #dc2626;
+  --color-button-error-hover-background: #b91c1c;
+  --color-button-error-border: #ef4444;
+  --color-button-error-text: #ffffff;
+  --color-button-error-focus-ring: rgba(220, 38, 38, 0.2);
+
+  /* Error Outline */
+  --color-button-error-outline-background: #fef2f2;
+  --color-button-error-outline-hover-background: #fecaca;
+  --color-button-error-outline-border: #ef4444;
+  --color-button-error-outline-focus-border: #dc2626;
+  --color-button-error-outline-focus-ring: rgba(220, 38, 38, 0.2);
+  --color-button-error-outline-text: #b91c1c;
+  --color-button-error-outline-hover-text: #b91c1c;
 
   /* Success */
-  --color-success: var(--color-green-600);
-  --color-success-hover: var(--color-green-700);
-  --color-success-foreground: var(--color-white);
-  --color-success-border: var(--color-green-200);
-  --color-success-outline: var(--color-green-500);
-  --color-success-muted: var(--color-green-50);
-  --color-success-muted-hover: var(--color-green-200);
-  --color-success-muted-foreground: var(--color-green-800);
-  --color-success-muted-body: var(--color-green-700);
-  --color-success-ring: var(--color-green-100);
+  --color-button-success-background: #16a34a;
+  --color-button-success-hover-background: #15803d;
+  --color-button-success-border: #22c55e;
+  --color-button-success-text: #ffffff;
+  --color-button-success-focus-ring: rgba(22, 163, 74, 0.2);
 
-  /* Danger */
-  --color-danger: var(--color-red-600);
-  --color-danger-hover: var(--color-red-700);
-  --color-danger-foreground: var(--color-white);
-  --color-danger-border: var(--color-red-200);
-  --color-danger-outline: var(--color-red-500);
-  --color-danger-muted: var(--color-red-50);
-  --color-danger-muted-hover: var(--color-red-200);
-  --color-danger-muted-foreground: var(--color-red-800);
-  --color-danger-muted-body: var(--color-red-700);
-  --color-danger-ring: var(--color-red-100);
+  /* Success Outline */
+  --color-button-success-outline-background: #f0fdf4;
+  --color-button-success-outline-hover-background: #bbf7d0;
+  --color-button-success-outline-border: #22c55e;
+  --color-button-success-outline-focus-border: #16a34a;
+  --color-button-success-outline-text: #15803d;
+  --color-button-success-outline-hover-text: #15803d;
+  --color-button-success-outline-focus-ring: rgba(22, 163, 74, 0.2);
 
-  /* Info */
-  --color-info: var(--color-sky-600);
-  --color-info-hover: var(--color-sky-700);
-  --color-info-foreground: var(--color-white);
-  --color-info-border: var(--color-sky-200);
-  --color-info-muted: var(--color-sky-50);
-  --color-info-muted-foreground: var(--color-sky-800);
-  --color-info-muted-body: var(--color-sky-700);
+  /* Ghost */
+  --color-button-ghost-text: #9ca3af;
+  --color-button-ghost-hover-text: #6b7280;
+  --color-button-ghost-hover-background: #f3f4f6;
 
-  /* Warning */
-  --color-warning: var(--color-yellow-600);
-  --color-warning-hover: var(--color-yellow-700);
-  --color-warning-foreground: var(--color-white);
-  --color-warning-border: var(--color-yellow-200);
-  --color-warning-muted: var(--color-yellow-50);
-  --color-warning-muted-foreground: var(--color-yellow-800);
-  --color-warning-muted-body: var(--color-yellow-700);
+  /* Button Group Primary */
+  --color-button-group-primary-background: #ffffff;
+  --color-button-group-primary-hover-background: #3758f9;
+  --color-button-group-primary-text: #3758f9;
+  --color-button-group-primary-hover-text: #ffffff;
 
-  /* Default */
-  --color-default: var(--color-gray-600);
-  --color-default-hover: var(--color-gray-700);
-  --color-default-foreground: var(--color-white);
-  --color-default-border: var(--color-gray-200);
-  --color-default-muted: var(--color-gray-50);
-  --color-default-muted-foreground: var(--color-gray-800);
-  --color-default-muted-body: var(--color-gray-700);
+  /* Button Group Secondary */
+  --color-button-group-secondary-background: #ffffff;
+  --color-button-group-secondary-text: #374151;
 
-  /* More color */
-  --color-cyan-muted: var(--color-cyan-50);
-  --color-cyan-muted-body: var(--color-cyan-700);
+  /* ======== Badge Color =========*/
 
-  --color-sky-muted: var(--color-sky-50);
-  --color-sky-muted-body: var(--color-sky-700);
+  /* Badge Neutral */
+  --color-badge-neutral-background: #f3f4f6;
+  --color-badge-neutral-text: #374151;
+  --color-badge-neutral-icon-color: #6b7280;
 
-  --color-blue-muted: var(--color-blue-50);
-  --color-blue-muted-body: var(--color-blue-700);
+  /* Badge Primary */
+  --color-badge-primary-background: #eff3ff;
+  --color-badge-primary-text: #3758f9;
+  --color-badge-primary-icon-color: #3758f9;
 
-  --color-violet-muted: var(--color-violet-50);
-  --color-violet-muted-body: var(--color-violet-700);
+  /* Badge Error */
+  --color-badge-error-background: #fef2f2;
+  --color-badge-error-text: #b91c1c;
+  --color-badge-error-icon-color: #ef4444;
 
-  --color-purple-muted: var(--color-purple-50);
-  --color-purple-muted-body: var(--color-purple-700);
+  /* Badge Warning*/
+  --color-badge-warning-background: #fffbeb;
+  --color-badge-warning-text: #b45309;
+  --color-badge-warning-icon-color: #f59e0b;
 
-  --color-pink-muted: var(--color-pink-50);
-  --color-pink-muted-body: var(--color-pink-700);
+  /* Badge Success*/
+  --color-badge-success-background: #f0fdf4;
+  --color-badge-success-text: #15803d;
+  --color-badge-success-icon-color: #22c55e;
 
-  --color-rose-muted: var(--color-rose-50);
-  --color-rose-muted-body: var(--color-rose-700);
+  /* Badge Cyan */
+  --color-badge-cyan-background: #ecfeff;
+  --color-badge-cyan-text: #0e7490;
+  --color-badge-cyan-icon-color: #06b6d4;
 
-  --color-orange-muted: var(--color-orange-50);
-  --color-orange-muted-body: var(--color-orange-700);
+  /* Badge Sky */
+  --color-badge-sky-background: #f0f9ff;
+  --color-badge-sky-text: #0369a1;
+  --color-badge-sky-icon-color: #0ea5e9;
 
-  --color-dropdown-bg: white;
-  --color-dropdown-foreground: #1f2937;
-  --color-dropdown-item-hover: #f3f4f6;
-  --color-dropdown-separator: var(--color-gray-200);
+  /* Badge Blue */
+  --color-badge-blue-background: #eff6ff;
+  --color-badge-blue-text: #1d4ed8;
+  --color-badge-blue-icon-color: #3b82f6;
 
-  /* Border colors for pattern */
-  --border-1: var(--color-gray-200);
-  --border-2: var(--color-gray-800);
+  /* Badge Violet */
+  --color-badge-violet-background: #f5f3ff;
+  --color-badge-violet-text: #6d28d9;
+  --color-badge-violet-icon-color: #8b5cf6;
+
+  /* Badge Purple */
+  --color-badge-purple-background: #faf5ff;
+  --color-badge-purple-text: #7e22ce;
+  --color-badge-purple-icon-color: #a855f7;
+
+  /* Badge Pink */
+  --color-badge-pink-background: #fdf2f8;
+  --color-badge-pink-text: #be185d;
+  --color-badge-pink-icon-color: #ec4899;
+
+  /* Badge Rose */
+  --color-badge-rose-background: #fff1f2;
+  --color-badge-rose-text: #be123c;
+  --color-badge-rose-icon-color: #f43f5e;
+
+  /* Badge Orange */
+  --color-badge-orange-background: #fff7ed;
+  --color-badge-orange-text: #c2410c;
+  --color-badge-orange-icon-color: #f97316;
+
+  /* ======== Sidebar =========*/
+
+  /* Nav Item */
+  --color-sidebar-nav-default-background: #ffffff;
+  --color-sidebar-nav-hover-background: #f9fafb;
+  --color-sidebar-nav-secondary-hover-background: #f3f4f6;
+  --color-sidebar-nav-hover-text: #374151;
+  --color-sidebar-nav-active-text: #3758f9;
+  --color-sidebar-nav-active-background: #eff3ff;
+  --color-sidebar-nav-focused-background: #eff3ff;
+  --color-sidebar-nav-default-text: #374151;
+  --color-sidebar-nav-icon: #6b7280;
+
+  /* Sidebar Badge */
+  --color-sidebar-badge-background: #3758f9;
+  --color-sidebar-badge-text: #ffffff;
+
+  /* Sidebar Footer */
+  --color-sidebar-footer-background: #f9fafb;
+  --color-sidebar-footer-title: #111827;
+  --color-sidebar-footer-subtitle: #6b7280;
+  --color-sidebar-footer-button-text: #ffffff;
+
+  /* ======== Card Color =========*/
+  --color-card-background-50: #ffffff;
+  --color-card-background-100: #ffffff;
+  --color-card-background-200: #f3f4f6;
+  --color-card-background-300: #f9fafb;
+
+  /* ======== Alert Success Color =========*/
+  --color-alert-success-background: #f0fdf4;
+  --color-alert-success-icon-background: #16a34a;
+  --color-alert-success-border: #bbf7d0;
+  --color-alert-success-close-icon: #16a34a;
+  --color-alert-success-title: #166534;
+  --color-alert-success-description: #15803d;
+  --color-alert-success-button-background: #16a34a;
+  --color-alert-success-button-hover-background: #15803d;
+  --color-alert-success-button-text: #15803d;
+
+  /* ======== Alert Danger Color =========*/
+  --color-alert-danger-background: #fef2f2;
+  --color-alert-danger-icon-background: #dc2626;
+  --color-alert-danger-border: #fecaca;
+  --color-alert-danger-close-icon: #b91c1c;
+  --color-alert-danger-title: #991b1b;
+  --color-alert-danger-description: #b91c1c;
+  --color-alert-danger-button-background: #dc2626;
+  --color-alert-danger-button-hover-background: #b91c1c;
+  --color-alert-danger-button-text: #b91c1c;
+
+  /* ======== Alert Info Color =========*/
+  --color-alert-info-background: #f0f9ff;
+  --color-alert-info-icon-background: #0ea5e9;
+  --color-alert-info-border: #bae6fd;
+  --color-alert-info-close-icon: #0284c7;
+  --color-alert-info-title: #075985;
+  --color-alert-info-description: #0369a1;
+  --color-alert-info-button-background: #0284c7;
+  --color-alert-info-button-hover-background: #0369a1;
+  --color-alert-info-button-text: #0369a1;
+
+  /* ======== Alert Warning Color =========*/
+  --color-alert-warning-background: #fefce8;
+  --color-alert-warning-icon-background: #eab308;
+  --color-alert-warning-border: #fef08a;
+  --color-alert-warning-close-icon: #ca8a04;
+  --color-alert-warning-title: #854d0e;
+  --color-alert-warning-description: #a16207;
+  --color-alert-warning-button-background: #ca8a04;
+  --color-alert-warning-button-hover-background: #a16207;
+  --color-alert-warning-button-text: #ca8a04;
+
+  /* ======== Alert Default Color =========*/
+  --color-alert-default-background: #f9fafb;
+  --color-alert-default-icon-background: #6b7280;
+  --color-alert-default-border: #e5e7eb;
+  --color-alert-default-close-icon: #4b5563;
+  --color-alert-default-title: #1f2937;
+  --color-alert-default-description: #374151;
+  --color-alert-default-button-background: #4b5563;
+  --color-alert-default-button-hover-background: #374151;
+  --color-alert-default-button-text: #374151;
+
+  /* ======== Input Color =========*/
+  --color-input-background: #ffffff;
+  --color-input-label-text: #374151;
+  --color-input-disabled-text: #d1d5db;
+  --color-input-placeholder-text: #9ca3af;
+  --color-input-primary-focus-border: #91aeff;
+  --color-input-error-focus-border: #ef4444;
+  --color-input-success-focus-border: #22c55e;
+  --color-input-error: #ef4444;
+  --color-input-success: #22c55e;
+
+  /* ======== Tab Color =========*/
+  --color-tab-background: #f3f4f6;
+  --color-tab-active-background: #ffffff;
+  --color-tab-secondary-active-background: #eff3ff;
+
+  /* ======== Checkbox Color =========*/
+  --color-checkbox-background: #ffffff;
+  --color-checkbox-checked-border: #3758f9;
+  --color-checkbox-checked-background: #3758f9;
+  --color-checkbox-checked-icon-color: #ffffff;
+
+  /* ======== Scrollbar Color =========*/
+  --color-scrollbar-background: #e5e7eb;
+
+  /* ======== Datepicker Color =========*/
+  --color-datepicker-background: #ffffff;
+  --color-datepicker-selected-background: #f9fafb;
+
+  /* ======== Dropdowns Color =========*/
+  --color-dropdown-background: #ffffff;
+  --color-dropdown-hover-background: #f3f4f6;
+  --color-dropdown-secondary-background: #ffffff;
+  --color-dropdown-divider: #f3f4f6;
+
+  /* ======== Calendar Color =========*/
+  --color-calendar-primary-badge: #3758f9;
+  --color-calendar-primary-background: #eff3ff;
+  --color-calendar-success-badge: #22c55e;
+  --color-calendar-success-background: #f0fdf4;
+  --color-calendar-warning-badge: #f97316;
+  --color-calendar-warning-background: #fff7ed;
+  --color-calendar-danger-badge: #ef4444;
+  --color-calendar-danger-background: #fef2f2;
+  --color-calendar-info-badge: #0ea5e9;
+  --color-calendar-info-background: #f0f9ff;
+  --color-calendar-text: #374151;
+  --color-calendar-menu-text: #9ca3af;
+  --color-calendar-dropdown-background: #ffffff;
+
+  /* ======== Pricing Table Color =========*/
+  --color-pricing-active-switcher-background: #ffffff;
+  --color-pricing-active-card-background: #1f2937;
+  --color-pricing-button-background: #1f2937;
+  --color-pricing-icon-color: #3758f9;
+  --color-pricing-icon-background: #eff3ff;
+
+  /* ======== FAQ's Color =========*/
+  --color-faq-primary-active-background: #f9fafb;
+  --color-faq-secondary-active-background: #eff3ff;
+  --color-faq-secondary-active-border: #dae2ff;
+  --color-faq-secondary-active-title: #1f2937;
+  --color-faq-secondary-active-text: #374151;
+
+  /* ======== Chat List Color =========*/
+  --color-chat-list-background-primary: #374151;
+  --color-chat-list-background-primary-alt: #f3f4f6;
+  --color-chat-list-background-secondary: #3758f9;
+  --color-chat-list-background-secondary-alt: #dae2ff;
+
+  /* ======== Tooltip Color =========*/
+  --color-tooltip-text: #374151;
+
+  /* ======== Popovers Color =========*/
+  --color-popover-title-background: #f3f4f6;
+  --color-popover-border: #e5e7eb;
+
+  /* ======== Skeleton Color =========*/
+  --color-skeleton-gradient-50: #e5e7eb;
+  --color-skeleton-gradient-100: #f9fafb;
+  --color-skeleton-gradient-200: #e5e7eb;
+
+  /* ======== 404 Page Color =========*/
+  --color-404-background: #ffffff66;
+  --color-404-foreground: #e5e7eb;
+
+  /* ======== Blogs Color =========*/
+  --color-blog-shape: #e5e7eb;
+
+  /* ======== Modal Color =========*/
+  --color-modal-button-success-background: #16a34a;
+  --color-modal-button-info-background: #0284c7;
+  --color-modal-button-warning-background: #ca8a04;
+  --color-modal-button-error-background: #dc2626;
+
+  /* ======== Section Title Color =========*/
+  --color-section-title-badge: #3758f9;
+  --color-section-title-badge-background: #3758f90d;
+
+  /* ======== Mobile Nav Menu Button Color =========*/
+  --color-mobile-nav-icon: #374151;
+  --color-mobile-nav-background: #ffffff;
+  --color-mobile-nav-hover-background: #f3f4f6;
+
+  /* ======== Footer Color =========*/
+  --color-footer-card-background: #f9fafb;
+  --color-footer-background: #ffffff;
+
+  /* ======== Bento Color =========*/
+  --color-bento-card-background: #f3f4f6;
+  --color-bento-gradient-shade-1: #ffffff00;
+  --color-bento-gradient-shade-2: #ffffff80;
+  --color-bento-gradient-shade-3: #ffffff;
+
+  /* ======== CTA Color =========*/
+  --color-cta-icon-background: #ffffff;
+  --color-cta-background: #ffffff;
+
+  /* ======== Hero Color =========*/
+  --color-hero-background: #f3f4f6;
+  --color-hero-card-background: #ffffff;
+  --color-hero-card-2-background: #f3f4f6;
+  --color-hero-gradient-shade-1: #ffffff99;
+  --color-hero-gradient-shade-2: #ffffff;
+
+  /* ======== Toggle Color =========*/
+  --color-toggle-default-background: #e5e7eb;
+  --color-toggle-disabled-foreground: #ffffff;
+  --color-toggle-disabled-background: #f3f4f6;
+  --color-toggle-active-background: #3758f9;
+
+  /* ======== Map Color =========*/
+  --color-map-fill: #d1d5db;
+
+  /* ======== AI Sidebar Gradient Color =========*/
+  --color-ai-sidebar-primary-gradient-shade-1: #ffffff;
+  --color-ai-sidebar-primary-gradient-shade-2: #ffffff00;
+  --color-ai-sidebar-secondary-gradient-shade-1: #f3f4f6;
+  --color-ai-sidebar-secondary-gradient-shade-2: #f3f4f600;
+
+  /* ======== AI Sidebar Menu Color =========*/
+  --color-ai-sidebar-hover-primary-shade-1: #f3f4f6;
+  --color-ai-sidebar-hover-primary-shade-2: #f3f4f600;
+  --color-ai-sidebar-hover-secondary-shade-1: #e5e7eb;
+  --color-ai-sidebar-hover-secondary-shade-2: #e5e7eb00;
+  --color-ai-sidebar-hover-primary-background: #f3f4f6;
+  --color-ai-sidebar-hover-secondary-background: #e5e7eb;
+  --color-ai-title-gradient-shade-1: #1f2937;
+  --color-ai-title-gradient-shade-2: #9ca3af;
+  --color-ai-hero-blend-1: #f3f4f6;
+  --color-ai-hero-blend-2: #f3f4f600;
 
   /* Shadows */
   --shadow-xs: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
@@ -135,26 +457,6 @@ Copy and paste it in your main css file. These variables are being referenced ac
   --drop-shadow-theme-3xl: 0 32px 64px rgba(16, 24, 40, 0.14);
   --popover-shadow: 0px 5px 5px -2px rgba(16, 24, 40, 0.04);
   --shadow-hero: 0px -14px 100px 0px rgba(0, 0, 0, 0.05);
-  --shadow-navbar-icon:
-    0 1px 1px 0.5px rgba(51, 51, 51, 0.04),
-    0 3px 3px -1.5px rgba(51, 51, 51, 0.02),
-    0 6px 6px -3px rgba(51, 51, 51, 0.04),
-    0 12px 12px -6px rgba(51, 51, 51, 0.04),
-    0 24px 24px -12px rgba(51, 51, 51, 0.04),
-    0 48px 48px -24px rgba(51, 51, 51, 0.04), 0 0 0 1px #e5e7eb,
-    0 -1px 1px -0.5px rgba(51, 51, 51, 0.06) inset;
-  --shadow-terminal:
-    0 1px 1px 0.5px rgba(41, 41, 41, 0.04),
-    0 3px 3px -1.5px rgba(41, 41, 41, 0.02),
-    0 6px 6px -3px rgba(41, 41, 41, 0.04),
-    0 12px 12px -6px rgba(41, 41, 41, 0.04),
-    0 24px 24px -12px rgba(41, 41, 41, 0.04),
-    0 48px 48px -24px rgba(41, 41, 41, 0.04),
-    0 -1px 1px -0.5px rgba(51, 51, 51, 0.06) inset;
-  --shadow-tab-active:
-    0 4px 8px 0 rgba(41, 41, 41, 0.06), 0 2px 4px 0 rgba(41, 41, 41, 0.04),
-    0 1px 2px 0 rgba(41, 41, 41, 0.04),
-    0 -0.5px 0.5px 0 rgba(41, 41, 41, 0.08) inset;
 
   --animate-pulse-custom: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
@@ -173,30 +475,6 @@ Copy and paste it in your main css file. These variables are being referenced ac
   }
   50% {
     opacity: 0.7;
-  }
-}
-
-@utility custom-scrollbar {
-  &::-webkit-scrollbar {
-    @apply size-4.5;
-  }
-
-  &::-webkit-scrollbar-track {
-    @apply rounded-full;
-  }
-
-  &::-webkit-scrollbar-corner {
-    @apply bg-transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    @apply rounded-full border-[0.35rem] border-transparent bg-gray-200 bg-clip-padding dark:bg-gray-700;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    &::-webkit-scrollbar-thumb {
-      @apply bg-gray-700;
-    }
   }
 }
 ```

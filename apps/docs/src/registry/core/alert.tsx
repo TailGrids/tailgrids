@@ -9,26 +9,26 @@ const wrapperStyles = cva(
   {
     variants: {
       variant: {
-        success: "border-success-border bg-success-muted",
-        warning: "border-warning-border bg-warning-muted",
-        danger: "border-danger-border bg-danger-muted",
-        info: "border-info-border bg-info-muted",
-        gray: "border-default-border bg-default-muted"
+        success: "border-alert-success-border bg-alert-success-background",
+        warning: "border-alert-warning-border bg-alert-warning-background",
+        danger: "border-alert-danger-border bg-alert-danger-background",
+        info: "border-alert-info-border bg-alert-info-background",
+        gray: "border-alert-default-border bg-alert-default-background"
       }
     }
   }
 );
 
 const iconWrapperStyles = cva(
-  "flex size-7 items-center justify-center rounded-lg [&>svg]:size-4",
+  "flex size-7 items-center justify-center rounded-lg [&>svg]:size-4 text-background-100",
   {
     variants: {
       variant: {
-        success: "bg-success text-success-foreground",
-        warning: "bg-warning text-warning-foreground",
-        danger: "bg-danger text-danger-foreground",
-        info: "bg-info text-info-foreground",
-        gray: "bg-default text-default-foreground"
+        success: "bg-alert-success-icon-background",
+        warning: "bg-alert-warning-icon-background",
+        danger: "bg-alert-danger-icon-background",
+        info: "bg-alert-info-icon-background",
+        gray: "bg-alert-default-icon-background"
       }
     }
   }
@@ -37,11 +37,11 @@ const iconWrapperStyles = cva(
 const titleStyles = cva("font-semibold", {
   variants: {
     variant: {
-      success: "text-success-muted-foreground",
-      warning: "text-warning-muted-foreground",
-      danger: "text-danger-muted-foreground",
-      info: "text-info-muted-foreground",
-      gray: "text-default-muted-foreground"
+      success: "text-alert-success-title",
+      warning: "text-alert-warning-title",
+      danger: "text-alert-danger-title",
+      info: "text-alert-info-title",
+      gray: "text-alert-default-title"
     }
   }
 });
@@ -49,11 +49,11 @@ const titleStyles = cva("font-semibold", {
 const messageStyles = cva("text-sm", {
   variants: {
     variant: {
-      success: "text-success-muted-body",
-      warning: "text-warning-muted-body",
-      danger: "text-danger-muted-body",
-      info: "text-info-muted-body",
-      gray: "text-default-muted-body"
+      success: "text-alert-success-description",
+      warning: "text-alert-warning-description",
+      danger: "text-alert-danger-description",
+      info: "text-alert-info-description",
+      gray: "text-alert-default-description"
     }
   }
 });
@@ -63,24 +63,27 @@ const closeButtonStyles = cva(
   {
     variants: {
       variant: {
-        success: "text-success",
-        warning: "text-warning",
-        danger: "text-danger",
-        info: "text-info",
-        gray: "text-default"
+        success: "text-alert-success-close-icon",
+        warning: "text-alert-warning-close-icon",
+        danger: "text-alert-danger-close-icon",
+        info: "text-alert-info-close-icon",
+        gray: "text-alert-default-close-icon"
       }
     }
   }
 );
 
-const primaryButtonStyles = cva("", {
+const primaryButtonStyles = cva("text-background-100", {
   variants: {
     variant: {
-      success: "text-success-foreground",
-      danger: "text-danger-foreground",
-      info: "bg-info hover:bg-info-hover text-success-foreground",
-      warning: "bg-warning hover:bg-warning-hover text-warning-foreground",
-      gray: "bg-default hover:bg-default-hover text-default-foreground"
+      success:
+        "bg-alert-success-button-background hover:bg-alert-success-button-hover-background",
+      danger:
+        "bg-alert-danger-button-background hover:bg-alert-danger-button-hover-background",
+      info: "bg-alert-info-button-background hover:bg-alert-info-button-hover-background",
+      warning:
+        "bg-alert-warning-button-background hover:bg-alert-warning-button-hover-background",
+      gray: "bg-alert-default-button-background hover:bg-alert-default-button-hover-background"
     }
   }
 });
@@ -166,11 +169,7 @@ export default function Alert({
           )}
 
           {actions?.secondary && (
-            <Button
-              onClick={handleClose}
-              className="text-xs bg-neutral"
-              appearance="outline"
-            >
+            <Button size="xs" appearance="outline" onClick={handleClose}>
               {actions.secondary.label}
             </Button>
           )}
