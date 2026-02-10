@@ -168,9 +168,9 @@
     "type": "component",
     "files": [
       { "type": "core", "path": "/core/spinner/index.tsx" },
-      { "type": "core", "path": "/core/spinner/default.svg" },
-      { "type": "core", "path": "/core/spinner/dotted.svg" },
-      { "type": "core", "path": "/core/spinner/dotted-round.svg" }
+      { "type": "core", "path": "/core/spinner/default.tsx" },
+      { "type": "core", "path": "/core/spinner/dotted.tsx" },
+      { "type": "core", "path": "/core/spinner/dotted-round.tsx" }
     ]
   },
   {
