@@ -42,7 +42,7 @@ export default function HeaderBanner() {
       <div className="px-8 py-7  relative z-20">
         <h3 className="mt-0 mb-3 text-2xl">Quick Start</h3>
         <p className="mb-0 text-[#6B7280] dark:text-[#9CA3AF] text-sm font-normal max-w-100">
-          Browse and effortlessly copy-paste from over 800+ components and
+          Browse and effortlessly copy-paste from over 600+ components and
           templates.
         </p>
       </div>

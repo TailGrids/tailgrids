@@ -30,7 +30,7 @@ interface MenuItem {
 const mobileMenuData: MenuItem[] = [
   {
     title: "Components",
-    path: "https://tailgrids.com/components",
+    path: "https://tailgrids.com/docs/components",
     external: true
   },
   {
