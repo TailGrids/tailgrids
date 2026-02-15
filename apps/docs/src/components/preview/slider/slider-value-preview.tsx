@@ -6,10 +6,10 @@ export default function SliderValuePreview() {
       {/* Text Value Type Example */}
       <div className="space-y-4">
         <div className="space-y-1.5">
-          <h4 className="text-sm font-semibold text-[#111827]">
+          <h4 className="text-sm font-semibold text-title-50">
             Text Value Display
           </h4>
-          <p className="text-xs text-[#6B7280]">
+          <p className="text-xs text-text-100">
             The current value is displayed directly below the thumb. Ideal for
             visible ranges.
           </p>
@@ -25,15 +25,15 @@ export default function SliderValuePreview() {
         </div>
       </div>
 
-      <div className="h-px bg-[#E5E7EB]" />
+      <div className="h-px bg-fd-border" />
 
       {/* Tooltip Value Type Example */}
       <div className="space-y-4">
         <div className="space-y-1.5">
-          <h4 className="text-sm font-semibold text-[#111827]">
+          <h4 className="text-sm font-semibold text-title-50">
             Tooltip Value Display
           </h4>
-          <p className="text-xs text-[#6B7280]">
+          <p className="text-xs text-text-100">
             The value appears in a tooltip when interacting. Clean and focused
             UI.
           </p>

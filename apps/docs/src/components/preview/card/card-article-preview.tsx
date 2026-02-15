@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function CardArticlePreview() {
   return (
-    <Card className="w-full max-w-full md:max-w-xs bg-white-100 gap-0">
+    <Card className="w-full max-w-full md:max-w-xs gap-0">
       {/* Profile Header */}
       <CardHeader className="pt-5 pb-3">
         <div className="flex items-center gap-3">

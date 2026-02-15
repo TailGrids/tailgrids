@@ -16,10 +16,10 @@ export default function CardArticlePreview() {
       {/* Overlay Content */}
       <div className="absolute left-2 right-2 bottom-2">
         <div className="p-6 rounded-xl bg-[rgba(3,7,18,0.30)] backdrop-blur-lg shadow-lg">
-          <Badge className="px-2.5 bg-primary-600 text-white border-0 mb-3 hover:bg-primary-600">
+          <Badge className="px-2.5 bg-primary-600 text-white-100 border-0 mb-3 hover:bg-primary-600">
             Design
           </Badge>
-          <h3 className="text-xl font-bold leading-normal text-white">
+          <h3 className="text-xl font-bold leading-normal text-white-100">
             Everything you need to know About UI/UX Design.
           </h3>
         </div>

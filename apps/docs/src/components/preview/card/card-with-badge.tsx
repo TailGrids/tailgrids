@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function CardWithBadge() {
   return (
-    <Card className="w-full max-w-92.5 bg-white-100 rounded-[20px] overflow-hidden">
+    <Card className="w-full max-w-92.5 rounded-[20px] overflow-hidden">
       <CardHeader className="p-0">
         <div className="relative w-full aspect-350/240">
           <Image

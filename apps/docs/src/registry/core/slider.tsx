@@ -43,7 +43,7 @@ export function Slider(props: SliderProps) {
           props.isDisabled && "cursor-not-allowed"
         )}
       >
-        <div className="w-full h-1.5 bg-[#F3F4F6] rounded-full" />
+        <div className="w-full h-1.5 bg-(--border-color-base-50) rounded-full" />
         <div
           className="absolute h-1.5 bg-primary-500 rounded-full"
           style={{
@@ -108,7 +108,7 @@ function Thumb(props: ThumbProps) {
         left: `max(10px, ${state.getThumbPercent(index) * 100}%)`
       }}
       className={cn(
-        "absolute top-1/2 -translate-x-1/2 size-5 rounded-full bg-white border-2 border-primary-500 hover:ring-4 hover:ring-primary-500/20 hover:cursor-grab active:cursor-grabbing outline-none",
+        "absolute top-1/2 -translate-x-1/2 size-5 rounded-full bg-white-100 border-2 border-primary-500 hover:ring-4 hover:ring-primary-500/20 hover:cursor-grab active:cursor-grabbing outline-none",
         isDragging && "bg-primary-500 hover:ring-0",
         isFocusVisible && "ring-4 ring-primary-500/20",
         state.isDisabled && "border-neutral-300 pointer-events-none"
@@ -119,13 +119,13 @@ function Thumb(props: ThumbProps) {
       </VisuallyHidden>
 
       {thumbValueType === "text" && (
-        <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 text-sm text-[#374151]">
+        <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 text-sm text-text-50">
           {state.getThumbValueLabel(index)}
         </span>
       )}
 
       {thumbValueType === "tooltip" && (
-        <div className="absolute bottom-full min-w-6 text-center mb-3.25 left-1/2 -translate-x-1/2 bg-white px-1.5 py-1 rounded shadow-md text-xs leading-4 text-[#374151] after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-1/2 after:size-1.5 after:rotate-45 after:bg-white after:shadow-md after:[clip-path:polygon(100%_0%,200%_200%,0%_100%)]">
+        <div className="absolute bottom-full min-w-6 text-center mb-3.25 left-1/2 -translate-x-1/2 bg-white-100 px-1.5 py-1 rounded shadow-md text-xs leading-4 text-text-50 after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-1/2 after:size-1.5 after:rotate-45 after:bg-white-100 after:shadow-md after:[clip-path:polygon(100%_0%,200%_200%,0%_100%)]">
           {state.getThumbValueLabel(index)}
         </div>
       )}
