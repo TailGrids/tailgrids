@@ -99,6 +99,19 @@ export const REGISTRIES: Registry[] = [
     dependencies: ["class-variance-authority"]
   },
   {
+    id: "card",
+    name: "Card",
+    description:
+      "A card component with ultimate flexibility and customization.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/card.tsx"
+      }
+    ]
+  },
+  {
     id: "checkbox",
     name: "Checkbox",
     description: "A checkbox component with label and multiple states.",
