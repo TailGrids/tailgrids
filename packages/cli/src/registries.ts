@@ -210,6 +210,19 @@ export const REGISTRIES: Registry[] = [
   //   ]
   // },
   {
+    id: "native-select",
+    name: "Native Select",
+    description: "A native select component with multiple variants.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/native-select.tsx"
+      }
+    ],
+    dependencies: ["class-variance-authority", "@tailgrids/icons"]
+  },
+  {
     id: "otp-input",
     name: "OTP Input",
     description: "A component for entering one-time passwords.",

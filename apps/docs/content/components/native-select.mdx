@@ -1,0 +1,129 @@
+---
+title: React Native Select Component
+description: A React native select component that is used to display a list of items in a compact menu.
+---
+
+import NativeSelectDisabledPreview from "@/components/preview/native-select/native-select-disabled-preview";
+import NativeSelectOptGroupPreview from "@/components/preview/native-select/native-select-optgroup-preview";
+import NativeSelectPreview from "@/components/preview/native-select/native-select-preview";
+import NativeSelectStatesPreview from "@/components/preview/native-select/native-select-states-preview";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Native Select
+
+Native Select components are used to display a list of items in a compact menu, leveraging the browser's native capabilities for better mobile experience and accessibility.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/native-select/native-select-preview.tsx"
+  )}
+>
+  <NativeSelectPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+```npm
+npx @tailgrids/cli add native-select
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the required dependencies:
+
+```npm
+npm i class-variance-authority
+```
+
+Copy and paste the following component code into your project. The component includes `NativeSelect`, `NativeSelectOption`, and `NativeSelectOptGroup`.
+
+<CodeBlockCard
+snippet={getFileContent("/src/registry/core/native-select.tsx")}
+lang="tsx"
+  fileName="native-select.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the component and pass the required props.
+
+```tsx
+import {
+  NativeSelect,
+  NativeSelectOption
+} from "@/registry/core/native-select";
+
+export const NativeSelectExample = () => (
+  <NativeSelect>
+    <NativeSelectOption value="option1">Option 1</NativeSelectOption>
+    <NativeSelectOption value="option2">Option 2</NativeSelectOption>
+  </NativeSelect>
+);
+```
+
+## Examples
+
+### States
+
+The Native Select component supports `error` and `success` states for validation feedback.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/native-select/native-select-states-preview.tsx"
+  )}
+>
+  <NativeSelectStatesPreview />
+</ComponentPreview>
+
+### Disabled
+
+The component can be disabled to prevent user interaction.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/native-select/native-select-disabled-preview.tsx"
+  )}
+>
+  <NativeSelectDisabledPreview />
+</ComponentPreview>
+
+### Option Groups
+
+Use `NativeSelectOptGroup` to group related options together.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/native-select/native-select-optgroup-preview.tsx"
+  )}
+>
+  <NativeSelectOptGroupPreview />
+</ComponentPreview>
+
+## API Reference
+
+### NativeSelect
+
+| Prop        | Type                                | Default     | Description                                    |
+| :---------- | :---------------------------------- | :---------- | :--------------------------------------------- |
+| `variant`   | `'default'`, `'success'`, `'error'` | `'default'` | Controls the visual state of the select        |
+| `disabled`  | `boolean`                           | -           | Disables the select                            |
+| `className` | `string`                            | -           | Additional CSS classes to apply to the wrapper |
+
+### NativeSelectOption
+
+| Prop        | Type     | Default | Description            |
+| :---------- | :------- | :------ | :--------------------- |
+| `className` | `string` | -       | Additional CSS classes |
+
+### NativeSelectOptGroup
+
+| Prop        | Type     | Default | Description            |
+| :---------- | :------- | :------ | :--------------------- |
+| `className` | `string` | -       | Additional CSS classes |
