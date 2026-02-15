@@ -103,14 +103,14 @@ export function PageHeaderButtons() {
           <ChevronRightIcon className="size-4 text-[#6B7280] transition-transform duration-200 rotate-90 group-data-[state=open]:-rotate-90" />
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent className="w-52 p-2 border border-[#EDEDED] shadow-lg rounded-xl bg-white dark:bg-gray-950 dark:border-gray-800">
+        <DropdownMenuContent className="w-52 p-2 border border-[#EDEDED] shadow-lg rounded-xl bg-white text-gray-700 dark:bg-gray-950 dark:border-gray-800 dark:text-gray-300">
           {menuItems.map(item => (
             <DropdownMenuItem
               key={item.label}
               onAction={item.onAction}
               href={item.href}
               target={item.href ? "_blank" : undefined}
-              className="rounded-lg cursor-pointer dark:text-gray-400 dark:focus:bg-gray-800 dark:focus:text-white"
+              className="rounded-lg cursor-pointer text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white dark:focus:bg-gray-800 dark:focus:text-white"
             >
               {item.icon}
               <span className="text-sm font-medium leading-5 -tracking-[0.2px]">
