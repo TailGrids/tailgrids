@@ -16,6 +16,7 @@
     "[Input](/components/input)",
     "[Link](/components/link)",
     "[List](/components/list)",
+    "[Native Select](/components/native-select)",
     "[OTP Input](/components/otp-input)",
     "[Pagination](/components/pagination)",
     "[Popover](/components/popover)",
