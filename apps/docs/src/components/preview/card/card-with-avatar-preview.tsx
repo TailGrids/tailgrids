@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function CardWithAvatarPreview() {
   return (
-    <Card className="w-full max-w-full md:max-w-xs bg-white-100 gap-5">
+    <Card className="w-full max-w-full md:max-w-xs gap-5">
       {/* Building Image */}
       <div className="w-full h-55 md:h-67 overflow-hidden rounded-t-2xl">
         <Image

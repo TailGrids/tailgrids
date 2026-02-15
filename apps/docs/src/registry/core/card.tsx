@@ -5,7 +5,7 @@ export function Card({ children, className }: ComponentProps<"div">) {
   return (
     <div
       className={cn(
-        "w-full md:min-w-sm bg-white-100 flex flex-col gap-3 rounded-2xl",
+        "w-full md:min-w-sm bg-card-background-50 flex flex-col gap-3 rounded-2xl",
         className
       )}
     >

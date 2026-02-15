@@ -10,7 +10,7 @@ export default function CardHorizontalPreview() {
     <div className="w-full max-w-200 flex flex-col items-center gap-8 mx-auto md:p-8">
       {/* Horizontal Card Section */}
       <div className="flex flex-col gap-3 w-full">
-        <Card className="flex-col md:flex-row overflow-hidden border-none shadow-none md:min-w-0 bg-white-100">
+        <Card className="flex-col md:flex-row overflow-hidden border-none shadow-none md:min-w-0 bg-card-background-50">
           <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
             <h3 className="text-xl md:text-2xl font-bold text-title-50 mb-2 leading-tight">
               Barry Geraghty’s blog Vango runs unchained up in trip.
@@ -42,7 +42,7 @@ export default function CardHorizontalPreview() {
 
       {/* Vertical Card Section */}
       <div className="flex flex-col gap-3 w-full max-w-92.5">
-        <Card className="w-full flex flex-col overflow-hidden border-none shadow-none bg-white-100">
+        <Card className="w-full flex flex-col overflow-hidden border-none shadow-none">
           <div className="relative w-full h-60">
             <Image
               src="/docs/images/demo/building-2.webp"

@@ -9,7 +9,7 @@ import {
 
 export default function CardPreview() {
   return (
-    <Card className="w-full max-w-full md:max-w-md gap-0 bg-background-50">
+    <Card className="w-full max-w-full md:max-w-md gap-0">
       <CardHeader>
         <CardTitle>Ready for Business Website Crafted by TailGrids</CardTitle>
       </CardHeader>

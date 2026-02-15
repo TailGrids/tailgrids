@@ -39,14 +39,14 @@ export default function SliderStepPreview() {
                   <div
                     className={cn(
                       "w-0.5 h-3 transition-colors duration-200",
-                      isActive ? "bg-neutral-900" : "bg-neutral-300"
+                      isActive ? "bg-title-50" : "bg-neutral-300"
                     )}
                   />
                   {/* Label */}
                   <span
                     className={cn(
                       "text-sm font-medium mt-1.5 select-none transition-colors duration-200",
-                      isActive ? "text-neutral-900" : "text-neutral-400"
+                      isActive ? "text-title-50" : "text-tg-text-color-tertiary"
                     )}
                   >
                     {s}

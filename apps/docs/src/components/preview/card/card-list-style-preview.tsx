@@ -11,7 +11,7 @@ import { CheckCircle1, StarFatFalling } from "@tailgrids/icons";
 
 export default function CardListStylePreview() {
   return (
-    <Card className="md:max-w-115 w-full bg-white-100 rounded-2xl gap-7">
+    <Card className="md:max-w-115 w-full rounded-2xl gap-7">
       <CardHeader className="flex flex-col items-center pt-10 px-9">
         <div className="mb-5 text-warning-500">
           <StarFatFalling size={40} strokeWidth={1.5} />
@@ -56,7 +56,7 @@ export default function CardListStylePreview() {
       </CardContent>
 
       <CardFooter className="px-8 pb-8">
-        <button className="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium text-base py-3 rounded-lg transition-colors">
+        <button className="w-full bg-primary-600 hover:bg-primary-700 text-white-100 font-medium text-base py-3 rounded-lg transition-colors">
           Got it
         </button>
       </CardFooter>
