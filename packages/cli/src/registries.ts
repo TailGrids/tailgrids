@@ -287,6 +287,19 @@ export const REGISTRIES: Registry[] = [
     dependencies: ["class-variance-authority"]
   },
   {
+    id: "separator",
+    name: "Separator",
+    description: "A separator component to separate content.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/separator.tsx"
+      }
+    ],
+    dependencies: ["class-variance-authority", "react-aria-components"]
+  },
+  {
     id: "skeleton",
     name: "Skeleton",
     description: "A component to indicate a loading state.",

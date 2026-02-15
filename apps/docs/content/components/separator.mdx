@@ -1,0 +1,82 @@
+---
+title: Separator
+description: A react component to visually or semantically separates content.
+---
+
+import SeparatorOrientationPreview from "@/components/preview/separator/separator-orientation-preview";
+import SeparatorPreview from "@/components/preview/separator/separator-preview";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Separator
+
+React Separator component is used to visually or semantically separates content.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/separator/separator-preview.tsx"
+  )}
+>
+  <SeparatorPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+```npm
+npx @tailgrids/cli add separator
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the required dependencies:
+
+```npm
+npm i react-aria-components class-variance-authority
+```
+
+Copy and paste the following component code into your project.
+
+<CodeBlockCard
+snippet={getFileContent("/src/registry/core/separator.tsx")}
+lang="tsx"
+  fileName="separator.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the component and pass the required props.
+
+```tsx
+import { Separator } from "@/registry/core/separator";
+
+export const SeparatorExample = () => <Separator />;
+```
+
+## Examples
+
+### Orientation
+
+The Separator component supports both horizontal and vertical orientations.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/separator/separator-orientation-preview.tsx"
+  )}
+>
+  <SeparatorOrientationPreview />
+</ComponentPreview>
+
+## API Reference
+
+### Separator
+
+| Prop          | Type                         | Default        | Description                                       |
+| :------------ | :--------------------------- | :------------- | :------------------------------------------------ |
+| `orientation` | `'horizontal'`, `'vertical'` | `'horizontal'` | The orientation of the separator.                 |
+| `className`   | `string`                     | -              | Additional CSS classes to apply to the separator. |
