@@ -28,8 +28,8 @@ export const viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL!),
   title: {
-    template: "%s | Tailgrids Docs",
-    default: "Tailgrids Docs"
+    template: "%s | Tailgrids UI Components",
+    default: "Tailgrids UI Components"
   },
   robots: {
     index: true,
