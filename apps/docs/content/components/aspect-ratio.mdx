@@ -1,0 +1,129 @@
+---
+title: React Aspect Ratio Component
+description: A React component for maintaining a desired aspect ratio for content like images, videos, and embeds. Supports responsive layouts with Tailwind CSS variants.
+---
+
+import AspectRatioCustomPreview from "@/components/preview/aspect-ratio/aspect-ratio-custom-preview";
+import AspectRatioImagePreview from "@/components/preview/aspect-ratio/aspect-ratio-image-preview";
+import AspectRatioPreview from "@/components/preview/aspect-ratio/aspect-ratio-preview";
+import AspectRatioVariantsPreview from "@/components/preview/aspect-ratio/aspect-ratio-variants-preview";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Aspect Ratio
+
+The Aspect Ratio component helps you maintain a consistent aspect ratio for content, particularly useful for responsive images, videos, and embedded content. It ensures that content maintains desired proportions across different screen sizes.
+
+This component is built with React and styled using Tailwind CSS, offering predefined aspect ratio variants as well as support for custom ratios.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/aspect-ratio/aspect-ratio-preview.tsx"
+  )}
+>
+  <AspectRatioPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+```npm
+npx @tailgrids/cli add aspect-ratio
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the required dependencies:
+
+```npm
+npm i class-variance-authority
+```
+
+Copy and paste the following component code into your project.
+
+<CodeBlockCard
+snippet={getFileContent("/src/registry/core/aspect-ratio.tsx")}
+lang="tsx"
+  fileName="aspect-ratio.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the component and pass the desired aspect ratio variant or custom ratio.
+
+```tsx
+import { AspectRatio } from "@/registry/core/aspect-ratio";
+
+export const AspectRatioExample = () => (
+  <AspectRatio ratio="video" className="rounded-lg overflow-hidden">
+    <img
+      src="path/to/image.jpg"
+      alt="Description"
+      className="size-full object-cover"
+    />
+  </AspectRatio>
+);
+```
+
+## Examples
+
+### Variants
+
+The AspectRatio component supports eight predefined Tailwind CSS aspect ratio variants: `square` (1:1), `video` (16:9), `4/3`, `3/4`, `21/9`, `9/16`, `3/2`, and `2/3`.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/aspect-ratio/aspect-ratio-variants-preview.tsx"
+  )}
+>
+  <AspectRatioVariantsPreview />
+</ComponentPreview>
+
+### Custom Ratio
+
+You can specify a custom aspect ratio using the `customRatio` prop, which accepts any numeric value (e.g., `2.35` for cinematic widescreen).
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/aspect-ratio/aspect-ratio-custom-preview.tsx"
+  )}
+>
+  <AspectRatioCustomPreview />
+</ComponentPreview>
+
+**Note:** The `customRatio` prop takes precedence over the `ratio` variant when both are provided.
+
+### Images
+
+The AspectRatio component works seamlessly with responsive images. Use `object-cover` or `object-contain` classes to control how images fill the container.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/aspect-ratio/aspect-ratio-image-preview.tsx"
+  )}
+>
+  <AspectRatioImagePreview />
+</ComponentPreview>
+
+## API Reference
+
+### AspectRatio
+
+| Prop          | Type                                                                          | Default   | Description                                                                     |
+| :------------ | :---------------------------------------------------------------------------- | :-------- | :------------------------------------------------------------------------------ |
+| `ratio`       | `'square'`, `'video'`, `'4/3'`, `'3/4'`, `'21/9'`, `'9/16'`, `'3/2'`, `'2/3'` | `'video'` | Predefined aspect ratio variant based on Tailwind CSS classes                   |
+| `customRatio` | `number`                                                                      | -         | Custom aspect ratio value (e.g., `16/9`, `2.35`). Takes precedence over `ratio` |
+| `className`   | `string`                                                                      | -         | Additional CSS classes to apply to the container                                |
+| `children`    | `React.ReactNode`                                                             | -         | Content to display within the aspect ratio container **Required**               |
+
+## Accessibility
+
+- **Semantic HTML**: The component uses a standard `<div>` element that can be enhanced with ARIA attributes as needed.
+- **Image Alt Text**: When using images, always provide descriptive `alt` text for screen readers.
+- **Focus Management**: The component forwards refs, allowing you to manage focus programmatically when needed.
+- **Responsive Design**: Aspect ratios are maintained across all screen sizes, ensuring consistent presentation for all users.

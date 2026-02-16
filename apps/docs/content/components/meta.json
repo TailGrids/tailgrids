@@ -4,6 +4,7 @@
   "pages": [
     "[Accordion](/components/accordion)",
     "[Alert](/components/alert)",
+    "[Aspect Ratio](/components/aspect-ratio)",
     "[Avatar](/components/avatar)",
     "[Badge](/components/badge)",
     "[Breadcrumbs](/components/breadcrumbs)",

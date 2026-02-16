@@ -31,6 +31,20 @@ export const REGISTRIES: Registry[] = [
     requires: ["button"]
   },
   {
+    id: "aspect-ratio",
+    name: "Aspect Ratio",
+    description:
+      "Aspect ratio component to maintain the aspect ratio of an element.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/aspect-ratio.tsx"
+      }
+    ],
+    dependencies: ["class-variance-authority"]
+  },
+  {
     id: "avatar",
     name: "Avatar",
     description: "An image element with a fallback for representing a user.",
