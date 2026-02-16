@@ -42,7 +42,7 @@ export function Toggle({
 
         <div
           className={cn(
-            "absolute top-1/2 left-0.5 flex -translate-y-1/2 items-center justify-center rounded-full bg-background-50 peer-disabled:bg-toggle-disabled-foreground shadow-sm transition-all peer-checked:right-0.5 peer-checked:translate-x-full",
+            "absolute top-1/2 left-0.5 flex -translate-y-1/2 items-center justify-center rounded-full bg-white peer-disabled:bg-toggle-disabled-foreground shadow-sm transition-all peer-checked:right-0.5 peer-checked:translate-x-full",
             {
               "size-4": size === "sm",
               "size-5": size === "md"

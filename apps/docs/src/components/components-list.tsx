@@ -27,7 +27,7 @@ export function ComponentsList() {
                   <Image
                     src={image}
                     alt={component.name}
-                    className="object-cover !m-0"
+                    className="object-cover m-0!"
                     placeholder="blur"
                   />
                 ) : (
@@ -39,7 +39,7 @@ export function ComponentsList() {
               <div className="px-5 py-4">
                 <h3
                   className={cn(
-                    "text-base font-medium !no-underline !m-0  tracking-tight text-gray-900 dark:text-gray-100"
+                    "text-base font-medium no-underline! m-0!  tracking-tight text-gray-900 dark:text-gray-100"
                   )}
                 >
                   {component.name}
