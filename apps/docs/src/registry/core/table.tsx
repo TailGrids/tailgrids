@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import type { ComponentProps } from "react";
 
 const tableRootStyles = cva(
-  "min-w-full border-separate border-spacing-0 overflow-clip border-neutral-200 text-left dark:border-neutral-800",
+  "border-base-100 min-w-full border-separate border-spacing-0 overflow-clip text-left",
   {
     variants: {
       fullBleed: {
@@ -32,7 +32,7 @@ export function TableRoot({ className, fullBleed, ...props }: TableRootProps) {
 }
 
 const tableHeaderStyles = cva(
-  "text-neutral-700 [&_th]:border-b [&_th]:border-neutral-200 [&_th]:text-xs"
+  "[&_th]:border-base-100 text-title-50 [&_th]:border-b [&_th]:text-xs"
 );
 
 export function TableHeader({ className, ...props }: ComponentProps<"thead">) {
@@ -52,14 +52,14 @@ export function TableHead({ className, ...props }: ComponentProps<"th">) {
 }
 
 const tableRowStyles = cva(
-  "not-last:[&>*]:border-neutral-200 not-last:[&>td]:border-b not-last:[&>th]:border-b"
+  "not-last:[&>*]:border-base-100 not-last:[&>td]:border-b not-last:[&>th]:border-b"
 );
 
 export function TableRow({ className, ...props }: ComponentProps<"tr">) {
   return <tr className={cn(tableRowStyles(), className)} {...props} />;
 }
 
-const tableCellStyles = cva("px-5 py-3.5 font-medium text-neutral-500");
+const tableCellStyles = cva("text-text-100 px-5 py-3.5 font-medium");
 
 export function TableCell({ className, ...props }: ComponentProps<"td">) {
   return <td className={cn(tableCellStyles(), className)} {...props} />;
