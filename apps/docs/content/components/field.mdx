@@ -1,0 +1,285 @@
+---
+title: React Field Component
+description: Combine labels, controls, and help text to compose accessible form fields and grouped inputs. Built with React Aria's useField hook for automatic ARIA attribute management.
+---
+
+import FieldComposedPreview from "@/components/preview/field/field-composed-preview";
+import FieldHorizontalPreview from "@/components/preview/field/field-horizontal-preview";
+import FieldPreview from "@/components/preview/field/field-preview";
+import FieldSetPreview from "@/components/preview/field/field-set-preview";
+import FieldWithInputPreview from "@/components/preview/field/field-with-input-preview";
+import FieldWithTextareaPreview from "@/components/preview/field/field-with-textarea-preview";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Field
+
+The Field component family provides a structured way to compose accessible form fields. It handles the association between labels, inputs, descriptions, and error messages — ensuring proper ARIA attributes are applied automatically via React Aria's `useField` hook.
+
+Use the primitive sub-components (`Field`, `FieldLabel`, `FieldDescription`, `FieldError`) for full control, or use `ComposedField` for a batteries-included wrapper.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/field/field-preview.tsx"
+  )}
+>
+  <FieldPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+```npm
+npx @tailgrids/cli add field
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the required dependencies:
+
+```npm
+npm i react-aria class-variance-authority
+```
+
+Copy and paste the following component code into your project. The component includes `Field`, `FieldSet`, `FieldLegend`, `FieldGroup`, `FieldContent`, `FieldLabel`, `FieldTitle`, `FieldDescription`, `FieldError`, `FieldSeparator`, and `ComposedField`.
+
+<CodeBlockCard
+snippet={getFileContent("/src/registry/core/Field.tsx")}
+lang="tsx"
+  fileName="Field.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the sub-components you need and compose them together.
+
+```tsx
+import {
+  FieldSet,
+  FieldLegend,
+  FieldGroup,
+  Field,
+  FieldContent,
+  FieldLabel,
+  FieldTitle,
+  FieldDescription,
+  FieldError,
+  FieldSeparator,
+  ComposedField
+} from "@/registry/core/Field";
+
+export const FieldAnatomy = () => (
+  <FieldSet>
+    <FieldLegend>Group Title</FieldLegend>
+    <FieldGroup>
+      <Field>
+        <FieldLabel htmlFor="input-id">Label</FieldLabel>
+        {/* Input, Select, Textarea, etc. */}
+        <FieldDescription>Optional helper text.</FieldDescription>
+        <FieldError>Validation message.</FieldError>
+      </Field>
+
+      <FieldSeparator />
+
+      <Field orientation="horizontal">
+        <FieldContent>
+          <FieldTitle>Title</FieldTitle>
+          <FieldDescription>Helper text.</FieldDescription>
+        </FieldContent>
+        {/* Input, Select, Textarea, etc. */}
+      </Field>
+
+      <ComposedField
+        label="Label"
+        description="Helper text"
+        errorMessage="Error message"
+        isInvalid
+      >
+        {/* Input, Select, Textarea, etc. */}
+      </ComposedField>
+    </FieldGroup>
+  </FieldSet>
+);
+```
+
+- `Field` is the core wrapper for a single field. Supports `vertical`, `horizontal`, and `responsive` orientations.
+- `FieldContent` groups a label and description side by side with the control — useful in horizontal layouts.
+- `FieldGroup` stacks multiple `Field` components with consistent spacing.
+- `FieldSet` with `FieldLegend` provides semantic `<fieldset>` grouping.
+- `ComposedField` uses React Aria's `useField` hook to automatically wire up ARIA attributes.
+
+## Examples
+
+### Input
+
+Compose a `Field` with an `Input` to create a labeled text field with optional description and error state.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/field/field-with-input-preview.tsx"
+  )}
+>
+  <FieldWithInputPreview />
+</ComponentPreview>
+
+### Textarea
+
+The same composition pattern works with any form control, including `TextArea`.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/field/field-with-textarea-preview.tsx"
+  )}
+>
+  <FieldWithTextareaPreview />
+</ComponentPreview>
+
+### Horizontal
+
+Use `orientation="horizontal"` to place the label and control side by side. Wrap the label and description in `FieldContent` for proper alignment.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/field/field-horizontal-preview.tsx"
+  )}
+>
+  <FieldHorizontalPreview />
+</ComponentPreview>
+
+### Fieldset
+
+Use `FieldSet`, `FieldLegend`, and `FieldGroup` to semantically group related fields. Add `FieldSeparator` to visually divide sections.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/field/field-set-preview.tsx"
+  )}
+>
+  <FieldSetPreview />
+</ComponentPreview>
+
+### Composed Field
+
+The `ComposedField` component uses React Aria's `useField` hook under the hood to automatically generate IDs, associate labels with inputs via `aria-labelledby`, and link descriptions and errors with `aria-describedby`.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/field/field-composed-preview.tsx"
+  )}
+>
+  <FieldComposedPreview />
+</ComponentPreview>
+
+## API Reference
+
+### FieldSet
+
+Container that renders a semantic `<fieldset>` with spacing presets.
+
+| Prop        | Type     | Default | Description                             |
+| :---------- | :------- | :------ | :-------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes for the fieldset |
+
+### FieldLegend
+
+Legend element for a `FieldSet`. Use the `label` variant to match label sizing in nested fieldsets.
+
+| Prop        | Type                    | Default    | Description                                                                |
+| :---------- | :---------------------- | :--------- | :------------------------------------------------------------------------- |
+| `variant`   | `'legend'` \| `'label'` | `'legend'` | Controls the text styling — `legend` is larger, `label` matches label size |
+| `className` | `string`                | -          | Additional CSS classes                                                     |
+
+### FieldGroup
+
+Layout wrapper that stacks `Field` components with consistent spacing. Enables container queries for responsive orientations.
+
+| Prop        | Type     | Default | Description                              |
+| :---------- | :------- | :------ | :--------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes for the container |
+
+### Field
+
+The core wrapper for a single field. Controls layout orientation and invalid state.
+
+| Prop           | Type                                             | Default      | Description                            |
+| :------------- | :----------------------------------------------- | :----------- | :------------------------------------- |
+| `orientation`  | `'vertical'` \| `'horizontal'` \| `'responsive'` | `'vertical'` | Flex direction of the field            |
+| `data-invalid` | `boolean`                                        | -            | Marks the field as invalid for styling |
+| `className`    | `string`                                         | -            | Additional CSS classes                 |
+
+### FieldContent
+
+Flex column that groups elements like label and description. Useful when the label sits beside the control in horizontal layouts.
+
+| Prop        | Type     | Default | Description            |
+| :---------- | :------- | :------ | :--------------------- |
+| `className` | `string` | -       | Additional CSS classes |
+
+### FieldLabel
+
+Styled label element for form controls.
+
+| Prop        | Type      | Default | Description                                                    |
+| :---------- | :-------- | :------ | :------------------------------------------------------------- |
+| `htmlFor`   | `string`  | -       | The `id` of the form control this label is for                 |
+| `asChild`   | `boolean` | `false` | When `true`, renders only children without a `<label>` wrapper |
+| `className` | `string`  | -       | Additional CSS classes                                         |
+
+### FieldTitle
+
+Renders a title with label styling inside `FieldContent`. Useful for non-interactive labels.
+
+| Prop        | Type     | Default | Description            |
+| :---------- | :------- | :------ | :--------------------- |
+| `className` | `string` | -       | Additional CSS classes |
+
+### FieldDescription
+
+Helper text slot for providing context about a form field.
+
+| Prop        | Type     | Default | Description            |
+| :---------- | :------- | :------ | :--------------------- |
+| `className` | `string` | -       | Additional CSS classes |
+
+### FieldError
+
+Validation message slot, styled with error color.
+
+| Prop        | Type     | Default | Description            |
+| :---------- | :------- | :------ | :--------------------- |
+| `className` | `string` | -       | Additional CSS classes |
+
+### FieldSeparator
+
+Visual divider to separate sections inside a `FieldGroup`. Accepts optional inline content.
+
+| Prop        | Type        | Default | Description                                          |
+| :---------- | :---------- | :------ | :--------------------------------------------------- |
+| `children`  | `ReactNode` | -       | Optional text content shown centered within the line |
+| `className` | `string`    | -       | Additional CSS classes                               |
+
+### ComposedField
+
+Fully composed field wrapper using React Aria's `useField` hook. Automatically handles `aria-labelledby`, `aria-describedby`, and ID generation.
+
+| Prop           | Type                                             | Default      | Description                                              |
+| :------------- | :----------------------------------------------- | :----------- | :------------------------------------------------------- |
+| `label`        | `ReactNode`                                      | -            | Label text for the field                                 |
+| `description`  | `ReactNode`                                      | -            | Helper text displayed below the control                  |
+| `errorMessage` | `ReactNode`                                      | -            | Error message displayed when `isInvalid` is `true`       |
+| `isInvalid`    | `boolean`                                        | -            | Marks the field as invalid and shows the error message   |
+| `orientation`  | `'vertical'` \| `'horizontal'` \| `'responsive'` | `'vertical'` | Flex direction of the field                              |
+| `children`     | `ReactNode`                                      | **Required** | The form control element (Input, TextArea, Select, etc.) |
+| `className`    | `string`                                         | -            | Additional CSS classes                                   |
+
+## Accessibility
+
+- **ARIA Linking**: `ComposedField` uses React Aria's `useField` hook to automatically link the label, description, and error message to the form control via `aria-labelledby` and `aria-describedby`.
+- **Semantic HTML**: `FieldSet` renders a native `<fieldset>` element, and `FieldLegend` renders a `<legend>`, providing semantic grouping that assistive technologies understand.
+- **Label Association**: `FieldLabel` uses the native `<label>` element with `htmlFor` for proper click-to-focus behavior.
+- **Error States**: `FieldError` communicates validation messages to screen readers through proper ARIA association when used within `ComposedField`.

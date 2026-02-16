@@ -171,6 +171,20 @@ export const REGISTRIES: Registry[] = [
     dependencies: ["react-aria-components"]
   },
   {
+    id: "field",
+    name: "Field",
+    description:
+      "A field component with multiple variants and support for icons.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/field.tsx"
+      }
+    ],
+    dependencies: ["class-variance-authority", "react-aria"]
+  },
+  {
     id: "input",
     name: "Input",
     description:
