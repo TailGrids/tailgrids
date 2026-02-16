@@ -1,9 +1,11 @@
 import AccordionImage from "@/assets/skeleton-image/accordion.png";
 import AlertImage from "@/assets/skeleton-image/alert.png";
+import AspectRatioImage from "@/assets/skeleton-image/aspect-ratio.png";
 import AvatarImage from "@/assets/skeleton-image/avatar.png";
 import BadgeImage from "@/assets/skeleton-image/badge.png";
 import BreadcrumbImage from "@/assets/skeleton-image/breadcrumb.png";
 import ButtonImage from "@/assets/skeleton-image/button.png";
+import CardImage from "@/assets/skeleton-image/card.png";
 import CheckboxImage from "@/assets/skeleton-image/checkbox.png";
 import DatePickerImage from "@/assets/skeleton-image/date-picker.png";
 import DropdownImage from "@/assets/skeleton-image/dropdown.png";
@@ -13,7 +15,9 @@ import PaginationImage from "@/assets/skeleton-image/paginations.png";
 import PopoverImage from "@/assets/skeleton-image/popover.png";
 import ProgressImage from "@/assets/skeleton-image/progress.png";
 import RadioImage from "@/assets/skeleton-image/radio.png";
+import SeparatorImage from "@/assets/skeleton-image/separator.png";
 import SkeletonImage from "@/assets/skeleton-image/skeleton.png";
+import SliderImage from "@/assets/skeleton-image/slider.png";
 import SpinnerImage from "@/assets/skeleton-image/spinners.png";
 import SwitchImage from "@/assets/skeleton-image/switch.png";
 import TableImage from "@/assets/skeleton-image/table.png";
@@ -26,23 +30,28 @@ import { StaticImageData } from "next/image";
 export const componentImages: Record<string, StaticImageData> = {
   accordion: AccordionImage,
   alert: AlertImage,
+  "aspect-ratio": AspectRatioImage,
   avatar: AvatarImage,
   badge: BadgeImage,
   breadcrumbs: BreadcrumbImage,
   button: ButtonImage,
   "button-group": ButtonImage, // Fallback
+  card: CardImage,
   checkbox: CheckboxImage,
   "date-picker": DatePickerImage,
   dropdown: DropdownImage,
   input: InputImage,
   link: ButtonImage, // Fallback
   list: ListImage,
+  "native-select": DropdownImage, // Fallback
   "otp-input": InputImage, // Fallback
   pagination: PaginationImage,
   popover: PopoverImage,
   progress: ProgressImage,
   "radio-input": RadioImage,
+  separator: SeparatorImage,
   skeleton: SkeletonImage,
+  slider: SliderImage,
   "social-button": ButtonImage, // Fallback
   spinner: SpinnerImage,
   table: TableImage,
