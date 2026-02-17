@@ -46,7 +46,7 @@ Install the required dependencies:
 npm i react-aria-components @tailgrids/icons
 ```
 
-Copy and paste the following component code into your project. The component includes `Select`, `SelectTrigger`, `SelectDisplayValue`, `SelectIndicator`, `SelectContent`, `SelectItem`, `SelectSection`, `SelectHeader` and `SelectSeparator`.
+Copy and paste the following component code into your project. The component includes `Select`, `SelectTrigger`, `SelectValue`, `SelectIndicator`, `SelectContent`, `SelectItem`, `SelectSection`, `SelectHeader`, `SelectSeparator`, `SelectLabel`, `SelectDescription`, and `SelectErrorMessage`.
 
 <CodeBlockCard
 snippet={getFileContent("/src/registry/core/select.tsx")}
@@ -64,7 +64,7 @@ Import the component and pass the required props.
 import {
   Select,
   SelectContent,
-  SelectDisplayValue,
+  SelectValue,
   SelectIndicator,
   SelectItem,
   SelectTrigger
@@ -74,7 +74,7 @@ export default function SelectExample() {
   return (
     <Select>
       <SelectTrigger>
-        <SelectDisplayValue />
+        <SelectValue />
         <SelectIndicator />
       </SelectTrigger>
       <SelectContent>
@@ -127,7 +127,7 @@ You can control the value of the select component using the `value` and `onChang
 
 ### Multiple select
 
-React Aria's `Select` supports multiple selection using the `selectionMode="multiple"` prop. You can control the selection using `value` and `onChange`.
+The `Select` component supports multiple selection using the `selectionMode="multiple"` prop. You can control the selection using `value` (an `Iterable<Key>` or `Set<Key>`) and `onChange`.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -201,22 +201,20 @@ You can disable the entire select component or individual items using the `isDis
 
 ### Select
 
-| Prop                 | Type                            | Default    | Description                                                          |
-| :------------------- | :------------------------------ | :--------- | :------------------------------------------------------------------- |
-| `selectionMode`      | `'single' \| 'multiple'`        | `'single'` | Whether single or multiple selection is enabled.                     |
-| `value`              | `Key \| Iterable<Key>`          | -          | The currently selected key(s) (controlled).                          |
-| `defaultValue`       | `Key \| Iterable<Key>`          | -          | The initial selected key(s) (uncontrolled).                          |
-| `onChange`           | `(value: any) => void`          | -          | Handler that is called when the value changes.                       |
-| `placeholder`        | `string`                        | -          | Temporary text that occupies the select when it is empty.            |
-| `name`               | `string`                        | -          | The name of the input element, used when submitting an HTML form.    |
-| `isOpen`             | `boolean`                       | -          | Whether the select is currently open (controlled).                   |
-| `defaultOpen`        | `boolean`                       | -          | Whether the select is initially open (uncontrolled).                 |
-| `onOpenChange`       | `(isOpen: boolean) => void`     | -          | Handler that is called when the open state changes.                  |
-| `isDisabled`         | `boolean`                       | -          | Whether the select is disabled.                                      |
-| `isInvalid`          | `boolean`                       | -          | Whether the select is in an invalid state.                           |
-| `isRequired`         | `boolean`                       | -          | Whether the select requires a value to be selected.                  |
-| `validationBehavior` | `'native' \| 'aria'`            | `'native'` | Whether to use native HTML form validation or ARIA-based validation. |
-| `className`          | `string \| ((props) => string)` | -          | Additional CSS classes to apply to the select container.             |
+| Prop            | Type                                      | Default    | Description                                                       |
+| :-------------- | :---------------------------------------- | :--------- | :---------------------------------------------------------------- |
+| `selectionMode` | `'single' \| 'multiple'`                  | `'single'` | Whether single or multiple selection is enabled.                  |
+| `value`         | `Key \| Iterable<Key>`                    | -          | The currently selected key(s) (controlled).                       |
+| `onChange`      | `(value: any) => void`                    | -          | Handler that is called when the value changes.                    |
+| `label`         | `string`                                  | -          | The label for the select (convenience prop).                      |
+| `description`   | `string`                                  | -          | The description for the select (convenience prop).                |
+| `errorMessage`  | `string \| ((validation: any) => string)` | -          | The error message for the select (convenience prop).              |
+| `items`         | `Iterable<T>`                             | -          | The items to display in the select.                               |
+| `name`          | `string`                                  | -          | The name of the input element, used when submitting an HTML form. |
+| `isDisabled`    | `boolean`                                 | -          | Whether the select is disabled.                                   |
+| `isInvalid`     | `boolean`                                 | -          | Whether the select is in an invalid state.                        |
+| `isRequired`    | `boolean`                                 | -          | Whether the select requires a value to be selected.               |
+| `className`     | `string`                                  | -          | Additional CSS classes to apply to the select container.          |
 
 The `Key` type supports `string` and `number`. See [React Aria's Select](https://react-aria.adobe.com/Select) for more details.
 
@@ -234,9 +232,10 @@ The `Select` component supports the following state attributes on its container:
 
 ### SelectTrigger
 
-| Prop        | Type     | Default | Description                                            |
-| :---------- | :------- | :------ | :----------------------------------------------------- |
-| `className` | `string` | -       | Additional CSS classes to apply to the trigger button. |
+| Prop        | Type      | Default | Description                                            |
+| :---------- | :-------- | :------ | :----------------------------------------------------- |
+| `isInvalid` | `boolean` | -       | Whether the trigger is in an invalid state.            |
+| `className` | `string`  | -       | Additional CSS classes to apply to the trigger button. |
 
 ### SelectLabel
 
@@ -270,6 +269,61 @@ The `Select` component supports the following state attributes on its container:
 | `textValue`  | `string`           | -       | A text representation of the item's content, used for keyboard navigation and accessibility. |
 | `isDisabled` | `boolean`          | -       | Whether the item is disabled.                                                                |
 | `className`  | `string`           | -       | Additional CSS classes to apply to the item.                                                 |
+
+### SelectValue
+
+| Prop        | Type     | Default | Description                                                   |
+| :---------- | :------- | :------ | :------------------------------------------------------------ |
+| `className` | `string` | -       | Additional CSS classes to apply to the selected value output. |
+
+### SelectIndicator
+
+| Prop        | Type     | Default | Description                                                      |
+| :---------- | :------- | :------ | :--------------------------------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes to apply to the dropdown indicator.       |
+| `children`  | `node`   | -       | Custom indicator icon or element. Defaults to `<ChevronDown />`. |
+
+### SelectLabel
+
+| Prop        | Type     | Default | Description                                   |
+| :---------- | :------- | :------ | :-------------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes to apply to the label. |
+
+### SelectDescription
+
+| Prop        | Type     | Default | Description                                         |
+| :---------- | :------- | :------ | :-------------------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes to apply to the description. |
+
+### SelectErrorMessage
+
+| Prop        | Type     | Default | Description                                           |
+| :---------- | :------- | :------ | :---------------------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes to apply to the error message. |
+
+### SelectContent
+
+| Prop        | Type     | Default | Description                                             |
+| :---------- | :------- | :------ | :------------------------------------------------------ |
+| `className` | `string` | -       | Additional CSS classes to apply to the popover content. |
+
+### SelectSection
+
+| Prop        | Type     | Default | Description                                               |
+| :---------- | :------- | :------ | :-------------------------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes to apply to the section container. |
+
+### SelectHeader
+
+| Prop        | Type     | Default | Description                                    |
+| :---------- | :------- | :------ | :--------------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes to apply to the header. |
+
+### SelectSeparator
+
+| Prop        | Type     | Default | Description                                       |
+| :---------- | :------- | :------ | :------------------------------------------------ |
+| `className` | `string` | -       | Additional CSS classes to apply to the separator. |
 
 See [React Aria's Select](https://react-aria.adobe.com/Select) for more details.
 
