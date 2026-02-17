@@ -18,19 +18,6 @@ const inputStyles = cva(
   }
 );
 
-const hintStyles = cva(
-  "text-sm font-normal peer-disabled:text-input-disabled-text",
-  {
-    variants: {
-      state: {
-        default: "text-text-50",
-        error: "text-input-error",
-        success: "text-input-success"
-      }
-    }
-  }
-);
-
 type PropsType = ComponentProps<"input"> &
   VariantProps<typeof inputStyles> & {
     label?: string;
@@ -38,37 +25,17 @@ type PropsType = ComponentProps<"input"> &
   };
 
 export function Input({
-  label,
   state = "default",
-  hint,
   className,
   ...inputProps
 }: PropsType) {
   const id = useId();
 
   return (
-    <div
-      className={cn(
-        "grid grid-cols-1 gap-2 w-full",
-        inputProps.disabled && "cursor-not-allowed"
-      )}
-    >
-      {label && (
-        <label
-          htmlFor={id}
-          className="max-w-fit text-sm font-medium text-input-label-text select-none"
-        >
-          {label}
-        </label>
-      )}
-
-      <input
-        id={id}
-        className={cn(inputStyles({ state }), className)}
-        {...inputProps}
-      />
-
-      {hint && <p className={hintStyles({ state })}>{hint}</p>}
-    </div>
+    <input
+      id={id}
+      className={cn(inputStyles({ state }), className)}
+      {...inputProps}
+    />
   );
 }
