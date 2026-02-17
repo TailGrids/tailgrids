@@ -26,6 +26,7 @@ import {
   Text,
   type TextProps
 } from "react-aria-components";
+import { buttonStyles } from "./button";
 
 interface SelectContextValue {
   selectionMode?: "single" | "multiple";
@@ -159,10 +160,10 @@ function SelectTrigger({ className, children, ...props }: SelectTriggerProps) {
   return (
     <Button
       className={cn(
-        "bg-input-background flex w-full items-center justify-between rounded-lg border border-base-300 px-4 py-2.5 text-title-50 outline-none",
-        "focus:border-input-primary-focus-border focus:ring-4 focus:ring-input-primary-focus-border/20",
-        "disabled:border-base-100 disabled:text-input-disabled-text disabled:cursor-not-allowed",
-        "data-invalid:border-input-error-focus-border data-invalid:focus:ring-input-error-focus-border/20",
+        buttonStyles({
+          appearance: "outline"
+        }),
+        "data-invalid:border-input-error-focus-border data-invalid:focus:ring-input-error-focus-border/20 justify-between",
         className
       )}
       data-invalid={isInvalid || undefined}
