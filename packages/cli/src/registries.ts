@@ -301,6 +301,20 @@ export const REGISTRIES: Registry[] = [
     dependencies: ["class-variance-authority"]
   },
   {
+    id: "select",
+    name: "Select",
+    description: "A select component with multiple variants.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/select.tsx"
+      }
+    ],
+    dependencies: ["react-aria-components", "@tailgrids/icons"],
+    requires: ["button"]
+  },
+  {
     id: "separator",
     name: "Separator",
     description: "A separator component to separate content.",
