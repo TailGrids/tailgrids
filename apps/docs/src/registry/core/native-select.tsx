@@ -22,10 +22,12 @@ const nativeSelectStyles = cva(
 );
 
 type NativeSelectProps = React.ComponentProps<"select"> &
-  VariantProps<typeof nativeSelectStyles>;
+  VariantProps<typeof nativeSelectStyles> & {
+    placeholder?: string;
+  };
 
 const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProps>(
-  ({ className, children, variant, ...props }, ref) => {
+  ({ className, children, variant, placeholder, ...props }, ref) => {
     return (
       <div className="relative w-full">
         <select
@@ -33,8 +35,13 @@ const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProps>(
           className={cn(nativeSelectStyles({ variant }), className)}
           {...props}
         >
+          {placeholder && (
+            <NativeSelectOption hidden>{placeholder}</NativeSelectOption>
+          )}
+
           {children}
         </select>
+
         <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-title-50">
           <ChevronDown className="h-5 w-5" aria-hidden="true" />
         </div>
@@ -48,7 +55,7 @@ const NativeSelectOption = React.forwardRef<
   HTMLOptionElement,
   React.ComponentProps<"option">
 >(({ className, ...props }, ref) => {
-  return <option ref={ref} className={cn(className)} {...props} />;
+  return <option ref={ref} className={className} {...props} />;
 });
 NativeSelectOption.displayName = "NativeSelectOption";
 
@@ -56,7 +63,7 @@ const NativeSelectOptGroup = React.forwardRef<
   HTMLOptGroupElement,
   React.ComponentProps<"optgroup">
 >(({ className, ...props }, ref) => {
-  return <optgroup ref={ref} className={cn(className)} {...props} />;
+  return <optgroup ref={ref} className={className} {...props} />;
 });
 NativeSelectOptGroup.displayName = "NativeSelectOptGroup";
 
