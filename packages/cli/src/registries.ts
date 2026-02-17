@@ -185,6 +185,19 @@ export const REGISTRIES: Registry[] = [
     dependencies: ["class-variance-authority"]
   },
   {
+    id: "label",
+    name: "Label",
+    description: "A label component for form fields.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/label.tsx"
+      }
+    ],
+    dependencies: ["react-aria-components"]
+  },
+  {
     id: "link",
     name: "Link",
     description: "A link component with multiple variants.",
