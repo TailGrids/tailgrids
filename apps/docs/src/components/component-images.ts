@@ -49,6 +49,7 @@ export const componentImages: Record<string, StaticImageData> = {
   popover: PopoverImage,
   progress: ProgressImage,
   "radio-input": RadioImage,
+  select: DropdownImage, // Fallback
   separator: SeparatorImage,
   skeleton: SkeletonImage,
   slider: SliderImage,

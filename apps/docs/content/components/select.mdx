@@ -1,0 +1,280 @@
+---
+title: React Select Component
+description: A Select component that allows users to choose one value from a list of options. It supports sections, custom styling, and accessibility features.
+---
+
+import SelectControlledMultiplePreview from "@/components/preview/select/select-controlled-multiple-preview";
+import SelectControlledPreview from "@/components/preview/select/select-controlled-preview";
+import SelectCustomIndicatorPreview from "@/components/preview/select/select-custom-indicator-preview";
+import SelectCustomValuesPreview from "@/components/preview/select/select-custom-values-preview";
+import SelectDisabledPreview from "@/components/preview/select/select-disabled-preview";
+import SelectMultiplePreview from "@/components/preview/select/select-multiple-preview";
+import SelectPreview from "@/components/preview/select/select-preview";
+import SelectRequiredPreview from "@/components/preview/select/select-required-preview";
+import SelectWithLabelPreview from "@/components/preview/select/select-with-label-preview";
+import SelectWithSectionsPreview from "@/components/preview/select/select-with-sections-preview";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Select
+
+Displays a list of options for the user to pick from—triggered by a button.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/select/select-preview.tsx"
+  )}
+>
+  <SelectPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+```npm
+npx @tailgrids/cli add select
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the required dependencies:
+
+```npm
+npm i react-aria-components @tailgrids/icons
+```
+
+Copy and paste the following component code into your project. The component includes `Select`, `SelectTrigger`, `SelectDisplayValue`, `SelectIndicator`, `SelectContent`, `SelectItem`, `SelectSection`, `SelectHeader` and `SelectSeparator`.
+
+<CodeBlockCard
+snippet={getFileContent("/src/registry/core/select.tsx")}
+lang="tsx"
+  fileName="select.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the component and pass the required props.
+
+```tsx
+import {
+  Select,
+  SelectContent,
+  SelectDisplayValue,
+  SelectIndicator,
+  SelectItem,
+  SelectTrigger
+} from "@/registry/core/select";
+
+export default function SelectExample() {
+  return (
+    <Select>
+      <SelectTrigger>
+        <SelectDisplayValue />
+        <SelectIndicator />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem id="apple">Apple</SelectItem>
+        <SelectItem id="banana">Banana</SelectItem>
+        <SelectItem id="orange">Orange</SelectItem>
+      </SelectContent>
+    </Select>
+  );
+}
+```
+
+## Examples
+
+### With label and description
+
+You can add a label and description to the select component using `SelectLabel` and `SelectDescription`.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/select/select-with-label-preview.tsx"
+  )}
+>
+  <SelectWithLabelPreview />
+</ComponentPreview>
+
+### Sections
+
+You can group options into sections using `SelectSection` and `SelectHeader`. Use `SelectSeparator` to visually separate sections.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/select/select-with-sections-preview.tsx"
+  )}
+>
+  <SelectWithSectionsPreview />
+</ComponentPreview>
+
+### Controlled
+
+You can control the value of the select component using the `value` and `onChange` props.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/select/select-controlled-preview.tsx"
+  )}
+>
+  <SelectControlledPreview />
+</ComponentPreview>
+
+### Multiple select
+
+React Aria's `Select` supports multiple selection using the `selectionMode="multiple"` prop. You can control the selection using `value` and `onChange`.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/select/select-multiple-preview.tsx"
+  )}
+>
+  <SelectMultiplePreview />
+</ComponentPreview>
+
+### Custom indicator
+
+You can customize the selection indicator by passing a child to `SelectIndicator`.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/select/select-custom-indicator-preview.tsx"
+  )}
+>
+  <SelectCustomIndicatorPreview />
+</ComponentPreview>
+
+### Required
+
+The `isRequired` prop can be used to mark the select as required. You can use `SelectErrorMessage` to display validation errors.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/select/select-required-preview.tsx"
+  )}
+>
+  <SelectRequiredPreview />
+</ComponentPreview>
+
+### Custom values
+
+You can pass custom content to `SelectItem` to create more complex menu items.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/select/select-custom-values-preview.tsx"
+  )}
+>
+  <SelectCustomValuesPreview />
+</ComponentPreview>
+
+### Controlled multiple
+
+A controlled version of the multiple select example.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/select/select-controlled-multiple-preview.tsx"
+  )}
+>
+  <SelectControlledMultiplePreview />
+</ComponentPreview>
+
+### Disabled
+
+You can disable the entire select component or individual items using the `isDisabled` prop.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/select/select-disabled-preview.tsx"
+  )}
+>
+  <SelectDisabledPreview />
+</ComponentPreview>
+
+## API Reference
+
+### Select
+
+| Prop                 | Type                            | Default    | Description                                                          |
+| :------------------- | :------------------------------ | :--------- | :------------------------------------------------------------------- |
+| `selectionMode`      | `'single' \| 'multiple'`        | `'single'` | Whether single or multiple selection is enabled.                     |
+| `value`              | `Key \| Iterable<Key>`          | -          | The currently selected key(s) (controlled).                          |
+| `defaultValue`       | `Key \| Iterable<Key>`          | -          | The initial selected key(s) (uncontrolled).                          |
+| `onChange`           | `(value: any) => void`          | -          | Handler that is called when the value changes.                       |
+| `placeholder`        | `string`                        | -          | Temporary text that occupies the select when it is empty.            |
+| `name`               | `string`                        | -          | The name of the input element, used when submitting an HTML form.    |
+| `isOpen`             | `boolean`                       | -          | Whether the select is currently open (controlled).                   |
+| `defaultOpen`        | `boolean`                       | -          | Whether the select is initially open (uncontrolled).                 |
+| `onOpenChange`       | `(isOpen: boolean) => void`     | -          | Handler that is called when the open state changes.                  |
+| `isDisabled`         | `boolean`                       | -          | Whether the select is disabled.                                      |
+| `isInvalid`          | `boolean`                       | -          | Whether the select is in an invalid state.                           |
+| `isRequired`         | `boolean`                       | -          | Whether the select requires a value to be selected.                  |
+| `validationBehavior` | `'native' \| 'aria'`            | `'native'` | Whether to use native HTML form validation or ARIA-based validation. |
+| `className`          | `string \| ((props) => string)` | -          | Additional CSS classes to apply to the select container.             |
+
+The `Key` type supports `string` and `number`. See [React Aria's Select](https://react-aria.adobe.com/Select) for more details.
+
+#### State Attributes
+
+The `Select` component supports the following state attributes on its container:
+
+| Attribute       | Description                                |
+| :-------------- | :----------------------------------------- |
+| `data-focused`  | Whether the select is currently focused.   |
+| `data-open`     | Whether the select is currently open.      |
+| `data-invalid`  | Whether the select is in an invalid state. |
+| `data-disabled` | Whether the select is disabled.            |
+| `data-required` | Whether the select is required.            |
+
+### SelectTrigger
+
+| Prop        | Type     | Default | Description                                            |
+| :---------- | :------- | :------ | :----------------------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes to apply to the trigger button. |
+
+### SelectLabel
+
+| Prop        | Type     | Default | Description                                   |
+| :---------- | :------- | :------ | :-------------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes to apply to the label. |
+
+### SelectDescription
+
+| Prop        | Type     | Default | Description                                         |
+| :---------- | :------- | :------ | :-------------------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes to apply to the description. |
+
+### SelectErrorMessage
+
+| Prop        | Type     | Default | Description                                           |
+| :---------- | :------- | :------ | :---------------------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes to apply to the error message. |
+
+### SelectContent
+
+| Prop        | Type     | Default | Description                                             |
+| :---------- | :------- | :------ | :------------------------------------------------------ |
+| `className` | `string` | -       | Additional CSS classes to apply to the popover content. |
+
+### SelectItem
+
+| Prop         | Type               | Default | Description                                                                                  |
+| :----------- | :----------------- | :------ | :------------------------------------------------------------------------------------------- |
+| `id`         | `string \| number` | -       | The unique identifier for the item.                                                          |
+| `textValue`  | `string`           | -       | A text representation of the item's content, used for keyboard navigation and accessibility. |
+| `isDisabled` | `boolean`          | -       | Whether the item is disabled.                                                                |
+| `className`  | `string`           | -       | Additional CSS classes to apply to the item.                                                 |
+
+See [React Aria's Select](https://react-aria.adobe.com/Select) for more details.
+
+## Accessibility
+
+- **Keyboard Navigation**: Supports arrow keys to navigate options, Enter/Space to select, and Escape to close the menu.
+- **Screen Reader Support**: Uses ARIA attributes (e.g., `aria-expanded`, `aria-activedescendant`) to provide context to screen readers.
+- **Labeling**: Supports labeling via `aria-label` or `aria-labelledby`.
