@@ -52,7 +52,7 @@ export const REGISTRIES: Registry[] = [
     files: [
       {
         type: "core",
-        path: "/core/avatar/index.tsx"
+        path: "/core/avatar.tsx"
       }
     ],
     dependencies: ["class-variance-authority"]

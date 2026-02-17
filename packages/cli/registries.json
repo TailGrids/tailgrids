@@ -29,7 +29,7 @@
     "name": "Avatar",
     "description": "An image element with a fallback for representing a user.",
     "type": "component",
-    "files": [{ "type": "core", "path": "/core/avatar/index.tsx" }],
+    "files": [{ "type": "core", "path": "/core/avatar.tsx" }],
     "dependencies": ["class-variance-authority"]
   },
   {
