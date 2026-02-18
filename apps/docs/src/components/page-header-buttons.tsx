@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger
 } from "@/registry/core/dropdown";
 import copy from "copy-text-to-clipboard";
-import { CheckIcon, FileText } from "lucide-react";
+import { CheckIcon, FileText, Loader2 } from "lucide-react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -21,6 +21,7 @@ import { usePageContent } from "./page-content-provider";
 export function PageHeaderButtons() {
   const content = usePageContent();
   const pathname = usePathname();
+  const [isCoping, setIsCoping] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -31,7 +32,7 @@ export function PageHeaderButtons() {
 
   const getPrompt = (base?: string) => {
     const url = `https://tailgrids.com/docs${pathname}`;
-    const prompt = `I need help understanding the ${componentName} component from the TailGrids library. Here is the link: ${url}\n\nPlease explain the available props, styling options, and provide usage examples.`;
+    const prompt = `I need help understanding the ${componentName} component from the Tailgrids library. Here is the link: ${url}\n\nPlease explain the available props, styling options, and provide usage examples.`;
     if (base) {
       return `${base}${encodeURIComponent(prompt)}`;
     }
@@ -39,9 +40,14 @@ export function PageHeaderButtons() {
   };
 
   const handleCopy = () => {
-    copy(getPrompt());
-    setIsCopied(true);
-    setTimeout(() => setIsCopied(false), 2000);
+    setIsCoping(true);
+    copy(content);
+
+    setTimeout(() => {
+      setIsCoping(false);
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 1500);
+    }, 500);
   };
 
   const menuItems = [
@@ -49,9 +55,7 @@ export function PageHeaderButtons() {
       label: "View as Markdown",
       icon: <FileText className="size-5 font-normal dark:text-white/75" />,
       onAction: () => {
-        const blob = new Blob([content], { type: "text/markdown" });
-        const url = URL.createObjectURL(blob);
-        window.open(url, "_blank");
+        window.open(`/docs${pathname}.md`, "_blank");
       }
     },
     {
@@ -86,12 +90,16 @@ export function PageHeaderButtons() {
   return (
     <div className="flex items-center gap-2">
       <button onClick={handleCopy} className={buttonClasses}>
-        {isCopied ? (
+        {isCoping ? (
+          <Loader2 className="size-5 stroke-[1.5] animate-spin" />
+        ) : isCopied ? (
           <CheckIcon className="size-5 stroke-[1.5]" />
         ) : (
           <CopyIcon className="size-5 stroke-[1.5]" />
         )}
-        <span>{isCopied ? "Copied" : "Copy Page"}</span>
+        <span>
+          {isCoping ? "Copying..." : isCopied ? "Copied" : "Copy Page"}
+        </span>
       </button>
 
       <DropdownMenu onOpenChange={setIsDropdownOpen}>

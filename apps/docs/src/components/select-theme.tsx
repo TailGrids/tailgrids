@@ -43,7 +43,7 @@ export function SelectTheme() {
       {/* Dropdown Trigger Button */}
       <button
         onClick={() => setOpen(!open)}
-        className="inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-[10px] border py-2 pr-2.5 pl-3 text-sm font-medium text-gray-500 dark:text-gray-400 transition focus:outline-none"
+        className="inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-[10px] border py-2 pr-2.5 pl-3 text-sm font-medium text-gray-500 dark:text-gray-400 transition focus:outline-none hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:shadow-none"
       >
         <span>{selectedLabel} Theme</span>
         <ChevronDown className="size-4 text-gray-400" />
