@@ -1,4 +1,3 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": ["Fumadocs", "Tailgrids"]
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
