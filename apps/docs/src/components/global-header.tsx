@@ -10,6 +10,7 @@ import {
   SunIcon,
   XIcon
 } from "@/icons";
+import { useThemeStore } from "@/store/useThemeStore";
 import { useSidebar } from "fumadocs-ui/provider";
 import { Menu } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -25,6 +26,12 @@ export default function GlobalHeader() {
   const { theme, setTheme } = useTheme();
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const setSandboxTheme = useThemeStore(state => state.setTheme);
+
+  const handleThemeToggle = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+    setSandboxTheme(theme === "dark" ? "light" : "dark");
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -95,7 +102,7 @@ export default function GlobalHeader() {
 
                 {/* Theme Toggle */}
                 <button
-                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                  onClick={handleThemeToggle}
                   className="hidden sm:flex size-10 shrink-0 items-center cursor-pointer justify-center dark:shadow-none dark:border-[#111827] dark:bg-white/5 rounded-xl shadow-navbar-icon  transition  hover:bg-gray-100 dark:hover:bg-gray-800"
                 >
                   <SunIcon className="block dark:hidden text-gray-500" />
