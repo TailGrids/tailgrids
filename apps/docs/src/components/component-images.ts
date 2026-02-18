@@ -38,6 +38,7 @@ export const componentImages: Record<string, StaticImageData> = {
   "button-group": ButtonImage, // Fallback
   card: CardImage,
   checkbox: CheckboxImage,
+  combobox: DropdownImage, // Fallback
   "date-picker": DatePickerImage,
   dropdown: DropdownImage,
   label: InputImage, // Fallback
