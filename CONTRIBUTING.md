@@ -1,11 +1,11 @@
-# Contributing to TailGrids
+# Contributing to Tailgrids
 
-Thank you for your interest in contributing to TailGrids.
+Thank you for your interest in contributing to Tailgrids.
 This guide will help you get started with the contribution process.
 
 ## Project Structure
 
-The TailGrids monorepo is organized as follows:
+The Tailgrids monorepo is organized as follows:
 
 - `/apps/docs/content` - Documentation website
 - `/apps/docs/src/registry/core` - Core components by Tailgrids
@@ -18,7 +18,7 @@ The TailGrids monorepo is organized as follows:
 
 ## Development Guidelines
 
-When contributing to TailGrids:
+When contributing to Tailgrids:
 
 - Keep changes focused.
   Large PRs are harder to review and unlikely to be accepted.
