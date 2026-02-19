@@ -29,8 +29,9 @@ export default function GlobalHeader() {
   const setSandboxTheme = useThemeStore(state => state.setTheme);
 
   const handleThemeToggle = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-    setSandboxTheme(theme === "dark" ? "light" : "dark");
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    setSandboxTheme(nextTheme);
   };
 
   useEffect(() => {
