@@ -17,7 +17,7 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 React Input components are used to collect text input from users. They are commonly used in forms for entering names, emails, passwords, and other text-based data.
 
-This Input component is built with React and styled using Tailwind CSS. It supports labels, helper text, validation states, and both controlled and uncontrolled usage.
+This Input component is built with React and styled using Tailwind CSS. It is designed to be used with the `Label` component for accessibility and supports validation states and both controlled and uncontrolled usage.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -57,21 +57,30 @@ Copy and paste the following component code into your project.
 
 ## Usage
 
-Import the component and pass the required props.
+Import the component and pass the required props. Use the `Label` component to provide a label for the input.
 
 ```tsx
 import { Input } from "@/registry/core/input";
+import { Label } from "@/registry/core/label";
+import { useId } from "react";
 
-export default InputPreview = () => (
-  <Input label="Email" placeholder="Enter your email" />
-);
+export default function InputPreview() {
+  const id = useId();
+
+  return (
+    <div className="grid gap-2">
+      <Label htmlFor={id}>Email</Label>
+      <Input id={id} placeholder="Enter your email" />
+    </div>
+  );
+}
 ```
 
 ## Examples
 
 ### With Label
 
-Use the `label` prop to describe the input field.
+Use the `Label` component and link it to the input using the `id` and `htmlFor` props.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -85,7 +94,7 @@ Note: Labels are non-selectable with `select-none` for better UX. Placeholder te
 
 ### With Hint
 
-Use the `hint` prop to show helper text below the input.
+Use a standard HTML element (like `p`) below the input to provide helper text.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -95,7 +104,7 @@ Use the `hint` prop to show helper text below the input.
   <InputWithHintPreview />
 </ComponentPreview>
 
-Note: The input uses `peer` class to enable styling of the hint text based on input state.
+Note: You can style the hint text based on the input state using status-specific text colors.
 
 ### States
 
@@ -143,8 +152,6 @@ Extends `input` element props.
 
 | Prop          | Type                                | Default     | Description               |
 | ------------- | ----------------------------------- | ----------- | ------------------------- |
-| `label`       | `string`                            | -           | Label text above input    |
-| `hint`        | `string`                            | -           | Helper text below input   |
 | `state`       | `'default'`, `'error'`, `'success'` | `'default'` | Visual state of the input |
 | `className`   | `string`                            | -           | Additional CSS classes    |
 | `type`        | `string`                            | `'text'`    | HTML input type           |
@@ -155,10 +162,8 @@ Extends `input` element props.
 
 ## Accessibility
 
-- Automatically generates unique IDs if not provided
-- Label is properly associated with input via `htmlFor`
+- Labels must be manually associated with inputs via `htmlFor` and `id`
 - Keyboard accessible with standard input behavior
 - Focus ring provides clear visual feedback with `ring-4` style
-- Disabled state applies to both input and hint text
-- Hint text uses semantic color coding for different states
+- Status-specific colors can be used for hint text to provide semantic feedback
 - Supports all standard input accessibility attributes
