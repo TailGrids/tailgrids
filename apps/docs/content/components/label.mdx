@@ -1,0 +1,103 @@
+---
+title: React Label Component
+description: A primitive label component that provides accessibility and layout for form fields.
+---
+
+import LabelPreview from "@/components/preview/label/label-preview";
+import LabelSelectPreview from "@/components/preview/label/label-select-preview";
+import LabelTextAreaPreview from "@/components/preview/label/label-textarea-preview";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Label
+
+The Label component is used to provide a descriptive label for form fields. It is built on top of React Aria to ensure accessibility.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/label/label-preview.tsx"
+  )}
+>
+  <LabelPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+```npm
+npx @tailgrids/cli add label
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the required dependencies:
+
+```npm
+npm i react-aria-components
+```
+
+Copy and paste the following component code into your project.
+
+<CodeBlockCard
+snippet={getFileContent("/src/registry/core/label.tsx")}
+lang="tsx"
+  fileName="label.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the component and pass the required props.
+
+```tsx
+import { Label } from "@/registry/core/label";
+
+export const LabelExample = () => <Label htmlFor="input-id">Label Text</Label>;
+```
+
+## Examples
+
+### With Text Area
+
+Use the Label component with a description-heavy field like `TextArea`.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/label/label-textarea-preview.tsx"
+  )}
+>
+  <LabelTextAreaPreview />
+</ComponentPreview>
+
+### With Select
+
+Associate the Label with a `NativeSelect` component.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/label/label-select-preview.tsx"
+  )}
+>
+  <LabelSelectPreview />
+</ComponentPreview>
+
+## API Reference
+
+### Label
+
+| Prop        | Type        | Default | Description                                   |
+| :---------- | :---------- | :------ | :-------------------------------------------- |
+| `className` | `string`    | -       | Additional CSS classes to apply to the label. |
+| `children`  | `ReactNode` | -       | The content to be displayed within the label. |
+
+Note: `Label` also inherits all props from `react-aria-components`'s `LabelProps`.
+
+## Accessibility
+
+- **Semantic HTML**: The component renders a `<label>` element.
+- **Form Association**: Use the `htmlFor` prop to link the label to a form control's `id`. This ensures that clicking the label focuses the control and screen readers announce the label correctly.
+- **Support for React Aria**: Since it extends React Aria's `Label`, it integrates seamlessly with other React Aria components and hooks for advanced accessibility patterns.

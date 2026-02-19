@@ -5,6 +5,7 @@ description: A React native select component that is used to display a list of i
 
 import NativeSelectDisabledPreview from "@/components/preview/native-select/native-select-disabled-preview";
 import NativeSelectOptGroupPreview from "@/components/preview/native-select/native-select-optgroup-preview";
+import NativeSelectPlaceholderPreview from "@/components/preview/native-select/native-select-placeholder-preview";
 import NativeSelectPreview from "@/components/preview/native-select/native-select-preview";
 import NativeSelectStatesPreview from "@/components/preview/native-select/native-select-states-preview";
 import { getFileContent } from "@/utils/get-file-content";
@@ -82,6 +83,18 @@ The Native Select component supports `error` and `success` states for validation
   <NativeSelectStatesPreview />
 </ComponentPreview>
 
+### Placeholder
+
+Use the `placeholder` prop to display a placeholder when no value is selected.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/native-select/native-select-placeholder-preview.tsx"
+  )}
+>
+  <NativeSelectPlaceholderPreview />
+</ComponentPreview>
+
 ### Disabled
 
 The component can be disabled to prevent user interaction.
@@ -110,11 +123,12 @@ Use `NativeSelectOptGroup` to group related options together.
 
 ### NativeSelect
 
-| Prop        | Type                                | Default     | Description                                    |
-| :---------- | :---------------------------------- | :---------- | :--------------------------------------------- |
-| `variant`   | `'default'`, `'success'`, `'error'` | `'default'` | Controls the visual state of the select        |
-| `disabled`  | `boolean`                           | -           | Disables the select                            |
-| `className` | `string`                            | -           | Additional CSS classes to apply to the wrapper |
+| Prop          | Type                                | Default     | Description                                    |
+| :------------ | :---------------------------------- | :---------- | :--------------------------------------------- |
+| `variant`     | `'default'`, `'success'`, `'error'` | `'default'` | Controls the visual state of the select        |
+| `placeholder` | `string`                            | -           | Sets a placeholder for the select              |
+| `disabled`    | `boolean`                           | -           | Disables the select                            |
+| `className`   | `string`                            | -           | Additional CSS classes to apply to the wrapper |
 
 ### NativeSelectOption
 

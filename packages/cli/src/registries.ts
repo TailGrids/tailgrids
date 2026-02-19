@@ -52,7 +52,7 @@ export const REGISTRIES: Registry[] = [
     files: [
       {
         type: "core",
-        path: "/core/avatar/index.tsx"
+        path: "/core/avatar.tsx"
       }
     ],
     dependencies: ["class-variance-authority"]
@@ -199,6 +199,19 @@ export const REGISTRIES: Registry[] = [
     dependencies: ["class-variance-authority"]
   },
   {
+    id: "label",
+    name: "Label",
+    description: "A label component for form fields.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/label.tsx"
+      }
+    ],
+    dependencies: ["react-aria-components"]
+  },
+  {
     id: "link",
     name: "Link",
     description: "A link component with multiple variants.",
@@ -313,6 +326,20 @@ export const REGISTRIES: Registry[] = [
       }
     ],
     dependencies: ["class-variance-authority"]
+  },
+  {
+    id: "select",
+    name: "Select",
+    description: "A select component with multiple variants.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/select.tsx"
+      }
+    ],
+    dependencies: ["react-aria-components", "@tailgrids/icons"],
+    requires: ["button"]
   },
   {
     id: "separator",

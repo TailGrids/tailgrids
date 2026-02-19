@@ -41,6 +41,7 @@ export const componentImages: Record<string, StaticImageData> = {
   "date-picker": DatePickerImage,
   dropdown: DropdownImage,
   field: InputImage, // Fallback
+  label: InputImage, // Fallback
   input: InputImage,
   link: ButtonImage, // Fallback
   list: ListImage,
@@ -50,6 +51,7 @@ export const componentImages: Record<string, StaticImageData> = {
   popover: PopoverImage,
   progress: ProgressImage,
   "radio-input": RadioImage,
+  select: DropdownImage, // Fallback
   separator: SeparatorImage,
   skeleton: SkeletonImage,
   slider: SliderImage,

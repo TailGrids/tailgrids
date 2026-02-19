@@ -45,7 +45,7 @@ export function ComponentPreview({
         <SelectTheme />
 
         <CopyToClipboard
-          className="py-2 pr-3 pl-2.5 gap-2 font-medium rounded-[10px] border"
+          className="py-2 pr-3 pl-2.5 gap-2 font-medium rounded-[10px] border hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:shadow-none"
           content={codeSnippet}
           showLabel
         />

@@ -1,5 +1,11 @@
 # @tailgrids/cli
 
+## 1.1.1
+
+### Patch Changes
+
+- Update avatar component file path in registries.json file
+
 ## 1.1.0
 
 ### Minor Changes

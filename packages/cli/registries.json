@@ -29,7 +29,7 @@
     "name": "Avatar",
     "description": "An image element with a fallback for representing a user.",
     "type": "component",
-    "files": [{ "type": "core", "path": "/core/avatar/index.tsx" }],
+    "files": [{ "type": "core", "path": "/core/avatar.tsx" }],
     "dependencies": ["class-variance-authority"]
   },
   {
@@ -114,6 +114,14 @@
     "type": "component",
     "files": [{ "type": "core", "path": "/core/input.tsx" }],
     "dependencies": ["class-variance-authority"]
+  },
+  {
+    "id": "label",
+    "name": "Label",
+    "description": "A label component for form fields.",
+    "type": "component",
+    "files": [{ "type": "core", "path": "/core/label.tsx" }],
+    "dependencies": ["react-aria-components"]
   },
   {
     "id": "link",
