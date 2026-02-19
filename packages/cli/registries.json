@@ -80,6 +80,18 @@
     "dependencies": ["class-variance-authority", "@tailgrids/icons"]
   },
   {
+    "id": "combobox",
+    "name": "Combobox",
+    "description": "A combobox component with multiple variants.",
+    "type": "component",
+    "files": [
+      { "type": "core", "path": "/core/combobox/combobox.tsx" },
+      { "type": "core", "path": "/core/combobox/multi-combobox.tsx" }
+    ],
+    "dependencies": ["react-aria-components", "@tailgrids/icons"],
+    "requires": ["badge"]
+  },
+  {
     "id": "date-picker",
     "name": "Date Picker",
     "description": "A component to select a date or a range of dates.",
@@ -185,6 +197,15 @@
     "type": "component",
     "files": [{ "type": "core", "path": "/core/radio-input.tsx" }],
     "dependencies": ["class-variance-authority"]
+  },
+  {
+    "id": "select",
+    "name": "Select",
+    "description": "A select component with multiple variants.",
+    "type": "component",
+    "files": [{ "type": "core", "path": "/core/select.tsx" }],
+    "dependencies": ["react-aria-components", "@tailgrids/icons"],
+    "requires": ["button"]
   },
   {
     "id": "separator",

@@ -139,6 +139,24 @@ export const REGISTRIES: Registry[] = [
     dependencies: ["class-variance-authority", "@tailgrids/icons"]
   },
   {
+    id: "combobox",
+    name: "Combobox",
+    description: "A combobox component with multiple variants.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/combobox/combobox.tsx"
+      },
+      {
+        type: "core",
+        path: "/core/combobox/multi-combobox.tsx"
+      }
+    ],
+    dependencies: ["react-aria-components", "@tailgrids/icons"],
+    requires: ["badge"]
+  },
+  {
     id: "date-picker",
     name: "Date Picker",
     description: "A component to select a date or a range of dates.",
