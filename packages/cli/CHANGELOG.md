@@ -1,5 +1,11 @@
 # @tailgrids/cli
 
+## 1.1.2
+
+### Patch Changes
+
+- fix: `@tailwindcss/forms` not added as dev dependency during project initialization
+
 ## 1.1.1
 
 ### Patch Changes
