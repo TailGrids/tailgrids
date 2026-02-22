@@ -13,7 +13,7 @@ export default function VersionDropdown() {
   useClickOutside(containerRef, () => setOpen(false));
 
   return (
-    <div ref={containerRef} className="relative">
+    <div ref={containerRef} className="relative max-[400px]:hidden">
       <button
         className="flex h-6 cursor-pointer items-center gap-1 rounded-lg border border-[#EDEDED] bg-[#F3F4F6] px-2 py-1 text-xs font-medium text-gray-700 transition duration-200 hover:bg-gray-200 dark:border-[#111827] dark:bg-white/5 dark:text-gray-400 dark:hover:bg-gray-800"
         onClick={() => setOpen(!open)}

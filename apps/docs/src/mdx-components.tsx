@@ -14,13 +14,14 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     ...defaultMdxComponents,
     ...components,
     h1: ({ children, ...props }) => (
-      <div className="flex items-center gap-5 mb-8">
+      <div className="flex items-center gap-5 mb-8 flex-wrap">
         <h1
           {...props}
           className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100 m-0!"
         >
           {children}
         </h1>
+
         <PageHeaderButtons />
       </div>
     ),

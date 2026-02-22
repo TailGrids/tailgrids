@@ -65,14 +65,14 @@ export default function GlobalHeader() {
                   src={LogoLightMode}
                   width={150}
                   height={40}
-                  className="dark:hidden"
+                  className="dark:hidden max-[400px]:w-30"
                   alt="Tailgrids Logo"
                 />
                 <Image
                   src={LogoDarkMode}
                   width={150}
                   height={40}
-                  className="not-dark:hidden"
+                  className="not-dark:hidden max-[400px]:w-30"
                   alt="Tailgrids Logo"
                 />
               </Link>

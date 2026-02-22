@@ -39,7 +39,7 @@ export function SelectTheme() {
   const selectedLabel = themes.find(t => t.value === theme)?.label;
 
   return (
-    <div className="relative text-left ml-auto" ref={dropdownRef}>
+    <div className="relative text-left min-[462px]:ml-auto" ref={dropdownRef}>
       {/* Dropdown Trigger Button */}
       <button
         onClick={() => setOpen(!open)}
