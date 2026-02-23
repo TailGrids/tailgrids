@@ -175,6 +175,20 @@ export const REGISTRIES: Registry[] = [
     requires: ["button"]
   },
   {
+    id: "dialog",
+    name: "Dialog",
+    description:
+      "A dialog component that display a modal overlay above the main page content.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/dialog.tsx"
+      }
+    ],
+    dependencies: ["react-aria-components", "@tailgrids/icons"]
+  },
+  {
     id: "dropdown",
     name: "Dropdown",
     description:
