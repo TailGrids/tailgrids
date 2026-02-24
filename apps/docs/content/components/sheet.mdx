@@ -1,0 +1,287 @@
+---
+title: React Sheet Component
+description: A React sheet component that slides into the screen from any side. Perfect for mobile menus, secondary views, or detailed information panels.
+---
+
+import SheetPreview from "@/components/preview/sheet/sheet-preview";
+import SheetSidesPreview from "@/components/preview/sheet/sheet-sides-preview";
+import SheetFormPreview from "@/components/preview/sheet/sheet-form-preview";
+import SheetMobileNavPreview from "@/components/preview/sheet/sheet-mobile-nav-preview";
+import SheetScrollablePreview from "@/components/preview/sheet/sheet-scrollable-preview";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Sheet
+
+React Sheet components are used to display a panel that slides from one of the screen's edges. They provide a versatile way to offer additional information, context-sensitive menus, or complex forms without forcing the user to navigate away from the current page.
+
+This Sheet component is built with React Aria for accessibility, Tailwind CSS for styling, and supports multiple side variants and highly composable sub-components.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/sheet/sheet-preview.tsx"
+  )}
+>
+  <SheetPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+
+```npm
+npx @tailgrids/cli add sheet
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+The Sheet component relies on the `react-aria-components` library. Install the required dependencies:
+
+```npm
+npm i react-aria-components @tailgrids/icons class-variance-authority
+```
+
+Copy and paste the following component code into your project. The component includes `Sheet`, `SheetTrigger`, `SheetOverlay`, `SheetContent`, `SheetHeader`, `SheetTitle`, `SheetDescription`, `SheetBody`, `SheetFooter`, and `SheetClose`.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/sheet.tsx")}
+  lang="tsx"
+  fileName="sheet.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+The Sheet follows a composable pattern where each part can be styled and arranged manually.
+
+```tsx
+import {
+  Sheet,
+  SheetTrigger,
+  SheetOverlay,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+  SheetBody,
+  SheetFooter,
+  SheetClose
+} from "@/registry/core/sheet";
+
+export default function SheetAnatomy() {
+  return (
+    <Sheet>
+      <SheetTrigger />
+      <SheetOverlay>
+        <SheetContent side="right">
+          <SheetHeader>
+            <SheetTitle />
+            <SheetDescription />
+          </SheetHeader>
+          <SheetBody />
+          <SheetFooter>
+            <SheetClose />
+          </SheetFooter>
+        </SheetContent>
+      </SheetOverlay>
+    </Sheet>
+  );
+}
+```
+
+## Usage
+
+Create a sheet by composing the necessary components inside a root `Sheet`.
+
+```tsx
+import {
+  Sheet,
+  SheetTrigger,
+  SheetOverlay,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription
+} from "@/registry/core/sheet";
+
+export default function SheetExample() {
+  return (
+    <Sheet>
+      <SheetTrigger>Open Sheet</SheetTrigger>
+      <SheetOverlay>
+        <SheetContent side="left">
+          <SheetHeader>
+            <SheetTitle>Menu</SheetTitle>
+            <SheetDescription>
+              Navigation for your application.
+            </SheetDescription>
+          </SheetHeader>
+        </SheetContent>
+      </SheetOverlay>
+    </Sheet>
+  );
+}
+```
+
+## Examples
+
+### Custom Sides
+
+The `side` prop on `SheetContent` allows you to control the entry point of the sheet. Options are `top`, `right`, `bottom`, and `left`.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/sheet/sheet-sides-preview.tsx"
+  )}
+>
+  <SheetSidesPreview />
+</ComponentPreview>
+
+### Detailed Forms
+
+Use sheets to display complex editing forms. This keeps the user on the same page while they perform focused tasks.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/sheet/sheet-form-preview.tsx"
+  )}
+>
+  <SheetFormPreview />
+</ComponentPreview>
+
+### Mobile Navigation
+
+A common use case for sheets is mobile menus. You can use `close` with render props to trigger navigation and close the sheet simultaneously.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/sheet/sheet-mobile-nav-preview.tsx"
+  )}
+>
+  <SheetMobileNavPreview />
+</ComponentPreview>
+
+### Long Scrollable Content
+
+Use `SheetBody` for content that might exceed the screen height. The body will automatically scroll while keeping the header and footer fixed if needed.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/sheet/sheet-scrollable-preview.tsx"
+  )}
+>
+  <SheetScrollablePreview />
+</ComponentPreview>
+
+## API Reference
+
+### Sheet
+
+The root component that manages the open/close state of the sheet.
+
+| Prop           | Type                        | Default | Description                        |
+| :------------- | :-------------------------- | :------ | :--------------------------------- |
+| `children`     | `React.ReactNode`           | -       | The trigger and content elements   |
+| `isOpen`       | `boolean`                   | -       | Controlled open state              |
+| `defaultOpen`  | `boolean`                   | -       | Uncontrolled default open state    |
+| `onOpenChange` | `(isOpen: boolean) => void` | -       | Called when the open state changes |
+
+### SheetTrigger
+
+The element that opens the sheet when pressed.
+
+| Prop        | Type              | Default | Description                  |
+| :---------- | :---------------- | :------ | :--------------------------- |
+| `children`  | `React.ReactNode` | -       | The trigger label or element |
+| `className` | `string`          | -       | Additional CSS classes       |
+
+### SheetOverlay
+
+The backdrop overlay for the sheet. Wraps `SheetContent` and handles exit animations.
+
+| Prop            | Type              | Default | Description                                     |
+| :-------------- | :---------------- | :------ | :---------------------------------------------- |
+| `children`      | `React.ReactNode` | -       | The `SheetContent` element                      |
+| `isDismissable` | `boolean`         | `true`  | Whether clicking outside the sheet closes it    |
+| `className`     | `string`          | -       | Additional CSS classes for the overlay backdrop |
+
+### SheetContent
+
+The primary layout component for the sheet panel.
+
+| Prop              | Type                                                                    | Default   | Description                                                      |
+| :---------------- | :---------------------------------------------------------------------- | :-------- | :--------------------------------------------------------------- |
+| `side`            | `top` \| `right` \| `bottom` \| `left`                                  | `"right"` | The edge of the screen the sheet slides from                     |
+| `children`        | `React.ReactNode` \| `(opts: { close: () => void }) => React.ReactNode` | -         | Content of the sheet. Supports render props for `close()` access |
+| `showCloseButton` | `boolean`                                                               | `true`    | Whether to show the default close button in the top-right        |
+| `modalProps`      | `ModalProps`                                                            | -         | Props forwarded to the underlying `Modal`                        |
+| `className`       | `string`                                                                | -         | Additional CSS classes for the sheet panel                       |
+
+See [React Aria Modal API](https://react-aria.adobe.com/Modal#api) for more details on `modalProps`.
+
+### SheetHeader
+
+A wrapper for the title and description at the top of the sheet.
+
+| Prop        | Type              | Default | Description            |
+| :---------- | :---------------- | :------ | :--------------------- |
+| `children`  | `React.ReactNode` | -       | Header content         |
+| `className` | `string`          | -       | Additional CSS classes |
+
+### SheetTitle
+
+The accessible heading for the sheet.
+
+| Prop        | Type              | Default | Description            |
+| :---------- | :---------------- | :------ | :--------------------- |
+| `children`  | `React.ReactNode` | -       | Title text             |
+| `className` | `string`          | -       | Additional CSS classes |
+
+### SheetDescription
+
+Secondary text for the sheet header.
+
+| Prop        | Type              | Default | Description            |
+| :---------- | :---------------- | :------ | :--------------------- |
+| `children`  | `React.ReactNode` | -       | Description text       |
+| `className` | `string`          | -       | Additional CSS classes |
+
+### SheetBody
+
+A scrollable container for the main content of the sheet.
+
+| Prop        | Type              | Default | Description            |
+| :---------- | :---------------- | :------ | :--------------------- |
+| `children`  | `React.ReactNode` | -       | Body content           |
+| `className` | `string`          | -       | Additional CSS classes |
+
+### SheetFooter
+
+An action bar section at the bottom of the sheet.
+
+| Prop              | Type              | Default | Description                                 |
+| :---------------- | :---------------- | :------ | :------------------------------------------ |
+| `children`        | `React.ReactNode` | -       | Footer content                              |
+| `showCloseButton` | `boolean`         | `false` | Whether to render a built-in "Close" button |
+| `className`       | `string`          | -       | Additional CSS classes                      |
+
+### SheetClose
+
+A specialized button with `slot="close"` that automatically closes the nearest sheet.
+
+| Prop        | Type              | Default | Description                    |
+| :---------- | :---------------- | :------ | :----------------------------- |
+| `children`  | `React.ReactNode` | -       | The close button label/content |
+| `className` | `string`          | -       | Additional CSS classes         |
+
+## Accessibility
+
+- **Focus Management**: Focus is automatically trapped inside the sheet when open and restored to the trigger element on close.
+- **Keyboard Navigation**: Pressing `Escape` or the close trigger closes the sheet.
+- **ARIA Labeling**: `SheetTitle` uses `slot="title"` to provide an accessible label for the sheet component.
+- **Screen Readers**: The sheet is announced as a modal overlay, and background content is hidden from assistive technology when open.
+- **Mobile Optimized**: Designed for mobile responsiveness, perfect for replacing complex navigation menus on smaller screens.
