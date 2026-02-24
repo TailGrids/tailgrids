@@ -4,7 +4,10 @@ import { nextJsConfig } from "@repo/eslint-config/next-js";
 const eslintConfig = [
   ...nextJsConfig,
   {
-    ignores: [".next/**", "out/**", "build/**", ".source/**", "next-env.d.ts"]
+    ignores: [".next/**", "out/**", "build/**", ".source/**", "next-env.d.ts"],
+    rules: {
+      "@typescript-eslint/no-empty-object-type": "off"
+    }
   }
 ];
 
