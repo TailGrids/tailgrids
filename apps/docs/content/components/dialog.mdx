@@ -1,0 +1,332 @@
+---
+title: React Dialog Component
+description: A React dialog component for displaying modal overlays. Used to show information, ask questions, collect input, or offer multiple actions in a focused layer above the page.
+---
+
+import DialogAskQuestionPreview from "@/components/preview/dialog/dialog-ask-question-preview";
+import DialogCollectInputPreview from "@/components/preview/dialog/dialog-collect-input-preview";
+import DialogWithoutClosePreview from "@/components/preview/dialog/dialog-without-close-preview";
+import DialogMultipleActionsPreview from "@/components/preview/dialog/dialog-multiple-actions-preview";
+import DialogPreview from "@/components/preview/dialog/dialog-preview";
+import DialogShowInformationPreview from "@/components/preview/dialog/dialog-show-information-preview";
+import DialogStickyFooterPreview from "@/components/preview/dialog/dialog-sticky-footer-preview";
+import DialogWithoutOverlayPreview from "@/components/preview/dialog/dialog-without-overlay-preview";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Dialog
+
+React Dialog components display a modal overlay above the main page content. They are commonly used to show information, ask a question, collect input from forms, or offer multiple actions that require the user's attention before continuing.
+
+This Dialog component is built with React and styled using Tailwind CSS. It uses `react-aria-components` for accessibility, focus management, and keyboard interactions out of the box.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/dialog/dialog-preview.tsx"
+  )}
+>
+  <DialogPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+
+```npm
+npx @tailgrids/cli add dialog
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+The Dialog component relies on the `react-aria-components` library. Install the required dependencies:
+
+```npm
+npm i react-aria-components @tailgrids/icons
+```
+
+Copy and paste the following component code into your project. The component includes `Dialog`, `DialogTrigger`, `DialogOverlay`, `DialogContent`, `DialogHeader`, `DialogTitle`, `DialogDescription`, `DialogBody`, `DialogFooter`, and `DialogClose`.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/dialog.tsx")}
+  lang="tsx"
+  fileName="dialog.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the component parts and combine them according to your requirements.
+
+```tsx
+import {
+  Dialog,
+  DialogTrigger,
+  DialogOverlay,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogBody,
+  DialogFooter,
+  DialogClose
+} from "@/registry/core/dialog";
+
+export default function DialogAnatomy() {
+  return (
+    <Dialog>
+      <DialogTrigger />
+      <DialogOverlay>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle />
+            <DialogDescription />
+          </DialogHeader>
+          <DialogBody />
+          <DialogFooter>
+            <DialogClose />
+          </DialogFooter>
+        </DialogContent>
+      </DialogOverlay>
+    </Dialog>
+  );
+}
+```
+
+## Usage
+
+Import the dialog components and compose them to build your modal.
+
+```tsx
+import {
+  Dialog,
+  DialogTrigger,
+  DialogOverlay,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+  DialogClose
+} from "@/registry/core/dialog";
+
+export default function DialogExample() {
+  return (
+    <Dialog>
+      <DialogTrigger>Open Dialog</DialogTrigger>
+      <DialogOverlay isDismissable>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Dialog Title</DialogTitle>
+            <DialogDescription>
+              A short description of the dialog purpose.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <DialogClose>Cancel</DialogClose>
+          </DialogFooter>
+        </DialogContent>
+      </DialogOverlay>
+    </Dialog>
+  );
+}
+```
+
+## Examples
+
+### Show Information
+
+Display read-only information such as release notes, announcements, or details that the user needs to acknowledge.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/dialog/dialog-show-information-preview.tsx"
+  )}
+>
+  <DialogShowInformationPreview />
+</ComponentPreview>
+
+### Ask a Question
+
+Use a confirmation dialog to ask the user a yes/no question before performing a destructive or irreversible action.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/dialog/dialog-ask-question-preview.tsx"
+  )}
+>
+  <DialogAskQuestionPreview />
+</ComponentPreview>
+
+### Collect Input
+
+Present a form inside the dialog to collect user input such as profile settings, preferences, or text fields.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/dialog/dialog-collect-input-preview.tsx"
+  )}
+>
+  <DialogCollectInputPreview />
+</ComponentPreview>
+
+### Multiple Actions
+
+Offer the user multiple choices or actions to select from within a single dialog.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/dialog/dialog-multiple-actions-preview.tsx"
+  )}
+>
+  <DialogMultipleActionsPreview />
+</ComponentPreview>
+
+### Without Close Button
+
+You can remove the default close button at the top using `showCloseButton={false}` on `DialogContent`.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/dialog/dialog-without-close-preview.tsx"
+  )}
+>
+  <DialogWithoutClosePreview />
+</ComponentPreview>
+
+### Sticky Footer
+
+Keep the footer actions visible while the dialog content scrolls. Useful for long content like terms of service or license agreements.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/dialog/dialog-sticky-footer-preview.tsx"
+  )}
+>
+  <DialogStickyFooterPreview />
+</ComponentPreview>
+
+### Without Overlay
+
+Render the dialog without a backdrop overlay by using `DialogContent` directly without wrapping it in `DialogOverlay`. This is useful for non-blocking notifications or confirmation screens where the background should remain visible.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/dialog/dialog-without-overlay-preview.tsx"
+  )}
+>
+  <DialogWithoutOverlayPreview />
+</ComponentPreview>
+
+## API Reference
+
+### Dialog
+
+The root component that manages the open/close state of the dialog.
+
+| Prop           | Type                        | Default | Description                        |
+| :------------- | :-------------------------- | :------ | :--------------------------------- |
+| `children`     | `React.ReactNode`           | -       | The trigger and content elements   |
+| `isOpen`       | `boolean`                   | -       | Controlled open state              |
+| `defaultOpen`  | `boolean`                   | -       | Uncontrolled default open state    |
+| `onOpenChange` | `(isOpen: boolean) => void` | -       | Called when the open state changes |
+
+### DialogTrigger
+
+The button element that opens the dialog when pressed.
+
+| Prop        | Type              | Default | Description                  |
+| :---------- | :---------------- | :------ | :--------------------------- |
+| `children`  | `React.ReactNode` | -       | The trigger label or element |
+| `className` | `string`          | -       | Additional CSS classes       |
+
+### DialogOverlay
+
+The backdrop overlay that covers the page behind the dialog. Wraps `DialogContent` and controls dismiss behavior.
+
+| Prop                        | Type              | Default | Description                                     |
+| :-------------------------- | :---------------- | :------ | :---------------------------------------------- |
+| `children`                  | `React.ReactNode` | -       | The `DialogContent` element                     |
+| `isDismissable`             | `boolean`         | -       | Whether clicking outside the dialog closes it   |
+| `isKeyboardDismissDisabled` | `boolean`         | -       | Whether pressing Escape to close is disabled    |
+| `className`                 | `string`          | -       | Additional CSS classes for the overlay backdrop |
+
+### DialogContent
+
+The main dialog panel. Composes `Modal` and `Dialog` from react-aria-components. Must be placed inside a `DialogOverlay`.
+
+| Prop              | Type                                                                    | Default | Description                                                       |
+| :---------------- | :---------------------------------------------------------------------- | :------ | :---------------------------------------------------------------- |
+| `children`        | `React.ReactNode` \| `(opts: { close: () => void }) => React.ReactNode` | -       | Content of the dialog. Supports render props for `close()` access |
+| `showCloseButton` | `boolean`                                                               | `true`  | Whether to show the default close button in the top-right         |
+| `modalProps`      | `ModalProps`                                                            | -       | Props forwarded to the underlying `Modal`                         |
+| `className`       | `string`                                                                | -       | Additional CSS classes for the dialog panel                       |
+
+**Note:** The `Modal` component is crucial for the dialog's accessibility and focus management. So the `modalProps` are provided to allow passing additional props to the underlying `Modal` without exposing it directly.
+
+### DialogHeader
+
+A semantic container for the title and description at the top of the dialog.
+
+| Prop        | Type              | Default | Description            |
+| :---------- | :---------------- | :------ | :--------------------- |
+| `children`  | `React.ReactNode` | -       | Header content         |
+| `className` | `string`          | -       | Additional CSS classes |
+
+### DialogTitle
+
+The dialog title. Uses react-aria's `Heading` with `slot="title"` for proper ARIA labelling.
+
+| Prop        | Type              | Default | Description            |
+| :---------- | :---------------- | :------ | :--------------------- |
+| `children`  | `React.ReactNode` | -       | Title text             |
+| `className` | `string`          | -       | Additional CSS classes |
+
+### DialogDescription
+
+A paragraph for supplementary text that describes the dialog's purpose.
+
+| Prop        | Type              | Default | Description            |
+| :---------- | :---------------- | :------ | :--------------------- |
+| `children`  | `React.ReactNode` | -       | Description text       |
+| `className` | `string`          | -       | Additional CSS classes |
+
+### DialogBody
+
+A scrollable content area between the header and footer.
+
+| Prop        | Type              | Default | Description            |
+| :---------- | :---------------- | :------ | :--------------------- |
+| `children`  | `React.ReactNode` | -       | Body content           |
+| `className` | `string`          | -       | Additional CSS classes |
+
+### DialogFooter
+
+An action bar at the bottom of the dialog for buttons and actions.
+
+| Prop              | Type              | Default | Description                                 |
+| :---------------- | :---------------- | :------ | :------------------------------------------ |
+| `children`        | `React.ReactNode` | -       | Footer content (buttons, links, etc.)       |
+| `showCloseButton` | `boolean`         | `false` | Whether to render a built-in "Close" button |
+| `className`       | `string`          | -       | Additional CSS classes                      |
+
+### DialogClose
+
+A button with `slot="close"` that automatically closes the nearest dialog when pressed. Can wrap any content for custom close triggers.
+
+| Prop        | Type              | Default | Description                    |
+| :---------- | :---------------- | :------ | :----------------------------- |
+| `children`  | `React.ReactNode` | -       | The close button label/content |
+| `className` | `string`          | -       | Additional CSS classes         |
+
+## Accessibility
+
+- **Focus Management**: Focus is automatically trapped inside the dialog when open and restored to the trigger on close.
+- **Keyboard Support**: Press `Escape` to close the dialog (configurable via `isKeyboardDismissDisabled` on `DialogOverlay`).
+- **ARIA Labelling**: `DialogTitle` uses `slot="title"` to automatically set `aria-labelledby` on the dialog.
+- **Screen Readers**: The dialog is announced as a modal overlay, and background content is hidden from assistive technology.
+- **Dismiss on Outside Click**: Clicking the overlay backdrop closes the dialog when `isDismissable` is `true` on `DialogOverlay`.
+- **Semantic HTML**: Uses native `dialog` semantics via react-aria-components for maximum compatibility.

@@ -8,6 +8,7 @@ import ButtonImage from "@/assets/skeleton-image/button.png";
 import CardImage from "@/assets/skeleton-image/card.png";
 import CheckboxImage from "@/assets/skeleton-image/checkbox.png";
 import DatePickerImage from "@/assets/skeleton-image/date-picker.png";
+import DialogImage from "@/assets/skeleton-image/dialog.png";
 import DropdownImage from "@/assets/skeleton-image/dropdown.png";
 import InputImage from "@/assets/skeleton-image/input.png";
 import ListImage from "@/assets/skeleton-image/list.png";
@@ -40,6 +41,7 @@ export const componentImages: Record<string, StaticImageData> = {
   checkbox: CheckboxImage,
   combobox: DropdownImage, // Fallback
   "date-picker": DatePickerImage,
+  dialog: DialogImage,
   dropdown: DropdownImage,
   field: InputImage, // Fallback
   label: InputImage, // Fallback
