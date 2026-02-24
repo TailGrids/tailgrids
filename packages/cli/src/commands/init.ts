@@ -1,7 +1,7 @@
-import { Command } from 'commander';
-import { handleInitCommand } from '../actions/init/index.ts';
+import { Command } from "commander";
+import { handleInitCommand } from "../actions/init/index.ts";
 
 export const initCommand = new Command()
-  .name('init')
-  .description('Initialize Tailgrids in your project')
+  .name("init")
+  .description("Initialize Tailgrids in your project")
   .action(handleInitCommand);

@@ -1,9 +1,9 @@
-import { checkbox } from '@inquirer/prompts';
-import { installDependencies } from '../../utils/installing-dependencies.ts';
-import { logger } from '../../utils/logger.ts';
-import { addFiles } from './helpers.ts';
-import type { Registry } from '../../types/registry.ts';
-import { REGISTRIES } from '../../registries.ts';
+import { checkbox } from "@inquirer/prompts";
+import { installDependencies } from "../../utils/installing-dependencies.ts";
+import { logger } from "../../utils/logger.ts";
+import { addFiles } from "./helpers.ts";
+import type { Registry } from "../../types/registry.ts";
+import { REGISTRIES } from "../../registries.ts";
 
 type HandleAddCommandParams = {
   components: string[];
@@ -17,17 +17,17 @@ export async function handleAddCommand({ components }: HandleAddCommandParams) {
 
     if (!selectedComponentsId.length) {
       selectedComponentsId = await checkbox({
-        message: 'Select components to add',
-        choices: registries.map((component) => ({
+        message: "Select components to add",
+        choices: registries.map(component => ({
           name: component.name,
           description: component.description,
-          value: component.id,
-        })),
+          value: component.id
+        }))
       });
     }
 
     if (!selectedComponentsId.length) {
-      logger.warn('No Components Selected. Exiting.');
+      logger.warn("No Components Selected. Exiting.");
       return;
     }
 
@@ -42,18 +42,18 @@ export async function handleAddCommand({ components }: HandleAddCommandParams) {
         componentId,
         processedComponentIds,
         allDependencies,
-        allDevDependencies,
+        allDevDependencies
       });
     }
 
     await installDependencies({
       dependencies: Array.from(allDependencies),
-      devDependencies: Array.from(allDevDependencies),
+      devDependencies: Array.from(allDevDependencies)
     });
 
-    logger.success('Components added successfully!');
+    logger.success("Components added successfully!");
   } catch (error) {
-    logger.error('Failed to add components:\n' + (error as Error).message);
+    logger.error("Failed to add components:\n" + (error as Error).message);
     process.exit(1);
   }
 }
@@ -71,7 +71,7 @@ async function handleComponentRegistry({
   componentId,
   processedComponentIds,
   allDependencies,
-  allDevDependencies,
+  allDevDependencies
 }: HandleComponentRegistryParams) {
   if (processedComponentIds.has(componentId)) return;
 
@@ -89,8 +89,8 @@ async function handleComponentRegistry({
   await addFiles({ files: componentRegistry.files });
 
   // Store dependencies to install
-  componentRegistry.dependencies?.forEach((dep) => allDependencies.add(dep));
-  componentRegistry.devDependencies?.forEach((devDep) =>
+  componentRegistry.dependencies?.forEach(dep => allDependencies.add(dep));
+  componentRegistry.devDependencies?.forEach(devDep =>
     allDevDependencies.add(devDep)
   );
 
@@ -101,7 +101,7 @@ async function handleComponentRegistry({
         componentId: requiredId,
         processedComponentIds,
         allDependencies,
-        allDevDependencies,
+        allDevDependencies
       });
     }
   }

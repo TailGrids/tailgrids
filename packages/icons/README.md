@@ -31,7 +31,7 @@ Import the icons you need and use them as React components:
 ### Basic Usage
 
 ```jsx
-import { ArrowLeftSquare, FourK } from '@tailgrids/icons';
+import { ArrowLeftSquare, FourK } from "@tailgrids/icons";
 
 function App() {
   return (
@@ -46,7 +46,7 @@ function App() {
 ### With Custom Props
 
 ```jsx
-import { ArrowLeftSquare, FourK } from '@tailgrids/icons';
+import { ArrowLeftSquare, FourK } from "@tailgrids/icons";
 
 function App() {
   return (

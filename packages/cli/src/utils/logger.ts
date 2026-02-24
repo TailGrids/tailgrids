@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import chalk from "chalk";
 
 export const logger = {
   info(message: string) {
@@ -18,7 +18,7 @@ export const logger = {
   },
 
   break() {
-    console.log('');
+    console.log("");
   },
 
   title(message: string) {
@@ -31,5 +31,5 @@ export const logger = {
 
   log(message: string) {
     console.log(message);
-  },
+  }
 };
