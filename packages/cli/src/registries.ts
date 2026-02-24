@@ -189,6 +189,24 @@ export const REGISTRIES: Registry[] = [
     dependencies: ["react-aria-components", "@tailgrids/icons"]
   },
   {
+    id: "drawer",
+    name: "Drawer",
+    description:
+      "A drawer component that slides in from the edge of the screen, typically used for navigation or displaying additional content.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/drawer.tsx"
+      }
+    ],
+    dependencies: [
+      "react-aria-components",
+      "@tailgrids/icons",
+      "class-variance-authority"
+    ]
+  },
+  {
     id: "dropdown",
     name: "Dropdown",
     description:
