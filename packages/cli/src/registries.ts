@@ -214,7 +214,7 @@ export const REGISTRIES: Registry[] = [
         path: "/core/field.tsx"
       }
     ],
-    dependencies: ["class-variance-authority", "react-aria"]
+    dependencies: ["class-variance-authority", "react-aria-components"]
   },
   {
     id: "input",
@@ -387,6 +387,24 @@ export const REGISTRIES: Registry[] = [
     dependencies: ["class-variance-authority", "react-aria-components"]
   },
   {
+    id: "sheet",
+    name: "Sheet",
+    description:
+      "A sheet component that slides in from the edge of the screen, typically used for navigation or displaying additional content.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/sheet.tsx"
+      }
+    ],
+    dependencies: [
+      "react-aria-components",
+      "@tailgrids/icons",
+      "class-variance-authority"
+    ]
+  },
+  {
     id: "skeleton",
     name: "Skeleton",
     description: "A component to indicate a loading state.",
@@ -409,7 +427,7 @@ export const REGISTRIES: Registry[] = [
         path: "/core/slider.tsx"
       }
     ],
-    dependencies: ["react-aria", "react-stately"]
+    dependencies: ["react-aria-components", "react-stately"]
   },
   {
     id: "social-button",

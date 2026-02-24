@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const client = new MeiliSearch({
   host: process.env.NEXT_PUBLIC_MEILISEARCH_HOST!,
-  apiKey: process.env.NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY!,
+  apiKey: process.env.NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY!
 });
 
 export interface SearchResultItem {
@@ -27,7 +27,7 @@ export const useSearch = (query: string) => {
     blocks: [],
     templates: [],
     pages: [],
-    docs: [],
+    docs: []
   });
 
   useEffect(() => {
@@ -42,27 +42,27 @@ export const useSearch = (query: string) => {
               indexUid: "tailgrids-v2-search",
               q: searchTerm,
               filter: "type = doc",
-              limit: 5,
+              limit: 5
             },
             {
               indexUid: "tailgrids-v2-search",
               q: searchTerm,
               filter: "type = block",
-              limit: 8,
+              limit: 8
             },
             {
               indexUid: "tailgrids-v2-search",
               q: searchTerm,
               filter: "type = template",
-              limit: 6,
+              limit: 6
             },
             {
               indexUid: "tailgrids-v2-search",
               q: searchTerm,
               filter: "type = page",
-              limit: 5,
-            },
-          ],
+              limit: 5
+            }
+          ]
         });
 
         // Safe indexing with optional chaining/fallback
@@ -74,7 +74,7 @@ export const useSearch = (query: string) => {
           templates:
             (response.results[2]?.hits as unknown as SearchResultItem[]) || [],
           pages:
-            (response.results[3]?.hits as unknown as SearchResultItem[]) || [],
+            (response.results[3]?.hits as unknown as SearchResultItem[]) || []
         });
       } catch (error) {
         console.error("Meilisearch error:", error);

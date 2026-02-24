@@ -56,6 +56,7 @@ export const componentImages: Record<string, StaticImageData> = {
   "radio-input": RadioImage,
   select: DropdownImage, // Fallback
   separator: SeparatorImage,
+  sheet: AspectRatioImage, // Fallback
   skeleton: SkeletonImage,
   slider: SliderImage,
   "social-button": ButtonImage, // Fallback

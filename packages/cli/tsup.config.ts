@@ -36,5 +36,5 @@ export default defineConfig({
 
     await copyDir(srcTemplates, distTemplates);
     console.log("✓ Templates copied to dist/");
-  },
+  }
 });

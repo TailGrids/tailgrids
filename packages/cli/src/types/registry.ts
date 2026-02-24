@@ -2,9 +2,9 @@ export type Registry = {
   id: string;
   name: string;
   description: string;
-  type: 'component' | 'block';
+  type: "component" | "block";
   files: {
-    type: 'core';
+    type: "core";
     path: string;
     targetPath?: string;
   }[];

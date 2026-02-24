@@ -1,13 +1,13 @@
-import ora from 'ora';
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import { COMPONENT_REGISTRY_RAW_BASE_URL } from '../constants/urls.ts';
-import { logger } from './logger.ts';
-import chalk from 'chalk';
-import { directoryExists, getDefaultTargetPath } from './index.ts';
+import ora from "ora";
+import fs from "node:fs/promises";
+import path from "node:path";
+import { COMPONENT_REGISTRY_RAW_BASE_URL } from "../constants/urls.ts";
+import { logger } from "./logger.ts";
+import chalk from "chalk";
+import { directoryExists, getDefaultTargetPath } from "./index.ts";
 
 interface FileConfig {
-  type: 'block' | 'ui' | 'charts';
+  type: "block" | "ui" | "charts";
   path: string;
   targetPath?: string;
 }
@@ -30,27 +30,27 @@ export default async function installFiles({ files }: InstallFilesParams) {
     }
   }
 
-  spinner.succeed('All files installed successfully!');
+  spinner.succeed("All files installed successfully!");
 }
 
 async function installFile(file: FileConfig) {
   const { type, path: sourcePath, targetPath } = file;
   const cwd = process.cwd();
 
-  const srcExists = await directoryExists(path.join(cwd, 'src'));
+  const srcExists = await directoryExists(path.join(cwd, "src"));
 
   const finalTargetPath = targetPath
-    ? path.join(cwd, srcExists ? 'src' : '', targetPath)
+    ? path.join(cwd, srcExists ? "src" : "", targetPath)
     : getDefaultTargetPath({
         type,
         sourcePath,
-        srcExists,
+        srcExists
       });
 
   const downloadUrl = `${COMPONENT_REGISTRY_RAW_BASE_URL}${sourcePath}`;
 
   logger.log(
-    `  ${chalk.blue('-')} ${path.basename(sourcePath)} → ${path.relative(
+    `  ${chalk.blue("-")} ${path.basename(sourcePath)} → ${path.relative(
       cwd,
       finalTargetPath
     )}`
@@ -60,14 +60,14 @@ async function installFile(file: FileConfig) {
 
   await fs.mkdir(path.dirname(finalTargetPath), { recursive: true });
 
-  await fs.writeFile(finalTargetPath, content, 'utf-8');
+  await fs.writeFile(finalTargetPath, content, "utf-8");
 }
 
 async function fetchFileContent(url: string) {
   const response = await fetch(url, {
     headers: {
-      'User-Agent': 'Tailgrids CLI',
-    },
+      "User-Agent": "Tailgrids CLI"
+    }
   });
 
   if (!response.ok) {
