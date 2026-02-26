@@ -10,7 +10,7 @@ import {
   TableRoot,
   TableRow
 } from "@/registry/core/table";
-import { ArrowUpDown, MoreVertical } from "lucide-react";
+import { ArrowBothDirectionHorizontal2, MenuKebab1 } from "@tailgrids/icons";
 import { useState } from "react";
 
 const DATA = [
@@ -67,7 +67,7 @@ export default function TableOrderHistoryPreview() {
           </p>
         </div>
         <button className="p-2 hover:bg-background-soft-100 rounded-full">
-          <MoreVertical className="h-5 w-5 text-text-100" />
+          <MenuKebab1 className="h-5 w-5 text-text-100" />
         </button>
       </div>
 
@@ -80,12 +80,12 @@ export default function TableOrderHistoryPreview() {
             <TableHead>Amount</TableHead>
             <TableHead>
               <div className="flex items-center gap-1 cursor-pointer hover:text-title-50">
-                Status <ArrowUpDown className="h-3 w-3" />
+                Status <ArrowBothDirectionHorizontal2 className="h-3 w-3" />
               </div>
             </TableHead>
             <TableHead>
               <div className="flex items-center gap-1 cursor-pointer whitespace-nowrap hover:text-title-50">
-                Order Date <ArrowUpDown className="h-3 w-3" />
+                Order Date <ArrowBothDirectionHorizontal2 className="h-3 w-3" />
               </div>
             </TableHead>
           </TableRow>

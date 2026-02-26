@@ -6,7 +6,7 @@ import {
   TableRoot,
   TableRow
 } from "@/registry/core/table";
-import { MoreVertical } from "lucide-react";
+import { MenuKebab1 } from "@tailgrids/icons";
 import Image from "next/image";
 
 const DATA = [
@@ -63,7 +63,7 @@ export default function TableCourseProgressPreview() {
       <div className="mb-6 flex items-center justify-between">
         <h3 className="text-lg font-semibold text-title-50">Course Progress</h3>
         <button className="p-2 hover:bg-background-soft-100 rounded-full">
-          <MoreVertical className="h-5 w-5 text-text-100" />
+          <MenuKebab1 className="h-5 w-5 text-text-100" />
         </button>
       </div>
 

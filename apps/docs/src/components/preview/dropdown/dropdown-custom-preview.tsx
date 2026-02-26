@@ -9,8 +9,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from "@/registry/core/dropdown";
-import { ChevronDown, CreditCard, Exit, Gear1 } from "@tailgrids/icons";
-import { UserCircle } from "lucide-react";
+import {
+  ChevronDown,
+  CreditCard,
+  Exit,
+  Gear1,
+  UserCircle1
+} from "@tailgrids/icons";
 
 export default function DropdownCustomPreview() {
   return (
@@ -26,7 +31,7 @@ export default function DropdownCustomPreview() {
         <DropdownMenuSection>
           <DropdownMenuHeader>Account</DropdownMenuHeader>
           <DropdownMenuItem className="cursor-pointer gap-2.5 py-2">
-            <UserCircle className="size-5" />
+            <UserCircle1 className="size-5" />
             <span>My Profile</span>
           </DropdownMenuItem>
           <DropdownMenuItem className="cursor-pointer gap-2.5 py-2">

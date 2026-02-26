@@ -14,7 +14,7 @@ import {
   DrawerTrigger
 } from "@/registry/core/drawer";
 import { Separator } from "@/registry/core/separator";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Envelope1, MapMarker5, Phone } from "@tailgrids/icons";
 
 export default function DrawerProfilePreview() {
   return (
@@ -39,7 +39,7 @@ export default function DrawerProfilePreview() {
         <DrawerBody className="px-6">
           <div className="flex flex-col gap-4 py-4">
             <div className="flex items-center gap-3 text-sm text-text-100">
-              <Mail className="size-4 text-text-200" />
+              <Envelope1 className="size-4 text-text-200" />
               ahmed.tusar@mail.com
             </div>
             <Separator />
@@ -49,7 +49,7 @@ export default function DrawerProfilePreview() {
             </div>
             <Separator />
             <div className="flex items-center gap-3 text-sm text-text-100">
-              <MapPin className="size-4 text-text-200" />
+              <MapMarker5 className="size-4 text-text-200" />
               Dhaka, Bangladesh
             </div>
           </div>

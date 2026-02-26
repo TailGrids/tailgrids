@@ -23,7 +23,6 @@
     "fumadocs-core": "16.0.11",
     "fumadocs-mdx": "13.0.8",
     "fumadocs-ui": "16.0.11",
-    "lucide-react": "^0.552.0",
     "meilisearch": "^0.55.0",
     "next": "16.1.5",
     "postcss": "^8.5.6",

@@ -12,13 +12,13 @@ import {
 } from "@/registry/core/drawer";
 import { Label } from "@/registry/core/label";
 import { Toggle } from "@/registry/core/toggle";
-import { Settings } from "lucide-react";
+import { Gear1 } from "@tailgrids/icons";
 
 export default function DrawerSettingsPreview() {
   return (
     <Drawer>
       <DrawerTrigger className={buttonStyles({ appearance: "outline" })}>
-        <Settings className="mr-2 size-4" />
+        <Gear1 className="mr-2 size-4" />
         Quick Settings
       </DrawerTrigger>
       <DrawerContent side="bottom" className="sm:max-w-sm sm:mx-auto">

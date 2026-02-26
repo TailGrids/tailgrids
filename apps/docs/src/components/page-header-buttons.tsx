@@ -11,8 +11,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from "@/registry/core/dropdown";
+import { Check, FileText, RefreshCircle1Clockwise } from "@tailgrids/icons";
 import copy from "copy-text-to-clipboard";
-import { CheckIcon, FileText, Loader2 } from "lucide-react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -91,9 +91,9 @@ export function PageHeaderButtons() {
     <div className="flex items-center gap-2">
       <button onClick={handleCopy} className={buttonClasses}>
         {isCoping ? (
-          <Loader2 className="size-5 stroke-[1.5] animate-spin" />
+          <RefreshCircle1Clockwise className="size-5 stroke-[1.5] animate-spin" />
         ) : isCopied ? (
-          <CheckIcon className="size-5 stroke-[1.5]" />
+          <Check className="size-5 stroke-[1.5]" />
         ) : (
           <CopyIcon className="size-5 stroke-[1.5]" />
         )}
