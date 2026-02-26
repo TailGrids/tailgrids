@@ -57,7 +57,10 @@ export default function DialogControlledPreview() {
 
       <Dialog isOpen={isOpen} onOpenChange={setIsOpen}>
         <DialogOverlay isDismissable>
-          <DialogContent className="max-w-md border-none p-0 shadow-2xl overflow-hidden">
+          <DialogContent
+            className="max-w-md border-none p-0 shadow-2xl overflow-hidden"
+            showCloseButton={false}
+          >
             {/* Header */}
             <div className="relative h-32 bg-linear-to-br from-indigo-600 via-purple-600 to-pink-500 p-6">
               <div className="absolute inset-0 bg-white/5 backdrop-blur-[2px]" />
