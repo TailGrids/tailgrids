@@ -45,6 +45,7 @@ export default function Layout({ children }: LayoutProps<"/">) {
       className={`${dmSans.variable} ${geistMono.variable}`}
       suppressHydrationWarning
       data-theme="light"
+      style={{ scrollbarGutter: "stable" }}
     >
       <head>
         <script src="https://accounts.google.com/gsi/client" async defer />

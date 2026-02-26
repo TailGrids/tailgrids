@@ -2,7 +2,7 @@
 
 import { cn } from "@/utils/cn";
 import { Close } from "@tailgrids/icons";
-import type { ComponentProps } from "react";
+import { type ComponentProps } from "react";
 import {
   Button as AriaButton,
   type ButtonProps as AriaButtonProps,
