@@ -5,11 +5,12 @@ description: A React dialog component for displaying modal overlays. Used to sho
 
 import DialogAskQuestionPreview from "@/components/preview/dialog/dialog-ask-question-preview";
 import DialogCollectInputPreview from "@/components/preview/dialog/dialog-collect-input-preview";
-import DialogWithoutClosePreview from "@/components/preview/dialog/dialog-without-close-preview";
+import DialogControlledPreview from "@/components/preview/dialog/dialog-controlled-preview";
 import DialogMultipleActionsPreview from "@/components/preview/dialog/dialog-multiple-actions-preview";
 import DialogPreview from "@/components/preview/dialog/dialog-preview";
 import DialogShowInformationPreview from "@/components/preview/dialog/dialog-show-information-preview";
 import DialogStickyFooterPreview from "@/components/preview/dialog/dialog-sticky-footer-preview";
+import DialogWithoutClosePreview from "@/components/preview/dialog/dialog-without-close-preview";
 import DialogWithoutOverlayPreview from "@/components/preview/dialog/dialog-without-overlay-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
@@ -136,6 +137,16 @@ export default function DialogExample() {
 ```
 
 ## Examples
+
+### Controlled Dialog
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/dialog/dialog-controlled-preview.tsx"
+  )}
+>
+  <DialogControlledPreview />
+</ComponentPreview>
 
 ### Show Information
 
