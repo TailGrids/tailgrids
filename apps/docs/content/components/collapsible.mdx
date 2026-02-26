@@ -1,0 +1,224 @@
+---
+title: React Collapsible Component
+description: A React collapsible component for showing and hiding a single section of content. Built on React Aria Disclosure for full accessibility and keyboard support, with a composable API inspired by shadcn/ui.
+---
+
+import CollapsibleControlledPreview from "@/components/preview/collapsible/collapsible-controlled-preview";
+import CollapsibleDefaultOpenPreview from "@/components/preview/collapsible/collapsible-default-open-preview";
+import CollapsibleDisabledPreview from "@/components/preview/collapsible/collapsible-disabled-preview";
+import CollapsibleInteractivePreview from "@/components/preview/collapsible/collapsible-interactive-preview";
+import CollapsibleOrderSummeryPreview from "@/components/preview/collapsible/collapsible-order-summery-preview";
+import CollapsiblePreview from "@/components/preview/collapsible/collapsible-preview";
+import CollapsibleWithIconPreview from "@/components/preview/collapsible/collapsible-with-icon-preview";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Collapsible
+
+A Collapsible is a single expandable section. Use it wherever content should be progressively revealed without a page transition — order summaries, stack traces, DNS settings, build logs, environment variables, and more.
+
+This component is built on top of **React Aria's `Disclosure`** primitive, giving you managed focus, correct ARIA attributes, and keyboard interaction for free.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/collapsible/collapsible-preview.tsx"
+  )}
+>
+  <CollapsiblePreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+
+```npm
+npx @tailgrids/cli add collapsible
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+The Collapsible component is built on `react-aria-components`. Install the required dependencies:
+
+```npm
+npm i react-aria-components
+```
+
+Copy and paste the following component code into your project. The component exports `Collapsible`, `CollapsibleTrigger`, and `CollapsibleContent`.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/collapsible.tsx")}
+  lang="tsx"
+  fileName="collapsible.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the three composable parts and assemble them.
+
+```tsx
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent
+} from "@/components/collapsible";
+
+export default function CollapsibleAnatomy() {
+  return (
+    <Collapsible>
+      <CollapsibleTrigger />
+      <CollapsibleContent />
+    </Collapsible>
+  );
+}
+```
+
+## Usage
+
+Import the three composable parts and assemble them.
+
+```tsx
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent
+} from "@/registry/core/collapsible";
+
+export default function Example() {
+  return (
+    <Collapsible>
+      <CollapsibleTrigger>Can I use this in my project?</CollapsibleTrigger>
+      <CollapsibleContent>
+        Yes. Free to use for personal and commercial projects. No attribution
+        required.
+      </CollapsibleContent>
+    </Collapsible>
+  );
+}
+```
+
+## Examples
+
+### Controlled
+
+The collapsible component can be controlled using `isExpanded` and `onExpandedChange`. In this example, we show an error summary with a "Stack trace" section that can be toggled open to reveal more details.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/collapsible/collapsible-controlled-preview.tsx"
+  )}
+>
+  <CollapsibleControlledPreview />
+</ComponentPreview>
+
+### Default Open
+
+By default, the collapsible component is closed. You can open it by default using `defaultExpanded` prop on `Collapsible` component.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/collapsible/collapsible-default-open-preview.tsx"
+  )}
+>
+  <CollapsibleDefaultOpenPreview />
+</ComponentPreview>
+
+### Disabled
+
+You can use `isDisabled` to prevent the user from expanding or collapsing the panel.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/collapsible/collapsible-disabled-preview.tsx"
+  )}
+>
+  <CollapsibleDisabledPreview />
+</ComponentPreview>
+
+### Order Summery
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/collapsible/collapsible-order-summery-preview.tsx"
+  )}
+>
+  <CollapsibleOrderSummeryPreview />
+</ComponentPreview>
+
+### With Icon
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/collapsible/collapsible-with-icon-preview.tsx"
+  )}
+>
+  <CollapsibleWithIconPreview />
+</ComponentPreview>
+
+### Interactive
+
+You can create a fully interactive collapsible component using the `Collapsible` component.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/collapsible/collapsible-interactive-preview.tsx"
+  )}
+>
+  <CollapsibleInteractivePreview />
+</ComponentPreview>
+
+## API Reference
+
+### Collapsible
+
+The root component. Wraps React Aria's `Disclosure` and accepts all its props.
+
+| Prop               | Type                            | Default | Description                                                  |
+| :----------------- | :------------------------------ | :------ | :----------------------------------------------------------- |
+| `isExpanded`       | `boolean`                       | —       | Controlled expanded state                                    |
+| `defaultExpanded`  | `boolean`                       | `false` | Default expanded state (uncontrolled)                        |
+| `onExpandedChange` | `(isExpanded: boolean) => void` | —       | Called when the expanded state changes                       |
+| `isDisabled`       | `boolean`                       | `false` | Prevents the user from expanding or collapsing               |
+| `id`               | `Key`                           | —       | ID for use within a `DisclosureGroup`                        |
+| `className`        | `string`                        | —       | Additional CSS classes merged onto the root element          |
+| `children`         | `ReactNode`                     | —       | Should contain `CollapsibleTrigger` and `CollapsibleContent` |
+
+| Data attribute              | Values    | Description                                     |
+| :-------------------------- | :-------- | :---------------------------------------------- |
+| `data-expanded`             | `boolean` | Set when the panel is expanded                  |
+| `data-disabled`             | `boolean` | Set when `isDisabled` is `true`                 |
+| `data-focus-visible-within` | `boolean` | Set when keyboard focus is inside the component |
+
+### CollapsibleTrigger
+
+The heading + button element that toggles the panel. Renders a semantic heading wrapping a `<button slot="trigger">`.
+
+| Prop        | Type                         | Default | Description                                                  |
+| :---------- | :--------------------------- | :------ | :----------------------------------------------------------- |
+| `level`     | `1 \| 2 \| 3 \| 4 \| 5 \| 6` | `3`     | HTML heading level rendered around the trigger button        |
+| `className` | `string`                     | —       | Additional CSS classes applied to the trigger button         |
+| `children`  | `ReactNode`                  | —       | Trigger label — anything rendered to the left of the chevron |
+
+### CollapsibleContent
+
+The collapsible panel that shows content when the trigger is activated. Maps to React Aria's `DisclosurePanel`.
+
+| Prop        | Type        | Default | Description                                     |
+| :---------- | :---------- | :------ | :---------------------------------------------- |
+| `className` | `string`    | —       | Additional CSS classes applied to the panel     |
+| `children`  | `ReactNode` | —       | Content to display when the collapsible is open |
+
+The panel is hidden from the accessibility tree when collapsed. React Aria handles the `hidden` attribute automatically.
+
+## Accessibility
+
+- **Semantics** — The trigger is a `<button>` inside a heading element (`h3` by default). This creates the correct heading hierarchy for screen readers.
+- **ARIA attributes** — `aria-expanded` and `aria-controls` are automatically managed by React Aria. No manual wiring required.
+- **Keyboard support** — Press `Space` or `Enter` on the focused trigger to expand or collapse the panel.
+- **Focus management** — Focus styles are visible when navigating by keyboard (`focus-visible`).
+- **Disabled state** — When `isDisabled` is set, the trigger receives `disabled` and is removed from the tab order.
+- **Heading level** — Use the `level` prop on `CollapsibleTrigger` to match the heading hierarchy of the surrounding page content.

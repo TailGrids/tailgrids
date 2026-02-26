@@ -139,6 +139,19 @@ export const REGISTRIES: Registry[] = [
     dependencies: ["class-variance-authority", "@tailgrids/icons"]
   },
   {
+    id: "collapsible",
+    name: "Collapsible",
+    description: "A collapsible component with multiple variants.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/collapsible.tsx"
+      }
+    ],
+    dependencies: ["react-aria-components"]
+  },
+  {
     id: "combobox",
     name: "Combobox",
     description: "A combobox component with multiple variants.",
