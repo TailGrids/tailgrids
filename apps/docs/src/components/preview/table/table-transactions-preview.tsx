@@ -11,7 +11,7 @@ import {
   TableRoot,
   TableRow
 } from "@/registry/core/table";
-import { MoreHorizontal, Search } from "lucide-react";
+import { MenuMeatballs1, Search1 } from "@tailgrids/icons";
 
 const DATA = [
   {
@@ -79,7 +79,7 @@ export default function TableTransactionsPreview() {
               placeholder="Search..."
               className="pl-8 pr-3 py-1.5 text-sm w-48 sm:w-64"
             />
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-text-200" />
+            <Search1 className="absolute left-2.5 top-2.5 h-4 w-4 text-text-200" />
           </div>
         </div>
       </div>
@@ -154,7 +154,7 @@ export default function TableTransactionsPreview() {
 
               <TableCell>
                 <button className="text-text-200 hover:text-text-100">
-                  <MoreHorizontal className="h-5 w-5" />
+                  <MenuMeatballs1 className="h-5 w-5" />
                 </button>
               </TableCell>
             </TableRow>

@@ -1,5 +1,5 @@
 import { Link } from "@/registry/core/link";
-import { ArrowRight, Download, Globe } from "lucide-react";
+import { ArrowRight, Download1, Globe2 } from "@tailgrids/icons";
 
 export default function LinkCustomPreview() {
   return (
@@ -10,12 +10,12 @@ export default function LinkCustomPreview() {
       </Link>
 
       <Link variant="dark" size="md" href="#">
-        <Download />
+        <Download1 />
         Download Files
       </Link>
 
       <Link variant="primary" size="sm" href="#">
-        <Globe />
+        <Globe2 />
         View Online
         <ArrowRight />
       </Link>

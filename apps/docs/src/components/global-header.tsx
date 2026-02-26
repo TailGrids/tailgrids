@@ -11,8 +11,8 @@ import {
   XIcon
 } from "@/icons";
 import { useThemeStore } from "@/store/useThemeStore";
+import { MenuHamburger1 } from "@tailgrids/icons";
 import { useSidebar } from "fumadocs-ui/provider";
-import { Menu } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
@@ -157,7 +157,7 @@ export default function GlobalHeader() {
                 onClick={() => setOpen(!open)}
                 className="md:hidden text-gray-700 dark:text-gray-300 hover:text-primary-500"
               >
-                <Menu className="size-6" />
+                <MenuHamburger1 className="size-6" />
               </button>
             </div>
           </div>

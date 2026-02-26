@@ -7,8 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from "@/registry/core/dropdown";
-import { MenuMeatballs1 } from "@tailgrids/icons";
-import { Copy, Pencil, Trash2 } from "lucide-react";
+import { Copy4, MenuMeatballs1, Pencil1, Trash1 } from "@tailgrids/icons";
 
 export default function DropdownWithIconsPreview() {
   return (
@@ -18,16 +17,16 @@ export default function DropdownWithIconsPreview() {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="p-1.5 border">
         <DropdownMenuItem>
-          <Pencil className="size-4" />
+          <Pencil1 className="size-4" />
           Edit
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Copy className="size-4" />
+          <Copy4 className="size-4" />
           Duplicate
         </DropdownMenuItem>
         <DropdownMenuSeparator className="-mx-1.5 my-1.5" />
         <DropdownMenuItem>
-          <Trash2 className="size-4" />
+          <Trash1 className="size-4" />
           Delete
         </DropdownMenuItem>
       </DropdownMenuContent>

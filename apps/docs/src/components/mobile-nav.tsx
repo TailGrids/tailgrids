@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/utils/cn";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown } from "@tailgrids/icons";
 import Link from "next/link";
 import { useState } from "react";
 import {

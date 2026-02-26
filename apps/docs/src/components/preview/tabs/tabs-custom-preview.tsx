@@ -3,7 +3,12 @@
 import { TabContent, TabList, TabRoot, TabTrigger } from "@/registry/core/tabs";
 import { Toggle } from "@/registry/core/toggle";
 import { cn } from "@/utils/cn";
-import { BarChart3, Bell, Shield, Users } from "lucide-react";
+import {
+  BarChartSquare,
+  Bell1,
+  Shield1Check,
+  UserMultiple1
+} from "@tailgrids/icons";
 
 export default function TabsCustomPreview() {
   return (
@@ -52,7 +57,7 @@ export default function TabsCustomPreview() {
                 <div className="p-4 rounded-xl bg-background-soft-50 dark:bg-neutral-800/50 border border-(--border-color-base-50) dark:border-neutral-800">
                   <div className="flex items-center gap-3 mb-2">
                     <div className="p-2 rounded-lg bg-background-50 dark:bg-neutral-800 border border-(--border-color-base-100) dark:border-neutral-700">
-                      <BarChart3 className="size-4 text-neutral-500 dark:text-neutral-400" />
+                      <BarChartSquare className="size-5 text-neutral-500 dark:text-neutral-400" />
                     </div>
                     <span className="text-sm font-medium text-text-50 dark:text-text-200">
                       Revenue
@@ -70,7 +75,7 @@ export default function TabsCustomPreview() {
                 <div className="p-4 rounded-xl bg-background-soft-50 dark:bg-neutral-800/50 border border-(--border-color-base-50) dark:border-neutral-800">
                   <div className="flex items-center gap-3 mb-2">
                     <div className="p-2 rounded-lg bg-background-50 dark:bg-neutral-800 border border-(--border-color-base-100) dark:border-neutral-700">
-                      <Users className="size-4 text-neutral-500 dark:text-neutral-400" />
+                      <UserMultiple1 className="size-5 text-neutral-500 dark:text-neutral-400" />
                     </div>
                     <span className="text-sm font-medium text-text-50 dark:text-text-200">
                       Users
@@ -166,7 +171,7 @@ export default function TabsCustomPreview() {
                 <div className="flex items-center justify-between p-4 rounded-xl border border-(--border-color-base-50) dark:border-neutral-800 bg-background-soft-50/50 dark:bg-neutral-900/50">
                   <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-background-50 dark:bg-neutral-800 border border-(--border-color-base-100) dark:border-neutral-700 text-text-100 dark:text-text-200">
-                      <Bell className="size-4" />
+                      <Bell1 className="size-5" />
                     </div>
                     <div>
                       <div className="text-sm font-medium text-foreground-50 dark:text-white">
@@ -183,7 +188,7 @@ export default function TabsCustomPreview() {
                 <div className="flex items-center justify-between p-4 rounded-xl border border-(--border-color-base-50) dark:border-neutral-800 bg-background-soft-50/50 dark:bg-neutral-900/50">
                   <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-background-50 dark:bg-neutral-800 border border-(--border-color-base-100) dark:border-neutral-700 text-text-100 dark:text-text-200">
-                      <Shield className="size-4" />
+                      <Shield1Check className="size-5" />
                     </div>
                     <div>
                       <div className="text-sm font-medium text-foreground-50 dark:text-white">

@@ -64,14 +64,14 @@ import {
   TooltipTrigger,
   TooltipContent
 } from "@/registry/core/tooltip";
-import { Info } from "lucide-react";
+import { InfoCircle } from "@tailgrids/icons";
 
 export default function TooltipUsageExample() {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
         <button className="text-primary-500">
-          <Info className="size-5" />
+          <InfoCircle className="size-5" />
         </button>
       </TooltipTrigger>
       <TooltipContent>Helpful context.</TooltipContent>

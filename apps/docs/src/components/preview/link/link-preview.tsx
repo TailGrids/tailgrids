@@ -1,11 +1,11 @@
 import { Link } from "@/registry/core/link";
-import { ExternalLink } from "lucide-react";
+import { Link1AngularRight } from "@tailgrids/icons";
 
 export default function LinkPreview() {
   return (
     <Link href="#" variant="primary">
       External Link
-      <ExternalLink />
+      <Link1AngularRight />
     </Link>
   );
 }

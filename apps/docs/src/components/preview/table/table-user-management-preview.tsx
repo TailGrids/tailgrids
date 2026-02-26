@@ -13,7 +13,6 @@ import {
   TableRow
 } from "@/registry/core/table";
 import { cn } from "@/utils/cn";
-import { ArrowUpDown, Edit2, Trash2 } from "lucide-react";
 import { useState } from "react";
 
 const DATA = [
@@ -85,12 +84,12 @@ export default function TableUserManagementPreview() {
             <TableHead>Email</TableHead>
             <TableHead>
               <div className="flex items-center gap-1 cursor-pointer hover:text-title-50">
-                Role <ArrowUpDown className="h-3 w-3" />
+                {/* Role <ArrowUpDown className="h-3 w-3" /> */}
               </div>
             </TableHead>
             <TableHead>
               <div className="flex items-center gap-1 cursor-pointer hover:text-title-50">
-                Status <ArrowUpDown className="h-3 w-3" />
+                {/* Status <ArrowUpDown className="h-3 w-3" /> */}
               </div>
             </TableHead>
             <TableHead>Joined Date</TableHead>
@@ -177,10 +176,10 @@ export default function TableUserManagementPreview() {
               <TableCell className="text-right">
                 <div className="flex items-center justify-end gap-2">
                   <button className="p-1 rounded text-text-100 hover:text-text-50">
-                    <Edit2 className="size-3" />
+                    {/* <Edit2 className="size-3" /> */}
                   </button>
                   <button className="p-1 rounded text-text-100 hover:text-error-600">
-                    <Trash2 className="size-3" />
+                    {/* <Trash2 className="size-3" /> */}
                   </button>
                 </div>
               </TableCell>

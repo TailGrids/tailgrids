@@ -2,7 +2,7 @@
 
 import GradientImage from "@/assets/navbar/graphic.png";
 import { cn } from "@/utils/cn";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown } from "@tailgrids/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -243,7 +243,7 @@ export default function HeaderNav() {
                     // Blocks Dropdown - 2 column grid with icons
                     <div
                       className={cn(
-                        "absolute left-0 top-full mt-2 z-50 grid grid-cols-2 gap-4 rounded-[20px] border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-2 shadow-lg transition-all duration-200 w-[704px]",
+                        "absolute left-0 top-full mt-2 z-50 grid grid-cols-2 gap-4 rounded-[20px] border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-2 shadow-lg transition-all duration-200 w-176",
                         isOpen
                           ? "visible opacity-100 translate-y-0"
                           : "invisible opacity-0 -translate-y-2"
@@ -281,7 +281,7 @@ export default function HeaderNav() {
                     // Products Dropdown - 2 column with promo card
                     <div
                       className={cn(
-                        "absolute left-0 top-full mt-2 z-50 grid grid-cols-2 gap-4 rounded-[20px] border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-2 shadow-lg transition-all duration-200 w-[654px]",
+                        "absolute left-0 top-full mt-2 z-50 grid grid-cols-2 gap-4 rounded-[20px] border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-2 shadow-lg transition-all duration-200 w-163.5",
                         isOpen
                           ? "visible opacity-100 translate-y-0"
                           : "invisible opacity-0 -translate-y-2"
@@ -323,7 +323,7 @@ export default function HeaderNav() {
                         <div className="relative z-10">
                           <div className="mb-2 flex justify-between">
                             <span className="text-sm font-medium tracking-tight text-primary-500">
-                              What's new in version 3.0
+                              What&apos;s new in version 3.0
                             </span>
                             <LongArrowUpRightIcon className="size-5 text-gray-600 dark:text-gray-400" />
                           </div>
@@ -359,7 +359,7 @@ export default function HeaderNav() {
                     // Resources Dropdown - single column with icons
                     <div
                       className={cn(
-                        "absolute left-0 top-full mt-2 z-50 grid gap-4 rounded-[20px] border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-2 shadow-lg transition-all duration-200 w-[370px]",
+                        "absolute left-0 top-full mt-2 z-50 grid gap-4 rounded-[20px] border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-2 shadow-lg transition-all duration-200 w-92.5",
                         isOpen
                           ? "visible opacity-100 translate-y-0"
                           : "invisible opacity-0 -translate-y-2"
@@ -394,7 +394,7 @@ export default function HeaderNav() {
                     // Regular Dropdown
                     <div
                       className={cn(
-                        "absolute left-0 top-full mt-2 z-50 min-w-[280px] rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-2 shadow-lg transition-all duration-200",
+                        "absolute left-0 top-full mt-2 z-50 min-w-70 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-2 shadow-lg transition-all duration-200",
                         isOpen
                           ? "visible opacity-100 translate-y-0"
                           : "invisible opacity-0 -translate-y-2"

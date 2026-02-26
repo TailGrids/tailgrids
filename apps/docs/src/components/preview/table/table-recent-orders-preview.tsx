@@ -9,7 +9,7 @@ import {
   TableRoot,
   TableRow
 } from "@/registry/core/table";
-import { Search } from "lucide-react";
+import { Search1 } from "@tailgrids/icons";
 import Image from "next/image";
 
 const DATA = [
@@ -76,7 +76,7 @@ export default function TableRecentOrdersPreview() {
               placeholder="Search..."
               className="pl-8 pr-3 py-1.5 text-sm w-48 sm:w-64"
             />
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-text-200" />
+            <Search1 className="absolute left-2.5 top-2.5 h-4 w-4 text-text-200" />
           </div>
           <button className="border rounded px-4 py-1.5 text-sm font-medium hover:bg-background-soft-50">
             See All
