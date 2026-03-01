@@ -3,7 +3,7 @@
 @import "tailwindcss";
 @plugin '@tailwindcss/forms';
 
-@theme inline {
+@theme {
   --font-sans: "DM Sans", sans-serif;
 
   --color-primary-50: #eff3ff;
@@ -48,6 +48,8 @@
   --border-color-base-100: #e5e7eb;
   --border-color-base-200: #e5e7eb;
   --border-color-base-300: #d1d5db;
+
+  --color-chart-line: #e5e7eb;
 
   /* Foreground Colors */
   --color-foreground-50: #030712;
