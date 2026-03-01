@@ -1,5 +1,12 @@
 # @tailgrids/cli
 
+## 1.1.3
+
+### Patch Changes
+
+- Incorrect css variable names on CLI initialization template
+- Fixes #102
+
 ## 1.1.2
 
 ### Patch Changes
