@@ -1,0 +1,297 @@
+---
+title: React Radio Group Component
+description: A comprehensive radio group component built with React Aria for accessibility, supporting multiple variants, sizes, and orientations.
+---
+
+import { RadioGroupBasicPreview } from "@/components/preview/radio-group/radio-group-basic-preview";
+import { RadioGroupCardPreview } from "@/components/preview/radio-group/radio-group-card-preview";
+import { RadioGroupControlledPreview } from "@/components/preview/radio-group/radio-group-controlled-preview";
+import { RadioGroupCustomPreview } from "@/components/preview/radio-group/radio-group-custom-preview";
+import { RadioGroupDisabledPreview } from "@/components/preview/radio-group/radio-group-disabled-preview";
+import { RadioGroupFieldPreview } from "@/components/preview/radio-group/radio-group-field-preview";
+import { RadioGroupHorizontalPreview } from "@/components/preview/radio-group/radio-group-horizontal-preview";
+import { RadioGroupSizesPreview } from "@/components/preview/radio-group/radio-group-sizes-preview";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Radio Group
+
+React Radio Group components are used when users need to select **one option from a set** of related choices. They provide better accessibility and user experience compared to individual radio buttons by grouping related options together.
+
+This Radio Group component is built with React Aria components for maximum accessibility, supports multiple variants (default, card, outline), different sizes, horizontal/vertical orientations, and includes comprehensive form field integration with labels, descriptions, and validation states.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/radio-group/radio-group-basic-preview.tsx"
+  )}
+>
+  <RadioGroupBasicPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+```npm
+npx @tailgrids/cli add radio-group
+```
+</Accordion>
+
+<Accordion title="Manual">
+Install the required dependencies:
+
+```npm
+npm i class-variance-authority react-aria-components
+```
+
+Copy and paste the following component code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/radio-group.tsx")}
+  lang="tsx"
+  fileName="radio-group.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Usage
+
+Import the components and use them in your React application.
+
+```tsx
+import { RadioGroup, RadioGroupItem } from "@/registry/core/radio-group";
+
+export default function Example() {
+  return (
+    <RadioGroup defaultValue="option-one">
+      <RadioGroupItem value="option-one">Option One</RadioGroupItem>
+      <RadioGroupItem value="option-two">Option Two</RadioGroupItem>
+      <RadioGroupItem value="option-three">Option Three</RadioGroupItem>
+    </RadioGroup>
+  );
+}
+```
+
+## Examples
+
+### Basic Usage
+
+Simple radio group with default styling and vertical orientation.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/radio-group/radio-group-basic-preview.tsx"
+  )}
+>
+  <RadioGroupBasicPreview />
+</ComponentPreview>
+
+### Card Style
+
+Radio items with card styling and descriptions for enhanced visual hierarchy.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/radio-group/radio-group-card-preview.tsx"
+  )}
+>
+  <RadioGroupCardPreview />
+</ComponentPreview>
+
+### Horizontal Orientation
+
+Arrange radio items horizontally with customizable spacing using `orientation` and `spacing` props.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/radio-group/radio-group-horizontal-preview.tsx"
+  )}
+>
+  <RadioGroupHorizontalPreview />
+</ComponentPreview>
+
+### Disabled State
+
+Disable the entire radio group or individual items.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/radio-group/radio-group-disabled-preview.tsx"
+  )}
+>
+  <RadioGroupDisabledPreview />
+</ComponentPreview>
+
+### Sizes
+
+Different size options for various use cases and design requirements.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/radio-group/radio-group-sizes-preview.tsx"
+  )}
+>
+  <RadioGroupSizesPreview />
+</ComponentPreview>
+
+### Controlled
+
+Manage the radio group state externally to sync with other parts of your application.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/radio-group/radio-group-controlled-preview.tsx"
+  )}
+>
+  <RadioGroupControlledPreview />
+</ComponentPreview>
+
+### Field Integration
+
+Complete form field with label, description, and validation support.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/radio-group/radio-group-field-preview.tsx"
+  )}
+>
+  <RadioGroupFieldPreview />
+</ComponentPreview>
+
+### Custom Styling
+
+Apply custom styles and variants for unique design requirements.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/radio-group/radio-group-custom-preview.tsx"
+  )}
+>
+  <RadioGroupCustomPreview />
+</ComponentPreview>
+
+## API Reference
+
+### RadioGroup
+
+The main container component for radio buttons. It inherits all props from React Aria's [RadioGroupProps](https://react-aria.adobe.com/react-aria/RadioGroup.html#props).
+
+| Prop                 | Type                                                    | Default      | Description                               |
+| -------------------- | ------------------------------------------------------- | ------------ | ----------------------------------------- |
+| `name`               | `string`                                                | -            | The name of the input element.            |
+| `className`          | `string`                                                | -            | Additional CSS classes.                   |
+| `orientation`        | `"vertical" \| "horizontal"`                            | `"vertical"` | Layout direction of radio items.          |
+| `spacing`            | `"sm" \| "md" \| "lg"`                                  | `"md"`       | Spacing between radio items.              |
+| `value`              | `string`                                                | -            | The current value (controlled).           |
+| `defaultValue`       | `string`                                                | -            | The default value (uncontrolled).         |
+| `onChange`           | `(value: string) => void`                               | -            | Handler that is called when value change. |
+| `isDisabled`         | `boolean`                                               | `false`      | Whether the input is disabled.            |
+| `isReadOnly`         | `boolean`                                               | `false`      | Whether the input is read-only.           |
+| `isRequired`         | `boolean`                                               | `false`      | Whether user selection is required.       |
+| `isInvalid`          | `boolean`                                               | `false`      | Whether the input value is invalid.       |
+| `validationBehavior` | `"native" \| "aria"`                                    | `"native"`   | Whether to use native HTML validation.    |
+| `validate`           | `(value: string) => string \| string[] \| true \| null` | -            | Custom validation function.               |
+
+### RadioGroupItem
+
+Individual radio button component. Inherits all props from React Aria's [RadioProps](https://react-aria.adobe.com/react-aria/RadioGroup.html#radio-1).
+
+| Prop          | Type                               | Default     | Description                           |
+| ------------- | ---------------------------------- | ----------- | ------------------------------------- |
+| `value`       | `string`                           | -           | The value of the radio button.        |
+| `variant`     | `"default" \| "card" \| "outline"` | `"default"` | Visual style variant.                 |
+| `size`        | `"sm" \| "md" \| "lg"`             | `"md"`      | Size of the radio button.             |
+| `description` | `string`                           | -           | Additional description text.          |
+| `showLabel`   | `boolean`                          | `true`      | Whether to show the label text.       |
+| `isDisabled`  | `boolean`                          | `false`     | Whether the radio button is disabled. |
+| `className`   | `string`                           | -           | Additional CSS classes.               |
+
+### RadioGroupField
+
+A layout wrapper component for grouping RadioGroup with its associated labels and messages.
+
+| Prop          | Type      | Default | Description                                |
+| ------------- | --------- | ------- | ------------------------------------------ |
+| `label`       | `string`  | -       | Label text for the radio group.            |
+| `description` | `string`  | -       | Helper text or description for the group.  |
+| `error`       | `string`  | -       | Error message display for validation.      |
+| `required`    | `boolean` | `false` | Whether to show a required indicator (\*). |
+| `className`   | `string`  | -       | Additional CSS classes.                    |
+
+### RadioGroupLabel
+
+Label component for the radio group. Inherits from `FieldLabel`.
+
+| Prop        | Type      | Default | Description                                         |
+| ----------- | --------- | ------- | --------------------------------------------------- |
+| `htmlFor`   | `string`  | -       | The id of the form control this label is for.       |
+| `asChild`   | `boolean` | `false` | When true, renders only children without a wrapper. |
+| `className` | `string`  | -       | Additional CSS classes.                             |
+
+### RadioGroupDescription
+
+Description component for the radio group. Inherits from `FieldDescription`.
+
+| Prop        | Type     | Default | Description             |
+| ----------- | -------- | ------- | ----------------------- |
+| `className` | `string` | -       | Additional CSS classes. |
+
+### RadioGroupError
+
+Error message component for the radio group. Inherits from `FieldError`.
+
+| Prop        | Type     | Default | Description             |
+| ----------- | -------- | ------- | ----------------------- |
+| `className` | `string` | -       | Additional CSS classes. |
+
+**NOTE:** `RadioGroup` inherits all props from React Aria's [RadioGroupProps](https://react-aria.adobe.com/RadioGroup#radiogroup).
+
+## Accessibility
+
+The radio group component is built with React Aria and provides comprehensive accessibility support:
+
+- **Full keyboard navigation**: Arrow keys to navigate, Enter/Space to select
+- **Screen reader support**: Proper ARIA attributes and announcements
+- **Focus management**: Automatic focus handling and visual indicators
+- **High contrast mode**: Optimized colors for high contrast themes
+- **Touch support**: Works on touch devices with proper touch targets
+- **Voice control**: Compatible with voice control software
+
+### Keyboard Interactions
+
+| Key                | Action                        |
+| ------------------ | ----------------------------- |
+| `Tab`              | Move focus to the radio group |
+| `Arrow Down/Right` | Move to next radio item       |
+| `Arrow Up/Left`    | Move to previous radio item   |
+| `Enter/Space`      | Select focused radio item     |
+
+### ARIA Attributes
+
+The component automatically manages these ARIA attributes:
+
+- `role="radiogroup"` on the container
+- `role="radio"` on each item
+- `aria-checked="true/false"` for selection state
+- `aria-disabled` for disabled items
+- `aria-invalid` for validation states
+- `aria-describedby` for descriptions
+
+## Styling
+
+The component uses Tailwind CSS classes and can be customized through:
+
+### CSS Variables
+
+Override these CSS variables for theming:
+
+```css
+:root {
+  --checkbox-background: #ffffff;
+  --checkbox-checked-background: #3b82f6;
+  --checkbox-checked-border: #3b82f6;
+  --checkbox-checked-icon-color: #ffffff;
+  --border-color-base-300: #d1d5db;
+}
+```

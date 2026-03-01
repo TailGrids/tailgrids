@@ -54,6 +54,7 @@ export const componentImages: Record<string, StaticImageData> = {
   pagination: PaginationImage,
   popover: PopoverImage,
   progress: ProgressImage,
+  "radio-group": RadioImage, // Fallback
   "radio-input": RadioImage,
   select: DropdownImage, // Fallback
   separator: SeparatorImage,

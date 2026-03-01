@@ -211,6 +211,15 @@
     "files": [{ "type": "core", "path": "/core/progress.tsx" }]
   },
   {
+    "id": "radio-group",
+    "name": "Radio Group",
+    "description": "A radio group component with multiple variants.",
+    "type": "component",
+    "files": [{ "type": "core", "path": "/core/radio-group.tsx" }],
+    "dependencies": ["class-variance-authority", "react-aria-components"],
+    "requires": ["field"]
+  },
+  {
     "id": "radio-input",
     "name": "Radio Input",
     "description": "A radio button component with label and multiple states.",

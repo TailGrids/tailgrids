@@ -49,7 +49,7 @@ export function RadioInput({
 
   return (
     <label
-      htmlFor={id}
+      htmlFor={inputId || id}
       className={cn(
         "group flex cursor-pointer items-center gap-3 select-none aria-disabled:pointer-events-none",
         className
@@ -59,7 +59,7 @@ export function RadioInput({
       <div className="relative">
         <input
           type="radio"
-          id={id}
+          id={inputId || id}
           className="peer sr-only"
           disabled={disabled}
           {...inputProps}
