@@ -1,0 +1,178 @@
+---
+title: React Input Group Component
+description: A React input group component for adding addons, buttons, and helper text to inputs. Supports various alignments and controlled input features.
+---
+
+import InputGroupAddonPreview from "@/components/preview/input-group/input-group-addon-preview";
+import InputGroupAlignPreview from "@/components/preview/input-group/input-group-align-preview";
+import InputGroupButtonPreview from "@/components/preview/input-group/input-group-button-preview";
+import InputGroupPreview from "@/components/preview/input-group/input-group-preview";
+import InputGroupTextareaPreview from "@/components/preview/input-group/input-group-textarea-preview";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Input Group
+
+React Input Group allows you to add addons, buttons, icons, or text to enhance your input fields. This is perfect for search bars, URLs, passwords, or displaying formatted data.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/input-group/input-group-preview.tsx"
+  )}
+>
+  <InputGroupPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+```npm
+npx @tailgrids/cli add input-group
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the required dependencies:
+
+```npm
+npm i class-variance-authority
+```
+
+Copy and paste the following component code into your project. The component includes `InputGroup`, `InputGroupInput`, `InputGroupAddon`, `InputGroupButton`, and `InputGroupTextarea`.
+
+<CodeBlockCard
+snippet={getFileContent("/src/registry/core/input-group.tsx")}
+lang="tsx"
+  fileName="input-group.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the components and build your input group structure:
+
+```tsx
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+  InputGroupButton,
+  InputGroupTextarea
+} from "@/registry/core/input-group";
+import { Search1 } from "@tailgrids/icons";
+
+export const InputGroupExample = () => (
+  <InputGroup>
+    <InputGroupAddon align="inline-start">
+      <Search1 className="h-4 w-4" />
+    </InputGroupAddon>
+    <InputGroupInput placeholder="Search..." />
+    <InputGroupAddon align="inline-end">
+      <InputGroupButton size="xs">Submit</InputGroupButton>
+    </InputGroupAddon>
+  </InputGroup>
+);
+```
+
+## Examples
+
+### Addons
+
+Combine inputs with text or icon addons to give users more context (e.g., an email domain or a currency symbol).
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/input-group/input-group-addon-preview.tsx"
+  )}
+>
+  <InputGroupAddonPreview />
+</ComponentPreview>
+
+### Buttons
+
+You can attach multiple interactive buttons inline. Helpful for actions like copying a link, showing/hiding a password, or clearing an input.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/input-group/input-group-button-preview.tsx"
+  )}
+>
+  <InputGroupButtonPreview />
+</ComponentPreview>
+
+### Alignment
+
+Display helper text or specific context headers/footers above or below your input field using `block-start` or `block-end` alignment.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/input-group/input-group-align-preview.tsx"
+  )}
+>
+  <InputGroupAlignPreview />
+</ComponentPreview>
+
+### Textarea
+
+You can use the `InputGroupTextarea` component to build multi-line input groups.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/input-group/input-group-textarea-preview.tsx"
+  )}
+>
+  <InputGroupTextareaPreview />
+</ComponentPreview>
+
+## API Reference
+
+### InputGroup
+
+The root container that wraps all input group elements. Renders as a `<div>`.
+
+| Prop        | Type     | Default | Description                              |
+| :---------- | :------- | :------ | :--------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes for the container |
+
+### InputGroupInput
+
+An inline input control rendered inside the group. Accepts all props from the base `Input` component.
+
+| Prop        | Type     | Default | Description                          |
+| :---------- | :------- | :------ | :----------------------------------- |
+| `className` | `string` | -       | Additional CSS classes for the input |
+
+### InputGroupTextarea
+
+A multi-line textarea control rendered inside the group. Accepts all props from the base `TextArea` component.
+
+| Prop        | Type     | Default | Description                             |
+| :---------- | :------- | :------ | :-------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes for the textarea |
+
+### InputGroupAddon
+
+A non-interactive addon element (icon, text, label) attached to the input group.
+
+| Prop        | Type                                                                   | Default          | Description                                    |
+| :---------- | :--------------------------------------------------------------------- | :--------------- | :--------------------------------------------- |
+| `align`     | `"inline-start"` \| `"inline-end"` \| `"block-start"` \| `"block-end"` | `"inline-start"` | Position of the addon relative to the input    |
+| `className` | `string`                                                               | -                | Additional CSS classes for the addon container |
+
+### InputGroupButton
+
+An interactive button rendered inside the input group. Renders as a `<button type="button">`.
+
+| Prop        | Type                                           | Default | Description                            |
+| :---------- | :--------------------------------------------- | :------ | :------------------------------------- |
+| `size`      | `"xs"` \| `"icon-xs"` \| `"sm"` \| `"icon-sm"` | `"xs"`  | Controls the button's size and padding |
+| `className` | `string`                                       | -       | Additional CSS classes for the button  |
+
+## Accessibility
+
+- **Semantic Wrapping**: Input groups visually bind data, but ensure your labels correctly target the `InputGroupInput` via an `id` and `htmlFor` association if not using a specific form field wrapper.
+- **Aria Attributes**: Action buttons inside an Input Group should always contain descriptive `aria-label` attributes if they only contain an icon, avoiding ambiguous action buttons for screen-reader users (e.g. `aria-label="Show password"`).

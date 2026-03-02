@@ -262,6 +262,21 @@ export const REGISTRIES: Registry[] = [
     dependencies: ["class-variance-authority"]
   },
   {
+    id: "input-group",
+    name: "Input Group",
+    description:
+      "An input group component with multiple variants and support for icons.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/input-group.tsx"
+      }
+    ],
+    dependencies: ["class-variance-authority"],
+    requires: ["input", "text-area"]
+  },
+  {
     id: "label",
     name: "Label",
     description: "A label component for form fields.",
