@@ -1,4 +1,5 @@
 import { Checkbox } from "@/registry/core/checkbox";
+import { Label } from "@/registry/core/label";
 import { List } from "@/registry/core/list";
 import { RadioInput } from "@/registry/core/radio-input";
 
@@ -12,7 +13,7 @@ export default function ListWithInputsPreview() {
   ];
 
   return (
-    <div className="flex gap-6 w-full justify-center">
+    <div className="flex w-full justify-center gap-6">
       {/* Checkbox List */}
       <List className="max-w-70">
         {features.map((feature, index) => (
@@ -26,11 +27,10 @@ export default function ListWithInputsPreview() {
       <List className="max-w-70">
         {features.map((feature, index) => (
           <li key={index}>
-            <RadioInput
-              name="example-list"
-              label={feature}
-              className="w-full"
-            />
+            <Label className="group flex w-full cursor-pointer items-center gap-3 select-none">
+              <RadioInput name="example-list" value={`feature-${index}`} />
+              <span>{feature}</span>
+            </Label>
           </li>
         ))}
       </List>
