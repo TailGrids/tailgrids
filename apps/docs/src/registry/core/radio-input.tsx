@@ -1,6 +1,6 @@
 import { cn } from "@/utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
-import { useId, type ComponentProps } from "react";
+import { type ComponentProps } from "react";
 
 const radioStyles = cva(
   "bg-checkbox-background peer-focus:border-primary-300 group-hover:border-checkbox-checked-border peer-checked:border-checkbox-checked-border! peer-focus:ring-checkbox-checked-border/20 peer-checked:bg-checkbox-checked-background grid place-items-center rounded-full border border-base-300 transition peer-focus:ring-4 peer-disabled:bg-transparent peer-disabled:border-base-300!",
@@ -33,50 +33,28 @@ const dotStyles = cva(
 );
 
 type PropsType = Omit<ComponentProps<"input">, "size"> &
-  VariantProps<typeof radioStyles> & {
-    label?: string;
-  };
+  VariantProps<typeof radioStyles>;
 
 export function RadioInput({
-  label,
   id: inputId,
   size,
   className,
   disabled,
   ...inputProps
 }: PropsType) {
-  const id = useId();
-
   return (
-    <label
-      htmlFor={id}
-      className={cn(
-        "group flex cursor-pointer items-center gap-3 select-none aria-disabled:pointer-events-none",
-        className
-      )}
-      aria-disabled={disabled}
-    >
-      <div className="relative">
-        <input
-          type="radio"
-          id={id}
-          className="peer sr-only"
-          disabled={disabled}
-          {...inputProps}
-        />
+    <div className={cn("relative inline-block", className)}>
+      <input
+        type="radio"
+        id={inputId}
+        className="peer sr-only"
+        disabled={disabled}
+        {...inputProps}
+      />
 
-        <div className={radioStyles({ size })} />
+      <div className={radioStyles({ size })} />
 
-        <div className={dotStyles({ size })} />
-      </div>
-
-      {label && (
-        <span
-          className={cn("text-sm text-text-50", disabled && "text-text-200")}
-        >
-          {label}
-        </span>
-      )}
-    </label>
+      <div className={dotStyles({ size })} />
+    </div>
   );
 }

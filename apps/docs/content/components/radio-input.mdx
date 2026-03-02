@@ -57,17 +57,27 @@ Copy and paste the following component code into your project.
 
 ## Usage
 
-Import the component and group radios using the same `name`.
+Import the component and the `Label` component, then wrap the `RadioInput` within the `Label` for proper association.
 
 ```tsx
+import { Label } from "@/registry/core/label";
 import { RadioInput } from "@/registry/core/radio-input";
 
 export default function RadioWithLabelPreview() {
   return (
-    <div>
-      <RadioInput name="plan" label="Basic Plan" value="basic" />
-      <RadioInput name="plan" label="Pro Plan" value="pro" />
-      <RadioInput name="plan" label="Enterprise Plan" value="enterprise" />
+    <div className="flex flex-col gap-3">
+      <Label className="group flex cursor-pointer items-center gap-3 select-none">
+        <RadioInput name="plan" value="basic" />
+        <span>Basic Plan</span>
+      </Label>
+      <Label className="group flex cursor-pointer items-center gap-3 select-none">
+        <RadioInput name="plan" value="pro" />
+        <span>Pro Plan</span>
+      </Label>
+      <Label className="group flex cursor-pointer items-center gap-3 select-none">
+        <RadioInput name="plan" value="enterprise" />
+        <span>Enterprise Plan</span>
+      </Label>
     </div>
   );
 }
@@ -97,7 +107,7 @@ The Radio Input component supports two predefined sizes: `sm` and `md`.
   <RadioWithoutLabelPreview />
 </ComponentPreview>
 
-Note: Use this only when the label is provided through surrounding context.
+**Note:** Use this only when the label is provided through surrounding context.
 
 ### Controlled
 
@@ -163,26 +173,22 @@ Create custom radio inputs with tailwind css utility classes.
 
 ### RadioInput
 
-Extends `input` element props (excluding `size`).
-
-| Prop             | Type                       | Default | Description                                      |
-| ---------------- | -------------------------- | ------- | ------------------------------------------------ |
-| `size`           | `'sm'`, `'md'`             | `'sm'`  | Radio button size                                |
-| `label`          | `string`                   | -       | Label text next to radio                         |
-| `name`           | `string`                   | -       | Radio group name (required for grouping)         |
-| `value`          | `string`                   | -       | Radio button value                               |
-| `id`             | `string`                   | -       | Custom input ID (auto-generated if not provided) |
-| `disabled`       | `boolean`                  | `false` | Disable radio interaction                        |
-| `checked`        | `boolean`                  | -       | Controlled checked state                         |
-| `defaultChecked` | `boolean`                  | -       | Uncontrolled default checked state               |
-| `onChange`       | `(e: ChangeEvent) => void` | -       | Change event handler                             |
-| `className`      | `string`                   | -       | Additional CSS classes for the label wrapper     |
+| Prop             | Type                       | Default | Description                                  |
+| ---------------- | -------------------------- | ------- | -------------------------------------------- |
+| `size`           | `'sm'`, `'md'`             | `'sm'`  | Radio button size                            |
+| `name`           | `string`                   | -       | Radio group name (required for grouping)     |
+| `value`          | `string`                   | -       | Radio button value                           |
+| `id`             | `string`                   | -       | Custom input ID                              |
+| `disabled`       | `boolean`                  | `false` | Disable radio interaction                    |
+| `checked`        | `boolean`                  | -       | Controlled checked state                     |
+| `defaultChecked` | `boolean`                  | -       | Uncontrolled default checked state           |
+| `onChange`       | `(e: ChangeEvent) => void` | -       | Change event handler                         |
+| `className`      | `string`                   | -       | Additional CSS classes for the input wrapper |
 
 ## Accessibility
 
-- Uses native `<input type="radio">` with screen reader support
-- Automatically generates unique IDs if not provided
-- Label is properly associated with input via `htmlFor`
+- Uses native `<input type="radio">` with screen reader support (visually hidden)
+- Label is properly associated with input via wrapping or `htmlFor`
 - Radio buttons with the same `name` are automatically grouped
 - Keyboard accessible with arrow key navigation within groups
 - Focus ring provides clear visual feedback
