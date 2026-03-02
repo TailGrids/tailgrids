@@ -53,7 +53,7 @@ export default function Layout({ children }: LayoutProps<"/">) {
 
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
 
-      <body className="flex flex-col min-h-screen bg-white dark:bg-[#030712] antialiased">
+      <body className="flex flex-col min-h-screen bg-white dark:bg-[#030712] antialiased relative">
         <RootProvider
           theme={{
             defaultTheme: "light",
