@@ -48,6 +48,7 @@ export const componentImages: Record<string, StaticImageData> = {
   field: InputImage, // Fallback
   label: InputImage, // Fallback
   input: InputImage,
+  "input-group": InputImage, // Fallback
   link: ButtonImage, // Fallback
   list: ListImage,
   "native-select": DropdownImage, // Fallback
