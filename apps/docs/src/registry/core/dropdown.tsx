@@ -55,7 +55,7 @@ export function DropdownMenuItem({
     <MenuItem
       {...props}
       className={cn(
-        "group text-text-50 focus:text-title-50 focus:bg-dropdown-hover-background flex w-full cursor-default items-center gap-3 rounded-md px-3 py-2.5 outline-hidden",
+        "group text-text-50 text-sm focus:text-title-50 focus:bg-dropdown-hover-background flex w-full cursor-default items-center gap-3 rounded-md px-1.5 py-1 outline-hidden",
         className
       )}
     />

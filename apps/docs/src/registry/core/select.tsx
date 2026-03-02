@@ -163,7 +163,7 @@ function SelectTrigger({ className, children, ...props }: SelectTriggerProps) {
         buttonStyles({
           appearance: "outline"
         }),
-        "data-invalid:border-input-error-focus-border data-invalid:focus:ring-input-error-focus-border/20 justify-between",
+        "p-2 pl-2.5 text-sm data-invalid:border-input-error-focus-border data-invalid:focus:ring-input-error-focus-border/20 justify-between",
         className
       )}
       data-invalid={isInvalid || undefined}
@@ -209,7 +209,7 @@ function SelectIndicator({
       )}
       {...props}
     >
-      {children ?? <ChevronDown className="size-5" />}
+      {children ?? <ChevronDown className="size-4" />}
     </span>
   );
 }
@@ -276,7 +276,7 @@ function SelectItem({ className, children, ...props }: ListBoxItemProps) {
   return (
     <ListBoxItem
       className={cn(
-        "group/item text-text-50 focus:text-title-50 focus:bg-dropdown-hover-background relative flex w-full cursor-pointer items-center gap-3 rounded-md py-2.5 pr-3 pl-8 outline-hidden select-none",
+        "group/item text-text-50 focus:text-title-50 focus:bg-dropdown-hover-background relative flex w-full text-sm cursor-pointer items-center gap-3 rounded-md py-1 pl-1.5 pr-7 outline-hidden select-none",
         "data-disabled:text-input-disabled-text data-disabled:pointer-events-none",
         className
       )}
@@ -284,12 +284,12 @@ function SelectItem({ className, children, ...props }: ListBoxItemProps) {
     >
       {renderProps => (
         <>
+          {typeof children === "function" ? children(renderProps) : children}
           {renderProps.isSelected && (
-            <span className="size-5 absolute left-2 flex items-center justify-center">
+            <span className="size-5 absolute right-1 flex items-center justify-center">
               <Check className="size-5" />
             </span>
           )}
-          {typeof children === "function" ? children(renderProps) : children}
         </>
       )}
     </ListBoxItem>
