@@ -31,6 +31,7 @@ import { StaticImageData } from "next/image";
 export const componentImages: Record<string, StaticImageData> = {
   accordion: AccordionImage,
   alert: AlertImage,
+  "alert-dialog": AlertImage, // Fallback
   "aspect-ratio": AspectRatioImage,
   avatar: AvatarImage,
   badge: BadgeImage,
