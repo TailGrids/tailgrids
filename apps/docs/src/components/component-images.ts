@@ -46,6 +46,7 @@ export const componentImages: Record<string, StaticImageData> = {
   drawer: AspectRatioImage, // Fallback
   dropdown: DropdownImage,
   field: InputImage, // Fallback
+  "hover-card": PopoverImage, // Fallback
   label: InputImage, // Fallback
   input: InputImage,
   "input-group": InputImage, // Fallback

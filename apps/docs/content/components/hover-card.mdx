@@ -1,0 +1,166 @@
+---
+title: React Hover Card Component
+description: For visually impaired users, a hover card is a content container that provides a preview of a link or element when hovered.
+---
+
+import HoverCardAnimationPreview from "@/components/preview/hover-card/hover-card-animation-preview";
+import HoverCardPlacementPreview from "@/components/preview/hover-card/hover-card-placement-preview";
+import HoverCardPreview from "@/components/preview/hover-card/hover-card-preview";
+import HoverCardProductPreview from "@/components/preview/hover-card/hover-card-product-preview";
+import HoverCardProfilePreview from "@/components/preview/hover-card/hover-card-profile-preview";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Hover Card
+
+For visually impaired users, a hover card is a content container that provides a preview of a link or element when hovered. Built with Base UI's `PreviewCard` component.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/hover-card/hover-card-preview.tsx"
+  )}
+>
+  <HoverCardPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+```npm
+npx @tailgrids/cli add hover-card
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the required dependencies:
+
+```npm
+npm i @base-ui/react
+```
+
+Copy and paste the following component code into your project.
+
+<CodeBlockCard
+snippet={getFileContent("/src/registry/core/hover-card.tsx")}
+lang="tsx"
+  fileName="hover-card.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the sub-components and compose them.
+
+```tsx
+import {
+  HoverCard,
+  HoverCardTrigger,
+  HoverCardContent
+} from "@/registry/core/hover-card";
+
+export const HoverCardAnatomy = () => (
+  <HoverCard>
+    <HoverCardTrigger>Hover me</HoverCardTrigger>
+    <HoverCardContent>The content to display on hover.</HoverCardContent>
+  </HoverCard>
+);
+```
+
+## Examples
+
+### Profile Preview
+
+A common use case for hover cards is displaying user profile metadata when hovering over a username or avatar.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/hover-card/hover-card-profile-preview.tsx"
+  )}
+>
+  <HoverCardProfilePreview />
+</ComponentPreview>
+
+### Product Preview
+
+Hover cards can also be used to show a quick summary of a product, including an image, price, and description.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/hover-card/hover-card-product-preview.tsx"
+  )}
+>
+  <HoverCardProductPreview />
+</ComponentPreview>
+
+### Placement
+
+Use the `side` and `align` props to control the position of the hover card relative to its trigger.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/hover-card/hover-card-placement-preview.tsx"
+  )}
+>
+  <HoverCardPlacementPreview />
+</ComponentPreview>
+
+### Custom Animation
+
+You can customize the entrance and exit animations of the hover card using CSS transitions or animations, often by targeting the `data-state` attribute or using `framer-motion`.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/hover-card/hover-card-animation-preview.tsx"
+  )}
+>
+  <HoverCardAnimationPreview />
+</ComponentPreview>
+
+## API Reference
+
+### HoverCard
+
+The root component that manages the state and coordination of the hover card.
+
+| Prop           | Type                      | Default | Description                                                   |
+| :------------- | :------------------------ | :------ | :------------------------------------------------------------ |
+| `open`         | `boolean`                 | -       | Whether the hover card is currently open.                     |
+| `onOpenChange` | `(open: boolean) => void` | -       | Event handler called when the hover card is opened or closed. |
+| `defaultOpen`  | `boolean`                 | `false` | Whether the hover card is initially open.                     |
+| `actionsRef`   | `Ref<Actions>`            | -       | A ref to imperative actions (e.g., `close`, `unmount`).       |
+
+### HoverCardTrigger
+
+The element that opens the hover card on hover.
+
+| Prop         | Type                       | Default | Description                                                            |
+| :----------- | :------------------------- | :------ | :--------------------------------------------------------------------- |
+| `delay`      | `number`                   | `600`   | How long to wait before the hover card opens (ms).                     |
+| `closeDelay` | `number`                   | `300`   | How long to wait before the hover card closes (ms).                    |
+| `payload`    | `any`                      | -       | A payload to pass to the hover card when it is opened.                 |
+| `render`     | `ReactElement \| function` | -       | Allows replacing the HTML element or composing with another component. |
+
+### HoverCardContent
+
+The container for the hover card contents, which includes positioning logic.
+
+| Prop          | Type                                     | Default    | Description                                       |
+| :------------ | :--------------------------------------- | :--------- | :------------------------------------------------ |
+| `side`        | `'top' \| 'bottom' \| 'left' \| 'right'` | `'bottom'` | Which side of the trigger to align against.       |
+| `sideOffset`  | `number`                                 | `4`        | Distance between the anchor and the popup (px).   |
+| `align`       | `'start' \| 'center' \| 'end'`           | `'center'` | How to align the popup relative to the side.      |
+| `alignOffset` | `number`                                 | `4`        | Additional offset along the alignment axis (px).  |
+| `className`   | `string`                                 | -          | Additional CSS classes for the content container. |
+
+See [Base UI](https://base-ui.com/react/components/preview-card#api-reference) documentation for more information.
+
+## Accessibility
+
+- **Keyboard Navigation**: The hover card trigger is focusable, allowing keyboard users to navigate to it.
+- **Screen Reader Support**: The component uses ARIA attributes to indicate the relationship between the trigger and the content. Use descriptive labels for triggers (e.g., via `aria-label`) to ensure a clear purpose for screen reader users.
+- **Semantic HTML**: The component is built with semantic elements, ensuring it is accessible to assistive technologies.
+- **Controlled State**: Use the `open` prop to programmatically control the hover card's visibility, ensuring it can be managed by accessibility-focused logic.

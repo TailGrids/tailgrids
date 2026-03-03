@@ -248,6 +248,20 @@ export const REGISTRIES: Registry[] = [
     dependencies: ["class-variance-authority", "react-aria-components"]
   },
   {
+    id: "hover-card",
+    name: "Hover Card",
+    description:
+      "A hover card component that displays information when the user hovers over an element.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/hover-card.tsx"
+      }
+    ],
+    dependencies: ["@base-ui/react"]
+  },
+  {
     id: "input",
     name: "Input",
     description:
