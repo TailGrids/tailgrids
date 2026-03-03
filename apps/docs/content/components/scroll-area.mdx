@@ -1,0 +1,143 @@
+---
+title: React Scroll Area Components
+description: A React scroll area component for displaying scrollable content with custom scrollbars. Built on Base UI for performance and accessibility.
+---
+
+import { ScrollAreaBothPreview } from "@/components/preview/scroll-area/scroll-area-both-preview";
+import { ScrollAreaHorizontalPreview } from "@/components/preview/scroll-area/scroll-area-horizontal-preview";
+import { ScrollAreaPreview } from "@/components/preview/scroll-area/scroll-area-preview";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Scroll Area
+
+Scroll Area is a high-quality React component that provides a native scroll container with custom, styleable scrollbars. It is built on [Base UI](https://base-ui.com/react/components/scroll-area), ensuring top-tier accessibility and performance while giving you full control over the visual presentation.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/scroll-area/scroll-area-preview.tsx"
+  )}
+>
+  <ScrollAreaPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+```npm
+npx @tailgrids/cli add scroll-area
+```
+</Accordion>
+
+<Accordion title="Manual">
+Install the required dependencies:
+
+```npm
+npm i @base-ui/react
+```
+
+Copy and paste the following component code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/scroll-area.tsx")}
+  lang="tsx"
+  fileName="scroll-area.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the component parts and combine them to create a scrollable area.
+
+```tsx
+import {
+  ScrollArea,
+  ScrollAreaViewport,
+  ScrollBar
+} from "@/components/scroll-area";
+
+export const ScrollAreaExample = () => (
+  <ScrollArea>
+    <ScrollAreaViewport>{/* Scrollable Content */}</ScrollAreaViewport>
+    <ScrollBar orientation="vertical" />
+    <ScrollBar orientation="horizontal" />
+  </ScrollArea>
+);
+```
+
+## Examples
+
+### Basic Vertical Scroll
+
+The most common use case for a scroll area, providing a custom vertical scrollbar for long lists or text blocks.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/scroll-area/scroll-area-preview.tsx"
+  )}
+>
+  <ScrollAreaPreview />
+</ComponentPreview>
+
+### Horizontal Scroll
+
+Use the `orientation="horizontal"` prop on the `ScrollBar` component to enable horizontal scrolling for wide content like carousels or data tables.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/scroll-area/scroll-area-horizontal-preview.tsx"
+  )}
+>
+  <ScrollAreaHorizontalPreview />
+</ComponentPreview>
+
+### Both Axes
+
+Enable both vertical and horizontal scrollbars for large content areas that exceed the container in both dimensions.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/scroll-area/scroll-area-both-preview.tsx"
+  )}
+>
+  <ScrollAreaBothPreview />
+</ComponentPreview>
+
+## API Reference
+
+### ScrollArea
+
+The root component that groups all parts and manages the scroll state.
+
+| Prop                    | Type                                                                                        | Default | Description                                                      |
+| :---------------------- | :------------------------------------------------------------------------------------------ | :------ | :--------------------------------------------------------------- |
+| `overflowEdgeThreshold` | `number \| { xStart?: number; xEnd?: number; yStart?: number; yEnd?: number } \| undefined` | `0`     | Threshold in pixels before overflow edge attributes are applied. |
+| `className`             | `string`                                                                                    | -       | Additional CSS classes for the root element.                     |
+
+### ScrollAreaViewport
+
+The actual scrollable container.
+
+| Prop        | Type     | Default | Description                              |
+| :---------- | :------- | :------ | :--------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes for the viewport. |
+
+### ScrollBar
+
+The scrollbar track and thumb component.
+
+| Prop          | Type                         | Default      | Description                                                 |
+| :------------ | :--------------------------- | :----------- | :---------------------------------------------------------- |
+| `orientation` | `'vertical' \| 'horizontal'` | `'vertical'` | The direction of movement for the scrollbar.                |
+| `keepMounted` | `boolean`                    | `false`      | Whether to keep the element in the DOM when not scrollable. |
+| `className`   | `string`                     | -            | Additional CSS classes for the scrollbar track.             |
+
+## Accessibility
+
+- Follows the [W3C Scrollable Region](https://www.w3.org/WAI/ARIA/apg/patterns/scrollable-region/) pattern.
+- The scrollbar thumb is draggable and interacts correctly with touch and mouse.
+- Supports keyboard navigation through the viewport focus.
+- Correct ARIA attributes are applied automatically via Base UI.
