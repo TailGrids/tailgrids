@@ -31,6 +31,21 @@ export const REGISTRIES: Registry[] = [
     requires: ["button"]
   },
   {
+    id: "alert-dialog",
+    name: "Alert Dialog",
+    description:
+      "A modal dialog that interrupts the user with important content and expects a response.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/alert-dialog.tsx"
+      }
+    ],
+    dependencies: ["react-aria-components"],
+    requires: ["button"]
+  },
+  {
     id: "aspect-ratio",
     name: "Aspect Ratio",
     description:
