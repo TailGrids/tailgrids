@@ -55,6 +55,7 @@ export const componentImages: Record<string, StaticImageData> = {
   "input-group": InputImage, // Fallback
   link: ButtonImage, // Fallback
   list: ListImage,
+  menubar: TabsImage, // Fallback
   "native-select": DropdownImage, // Fallback
   "otp-input": InputImage, // Fallback
   pagination: PaginationImage,
