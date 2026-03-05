@@ -15,6 +15,7 @@
     "[Checkbox](/components/checkbox)",
     "[Collapsible](/components/collapsible)",
     "[Combobox](/components/combobox)",
+    "[Command](/components/command)",
     "[Date Picker](/components/date-picker)",
     "[Dialog](/components/dialog)",
     "[Drawer](/components/drawer)",

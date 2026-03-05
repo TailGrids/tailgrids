@@ -185,6 +185,19 @@ export const REGISTRIES: Registry[] = [
     requires: ["badge"]
   },
   {
+    id: "command",
+    name: "Command",
+    description: "A command menu component with multiple variants.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/command.tsx"
+      }
+    ],
+    dependencies: ["react-aria-components", "@tailgrids/icons"]
+  },
+  {
     id: "date-picker",
     name: "Date Picker",
     description: "A component to select a date or a range of dates.",
