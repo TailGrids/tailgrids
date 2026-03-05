@@ -1,0 +1,332 @@
+---
+title: React Context Menu Components
+description: A high-performance context menu component that appears when triggered by a right-click or long-press. Built with accessibility and modern design in mind.
+---
+
+import { ContextMenuFileManager } from "@/components/preview/context-menu/context-menu-file-manager";
+import { ContextMenuPreview } from "@/components/preview/context-menu/context-menu-preview";
+import { ContextMenuRadioCheckbox } from "@/components/preview/context-menu/context-menu-radio-checkbox";
+import { ContextMenuTextSelection } from "@/components/preview/context-menu/context-menu-text-selection";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Context Menu
+
+A Context Menu provides a set of actions that are relevant to a specific element or region of the interface. It typically appears upon a right-click (desktop) or long-press (touch devices) on a trigger element.
+
+This component is built on top of [Base UI's Context Menu](https://base-ui.com/react/components/context-menu) and styled with Tailwind CSS, offering complete control over the visual presentation while maintaining robust accessibility.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/context-menu/context-menu-preview.tsx"
+  )}
+>
+  <ContextMenuPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+```npm
+npx @tailgrids/cli add context-menu
+```
+</Accordion>
+
+<Accordion title="Manual">
+Install the required dependencies:
+
+```npm
+npm i @base-ui/react @tailgrids/icons
+```
+
+Copy and paste the following component code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/context-menu.tsx")}
+  lang="tsx"
+  fileName="context-menu.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the component parts and combine them to create a context-aware menu.
+
+```tsx
+import {
+  ContextMenu,
+  ContextMenuCheckboxItem,
+  ContextMenuContent,
+  ContextMenuGroup,
+  ContextMenuItem,
+  ContextMenuLabel,
+  ContextMenuPortal,
+  ContextMenuRadioGroup,
+  ContextMenuRadioItem,
+  ContextMenuSeparator,
+  ContextMenuShortcut,
+  ContextMenuSub,
+  ContextMenuSubContent,
+  ContextMenuSubTrigger,
+  ContextMenuTrigger
+} from "@/components/context-menu";
+
+export const ContextMenuExample = () => (
+  <ContextMenu>
+    <ContextMenuTrigger>Right click me</ContextMenuTrigger>
+    <ContextMenuContent>
+      <ContextMenuItem>Action</ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuSub>
+        <ContextMenuSubTrigger>Submenu</ContextMenuSubTrigger>
+        <ContextMenuSubContent>
+          <ContextMenuItem>Sub Action</ContextMenuItem>
+        </ContextMenuSubContent>
+      </ContextMenuSub>
+    </ContextMenuContent>
+  </ContextMenu>
+);
+```
+
+## Examples
+
+### File Manager
+
+A common use case for context menus is providing file-specific actions in a file explorer or dashboard.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/context-menu/context-menu-file-manager.tsx"
+  )}
+>
+  <ContextMenuFileManager />
+</ComponentPreview>
+
+### Text Selection
+
+Enhance text editors or content areas with context menus for formatting and transformation tools.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/context-menu/context-menu-text-selection.tsx"
+  )}
+>
+  <ContextMenuTextSelection />
+</ComponentPreview>
+
+### Settings & Preferences
+
+Use `ContextMenuCheckboxItem` and `ContextMenuRadioGroup` to allow users to toggle settings or select preferences directly from the context menu.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/context-menu/context-menu-radio-checkbox.tsx"
+  )}
+>
+  <ContextMenuRadioCheckbox />
+</ComponentPreview>
+
+## API Reference
+
+### ContextMenu
+
+The root component that provides the context for the menu. It doesn't render any HTML element.
+
+| Prop           | Type       | Default | Description                                                                                       |
+| :------------- | :--------- | :------ | :------------------------------------------------------------------------------------------------ |
+| `defaultOpen`  | `boolean`  | `false` | Whether the menu is initially open.                                                               |
+| `open`         | `boolean`  | -       | Whether the menu is currently open.                                                               |
+| `onOpenChange` | `function` | -       | Event handler called when the menu is opened or closed.                                           |
+| `disabled`     | `boolean`  | `false` | Whether the component should ignore user interaction.                                             |
+| `modal`        | `boolean`  | `true`  | Whether the menu should be rendered as a modal, preventing interaction with the rest of the page. |
+
+### ContextMenuTrigger
+
+The element that triggers the context menu on right-click or long-press.
+
+| Prop       | Type      | Default | Description                                         |
+| :--------- | :-------- | :------ | :-------------------------------------------------- |
+| `disabled` | `boolean` | `false` | Whether the trigger should ignore user interaction. |
+| `render`   | `element` | -       | Replace the default `div` with a custom element.    |
+
+| Data Attribute    | Values | Description                                |
+| :---------------- | :----- | :----------------------------------------- |
+| `data-popup-open` | -      | Present when the menu is open.             |
+| `data-pressed`    | -      | Present when the trigger is being pressed. |
+
+### ContextMenuPortal
+
+A portal element that moves the popup to a different part of the DOM, usually `body`.
+
+| Prop          | Type      | Default | Description                                                              |
+| :------------ | :-------- | :------ | :----------------------------------------------------------------------- |
+| `container`   | `element` | `body`  | A parent element to render the portal element into.                      |
+| `keepMounted` | `boolean` | `false` | Whether to keep the portal mounted in the DOM while the popup is hidden. |
+
+### ContextMenuContent
+
+The container for the context menu items.
+
+| Prop                | Type                                     | Default    | Description                                                   |
+| :------------------ | :--------------------------------------- | :--------- | :------------------------------------------------------------ |
+| `align`             | `'start' \| 'center' \| 'end'`           | `'start'`  | The alignment of the popup relative to the anchor.            |
+| `alignOffset`       | `number`                                 | `4`        | Additional offset along the alignment axis in pixels.         |
+| `side`              | `'top' \| 'bottom' \| 'left' \| 'right'` | `'right'`  | The side of the anchor the popup should be positioned on.     |
+| `sideOffset`        | `number`                                 | `0`        | Distance between the anchor and the popup in pixels.          |
+| `collisionBoundary` | `element \| element[]`                   | `viewport` | The boundary that the popup should be constrained to.         |
+| `collisionPadding`  | `number \| object`                       | `0`        | The distance from the boundary edge to keep the popup within. |
+| `hideWhenDetached`  | `boolean`                                | `false`    | Whether to hide the popup when its anchor is off-screen.      |
+
+| Data Attribute | Values                                   | Description                                    |
+| :------------- | :--------------------------------------- | :--------------------------------------------- |
+| `data-state`   | `"open" \| "closed"`                     | The current state of the popup.                |
+| `data-side`    | `"top" \| "bottom" \| "left" \| "right"` | The side the popup is currently positioned on. |
+| `data-align`   | `"start" \| "center" \| "end"`           | The current alignment of the popup.            |
+
+### ContextMenuItem
+
+An individual interactive item in the menu.
+
+| Prop           | Type                         | Default     | Description                                                                |
+| :------------- | :--------------------------- | :---------- | :------------------------------------------------------------------------- |
+| `variant`      | `'default' \| 'destructive'` | `'default'` | The visual style of the item.                                              |
+| `inset`        | `boolean`                    | `false`     | If true, adds left padding to align with items that have icons/indicators. |
+| `disabled`     | `boolean`                    | `false`     | Whether the item should ignore user interaction.                           |
+| `onClick`      | `function`                   | -           | Event handler called when the item is clicked.                             |
+| `closeOnClick` | `boolean`                    | `true`      | Whether to close the menu when the item is clicked.                        |
+
+| Data Attribute     | Values | Description                                  |
+| :----------------- | :----- | :------------------------------------------- |
+| `data-highlighted` | -      | Present when the item is focused or hovered. |
+| `data-disabled`    | -      | Present when the item is disabled.           |
+
+### ContextMenuCheckboxItem
+
+An item that can be toggled between a checked and unchecked state.
+
+| Prop              | Type                         | Default | Description                                                                |
+| :---------------- | :--------------------------- | :------ | :------------------------------------------------------------------------- |
+| `checked`         | `boolean \| 'indeterminate'` | -       | The checked state of the item.                                             |
+| `onCheckedChange` | `function`                   | -       | Event handler called when the checked state changes.                       |
+| `inset`           | `boolean`                    | `false` | If true, adds left padding to align with items that have icons/indicators. |
+| `disabled`        | `boolean`                    | `false` | Whether the item should ignore user interaction.                           |
+| `closeOnClick`    | `boolean`                    | `false` | Whether to close the menu when the item is clicked.                        |
+
+| Data Attribute     | Values | Description                                  |
+| :----------------- | :----- | :------------------------------------------- |
+| `data-checked`     | -      | Present when the item is checked.            |
+| `data-unchecked`   | -      | Present when the item is unchecked.          |
+| `data-highlighted` | -      | Present when the item is focused or hovered. |
+| `data-disabled`    | -      | Present when the item is disabled.           |
+
+### ContextMenuRadioGroup
+
+Used to group multiple `ContextMenuRadioItem` components.
+
+| Prop            | Type       | Default | Description                                      |
+| :-------------- | :--------- | :------ | :----------------------------------------------- |
+| `value`         | `any`      | -       | The currently selected value in the group.       |
+| `onValueChange` | `function` | -       | Event handler called when the selection changes. |
+| `disabled`      | `boolean`  | `false` | Whether the entire group should be disabled.     |
+
+### ContextMenuRadioItem
+
+An item within a radio group that can be selected.
+
+| Prop           | Type      | Default | Description                            |
+| :------------- | :-------- | :------ | :------------------------------------- |
+| `value`        | `any`     | -       | The unique value for this radio item.  |
+| `inset`        | `boolean` | `false` | Adds padding for consistent alignment. |
+| `disabled`     | `boolean` | `false` | Whether the item should be disabled.   |
+| `closeOnClick` | `boolean` | `false` | Whether to close on click.             |
+
+| Data Attribute     | Values | Description                                  |
+| :----------------- | :----- | :------------------------------------------- |
+| `data-checked`     | -      | Present when the item is selected.           |
+| `data-unchecked`   | -      | Present when the item is not selected.       |
+| `data-highlighted` | -      | Present when the item is focused or hovered. |
+| `data-disabled`    | -      | Present when the item is disabled.           |
+
+### ContextMenuSub, Trigger & Content
+
+Used to create nested submenus.
+
+#### ContextMenuSub
+
+Context menu sub component.
+
+| Prop           | Type       | Default | Description                                          |
+| :------------- | :--------- | :------ | :--------------------------------------------------- |
+| `open`         | `boolean`  | -       | Whether the submenu is currently open.               |
+| `onOpenChange` | `function` | -       | Event handler called when the submenu state changes. |
+| `disabled`     | `boolean`  | `false` | Whether the submenu should be disabled.              |
+
+#### ContextMenuSubTrigger
+
+Context menu sub trigger component.
+
+| Prop          | Type      | Default | Description                                   |
+| :------------ | :-------- | :------ | :-------------------------------------------- |
+| `inset`       | `boolean` | `false` | Adds padding for consistent alignment.        |
+| `disabled`    | `boolean` | `false` | Whether the trigger should be disabled.       |
+| `openOnHover` | `boolean` | `true`  | Whether the submenu should open when hovered. |
+| `delay`       | `number`  | `100`   | Delay before opening on hover (in ms).        |
+
+| Data Attribute     | Values | Description                                     |
+| :----------------- | :----- | :---------------------------------------------- |
+| `data-popup-open`  | -      | Present when the submenu is open.               |
+| `data-highlighted` | -      | Present when the trigger is focused or hovered. |
+| `data-disabled`    | -      | Present when the trigger is disabled.           |
+
+#### ContextMenuSubContent
+
+Context menu sub content component.
+
+Same props as [ContextMenuContent](#contextmenucontent).
+
+### ContextMenuGroup
+
+Groups related menu items.
+
+| Prop       | Type        | Description        |
+| :--------- | :---------- | :----------------- |
+| `children` | `ReactNode` | The group content. |
+
+### ContextMenuLabel
+
+A non-interactive label used to group items.
+
+| Prop       | Type        | Default | Description                            |
+| :--------- | :---------- | :------ | :------------------------------------- |
+| `inset`    | `boolean`   | `false` | Adds padding for consistent alignment. |
+| `children` | `ReactNode` | -       | The label text or content.             |
+
+### ContextMenuSeparator
+
+A decorative line used to separate groups of items.
+
+| Prop          | Type                         | Default        | Description                       |
+| :------------ | :--------------------------- | :------------- | :-------------------------------- |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | The orientation of the separator. |
+| `className`   | `string`                     | -              | Additional CSS classes.           |
+| `render`      | `element`                    | -              | Custom element to render.         |
+
+### ContextMenuShortcut
+
+A decorative element used to display keyboard shortcuts.
+
+| Prop        | Type        | Description                         |
+| :---------- | :---------- | :---------------------------------- |
+| `className` | `string`    | Additional CSS classes for styling. |
+| `children`  | `ReactNode` | The shortcut content (e.g., ⌘C).    |
+
+## Accessibility
+
+- Full keyboard navigation support (arrow keys, Enter, Escape).
+- Correct ARIA roles and attributes automatically applied via Base UI.
+- Support for type-ahead selection.
+- Managed focus restoration on menu close.
+- Long-press support on touch devices.

@@ -41,6 +41,7 @@ export const componentImages: Record<string, StaticImageData> = {
   card: CardImage,
   checkbox: CheckboxImage,
   collapsible: AccordionImage,
+  "context-menu": PopoverImage, // Fallback
   combobox: DropdownImage, // Fallback
   "date-picker": DatePickerImage,
   dialog: DialogImage,
