@@ -448,6 +448,20 @@ export const REGISTRIES: Registry[] = [
     dependencies: ["class-variance-authority"]
   },
   {
+    id: "resizable",
+    name: "Resizable",
+    description:
+      "Accessible resizable panel groups and layouts with keyboard support.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/resizable.tsx"
+      }
+    ],
+    dependencies: ["react-resizable-panels"]
+  },
+  {
     id: "scroll-area",
     name: "Scroll Area",
     description: "A scroll area component to add scrollbars to an element.",
