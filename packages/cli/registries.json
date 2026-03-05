@@ -91,9 +91,17 @@
   {
     "id": "collapsible",
     "name": "Collapsible",
-    "description": "A collapsible component with multiple variants.",
+    "description": "A high-performance context menu component that appears when triggered by a right-click or long-press.",
     "type": "component",
     "files": [{ "type": "core", "path": "/core/collapsible.tsx" }],
+    "dependencies": ["@base-ui/react", "@tailgrids/icons"]
+  },
+  {
+    "id": "context-menu",
+    "name": "Context Menu",
+    "description": "A context menu component with multiple variants.",
+    "type": "component",
+    "files": [{ "type": "core", "path": "/core/context-menu.tsx" }],
     "dependencies": ["react-aria-components"]
   },
   {
