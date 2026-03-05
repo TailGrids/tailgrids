@@ -1,0 +1,152 @@
+---
+title: React Resizable Components
+description: Accessible resizable panel groups and layouts with keyboard support.
+---
+
+import ResizableHandlePreview from "@/components/preview/resizable/resizable-handle-preview";
+import ResizableNestedPreview from "@/components/preview/resizable/resizable-nested-preview";
+import ResizablePreview from "@/components/preview/resizable/resizable-preview";
+import ResizableVerticalPreview from "@/components/preview/resizable/resizable-vertical-preview";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Resizable
+
+A resizable component that allows users to resize panels in a layout. Built with accessibility and keyboard support in mind using `react-resizable-panels`.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/resizable/resizable-preview.tsx"
+  )}
+>
+  <ResizablePreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+```npm
+npx @tailgrids/cli add resizable
+```
+</Accordion>
+
+<Accordion title="Manual">
+Install the required dependencies:
+
+```npm
+npm i react-resizable-panels
+```
+
+Copy and paste the following component code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/resizable.tsx")}
+  lang="tsx"
+  fileName="resizable.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the component parts and combine them.
+
+```tsx
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup
+} from "@/components/resizable";
+
+export const ResizableExample = () => (
+  <ResizablePanelGroup direction="horizontal">
+    <ResizablePanel>One</ResizablePanel>
+    <ResizableHandle />
+    <ResizablePanel>Two</ResizablePanel>
+  </ResizablePanelGroup>
+);
+```
+
+## Examples
+
+### Vertical
+
+Set the `orientation` prop to `vertical` to create a vertical layout.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/resizable/resizable-vertical-preview.tsx"
+  )}
+>
+  <ResizableVerticalPreview />
+</ComponentPreview>
+
+### Visible Handle
+
+Use the `withHandle` prop on `ResizableHandle` to show a more visible grabber.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/resizable/resizable-handle-preview.tsx"
+  )}
+>
+  <ResizableHandlePreview />
+</ComponentPreview>
+
+### Nested
+
+You can nest `ResizablePanelGroup` components to create complex layouts.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/resizable/resizable-nested-preview.tsx"
+  )}
+>
+  <ResizableNestedPreview />
+</ComponentPreview>
+
+## API Reference
+
+### ResizablePanelGroup
+
+The main container for resizable panels.
+
+| Prop          | Type                         | Default | Description                     |
+| :------------ | :--------------------------- | :------ | :------------------------------ |
+| `orientation` | `"horizontal" \| "vertical"` | -       | The direction of the panels.    |
+| `id`          | `string`                     | -       | Unique ID for the panel group.  |
+| `storage`     | `PanelGroupStorage`          | -       | Custom storage for panel sizes. |
+| `className`   | `string`                     | -       | Additional CSS classes.         |
+
+### ResizablePanel
+
+A single panel within a group.
+
+| Prop          | Type                     | Default | Description                            |
+| :------------ | :----------------------- | :------ | :------------------------------------- |
+| `defaultSize` | `number`                 | -       | The initial size of the panel (0-100). |
+| `maxSize`     | `number`                 | -       | The maximum size of the panel (0-100). |
+| `minSize`     | `number`                 | -       | The minimum size of the panel (0-100). |
+| `collapsible` | `boolean`                | `false` | Whether the panel can be collapsed.    |
+| `onCollapse`  | `() => void`             | -       | Callback when the panel collapses.     |
+| `onExpand`    | `() => void`             | -       | Callback when the panel expands.       |
+| `onResize`    | `(size: number) => void` | -       | Callback when the panel is resized.    |
+
+### ResizableHandle
+
+The separator between panels that users can drag.
+
+| Prop         | Type      | Default | Description                  |
+| :----------- | :-------- | :------ | :--------------------------- |
+| `withHandle` | `boolean` | `false` | Shows a visible handle icon. |
+| `disabled`   | `boolean` | `false` | Disables resizing.           |
+| `className`  | `string`  | -       | Additional CSS classes.      |
+
+## Accessibility
+
+- Full keyboard support for resizing using arrow keys.
+- Home/End keys to quickly jump to min/max sizes.
+- Proper ARIA attributes for screen readers.
+- Focus management for handles.

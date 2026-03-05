@@ -31,6 +31,7 @@ import { StaticImageData } from "next/image";
 export const componentImages: Record<string, StaticImageData> = {
   accordion: AccordionImage,
   alert: AlertImage,
+  "alert-dialog": AlertImage, // Fallback
   "aspect-ratio": AspectRatioImage,
   avatar: AvatarImage,
   badge: BadgeImage,
@@ -41,6 +42,7 @@ export const componentImages: Record<string, StaticImageData> = {
   checkbox: CheckboxImage,
   collapsible: AccordionImage,
   combobox: DropdownImage, // Fallback
+  command: DropdownImage, // Fallback
   "date-picker": DatePickerImage,
   dialog: DialogImage,
   drawer: AspectRatioImage, // Fallback
@@ -59,6 +61,7 @@ export const componentImages: Record<string, StaticImageData> = {
   popover: PopoverImage,
   progress: ProgressImage,
   "radio-input": RadioImage,
+  resizable: SeparatorImage, // Fallback
   "scroll-area": CardImage, // Fallback
   select: DropdownImage, // Fallback
   separator: SeparatorImage,

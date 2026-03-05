@@ -4,6 +4,7 @@
   "pages": [
     "[Accordion](/components/accordion)",
     "[Alert](/components/alert)",
+    "[Alert Dialog](/components/alert-dialog)",
     "[Aspect Ratio](/components/aspect-ratio)",
     "[Avatar](/components/avatar)",
     "[Badge](/components/badge)",
@@ -14,6 +15,7 @@
     "[Checkbox](/components/checkbox)",
     "[Collapsible](/components/collapsible)",
     "[Combobox](/components/combobox)",
+    "[Command](/components/command)",
     "[Date Picker](/components/date-picker)",
     "[Dialog](/components/dialog)",
     "[Drawer](/components/drawer)",
@@ -32,6 +34,7 @@
     "[Popover](/components/popover)",
     "[Progress](/components/progress)",
     "[Radio Input](/components/radio-input)",
+    "[Resizable](/components/resizable)",
     "[Scroll Area](/components/scroll-area)",
     "[Select](/components/select)",
     "[Separator](/components/separator)",

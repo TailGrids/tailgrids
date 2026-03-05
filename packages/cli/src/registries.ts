@@ -31,6 +31,21 @@ export const REGISTRIES: Registry[] = [
     requires: ["button"]
   },
   {
+    id: "alert-dialog",
+    name: "Alert Dialog",
+    description:
+      "A modal dialog that interrupts the user with important content and expects a response.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/alert-dialog.tsx"
+      }
+    ],
+    dependencies: ["react-aria-components"],
+    requires: ["button"]
+  },
+  {
     id: "aspect-ratio",
     name: "Aspect Ratio",
     description:
@@ -168,6 +183,19 @@ export const REGISTRIES: Registry[] = [
     ],
     dependencies: ["react-aria-components", "@tailgrids/icons"],
     requires: ["badge"]
+  },
+  {
+    id: "command",
+    name: "Command",
+    description: "A command menu component with multiple variants.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/command.tsx"
+      }
+    ],
+    dependencies: ["react-aria-components", "@tailgrids/icons"]
   },
   {
     id: "date-picker",
@@ -432,6 +460,20 @@ export const REGISTRIES: Registry[] = [
       }
     ],
     dependencies: ["class-variance-authority"]
+  },
+  {
+    id: "resizable",
+    name: "Resizable",
+    description:
+      "Accessible resizable panel groups and layouts with keyboard support.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/resizable.tsx"
+      }
+    ],
+    dependencies: ["react-resizable-panels"]
   },
   {
     id: "scroll-area",
