@@ -329,6 +329,20 @@ export const REGISTRIES: Registry[] = [
     ],
     dependencies: ["class-variance-authority"]
   },
+  {
+    id: "menubar",
+    name: "Menubar",
+    description:
+      "A responsive menu bar component that provides a horizontal row of menu triggers, each opening a dropdown menu.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/menubar.tsx"
+      }
+    ],
+    dependencies: ["@base-ui/react", "@tailgrids/icons"]
+  },
   // {
   //   id: "modal",
   //   name: "Modal",

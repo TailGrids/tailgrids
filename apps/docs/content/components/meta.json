@@ -25,6 +25,7 @@
     "[Label](/components/label)",
     "[Link](/components/link)",
     "[List](/components/list)",
+    "[Menubar](/components/menubar)",
     "[Native Select](/components/native-select)",
     "[OTP Input](/components/otp-input)",
     "[Pagination](/components/pagination)",
