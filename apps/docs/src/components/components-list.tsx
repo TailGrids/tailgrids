@@ -45,7 +45,7 @@ export function ComponentsList() {
                   {component.name}
                 </h3>
                 <p className="mb-0 text-sm leading-4 tracking-[-0.2px] text-gray-500 sm:text-sm sm:leading-5">
-                  {component.exampleCount}{" "}
+                  {component.exampleCount || 1}{" "}
                   {component.exampleCount === 1 ? "Component" : "Components"}
                 </p>
               </div>

@@ -163,7 +163,8 @@ export const REGISTRIES: Registry[] = [
       }
     ],
     dependencies: ["embla-carousel-react", "@tailgrids/icons"],
-    requires: ["button"]
+    requires: ["button"],
+    exampleCount: 5
   },
   {
     id: "checkbox",
