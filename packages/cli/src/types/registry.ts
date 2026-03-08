@@ -14,4 +14,8 @@ export type Registry = {
    * IDs of other components that are required by this component
    */
   requires?: string[];
+  /**
+   * Example Counts for each component
+   */
+  exampleCount?: number;
 };

@@ -7,6 +7,7 @@ export const REGISTRIES: Registry[] = [
     description:
       "Fully accessible accordion component with multiple style variants",
     type: "component",
+    exampleCount: 6,
     files: [
       {
         type: "core",
@@ -28,6 +29,7 @@ export const REGISTRIES: Registry[] = [
       }
     ],
     dependencies: ["class-variance-authority", "@tailgrids/icons"],
+    exampleCount: 3,
     requires: ["button"]
   },
   {
@@ -43,6 +45,7 @@ export const REGISTRIES: Registry[] = [
       }
     ],
     dependencies: ["react-aria-components"],
+    exampleCount: 3,
     requires: ["button"]
   },
   {
@@ -51,6 +54,7 @@ export const REGISTRIES: Registry[] = [
     description:
       "Aspect ratio component to maintain the aspect ratio of an element.",
     type: "component",
+    exampleCount: 3,
     files: [
       {
         type: "core",
@@ -64,6 +68,7 @@ export const REGISTRIES: Registry[] = [
     name: "Avatar",
     description: "An image element with a fallback for representing a user.",
     type: "component",
+    exampleCount: 4,
     files: [
       {
         type: "core",
@@ -78,6 +83,7 @@ export const REGISTRIES: Registry[] = [
     description:
       "Badge component with multiple colors, sizes, and support for prefix/suffix icons.",
     type: "component",
+    exampleCount: 4,
     files: [
       {
         type: "core",
@@ -98,7 +104,8 @@ export const REGISTRIES: Registry[] = [
         path: "/core/breadcrumbs.tsx"
       }
     ],
-    dependencies: ["@tailgrids/icons"]
+    dependencies: ["@tailgrids/icons"],
+    exampleCount: 2
   },
   {
     id: "button",
@@ -106,6 +113,7 @@ export const REGISTRIES: Registry[] = [
     description:
       "Button component with multiple variants, sizes, and support for icons.",
     type: "component",
+    exampleCount: 6,
     files: [
       {
         type: "core",
@@ -119,6 +127,7 @@ export const REGISTRIES: Registry[] = [
     name: "Button Group",
     description: "A component with multiple buttons grouped together.",
     type: "component",
+    exampleCount: 3,
     files: [
       {
         type: "core",
@@ -138,13 +147,15 @@ export const REGISTRIES: Registry[] = [
         type: "core",
         path: "/core/card.tsx"
       }
-    ]
+    ],
+    exampleCount: 7
   },
   {
     id: "checkbox",
     name: "Checkbox",
     description: "A checkbox component with label and multiple states.",
     type: "component",
+    exampleCount: 3,
     files: [
       {
         type: "core",
@@ -159,6 +170,7 @@ export const REGISTRIES: Registry[] = [
     description:
       "A high-performance context menu component that appears when triggered by a right-click or long-press.",
     type: "component",
+    exampleCount: 6,
     files: [
       {
         type: "core",
@@ -172,6 +184,7 @@ export const REGISTRIES: Registry[] = [
     name: "Context Menu",
     description: "A context menu component with multiple variants.",
     type: "component",
+    exampleCount: 3,
     files: [
       {
         type: "core",
@@ -196,6 +209,7 @@ export const REGISTRIES: Registry[] = [
       }
     ],
     dependencies: ["react-aria-components", "@tailgrids/icons"],
+    exampleCount: 10,
     requires: ["badge"]
   },
   {
@@ -203,6 +217,7 @@ export const REGISTRIES: Registry[] = [
     name: "Command",
     description: "A command menu component with multiple variants.",
     type: "component",
+    exampleCount: 3,
     files: [
       {
         type: "core",
@@ -227,6 +242,7 @@ export const REGISTRIES: Registry[] = [
       }
     ],
     dependencies: ["react-stately", "date-fns", "@tailgrids/icons"],
+    exampleCount: 2,
     requires: ["button"]
   },
   {
@@ -235,6 +251,7 @@ export const REGISTRIES: Registry[] = [
     description:
       "A dialog component that display a modal overlay above the main page content.",
     type: "component",
+    exampleCount: 8,
     files: [
       {
         type: "core",
@@ -249,6 +266,7 @@ export const REGISTRIES: Registry[] = [
     description:
       "A drawer component that slides in from the edge of the screen, typically used for navigation or displaying additional content.",
     type: "component",
+    exampleCount: 4,
     files: [
       {
         type: "core",
@@ -267,6 +285,7 @@ export const REGISTRIES: Registry[] = [
     description:
       "A dropdown component with multiple variants and support for icons.",
     type: "component",
+    exampleCount: 4,
     files: [
       {
         type: "core",
@@ -281,6 +300,7 @@ export const REGISTRIES: Registry[] = [
     description:
       "A field component with multiple variants and support for icons.",
     type: "component",
+    exampleCount: 5,
     files: [
       {
         type: "core",
@@ -301,7 +321,8 @@ export const REGISTRIES: Registry[] = [
         path: "/core/hover-card.tsx"
       }
     ],
-    dependencies: ["@base-ui/react"]
+    dependencies: ["@base-ui/react"],
+    exampleCount: 4
   },
   {
     id: "input",
@@ -309,6 +330,7 @@ export const REGISTRIES: Registry[] = [
     description:
       "An input component with multiple variants and support for icons.",
     type: "component",
+    exampleCount: 5,
     files: [
       {
         type: "core",
@@ -330,6 +352,7 @@ export const REGISTRIES: Registry[] = [
       }
     ],
     dependencies: ["class-variance-authority"],
+    exampleCount: 4,
     requires: ["input", "text-area"]
   },
   {
@@ -337,6 +360,7 @@ export const REGISTRIES: Registry[] = [
     name: "Label",
     description: "A label component for form fields.",
     type: "component",
+    exampleCount: 2,
     files: [
       {
         type: "core",
@@ -350,6 +374,7 @@ export const REGISTRIES: Registry[] = [
     name: "Link",
     description: "A link component with multiple variants.",
     type: "component",
+    exampleCount: 4,
     files: [
       {
         type: "core",
@@ -363,6 +388,7 @@ export const REGISTRIES: Registry[] = [
     name: "List",
     description: "A list component with multiple variants.",
     type: "component",
+    exampleCount: 9,
     files: [
       {
         type: "core",
@@ -377,6 +403,7 @@ export const REGISTRIES: Registry[] = [
     description:
       "A responsive menu bar component that provides a horizontal row of menu triggers, each opening a dropdown menu.",
     type: "component",
+    exampleCount: 4,
     files: [
       {
         type: "core",
@@ -403,6 +430,7 @@ export const REGISTRIES: Registry[] = [
     name: "Native Select",
     description: "A native select component with multiple variants.",
     type: "component",
+    exampleCount: 4,
     files: [
       {
         type: "core",
@@ -421,13 +449,15 @@ export const REGISTRIES: Registry[] = [
         type: "core",
         path: "/core/otp-input.tsx"
       }
-    ]
+    ],
+    exampleCount: 5
   },
   {
     id: "pagination",
     name: "Pagination",
     description: "A component for navigating between pages.",
     type: "component",
+    exampleCount: 5,
     files: [
       {
         type: "core",
@@ -442,6 +472,7 @@ export const REGISTRIES: Registry[] = [
     name: "Popover",
     description: "A popover component with multiple variants.",
     type: "component",
+    exampleCount: 5,
     files: [
       {
         type: "core",
@@ -460,13 +491,15 @@ export const REGISTRIES: Registry[] = [
         type: "core",
         path: "/core/progress.tsx"
       }
-    ]
+    ],
+    exampleCount: 3
   },
   {
     id: "radio-input",
     name: "Radio Input",
     description: "A radio button component with label and multiple states.",
     type: "component",
+    exampleCount: 7,
     files: [
       {
         type: "core",
@@ -487,7 +520,8 @@ export const REGISTRIES: Registry[] = [
         path: "/core/resizable.tsx"
       }
     ],
-    dependencies: ["react-resizable-panels"]
+    dependencies: ["react-resizable-panels"],
+    exampleCount: 3
   },
   {
     id: "scroll-area",
@@ -500,7 +534,8 @@ export const REGISTRIES: Registry[] = [
         path: "/core/scroll-area.tsx"
       }
     ],
-    dependencies: ["class-variance-authority", "@base-ui/react"]
+    dependencies: ["class-variance-authority", "@base-ui/react"],
+    exampleCount: 3
   },
   {
     id: "select",
@@ -514,6 +549,7 @@ export const REGISTRIES: Registry[] = [
       }
     ],
     dependencies: ["react-aria-components", "@tailgrids/icons"],
+    exampleCount: 9,
     requires: ["button"]
   },
   {
@@ -521,6 +557,7 @@ export const REGISTRIES: Registry[] = [
     name: "Separator",
     description: "A separator component to separate content.",
     type: "component",
+    exampleCount: 1,
     files: [
       {
         type: "core",
@@ -535,6 +572,7 @@ export const REGISTRIES: Registry[] = [
     description:
       "A sheet component that slides in from the edge of the screen, typically used for navigation or displaying additional content.",
     type: "component",
+    exampleCount: 4,
     files: [
       {
         type: "core",
@@ -557,7 +595,8 @@ export const REGISTRIES: Registry[] = [
         type: "core",
         path: "/core/skeleton.tsx"
       }
-    ]
+    ],
+    exampleCount: 9
   },
   {
     id: "slider",
@@ -570,13 +609,15 @@ export const REGISTRIES: Registry[] = [
         path: "/core/slider.tsx"
       }
     ],
-    dependencies: ["react-aria-components", "react-stately"]
+    dependencies: ["react-aria-components", "react-stately"],
+    exampleCount: 5
   },
   {
     id: "social-button",
     name: "Social Button",
     description: "A button component for social media actions.",
     type: "component",
+    exampleCount: 3,
     files: [
       {
         type: "core",
@@ -607,13 +648,15 @@ export const REGISTRIES: Registry[] = [
         type: "core",
         path: "/core/spinner/dotted-round.tsx"
       }
-    ]
+    ],
+    exampleCount: 4
   },
   {
     id: "table",
     name: "Table",
     description: "A table component with multiple variants.",
     type: "component",
+    exampleCount: 4,
     files: [
       {
         type: "core",
@@ -634,6 +677,7 @@ export const REGISTRIES: Registry[] = [
       }
     ],
     dependencies: ["class-variance-authority"],
+    exampleCount: 5,
     requires: ["badge"]
   },
   {
@@ -641,6 +685,7 @@ export const REGISTRIES: Registry[] = [
     name: "Text Area",
     description: "A text area component with multiple variants.",
     type: "component",
+    exampleCount: 5,
     files: [
       {
         type: "core",
@@ -654,6 +699,7 @@ export const REGISTRIES: Registry[] = [
     name: "Time Picker",
     description: "A component to select a time.",
     type: "component",
+    exampleCount: 3,
     files: [
       {
         type: "core",
@@ -674,6 +720,7 @@ export const REGISTRIES: Registry[] = [
       }
     ],
     dependencies: ["class-variance-authority", "@tailgrids/icons"],
+    exampleCount: 5,
     requires: ["avatar", "button", "link"]
   },
   {
@@ -686,13 +733,15 @@ export const REGISTRIES: Registry[] = [
         type: "core",
         path: "/core/toggle.tsx"
       }
-    ]
+    ],
+    exampleCount: 3
   },
   {
     id: "tooltip",
     name: "Tooltip",
     description: "A tooltip component.",
     type: "component",
+    exampleCount: 3,
     files: [
       {
         type: "core",
