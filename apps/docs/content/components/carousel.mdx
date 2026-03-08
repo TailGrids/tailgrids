@@ -1,0 +1,191 @@
+---
+title: React Carousel Components
+description: A powerful, flexible carousel component built with Embla Carousel. Supports horizontal/vertical orientation, custom plugins, and full API control.
+---
+
+import CarouselApiPreview from "@/components/preview/carousel/carousel-api-preview";
+import CarouselPluginPreview from "@/components/preview/carousel/carousel-plugin-preview";
+import CarouselPreview from "@/components/preview/carousel/carousel-preview";
+import CarouselTestimonialsPreview from "@/components/preview/carousel/carousel-testimonials-preview";
+import CarouselVerticalPreview from "@/components/preview/carousel/carousel-vertical-preview";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Carousel
+
+A carousel component allows users to scroll through a collection of items, such as images, cards, or testimonials, in a space-efficient manner. Built on top of Embla Carousel, it provides a smooth, accessible, and highly customizable experience.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/carousel/carousel-preview.tsx"
+  )}
+>
+  <CarouselPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+```npm
+npx @tailgrids/cli add carousel
+```
+</Accordion>
+
+<Accordion title="Manual">
+Install the required dependencies:
+
+```npm
+npm i embla-carousel-react @tailgrids/icons
+```
+
+Copy and paste the following component code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/carousel.tsx")}
+  lang="tsx"
+  fileName="carousel.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the components and wrap your items.
+
+```tsx
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious
+} from "@/components/carousel";
+
+export const CarouselExample = () => (
+  <Carousel>
+    <CarouselContent>
+      <CarouselItem>...</CarouselItem>
+      <CarouselItem>...</CarouselItem>
+      <CarouselItem>...</CarouselItem>
+    </CarouselContent>
+    <CarouselPrevious />
+    <CarouselNext />
+  </Carousel>
+);
+```
+
+## Examples
+
+### Default Carousel
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/carousel/carousel-preview.tsx"
+  )}
+>
+  <CarouselPreview />
+</ComponentPreview>
+
+### Testimonials
+
+A single-item carousel for customer reviews and feedback.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/carousel/carousel-testimonials-preview.tsx"
+  )}
+>
+  <CarouselTestimonialsPreview />
+</ComponentPreview>
+
+### Vertical Orientation
+
+Set the `orientation="vertical"` prop to create a vertical scrolling carousel.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/carousel/carousel-vertical-preview.tsx"
+  )}
+>
+  <CarouselVerticalPreview />
+</ComponentPreview>
+
+### API Control & Events
+
+Use the `setApi` prop to get access to the Embla Carousel instance for custom controls or events.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/carousel/carousel-api-preview.tsx"
+  )}
+>
+  <CarouselApiPreview />
+</ComponentPreview>
+
+### Plugin & Options
+
+Use the `opts` prop to pass configuration [options](https://www.embla-carousel.com/api/options/) to the carousel and `plugins` prop to add [plugins](https://www.embla-carousel.com/plugins/).
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/carousel/carousel-plugin-preview.tsx"
+  )}
+>
+  <CarouselPluginPreview />
+</ComponentPreview>
+
+## API Reference
+
+### Carousel
+
+The root component that provides context and manages the Embla instance.
+
+| Prop          | Type                         | Default        | Description                                    |
+| ------------- | ---------------------------- | -------------- | ---------------------------------------------- |
+| `opts`        | `CarouselOptions`            | -              | Options for the Embla Carousel instance.       |
+| `plugins`     | `CarouselPlugin[]`           | -              | Plugins for the Embla Carousel instance.       |
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | The orientation of the carousel.               |
+| `setApi`      | `(api: CarouselApi) => void` | -              | Callback to receive the Embla Carousel API.    |
+| `className`   | `string`                     | -              | Additional CSS classes for the root container. |
+
+### CarouselContent
+
+The wrapper for the carousel items.
+
+| Prop        | Type              | Description                                    |
+| ----------- | ----------------- | ---------------------------------------------- |
+| `className` | `string`          | Additional CSS classes for the slides wrapper. |
+| `children`  | `React.ReactNode` | The `CarouselItem` components.                 |
+
+### CarouselItem
+
+A single slide within the carousel.
+
+| Prop        | Type              | Description                           |
+| ----------- | ----------------- | ------------------------------------- |
+| `className` | `string`          | Additional CSS classes for the slide. |
+| `children`  | `React.ReactNode` | The content of the slide.             |
+
+### CarouselPrevious / CarouselNext
+
+Navigation buttons for the carousel. They accept all props of the `Button` component.
+
+| Prop         | Type                                            | Default     | Description                            |
+| ------------ | ----------------------------------------------- | ----------- | -------------------------------------- |
+| `variant`    | `'primary' \| 'danger' \| 'success' \| 'ghost'` | `'ghost'`   | The visual variant of the button.      |
+| `appearance` | `'outline' \| 'fill'`                           | `'outline'` | The visual appearance of the button.   |
+| `size`       | `'xs' \| 'sm' \| 'md' \| 'lg'`                  | `'sm'`      | The size of the navigation button.     |
+| `className`  | `string`                                        | -           | Additional CSS classes for the button. |
+
+See the [Embla Cacrousel Guides](https://www.embla-carousel.com/guides/) for more information.
+
+## Accessibility
+
+- Use the [Embla Carousel Accessibility](https://www.embla-carousel.com/plugins/accessibility/) plugin for best accessibility support.
+- Built with keyboard navigation support (Arrow keys automatically scroll items).
+- Uses `role="region"` with `aria-roledescription="carousel"` for the outer container.
+- Each slide has `role="group"` and `aria-roledescription="slide"`.
+- Buttons include `sr-only` text for screen readers ("Previous slide", "Next slide").
+- Properly handles `disabled` states when the carousel cannot scroll further.

@@ -151,6 +151,21 @@ export const REGISTRIES: Registry[] = [
     exampleCount: 7
   },
   {
+    id: "carousel",
+    name: "Carousel",
+    description:
+      "A powerful, flexible carousel component built with Embla Carousel.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/carousel.tsx"
+      }
+    ],
+    dependencies: ["embla-carousel-react", "@tailgrids/icons"],
+    requires: ["button"]
+  },
+  {
     id: "checkbox",
     name: "Checkbox",
     description: "A checkbox component with label and multiple states.",

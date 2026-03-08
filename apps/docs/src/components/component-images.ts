@@ -39,6 +39,7 @@ export const componentImages: Record<string, StaticImageData> = {
   button: ButtonImage,
   "button-group": ButtonImage, // Fallback
   card: CardImage,
+  carousel: CardImage, // Fallback
   checkbox: CheckboxImage,
   collapsible: AccordionImage,
   "context-menu": PopoverImage, // Fallback
