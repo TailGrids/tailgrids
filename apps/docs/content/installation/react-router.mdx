@@ -1,0 +1,76 @@
+---
+title: React Router
+description: Install and configure Tailgrids UI for React Router.
+---
+
+# React Router Installation
+
+Follow these steps to set up Tailgrids UI in your React Router project.
+
+<Steps>
+
+<Step>
+### Create project
+
+Create a new React Router project:
+
+```npm
+npx create-react-router@latest my-app
+cd my-app
+```
+
+Follow the prompts to complete the project setup.
+
+</Step>
+
+<Step>
+### Initialize Tailgrids
+
+Run the command in the CLI to initialize Tailgrids UI in your project:
+
+```npm
+npx @tailgrids/cli@latest init
+```
+
+</Step>
+
+<Step>
+### Configure Styles
+
+Copy the contents of the generated `tailgrids.css` file and transition them into your main CSS file (e.g., `src/app.css`).
+
+</Step>
+
+<Step>
+### Add Components
+
+Use the CLI to add components to your project:
+
+```npm
+npx @tailgrids/cli@latest add button
+```
+
+</Step>
+
+<Step>
+### Use the Component
+
+Import and use the component in your application:
+
+```tsx title="src/routes/home.tsx"
+import { Button } from "@/components/tailgrids/core/button";
+
+export default function Home() {
+  return (
+    <div className="flex min-h-svh items-center justify-center">
+      <Button>Click me</Button>
+    </div>
+  );
+}
+```
+
+**Note:** You may need to update the import path based on your project structure.
+
+</Step>
+
+</Steps>

@@ -1,0 +1,155 @@
+---
+title: Astro
+description: Install and configure Tailgrids for Astro.
+---
+
+# Astro Installation
+
+Follow these steps to set up Tailgrids in your Astro project.
+
+<Steps>
+
+<Step>
+### Create project
+
+Create a new Astro project:
+
+```npm
+npm create astro@latest
+```
+
+</Step>
+
+<Step>
+### Install Tailwind CSS
+
+Install Tailwind CSS and the Vite plugin:
+
+```npm
+npm install tailwindcss @tailwindcss/vite
+```
+
+#### Configure Vite plugin
+
+Add the `@tailwindcss/vite` plugin to your Vite plugins in your Astro config file.
+
+```js title="astro.config.mjs"
+// @ts-check
+import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
+
+// https://astro.build/config
+export default defineConfig({
+  vite: {
+    plugins: [tailwindcss()]
+  }
+});
+```
+
+#### Import Tailwind CSS
+
+Create a `src/styles/global.css` file and add an `@import` for Tailwind CSS.
+
+```css title="src/styles/global.css"
+@import "tailwindcss";
+```
+
+#### Import styles
+
+Add the following line to your `src/pages/index.astro` file:
+
+```astro title="src/pages/index.astro"
+---
+import "../styles/global.css";
+---
+```
+
+Visit [here](https://tailwindcss.com/docs/installation/framework-guides/astro) to learn more about Tailwind CSS installation.
+
+</Step>
+
+<Step>
+### Initialize Tailgrids
+
+Run the command in the CLI to initialize Tailgrids in your project:
+
+```npm
+npx @tailgrids/cli@latest init
+```
+
+</Step>
+
+<Step>
+### Configure Styles
+
+Copy the contents of the generated `tailgrids.css` file and paste them into `src/styles/global.css` file.
+
+</Step>
+
+<Step>
+### React Integration
+
+Run the command in the CLI to integrate React with Astro:
+
+```npm
+npx astro add react
+```
+
+</Step>
+
+<Step>
+### Configure Path Aliases
+
+Vite requires some configuration for path aliases. Update your `tsconfig.json` file.
+
+#### tsconfig.json
+
+```json title="tsconfig.json"
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+</Step>
+
+<Step>
+### Add Components
+
+Use the CLI to add components to your project:
+
+```npm
+npx @tailgrids/cli@latest add button
+```
+
+</Step>
+
+<Step>
+### Use the Component
+
+Import and use the component in your Astro page:
+
+```astro title="src/pages/index.astro"
+---
+import { Button } from "@/components/tailgrids/core/button";
+---
+
+<div class="flex min-h-svh items-center justify-center">
+  <Button client:load>Click me</Button>
+</div>
+```
+
+**Note:** You may need to update the import path based on your project structure.
+
+</Step>
+
+</Steps>
