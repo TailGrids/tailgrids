@@ -1,0 +1,67 @@
+---
+title: Manual
+description: Install and configure Tailgrids UI manually.
+---
+
+# Manual Installation
+
+Follow these steps to set up Tailgrids UI in your existing project.
+
+<Steps>
+
+<Step>
+### Install Tailwind CSS
+
+Ensure your project has [Tailwind CSS](https://tailwindcss.com/docs/installation) installed and configured.
+
+</Step>
+
+<Step>
+### Initialize Tailgrids
+
+Run the command in the CLI to initialize Tailgrids in your project:
+
+```npm
+npx @tailgrids/cli@latest init
+```
+
+Follow the prompts to configure your project structure and path aliases.
+
+</Step>
+
+<Step>
+### Configure Styles
+
+Copy the contents of the generated `tailgrids.css` file and paste them into your main CSS file (e.g., `src/styles.css`).
+
+</Step>
+
+<Step>
+### Add Components
+
+Use the CLI to add components to your project:
+
+```npm
+npx @tailgrids/cli@latest add button
+```
+
+</Step>
+
+<Step>
+### Use the Component
+
+Import and use the component in your application:
+
+```tsx
+import { Button } from "@/components/tailgrids/core/button";
+
+export default function Example() {
+  return <Button>Click me</Button>;
+}
+```
+
+**Note:** You may need to update the import path based on your project structure.
+
+</Step>
+
+</Steps>

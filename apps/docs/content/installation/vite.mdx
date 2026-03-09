@@ -1,0 +1,126 @@
+---
+title: Vite
+description: Install and configure Tailgrids UI for Vite.
+---
+
+# Vite Installation
+
+Follow these steps to set up Tailgrids UI in your React project using Vite.
+
+<Steps>
+
+<Step>
+### Create project
+
+Create a new React project using Vite with TypeScript:
+
+```npm
+npm create vite@latest my-app -- --template react-ts
+cd my-app
+npm install
+```
+
+</Step>
+
+<Step>
+### Add Tailwind CSS
+
+Install Tailwind CSS and the Vite plugin:
+
+```npm
+npm install tailwindcss @tailwindcss/vite
+```
+
+</Step>
+
+<Step>
+### Configure Path Aliases
+
+Vite requires some configuration for path aliases. Update your `tsconfig.json` and `vite.config.ts`.
+
+#### tsconfig.json
+
+```json title="tsconfig.json"
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+#### vite.config.ts
+
+```ts title="vite.config.ts"
+import path from "path";
+import tailwindcss from "@tailwindcss/vite";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src")
+    }
+  }
+});
+```
+
+</Step>
+
+<Step>
+### Initialize Tailgrids UI
+
+Run the CLI in your project root to initialize Tailgrids UI:
+
+```npm
+npx @tailgrids/cli@latest init
+```
+
+</Step>
+
+<Step>
+### Configure Styles
+
+Copy the contents of the generated `tailgrids.css` file into your main CSS file (e.g., `src/index.css`).
+
+</Step>
+
+<Step>
+### Add Components
+
+Add a component using the CLI:
+
+```npm
+npx @tailgrids/cli@latest add button
+```
+
+</Step>
+
+<Step>
+### Use the Component
+
+Use the component in your app:
+
+```tsx title="src/App.tsx"
+import { Button } from "@/components/tailgrids/core/button";
+
+function App() {
+  return (
+    <div className="flex min-h-svh items-center justify-center">
+      <Button>Click me</Button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+**Note:** You may need to update the import path based on your project structure.
+
+</Step>
+
+</Steps>
