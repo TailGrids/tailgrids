@@ -57,26 +57,18 @@ export interface DialogContentProps extends AriaDialogProps {
 export function DialogContent({
   children,
   className,
-  modalProps,
   showCloseButton = true,
   ...props
 }: DialogContentProps) {
   return (
     <Modal
       className={cn(
-        "fixed top-1/2 left-1/2 z-50 w-full max-w-lg -translate-x-1/2 -translate-y-1/2 outline-none",
-        "transition-all duration-200",
-        "data-entering:scale-95 data-entering:opacity-0",
-        "data-exiting:scale-95 data-exiting:opacity-0",
-        modalProps?.className
+        "fixed top-1/2 left-1/2 z-50 w-full max-w-lg -translate-x-1/2 -translate-y-1/2 outline-none transition-all duration-200 data-entering:scale-95 data-entering:opacity-0 data-exiting:scale-95 data-exiting:opacity-0",
+        className
       )}
-      {...modalProps}
     >
       <AriaDialog
-        className={cn(
-          "relative rounded-xl border border-base-100 bg-background-100 p-6 shadow-lg outline-none",
-          className
-        )}
+        className="relative rounded-xl border border-base-100 bg-background-100 p-6 shadow-lg outline-none"
         {...props}
       >
         {({ close }) => (

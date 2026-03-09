@@ -273,10 +273,7 @@ The main dialog panel. Composes `Modal` and `Dialog` from react-aria-components.
 | :---------------- | :---------------------------------------------------------------------- | :------ | :---------------------------------------------------------------- |
 | `children`        | `React.ReactNode` \| `(opts: { close: () => void }) => React.ReactNode` | -       | Content of the dialog. Supports render props for `close()` access |
 | `showCloseButton` | `boolean`                                                               | `true`  | Whether to show the default close button in the top-right         |
-| `modalProps`      | `ModalProps`                                                            | -       | Props forwarded to the underlying `Modal`                         |
 | `className`       | `string`                                                                | -       | Additional CSS classes for the dialog panel                       |
-
-**Note:** The `Modal` component is crucial for the dialog's accessibility and focus management. So the `modalProps` are provided to allow passing additional props to the underlying `Modal` without exposing it directly.
 
 ### DialogHeader
 
