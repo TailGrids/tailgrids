@@ -24,6 +24,30 @@ Follow the prompts to complete the project setup.
 </Step>
 
 <Step>
+### Configure Path Aliases
+
+Add `@` as path alias into your `tsconfig.json` file.
+
+#### tsconfig.json
+
+```json title="tsconfig.json"
+{
+  // ...
+  "compilerOptions": {
+    // ...
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./app/*"],
+      "@/*": ["./*"]
+    }
+    //  ...
+  }
+}
+```
+
+</Step>
+
+<Step>
 ### Initialize Tailgrids
 
 Run the command in the CLI to initialize Tailgrids UI in your project:
