@@ -59,7 +59,7 @@ export default function FrameworkCards() {
       {frameworks.map(framework => (
         <Link
           key={framework.name}
-          href={`/installation/${framework.href}`}
+          href={`/installation${framework.href}`}
           className="no-underline"
         >
           <Card className="bg-background-soft-50 items-center **:my-0! p-10 border md:min-w-full hover:bg-background-soft-100">
