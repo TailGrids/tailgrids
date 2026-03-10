@@ -12,6 +12,7 @@ import DialogImage from "@/assets/skeleton-image/dialog.png";
 import DropdownImage from "@/assets/skeleton-image/dropdown.png";
 import InputImage from "@/assets/skeleton-image/input.png";
 import ListImage from "@/assets/skeleton-image/list.png";
+import NavigationMenuImage from "@/assets/skeleton-image/navigation-menu.png";
 import PaginationImage from "@/assets/skeleton-image/paginations.png";
 import PopoverImage from "@/assets/skeleton-image/popover.png";
 import ProgressImage from "@/assets/skeleton-image/progress.png";
@@ -58,6 +59,7 @@ export const componentImages: Record<string, StaticImageData> = {
   list: ListImage,
   menubar: TabsImage, // Fallback
   "native-select": DropdownImage, // Fallback
+  "navigation-menu": NavigationMenuImage,
   "otp-input": InputImage, // Fallback
   pagination: PaginationImage,
   popover: PopoverImage,

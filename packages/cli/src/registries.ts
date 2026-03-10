@@ -428,19 +428,6 @@ export const REGISTRIES: Registry[] = [
     ],
     dependencies: ["@base-ui/react", "@tailgrids/icons"]
   },
-  // {
-  //   id: "modal",
-  //   name: "Modal",
-  //   description:
-  //     "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
-  //   type: "component",
-  //   files: [
-  //     {
-  //       type: "core",
-  //       path: "/core/modal.tsx"
-  //     }
-  //   ]
-  // },
   {
     id: "native-select",
     name: "Native Select",
@@ -454,6 +441,21 @@ export const REGISTRIES: Registry[] = [
       }
     ],
     dependencies: ["class-variance-authority", "@tailgrids/icons"]
+  },
+  {
+    id: "navigation-menu",
+    name: "Navigation Menu",
+    description:
+      "A navigation menu component that provides a clear visual structure for the primary links of a website or application.",
+    type: "component",
+    exampleCount: 3,
+    files: [
+      {
+        type: "core",
+        path: "/core/navigation-menu.tsx"
+      }
+    ],
+    dependencies: ["@base-ui/react", "@tailgrids/icons"]
   },
   {
     id: "otp-input",
