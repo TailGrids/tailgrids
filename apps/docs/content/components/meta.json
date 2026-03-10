@@ -31,6 +31,7 @@
     "[List](/components/list)",
     "[Menubar](/components/menubar)",
     "[Native Select](/components/native-select)",
+    "[Navigation Menu](/components/navigation-menu)",
     "[OTP Input](/components/otp-input)",
     "[Pagination](/components/pagination)",
     "[Popover](/components/popover)",
