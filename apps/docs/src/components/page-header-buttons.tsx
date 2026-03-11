@@ -11,6 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from "@/registry/core/dropdown";
+import { cn } from "@/utils/cn";
 import { Check, FileText, RefreshCircle1Clockwise } from "@tailgrids/icons";
 import copy from "copy-text-to-clipboard";
 import Image from "next/image";
@@ -32,7 +33,7 @@ export function PageHeaderButtons() {
 
   const getPrompt = (base?: string) => {
     const url = `https://tailgrids.com/docs${pathname}`;
-    const prompt = `I need help understanding the ${componentName} component from the Tailgrids library. Here is the link: ${url}\n\nPlease explain the available props, styling options, and provide usage examples.`;
+    const prompt = `I need help understanding the ${componentName} component from the Tailgrids UI library. Here is the link: ${url}\n\nPlease explain the available props, styling options, and provide usage examples.`;
     if (base) {
       return `${base}${encodeURIComponent(prompt)}`;
     }
@@ -85,11 +86,17 @@ export function PageHeaderButtons() {
   ];
 
   const buttonClasses =
-    "flex items-center gap-1.5 pl-2.5 pr-3 py-1.5 text-sm font-medium text-gray-500 dark:text-gray-400 -tracking-[0.2px] bg-white dark:bg-white/5 leading-5 rounded-[10px] shadow-navbar-icon dark:shadow-none hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:shadow-none transition-colors outline-none dark:border-[#111827] border border-transparent";
+    "group flex items-center gap-1.5 pl-2.5 pr-3 py-1.5 text-sm font-medium text-gray-500 dark:text-gray-400 -tracking-[0.2px] bg-white dark:bg-white/5 leading-5 rounded-[10px] shadow-navbar-icon dark:shadow-none hover:text-title-50 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:shadow-none transition-colors outline-none dark:border-[#111827] border border-transparent";
 
   return (
     <div className="flex items-center gap-2">
-      <button onClick={handleCopy} className={buttonClasses}>
+      <button
+        onClick={handleCopy}
+        className={cn(
+          buttonClasses,
+          "hover:text-[rgb(31,41,55)] dark:hover:text-white"
+        )}
+      >
         {isCoping ? (
           <RefreshCircle1Clockwise className="size-5 stroke-[1.5] animate-spin" />
         ) : isCopied ? (
@@ -105,10 +112,13 @@ export function PageHeaderButtons() {
       <DropdownMenu onOpenChange={setIsDropdownOpen}>
         <DropdownMenuTrigger
           data-state={isDropdownOpen ? "open" : "closed"}
-          className={`group ${buttonClasses}`}
+          className={cn(
+            buttonClasses,
+            "group pr-2 hover:text-[rgb(31,41,55)] dark:hover:text-white"
+          )}
         >
           <span>Open in</span>
-          <ChevronRightIcon className="size-4 text-[#6B7280] transition-transform duration-200 rotate-90 group-data-[state=open]:-rotate-90" />
+          <ChevronRightIcon className="size-4 text-[#6B7280] transition-transform duration-200 rotate-90 group-data-[state=open]:-rotate-90 group-hover:text-[rgb(31,41,55)] dark:group-hover:text-white" />
         </DropdownMenuTrigger>
 
         <DropdownMenuContent className="w-52 p-2 border border-[#EDEDED] shadow-lg rounded-xl bg-white text-gray-700 dark:bg-gray-950 dark:border-gray-800 dark:text-gray-300">
@@ -118,7 +128,7 @@ export function PageHeaderButtons() {
               onAction={item.onAction}
               href={item.href}
               target={item.href ? "_blank" : undefined}
-              className="rounded-lg cursor-pointer text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white dark:focus:bg-gray-800 dark:focus:text-white"
+              className="pl-2.5 py-2.5 rounded-lg cursor-pointer text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white dark:focus:bg-gray-800 dark:focus:text-white"
             >
               {item.icon}
               <span className="text-sm font-medium leading-5 -tracking-[0.2px]">

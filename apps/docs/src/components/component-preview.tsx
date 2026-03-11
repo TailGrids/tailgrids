@@ -35,7 +35,7 @@ export function ComponentPreview({
 
   return (
     <div>
-      <div className="flex min-[462px]:justify-between flex-wrap gap-x-5 gap-y-3 items-center">
+      <div className="flex min-[462px]:justify-between flex-wrap gap-x-3 gap-y-3 items-center">
         <SegmentedControl
           items={ITEMS}
           value={activeTab}
