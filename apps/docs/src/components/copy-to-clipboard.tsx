@@ -28,7 +28,7 @@ export function CopyToClipboard({ content, showLabel, className }: PropsType) {
     <button
       onClick={handleClick}
       className={cn(
-        "flex items-center gap-1.5 text-sm text-gray-500 hover:opacity-85 dark:text-gray-400 font-normal",
+        "group flex items-center gap-1.5 text-sm text-gray-500 hover:opacity-85 dark:text-gray-400 font-normal hover:text-[rgb(31,41,55)] dark:hover:text-white",
         className
       )}
       title={!showLabel ? "Copy to clipboard" : undefined}
@@ -40,7 +40,7 @@ export function CopyToClipboard({ content, showLabel, className }: PropsType) {
       )}
 
       {showLabel && (
-        <span className="text-gray-500 font-medium -tracking-[0.2px] dark:text-gray-400">
+        <span className="text-gray-500 font-medium -tracking-[0.2px] dark:text-gray-400 group-hover:text-[rgb(31,41,55)] dark:group-hover:text-white">
           {isCopied ? "Copied" : "Copy"}{" "}
           <span className="sr-only">to clipboard</span>
         </span>
