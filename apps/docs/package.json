@@ -35,6 +35,7 @@
     "react-resizable-panels": "^4.7.1",
     "react-stately": "^3.42.0",
     "react-syntax-highlighter": "^16.1.0",
+    "recharts": "^3.8.0",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.17",
     "zustand": "^5.0.11"

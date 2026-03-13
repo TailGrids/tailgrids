@@ -206,6 +206,12 @@
   --theme-badge-orange-text: #f97316;
   --theme-badge-orange-icon-color: #fb923c;
 
+  /* ======== Chart =========*/
+
+  --theme-chart-tick: var(--theme-text-50);
+  --theme-chart-legend: var(--theme-text-50);
+  --theme-chart-grid: var(--border-color-base-100);
+
   /* ======== Sidebar For Dark =========*/
 
   /* Nav Item */
