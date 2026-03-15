@@ -4,7 +4,7 @@ import { DatePicker } from "@/registry/core/date-picker/single-date";
 
 export default function DatePickerPreselectedPreview() {
   return (
-    <div className="w-md mx-auto">
+    <div className="w-full max-w-md mx-auto">
       <DatePicker
         value={new Date(2025, 1, 15)} // Feb 15, 2025
         onChange={() => {}}
