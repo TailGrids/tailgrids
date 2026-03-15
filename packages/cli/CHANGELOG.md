@@ -1,5 +1,11 @@
 # @tailgrids/cli
 
+## 1.2.0
+
+### Minor Changes
+
+- Update css variables for chart styles
+
 ## 1.1.3
 
 ### Patch Changes
