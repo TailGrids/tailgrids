@@ -167,6 +167,20 @@ export const REGISTRIES: Registry[] = [
     exampleCount: 5
   },
   {
+    id: "chart",
+    name: "Chart",
+    description: "A chart component with multiple variants.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/chart.tsx"
+      }
+    ],
+    dependencies: ["class-variance-authority", "recharts"],
+    exampleCount: 5
+  },
+  {
     id: "checkbox",
     name: "Checkbox",
     description: "A checkbox component with label and multiple states.",

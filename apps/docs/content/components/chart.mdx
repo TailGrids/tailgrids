@@ -1,14 +1,19 @@
 ---
-title: React Carousel Components
-description: A powerful, flexible carousel component built with Embla Carousel. Supports horizontal/vertical orientation, custom plugins, and full API control.
+title: React Chart Components
+description: Beautiful and responsive chart components built on top of Recharts. Supports line, area, bar, and pie charts with custom tooltips and legends.
 ---
 
+import ChartBarPreview from "@/components/preview/chart/chart-bar-preview";
+import ChartLinePreview from "@/components/preview/chart/chart-line-preview";
+import ChartPiePreview from "@/components/preview/chart/chart-pie-preview";
 import ChartPreview from "@/components/preview/chart/chart-preview";
+import ChartZoomableAreaPreview from "@/components/preview/chart/chart-zoomable-area-preview";
 import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
-# Carousel
+# Chart
 
-A carousel component
+React Chart components provide a beautiful, Tailwind-styled wrapper around the popular [Recharts](https://recharts.org/) library. They enable developers to build responsive and customizable data visualizations with ease, featuring custom styled tooltips, legends, and axis formatting.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -17,3 +22,163 @@ A carousel component
 >
   <ChartPreview />
 </ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+
+```npm
+npx @tailgrids/cli add chart
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the required dependencies:
+
+```npm
+npm i recharts class-variance-authority
+```
+
+Copy and paste the following component code into your project. The component includes `ChartContainer`, `ChartTooltip`, `ChartTooltipContent`, `ChartLegend`, and `ChartLegendContent`.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/chart.tsx")}
+  lang="tsx"
+  fileName="chart.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the component and build your chart by combining Recharts components with our custom wrappers.
+
+```tsx
+import {
+  ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
+  ChartTooltip,
+  ChartTooltipContent
+} from "@/registry/core/chart";
+import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
+
+export const ChartExample = () => {
+  const data = [
+    { name: "Jan", uv: 400 },
+    { name: "Feb", uv: 300 }
+  ];
+
+  return (
+    <ChartContainer initialDimension={{ width: 280, height: 160 }}>
+      <AreaChart data={data}>
+        <CartesianGrid vertical={false} />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <ChartTooltip content={<ChartTooltipContent indicator="square" />} />
+        <ChartLegend content={<ChartLegendContent />} />
+        <Area dataKey="uv" stroke="#3758F9" fill="#3758F9" />
+      </AreaChart>
+    </ChartContainer>
+  );
+};
+```
+
+## Examples
+
+### Line Chart
+
+A line chart showing multiple data series.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/chart/chart-line-preview.tsx"
+  )}
+>
+  <ChartLinePreview />
+</ComponentPreview>
+
+### Zoomable Area Chart
+
+An area chart that supports brushing to zoom into specific data ranges.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/chart/chart-zoomable-area-preview.tsx"
+  )}
+>
+  <ChartZoomableAreaPreview />
+</ComponentPreview>
+
+### Bar Chart
+
+A bar chart displaying grouped data comparisons.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/chart/chart-bar-preview.tsx"
+  )}
+>
+  <ChartBarPreview />
+</ComponentPreview>
+
+### Pie Chart
+
+A pie chart rendering simple part-to-whole relationships.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/chart/chart-pie-preview.tsx"
+  )}
+>
+  <ChartPiePreview />
+</ComponentPreview>
+
+## API Reference
+
+The Chart components are thin wrappers around Recharts. For complete API details on charts, axes, and shapes, please refer to the [Recharts API Guide](https://recharts.github.io/en-US/api/).
+
+### ChartContainer
+
+| Prop               | Type                                | Default | Description                                                                         |
+| :----------------- | :---------------------------------- | :------ | :---------------------------------------------------------------------------------- |
+| `children`         | `React.ReactNode`                   | -       | The Recharts chart components (e.g., `AreaChart`, `BarChart`) to render inside.     |
+| `className`        | `string`                            | -       | Additional CSS classes applied to the underlying `ResponsiveContainer`.             |
+| `initialDimension` | `{ width: number, height: number }` | -       | Initial dimensions before hydration or when responsive width is not yet calculated. |
+
+**Note:** `initialDimension` is required for the chart to render properly. If you don't provide it, you might get warning at the console.
+
+### ChartTooltipContent
+
+Extends Recharts `TooltipContentProps`.
+
+| Prop             | Type                               | Default | Description                                                              |
+| :--------------- | :--------------------------------- | :------ | :----------------------------------------------------------------------- |
+| `indicator`      | `'dot' \| 'line' \| 'square'`      | `'dot'` | The shape of the indicator next to legend/tooltip items.                 |
+| `hideLabel`      | `boolean`                          | `false` | Whether to hide the top label (usually the X-axis value) in the tooltip. |
+| `hideIndicator`  | `boolean`                          | `false` | Whether to hide the color indicator shape completely.                    |
+| `labelClassName` | `string`                           | -       | Additional CSS classes for the tooltip label.                            |
+| `formatter`      | `(value, name, item, index) => {}` | -       | Custom formatter for the tooltip values.                                 |
+| `labelFormatter` | `(label, payload) => {}`           | -       | Custom formatter for the tooltip label.                                  |
+| `className`      | `string`                           | -       | Additional CSS classes for the tooltip container.                        |
+
+### ChartLegendContent
+
+Extends Recharts `DefaultLegendContentProps`.
+
+| Prop            | Type      | Default | Description                                                     |
+| :-------------- | :-------- | :------ | :-------------------------------------------------------------- |
+| `hideIndicator` | `boolean` | `false` | Whether to hide the color indicator shape next to legend items. |
+| `className`     | `string`  | -       | Additional CSS classes for the legend container.                |
+
+## Accessibility
+
+The Chart components are designed with accessibility in mind, ensuring that data visualizations are perceivable and navigable.
+
+- **Focus Management**: The `ChartContainer` includes keyboard-accessible styles for the underlying Recharts wrapper, providing clear visual indicators when the component receives focus.
+- **Dynamic Indicators**: Customizable indicators (`dot`, `line`, `square`) help differentiate data series, making them easier to identify for users with visual impairments.
+- **ARIA Support**: Leverages Recharts' built-in ARIA support for SVG elements, providing semantic roles and labels to assistive technologies.
+- **Screen Readers**: Descriptive tooltips and legends ensure that data values are correctly announced when interacted with.

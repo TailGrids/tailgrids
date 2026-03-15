@@ -127,7 +127,10 @@ function ChartTooltipContent({
 
   return (
     <div
-      className={cn("bg-white rounded-md overflow-hidden min-w-20", className)}
+      className={cn(
+        "bg-background-soft-50 rounded-md overflow-hidden min-w-20",
+        className
+      )}
       {...props}
     >
       {!hideLabel && (

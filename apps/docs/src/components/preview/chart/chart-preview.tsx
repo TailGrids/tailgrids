@@ -2,6 +2,8 @@
 
 import {
   ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent
 } from "@/registry/core/chart";
@@ -11,39 +13,28 @@ export default function ChartPreview() {
   const data = [
     {
       name: "January",
-      uv: 400,
-      pv: 2400,
-      amt: 2400
+      uv: 1890
     },
     {
       name: "February",
-      uv: 300,
-      pv: 4567,
-      amt: 2400
+      uv: 2780
     },
     {
       name: "March",
-      uv: 320,
-      pv: 1398,
-      amt: 2400
+      uv: 2000
     },
     {
       name: "April",
-      uv: 200,
-      pv: 9800,
-      amt: 2400
+      uv: 3200
     },
     {
       name: "May",
-      uv: 278,
-      pv: 3908,
-      amt: 2400
+      uv: 3000
     },
     {
       name: "June",
-      uv: 189,
-      pv: 4800,
-      amt: 2400
+
+      uv: 3400
     }
   ];
 
@@ -54,6 +45,7 @@ export default function ChartPreview() {
           width: 280,
           height: 160
         }}
+        className="[&_.recharts-tooltip-cursor]:stroke-slate-200"
       >
         <AreaChart data={data}>
           <defs>
@@ -69,6 +61,7 @@ export default function ChartPreview() {
             fill="url(#background)"
             type="monotone"
           />
+
           <XAxis
             dataKey="name"
             axisLine={false}
@@ -77,9 +70,12 @@ export default function ChartPreview() {
             tickCount={6}
             tickFormatter={value => value.slice(0, 3)}
           />
-          <YAxis dataKey="uv" axisLine={false} tickLine={false} />
+          <YAxis axisLine={false} tickLine={false} />
 
-          <ChartTooltip content={<ChartTooltipContent />} />
+          <ChartTooltip
+            content={<ChartTooltipContent indicator={"square"} />}
+          />
+          <ChartLegend content={<ChartLegendContent />} />
           <CartesianGrid vertical={false} />
         </AreaChart>
       </ChartContainer>

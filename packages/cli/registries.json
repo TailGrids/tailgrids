@@ -101,6 +101,15 @@
     "exampleCount": 5
   },
   {
+    "id": "chart",
+    "name": "Chart",
+    "description": "A chart component with multiple variants.",
+    "type": "component",
+    "files": [{ "type": "core", "path": "/core/chart.tsx" }],
+    "dependencies": ["class-variance-authority", "recharts"],
+    "exampleCount": 5
+  },
+  {
     "id": "checkbox",
     "name": "Checkbox",
     "description": "A checkbox component with label and multiple states.",
@@ -280,7 +289,7 @@
     "name": "Navigation Menu",
     "description": "A navigation menu component that provides a clear visual structure for the primary links of a website or application.",
     "type": "component",
-    "exampleCount": 2,
+    "exampleCount": 3,
     "files": [{ "type": "core", "path": "/core/navigation-menu.tsx" }],
     "dependencies": ["@base-ui/react", "@tailgrids/icons"]
   },
