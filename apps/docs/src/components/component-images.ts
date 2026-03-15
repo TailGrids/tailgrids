@@ -6,6 +6,7 @@ import BadgeImage from "@/assets/skeleton-image/badge.png";
 import BreadcrumbImage from "@/assets/skeleton-image/breadcrumb.png";
 import ButtonImage from "@/assets/skeleton-image/button.png";
 import CardImage from "@/assets/skeleton-image/card.png";
+import ChartImage from "@/assets/skeleton-image/chart.png";
 import CheckboxImage from "@/assets/skeleton-image/checkbox.png";
 import DatePickerImage from "@/assets/skeleton-image/date-picker.png";
 import DialogImage from "@/assets/skeleton-image/dialog.png";
@@ -41,6 +42,7 @@ export const componentImages: Record<string, StaticImageData> = {
   "button-group": ButtonImage, // Fallback
   card: CardImage,
   carousel: CardImage, // Fallback
+  chart: ChartImage,
   checkbox: CheckboxImage,
   collapsible: AccordionImage,
   "context-menu": PopoverImage, // Fallback

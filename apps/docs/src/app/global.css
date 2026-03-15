@@ -274,6 +274,12 @@
   --color-badge-orange-text: var(--theme-badge-orange-text);
   --color-badge-orange-icon-color: var(--theme-badge-orange-icon-color);
 
+  /* ======== Chart =========*/
+
+  --color-chart-tick: var(--theme-chart-tick);
+  --color-chart-legend: var(--theme-chart-legend);
+  --color-chart-grid: var(--theme-chart-grid);
+
   /* ======== Sidebar =========*/
 
   /* Nav Item */
