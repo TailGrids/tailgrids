@@ -211,6 +211,12 @@
   --color-badge-orange-text: #f97316;
   --color-badge-orange-icon-color: #fb923c;
 
+  /* ======== Chart =========*/
+
+  --color-chart-tick: var(--color-text-50);
+  --color-chart-legend: var(--color-text-50);
+  --color-chart-grid: var(--border-color-base-100);
+
   /* ======== Sidebar For Dark =========*/
 
   /* Nav Item */
