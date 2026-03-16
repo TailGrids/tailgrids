@@ -1,4 +1,5 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "tailgrids",
   "homepage": "https://tailgrids.com",
   "items": [
