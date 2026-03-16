@@ -1,3 +1,5 @@
+"use client";
+
 import {
   InputGroup,
   InputGroupAddon,
@@ -5,14 +7,31 @@ import {
   InputGroupTextarea
 } from "@/registry/core/input-group";
 import { Microphone1, Paperclip2, Send4 } from "@tailgrids/icons";
+import { useState } from "react";
 
 export default function InputGroupTextareaPreview() {
+  const [value, setValue] = useState("");
+
+  const handleSend = () => {
+    if (value.trim()) {
+      setValue("");
+    }
+  };
+
   return (
     <div className="w-full max-w-lg">
       <InputGroup className=" py-1.5 px-2 flex-col items-stretch shadow-sm transition-all focus-within:shadow-md hover:border-base-400">
         <InputGroupTextarea
           placeholder="Ask AI anything..."
           className="min-h-22 resize-none py-2.5 text-sm"
+          value={value}
+          onChange={e => setValue(e.target.value)}
+          onKeyDown={e => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              handleSend();
+            }
+          }}
         />
         <InputGroupAddon
           align="block-end"
@@ -37,8 +56,9 @@ export default function InputGroupTextareaPreview() {
 
             <InputGroupButton
               size="icon-sm"
-              aria-label="Voice input"
+              aria-label="Send message"
               className="text-base-400 hover:text-title-100 hover:bg-base-200 transition-colors"
+              onClick={handleSend}
             >
               <Send4 className="h-5 w-5" />
             </InputGroupButton>

@@ -1,11 +1,17 @@
+"use client";
+
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput
 } from "@/registry/core/input-group";
+import { useState } from "react";
 
 export default function InputGroupAlignPreview() {
+  const [headerValue, setHeaderValue] = useState("");
+  const [commentValue, setCommentValue] = useState("");
+
   return (
     <div className="flex w-full max-w-sm flex-col gap-6 p-4">
       {/* Block Start */}
@@ -23,6 +29,8 @@ export default function InputGroupAlignPreview() {
           <InputGroupInput
             placeholder="Type your message here..."
             className="py-3 px-3"
+            value={headerValue}
+            onChange={e => setHeaderValue(e.target.value)}
           />
         </InputGroup>
       </div>
@@ -34,6 +42,8 @@ export default function InputGroupAlignPreview() {
           <InputGroupInput
             placeholder="Add a comment..."
             className="py-3 px-3"
+            value={commentValue}
+            onChange={e => setCommentValue(e.target.value)}
           />
           <InputGroupAddon
             align="block-end"
@@ -42,12 +52,22 @@ export default function InputGroupAlignPreview() {
             <span className="text-xs text-base-500 mr-auto">
               Supports Markdown
             </span>
-            <InputGroupButton size="xs" className="px-0">
+            <InputGroupButton
+              size="xs"
+              className="px-0"
+              onClick={() => setCommentValue("")}
+            >
               Cancel
             </InputGroupButton>
             <InputGroupButton
               size="xs"
               className="bg-primary text-primary-foreground hover:bg-primary/90 px-0"
+              onClick={() => {
+                if (commentValue.trim()) {
+                  console.log("Comment submitted:", commentValue);
+                  setCommentValue("");
+                }
+              }}
             >
               Comment
             </InputGroupButton>
