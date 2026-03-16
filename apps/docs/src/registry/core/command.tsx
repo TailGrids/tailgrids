@@ -200,12 +200,12 @@ export function CommandGroup<T extends object>({
     <MenuSection
       {...props}
       className={cn(
-        "overflow-hidden text-slate-950 dark:text-slate-50 px-2 [&+&]:pt-0",
+        "overflow-hidden text-slate-950 dark:text-slate-50 p-1 [&+&]:pt-0",
         className
       )}
     >
       {heading && (
-        <Header className="px-2 py-1.5 text-xs font-medium text-text-50">
+        <Header className="p-1.5 text-xs font-medium text-tg-text-color-tertiary">
           {heading}
         </Header>
       )}
@@ -232,7 +232,7 @@ export function CommandItem({ className, children, ...props }: MenuItemProps) {
       {...props}
       textValue={textValue}
       className={cn(
-        "relative flex cursor-default select-none items-center rounded-sm px-2 py-3 text-sm outline-none data-disabled:pointer-events-none data-disabled:opacity-50 hover:bg-background-soft-200 focus:bg-background-soft-200 data-focused:bg-background-soft-200 selected:bg-background-soft-200",
+        "px-1.5 py-2 text-sm text-text-50 relative flex cursor-default select-none items-center rounded-sm outline-none data-disabled:pointer-events-none data-disabled:opacity-50 hover:bg-background-soft-200 focus:bg-background-soft-200 data-focused:bg-background-soft-200 selected:bg-background-soft-200",
         className
       )}
     >
