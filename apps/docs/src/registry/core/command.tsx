@@ -1,9 +1,10 @@
 import { cn } from "@/utils/cn";
-import { Search1 } from "@tailgrids/icons";
+import { Close, Search1 } from "@tailgrids/icons";
 import React, { ReactNode, useEffect } from "react";
 import {
   Autocomplete,
   AutocompleteProps,
+  Button,
   Collection,
   Dialog,
   Header,
@@ -119,7 +120,7 @@ export interface CommandInputProps extends SearchFieldProps {
 
 export function CommandInput({ placeholder, ...props }: CommandInputProps) {
   return (
-    <div className="flex items-center border-b border-border-color-base-100 px-3">
+    <div className="flex items-center border-b border-border-color-base-100 pl-3 pr-2">
       <Search1
         className="mr-2 h-5 w-5 shrink-0 opacity-50 text-text-200"
         aria-hidden="true"
@@ -128,11 +129,14 @@ export function CommandInput({ placeholder, ...props }: CommandInputProps) {
         {...props}
         autoFocus
         className={cn(
-          'flex h-12 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-text-200 disabled:cursor-not-allowed disabled:opacity-50 [&_div]:w-full [&_div]:flex [&_div]:items-center [&_input]:flex-1 [&_input]:bg-transparent [&_input]:outline-none [&_input]:min-w-0 [&_svg[stroke-width="2"]]:hidden [&_button]:hidden',
+          'group h-12 w-full py-3 text-sm bg-transparent flex items-center outline-none rounded-md placeholder:text-text-200 disabled:cursor-not-allowed disabled:opacity-50 [&_div]:w-full [&_div]:flex [&_div]:items-center [&_input]:flex-1 [&_input]:bg-transparent [&_input]:outline-none [&_input]:min-w-0 [&_svg[stroke-width="2"]]:hidden [&_input::-webkit-search-cancel-button]:appearance-none',
           props.className
         )}
       >
         <Input placeholder={placeholder} />
+        <Button className="size-8 bg-background-soft-100 text-text-200 flex items-center justify-center rounded-lg outline-none hover:text-text-100 focus-visible:ring-1 focus-visible:ring-text-200 opacity-0 pointer-events-none group-focus-within:opacity-100 group-focus-within:pointer-events-auto group-data-empty:opacity-0! group-data-empty:pointer-events-none! transition-opacity duration-200">
+          <Close className="size-5" />
+        </Button>
       </SearchField>
     </div>
   );
