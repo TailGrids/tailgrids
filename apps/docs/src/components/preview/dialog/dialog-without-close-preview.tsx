@@ -23,8 +23,8 @@ export default function DialogWithoutClosePreview() {
         Share
       </DialogTrigger>
 
-      <DialogOverlay isDismissable>
-        <DialogContent showCloseButton={false}>
+      <DialogOverlay>
+        <DialogContent showCloseButton={false} className="w-sm">
           <DialogHeader>
             <DialogTitle>Share link</DialogTitle>
             <DialogDescription>

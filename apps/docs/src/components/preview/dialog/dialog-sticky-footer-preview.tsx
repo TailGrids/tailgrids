@@ -20,8 +20,8 @@ export default function DialogStickyFooterPreview() {
       <DialogTrigger className={buttonStyles({ variant: "primary" })}>
         Sticky Footer
       </DialogTrigger>
-      <DialogOverlay isDismissable>
-        <DialogContent>
+      <DialogOverlay>
+        <DialogContent className="max-w-lg">
           <DialogHeader className="pb-4 border-b">
             <DialogTitle>Terms of Service</DialogTitle>
             <DialogDescription>
@@ -90,7 +90,7 @@ export default function DialogStickyFooterPreview() {
             </div>
           </DialogBody>
 
-          <DialogFooter className="border-t border-base-100 pt-4">
+          <DialogFooter className="border-t pt-4">
             <DialogClose
               className={buttonStyles({ appearance: "outline", size: "sm" })}
             >

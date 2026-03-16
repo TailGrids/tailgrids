@@ -144,6 +144,7 @@ export default function DialogExample() {
   codeSnippet={getFileContent(
     "/src/components/preview/dialog/dialog-controlled-preview.tsx"
   )}
+  noPaddingOnPreviewForMobile
 >
   <DialogControlledPreview />
 </ComponentPreview>
@@ -261,7 +262,7 @@ The backdrop overlay that covers the page behind the dialog. Wraps `DialogConten
 | Prop                        | Type              | Default | Description                                     |
 | :-------------------------- | :---------------- | :------ | :---------------------------------------------- |
 | `children`                  | `React.ReactNode` | -       | The `DialogContent` element                     |
-| `isDismissable`             | `boolean`         | -       | Whether clicking outside the dialog closes it   |
+| `isDismissable`             | `boolean`         | `true`  | Whether clicking outside the dialog closes it   |
 | `isKeyboardDismissDisabled` | `boolean`         | -       | Whether pressing Escape to close is disabled    |
 | `className`                 | `string`          | -       | Additional CSS classes for the overlay backdrop |
 

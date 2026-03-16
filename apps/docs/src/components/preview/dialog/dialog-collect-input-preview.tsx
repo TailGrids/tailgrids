@@ -21,8 +21,8 @@ export default function DialogCollectInputPreview() {
   return (
     <Dialog>
       <DialogTrigger className={buttonStyles()}>Edit Profile</DialogTrigger>
-      <DialogOverlay isDismissable>
-        <DialogContent>
+      <DialogOverlay>
+        <DialogContent className="w-lg">
           <DialogHeader>
             <DialogTitle>Edit Profile</DialogTitle>
             <DialogDescription>

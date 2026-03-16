@@ -18,8 +18,8 @@ export default function DialogPreview() {
   return (
     <Dialog>
       <DialogTrigger className={buttonStyles()}>Open Dialog</DialogTrigger>
-      <DialogOverlay isDismissable>
-        <DialogContent>
+      <DialogOverlay>
+        <DialogContent className="w-sm">
           <DialogHeader>
             <DialogTitle>Dialog Title</DialogTitle>
             <DialogDescription>

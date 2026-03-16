@@ -99,8 +99,8 @@ export function DatePicker({
 
       {/* Calendar Popup */}
       {isOpen && (
-        <div className="absolute left-0 z-20 mt-2 w-full rounded-xl border border-base-100 bg-background-50 shadow-xl">
-          <div className="p-5">
+        <div className="absolute left-1/2 -translate-x-1/2 sm:left-0 sm:translate-x-0 z-20 mt-2 w-[calc(100vw-2rem)] max-w-sm sm:w-full rounded-xl border border-base-100 bg-background-50 shadow-xl">
+          <div className="p-3 sm:p-5">
             {/* Header */}
             <div className="mb-6 flex items-center justify-between">
               <Button
@@ -127,7 +127,7 @@ export function DatePicker({
             </div>
 
             {/* Week Days */}
-            <div className="mb-2 grid grid-cols-7 gap-2 text-center">
+            <div className="mb-2 grid grid-cols-7 gap-1 sm:gap-2 text-center">
               {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map(d => (
                 <span
                   key={d}
@@ -139,7 +139,7 @@ export function DatePicker({
             </div>
 
             {/* Calendar Days */}
-            <div className="grid grid-cols-7 gap-2 text-center">
+            <div className="grid grid-cols-7 gap-1 sm:gap-2 text-center">
               {days.map(day => {
                 const inMonth = isSameMonth(day, currentMonth);
                 const selected = tempSelected && isSameDay(day, tempSelected);
@@ -151,7 +151,7 @@ export function DatePicker({
                     disabled={!inMonth}
                     onClick={() => inMonth && handleDateClick(day)}
                     className={cn(
-                      "size-11 rounded-full text-sm font-medium transition-all",
+                      "size-9 sm:size-11 rounded-full text-sm font-medium transition-all",
                       {
                         "text-text-200 cursor-not-allowed": !inMonth,
                         "bg-datepicker-selected-background text-white-100":

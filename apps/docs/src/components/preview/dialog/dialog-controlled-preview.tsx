@@ -56,7 +56,7 @@ export default function DialogControlledPreview() {
       </div>
 
       <Dialog isOpen={isOpen} onOpenChange={setIsOpen}>
-        <DialogOverlay isDismissable>
+        <DialogOverlay>
           <DialogContent
             className="max-w-md border-none p-0 shadow-2xl overflow-hidden"
             showCloseButton={false}

@@ -99,7 +99,7 @@ export function RangeDatePicker({
     const allDays = [...prevMonthDays, ...currentMonthDays, ...nextMonthDays];
 
     return (
-      <div className="grid grid-cols-7">
+      <div className="grid grid-cols-7 gap-y-0.5">
         {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map(day => (
           <div
             key={day}
@@ -113,32 +113,47 @@ export function RangeDatePicker({
           const isCurrentMonth = isSameMonth(day, monthDate);
           const isStart = tempStartDate && isSameDay(day, tempStartDate);
           const isEnd = tempEndDate && isSameDay(day, tempEndDate);
-          const isInRange =
+          const isSunday = day.getDay() === 0;
+          const isSaturday = day.getDay() === 6;
+          const isWithin =
             tempStartDate &&
             tempEndDate &&
-            isWithinInterval(day, { start: tempStartDate, end: tempEndDate }) &&
-            !isStart &&
-            !isEnd;
+            isWithinInterval(day, { start: tempStartDate, end: tempEndDate });
 
           return (
-            <button
+            <div
               key={index}
-              className={cn(
-                "grid place-items-center size-12 font-medium text-title-50 hover:bg-datepicker-selected-hover-background",
-                {
-                  "pointer-events-none text-text-200": !isCurrentMonth,
-                  "rounded-l-full": isStart,
-                  "rounded-r-full": isEnd,
-                  "bg-primary-500! text-white-100": isStart || isEnd,
-                  "bg-datepicker-selected-hover-background text-title-50":
-                    isInRange && isCurrentMonth,
-                  "rounded-full": !isStart && !isEnd && !isInRange
-                }
-              )}
-              onClick={() => isCurrentMonth && handleDateClick(day)}
+              className="relative w-full h-9 sm:h-12 flex items-center justify-center group"
             >
-              {day.getDate()}
-            </button>
+              {isWithin && (
+                <div
+                  className={cn(
+                    "absolute inset-y-0 bg-datepicker-selected-hover-background",
+                    {
+                      "rounded-l-full": isStart || isSunday,
+                      "rounded-r-full": isEnd || isSaturday,
+                      "right-0 w-[calc(50%+1.125rem)] sm:w-[calc(50%+1.5rem)]":
+                        isStart,
+                      "left-0 w-[calc(50%+1.125rem)] sm:w-[calc(50%+1.5rem)]":
+                        isEnd,
+                      "w-full": !isStart && !isEnd
+                    }
+                  )}
+                />
+              )}
+              <button
+                className={cn(
+                  "relative z-10 grid place-items-center size-9 sm:size-12 font-medium text-title-50 rounded-full hover:bg-datepicker-selected-hover-background",
+                  {
+                    "pointer-events-none text-text-200": !isCurrentMonth,
+                    "bg-primary-500! text-white-100": isStart || isEnd
+                  }
+                )}
+                onClick={() => isCurrentMonth && handleDateClick(day)}
+              >
+                {day.getDate()}
+              </button>
+            </div>
           );
         })}
       </div>
@@ -160,7 +175,7 @@ export function RangeDatePicker({
       <Button
         appearance="outline"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex justify-start min-w-sm"
+        className="flex justify-start w-full sm:w-auto sm:min-w-75"
       >
         <Calendar className="text-text-100" />
 
@@ -169,11 +184,11 @@ export function RangeDatePicker({
 
       {/* Calendar Container */}
       {isOpen && (
-        <div className="absolute z-50 min-w-3xl translate-y-4 rounded-xl border border-base-100 bg-background-50 shadow-lg">
+        <div className="absolute left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 z-50 w-[calc(100vw-2rem)] md:w-max max-w-[calc(100vw-2rem)] sm:max-w-none overflow-hidden sm:overflow-visible translate-y-4 rounded-xl border border-base-100 bg-background-50 shadow-lg">
           {/* Two Month View */}
           <div className="flex flex-col divide-y divide-(--border-color-base-100) md:flex-row md:divide-x md:divide-y-0">
             {/* First Month */}
-            <div className="p-5 md:w-1/2">
+            <div className="p-3 sm:p-5 md:w-1/2">
               <div className="mb-4 flex items-center justify-between">
                 <Button
                   variant="ghost"
@@ -195,7 +210,7 @@ export function RangeDatePicker({
             </div>
 
             {/* Second Month */}
-            <div className="p-5 md:w-1/2">
+            <div className="p-3 sm:p-5 md:w-1/2">
               <div className="mb-4 flex items-center justify-between">
                 <div className="w-9" />
 

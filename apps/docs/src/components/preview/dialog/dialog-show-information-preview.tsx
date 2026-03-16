@@ -19,8 +19,8 @@ export default function DialogShowInformationPreview() {
   return (
     <Dialog>
       <DialogTrigger className={buttonStyles()}>Show Information</DialogTrigger>
-      <DialogOverlay isDismissable>
-        <DialogContent>
+      <DialogOverlay>
+        <DialogContent className="max-w-120">
           <DialogHeader>
             <div className="flex items-center gap-3">
               <span className="flex size-10 items-center justify-center rounded-full bg-primary-50 text-primary-500">
