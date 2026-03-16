@@ -1,6 +1,7 @@
 import chalk from "chalk";
 import fs, { writeFile } from "node:fs/promises";
 import ora from "ora";
+import path from "node:path";
 import { REGISTRIES } from "../src/registries.ts";
 import { COMPONENT_REGISTRY_RAW_BASE_URL } from "../src/constants/urls.ts";
 
@@ -19,6 +20,7 @@ async function main() {
 
     // Build the Shadcn registry
     const shadcnRegistry = {
+      $schema: "https://ui.shadcn.com/schema/registry.json",
       name: "tailgrids",
       homepage: "https://tailgrids.com",
       items: registry.map(item => ({
@@ -34,11 +36,11 @@ async function main() {
       }))
     };
 
-    const docsPublicRegistryDir = "../../apps/docs/public/r";
+    const docsPublicRegistryDir = path.resolve(process.cwd(), "../../apps/docs/public/r");
     await fs.mkdir(docsPublicRegistryDir, { recursive: true });
 
     await writeFile(
-      `${docsPublicRegistryDir}/registry.json`,
+      path.join(docsPublicRegistryDir, "registry.json"),
       JSON.stringify(shadcnRegistry, null, 2),
       "utf-8"
     );
