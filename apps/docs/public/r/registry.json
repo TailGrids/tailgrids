@@ -1,0 +1,842 @@
+{
+  "name": "tailgrids",
+  "homepage": "https://tailgrids.com",
+  "items": [
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "description": "Fully accessible accordion component with multiple style variants",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority",
+        "@tailgrids/icons"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "description": "Dismissible alert component with multiple variants, and action buttons.",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "class-variance-authority",
+        "@tailgrids/icons"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "description": "A modal dialog that interrupts the user with important content and expects a response.",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "description": "Aspect ratio component to maintain the aspect ratio of an element.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "description": "An image element with a fallback for representing a user.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "description": "Badge component with multiple colors, sizes, and support for prefix/suffix icons.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumbs",
+      "type": "registry:ui",
+      "description": "Breadcrumbs component with multiple variants and support for icons.",
+      "registryDependencies": [],
+      "dependencies": [
+        "@tailgrids/icons"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/breadcrumbs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "description": "Button component with multiple variants, sizes, and support for icons.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "description": "A component with multiple buttons grouped together.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "description": "A card component with ultimate flexibility and customization.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "description": "A powerful, flexible carousel component built with Embla Carousel.",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "embla-carousel-react",
+        "@tailgrids/icons"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "description": "A chart component with multiple variants.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority",
+        "recharts"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "description": "A checkbox component with label and multiple states.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority",
+        "@tailgrids/icons"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "description": "A high-performance context menu component that appears when triggered by a right-click or long-press.",
+      "registryDependencies": [],
+      "dependencies": [
+        "@base-ui/react",
+        "@tailgrids/icons"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "description": "A context menu component with multiple variants.",
+      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "description": "A combobox component with multiple variants.",
+      "registryDependencies": [
+        "badge"
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "@tailgrids/icons"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/combobox/combobox.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/combobox/multi-combobox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "description": "A command menu component with multiple variants.",
+      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components",
+        "@tailgrids/icons"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/command.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "description": "A component to select a date or a range of dates.",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "react-stately",
+        "date-fns",
+        "@tailgrids/icons"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/date-picker/single-date.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/date-picker/range-date.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "description": "A dialog component that display a modal overlay above the main page content.",
+      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components",
+        "@tailgrids/icons"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "description": "A drawer component that slides in from the edge of the screen, typically used for navigation or displaying additional content.",
+      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components",
+        "@tailgrids/icons",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown",
+      "type": "registry:ui",
+      "description": "A dropdown component with multiple variants and support for icons.",
+      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/dropdown.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "description": "A field component with multiple variants and support for icons.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority",
+        "react-aria-components"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "description": "A hover card component that displays information when the user hovers over an element.",
+      "registryDependencies": [],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "description": "An input component with multiple variants and support for icons.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "description": "An input group component with multiple variants and support for icons.",
+      "registryDependencies": [
+        "input",
+        "text-area"
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "description": "A label component for form fields.",
+      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "link",
+      "type": "registry:ui",
+      "description": "A link component with multiple variants.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/link.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "list",
+      "type": "registry:ui",
+      "description": "A list component with multiple variants.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/list.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "description": "A responsive menu bar component that provides a horizontal row of menu triggers, each opening a dropdown menu.",
+      "registryDependencies": [],
+      "dependencies": [
+        "@base-ui/react",
+        "@tailgrids/icons"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/menubar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "native-select",
+      "type": "registry:ui",
+      "description": "A native select component with multiple variants.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority",
+        "@tailgrids/icons"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/native-select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "description": "A navigation menu component that provides a clear visual structure for the primary links of a website or application.",
+      "registryDependencies": [],
+      "dependencies": [
+        "@base-ui/react",
+        "@tailgrids/icons"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "otp-input",
+      "type": "registry:ui",
+      "description": "A component for entering one-time passwords.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/otp-input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "description": "A component for navigating between pages.",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "class-variance-authority",
+        "@tailgrids/icons"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "description": "A popover component with multiple variants.",
+      "registryDependencies": [],
+      "dependencies": [
+        "@floating-ui/react"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "description": "A progress bar component with multiple variants.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-input",
+      "type": "registry:ui",
+      "description": "A radio button component with label and multiple states.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/radio-input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "description": "Accessible resizable panel groups and layouts with keyboard support.",
+      "registryDependencies": [],
+      "dependencies": [
+        "react-resizable-panels"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/resizable.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "description": "A scroll area component to add scrollbars to an element.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority",
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "description": "A select component with multiple variants.",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "@tailgrids/icons"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "description": "A separator component to separate content.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority",
+        "react-aria-components"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "description": "A sheet component that slides in from the edge of the screen, typically used for navigation or displaying additional content.",
+      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components",
+        "@tailgrids/icons",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "description": "A component to indicate a loading state.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "description": "A slider component to select a value from a range.",
+      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components",
+        "react-stately"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/slider.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "social-button",
+      "type": "registry:ui",
+      "description": "A button component for social media actions.",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/social-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "description": "A spinner component to indicate a loading state.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/spinner/index.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/spinner/default.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/spinner/dotted.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/spinner/dotted-round.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "description": "A table component with multiple variants.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "description": "A tabs component with multiple variants.",
+      "registryDependencies": [
+        "badge"
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "text-area",
+      "type": "registry:ui",
+      "description": "A text area component with multiple variants.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/text-area.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "time-picker",
+      "type": "registry:ui",
+      "description": "A component to select a time.",
+      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/time-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "description": "A toast component for displaying notifications.",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "link"
+      ],
+      "dependencies": [
+        "class-variance-authority",
+        "@tailgrids/icons"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/toast.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "description": "A toggle switch component.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "description": "A tooltip component.",
+      "registryDependencies": [],
+      "dependencies": [
+        "@floating-ui/react"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}
