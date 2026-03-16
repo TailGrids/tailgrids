@@ -1,5 +1,16 @@
 # @tailgrids/cli
 
+## 1.3.0
+
+### Minor Changes
+
+feat(cli): add framework detection and optionally replace main CSS file during init
+
+- Added automatic detection for Vite and Next.js projects to find the main CSS file during `init`.
+- Added a prompt to ask for the main CSS file path if the project framework cannot be automatically determined.
+- Added a confirmation step allowing users to replace their existing main CSS file with the selected theme's CSS variables, falling back to creating a `tailgrids.css` file if they decline.
+- Updated `tailgrids.config.json` payload to track the project's `framework` and `mainCssFile`.
+
 ## 1.2.0
 
 ### Minor Changes

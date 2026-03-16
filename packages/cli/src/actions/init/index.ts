@@ -1,4 +1,4 @@
-import { input, select } from "@inquirer/prompts";
+import { confirm, input, select } from "@inquirer/prompts";
 import chalk from "chalk";
 import ora from "ora";
 import { installDependencies } from "../../utils/installing-dependencies.ts";
@@ -7,12 +7,16 @@ import {
   createCNUtility,
   createConfigFile,
   createCSSFile,
-  getAvailableThemesChoices
+  getAvailableThemesChoices,
+  getProjectInfo,
+  replaceMainCSSFile
 } from "./helpers.ts";
 
 export type Config = {
   theme: string;
   alias: string;
+  framework: "Next.js" | "Vite" | "Unknown";
+  mainCssFile: string | null;
 };
 
 export async function handleInitCommand() {
@@ -42,16 +46,48 @@ export async function handleInitCommand() {
     logger.dim("Setting up your project...");
     logger.break();
 
+    const spinner = ora();
+
+    spinner.start("Detecting project type...");
+
+    let { framework, cssPath } = await getProjectInfo();
+
+    if (framework !== "Unknown") {
+      spinner.succeed(`Detected ${chalk.cyan(framework)} project`);
+    } else {
+      spinner.info("Could not determine project framework");
+      
+      cssPath = await input({
+        message: "Where is your main CSS file? (e.g., src/index.css, app/globals.css):",
+        default: "src/index.css",
+        validate: value => {
+          if (!value.trim()) return "CSS path cannot be empty";
+          return true;
+        }
+      });
+    }
+
     const config: Config = {
       theme,
-      alias: alias.trim()
+      alias: alias.trim(),
+      framework,
+      mainCssFile: cssPath
     };
-
-    const spinner = ora();
 
     await createConfigFile(config, spinner);
 
-    await createCSSFile(theme, spinner);
+    const shouldReplaceCss = await confirm({
+      message: `Would you like to replace ${
+        config.mainCssFile ? chalk.cyan(config.mainCssFile) : "your main CSS file"
+      } with the ${theme} theme variables?`,
+      default: true
+    });
+
+    if (shouldReplaceCss) {
+      await replaceMainCSSFile(theme, config.mainCssFile, spinner);
+    } else {
+      await createCSSFile(theme, spinner);
+    }
 
     await createCNUtility(alias.trim(), spinner);
 
@@ -69,22 +105,30 @@ export async function handleInitCommand() {
 
     logger.break();
 
-    logger.dim(
-      `  1. Copy the contents of ${chalk.cyan(
-        "tailgrids.css"
-      )} and paste it in your`
-    );
-    logger.dim(
-      `     main CSS file (e.g., ${chalk.cyan("globals.css")} or ${chalk.cyan(
-        "app.css"
-      )})`
-    );
-    logger.break();
-    logger.dim(
-      `  2. Start adding components with ${chalk.cyan(
-        "tailgrids add <component>"
-      )}`
-    );
+    const cssDisplay = config.mainCssFile
+      ? chalk.cyan(config.mainCssFile)
+      : `e.g., ${chalk.cyan("globals.css")} or ${chalk.cyan("app.css")}`;
+
+    if (!shouldReplaceCss) {
+      logger.dim(
+        `  1. Copy the contents of ${chalk.cyan(
+          "tailgrids.css"
+        )} and paste it in your`
+      );
+      logger.dim(`     main CSS file (${cssDisplay})`);
+      logger.break();
+      logger.dim(
+        `  2. Start adding components with ${chalk.cyan(
+          "tailgrids add <component>"
+        )}`
+      );
+    } else {
+      logger.dim(
+        `  1. Start adding components with ${chalk.cyan(
+          "tailgrids add <component>"
+        )}`
+      );
+    }
     logger.break();
   } catch (error) {
     logger.break();
