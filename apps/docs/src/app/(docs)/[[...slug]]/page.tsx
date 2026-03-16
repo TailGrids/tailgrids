@@ -33,7 +33,7 @@ export default async function Page(props: PageProps<"/[[...slug]]">) {
               "mt-8",
               nav.previous && nav.next
                 ? "w-full max-w-full"
-                : "w-full max-w-[400px]",
+                : "w-full max-w-100",
               nav.next && !nav.previous && "ml-auto"
             )}
           />
