@@ -33,16 +33,18 @@ export interface DialogOverlayProps extends ModalOverlayProps {
   className?: string;
 }
 
-export function DialogOverlay({ className, ...props }: DialogOverlayProps) {
+export function DialogOverlay({
+  className,
+  isDismissable = true,
+  ...props
+}: DialogOverlayProps) {
   return (
     <ModalOverlay
       className={cn(
-        "fixed inset-0 z-50 bg-black/50 backdrop-blur-sm",
-        "transition-opacity duration-200",
-        "data-entering:opacity-0",
-        "data-exiting:opacity-0",
+        "fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-opacity duration-200 data-entering:opacity-0 data-exiting:opacity-0",
         className
       )}
+      isDismissable={isDismissable}
       {...props}
     />
   );
@@ -61,14 +63,12 @@ export function DialogContent({
   ...props
 }: DialogContentProps) {
   return (
-    <Modal
-      className={cn(
-        "fixed top-1/2 left-1/2 z-50 w-full max-w-lg -translate-x-1/2 -translate-y-1/2 outline-none transition-all duration-200 data-entering:scale-95 data-entering:opacity-0 data-exiting:scale-95 data-exiting:opacity-0",
-        className
-      )}
-    >
+    <Modal className="w-fit">
       <AriaDialog
-        className="w-full relative rounded-xl border border-base-100 bg-background-100 p-6 shadow-lg outline-none"
+        className={cn(
+          "w-full max-w-[calc(100%-2rem)] p-6 border border-base-100 bg-background-100 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl shadow-lg outline-none",
+          className
+        )}
         {...props}
       >
         {({ close }) => (

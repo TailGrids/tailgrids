@@ -19,8 +19,8 @@ export default function DialogAskQuestionPreview() {
       <DialogTrigger className={buttonStyles({ variant: "danger" })}>
         Delete Account
       </DialogTrigger>
-      <DialogOverlay isDismissable>
-        <DialogContent>
+      <DialogOverlay>
+        <DialogContent className="max-w-sm">
           <DialogHeader>
             <DialogTitle>Are you absolutely sure?</DialogTitle>
             <DialogDescription>
@@ -28,7 +28,8 @@ export default function DialogAskQuestionPreview() {
               account and remove all of your data from our servers.
             </DialogDescription>
           </DialogHeader>
-          <DialogFooter>
+
+          <DialogFooter className="mt-2">
             <DialogClose
               className={buttonStyles({ appearance: "outline", size: "sm" })}
             >

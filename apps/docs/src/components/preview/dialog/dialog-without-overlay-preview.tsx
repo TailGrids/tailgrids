@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, buttonStyles } from "@/registry/core/button";
+import { buttonStyles } from "@/registry/core/button";
 import {
   Dialog,
   DialogBody,
@@ -19,7 +19,7 @@ export default function DialogWithoutOverlayPreview() {
     <Dialog>
       <DialogTrigger className={buttonStyles()}>Complete Order</DialogTrigger>
 
-      <DialogContent showCloseButton={false}>
+      <DialogContent showCloseButton={false} className="max-w-sm">
         <DialogHeader>
           <div className="flex flex-col items-center gap-3 text-center">
             <span className="flex size-12 items-center justify-center rounded-full bg-success-500/10 text-success-500">
@@ -48,14 +48,14 @@ export default function DialogWithoutOverlayPreview() {
           </div>
         </DialogBody>
 
-        <DialogFooter className="pt-4">
-          <DialogClose>
-            <Button variant="primary" appearance="outline" size="sm">
-              View Order
-            </Button>
+        <DialogFooter className="pt-0 w-fit mx-auto">
+          <DialogClose
+            className={buttonStyles({ appearance: "outline", size: "sm" })}
+          >
+            View Order
           </DialogClose>
-          <DialogClose>
-            <Button size="sm">Continue Shopping</Button>
+          <DialogClose className={buttonStyles({ size: "sm" })}>
+            Continue Shopping
           </DialogClose>
         </DialogFooter>
       </DialogContent>
