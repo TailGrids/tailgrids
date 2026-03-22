@@ -43,7 +43,7 @@ export default function MultiComboboxCustomDisplayPreview() {
             return (
               <Badge
                 color={(framework?.color as any) || "primary"}
-                className="rounded-full px-3 py-1"
+                className="px-3 py-1 text-text-50 gap-0 rounded-full"
                 suffixIcon={<MultiComboboxContextConsumer id={key} />}
               >
                 {framework?.name || key}

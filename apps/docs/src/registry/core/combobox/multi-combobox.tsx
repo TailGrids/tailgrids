@@ -94,12 +94,13 @@ export function MultiComboboxDisplay({
           ) : (
             <Badge
               color="primary"
+              className="gap-1.5"
               suffixIcon={
                 <button
                   onClick={() => context.removeKey(key)}
                   className="hover:text-title-50 outline-none"
                 >
-                  <Xmark2x />
+                  <Xmark2x size={16} className="size-4!" />
                 </button>
               }
             >
