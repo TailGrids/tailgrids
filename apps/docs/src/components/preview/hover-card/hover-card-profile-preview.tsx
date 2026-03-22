@@ -6,7 +6,6 @@ import {
   HoverCardContent,
   HoverCardTrigger
 } from "@/registry/core/hover-card";
-import { Link } from "@/registry/core/link";
 import Image from "next/image";
 
 export default function HoverCardProfilePreview() {
@@ -14,19 +13,15 @@ export default function HoverCardProfilePreview() {
     <div className="flex justify-center p-10">
       <HoverCard>
         <HoverCardTrigger
-          render={
-            <Link
-              href="https://github.com/tailgrids"
-              className="text-primary-500 font-medium hover:underline"
-            >
-              @tailgrids
-            </Link>
-          }
-        />
+          href="https://github.com/tailgrids"
+          className="text-primary-500 font-medium hover:underline"
+        >
+          @tailgrids
+        </HoverCardTrigger>
         <HoverCardContent className="w-sm p-4">
           <div className="flex gap-4">
             <div className="relative shrink-0">
-              <Image src={Logo} width={150} height={40} alt="Tailgrids Logo" />
+              <Image src={Logo} width={120} height={40} alt="Tailgrids Logo" />
             </div>
             <div className="flex-1">
               <div className="space-y-1">
@@ -42,7 +37,9 @@ export default function HoverCardProfilePreview() {
                     Verified
                   </span>
                   <span className="text-[10px] text-text-200">•</span>
-                  <span className="text-[10px] text-text-200">Joined 2021</span>
+                  <span className="text-[10px] text-text-200">
+                    Started: 2021
+                  </span>
                 </div>
               </div>
             </div>
