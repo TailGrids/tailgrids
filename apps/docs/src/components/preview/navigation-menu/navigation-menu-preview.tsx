@@ -17,15 +17,15 @@ export default function NavigationMenuPreview() {
           <NavigationMenuItem>
             <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <div className="grid gap-3 p-4 md:w-100 lg:w-125 lg:grid-cols-[.75fr_1fr]">
+              <div className="grid gap-2 md:w-100 lg:w-125 lg:grid-cols-[.75fr_1fr]">
                 <div className="row-span-3">
                   <NavigationMenuLink
                     href="/"
-                    className="in-data-[slot=navigation-menu-content]:h-full w-full bg-background-200 flex flex-col items-start justify-end gap-5 rounded-md no-underline outline-hidden select-none focus:shadow-md"
+                    className="in-data-[slot=navigation-menu-content]:h-full w-full bg-background-200 flex flex-col items-start justify-end gap-4 rounded-md no-underline outline-hidden select-none focus:shadow-md"
                   >
                     <Image
                       src={"/docs/images/tailgrids-full-logo.svg"}
-                      width={150}
+                      width={120}
                       height={40}
                       className="dark:hidden max-[400px]:w-30"
                       alt="Tailgrids Logo"
@@ -84,8 +84,8 @@ export default function NavigationMenuPreview() {
           <NavigationMenuItem>
             <NavigationMenuTrigger>Components</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="grid w-100 gap-3 p-4 md:w-125 md:grid-cols-2 lg:w-150">
-                {components.map(component => (
+              <ul className="grid w-100 gap-2 md:w-125 md:grid-cols-2 lg:w-150">
+                {components.map((component: ComponentItem) => (
                   <li key={component.title}>
                     <NavigationMenuLink
                       href={component.href}
@@ -115,7 +115,13 @@ export default function NavigationMenuPreview() {
   );
 }
 
-const components: { title: string; href: string; description: string }[] = [
+interface ComponentItem {
+  title: string;
+  href: string;
+  description: string;
+}
+
+const components: ComponentItem[] = [
   {
     title: "Alert Dialog",
     href: "/docs/components/alert-dialog",

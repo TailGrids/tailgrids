@@ -28,10 +28,10 @@ export default function NavigationMenuSimplePreview() {
           <NavigationMenuTrigger className="px-3 py-2 text-[15px] font-medium text-title-50 dark:text-gray-300 hover:text-primary-500 dark:hover:text-white transition-colors bg-transparent border-none shadow-none">
             Products
           </NavigationMenuTrigger>
-          <NavigationMenuContent className="w-125 p-6 grid grid-cols-2 gap-x-8 gap-y-6">
+          <NavigationMenuContent className="w-125 grid grid-cols-2 gap-x-8 gap-y-6">
             <div className="space-y-6">
               <div>
-                <h4 className="text-[13px] font-semibold uppercase tracking-wider text-text-100 mb-4">
+                <h4 className="text-[13px] mb-2 px-1 pb-1.5 border-b font-semibold uppercase tracking-wider text-text-100">
                   Payments
                 </h4>
 
@@ -60,7 +60,7 @@ export default function NavigationMenuSimplePreview() {
 
             <div className="space-y-6">
               <div>
-                <h4 className="text-[13px] font-semibold uppercase tracking-wider text-text-100 mb-4">
+                <h4 className="px-1 pb-1.5 border-b text-[13px] font-semibold uppercase tracking-wider text-text-100 mb-2">
                   Financial Services
                 </h4>
                 <div className="space-y-4">
@@ -94,7 +94,7 @@ export default function NavigationMenuSimplePreview() {
           </NavigationMenuTrigger>
           <NavigationMenuContent className="w-112.5 p-0 overflow-hidden">
             <div className="grid grid-cols-1">
-              <div className="p-6 space-y-4">
+              <div className="p-2 space-y-4">
                 <StripeLink
                   href="#"
                   title="Ecommerce"
@@ -132,7 +132,7 @@ export default function NavigationMenuSimplePreview() {
           <NavigationMenuTrigger className="px-3 py-2 text-[15px] font-medium text-title-50 hover:text-primary-500 dark:hover:text-white transition-colors bg-transparent border-none shadow-none">
             Developers
           </NavigationMenuTrigger>
-          <NavigationMenuContent className="w-100 p-6 space-y-6">
+          <NavigationMenuContent className="w-100 space-y-6">
             <div className="grid grid-cols-2 gap-4">
               <StripeLink
                 href="#"
