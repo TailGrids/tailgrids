@@ -124,24 +124,3 @@ For developers, Tailgrids focuses on long-term maintainability and a great DX:
 - Works with Vite, Next.js, CRA, and other React setups
 
 Balanced for design and engineering, without compromises.
-
----
-
-## ♿ Accessibility First
-
-Accessibility is not an afterthought.
-
-- Semantic markup
-- Keyboard-friendly components
-- Proper focus handling
-- Screen reader-friendly patterns
-- WCAG-aware design decisions
-
----
-
-## ⚡ Performance Optimized
-
-- Minimal CSS overhead
-- Tree-shakeable components
-- No unnecessary JavaScript
-- Tailwind-powered styling for fast builds
