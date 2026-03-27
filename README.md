@@ -42,7 +42,7 @@ export default function Home() {
 }
 ```
 
-**Full installation guide →** [Tailgrids Docs](https://tailgrids.com//installation)
+**Full installation guide →** [Tailgrids Installation Docs](https://tailgrids.com//installation)
 
 ---
 
@@ -99,7 +99,7 @@ All components are fully documented with examples, API references, accessibility
 - **[Checkbox](https://tailgrids.com/docs/components/checkbox)**
 - **[Collapsible](https://tailgrids.com/docs/components/collapsible)**
 - **[Command](https://tailgrids.com/docs/components/command)**
-- **[Combobox](https://tailgrids.com/docs/components/combobox)**)
+- **[Combobox](https://tailgrids.com/docs/components/combobox)**
 - **[Context Menu](https://tailgrids.com/docs/components/context-menu)**
 - **[Date Picker](https://tailgrids.com/docs/components/date-picker)**
 - **[Dialog](https://tailgrids.com/docs/components/dialog)**
@@ -144,6 +144,7 @@ All components are fully documented with examples, API references, accessibility
 ## 🧱 UI Blocks & Templates
 
 - **UI Blocks** – Pre-built sections for dashboards, apps, marketing, e-commerce, and AI products → [Explore Blocks](https://tailgrids.com/blocks)
+
 - **Templates** – Complete, ready-to-use React + Tailwind pages and layouts → [Browse Templates](https://tailgrids.com/templates)
 
 ---
