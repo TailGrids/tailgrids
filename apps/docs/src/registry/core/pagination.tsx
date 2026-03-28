@@ -11,7 +11,7 @@ const wrapperStyles = cva(
     variants: {
       variant: {
         default: "gap-0.5",
-        compact: "max-w-fit sm:divide-x sm:divide-(--border-color-base-100)"
+        compact: "max-w-fit sm:divide-x sm:divide-button-outline-border"
       }
     }
   }
@@ -26,7 +26,7 @@ const sideButtonStyles = cva("max-sm:size-10 sm:h-10", {
     },
     variant: {
       default: "",
-      compact: "border-base-100"
+      compact: ""
     }
   }
 });
@@ -184,7 +184,7 @@ function PaginationButton({
       className={cn(
         "size-10 shrink-0 rounded-lg aria-[current=page]:bg-background-soft-100 hover:bg-background-soft-100",
         paginationVariant === "compact" &&
-          "rounded-none border-y border-base-100 bg-background-50"
+          "rounded-none border-y border-button-outline-border bg-button-outline-background"
       )}
       onClick={() => onPageChange?.(page)}
     >
@@ -201,7 +201,7 @@ function PaginationEllipsis({
   return (
     <button
       className={cn("pointer-events-none size-10 shrink-0", {
-        "border-y border-base-100 bg-background-50":
+        "border-y border-button-outline-border bg-button-outline-background":
           paginationVariant === "compact"
       })}
     >

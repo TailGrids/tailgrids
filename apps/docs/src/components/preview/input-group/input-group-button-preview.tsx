@@ -18,7 +18,9 @@ export default function InputGroupButtonPreview() {
     <div className="flex w-full max-w-sm flex-col gap-6 p-4">
       {/* Single Icon Button */}
       <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium">Password Visibility</label>
+        <label className="text-sm text-title-50 font-medium">
+          Password Visibility
+        </label>
         <InputGroup>
           <InputGroupInput
             type={showPassword ? "text" : "password"}
@@ -38,7 +40,9 @@ export default function InputGroupButtonPreview() {
 
       {/* Button with Text */}
       <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium">Newsletter Subscribe</label>
+        <label className="text-sm text-title-50 font-medium">
+          Newsletter Subscribe
+        </label>
         <InputGroup>
           <InputGroupInput
             placeholder="Enter your email"
@@ -65,7 +69,9 @@ export default function InputGroupButtonPreview() {
 
       {/* Multiple Buttons */}
       <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium">Chat Message</label>
+        <label className="text-sm text-title-50 font-medium">
+          Chat Message
+        </label>
         <InputGroup>
           <InputGroupInput
             placeholder="Type a message..."

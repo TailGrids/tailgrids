@@ -163,7 +163,7 @@ export const PopoverTrigger = React.forwardRef<
     <button
       ref={ref}
       type="button"
-      // The user can style the trigger based on the state
+      className={cn("text-text-50", props.className)}
       data-state={context.open ? "open" : "closed"}
       {...context.getReferenceProps(props)}
     >
@@ -190,7 +190,7 @@ export const PopoverContent = React.forwardRef<
           aria-labelledby={context.labelId}
           aria-describedby={context.descriptionId}
           {...context.getFloatingProps(props)}
-          className="bg-background-100 max-w-97.5 rounded-xl border border-popover-border p-5 pt-3"
+          className="max-w-97.5 p-5 pt-3 border border-popover-border text-text-50 bg-background-100 rounded-xl"
         >
           <FloatingArrow
             ref={context.arrowRef}
@@ -265,10 +265,12 @@ export const PopoverClose = React.forwardRef<
   React.ButtonHTMLAttributes<HTMLButtonElement>
 >(function PopoverClose(props, ref) {
   const { setOpen } = usePopoverContext();
+
   return (
     <button
       type="button"
       ref={ref}
+      className={cn("text-text-50", props.className)}
       {...props}
       onClick={event => {
         props.onClick?.(event);

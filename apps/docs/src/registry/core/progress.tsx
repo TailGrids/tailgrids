@@ -25,7 +25,7 @@ export function Progress({
           // Fix overflow clipping in Safari
           // https://gist.github.com/domske/b66047671c780a238b51c51ffde8d3a0
           transform: "translateZ(0)",
-          backgroundColor: trackColor || "var(--border-color-base-100)"
+          backgroundColor: trackColor || "var(--border-color-base-200)"
         }}
         aria-valuemax={100}
         aria-valuemin={0}

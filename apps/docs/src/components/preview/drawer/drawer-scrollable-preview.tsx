@@ -27,21 +27,21 @@ export default function DrawerScrollablePreview() {
           </DrawerDescription>
         </DrawerHeader>
         <DrawerBody className="px-6">
-          <div className="prose prose-sm dark:prose-invert py-4">
+          <div className="text-text-50 prose prose-sm dark:prose-invert py-4">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
             </p>
-            <h3>1. Acceptance of Terms</h3>
+            <h3 className="text-title-50">1. Acceptance of Terms</h3>
             <p>
               Duis aute irure dolor in reprehenderit in voluptate velit esse
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
               cupidatat non proident, sunt in culpa qui officia deserunt mollit
               anim id est laborum.
             </p>
-            <h3>2. User Responsibilities</h3>
+            <h3 className="text-title-50">2. User Responsibilities</h3>
             <p>
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
@@ -53,7 +53,7 @@ export default function DrawerScrollablePreview() {
               aut fugit, sed quia consequuntur magni dolores eos qui ratione
               voluptatem sequi nesciunt.
             </p>
-            <h3>3. Privacy Policy</h3>
+            <h3 className="text-title-50">3. Privacy Policy</h3>
             <p>
               Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
               consectetur, adipisci velit, sed quia non numquam eius modi
@@ -66,7 +66,7 @@ export default function DrawerScrollablePreview() {
               consequatur? Quis autem vel eum iure reprehenderit qui in ea
               voluptate velit esse quam nihil molestiae consequatur.
             </p>
-            <h3>4. Limitation of Liability</h3>
+            <h3 className="text-title-50">4. Limitation of Liability</h3>
             <p>
               At vero eos et accusamus et iusto odio dignissimos ducimus qui
               blanditiis praesentium voluptatum deleniti atque corrupti quos

@@ -8,7 +8,7 @@ export default function AspectRatioCustomPreview() {
           customRatio={2.35 / 1}
           className="rounded-lg overflow-hidden"
         >
-          <div className="size-full flex items-center justify-center text-neutral-900 font-medium text-sm bg-primary-50">
+          <div className="size-full flex items-center justify-center text-title-50 font-medium text-sm bg-background-soft-400">
             Custom Ratio: 2.35:1 (Cinematic Widescreen)
           </div>
         </AspectRatio>

@@ -16,11 +16,8 @@ export default function AspectRatioVariantsPreview() {
     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full p-4">
       {variants.map(({ ratio, label }) => (
         <div key={ratio} className="space-y-2">
-          <AspectRatio
-            ratio={ratio}
-            className="rounded-lg overflow-hidden bg-primary-50"
-          >
-            <div className="size-full flex items-center justify-center text-neutral-900 font-medium text-sm">
+          <AspectRatio ratio={ratio} className="rounded-lg overflow-hidden">
+            <div className="size-full flex items-center justify-center text-title-50 font-medium text-sm bg-background-soft-400">
               {label}
             </div>
           </AspectRatio>

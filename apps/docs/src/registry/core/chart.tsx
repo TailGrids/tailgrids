@@ -134,7 +134,9 @@ function ChartTooltipContent({
       {...props}
     >
       {!hideLabel && (
-        <p className="px-2 py-1 border-b bg-background-soft-100">{label}</p>
+        <p className="px-2 py-1 border-b bg-background-soft-100 text-title-50">
+          {label}
+        </p>
       )}
 
       <ul className="-space-y-2">
@@ -168,7 +170,7 @@ function ChartTooltipContent({
 
 const ChartLegend = RechartsPrimitive.Legend;
 
-const chartLegendContentVariants = cva("relative", {
+const chartLegendContentVariants = cva("relative text-title-50", {
   variants: {
     indicator: {
       dot: "before:absolute before:-left-3 before:top-1/2 before:-translate-y-1/2 before:content-[''] before:size-2 before:rounded-full",

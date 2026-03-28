@@ -197,8 +197,8 @@ const fieldSeparatorStyles = cva(
   {
     variants: {
       hasContent: {
-        true: "before:h-px before:flex-1 before:bg-base-200 after:h-px after:flex-1 after:bg-base-200",
-        false: "h-px bg-base-200"
+        true: "before:h-px before:flex-1 before:bg-(--border-color-base-200) after:h-px after:flex-1 after:bg-(--border-color-base-200)",
+        false: "h-px bg-(--border-color-base-200)"
       }
     }
   }

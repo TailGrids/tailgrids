@@ -1,3 +1,5 @@
+import LogoDarkMode from "@/assets/logo/dark-mode.svg";
+import LogoLightMode from "@/assets/logo/light-mode.svg";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -24,10 +26,17 @@ export default function NavigationMenuPreview() {
                     className="in-data-[slot=navigation-menu-content]:h-full w-full bg-background-200 flex flex-col items-start justify-end gap-4 rounded-md no-underline outline-hidden select-none focus:shadow-md"
                   >
                     <Image
-                      src={"/docs/images/tailgrids-full-logo.svg"}
+                      src={LogoLightMode}
                       width={120}
                       height={40}
-                      className="dark:hidden max-[400px]:w-30"
+                      className="block dark:hidden max-[400px]:w-30"
+                      alt="Tailgrids Logo"
+                    />
+                    <Image
+                      src={LogoDarkMode}
+                      width={120}
+                      height={40}
+                      className="dark:block hidden max-[400px]:w-30"
                       alt="Tailgrids Logo"
                     />
 

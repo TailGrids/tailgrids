@@ -1,5 +1,6 @@
 "use client";
 
+import { buttonStyles } from "@/registry/core/button";
 import {
   Popover,
   PopoverClose,
@@ -12,7 +13,7 @@ import {
 export default function PopoverDefaultPreview() {
   return (
     <Popover>
-      <PopoverTrigger className="px-4 py-2 rounded-lg border">
+      <PopoverTrigger className={buttonStyles({ appearance: "outline" })}>
         Open Popover
       </PopoverTrigger>
 

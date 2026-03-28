@@ -37,7 +37,7 @@ const InputGroupInput = React.forwardRef<
 InputGroupInput.displayName = "InputGroupInput";
 
 const inputGroupAddonStyles = cva(
-  "flex items-center justify-center px-3 text-sm text-base-500 shrink-0",
+  "flex items-center justify-center px-3 text-sm text-title-50 shrink-0",
   {
     variants: {
       align: {
@@ -115,7 +115,7 @@ const InputGroupTextarea = React.forwardRef<
     ref={ref}
     data-slot="input-group-control"
     className={cn(
-      "flex-1 border-none bg-transparent shadow-none focus:ring-0 focus:border-none rounded-none w-full min-w-0 px-3 py-2.5 resize-none",
+      "w-full min-w-0 px-3 py-2.5 flex-1 border-none bg-transparent shadow-none focus:ring-0 focus:border-none rounded-none resize-none",
       className
     )}
     {...props}

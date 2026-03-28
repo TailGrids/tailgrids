@@ -7,7 +7,7 @@ export default function AspectRatioPreview() {
         ratio="video"
         className="max-w-md w-full rounded-lg overflow-hidden"
       >
-        <div className="size-full flex items-center justify-center text-neutral-900 font-medium text-sm bg-primary-50 ">
+        <div className="size-full flex items-center justify-center text-title-50 font-medium text-sm bg-background-soft-400">
           Video (16:9)
         </div>
       </AspectRatio>

@@ -13,7 +13,7 @@ export default function AspectRatioImagePreview() {
             fill
           />
         </AspectRatio>
-        <p className="text-xs text-center text-text-100">16:9 Landscape</p>
+        <p className="text-xs text-center text-title-50">16:9 Landscape</p>
       </div>
 
       <div className="space-y-2">
@@ -25,7 +25,7 @@ export default function AspectRatioImagePreview() {
             fill
           />
         </AspectRatio>
-        <p className="text-xs text-center text-text-100">1:1 Square</p>
+        <p className="text-xs text-center text-title-50">1:1 Square</p>
       </div>
     </div>
   );

@@ -16,7 +16,9 @@ export default function InputGroupAlignPreview() {
     <div className="flex w-full max-w-sm flex-col gap-6 p-4">
       {/* Block Start */}
       <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium">Header Addon</label>
+        <label className="text-sm text-title-50 font-medium">
+          Header Addon
+        </label>
         <InputGroup className="flex-col overflow-hidden items-stretch">
           <InputGroupAddon
             align="block-start"
@@ -37,7 +39,9 @@ export default function InputGroupAlignPreview() {
 
       {/* Block End */}
       <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium">Footer Actions</label>
+        <label className="text-sm text-title-50 font-medium">
+          Footer Actions
+        </label>
         <InputGroup className="flex-col overflow-hidden items-stretch">
           <InputGroupInput
             placeholder="Add a comment..."
