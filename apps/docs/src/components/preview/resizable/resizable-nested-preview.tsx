@@ -12,7 +12,7 @@ export default function ResizableNested() {
     >
       <ResizablePanel defaultSize={40} minSize={30}>
         <div className="flex h-full items-center justify-center p-6">
-          <span className="font-medium text-sm">Sidebar</span>
+          <span className="font-medium text-sm text-title-50">Sidebar</span>
         </div>
       </ResizablePanel>
 
@@ -22,7 +22,9 @@ export default function ResizableNested() {
         <ResizablePanelGroup orientation="vertical">
           <ResizablePanel defaultSize={40}>
             <div className="flex h-full items-center justify-center p-6">
-              <span className="font-medium text-sm">Top Content</span>
+              <span className="font-medium text-sm text-title-50">
+                Top Content
+              </span>
             </div>
           </ResizablePanel>
 
@@ -30,7 +32,9 @@ export default function ResizableNested() {
 
           <ResizablePanel defaultSize={60}>
             <div className="flex h-full items-center justify-center p-6">
-              <span className="font-medium text-sm">Bottom Content</span>
+              <span className="font-medium text-sm text-title-50">
+                Bottom Content
+              </span>
             </div>
           </ResizablePanel>
         </ResizablePanelGroup>

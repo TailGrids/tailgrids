@@ -1,16 +1,24 @@
+"use client";
+
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput
 } from "@/registry/core/input-group";
+import { useState } from "react";
 
 export default function InputGroupAlignPreview() {
+  const [headerValue, setHeaderValue] = useState("");
+  const [commentValue, setCommentValue] = useState("");
+
   return (
     <div className="flex w-full max-w-sm flex-col gap-6 p-4">
       {/* Block Start */}
       <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium">Header Addon</label>
+        <label className="text-sm text-title-50 font-medium">
+          Header Addon
+        </label>
         <InputGroup className="flex-col overflow-hidden items-stretch">
           <InputGroupAddon
             align="block-start"
@@ -23,17 +31,23 @@ export default function InputGroupAlignPreview() {
           <InputGroupInput
             placeholder="Type your message here..."
             className="py-3 px-3"
+            value={headerValue}
+            onChange={e => setHeaderValue(e.target.value)}
           />
         </InputGroup>
       </div>
 
       {/* Block End */}
       <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium">Footer Actions</label>
+        <label className="text-sm text-title-50 font-medium">
+          Footer Actions
+        </label>
         <InputGroup className="flex-col overflow-hidden items-stretch">
           <InputGroupInput
             placeholder="Add a comment..."
             className="py-3 px-3"
+            value={commentValue}
+            onChange={e => setCommentValue(e.target.value)}
           />
           <InputGroupAddon
             align="block-end"
@@ -42,12 +56,22 @@ export default function InputGroupAlignPreview() {
             <span className="text-xs text-base-500 mr-auto">
               Supports Markdown
             </span>
-            <InputGroupButton size="xs" className="px-0">
+            <InputGroupButton
+              size="xs"
+              className="px-0"
+              onClick={() => setCommentValue("")}
+            >
               Cancel
             </InputGroupButton>
             <InputGroupButton
               size="xs"
               className="bg-primary text-primary-foreground hover:bg-primary/90 px-0"
+              onClick={() => {
+                if (commentValue.trim()) {
+                  console.log("Comment submitted:", commentValue);
+                  setCommentValue("");
+                }
+              }}
             >
               Comment
             </InputGroupButton>

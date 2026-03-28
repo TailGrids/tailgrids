@@ -23,7 +23,7 @@ export default function PopoverActionsPreview() {
           <PopoverClose className="rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white-100 hover:bg-primary-700">
             Yes! got it
           </PopoverClose>
-          <PopoverClose className="rounded-md border border-stroke px-4 py-2 text-sm font-medium text-dark hover:bg-background-soft-100 dark:border-dark-3 dark:text-white-100 dark:hover:bg-background-soft-500">
+          <PopoverClose className="px-4 py-2 border border-stroke text-sm text-text-50 font-medium rounded-md hover:bg-background-soft-100 dark:border-dark-3 dark:hover:bg-background-soft-500">
             Learn more
           </PopoverClose>
         </div>

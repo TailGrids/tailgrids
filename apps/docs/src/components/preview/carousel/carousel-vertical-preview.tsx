@@ -20,7 +20,7 @@ export default function CarouselVerticalPreview() {
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem key={index} className="pt-1 basis-1/2">
               <div className="p-1 h-full">
-                <div className="flex items-center justify-center rounded-xl border border-color-base-100 bg-background-soft-50 h-full p-6 transition-colors hover:bg-background-soft-100">
+                <div className="p-6 flex items-center justify-center rounded-xl border border-color-base-100 bg-background-50 h-full transition-colors">
                   <span className="text-3xl font-semibold text-text-200">
                     Slide {index + 1}
                   </span>

@@ -1,5 +1,7 @@
 "use client";
 
+import LogoDarkMode from "@/assets/logo/dark-mode.svg";
+import LogoLightMode from "@/assets/logo/light-mode.svg";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -21,19 +23,27 @@ export default function NavigationMenuPreview() {
           <NavigationMenuItem>
             <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <div className="grid gap-3 p-4 md:w-100 lg:w-125 lg:grid-cols-[.75fr_1fr]">
+              <div className="grid gap-2 md:w-100 lg:w-125 lg:grid-cols-[.75fr_1fr]">
                 <div className="row-span-3">
                   <NavigationMenuLink
                     href="/"
                     className="in-data-[slot=navigation-menu-content]:h-full w-full bg-background-200 flex flex-col items-start justify-end gap-5 rounded-md no-underline outline-hidden select-none focus:shadow-md"
                   >
                     <Image
-                      src={"/docs/images/tailgrids-full-logo.svg"}
-                      width={150}
+                      src={LogoLightMode}
+                      width={120}
                       height={40}
-                      className="dark:hidden max-[400px]:w-30"
+                      className="block dark:hidden max-[400px]:w-30"
                       alt="Tailgrids Logo"
                     />
+                    <Image
+                      src={LogoDarkMode}
+                      width={120}
+                      height={40}
+                      className="dark:block hidden max-[400px]:w-30"
+                      alt="Tailgrids Logo"
+                    />
+
                     <div>
                       <div className="text-lg font-medium text-title-100">
                         Tailgrids UI
@@ -44,6 +54,7 @@ export default function NavigationMenuPreview() {
                     </div>
                   </NavigationMenuLink>
                 </div>
+
                 <NavigationMenuLink
                   href="/docs"
                   className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-hidden"
@@ -55,6 +66,7 @@ export default function NavigationMenuPreview() {
                     Re-usable components built using Base UI and Tailwind CSS.
                   </p>
                 </NavigationMenuLink>
+
                 <NavigationMenuLink
                   href="/docs/installation"
                   className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-hidden"
@@ -80,10 +92,11 @@ export default function NavigationMenuPreview() {
               </div>
             </NavigationMenuContent>
           </NavigationMenuItem>
+
           <NavigationMenuItem>
             <NavigationMenuTrigger>Components</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="grid w-100 gap-3 p-4 md:w-125 md:grid-cols-2 lg:w-150">
+              <ul className="grid w-100 gap-2 md:w-125 md:grid-cols-2 lg:w-150">
                 {components.map(component => (
                   <li key={component.title}>
                     <NavigationMenuLink
@@ -102,6 +115,7 @@ export default function NavigationMenuPreview() {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
+
           <NavigationMenuItem>
             <NavigationMenuLink href="/docs">Documentation</NavigationMenuLink>
           </NavigationMenuItem>

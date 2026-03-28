@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function CardHorizontalPreview() {
   return (
-    <div className="w-full max-w-200 flex flex-col items-center gap-8 mx-auto md:p-8">
+    <div className="w-full max-w-200 flex flex-col items-center gap-8 mx-auto">
       {/* Horizontal Card Section */}
       <div className="flex flex-col gap-3 w-full">
         <Card className="flex-col md:flex-row overflow-hidden border-none shadow-none md:min-w-0 bg-card-background-50">
@@ -15,12 +15,16 @@ export default function CardHorizontalPreview() {
             <h3 className="text-xl md:text-2xl font-bold text-title-50 mb-2 leading-tight">
               Barry Geraghty’s blog Vango runs unchained up in trip.
             </h3>
-            <p className="text-text-100 mb-6 text-sm leading-6">
+            <p className="text-text-100 mb-6 text-sm leading-6 line-clamp-2">
               William Hill ambassador Barry Geraghty previews Saturday’s races
               at Uttoxeter, Kempton, and Thurles.
             </p>
             <div>
-              <Button variant="primary" className="rounded-lg px-6 py-2.5">
+              <Button
+                variant="primary"
+                size="sm"
+                className="rounded-lg px-6 py-2.5"
+              >
                 Learn More
                 <ChevronRight size={24} />
               </Button>

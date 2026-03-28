@@ -11,7 +11,10 @@ export default function HoverCardProductPreview() {
   return (
     <div className="flex justify-center p-10">
       <HoverCard>
-        <HoverCardTrigger className="text-title-50 font-semibold border-b border-dashed border-title-50/50 hover:border-title-50 transition-colors">
+        <HoverCardTrigger
+          href="#"
+          className="text-title-50 font-semibold border-b border-dashed border-title-50/50 hover:border-title-50 transition-colors"
+        >
           Luxury Building
         </HoverCardTrigger>
 

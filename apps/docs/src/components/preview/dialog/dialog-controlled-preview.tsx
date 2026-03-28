@@ -36,7 +36,7 @@ export default function DialogControlledPreview() {
   ];
 
   return (
-    <div className="flex h-100 w-full items-center justify-center bg-gray-50/50 p-10 dark:bg-black/20">
+    <div className="flex h-100 w-full items-center justify-center p-10 dark:bg-black/20">
       <div className="text-center">
         <h3 className="mb-4 text-xl font-semibold text-title-50">
           Advanced Statistics

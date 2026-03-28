@@ -12,13 +12,17 @@ export default function ResizablePreview() {
     >
       <ResizablePanel defaultSize={25} minSize={20}>
         <div className="flex h-full items-center justify-center p-6">
-          <span className="font-medium text-sm">Sidebar</span>
+          <span className="font-medium text-sm text-title-50">Sidebar</span>
         </div>
       </ResizablePanel>
-      <ResizableHandle />
+
+      <ResizableHandle withHandle />
+
       <ResizablePanel defaultSize={75}>
         <div className="flex h-full items-center justify-center p-6">
-          <span className="font-medium text-sm">Main Content</span>
+          <span className="font-medium text-sm text-title-50">
+            Main Content
+          </span>
         </div>
       </ResizablePanel>
     </ResizablePanelGroup>

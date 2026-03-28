@@ -10,7 +10,10 @@ export default function HoverCardPlacementPreview() {
   return (
     <div className="flex flex-wrap items-center justify-center gap-4 p-10">
       <HoverCard>
-        <HoverCardTrigger className="inline-flex h-9 items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+        <HoverCardTrigger
+          href="#"
+          className="h-9 text-text-50 inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+        >
           Top Start
         </HoverCardTrigger>
 
@@ -29,7 +32,10 @@ export default function HoverCardPlacementPreview() {
       </HoverCard>
 
       <HoverCard>
-        <HoverCardTrigger className="inline-flex h-9 items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+        <HoverCardTrigger
+          href="#"
+          className="h-9 text-text-50 inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+        >
           Bottom End
         </HoverCardTrigger>
 

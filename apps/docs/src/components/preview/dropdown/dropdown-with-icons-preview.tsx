@@ -12,7 +12,7 @@ import { Copy4, MenuMeatballs1, Pencil1, Trash1 } from "@tailgrids/icons";
 export default function DropdownWithIconsPreview() {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="border rounded-full p-3 hover:bg-background-soft-50">
+      <DropdownMenuTrigger className="p-3 border text-title-50 rounded-full hover:bg-background-soft-50">
         <MenuMeatballs1 />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="p-1.5 border">

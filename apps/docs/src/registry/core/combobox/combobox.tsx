@@ -11,6 +11,8 @@ import {
   type ButtonProps,
   ComboBoxStateContext,
   FieldError,
+  Group,
+  type GroupProps,
   Header,
   type Key,
   Label,
@@ -65,6 +67,7 @@ export function Combobox<T extends object>({
   defaultValue,
   onChange,
   allowsEmptyCollection = true,
+  menuTrigger = "focus",
   ...props
 }: ComboboxProps<T>) {
   return (
@@ -73,6 +76,7 @@ export function Combobox<T extends object>({
       defaultSelectedKey={defaultValue}
       onSelectionChange={onChange}
       allowsEmptyCollection={allowsEmptyCollection}
+      menuTrigger={menuTrigger}
       {...props}
       className={cn("group flex w-full flex-col gap-2", className)}
     >
@@ -94,32 +98,46 @@ export function Combobox<T extends object>({
 
 export function ComboboxInputWrapper({
   className,
-  children
-}: React.HTMLAttributes<HTMLDivElement>) {
+  children,
+  ...props
+}: GroupProps) {
   const context = useContext(ComboboxContext);
   return (
-    <div
+    <Group
       className={cn(
         "bg-input-background relative flex w-full min-w-sm min-h-12 items-center rounded-lg border border-base-300 hover:border-base-400 focus-within:border-input-primary-focus-border focus-within:ring-4 focus-within:ring-input-primary-focus-border/20",
         context?.isInvalid &&
           "border-input-error-focus-border focus-within:border-input-error-focus-border focus-within:ring-input-error-focus-border/20",
         className
       )}
+      {...props}
     >
       {children}
-    </div>
+    </Group>
   );
 }
 
 // Combobox Input
 
-export function ComboboxInput({ className, ...props }: AriaInputProps) {
+export function ComboboxInput({
+  className,
+  onClick,
+  ...props
+}: AriaInputProps) {
+  const state = useContext(ComboBoxStateContext);
+
   return (
     <AriaInput
       className={cn(
         "w-full min-h-12 bg-transparent pl-4 pr-8 py-2.5 text-text-50 font-medium absolute inset-0 placeholder:text-input-placeholder-text outline-none disabled:cursor-not-allowed disabled:text-input-disabled-text",
         className
       )}
+      onClick={e => {
+        if (state && !state.isOpen) {
+          state.open();
+        }
+        onClick?.(e);
+      }}
       {...props}
     />
   );

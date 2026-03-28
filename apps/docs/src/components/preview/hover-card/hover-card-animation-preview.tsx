@@ -14,7 +14,10 @@ export default function HoverCardAnimationPreview() {
   return (
     <div className="flex justify-center p-10">
       <HoverCard open={open} onOpenChange={setOpen}>
-        <HoverCardTrigger className="inline-flex h-9 items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+        <HoverCardTrigger
+          href="#"
+          className="inline-flex text-text-50 h-9 items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+        >
           Animated Hover
         </HoverCardTrigger>
         <AnimatePresence>
