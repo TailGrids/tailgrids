@@ -5,3 +5,11 @@ assets/images/
 .DS_Store
 
 ./**/images/
+
+.next
+.turbo
+.source
+
+.env*
+
+dist
