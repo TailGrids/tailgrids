@@ -2,9 +2,7 @@ name: 🚀 tailgrids release
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches: [legacy]
 
 jobs:
   release:

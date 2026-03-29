@@ -1,128 +1,67 @@
-# Free Tailwind CSS UI Components and Blocks by TailGrids
+# ⚠️ This package is DEPRECATED
 
-TailGrids is modern day Tailwind CSS UI library of over 600 high-quality Tailwind CSS UI components and blocks, perfectly crafted for modern websites, landing pages, web applications, dashboard, ecommerce and more. This library includes all the essential UI components and elements you would expect from a top-notch UI library, ensuring a consistent design and easy-to-use, example templates, copy-paste components for HTML, React, and Vue.
+> **The `tailgrids` npm package has been deprecated in favor of [`@tailgrids/cli`](https://www.npmjs.com/package/@tailgrids/cli).**
 
-### Key Features:
+## Migration Guide
 
-- **Complete UI Library:** TailGrids boasts an impressive assortment of over 600 Tailwind CSS UI components and blocks.
-- **Multi-Framework Support:** TailGrids supports multiple frameworks - HTML, React, and Vue, catering to a wide array of development needs.
-- **Premium Quality:** Our components are designed with a consistent, modern aesthetic, ensuring high-end visual quality.
-- **User-Friendly:** With a simple copy-paste functionality, TailGrids accelerates the development process, saving you time and effort.
-- **Adaptable:** TailGrids is ideal for a variety of applications, including modern websites, landing pages, web apps, dashboards, ecommerce platforms, and more.
-- **Accessible Open-Source Version:** Our free version gives you access to over 200 UI components along with all core components.
-- **Example Templates:** 14 multi-purpose and unique example templates available in HTML and React.
+The new `@tailgrids/cli` package provides a modern CLI-based workflow for managing TailGrids components in your projects. Instead of installing a monolithic package, you can now initialize your project and selectively add only the components you need.
 
-The free open-source version of TailGrids provides 200+ UI components along with all core components, making it a valuable resource for both personal and commercial projects. Feel free to use it, and don't forget to support and inspire our team by starring this repository.
-
-
-### [🚀 Explore All Components](https://tailgrids.com/components)
-
-### [🌏 Visit Website](https://tailgrids.com)
-
-### [📃 Documentation](https://tailgrids.com/docs)
-
-### Installing via NPM
-
-Ensure you've installed [Node.js](https://nodejs.org) and [Tailwind CSS](https://tailwindcss.com) before TailGrids NPM package. Here's a quick guide to get you started with Tailgrids:
-
-**1. Install the [TailGrids NPM package](https://www.npmjs.com/package/tailgrids/?ref=tailgrids.com):**
+### Step 1: Remove the old package
 
 ```bash
-npm i tailgrids
+npm uninstall tailgrids
 ```
-**2. Add the TailGrids plugin to your `css` file:**
 
-```css
-@plugin 'tailgrids/plugin'
+### Step 2: Initialize your project with the new CLI
+
+```bash
+npx @tailgrids/cli@latest init
 ```
-**3. [Browse the components](https://tailgrids.com/components) and simply copy and paste the ones you like into your projects.**
 
-And that's it! You're all set to start using TailGrids in your project. Happy coding!
+This will:
+- Create a `tailgrids.config.json` configuration file
+- Generate a `tailgrids.css` file with base styles or directly override your main css file depending on your selection
+- Add a `cn` utility file for merging Tailwind CSS classes
+- Install necessary dependencies (`clsx`, `tailwind-merge`, `@tailwindcss/forms`)
 
-### [⚡ Get PRO Version](https://tailgrids.com/pricing)
+### Step 3: Add components as needed
 
-### [📄 Detailed Documentation and Usage Guide](https://tailgrids.com/docs)
+```bash
+npx @tailgrids/cli@latest add <component-id>
+```
 
-### [👉 TailAdmin React](https://tailgrids.com/react)
+For example:
 
-### [👉 TailAdmin Vue](https://tailgrids.com/vue)
+```bash
+npx @tailgrids/cli@latest add button
+```
 
-### [🖌️ TailGrids Figma](https://tailgrids.com/figma)
+Components are copied directly into your project (usually `components/tailgrids/core/`), giving you full control to customize them.
 
+### Step 4: Remove the old plugin import
 
-## 💙 Support
+If you had the old plugin in your CSS file:
 
-You can always support this project and inspire us by [Starring🌟 This Repository](https://github.com/TailGrids/tailwind-ui-components)
-and sharing with friends. If you like the the library consider purchasing the [Pro version](https://tailgrids.com/pricing)
+```diff
+- @plugin 'tailgrids/plugin'
+```
 
-## Changelog
+---
 
-### Version 2.3.0
-(Mar, 2025)
+## Why the change?
 
-- Updated to Tailwind CSS v4
+- **Smaller footprint** — Only install the components you actually use
+- **Full customization** — Components live in your project, not in `node_modules`
+- **Modern CLI workflow** — Standardized setup with `init` and `add` commands
+- **Better DX** — Automatic dependency management and project configuration
 
+## Links
 
-### Version 2.2.1
-(Aug, 2024)
+- 📦 **New package:** [@tailgrids/cli on npm](https://www.npmjs.com/package/@tailgrids/cli)
+- 📃 **Documentation:** [tailgrids.com/docs](https://tailgrids.com/docs)
+- 🌏 **Website:** [tailgrids.com](https://tailgrids.com)
+- 🚀 **Components:** [tailgrids.com/components](https://tailgrids.com/components)
 
-- Timepicker added
-- Datepicker added.
+## License
 
-
-### Version 2.2.0
-(May, 2024)
-
-- Added over 80 new components.
-- Updated the core style guide.
-- Revised the file structure.
-- Enhanced the plugin to reduce dependencies.
-- Updated the Tailwind CSS version along with other dependencies.
-
-### Version 2.1.0
-(October, 2023)
-
-- Introduced dark mode.
-- Polished existing components.
-- Incorporated a few core components.
-- Updated dependent packages.
-
-## Version 2.0.0
-(February, 2023)
-
-- This major release doubled our components, introduced dark mode, and expanded our components & example templates.
-- 500+ Tailwind UI Components (200+ Newly Added)
-- 12 Templates (8 Newly Added)
-- Dark mode for all Components
-- Updated Figma File with New UI Components
-- 2 E-Commerce Templates
-- 90+ Advanced | Core, Marketing and App UI Components
-- 50+ Dashboard UI Components
-- 100+ eCommerce Components
-
-## Version 1.1.0
-(March, 2022)
-
-We focused on enhancing your design experience with Figma integration and new templates.
-
-- 2 New Templates 
-- Figma Source for UI Components 
-- Responsive Buttons / Viewport 
-- Dedicated Templates Gallery 
-
-## Initial Release 
-(February, 2022)
-
-The journey began! We launched TailGrids with a strong foundation of components and templates.
-
- - Initial 300+ UI Components 
- - Two Example Templates 
- - NPM Package for Open Source Version
-
-## 🎁 License
-
-TailGrids Core Version is 100% Free! and open-source you can use it with your personal or commercial projects.
-
-## UI Components
-
-[![sneak-peek](https://cdn.tailgrids.com/tailgrids-components.svg)](https://tailgrids.com/components)
+TailGrids Core Version is 100% Free and open-source. You can use it with your personal or commercial projects.
