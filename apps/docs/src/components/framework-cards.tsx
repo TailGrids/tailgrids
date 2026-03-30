@@ -62,7 +62,7 @@ export default function FrameworkCards() {
           href={`/installation${framework.href}`}
           className="no-underline"
         >
-          <Card className="bg-background-soft-50 items-center **:my-0! p-10 border md:min-w-full hover:bg-background-soft-100">
+          <Card className="bg-[#f9fafb] items-center **:my-0! p-10 border md:min-w-full hover:bg-[#f3f4f6] dark:bg-[#111827] dark:hover:bg-[#111827]">
             {typeof framework.icon === "object" ? (
               <>
                 <Image
@@ -89,7 +89,9 @@ export default function FrameworkCards() {
                 className="size-10"
               />
             )}
-            <p>{framework.name}</p>
+            <p className="text-[rgb(10,10,10)] dark:text-[rgb(255,255,255)]">
+              {framework.name}
+            </p>
           </Card>
         </Link>
       ))}
