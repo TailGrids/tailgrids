@@ -3,6 +3,12 @@
 import { Badge } from "@/registry/core/badge";
 import { Pagination } from "@/registry/core/pagination";
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
+} from "@/registry/core/dropdown";
+import {
   TableBody,
   TableCell,
   TableHead,
@@ -66,9 +72,16 @@ export default function TableOrderHistoryPreview() {
             Review all your past purchases in one convenient place.
           </p>
         </div>
-        <button className="p-2 hover:bg-background-soft-100 rounded-full">
-          <MenuKebab1 className="h-5 w-5 text-text-100" />
-        </button>
+        <DropdownMenu>
+          <DropdownMenuTrigger className="p-2 hover:bg-background-soft-100 rounded-full cursor-pointer outline-none">
+            <MenuKebab1 className="h-5 w-5 text-text-100" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent placement="bottom end" className="p-2">
+            <DropdownMenuItem>Export as CSV</DropdownMenuItem>
+            <DropdownMenuItem>Print Report</DropdownMenuItem>
+            <DropdownMenuItem>Settings</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
 
       <TableRoot fullBleed className="mb-1">

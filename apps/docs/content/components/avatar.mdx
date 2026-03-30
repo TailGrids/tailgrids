@@ -136,11 +136,11 @@ Note: The `AvatarGroup` component implements an overlapping effect using negativ
 
 | Prop        | Type                                            | Default  | Description                                                                |
 | :---------- | :---------------------------------------------- | :------- | :------------------------------------------------------------------------- |
-| `size`      | `'xs'`, `'sm'`, `'md'`, `'lg'`, `'xl'`, `'xxl'` | `'md'`   | Sets the size of the avatar                                                |
+| `size`      | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'xxl'` | `'md'`   | Sets the size of the avatar                                                |
 | `src`       | `string`                                        | -        | Image URL. If not provided, the fallback is shown                          |
 | `alt`       | `string`                                        | -        | Image alt text for accessibility                                           |
 | `fallback`  | `string`                                        | -        | Initials or short text shown when `src` is not provided **Required**.      |
-| `status`    | `'none'`, `'online'`, `'offline'`, `'busy'`     | `'none'` | Displays a status indicator at the bottom-right corner                     |
+| `status`    | `'none' \| 'online' \| 'offline' \| 'busy'`     | `'none'` | Displays a status indicator at the bottom-right corner                     |
 | `label`     | `{ title: string, subtitle: string }`           | -        | Optional object containing title and subtitle displayed next to the avatar |
 | `className` | `string`                                        | -        | Additional CSS classes to apply to the avatar                              |
 
@@ -148,7 +148,7 @@ Note: The `AvatarGroup` component implements an overlapping effect using negativ
 
 | Prop        | Type                                  | Default | Description                                            |
 | :---------- | :------------------------------------ | :------ | :----------------------------------------------------- |
-| `size`      | `'xs'`, `'sm'`, `'md'`                | `'md'`  | Sets the size of avatars in the group                  |
+| `size`      | `'xs' \| 'sm' \| 'md'`                | `'md'`  | Sets the size of avatars in the group                  |
 | `data`      | `Array<{ src: string, alt: string }>` | -       | Array of avatar data objects to display                |
 | `className` | `string`                              | -       | Additional CSS classes to apply to the group container |
 

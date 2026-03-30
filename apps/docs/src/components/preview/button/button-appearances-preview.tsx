@@ -4,7 +4,7 @@ export default function ButtonAppearancesPreview() {
   return (
     <div className="space-y-10 lg:space-y-5">
       <div className="flex items-center justify-between gap-6 md:gap-11 flex-wrap">
-        <p>Fill:</p>
+        <p className="text-title-50">Fill:</p>
         <div className="flex flex-wrap gap-4">
           <Button variant="primary" appearance="fill">
             Primary
@@ -22,7 +22,7 @@ export default function ButtonAppearancesPreview() {
       </div>
 
       <div className="flex items-center justify-between gap-6 md:gap-11 flex-wrap">
-        <p>Outline:</p>
+        <p className="text-title-50">Outline:</p>
         <div className="flex flex-wrap gap-4">
           <Button variant="primary" appearance="outline">
             Primary

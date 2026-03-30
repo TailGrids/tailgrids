@@ -186,8 +186,8 @@ The root container for tabs. Extends `div` element props.
 | Prop           | Type                         | Default      | Description                     |
 | -------------- | ---------------------------- | ------------ | ------------------------------- |
 | `defaultValue` | `string`                     | -            | Initially active tab (required) |
-| `variant`      | `'default'`, `'minimal'`     | `'default'`  | Visual style variant            |
-| `direction`    | `'vertical'`, `'horizontal'` | `'vertical'` | Layout direction                |
+| `variant`      | `'default' \| 'minimal'`     | `'default'`  | Visual style variant            |
+| `direction`    | `'vertical' \| 'horizontal'` | `'vertical'` | Layout direction                |
 | `className`    | `string`                     | -            | Additional CSS classes          |
 | `children`     | `React.ReactNode`            | -            | Tab components                  |
 
@@ -214,7 +214,7 @@ Individual tab button. Extends `button` element props.
 
 | Data Attribute | Values              | Description                                    |
 | :------------- | :------------------ | :--------------------------------------------- |
-| `data-active`  | `"true"`, `"false"` | Indicates whether the tab is currently active. |
+| `data-active`  | `"true" \| "false"` | Indicates whether the tab is currently active. |
 
 ### TabContent
 

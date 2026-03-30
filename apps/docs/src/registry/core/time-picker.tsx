@@ -50,7 +50,7 @@ export function TimePicker({
   return (
     <MenuTrigger>
       {children}
-      <Popover className="bg-background-50 rounded-xl border border-base-100 p-3 shadow-xl outline-none">
+      <Popover className="bg-background-50 rounded-xl border border-base-200 p-3 shadow-xl outline-none">
         <div className="grid max-w-fit min-w-41.5 grid-cols-3 gap-1">
           <TimeColumn
             values={range(1, 12)}

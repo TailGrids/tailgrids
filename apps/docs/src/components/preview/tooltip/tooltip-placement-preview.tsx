@@ -13,7 +13,7 @@ export default function TooltipPlacementPreview() {
         All Placements Example
       </h3>
 
-      <div className="grid w-full max-w-[320px] grid-cols-3 gap-4 rounded-lg border border-dashed border-(--border-color-base-300) p-6 dark:border-foreground-soft-200">
+      <div className="grid w-full max-w-[320px] grid-cols-3 gap-4 rounded-lg border border-dashed border-base-200 p-6 dark:border-foreground-soft-200">
         <div className="col-start-2 flex justify-center">
           <Tooltip placement="top">
             <TooltipTrigger className="rounded-md border border-(--border-color-base-100) bg-background-50 px-4 py-2 text-sm font-medium text-text-50 shadow-sm transition hover:bg-background-soft-50 dark:border-white/10 dark:bg-foreground-50 dark:text-text-200 dark:hover:bg-foreground-soft-200">

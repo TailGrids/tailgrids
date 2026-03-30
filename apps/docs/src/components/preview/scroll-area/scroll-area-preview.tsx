@@ -12,13 +12,13 @@ export function ScrollAreaPreview() {
   return (
     <ScrollArea className="h-72 w-48 rounded-md border border-stroke-dark dark:border-dark-3 bg-background-50 dark:bg-dark-2">
       <ScrollAreaViewport className="p-4">
-        <div className="text-sm font-medium text-body-color dark:text-dark-6 mb-4">
+        <div className="text-sm font-medium text-title-50 dark:text-dark-6 mb-4">
           Tags
         </div>
         {tags.map(tag => (
           <div
             key={tag}
-            className="text-sm py-2 border-b border-stroke-dark dark:border-dark-3 last:border-0 text-body-color dark:text-dark-6"
+            className="text-sm py-2 border-b border-stroke-dark dark:border-dark-3 last:border-0 text-text-50"
           >
             {tag}
           </div>

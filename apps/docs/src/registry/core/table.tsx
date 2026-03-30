@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import type { ComponentProps } from "react";
 
 const tableRootStyles = cva(
-  "border-base-100 min-w-full border-separate border-spacing-0 overflow-clip text-left",
+  "min-w-full border-base-200 border-separate border-spacing-0 overflow-clip text-left",
   {
     variants: {
       fullBleed: {
@@ -32,7 +32,7 @@ export function TableRoot({ className, fullBleed, ...props }: TableRootProps) {
 }
 
 const tableHeaderStyles = cva(
-  "[&_th]:border-base-100 text-title-50 [&_th]:border-b [&_th]:text-xs"
+  "[&_th]:border-base-200 text-title-50 [&_th]:border-b [&_th]:text-xs"
 );
 
 export function TableHeader({ className, ...props }: ComponentProps<"thead">) {
@@ -52,7 +52,7 @@ export function TableHead({ className, ...props }: ComponentProps<"th">) {
 }
 
 const tableRowStyles = cva(
-  "not-last:[&>*]:border-base-100 not-last:[&>td]:border-b not-last:[&>th]:border-b"
+  "not-last:[&>*]:border-base-200 not-last:[&>td]:border-b not-last:[&>th]:border-b"
 );
 
 export function TableRow({ className, ...props }: ComponentProps<"tr">) {

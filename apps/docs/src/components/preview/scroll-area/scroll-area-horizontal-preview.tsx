@@ -14,7 +14,7 @@ export function ScrollAreaHorizontalPreview() {
           {items.map(item => (
             <div
               key={item}
-              className="flex h-37.5 w-37.5 shrink-0 items-center justify-center bg-gray-1 dark:bg-dark-3 text-sm font-medium text-body-color dark:text-dark-6 last:border-r-0"
+              className="flex h-37.5 w-37.5 shrink-0 items-center justify-center bg-gray-1 dark:bg-dark-3 text-sm font-medium text-text-50 last:border-r-0"
             >
               {item}
             </div>

@@ -1,6 +1,16 @@
+"use client";
+
 import { Badge } from "@/registry/core/badge";
 import { Input } from "@/registry/core/input";
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
+} from "@/registry/core/dropdown";
+
+import { buttonStyles } from "@/registry/core/button";
 import {
   TableBody,
   TableCell,
@@ -9,7 +19,7 @@ import {
   TableRoot,
   TableRow
 } from "@/registry/core/table";
-import { Search1 } from "@tailgrids/icons";
+import { Search1, SlidersDoubleHorizontal } from "@tailgrids/icons";
 import Image from "next/image";
 
 const DATA = [
@@ -78,9 +88,27 @@ export default function TableRecentOrdersPreview() {
             />
             <Search1 className="absolute left-2.5 top-2.5 h-4 w-4 text-text-200" />
           </div>
-          <button className="border rounded px-4 py-1.5 text-sm font-medium hover:bg-background-soft-50">
-            See All
-          </button>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              className={buttonStyles({
+                appearance: "outline",
+                size: "xs",
+                className: "pl-3.25 py-1 font-semibold gap-2"
+              })}
+            >
+              <SlidersDoubleHorizontal />
+
+              <span>Filter</span>
+            </DropdownMenuTrigger>
+
+            <DropdownMenuContent placement="bottom end" className="p-2">
+              <DropdownMenuItem>All Orders</DropdownMenuItem>
+              <DropdownMenuItem>Delivered</DropdownMenuItem>
+              <DropdownMenuItem>Pending</DropdownMenuItem>
+              <DropdownMenuItem>Canceled</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
 

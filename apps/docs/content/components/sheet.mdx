@@ -3,11 +3,11 @@ title: React Sheet Components
 description: A React sheet component that slides into the screen from any side. Perfect for mobile menus, secondary views, or detailed information panels.
 ---
 
-import SheetPreview from "@/components/preview/sheet/sheet-preview";
-import SheetSidesPreview from "@/components/preview/sheet/sheet-sides-preview";
 import SheetFormPreview from "@/components/preview/sheet/sheet-form-preview";
 import SheetMobileNavPreview from "@/components/preview/sheet/sheet-mobile-nav-preview";
+import SheetPreview from "@/components/preview/sheet/sheet-preview";
 import SheetScrollablePreview from "@/components/preview/sheet/sheet-scrollable-preview";
+import SheetSidesPreview from "@/components/preview/sheet/sheet-sides-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
@@ -141,7 +141,7 @@ The `side` prop on `SheetContent` allows you to control the entry point of the s
   <SheetSidesPreview />
 </ComponentPreview>
 
-### Detailed Forms
+### Details Forms
 
 Use sheets to display complex editing forms. This keeps the user on the same page while they perform focused tasks.
 
@@ -215,7 +215,7 @@ The primary layout component for the sheet panel.
 
 | Prop              | Type                                                                    | Default   | Description                                                      |
 | :---------------- | :---------------------------------------------------------------------- | :-------- | :--------------------------------------------------------------- |
-| `side`            | `top` \| `right` \| `bottom` \| `left`                                  | `"right"` | The edge of the screen the sheet slides from                     |
+| `side`            | `top \| right \| bottom \| left`                                        | `"right"` | The edge of the screen the sheet slides from                     |
 | `children`        | `React.ReactNode` \| `(opts: { close: () => void }) => React.ReactNode` | -         | Content of the sheet. Supports render props for `close()` access |
 | `showCloseButton` | `boolean`                                                               | `true`    | Whether to show the default close button in the top-right        |
 | `modalProps`      | `ModalProps`                                                            | -         | Props forwarded to the underlying `Modal`                        |
