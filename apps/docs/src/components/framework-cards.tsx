@@ -55,14 +55,14 @@ export default function FrameworkCards() {
   ];
 
   return (
-    <Cards className="gap-2.5">
+    <Cards className="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
       {frameworks.map(framework => (
         <Link
           key={framework.name}
           href={`/installation${framework.href}`}
           className="no-underline"
         >
-          <Card className="bg-background-soft-50 items-center **:my-0! p-10 border md:min-w-full hover:bg-background-soft-100">
+          <Card className="bg-white items-center **:my-0! p-10 border md:min-w-full hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-white/5">
             {typeof framework.icon === "object" ? (
               <>
                 <Image
@@ -89,7 +89,7 @@ export default function FrameworkCards() {
                 className="size-10"
               />
             )}
-            <p>{framework.name}</p>
+            <p className="text-neutral-950 dark:text-white">{framework.name}</p>
           </Card>
         </Link>
       ))}
