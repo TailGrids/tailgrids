@@ -8,13 +8,13 @@ const items = Array.from({ length: 20 }).map((_, i) => `Item ${i + 1}`);
 
 export function ScrollAreaHorizontalPreview() {
   return (
-    <ScrollArea className="w-full max-w-87.5 whitespace-nowrap rounded-md border border-stroke-dark dark:border-dark-3 bg-background-50 dark:bg-dark-2">
+    <ScrollArea className="w-full max-w-87.5 border bg-background-50 whitespace-nowrap rounded-md">
       <ScrollAreaViewport className="p-4">
-        <div className="flex w-max space-x-4 border divide-x divide-stroke-dark rounded-[inherit]">
+        <div className="w-max border flex space-x-4 divide-x rounded-[inherit]">
           {items.map(item => (
             <div
               key={item}
-              className="flex h-37.5 w-37.5 shrink-0 items-center justify-center bg-gray-1 dark:bg-dark-3 text-sm font-medium text-text-50 last:border-r-0"
+              className="h-37.5 w-37.5 flex shrink-0 items-center justify-center text-sm text-text-50 font-medium last:border-r-0"
             >
               {item}
             </div>
