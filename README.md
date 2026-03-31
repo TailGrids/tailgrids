@@ -42,7 +42,7 @@ export default function Home() {
 }
 ```
 
-**Full installation guide →** [Tailgrids Installation Docs](https://tailgrids.com//installation)
+**Full installation guide →** [Tailgrids Installation Docs](https://tailgrids.com/docs/installation)
 
 ---
 
