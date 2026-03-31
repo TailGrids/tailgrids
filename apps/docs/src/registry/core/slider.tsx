@@ -119,7 +119,7 @@ function Thumb(props: ThumbProps) {
       </VisuallyHidden>
 
       {thumbValueType === "text" && (
-        <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 text-sm text-text-50">
+        <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 text-sm text-tooltip-text">
           {state.getThumbValueLabel(index)}
         </span>
       )}

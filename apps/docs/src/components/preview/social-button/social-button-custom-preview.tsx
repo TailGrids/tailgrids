@@ -2,7 +2,7 @@ import { SocialButton } from "@/registry/core/social-button";
 
 const SocialButtonCustomPreview = () => {
   return (
-    <SocialButton className="max-w-xs border-primary-500 text-primary-500 hover:bg-primary-50">
+    <SocialButton className="max-w-xs border-primary-500 hover:text-primary-500 hover:bg-primary-50">
       <GoogleIcon />
       Continue with Google
     </SocialButton>

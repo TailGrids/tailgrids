@@ -18,8 +18,6 @@ import {
   type ModalOverlayProps
 } from "react-aria-components";
 
-type SheetSide = "top" | "right" | "bottom" | "left";
-
 // Sheet (root)
 
 export interface SheetProps extends AriaDialogTriggerProps {}
@@ -90,7 +88,7 @@ const sheetDialogVariants = cva(
     variants: {
       side: {
         right:
-          "h-full w-full min-w-xs sm:max-w-sm pr-4 sm:pr-0 border-l border-base-100",
+          "h-full w-full min-w-xs sm:max-w-sm pr-4 border-l border-base-100",
         left: "h-full w-full min-w-xs sm:max-w-sm border-r border-base-100",
         top: "w-full border-b border-base-100",
         bottom: "w-full border-t border-base-100"
@@ -209,7 +207,7 @@ export function SheetBody({ className, ...props }: SheetBodyProps) {
   return (
     <div
       data-slot="sheet-body"
-      className={cn("flex-1 overflow-y-auto text-sm text-text-100", className)}
+      className={cn("flex-1 overflow-y-auto px-1 -mx-1 text-sm text-text-100", className)}
       {...props}
     />
   );

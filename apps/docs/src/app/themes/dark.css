@@ -21,6 +21,7 @@
   --theme-neutral-brand-color: #7592ff;
 
   /* Text Color */
+  --theme-text-white: #000000;
   --theme-title-50: #ffffffcc;
   --theme-text-50: #9ca3af;
   --theme-text-100: #9ca3af;
@@ -78,7 +79,7 @@
 
   /* Outline Dark */
   --theme-button-outline-background: #111827;
-  --theme-button-outline-hover-background: #111827;
+  --theme-button-outline-hover-background: #1e2939;
   --theme-button-outline-border: #1f2937;
   --theme-button-outline-focus-ring: rgba(152, 162, 179, 0.14);
   --theme-button-outline-text: #e5e7eb;

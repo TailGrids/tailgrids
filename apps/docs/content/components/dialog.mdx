@@ -270,11 +270,11 @@ The backdrop overlay that covers the page behind the dialog. Wraps `DialogConten
 
 The main dialog panel. Composes `Modal` and `Dialog` from react-aria-components. Must be placed inside a `DialogOverlay`.
 
-| Prop              | Type                                                                    | Default | Description                                                       |
-| :---------------- | :---------------------------------------------------------------------- | :------ | :---------------------------------------------------------------- |
-| `children`        | `React.ReactNode` \| `(opts: { close: () => void }) => React.ReactNode` | -       | Content of the dialog. Supports render props for `close()` access |
-| `showCloseButton` | `boolean`                                                               | `true`  | Whether to show the default close button in the top-right         |
-| `className`       | `string`                                                                | -       | Additional CSS classes for the dialog panel                       |
+| Prop              | Type                                                                  | Default | Description                                                       |
+| :---------------- | :-------------------------------------------------------------------- | :------ | :---------------------------------------------------------------- |
+| `children`        | `React.ReactNode \| (opts: { close: () => void }) => React.ReactNode` | -       | Content of the dialog. Supports render props for `close()` access |
+| `showCloseButton` | `boolean`                                                             | `true`  | Whether to show the default close button in the top-right         |
+| `className`       | `string`                                                              | -       | Additional CSS classes for the dialog panel                       |
 
 ### DialogHeader
 

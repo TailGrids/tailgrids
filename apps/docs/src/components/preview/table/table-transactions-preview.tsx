@@ -4,6 +4,12 @@ import { Badge } from "@/registry/core/badge";
 import { Input } from "@/registry/core/input";
 
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
+} from "@/registry/core/dropdown";
+import {
   TableBody,
   TableCell,
   TableHead,
@@ -153,9 +159,16 @@ export default function TableTransactionsPreview() {
               </TableCell>
 
               <TableCell>
-                <button className="text-text-200 hover:text-text-100">
-                  <MenuMeatballs1 className="h-5 w-5" />
-                </button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="text-text-200 hover:text-text-100 outline-none cursor-pointer">
+                    <MenuMeatballs1 className="h-5 w-5" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent placement="bottom end" className="p-2">
+                    <DropdownMenuItem>View Details</DropdownMenuItem>
+                    <DropdownMenuItem>Download Receipt</DropdownMenuItem>
+                    <DropdownMenuItem>Report Issue</DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </TableCell>
             </TableRow>
           ))}

@@ -155,7 +155,7 @@ Icon colors and icons are automatically determined by the `variant` prop.
 
 | Prop         | Type                                                       | Default     | Description                                                         |
 | :----------- | :--------------------------------------------------------- | :---------- | :------------------------------------------------------------------ |
-| `variant`    | `"success"`, `"error"`, `"info"`, `"warning"`, `"default"` | `"default"` | Controls icon and color theme                                       |
+| `variant`    | `"success" \| "error" \| "info" \| "warning" \| "default"` | `"default"` | Controls icon and color theme                                       |
 | `message`    | `string \| { title: string; description: string; }`        | —           | Main message content. Can be a string or an object with title.      |
 | `undoAction` | `() => void`                                               | —           | Shows an “Undo” button (only when `message` is a string)            |
 | `hideIcon`   | `boolean`                                                  | `false`     | Hides the status icon                                               |
@@ -169,7 +169,7 @@ Icon colors and icons are automatically determined by the `variant` prop.
 | `name`        | `string`                                    | Sender name             |
 | `description` | `string`                                    | Message body            |
 | `image`       | `string`                                    | Avatar image source     |
-| `status`      | `"none"`, `"online"`, `"offline"`, `"busy"` | Avatar status indicator |
+| `status`      | `"none" \| "online" \| "offline" \| "busy"` | Avatar status indicator |
 | `time`        | `string`                                    | Timestamp label         |
 
 ## Accessibility

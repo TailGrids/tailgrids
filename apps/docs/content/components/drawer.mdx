@@ -4,10 +4,10 @@ description: A gesture-driven drawer component that slides into the screen. Perf
 ---
 
 import DrawerPreview from "@/components/preview/drawer/drawer-preview";
-import DrawerSidesPreview from "@/components/preview/drawer/drawer-sides-preview";
 import DrawerProfilePreview from "@/components/preview/drawer/drawer-profile-preview";
-import DrawerSettingsPreview from "@/components/preview/drawer/drawer-settings-preview";
 import DrawerScrollablePreview from "@/components/preview/drawer/drawer-scrollable-preview";
+import DrawerSettingsPreview from "@/components/preview/drawer/drawer-settings-preview";
+import DrawerSidesPreview from "@/components/preview/drawer/drawer-sides-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
@@ -197,13 +197,13 @@ The element that opens the drawer when pressed.
 
 The primary layout component for the drawer panel. It handles the drag gestures, animations, and renders the drag handle automatically.
 
-| Prop              | Type                                                                    | Default    | Description                                                      |
-| :---------------- | :---------------------------------------------------------------------- | :--------- | :--------------------------------------------------------------- |
-| `side`            | `top` \| `right` \| `bottom` \| `left`                                  | `"bottom"` | The edge of the screen the drawer slides from                    |
-| `children`        | `React.ReactNode` \| `(opts: { close: () => void }) => React.ReactNode` | -          | Content of the drawer. Supports render props for `close()` access|
-| `showCloseButton` | `boolean`                                                               | `true`     | Whether to show the default close button in the top-right        |
-| `snapThreshold`   | `number`                                                                | -          | Threshold (in px) at which the drawer snaps closed. Defaults to 30% of viewport size |
-| `className`       | `string`                                                                | -          | Additional CSS classes for the drawer panel                      |
+| Prop              | Type                                                                  | Default    | Description                                                                          |
+| :---------------- | :-------------------------------------------------------------------- | :--------- | :----------------------------------------------------------------------------------- |
+| `side`            | `top \| right \| bottom \| left`                                      | `"bottom"` | The edge of the screen the drawer slides from                                        |
+| `children`        | `React.ReactNode \| (opts: { close: () => void }) => React.ReactNode` | -          | Content of the drawer. Supports render props for `close()` access                    |
+| `showCloseButton` | `boolean`                                                             | `true`     | Whether to show the default close button in the top-right                            |
+| `snapThreshold`   | `number`                                                              | -          | Threshold (in px) at which the drawer snaps closed. Defaults to 30% of viewport size |
+| `className`       | `string`                                                              | -          | Additional CSS classes for the drawer panel                                          |
 
 ### DrawerHeader
 

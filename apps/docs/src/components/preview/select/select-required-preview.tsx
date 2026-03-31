@@ -38,7 +38,10 @@ export default function SelectRequiredPreview() {
           <SelectItem id="france">France</SelectItem>
         </SelectContent>
       </Select>
-      <Button type="submit">Submit Form</Button>
+
+      <Button type="submit" className="py-1">
+        Submit Form
+      </Button>
     </form>
   );
 }

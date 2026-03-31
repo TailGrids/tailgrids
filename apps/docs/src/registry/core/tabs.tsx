@@ -34,7 +34,7 @@ function useTabsContext() {
   return context;
 }
 
-const tabRootStyles = cva("max-w-full rounded-xl border border-base-100", {
+const tabRootStyles = cva("max-w-full rounded-xl border border-base-200", {
   variants: {
     variant: {
       default: "",
@@ -97,7 +97,7 @@ const tabListWrapperStyles = cva("max-sm:w-full", {
   compoundVariants: [
     {
       direction: "vertical",
-      className: "border-b border-base-100 [&>div]:w-full"
+      className: "border-b border-base-200 [&>div]:w-full"
     },
     {
       direction: "vertical",

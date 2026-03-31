@@ -3,12 +3,12 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { useId, type ComponentProps } from "react";
 
 const textAreaStyles = cva(
-  "bg-input-background peer h-32 w-full rounded-lg border px-4 py-3.5 text-title-50 outline-none placeholder:text-input-placeholder-text focus:ring-4 disabled:border-base-100 disabled:bg-background-soft-50 disabled:text-input-disabled-text disabled:placeholder:text-input-disabled-text",
+  "bg-input-background peer h-32 w-full rounded-lg border px-4 py-3.5 text-title-50 outline-none placeholder:text-input-placeholder-text focus:ring-4 disabled:border-base-200 disabled:bg-background-soft-50 disabled:text-input-disabled-text disabled:placeholder:text-input-disabled-text",
   {
     variants: {
       state: {
         default:
-          "focus:border-input-primary-focus-border focus:ring-input-primary-focus-border/20 border-base-300",
+          "focus:border-input-primary-focus-border focus:ring-input-primary-focus-border/20 border-base-200",
         error:
           "border-input-error-focus-border focus:ring-input-error-focus-border/20",
         success:

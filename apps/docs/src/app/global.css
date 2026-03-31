@@ -37,6 +37,7 @@
   --color-primary-text: var(--theme-primary-text);
 
   /* Text Colors */
+  --color-text-white: var(--theme-text-white);
   --color-text-50: var(--theme-text-50);
   --color-text-100: var(--theme-text-100);
   --color-text-200: var(--theme-text-200);
