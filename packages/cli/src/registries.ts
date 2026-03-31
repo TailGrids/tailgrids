@@ -618,6 +618,21 @@ export const REGISTRIES: Registry[] = [
     ]
   },
   {
+    id: "sidebar",
+    name: "Sidebar",
+    description: "A reusable, responsive, and accessible sidebar component.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/sidebar.tsx"
+      }
+    ],
+    dependencies: ["class-variance-authority"],
+    requires: ["sheet", "tooltip"],
+    exampleCount: 4
+  },
+  {
     id: "skeleton",
     name: "Skeleton",
     description: "A component to indicate a loading state.",

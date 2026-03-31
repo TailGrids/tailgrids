@@ -18,8 +18,6 @@ import {
   type ModalOverlayProps
 } from "react-aria-components";
 
-type SheetSide = "top" | "right" | "bottom" | "left";
-
 // Sheet (root)
 
 export interface SheetProps extends AriaDialogTriggerProps {}

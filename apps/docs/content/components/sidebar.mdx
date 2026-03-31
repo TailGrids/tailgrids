@@ -1,0 +1,332 @@
+---
+title: Sidebar
+description: A composable, themeable and customizable sidebar component for rich layout navigation.
+---
+
+import SidebarBasicPreview from "@/components/preview/sidebar/sidebar-basic-preview";
+import SidebarCollapsiblePreview from "@/components/preview/sidebar/sidebar-collapsible-preview";
+import SidebarPreview from "@/components/preview/sidebar/sidebar-preview";
+import SidebarVariantsPreview from "@/components/preview/sidebar/sidebar-variants-preview";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Sidebar
+
+A composable, themeable and customizable sidebar component built with React and styled using Tailwind CSS.
+Sidebars are central to any application and often contain a lot of moving parts. This component provides a solid foundation that is responsive, accessible, and highly flexible.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/sidebar/sidebar-preview.tsx"
+  )}
+>
+  <SidebarPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+```npm
+npx @tailgrids/cli add sidebar
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+Install the required dependencies:
+
+```npm
+npm i class-variance-authority react-aria-components
+```
+
+Copy and paste the following component code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/sidebar.tsx")}
+  lang="tsx"
+  fileName="sidebar.tsx"
+/>
+</Accordion>
+</Accordions>
+
+## Concepts & Key Components
+
+The Sidebar is composed of several complementary primitives allowing you to build rich, deeply nested navigation layouts without fighting predetermined DOM trees.
+
+### Structure & Anatomy
+
+A typical application layout places a `SidebarProvider` wrapping your entire application shell. Inside it goes your `Sidebar` (which behaves like navigation off-canvas) alongside your `<main>` content container.
+
+```tsx
+import { SidebarProvider, SidebarTrigger } from "@/registry/core/sidebar";
+import { AppSidebar } from "./app-sidebar";
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <SidebarProvider>
+      {/* Renders your customized <Sidebar> component instance */}
+      <AppSidebar />
+      <main className="w-full flex-1">
+        {/* Opens/Closes the sidebar on click */}
+        <SidebarTrigger />
+        {children}
+      </main>
+    </SidebarProvider>
+  );
+}
+```
+
+### Important Components
+
+Here are the most critical components supplied in the Sidebar registry and how they function:
+
+- **`SidebarProvider`**: Handles collapsible state, mobile viewport tracking, cookie persistence, and keyboard shortcuts (`CMD + B` / `CTRL + B`). You must wrap your application navigation inside this component.
+- **`Sidebar`**: The actual physical sidebar container. It listens to the `SidebarProvider` to smoothly expand/collapse or shrink into an icon list based on your `collapsible` parameters.
+- **`SidebarGroup` & `SidebarGroupLabel`**: Semantically groups related navigational lists logically (e.g., "Settings", "Marketing"). Group labels gracefully fade out when the sidebar is minimized to icon layout.
+- **`SidebarMenuButton`**: Primary navigation element inside lists. Use this for actual links because it automatically hooks into `isActive` states and correctly registers contextual hover `tooltip` components when the sidebar operates in `icon` collapsed mode. You can use the `render` prop to wrap Next.js `<Link>` elements transparently or replace the `<button>` tag with an `<a>` or `<Link>` tag.
+
+## Examples
+
+### Basic Example
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/sidebar/sidebar-basic-preview.tsx"
+  )}
+>
+  <SidebarBasicPreview />
+</ComponentPreview>
+
+### Variants
+
+The `Sidebar` component accepts a `variant` prop allowing you to choose between standard off-canvas `sidebar`, a visually detached `floating` layout with shadows, and a contained `inset` boxed layout. Use the toggles below to compare styling changes in real-time.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/sidebar/sidebar-variants-preview.tsx"
+  )}
+>
+  <SidebarVariantsPreview />
+</ComponentPreview>
+
+### Collapsible Modes
+
+The `collapsible` prop allows configuring the exact behavior when the `SidebarTrigger` is toggled:
+
+- `icon` (default here): Shrinks the sidebar minimally to the width of the navigation icons. `SidebarMenuButton` wrappers detect this and gracefully show their `tooltip` props on hover to keep links identifiable.
+- `offcanvas`: Completely slides the sidebar out of the user's viewport on desktop, freeing up maximum space.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/sidebar/sidebar-collapsible-preview.tsx"
+  )}
+>
+  <SidebarCollapsiblePreview />
+</ComponentPreview>
+
+## API Reference
+
+The Sidebar component is composed of several primitives, each exported with its own set of props and customizable data attributes for advanced styling.
+
+### SidebarProvider
+
+The root component that manages the sidebar state, mobile responsiveness, and keyboard shortcuts.
+
+| Prop           | Type                      | Default | Description                                     |
+| :------------- | :------------------------ | :------ | :---------------------------------------------- |
+| `defaultOpen`  | `boolean`                 | `true`  | The initial open state of the sidebar.          |
+| `open`         | `boolean`                 | -       | The controlled open state of the sidebar.       |
+| `onOpenChange` | `(open: boolean) => void` | -       | Callback fired when the open state changes.     |
+| `className`    | `string`                  | -       | Additional CSS classes to apply to the sidebar. |
+
+### Sidebar
+
+The main container for the sidebar, handling visual variants and collapsible behavior.
+
+| Prop                   | Type                                 | Default       | Description                                          |
+| :--------------------- | :----------------------------------- | :------------ | :--------------------------------------------------- |
+| `side`                 | `'left' \| 'right'`                  | `'left'`      | The side of the screen the sidebar is positioned on. |
+| `variant`              | `'sidebar' \| 'floating' \| 'inset'` | `'sidebar'`   | The visual variant of the sidebar.                   |
+| `collapsible`          | `'offcanvas' \| 'icon'`              | `'offcanvas'` | The behavior of the sidebar when collapsed.          |
+| `showSheetCloseButton` | `boolean`                            | `true`        | Whether to show the close button in the sheet.       |
+
+| Data Attribute     | Value                                | Description                                                  |
+| :----------------- | :----------------------------------- | :----------------------------------------------------------- |
+| `data-state`       | `"expanded" \| "collapsed"`          | The current state of the sidebar.                            |
+| `data-collapsible` | `"offcanvas" \| "icon"`              | The collapsible mode currently active (only when collapsed). |
+| `data-variant`     | `"sidebar" \| "floating" \| "inset"` | The active visual variant.                                   |
+| `data-side`        | `"left" \| "right"`                  | The active side position.                                    |
+| `data-sidebar`     | `"sidebar"`                          | Identifies the sidebar element (mobile).                     |
+| `data-mobile`      | `"true"`                             | Applied when the viewport is mobile.                         |
+
+### SidebarTrigger
+
+A button component used to toggle the sidebar's open/collapsed state.
+
+| Prop        | Type                                | Default | Description                            |
+| :---------- | :---------------------------------- | :------ | :------------------------------------- |
+| `className` | `string`                            | -       | Custom classes for the trigger button. |
+| `onClick`   | `(event: React.MouseEvent) => void` | -       | Custom click handler.                  |
+
+| Data Attribute | Value       | Description                     |
+| :------------- | :---------- | :------------------------------ |
+| `data-sidebar` | `"trigger"` | Identifies the trigger element. |
+
+### SidebarHeader
+
+The top section of the sidebar, typically used for logos or team switchers.
+
+| Prop        | Type     | Default | Description                            |
+| :---------- | :------- | :------ | :------------------------------------- |
+| `className` | `string` | -       | Custom classes for the trigger button. |
+
+| Data Attribute | Value      | Description                    |
+| :------------- | :--------- | :----------------------------- |
+| `data-sidebar` | `"header"` | Identifies the header element. |
+
+### SidebarContent
+
+The main scrollable area of the sidebar for navigation links and groups.
+
+| Prop        | Type     | Default | Description                            |
+| :---------- | :------- | :------ | :------------------------------------- |
+| `className` | `string` | -       | Custom classes for the trigger button. |
+
+| Data Attribute | Value       | Description                  |
+| :------------- | :---------- | :--------------------------- |
+| `data-sidebar` | `"content"` | Identifies the content area. |
+
+### SidebarFooter
+
+The bottom section of the sidebar, often used for user profiles or secondary actions.
+
+| Prop        | Type     | Default | Description                            |
+| :---------- | :------- | :------ | :------------------------------------- |
+| `className` | `string` | -       | Custom classes for the trigger button. |
+
+| Data Attribute | Value      | Description                    |
+| :------------- | :--------- | :----------------------------- |
+| `data-sidebar` | `"footer"` | Identifies the footer element. |
+
+### SidebarGroup
+
+A container used to group related navigation items.
+
+| Prop        | Type     | Default | Description                            |
+| :---------- | :------- | :------ | :------------------------------------- |
+| `className` | `string` | -       | Custom classes for the trigger button. |
+
+| Data Attribute | Value     | Description                     |
+| :------------- | :-------- | :------------------------------ |
+| `data-sidebar` | `"group"` | Identifies the group container. |
+
+### SidebarGroupLabel
+
+A label for a sidebar group, which fades out when the sidebar is collapsed in `icon` mode.
+
+| Prop        | Type     | Default | Description                            |
+| :---------- | :------- | :------ | :------------------------------------- |
+| `className` | `string` | -       | Custom classes for the trigger button. |
+
+| Data Attribute | Value           | Description                 |
+| :------------- | :-------------- | :-------------------------- |
+| `data-sidebar` | `"group-label"` | Identifies the group label. |
+
+### SidebarGroupContent
+
+A wrapper for the content within a sidebar group.
+
+| Prop        | Type     | Default | Description                            |
+| :---------- | :------- | :------ | :------------------------------------- |
+| `className` | `string` | -       | Custom classes for the trigger button. |
+
+| Data Attribute | Value             | Description                        |
+| :------------- | :---------------- | :--------------------------------- |
+| `data-sidebar` | `"group-content"` | Identifies the group content area. |
+
+### SidebarMenu
+
+The root list component for navigation items.
+
+| Prop        | Type     | Default | Description                            |
+| :---------- | :------- | :------ | :------------------------------------- |
+| `className` | `string` | -       | Custom classes for the trigger button. |
+
+| Data Attribute | Value    | Description               |
+| :------------- | :------- | :------------------------ |
+| `data-sidebar` | `"menu"` | Identifies the menu list. |
+
+### SidebarMenuItem
+
+A wrapper for an individual menu item.
+
+| Prop        | Type     | Default | Description                            |
+| :---------- | :------- | :------ | :------------------------------------- |
+| `className` | `string` | -       | Custom classes for the trigger button. |
+
+| Data Attribute | Value         | Description               |
+| :------------- | :------------ | :------------------------ |
+| `data-sidebar` | `"menu-item"` | Identifies the menu item. |
+
+### SidebarMenuButton
+
+The primary interaction element for navigation.
+
+| Prop        | Type                            | Default     | Description                                          |
+| :---------- | :------------------------------ | :---------- | :--------------------------------------------------- |
+| `className` | `string`                        | -           | Custom classes for the trigger button.               |
+| `isActive`  | `boolean`                       | `false`     | Whether the button is in an active/selected state.   |
+| `variant`   | `'default' \| 'outline'`        | `'default'` | The visual variant of the button.                    |
+| `size`      | `'default' \| 'sm' \| 'lg'`     | `'default'` | The size scale of the button.                        |
+| `tooltip`   | `string \| TooltipContentProps` | -           | Tooltip content shown when the sidebar is collapsed. |
+
+| Data Attribute | Value                       | Description                        |
+| :------------- | :-------------------------- | :--------------------------------- |
+| `data-sidebar` | `"menu-button"`             | Identifies the menu button.        |
+| `data-size`    | `"default" \| "sm" \| "lg"` | The active size scale.             |
+| `data-active`  | `boolean`                   | Indicates if the button is active. |
+
+### SidebarMenuSub
+
+A nested list container for secondary navigation items.
+
+| Prop        | Type     | Default | Description                            |
+| :---------- | :------- | :------ | :------------------------------------- |
+| `className` | `string` | -       | Custom classes for the trigger button. |
+
+| Data Attribute | Value        | Description                   |
+| :------------- | :----------- | :---------------------------- |
+| `data-sidebar` | `"menu-sub"` | Identifies the sub-menu list. |
+
+### SidebarMenuSubItem
+
+A wrapper for an individual sub-menu item.
+
+| Prop        | Type     | Default | Description                            |
+| :---------- | :------- | :------ | :------------------------------------- |
+| `className` | `string` | -       | Custom classes for the trigger button. |
+
+| Data Attribute | Value             | Description                   |
+| :------------- | :---------------- | :---------------------------- |
+| `data-sidebar` | `"menu-sub-item"` | Identifies the sub-menu item. |
+
+### SidebarMenuSubButton
+
+The interaction element for nested navigation items. Renders an `a` tag.
+
+| Prop       | Type      | Default | Description                                            |
+| :--------- | :-------- | :------ | :----------------------------------------------------- |
+| `isActive` | `boolean` | `false` | Whether the sub-button is in an active/selected state. |
+
+| Data Attribute | Value               | Description                            |
+| :------------- | :------------------ | :------------------------------------- |
+| `data-sidebar` | `"menu-sub-button"` | Identifies the sub-menu button.        |
+| `data-active`  | `boolean`           | Indicates if the sub-button is active. |
+
+## Accessibility Features
+
+- **Keyboard Interaction**: The library ships out-of-the-box keyboard integration enabling a user to toggle visibility quickly using `CMD + B` (or `CTRL + B`) on window active state.
+- **Mobile Hand-off**: During mobile media detection (`isMobile = true`), collapsed sidebars fundamentally switch DOM primitives to power a custom off-canvas Drawer (`Sheet`) which perfectly routes modal semantics, screen dimming drops, and standard focus-traps out of the box.
+- **Screen Reader Support**: Complex DOM configurations natively implement `data-state` metadata tags and standard ARIA labeling conventions (e.g. `aria-expanded="false"`) allowing seamless screen-reader tree discovery without complex overrides.

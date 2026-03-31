@@ -595,6 +595,24 @@
     ]
   },
   {
+    "id": "sidebar",
+    "name": "Sidebar",
+    "description": "A reusable, responsive, and accessible sidebar component.",
+    "type": "component",
+    "files": [
+      {
+        "type": "core",
+        "path": "/core/sidebar.tsx"
+      },
+      {
+        "type": "core",
+        "path": "/utils/use-is-mobile.ts"
+      }
+    ],
+    "dependencies": ["class-variance-authority"],
+    "requires": ["sheet", "tooltip"]
+  },
+  {
     "id": "skeleton",
     "name": "Skeleton",
     "description": "A component to indicate a loading state.",
