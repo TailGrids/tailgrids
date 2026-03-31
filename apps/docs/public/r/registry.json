@@ -661,6 +661,24 @@
       ]
     },
     {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "description": "A reusable, responsive, and accessible sidebar component.",
+      "registryDependencies": [
+        "sheet",
+        "tooltip"
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "skeleton",
       "type": "registry:ui",
       "description": "A component to indicate a loading state.",

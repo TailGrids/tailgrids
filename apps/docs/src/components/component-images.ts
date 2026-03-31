@@ -34,6 +34,7 @@ import ResizableImage from "@/assets/skeleton-image/resizable.png";
 import ScrollAreaImage from "@/assets/skeleton-image/scroll-area.png";
 import SeparatorImage from "@/assets/skeleton-image/separator.png";
 import SheetImage from "@/assets/skeleton-image/sheet.png";
+import SidebarImage from "@/assets/skeleton-image/sidebar.png";
 import SkeletonImage from "@/assets/skeleton-image/skeleton.png";
 import SliderImage from "@/assets/skeleton-image/slider.png";
 import SocialButtonImage from "@/assets/skeleton-image/social-button.png";
@@ -89,6 +90,7 @@ export const componentImages: Record<string, StaticImageData> = {
   select: DropdownImage, // Fallback
   separator: SeparatorImage,
   sheet: SheetImage,
+  sidebar: SidebarImage,
   skeleton: SkeletonImage,
   slider: SliderImage,
   "social-button": SocialButtonImage,
