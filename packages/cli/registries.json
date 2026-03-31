@@ -603,14 +603,11 @@
       {
         "type": "core",
         "path": "/core/sidebar.tsx"
-      },
-      {
-        "type": "core",
-        "path": "/utils/use-is-mobile.ts"
       }
     ],
     "dependencies": ["class-variance-authority"],
-    "requires": ["sheet", "tooltip"]
+    "requires": ["sheet", "tooltip"],
+    "exampleCount": 4
   },
   {
     "id": "skeleton",
