@@ -1,6 +1,6 @@
 ---
 title: React Aspect Ratio Components
-description: A React component for maintaining a desired aspect ratio for content like images, videos, and embeds. Supports responsive layouts with Tailwind CSS variants.
+description: A React aspect ratio component built with Tailwind CSS. Keep images, videos, and embeds in a fixed ratio with responsive scaling and no layout shift.
 ---
 
 import AspectRatioCustomPreview from "@/components/preview/aspect-ratio/aspect-ratio-custom-preview";
@@ -12,9 +12,11 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Aspect Ratio
 
-The Aspect Ratio component helps you maintain a consistent aspect ratio for content, particularly useful for responsive images, videos, and embedded content. It ensures that content maintains desired proportions across different screen sizes.
+The React Aspect Ratio component keeps an element’s width and height in a fixed ratio. It is useful for images, videos, and embeds that need to keep the same shape across different screen sizes.
 
-This component is built with React and styled using Tailwind CSS, offering predefined aspect ratio variants as well as support for custom ratios.
+It adjusts the height based on the container width. So, the content scales correctly, and the layout does not shift during loading or resizing.
+
+Built with React and styled using Tailwind CSS. It supports predefined aspect ratios and custom values for flexible layouts.
 
 <ComponentPreview
   codeSnippet={getFileContent(

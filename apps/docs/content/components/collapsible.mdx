@@ -1,6 +1,6 @@
 ---
 title: React Collapsible Components
-description: A React collapsible component for showing and hiding a single section of content. Built on React Aria Disclosure for full accessibility and keyboard support, with a composable API inspired by shadcn/ui.
+description: A React collapsible component built with Tailwind CSS. Show or hide content with expandable sections, toggle panels, with simple and accessible interactions.
 ---
 
 import CollapsibleControlledPreview from "@/components/preview/collapsible/collapsible-controlled-preview";
@@ -15,9 +15,11 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Collapsible
 
-A Collapsible is a single expandable section. Use it wherever content should be progressively revealed without a page transition — order summaries, stack traces, DNS settings, build logs, environment variables, and more.
+The React Collapsible component lets users show or hide content by clicking a trigger. It is used to expand and collapse sections without leaving the page.
 
-This component is built on top of **React Aria's `Disclosure`** primitive, giving you managed focus, correct ARIA attributes, and keyboard interaction for free.
+It helps keep the UI clean by hiding details until needed. For example, users can click to view order details, logs, or settings only when required.
+
+This component is built on top of **React Aria's `Disclosure`** primitive and styled using Tailwind CSS. It gives built-in focus management, proper ARIA attributes, and keyboard interaction out of the box.
 
 <ComponentPreview
   codeSnippet={getFileContent(

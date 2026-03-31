@@ -1,6 +1,6 @@
 ---
 title: React Alert Dialog Components
-description: A modal dialog that interrupts the user with important content and expects a response.
+description: A React alert dialog component built with Tailwind CSS. Show confirmation modals for actions like delete or logout with accessible dialogs, focus control, and keyboard support.
 ---
 
 import AlertDialogCustomPreview from "@/components/preview/alert-dialog/alert-dialog-custom-preview";
@@ -11,9 +11,11 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Alert Dialog
 
-Alert Dialogs are used to display critical information that requires user confirmation or action before proceeding. They interrupt the user's workflow to ensure important messages are seen and acted upon.
+The React Alert Dialog component shows a modal that asks users to confirm an important action. It is used for actions like deleting data, logging out, or making permanent changes.
 
-This Alert Dialog component is built with React Aria Components and styled using Tailwind CSS, providing a highly accessible and customizable experience.
+It blocks the screen until the user takes action, such as confirming or canceling. For example, users must confirm before deleting an account or removing a file.
+
+Built with React Aria Components and styled using Tailwind CSS. It supports keyboard navigation, focus management, and accessible modal interactions.
 
 <ComponentPreview
   codeSnippet={getFileContent(

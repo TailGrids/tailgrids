@@ -1,6 +1,6 @@
 ---
 title: React Dialog Components
-description: A React dialog component for displaying modal overlays. Used to show information, ask questions, collect input, or offer multiple actions in a focused layer above the page.
+description: A React dialog component built with Tailwind CSS. Create modal dialogs and pop-up overlays for forms, messages, and actions with accessible focus and keyboard support.
 ---
 
 import DialogAskQuestionPreview from "@/components/preview/dialog/dialog-ask-question-preview";
@@ -17,9 +17,11 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Dialog
 
-React Dialog components display a modal overlay above the main page content. They are commonly used to show information, ask a question, collect input from forms, or offer multiple actions that require the user's attention before continuing.
+The React Dialog component shows a modal window on top of the page to display content or collect user input. It is used for things like forms, messages, or actions that need user attention.
 
-This Dialog component is built with React and styled using Tailwind CSS. It uses `react-aria-components` for accessibility, focus management, and keyboard interactions out of the box.
+It opens as an overlay and can block or allow interaction with the background. For example, you can use it to edit a profile, show details, or ask users to take an action.
+
+Built with React and `react-aria-components` Components, and styled using Tailwind CSS. It supports keyboard navigation, focus management, and accessible modal behavior.
 
 <ComponentPreview
   codeSnippet={getFileContent(
