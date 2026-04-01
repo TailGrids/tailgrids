@@ -359,8 +359,9 @@ See Base UI [Menubar](https://base-ui.com/react/components/menubar) and [Menu](h
 
 ## Accessibility
 
-- Built with **Base UI** for industry-standard accessible behaviors.
-- Full keyboard support (Arrows, Enter, Escape, Home, End).
-- Focus management for menu triggers and nested submenus.
-- Proper ARIA roles and attributes (role="menubar", role="menu", role="menuitem").
-- Screen reader support for selection states (checked/unchecked) and hierarchies.
+- **Semantic structure:** The component follows the menubar pattern using roles like `menubar`, `menu`, and `menuitem`, allowing assistive technologies to interpret the structure.
+- **Keyboard support:** Users can navigate menus using `Arrow` keys, open items with `Enter` or `Space`, and close menus with `Escape`.
+- **Focus management:** Focus moves between triggers, menu items, and nested submenus, enabling navigation without a mouse.
+- **Screen reader support:** States like checked or active items are exposed through the underlying accessibility behavior, including nested menus and grouped items.
+- **Trigger behavior:** Menu triggers open dropdowns and submenus, and can be used with both keyboard and hover interactions.
+- **Disabled items:** Disabled menu items are skipped during keyboard navigation and are not interactive.

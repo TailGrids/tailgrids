@@ -281,7 +281,8 @@ Fully composed field wrapper using React Aria's `useField` hook. Automatically h
 
 ## Accessibility
 
-- **ARIA Linking**: `ComposedField` uses React Aria's `useField` hook to automatically link the label, description, and error message to the form control via `aria-labelledby` and `aria-describedby`.
-- **Semantic HTML**: `FieldSet` renders a native `<fieldset>` element, and `FieldLegend` renders a `<legend>`, providing semantic grouping that assistive technologies understand.
-- **Label Association**: `FieldLabel` uses the native `<label>` element with `htmlFor` for proper click-to-focus behavior.
-- **Error States**: `FieldError` communicates validation messages to screen readers through proper ARIA association when used within `ComposedField`.
+- **Label association:** FieldLabel connects to form controls using `htmlFor`, so clicking the label focuses the input.
+- **ARIA linking:** `ComposedField` automatically links the label, description, and error message to the input using `ARIA` attributes.
+- **Error messages:** `FieldError` displays validation messages and connects them to the input so screen readers can announce them.
+- **Descriptions:** `FieldDescription` provides helper text that gives additional context to users.
+- **Semantic grouping:** Use `FieldSet` and `FieldLegend` to group related fields using native `<fieldset>` and `<legend>` elements.

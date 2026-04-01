@@ -146,3 +146,12 @@ Use `NativeSelectOptGroup` to group related options together.
 | Prop        | Type     | Default | Description            |
 | :---------- | :------- | :------ | :--------------------- |
 | `className` | `string` | -       | Additional CSS classes |
+
+
+## Accessibility
+
+- **Semantic structure:** Uses the native `<select>` element, so it follows standard form behavior by default.
+- **Keyboard support:** Users can open the dropdown and move between options using keyboard keys such as `Arrow` keys, `Enter`, and `Space`.
+- **Label association:** The select can be linked to a label using `htmlFor` and `id`, so users understand what the field is for.
+- **Screen reader support:** Options, selected values, and groups are handled through the browser’s built-in accessibility behavior.
+- **Disabled state:** Disabled selects and options are handled natively and are not interactive.

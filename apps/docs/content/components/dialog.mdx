@@ -335,9 +335,9 @@ A button with `slot="close"` that automatically closes the nearest dialog when p
 
 ## Accessibility
 
-- **Focus Management**: Focus is automatically trapped inside the dialog when open and restored to the trigger on close.
-- **Keyboard Support**: Press `Escape` to close the dialog (configurable via `isKeyboardDismissDisabled` on `DialogOverlay`).
-- **ARIA Labelling**: `DialogTitle` uses `slot="title"` to automatically set `aria-labelledby` on the dialog.
-- **Screen Readers**: The dialog is announced as a modal overlay, and background content is hidden from assistive technology.
-- **Dismiss on Outside Click**: Clicking the overlay backdrop closes the dialog when `isDismissable` is `true` on `DialogOverlay`.
-- **Semantic HTML**: Uses native `dialog` semantics via react-aria-components for maximum compatibility.
+- **Focus management:** The dialog keeps focus while open and returns focus to the trigger when it closes.
+- **Keyboard support:** Users can press the `Escape` key to close the dialog. You can turn off this behavior if needed.
+- **Trigger behavior:** Users can open and close the dialog using a trigger or a close button with a mouse or keyboard.
+- **Screen reader support:** Screen readers announce the dialog as a modal, and background content stays hidden while it is open.
+- **ARIA labeling:** Use `DialogTitle` and `DialogDescription` to describe the dialog content clearly.
+- **Outside click:** Users can close the dialog by clicking outside when `isDismissable` is enabled.

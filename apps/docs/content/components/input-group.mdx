@@ -178,5 +178,8 @@ An interactive button rendered inside the input group. Renders as a `<button typ
 
 ## Accessibility
 
-- **Semantic Wrapping**: Input groups visually bind data, but ensure your labels correctly target the `InputGroupInput` via an `id` and `htmlFor` association if not using a specific form field wrapper.
-- **Aria Attributes**: Action buttons inside an Input Group should always contain descriptive `aria-label` attributes if they only contain an icon, avoiding ambiguous action buttons for screen-reader users (e.g. `aria-label="Show password"`).
+- **Label association:** Input groups are visual wrappers, so labels should be linked to the input using `htmlFor` and `id`, or provided through a field wrapper.
+- **Keyboard support:** Inputs and buttons inside the group follow native keyboard behavior. Users can type, move between elements using `Tab`, and activate buttons using `Enter` or `Space`.
+- **Focus behavior:** Each interactive element (input, textarea, button) receives focus independently, with visible focus states for better usability.
+- **Icon buttons:** Buttons that contain only icons should include an `aria-label` (for example, “Search” or “Show password”) so their purpose is clear to screen readers.
+- **Grouped context:** Prefixes, suffixes, and addons provide visual context, but additional labels or helper text may be needed to clearly describe the input purpose.

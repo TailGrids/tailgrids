@@ -178,11 +178,12 @@ Extends Recharts `DefaultLegendContentProps`.
 | `hideIndicator` | `boolean` | `false` | Whether to hide the color indicator shape next to legend items. |
 | `className`     | `string`  | -       | Additional CSS classes for the legend container.                |
 
-## Accessibility
-
 The Chart components are designed with accessibility in mind, ensuring that data visualizations are perceivable and navigable.
 
-- **Focus Management**: The `ChartContainer` includes keyboard-accessible styles for the underlying Recharts wrapper, providing clear visual indicators when the component receives focus.
-- **Dynamic Indicators**: Customizable indicators (`dot`, `line`, `square`) help differentiate data series, making them easier to identify for users with visual impairments.
-- **ARIA Support**: Leverages Recharts' built-in ARIA support for SVG elements, providing semantic roles and labels to assistive technologies.
-- **Screen Readers**: Descriptive tooltips and legends ensure that data values are correctly announced when interacted with.
+## Accessibility
+
+- **Focus management:** The chart can receive focus and shows clear visual indicators when it is active.
+- **Screen reader support:** Tooltips and legends help screen readers describe data values.
+- **Data clarity:** Use clear labels, legends, and axis titles so users can easily understand the data.
+- **Visual distinction:** Different colors and indicator styles (dot, line, square) help users distinguish between data series.
+- **ARIA support:** The chart uses accessible SVG elements and roles provided by Recharts.

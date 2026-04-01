@@ -330,8 +330,9 @@ A decorative element used to display keyboard shortcuts.
 
 ## Accessibility
 
-- Full keyboard navigation support (arrow keys, Enter, Escape).
-- Correct ARIA roles and attributes automatically applied via Base UI.
-- Support for type-ahead selection.
-- Managed focus restoration on menu close.
-- Long-press support on touch devices.
+- **Semantic structure:** The component uses proper menu roles like `menu` and `menuitem`, so screen readers can understand the structure.
+- **Keyboard support:** Users can move between items using `Arrow` keys, open items with `Enter` or `Space`, and close the menu with `Escape`.
+- **Focus management:** Focus moves correctly between menu items and submenus, and returns to the trigger when the menu is closed.
+- **Trigger behavior:** The menu opens on right-click or long-press, and also works with keyboard interaction.
+- **Screen reader support:** Active and selected items are announced clearly, including nested menus and grouped items.
+- **Disabled items:** Disabled items are skipped during keyboard navigation and are announced properly.

@@ -218,9 +218,9 @@ The panel is hidden from the accessibility tree when collapsed. React Aria handl
 
 ## Accessibility
 
-- **Semantics** — The trigger is a `<button>` inside a heading element (`h3` by default). This creates the correct heading hierarchy for screen readers.
-- **ARIA attributes** — `aria-expanded` and `aria-controls` are automatically managed by React Aria. No manual wiring required.
-- **Keyboard support** — Press `Space` or `Enter` on the focused trigger to expand or collapse the panel.
-- **Focus management** — Focus styles are visible when navigating by keyboard (`focus-visible`).
-- **Disabled state** — When `isDisabled` is set, the trigger receives `disabled` and is removed from the tab order.
-- **Heading level** — Use the `level` prop on `CollapsibleTrigger` to match the heading hierarchy of the surrounding page content.
+- **Keyboard support:** Users can press `Enter` or `Space` on the trigger to expand or collapse the content.
+- **Focus management:** The trigger can receive focus, and focus styles appear when navigating with the keyboard.
+- **ARIA behavior:** The component automatically manages expanded (`aria-expanded`) and collapsed states so screen readers know when content is visible.
+- **Semantic structure:** The trigger is rendered as a button within a heading, helping screen readers understand the content hierarchy.
+- **Content visibility:** When collapsed, the content is hidden from assistive technologies and becomes available when expanded.
+- **Disabled state:** When `disabled`, the trigger cannot be focused or activated.

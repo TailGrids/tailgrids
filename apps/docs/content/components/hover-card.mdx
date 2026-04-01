@@ -165,7 +165,8 @@ See [Base UI](https://base-ui.com/react/components/preview-card#api-reference) d
 
 ## Accessibility
 
-- **Keyboard Navigation**: The hover card trigger is focusable, allowing keyboard users to navigate to it.
-- **Screen Reader Support**: The component uses ARIA attributes to indicate the relationship between the trigger and the content. Use descriptive labels for triggers (e.g., via `aria-label`) to ensure a clear purpose for screen reader users.
-- **Semantic HTML**: The component is built with semantic elements, ensuring it is accessible to assistive technologies.
-- **Controlled State**: Use the `open` prop to programmatically control the hover card's visibility, ensuring it can be managed by accessibility-focused logic.
+- **Keyboard support:** The trigger element can receive focus, allowing keyboard users to access the hover card.
+- **Focus behavior:** When the trigger is focused, the hover card can open just like on hover.
+- **Screen reader support:** Use clear text or labels on the trigger so screen readers can describe what the hover card represents.
+- **Positioning and timing:** You can control open and close delays to make the interaction more usable and predictable.
+- **Controlled state:** You can control the open state manually to manage visibility in more complex or accessibility-focused use cases.

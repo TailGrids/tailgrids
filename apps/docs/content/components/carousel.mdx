@@ -187,9 +187,9 @@ See the [Embla Cacrousel Guides](https://www.embla-carousel.com/guides/) for mor
 
 ## Accessibility
 
-- Use the [Embla Carousel Accessibility](https://www.embla-carousel.com/plugins/accessibility/) plugin for best accessibility support.
-- Built with keyboard navigation support (Arrow keys automatically scroll items).
-- Uses `role="region"` with `aria-roledescription="carousel"` for the outer container.
-- Each slide has `role="group"` and `aria-roledescription="slide"`.
-- Buttons include `sr-only` text for screen readers ("Previous slide", "Next slide").
-- Properly handles `disabled` states when the carousel cannot scroll further.
+- **Keyboard support:** Users can navigate between slides using `Arrow` keys.
+- **Screen reader support:** Navigation buttons include hidden text like “Previous slide” and “Next slide” so screen readers can announce them clearly.
+- **ARIA roles:** The carousel uses roles like `region` (carousel) and `group` (slide) to help screen readers understand the structure.
+- **Slide structure:** Each slide is treated as a separate group so users can identify slide boundaries.
+- **Navigation states:** Navigation buttons are `disabled` when there are no more slides to scroll.
+- **Accessibility plugins:** You can use the Embla accessibility plugin to enhance support for screen readers and interactions.

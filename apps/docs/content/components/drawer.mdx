@@ -264,8 +264,9 @@ A specialized button that automatically closes the nearest drawer.
 
 ## Accessibility
 
-- **Focus Management**: Focus is automatically trapped inside the drawer when open and restored to the trigger element on close.
-- **Keyboard Navigation**: Pressing `Escape` or the close trigger closes the drawer.
-- **ARIA Labeling**: `DrawerTitle` uses `slot="title"` to provide an accessible label for the drawer component.
-- **Screen Readers**: The drawer is announced as a modal overlay, and background content is hidden from assistive technology when open.
-- **Gestures**: The drag-to-dismiss gesture provides an alternative, intuitive way to close the drawer, especially beneficial for touch users.
+- **Focus management:** Focus stays inside the drawer when open and returns to the trigger when closed.
+- **Keyboard support:** Users can close the drawer using the `Escape` key or a close button.
+- **Trigger behavior:** The drawer opens via a trigger element and supports both mouse and keyboard interaction.
+- **Screen reader support:** The drawer is announced as a modal, and background content is hidden while it is open.
+- **ARIA labeling:** Use `DrawerTitle` and `DrawerDescription` to provide clear context for screen readers.
+- **Gesture support:** Users can close the drawer with drag or swipe gestures, improving usability on touch devices.

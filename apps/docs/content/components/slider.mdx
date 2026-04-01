@@ -146,6 +146,9 @@ The disabled state of the slider.
 
 ## Accessibility
 
-- **Keyboard Support**: Full keyboard support for navigating and adjusting the slider.
-- **ARIA Labels**: Uses React Aria's `useSlider` and `useSliderThumb` to provide appropriate ARIA attributes for screen readers.
-- **Focus Management**: Proper focus ring and focus management for thumbs.
+- **Keyboard support:** Users can adjust the slider value using keyboard keys when the `thumb` is focused.
+- **Focus management:** Each thumb can receive focus, and focus styles appear when navigating with the keyboard.
+- **Value control:** Users can move the thumb to increase or decrease the value within the defined `range` and `step`.
+- **Range support:** When using two thumbs, users can control both `minimum` and `maximum` values independently.
+- **Disabled state:** When `disabled`, the slider cannot be focused or changed.
+- **Screen reader support:** Provide clear labels for the slider so screen readers can describe its purpose and current value.

@@ -217,7 +217,9 @@ See [Modal](https://react-aria.adobe.com/Modal) reference for more information.
 
 ## Accessibility
 
-- **Role**: Uses `role="alertdialog"` to ensure screen readers treat it as an interruptive modal.
-- **Focus Management**: Automatically handles focus entrapment and returns focus to the trigger upon closing.
-- **Keyboard Navigation**: Supports `Escape` key to close the dialog and `Enter` to trigger actions.
-- **Aria Labels**: Titles and descriptions are automatically linked to the dialog container for context.
+- **Focus management:** The alert dialog keeps focus within it while open and returns focus to the trigger when it closes.
+- **Keyboard support:** Users can press the `Escape` key to close the dialog and press `Enter` to confirm the primary action.
+- **Trigger behavior:** Users can open the alert dialog using a trigger and interact with actions using the mouse or keyboard.
+- **Screen reader support:** Screen readers announce the dialog as an alert, so users understand that immediate action is required.
+- **ARIA labeling:** Use `AlertDialogTitle` and `AlertDialogDescription` to describe the purpose and impact of the action clearly.
+- **Action clarity:** Provide clear labels for actions like confirm and cancel so users understand the outcome before proceeding.

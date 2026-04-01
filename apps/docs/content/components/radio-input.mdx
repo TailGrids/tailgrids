@@ -189,10 +189,9 @@ Create custom radio inputs with tailwind css utility classes.
 
 ## Accessibility
 
-- Uses native `<input type="radio">` with screen reader support (visually hidden)
-- Label is properly associated with input via wrapping or `htmlFor`
-- Radio buttons with the same `name` are automatically grouped
-- Keyboard accessible with arrow key navigation within groups
-- Focus ring provides clear visual feedback
-- Disabled state is communicated via `aria-disabled` on the label
-- Hover states are disabled when radio is disabled
+- **Native behavior:** Uses a native `<input type="radio">`, so it works with screen readers and form semantics by default.
+- **Group selection:** Radio inputs with the same `name` are grouped, allowing users to select only one option at a time.
+- **Label association:** Wrap the input with a Label or use `htmlFor` to connect them. This allows users to click the label to select the option.
+- **Keyboard support:** Users can navigate between options using `Arrow` keys and select an option using the keyboard.
+- **Focus management:** The selected radio can receive focus, and focus styles help users see which option is active.
+- **Disabled state:** Disabled radios cannot be selected and are skipped during interaction.

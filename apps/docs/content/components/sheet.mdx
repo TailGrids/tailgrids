@@ -282,8 +282,9 @@ A specialized button with `slot="close"` that automatically closes the nearest s
 
 ## Accessibility
 
-- **Focus Management**: Focus is automatically trapped inside the sheet when open and restored to the trigger element on close.
-- **Keyboard Navigation**: Pressing `Escape` or the close trigger closes the sheet.
-- **ARIA Labeling**: `SheetTitle` uses `slot="title"` to provide an accessible label for the sheet component.
-- **Screen Readers**: The sheet is announced as a modal overlay, and background content is hidden from assistive technology when open.
-- **Mobile Optimized**: Designed for mobile responsiveness, perfect for replacing complex navigation menus on smaller screens.
+- **Semantic structure:** The sheet appears as an overlay on top of the page, so screen readers treat it as a separate layer.
+- **Keyboard support:** Users can close the sheet using the `Escape` key or the close button.
+- **Focus management:** Focus is trapped inside the sheet when open and returns to the trigger when it is closed.
+- **Trigger behavior:** The sheet opens from a trigger element and supports custom trigger components.
+- **Screen reader support:** The sheet title and description are announced clearly to explain the panel's purpose.
+- **Outside interaction:** Clicking outside the sheet can close it when `dismiss` is enabled.
