@@ -2,12 +2,12 @@ import ProBadge from "@/components/pro-badge";
 import ThemeToggleLink from "@/components/theme-toggle-link";
 import {
   BlocksIcon,
-  BoltIcon,
+  BookOpenIcon,
   ComponentsIcon,
   FigmaIcon,
-  TemplateIcon
+  TemplateIcon,
+  ZapIcon
 } from "@/icons";
-import { OpenBook, Bolt1 } from "@tailgrids/icons";
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 
 export function baseOptions(): BaseLayoutProps {
@@ -17,20 +17,32 @@ export function baseOptions(): BaseLayoutProps {
     },
     links: [
       {
-        text: "Introduction",
+        text: <span>Introduction</span>,
         url: "/",
-        icon: <OpenBook className="shrink-0" />
+        icon: (
+          <span className="p-1.25 bg-[rgba(30,183,255,0.15)] rounded-[7px] shrink-0">
+            <BookOpenIcon />
+          </span>
+        )
       },
       {
         text: "Installation",
         url: "/installation",
-        icon: <BoltIcon className="shrink-0" />,
+        icon: (
+          <span className="p-1.25 bg-[rgba(13,188,95,0.15)] rounded-[7px] shrink-0">
+            <ZapIcon />
+          </span>
+        ),
         active: "nested-url"
       },
       {
         text: "Components",
         url: "/components",
-        icon: <ComponentsIcon className="shrink-0 " />,
+        icon: (
+          <span className="p-1.25 bg-[rgba(116,98,244,0.15)] rounded-[7px] shrink-0">
+            <ComponentsIcon />
+          </span>
+        ),
         active: "nested-url"
       },
       {
@@ -41,7 +53,11 @@ export function baseOptions(): BaseLayoutProps {
           </span>
         ),
         url: "https://tailgrids.com/blocks",
-        icon: <BlocksIcon className="shrink-0" />,
+        icon: (
+          <span className="p-1.25 bg-[rgba(247,132,69,0.15)] rounded-[7px] shrink-0">
+            <BlocksIcon />
+          </span>
+        ),
         external: false
       },
       {
@@ -52,7 +68,11 @@ export function baseOptions(): BaseLayoutProps {
           </span>
         ),
         url: "https://tailgrids.com/templates",
-        icon: <TemplateIcon className="shrink-0" />,
+        icon: (
+          <span className="p-1.25 bg-[rgba(198,68,239,0.15)] rounded-[7px] shrink-0">
+            <TemplateIcon />
+          </span>
+        ),
         external: false
       },
       {
@@ -62,7 +82,11 @@ export function baseOptions(): BaseLayoutProps {
             <ProBadge />
           </span>
         ),
-        icon: <FigmaIcon className="shrink-0" />,
+        icon: (
+          <span className="p-1.25 bg-[rgba(253,71,40,0.15)] rounded-[7px] shrink-0">
+            <FigmaIcon />
+          </span>
+        ),
         url: "https://tailgrids.com/figma",
         external: false
       }

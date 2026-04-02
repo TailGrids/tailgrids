@@ -690,7 +690,7 @@
 .text-fd-primary {
   color: #3758f9 !important; /* primary-500 */
   background-color: transparent !important;
-  font-weight: 600;
+  font-weight: 500;
 }
 .dark .text-fd-primary {
   color: #5e84fc !important; /* primary-400 */
@@ -702,36 +702,64 @@
 .text-fd-primary:hover {
   background-color: none !important;
 }
+
 .text-fd-muted-foreground {
   color: #6b7280;
   font-size: 14px;
   font-weight: 500;
 }
+
 button > svg,
 a > svg {
   width: 20px;
   height: 20px;
 }
+
 .dark .text-fd-muted-foreground {
   color: #9ca3af !important;
 }
+
 .text-fd-muted-foreground:hover {
   background: none !important;
-  color: #3758f9 !important; /* primary-500 */
-}
-.dark .text-fd-muted-foreground:hover {
-  color: #5e84fc !important; /* primary-400 */
+  color: #374151 !important; /* text 50 */
 }
 
-/* #nd-sidebar div button { */
-/* font-size: 16px; */
-/* color: #374151; */
-/* font-weight: 600; */
-/* } */
+.dark .text-fd-muted-foreground:hover {
+  color: white !important;
+}
+
+#nd-sidebar div [data-state="open"] a:not([data-active="true"]) {
+  position: relative;
+}
+
+#nd-sidebar div [data-state="open"] a:not(:has(*)):hover::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 0.625rem;
+  bottom: 0.625rem;
+  width: 1px !important;
+  background-color: currentColor !important;
+  border-radius: 4px;
+}
+
+/* Sidebar category headers (Folders) */
+#nd-sidebar button[data-state],
+#nd-sidebar div[data-state] > a:has(~ div > *) {
+  font-weight: 600 !important;
+  color: #374151 !important;
+  letter-spacing: -0.02px;
+}
+
+.dark #nd-sidebar button[data-state],
+.dark #nd-sidebar div[data-state] > a[data-active]:has(~ div > *) {
+  color: #fff !important;
+}
 
 .text-fd-primary::before {
   background-color: #3758f9 !important; /* primary-500 */
 }
+
 .dark .text-fd-primary::before {
   background-color: #5e84fc !important; /* primary-400 */
 }
@@ -793,7 +821,7 @@ body {
 }
 
 #nd-sidebar p {
-  @apply text-base font-semibold text-[#374151];
+  @apply text-base font-medium text-[#374151];
 }
 
 #nd-sidebar p {

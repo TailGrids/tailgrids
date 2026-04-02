@@ -6,6 +6,7 @@ import { DocsLayout } from "fumadocs-ui/layouts/docs";
 import { ContainerWithGrid } from "@/components/ContainerGrid";
 import Footer from "@/components/Footer";
 import MobileNav from "@/components/mobile-nav";
+import { CustomFolder, CustomSeparator } from "@/components/sidebar-components";
 
 export default function Layout({ children }: LayoutProps<"/">) {
   return (
@@ -16,10 +17,14 @@ export default function Layout({ children }: LayoutProps<"/">) {
         {...baseOptions()}
         sidebar={{
           collapsible: false,
-          // Enable responsive sidebar: drawer on mobile, persistent on desktop
           enabled: true,
           banner: <ThemeToggleLink />,
-          footer: <MobileNav />
+          footer: <MobileNav />,
+          defaultOpenLevel: 1,
+          components: {
+            Folder: CustomFolder,
+            Separator: CustomSeparator
+          }
         }}
       >
         <ContainerWithGrid>

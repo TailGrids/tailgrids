@@ -1,11 +1,8 @@
 {
   "title": "Documentation",
   "pages": [
-    "---Get Started---",
-    "...get-started",
-    "---Components---",
-    "...components",
-    "---Others---",
+    "get-started",
+    "components",
     "icons",
     "[Changelog](/changelog)",
     "[Credits](/credits)"
