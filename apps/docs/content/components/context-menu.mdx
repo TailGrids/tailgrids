@@ -1,6 +1,6 @@
 ---
 title: React Context Menu Components
-description: A high-performance context menu component that appears when triggered by a right-click or long-press. Built with accessibility and modern design in mind.
+description: A React context menu component built with Tailwind CSS. Show right-click or long-press menus with actions, submenus, and keyboard support for accessible UI.
 ---
 
 import { ContextMenuFileManager } from "@/components/preview/context-menu/context-menu-file-manager";
@@ -12,9 +12,11 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Context Menu
 
-A Context Menu provides a set of actions that are relevant to a specific element or region of the interface. It typically appears upon a right-click (desktop) or long-press (touch devices) on a trigger element.
+The React Context Menu component displays a menu when you right-click an element or long-press on a touch device. It lets users access actions related to that specific item or area.
 
-This component is built on top of [Base UI's Context Menu](https://base-ui.com/react/components/context-menu) and styled with Tailwind CSS, offering complete control over the visual presentation while maintaining robust accessibility.
+It helps provide quick actions without adding buttons to the UI. For example, you can right-click on a file to see options like rename, delete, or copy.
+
+This component is built on top of [Base UI's Context Menu](https://base-ui.com/react/components/context-menu) and styled with Tailwind CSS. It supports keyboard navigation and accessibility, and it works well across different screen sizes.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -328,8 +330,9 @@ A decorative element used to display keyboard shortcuts.
 
 ## Accessibility
 
-- Full keyboard navigation support (arrow keys, Enter, Escape).
-- Correct ARIA roles and attributes automatically applied via Base UI.
-- Support for type-ahead selection.
-- Managed focus restoration on menu close.
-- Long-press support on touch devices.
+- **Semantic structure:** The component uses proper menu roles like `menu` and `menuitem`, so screen readers can understand the structure.
+- **Keyboard support:** Users can move between items using `Arrow` keys, open items with `Enter` or `Space`, and close the menu with `Escape`.
+- **Focus management:** Focus moves correctly between menu items and submenus, and returns to the trigger when the menu is closed.
+- **Trigger behavior:** The menu opens on right-click or long-press, and also works with keyboard interaction.
+- **Screen reader support:** Active and selected items are announced clearly, including nested menus and grouped items.
+- **Disabled items:** Disabled items are skipped during keyboard navigation and are announced properly.

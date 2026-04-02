@@ -1,6 +1,6 @@
 ---
 title: React Scroll Area Components
-description: A React scroll area component for displaying scrollable content with custom scrollbars. Built on Base UI for performance and accessibility.
+description: A React scroll area component built with Tailwind CSS. Build scrollable containers with custom scrollbars, vertical and horizontal scrolling, and flexible layouts.
 ---
 
 import { ScrollAreaBothPreview } from "@/components/preview/scroll-area/scroll-area-both-preview";
@@ -11,7 +11,11 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Scroll Area
 
-Scroll Area is a high-quality React component that provides a native scroll container with custom, styleable scrollbars. It is built on [Base UI](https://base-ui.com/react/components/scroll-area), ensuring top-tier accessibility and performance while giving you full control over the visual presentation.
+The React Scroll Area component creates a scrollable container with custom scrollbars. It lets users scroll through content while keeping full control over the look and behavior.
+
+It is useful when the content is larger than its container. For example, you can use it for long lists, tables, logs, or side panels with fixed height.
+
+Built with [Base UI](https://base-ui.com/react/components/scroll-area) and styled using Tailwind CSS, it supports vertical and horizontal scrolling, keyboard navigation, and accessible interactions.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -137,7 +141,8 @@ The scrollbar track and thumb component.
 
 ## Accessibility
 
-- Follows the [W3C Scrollable Region](https://www.w3.org/WAI/ARIA/apg/patterns/scrollable-region/) pattern.
-- The scrollbar thumb is draggable and interacts correctly with touch and mouse.
-- Supports keyboard navigation through the viewport focus.
-- Correct ARIA attributes are applied automatically via Base UI.
+- **Keyboard support:** Users can scroll the content using keyboard keys when the scroll area is focused.
+- **Scrollable container:** The `ScrollAreaViewport` acts as the main scrollable region and should contain all scrollable content.
+- **Custom scrollbars:** Scrollbars are interactive and support mouse and touch drag.
+- **Orientation support:** Supports vertical and horizontal scrolling based on content size and scrollbar configuration.
+- **Screen reader support:** Use a clear structure and meaningful content within the scroll area so screen readers can interpret it correctly.

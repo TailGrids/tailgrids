@@ -1,6 +1,6 @@
 ---
 title: React Label Components
-description: A primitive label component that provides accessibility and layout for form fields.
+description: A React label component built with Tailwind CSS. Add accessible labels to form inputs like text fields, text areas, and selects with proper htmlFor and id attributes.
 ---
 
 import LabelPreview from "@/components/preview/label/label-preview";
@@ -11,7 +11,11 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Label
 
-The Label component is used to provide a descriptive label for form fields. It is built on top of React Aria to ensure accessibility.
+The React Label component is used to describe a form input like a text field, textarea, or select. It helps users understand what information they need to enter.
+
+It is linked to an input using the htmlFor and id props, so clicking the label focuses the input. For example, clicking “Email Address” will focus the email input field.
+
+Built with `React Aria` and styled using Tailwind CSS. It supports accessibility and works well with all form components.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -98,6 +102,7 @@ Note: `Label` also inherits all props from `react-aria-components`'s `LabelProps
 
 ## Accessibility
 
-- **Semantic HTML**: The component renders a `<label>` element.
-- **Form Association**: Use the `htmlFor` prop to link the label to a form control's `id`. This ensures that clicking the label focuses the control and screen readers announce the label correctly.
-- **Support for React Aria**: Since it extends React Aria's `Label`, it integrates seamlessly with other React Aria components and hooks for advanced accessibility patterns.
+- **Label association:** Use the `htmlFor` prop to connect the label to a form input using its `id`. This ensures clicking the label focuses the input.
+- **Screen reader support:** The label provides a clear name for the input, so screen readers can describe what the field is for.
+- **Clickable area:** Users can click the label to focus the input, making forms easier to use.
+- **Semantic structure:** The component renders a native `<label>` element, which works with all standard form controls.

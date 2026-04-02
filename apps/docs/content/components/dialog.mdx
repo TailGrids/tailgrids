@@ -1,6 +1,6 @@
 ---
 title: React Dialog Components
-description: A React dialog component for displaying modal overlays. Used to show information, ask questions, collect input, or offer multiple actions in a focused layer above the page.
+description: A React dialog component built with Tailwind CSS. Create modal dialogs and pop-up overlays for forms, messages, and actions with accessible focus and keyboard support.
 ---
 
 import DialogAskQuestionPreview from "@/components/preview/dialog/dialog-ask-question-preview";
@@ -17,9 +17,11 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Dialog
 
-React Dialog components display a modal overlay above the main page content. They are commonly used to show information, ask a question, collect input from forms, or offer multiple actions that require the user's attention before continuing.
+The React Dialog component shows a modal window on top of the page to display content or collect user input. It is used for things like forms, messages, or actions that need user attention.
 
-This Dialog component is built with React and styled using Tailwind CSS. It uses `react-aria-components` for accessibility, focus management, and keyboard interactions out of the box.
+It opens as an overlay and can block or allow interaction with the background. For example, you can use it to edit a profile, show details, or ask users to take an action.
+
+Built with React and `react-aria-components` Components, and styled using Tailwind CSS. It supports keyboard navigation, focus management, and accessible modal behavior.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -333,9 +335,9 @@ A button with `slot="close"` that automatically closes the nearest dialog when p
 
 ## Accessibility
 
-- **Focus Management**: Focus is automatically trapped inside the dialog when open and restored to the trigger on close.
-- **Keyboard Support**: Press `Escape` to close the dialog (configurable via `isKeyboardDismissDisabled` on `DialogOverlay`).
-- **ARIA Labelling**: `DialogTitle` uses `slot="title"` to automatically set `aria-labelledby` on the dialog.
-- **Screen Readers**: The dialog is announced as a modal overlay, and background content is hidden from assistive technology.
-- **Dismiss on Outside Click**: Clicking the overlay backdrop closes the dialog when `isDismissable` is `true` on `DialogOverlay`.
-- **Semantic HTML**: Uses native `dialog` semantics via react-aria-components for maximum compatibility.
+- **Focus management:** The dialog keeps focus while open and returns focus to the trigger when it closes.
+- **Keyboard support:** Users can press the `Escape` key to close the dialog. You can turn off this behavior if needed.
+- **Trigger behavior:** Users can open and close the dialog using a trigger or a close button with a mouse or keyboard.
+- **Screen reader support:** Screen readers announce the dialog as a modal, and background content stays hidden while it is open.
+- **ARIA labeling:** Use `DialogTitle` and `DialogDescription` to describe the dialog content clearly.
+- **Outside click:** Users can close the dialog by clicking outside when `isDismissable` is enabled.

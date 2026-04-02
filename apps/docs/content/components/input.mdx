@@ -1,6 +1,6 @@
 ---
 title: React Input Components
-description: A React input field component for collecting text input from users. Used in forms to enter data with labels, hints, validation states, and controlled input support.
+description: A React input component built with Tailwind CSS. Create text input fields for forms with labels, placeholders, validation states, and support for both controlled and uncontrolled usage.
 ---
 
 import InputControlledPreview from "@/components/preview/input/input-controlled-preview";
@@ -15,9 +15,11 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Input
 
-React Input components are used to collect text input from users. They are commonly used in forms for entering names, emails, passwords, and other text-based data.
+The React Input component lets users enter text in a form. It is used for fields like name, email, password, and other text inputs.
 
-This Input component is built with React and styled using Tailwind CSS. It is designed to be used with the `Label` component for accessibility and supports validation states and both controlled and uncontrolled usage.
+It works like a standard input field and can be used with a label, placeholder, and validation messages. For example, users can type their email and see an error or success message based on the input.
+
+Built with React and styled using Tailwind CSS. It is designed to be used with the [Label component](https://tailgrids.com/docs/components/label) for accessibility and supports validation states, as well as controlled and uncontrolled inputs.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -162,8 +164,7 @@ Extends `input` element props.
 
 ## Accessibility
 
-- Labels must be manually associated with inputs via `htmlFor` and `id`
-- Keyboard accessible with standard input behavior
-- Focus ring provides clear visual feedback with `ring-4` style
-- Status-specific colors can be used for hint text to provide semantic feedback
-- Supports all standard input accessibility attributes
+- **Label association:** Connect a label to the input using `htmlFor` and `id`, so users know what the field is for.
+- **Keyboard support:** Users can type in the input, move between fields using `Tab`, and interact using standard keyboard controls.
+- **Focus visibility:** The input shows a clear focus style when selected, helping users see which field is active.
+- **Validation feedback:** Use helper text or messages to show errors or success states clearly.

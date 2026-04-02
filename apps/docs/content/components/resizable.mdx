@@ -1,6 +1,7 @@
 ---
-title: React Resizable Components
-description: Accessible resizable panel groups and layouts with keyboard support.
+title: React Resizable Panel Components
+description: A React resizable component built with Tailwind CSS. Create resizable panel and split layouts with drag handles, adjustable sizes, and keyboard control.
+
 ---
 
 import ResizableHandlePreview from "@/components/preview/resizable/resizable-handle-preview";
@@ -12,7 +13,11 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Resizable
 
-A resizable component that allows users to resize panels in a layout. Built with accessibility and keyboard support in mind using `react-resizable-panels`.
+The React Resizable component lets users resize panels by dragging a handle between them. It is used to create flexible layouts that allow users to adjust the size of sections.
+
+It helps users control how much space each panel takes. For example, you can resize a sidebar and main content area in a dashboard.
+
+Built with `react-resizable-panels` and styled using Tailwind CSS, it supports horizontal and vertical layouts, keyboard controls, and accessible interactions.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -146,7 +151,7 @@ The separator between panels that users can drag.
 
 ## Accessibility
 
-- Full keyboard support for resizing using arrow keys.
-- Home/End keys to quickly jump to min/max sizes.
-- Proper ARIA attributes for screen readers.
-- Focus management for handles.
+- **Keyboard support:** Users can resize panels using the `Arrow` keys. They can also use `Home` and `End` keys to quickly move to the minimum or maximum sizes.
+- **Focus management:** Resize handles can receive focus, making them accessible for keyboard users.
+- **Screen reader support:** The component uses `ARIA` attributes to help screen readers understand the layout and resizing behavior.
+- **Resize handles:** The handle between panels is the main interaction point and can be used with both the mouse and keyboard.

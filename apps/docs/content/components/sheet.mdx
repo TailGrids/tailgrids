@@ -1,6 +1,6 @@
 ---
 title: React Sheet Components
-description: A React sheet component that slides into the screen from any side. Perfect for mobile menus, secondary views, or detailed information panels.
+description: A React sheet component built with Tailwind CSS. Create slide-in side panels (drawers) from screen edges for menus, forms, and overlays without leaving the page.
 ---
 
 import SheetFormPreview from "@/components/preview/sheet/sheet-form-preview";
@@ -13,9 +13,11 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Sheet
 
-React Sheet components are used to display a panel that slides from one of the screen's edges. They provide a versatile way to offer additional information, context-sensitive menus, or complex forms without forcing the user to navigate away from the current page.
+The React Sheet component shows a panel that slides in from the edge of the screen. It is used to display extra content without leaving the current page.
 
-This Sheet component is built with React Aria for accessibility, Tailwind CSS for styling, and supports multiple side variants and highly composable sub-components.
+It helps you show things like menus, forms, or details while keeping the main screen visible. For example, you can open a side panel to edit a profile or show navigation on mobile.
+
+Built with React Aria and styled using Tailwind CSS. It supports accessibility and keyboard navigation, and it works well across different screen sizes.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -280,8 +282,9 @@ A specialized button with `slot="close"` that automatically closes the nearest s
 
 ## Accessibility
 
-- **Focus Management**: Focus is automatically trapped inside the sheet when open and restored to the trigger element on close.
-- **Keyboard Navigation**: Pressing `Escape` or the close trigger closes the sheet.
-- **ARIA Labeling**: `SheetTitle` uses `slot="title"` to provide an accessible label for the sheet component.
-- **Screen Readers**: The sheet is announced as a modal overlay, and background content is hidden from assistive technology when open.
-- **Mobile Optimized**: Designed for mobile responsiveness, perfect for replacing complex navigation menus on smaller screens.
+- **Semantic structure:** The sheet appears as an overlay on top of the page, so screen readers treat it as a separate layer.
+- **Keyboard support:** Users can close the sheet using the `Escape` key or the close button.
+- **Focus management:** Focus is trapped inside the sheet when open and returns to the trigger when it is closed.
+- **Trigger behavior:** The sheet opens from a trigger element and supports custom trigger components.
+- **Screen reader support:** The sheet title and description are announced clearly to explain the panel's purpose.
+- **Outside interaction:** Clicking outside the sheet can close it when `dismiss` is enabled.

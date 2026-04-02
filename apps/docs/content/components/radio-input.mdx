@@ -1,6 +1,6 @@
 ---
 title: React Radio Button Components
-description: A React radio button component for selecting a single option from a group. Uses native radio inputs with labels, keyboard support, and accessible behavior.
+description: A React radio button component built with Tailwind CSS. Create radio groups for single-selection form fields, with labels and accessible options for plans, settings, and preferences.
 ---
 
 import RadioControlledPreview from "@/components/preview/radio/radio-controlled-preview";
@@ -16,9 +16,11 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Radio Input
 
-React Radio Input components are used when users need to select **one option from a set**. They are commonly used in forms for plan selection, preferences, settings, and configuration choices.
+The React Radio button component lets users select one option from a radio group. It is commonly used in forms for things like plans, settings, or preferences.
 
-This Radio Input component is built with React and styled using Tailwind CSS. It uses native radio inputs for predictable behavior, supports labels, sizes, and works in both controlled and uncontrolled forms.
+It works by grouping options so only one can be selected at a time. For example, users can choose between Basic, Pro, or Enterprise plans.
+
+Built with React and styled using Tailwind CSS. It uses native radio inputs for reliable behavior and supports labels, sizes, and form control states.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -187,10 +189,9 @@ Create custom radio inputs with tailwind css utility classes.
 
 ## Accessibility
 
-- Uses native `<input type="radio">` with screen reader support (visually hidden)
-- Label is properly associated with input via wrapping or `htmlFor`
-- Radio buttons with the same `name` are automatically grouped
-- Keyboard accessible with arrow key navigation within groups
-- Focus ring provides clear visual feedback
-- Disabled state is communicated via `aria-disabled` on the label
-- Hover states are disabled when radio is disabled
+- **Native behavior:** Uses a native `<input type="radio">`, so it works with screen readers and form semantics by default.
+- **Group selection:** Radio inputs with the same `name` are grouped, allowing users to select only one option at a time.
+- **Label association:** Wrap the input with a Label or use `htmlFor` to connect them. This allows users to click the label to select the option.
+- **Keyboard support:** Users can navigate between options using `Arrow` keys and select an option using the keyboard.
+- **Focus management:** The selected radio can receive focus, and focus styles help users see which option is active.
+- **Disabled state:** Disabled radios cannot be selected and are skipped during interaction.

@@ -1,6 +1,6 @@
 ---
 title: React Collapsible Components
-description: A React collapsible component for showing and hiding a single section of content. Built on React Aria Disclosure for full accessibility and keyboard support, with a composable API inspired by shadcn/ui.
+description: A React collapsible component built with Tailwind CSS. Show or hide content with expandable sections, toggle panels, with simple and accessible interactions.
 ---
 
 import CollapsibleControlledPreview from "@/components/preview/collapsible/collapsible-controlled-preview";
@@ -15,9 +15,11 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Collapsible
 
-A Collapsible is a single expandable section. Use it wherever content should be progressively revealed without a page transition — order summaries, stack traces, DNS settings, build logs, environment variables, and more.
+The React Collapsible component lets users show or hide content by clicking a trigger. It is used to expand and collapse sections without leaving the page.
 
-This component is built on top of **React Aria's `Disclosure`** primitive, giving you managed focus, correct ARIA attributes, and keyboard interaction for free.
+It helps keep the UI clean by hiding details until needed. For example, users can click to view order details, logs, or settings only when required.
+
+This component is built on top of **React Aria's `Disclosure`** primitive and styled using Tailwind CSS. It gives built-in focus management, proper ARIA attributes, and keyboard interaction out of the box.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -216,9 +218,9 @@ The panel is hidden from the accessibility tree when collapsed. React Aria handl
 
 ## Accessibility
 
-- **Semantics** — The trigger is a `<button>` inside a heading element (`h3` by default). This creates the correct heading hierarchy for screen readers.
-- **ARIA attributes** — `aria-expanded` and `aria-controls` are automatically managed by React Aria. No manual wiring required.
-- **Keyboard support** — Press `Space` or `Enter` on the focused trigger to expand or collapse the panel.
-- **Focus management** — Focus styles are visible when navigating by keyboard (`focus-visible`).
-- **Disabled state** — When `isDisabled` is set, the trigger receives `disabled` and is removed from the tab order.
-- **Heading level** — Use the `level` prop on `CollapsibleTrigger` to match the heading hierarchy of the surrounding page content.
+- **Keyboard support:** Users can press `Enter` or `Space` on the trigger to expand or collapse the content.
+- **Focus management:** The trigger can receive focus, and focus styles appear when navigating with the keyboard.
+- **ARIA behavior:** The component automatically manages expanded (`aria-expanded`) and collapsed states so screen readers know when content is visible.
+- **Semantic structure:** The trigger is rendered as a button within a heading, helping screen readers understand the content hierarchy.
+- **Content visibility:** When collapsed, the content is hidden from assistive technologies and becomes available when expanded.
+- **Disabled state:** When `disabled`, the trigger cannot be focused or activated.

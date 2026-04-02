@@ -1,6 +1,6 @@
 ---
 title: React Field Components
-description: Combine labels, controls, and help text to compose accessible form fields and grouped inputs. Built with React Aria's useField hook for automatic ARIA attribute management.
+description: A React field component built with Tailwind CSS. Create form fields with labels, inputs, helper text, and error messages, using accessible, structured form layouts.
 ---
 
 import FieldComposedPreview from "@/components/preview/field/field-composed-preview";
@@ -14,9 +14,11 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Field
 
-The Field component family provides a structured way to compose accessible form fields. It handles the association between labels, inputs, descriptions, and error messages — ensuring proper ARIA attributes are applied automatically via React Aria's `useField` hook.
+The React Field component helps you build form fields with labels, inputs, helper text, and error messages. It keeps everything connected and structured in one place.
 
-Use the primitive sub-components (`Field`, `FieldLabel`, `FieldDescription`, `FieldError`) for full control, or use `ComposedField` for a batteries-included wrapper.
+It makes forms easier to build and more accessible by linking labels, descriptions, and errors to the input. For example, a field can show a label, helper text, and an error message for an email input.
+
+Built with `React Aria` and styled using Tailwind CSS. It supports accessibility, proper form structure, and flexible layouts using simple sub-components.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -279,7 +281,8 @@ Fully composed field wrapper using React Aria's `useField` hook. Automatically h
 
 ## Accessibility
 
-- **ARIA Linking**: `ComposedField` uses React Aria's `useField` hook to automatically link the label, description, and error message to the form control via `aria-labelledby` and `aria-describedby`.
-- **Semantic HTML**: `FieldSet` renders a native `<fieldset>` element, and `FieldLegend` renders a `<legend>`, providing semantic grouping that assistive technologies understand.
-- **Label Association**: `FieldLabel` uses the native `<label>` element with `htmlFor` for proper click-to-focus behavior.
-- **Error States**: `FieldError` communicates validation messages to screen readers through proper ARIA association when used within `ComposedField`.
+- **Label association:** FieldLabel connects to form controls using `htmlFor`, so clicking the label focuses the input.
+- **ARIA linking:** `ComposedField` automatically links the label, description, and error message to the input using `ARIA` attributes.
+- **Error messages:** `FieldError` displays validation messages and connects them to the input so screen readers can announce them.
+- **Descriptions:** `FieldDescription` provides helper text that gives additional context to users.
+- **Semantic grouping:** Use `FieldSet` and `FieldLegend` to group related fields using native `<fieldset>` and `<legend>` elements.

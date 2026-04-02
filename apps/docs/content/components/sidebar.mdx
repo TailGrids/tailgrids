@@ -1,6 +1,6 @@
 ---
-title: Sidebar
-description: A composable, themeable and customizable sidebar component for rich layout navigation.
+title: React Sidebar Components
+description: A React sidebar component built with Tailwind CSS. Create responsive navigation sidebars with collapsible panels, nested menus, and off-canvas layouts for modern apps.
 ---
 
 import SidebarBasicPreview from "@/components/preview/sidebar/sidebar-basic-preview";
@@ -12,8 +12,11 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Sidebar
 
-A composable, themeable and customizable sidebar component built with React and styled using Tailwind CSS.
-Sidebars are central to any application and often contain a lot of moving parts. This component provides a solid foundation that is responsive, accessible, and highly flexible.
+The React Sidebar component lets users navigate an application's sections via a side menu. It is commonly used in dashboards, admin panels, and multi-page apps.
+
+It allows users to access links, expand nested menus, and collapse the sidebar to save space. For example, users can switch between sections like dashboard, settings, and reports using grouped navigation items.
+
+Built with React and styled with Tailwind CSS, it supports collapsible layouts, off-canvas mobile behavior, keyboard shortcuts, and accessible navigation.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -325,8 +328,12 @@ The interaction element for nested navigation items. Renders an `a` tag.
 | `data-sidebar` | `"menu-sub-button"` | Identifies the sub-menu button.        |
 | `data-active`  | `boolean`           | Indicates if the sub-button is active. |
 
-## Accessibility Features
+## Accessibility
 
-- **Keyboard Interaction**: The library ships out-of-the-box keyboard integration enabling a user to toggle visibility quickly using `CMD + B` (or `CTRL + B`) on window active state.
-- **Mobile Hand-off**: During mobile media detection (`isMobile = true`), collapsed sidebars fundamentally switch DOM primitives to power a custom off-canvas Drawer (`Sheet`) which perfectly routes modal semantics, screen dimming drops, and standard focus-traps out of the box.
-- **Screen Reader Support**: Complex DOM configurations natively implement `data-state` metadata tags and standard ARIA labeling conventions (e.g. `aria-expanded="false"`) allowing seamless screen-reader tree discovery without complex overrides.
+- **Semantic structure:** Use the sidebar as a navigation region (e.g., a `<nav>` element) with grouped, nested links so screen readers can understand the structure.
+- **Keyboard support:** Users can navigate between items using keyboard keys and toggle the sidebar using shortcuts such as `Ctrl + B` or `Cmd + B`.
+- **Focus management:** Focus moves between menu items and stays usable when the sidebar is expanded, collapsed, or in mobile view.
+- **Trigger behavior:** The sidebar is controlled by a trigger button and managed through the SidebarProvider, supporting both mouse and keyboard interaction.
+- **Screen reader support:** Active items, expanded groups, and navigation hierarchy are announced clearly.
+- **Collapsed state:** When collapsed to icons, provide tooltips or labels so users can still understand each navigation item.
+- **Mobile behavior:** On smaller screens, the sidebar behaves like an off-canvas panel, with focus trapped within and background interactions disabled.

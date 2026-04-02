@@ -1,6 +1,6 @@
 ---
 title: React Card Components
-description: A React Card component that lets users display content in a structured and visually appealing way. Used for grouping related information, such as articles, profiles, or product details.
+description: A React card component built with Tailwind CSS. Create UI cards for products, blogs, dashboards, and profiles with header, content, and footer sections.
 ---
 
 import CardArticlePreview from "@/components/preview/card/card-article-preview";
@@ -16,9 +16,11 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Card
 
-Cards are flexible containers used to group related content and actions. They are commonly used for displaying articles, user profiles, product details, and summary information in a dashboard.
+The React Card component is a container for grouping related content and actions. It helps you organize information in a clear and structured way.
 
-This Card component is built with React and styled using Tailwind CSS, offering a clean and modern design. It includes subcomponents for header, title, description, content, and footer sections to structure information effectively.
+You can use it to display content such as articles, user profiles, product details, or dashboard summaries. For example, a card can show a title, description, and buttons in one place.
+
+Built with React and styled with Tailwind CSS, it includes sections like header, content, and footer to help you easily structure your layout.
 
 <ComponentPreview
   codeSnippet={getFileContent("/src/components/preview/card/card-preview.tsx")}
@@ -246,6 +248,7 @@ The footer of the card.
 
 ## Accessibility
 
-- **Semantic Structure**: Use `CardTitle` (which renders a div by default, but can be customized) for headings to seek user attention.
-- **Grouping**: Cards naturally group related content. For complex cards, ensure the `CardTitle` properly describes the card's purpose.
-- **Keyboard Navigation**: Ensure any interactive elements within the card (buttons, links in `CardFooter` or `CardContent`) are keyboard accessible.
+- **Semantic structure:** Use `CardTitle` for headings and structure content clearly so users can understand what the card represents.
+- **Content grouping:** The card groups related content and actions together, making it easier to scan and understand.
+- **Keyboard support:** Ensure any interactive elements inside the card (such as buttons or links in `CardFooter` or `CardContent`) are accessible using the keyboard.
+- **Screen reader support:** Provide clear text for titles, descriptions, and actions so screen readers can describe the card content properly.

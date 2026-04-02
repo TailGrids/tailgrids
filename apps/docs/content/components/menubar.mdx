@@ -1,6 +1,6 @@
 ---
 title: React Menubar Components
-description: A responsive menu bar component that provides a horizontal row of menu triggers, each opening a dropdown menu.
+description: A React menubar component built with Tailwind CSS. Create top navigation menus with dropdowns, submenus, and keyboard navigation for accessible app menus.
 ---
 
 import MenubarPreview from "@/components/preview/menubar/menubar-preview";
@@ -12,9 +12,11 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Menubar
 
-A Menubar is a horizontal list of menu triggers, typically placed at the top of an application window. Each trigger opens a menu container with items, separators, and even nested submenus. It’s perfect for complex navigation needs where many related actions are categorized.
+The React Menubar component is a horizontal menu placed at the top of an application. Each menu item opens a dropdown with options, separators, and nested submenus.
 
-This component is built on top of React Aria Components, ensuring it is fully accessible, supports keyboard navigation, and works across different screen sizes.
+It helps you group related actions, so users can find and use features more easily. For example, apps often use a menubar for File, Edit, or Settings menus.
+
+Built with React Aria Components and styled using Tailwind CSS, it supports keyboard navigation, accessibility, and works across different screen sizes.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -357,8 +359,9 @@ See Base UI [Menubar](https://base-ui.com/react/components/menubar) and [Menu](h
 
 ## Accessibility
 
-- Built with **Base UI** for industry-standard accessible behaviors.
-- Full keyboard support (Arrows, Enter, Escape, Home, End).
-- Focus management for menu triggers and nested submenus.
-- Proper ARIA roles and attributes (role="menubar", role="menu", role="menuitem").
-- Screen reader support for selection states (checked/unchecked) and hierarchies.
+- **Semantic structure:** The component follows the menubar pattern using roles like `menubar`, `menu`, and `menuitem`, allowing assistive technologies to interpret the structure.
+- **Keyboard support:** Users can navigate menus using `Arrow` keys, open items with `Enter` or `Space`, and close menus with `Escape`.
+- **Focus management:** Focus moves between triggers, menu items, and nested submenus, enabling navigation without a mouse.
+- **Screen reader support:** States like checked or active items are exposed through the underlying accessibility behavior, including nested menus and grouped items.
+- **Trigger behavior:** Menu triggers open dropdowns and submenus, and can be used with both keyboard and hover interactions.
+- **Disabled items:** Disabled menu items are skipped during keyboard navigation and are not interactive.
