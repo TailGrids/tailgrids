@@ -17,7 +17,7 @@ export function ContainerWithGrid({
   return (
     <div
       className={cn(
-        "relative w-full overflow-hidden dark:bg-gray-950 dark:[--pattern-fg:var(--border-2)] bg-white [--pattern-fg:var(--border-1)]",
+        "relative w-full overflow-clip dark:bg-gray-950 dark:[--pattern-fg:var(--border-2)] bg-white [--pattern-fg:var(--border-1)]",
         rootClassName
       )}
     >

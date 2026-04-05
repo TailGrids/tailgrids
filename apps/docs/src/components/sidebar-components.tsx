@@ -1,5 +1,6 @@
 "use client";
 
+import { ChevronRight } from "@tailgrids/icons";
 import type * as PageTree from "fumadocs-core/page-tree";
 import {
   SidebarFolder,
@@ -8,6 +9,8 @@ import {
   SidebarFolderTrigger,
   SidebarSeparator
 } from "fumadocs-ui/components/layout/sidebar";
+import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
@@ -53,10 +56,41 @@ export function CustomFolder({
   );
 }
 
-/**
- * Custom Separator component.
- * Renders a styled section header instead of a plain separator line.
- */
 export function CustomSeparator({ item }: { item: PageTree.Separator }) {
   return <SidebarSeparator>{item.name}</SidebarSeparator>;
+}
+
+export function TocBanner() {
+  return (
+    <div className="mt-6 p-1.5 pb-3 bg-background-soft-100 rounded-xl">
+      <Link
+        href="https://tailgrids.com/blocks"
+        target="_blank"
+        className="p-0.75 inline-block bg-white rounded-lg shadow-terminal"
+      >
+        <Image
+          height={116}
+          width={247}
+          src="/docs/images/products/tailgrids-pro.png"
+          alt="Tailgrids Pro"
+          className="border-[0.3px] border-base-100 rounded-[5px]"
+        />
+      </Link>
+
+      <div className="px-1.5 mt-3">
+        <p className="text-xs text-text-50 -tracking-[0.2px]">
+          Looking for creative Tailwind CSS Blocks, Pages &amp; Templates
+        </p>
+
+        <Link
+          href="https://tailgrids.com/blocks"
+          target="_blank"
+          className="w-full mt-3 px-[18px_12px] py-2.75 text-white text-sm font-medium bg-primary-500 flex items-center justify-center gap-2 -tracking-[0.2px] rounded-lg shadow-[0_16px_8px_0_rgba(31,31,31,0.01),0_12px_6px_0_rgba(31,31,31,0.04),0_4px_4px_0_rgba(31,31,31,0.07),0_1.5px_3px_0_rgba(31,31,31,0.08),0_0_0_1px_#2237EE,0_1px_3px_0_rgba(255,255,255,0.30)_inset] transition-colors duration-200 hover:bg-primary-600 focus-visible:bg-primary-600"
+        >
+          Visit Tailgrids Pro
+          <ChevronRight size={20} className="text-white/70" />
+        </Link>
+      </div>
+    </div>
+  );
 }
