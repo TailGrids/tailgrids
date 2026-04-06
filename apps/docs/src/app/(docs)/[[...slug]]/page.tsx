@@ -25,6 +25,7 @@ export default async function Page(props: PageProps<"/[[...slug]]">) {
     <DocsPage
       toc={page.data.toc}
       full={page.data.full}
+      breadcrumb={{ enabled: false }}
       tableOfContent={{
         footer: <TocBanner />
       }}

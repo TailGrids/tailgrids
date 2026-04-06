@@ -679,22 +679,24 @@
 }
 
 /* Custom sidebar styles */
-/* Remove background from sidebar container */
-
 .bg-fd-card {
   background-color: white;
 }
+
 .dark .bg-fd-card {
   background-color: #030712; /* gray-800 */
 }
+
 .text-fd-primary {
   color: #3758f9 !important; /* primary-500 */
   background-color: transparent !important;
   font-weight: 500;
 }
+
 .dark .text-fd-primary {
   color: #5e84fc !important; /* primary-400 */
 }
+
 .bg-fd-primary {
   background-color: #3758f9;
 }
@@ -768,36 +770,12 @@ body {
   padding-top: 0 !important;
 }
 
-/* Add top padding to prevent overlap with sticky header */
-
-/* Ensure sidebar also respects header height */
-
 #nd-sidebar {
   top: 5rem !important; /* 64px */
   height: calc(100vh - 5rem) !important;
   display: flex;
   flex-direction: column;
 }
-/* #nd-sidebar::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 170px;
-  width: 1px;
-  height: 200vh;
-  z-index: 9999;
-  background-color: var(--color-gray-200);
-} */
-
-/* Hide desktop sidebar on md devices, show from lg+ */
-/* @media (max-width: 1023px) {
-  #nd-sidebar {
-    display: none !important;
-  }
-  #nd-docs-layout {
-    padding: 0 !important;
-  }
-} */
 
 /* Sidebar content should scroll */
 #nd-sidebar > div:first-child {
@@ -873,10 +851,6 @@ aside#nd-sidebar-mobile > div:first-child > button {
   flex-shrink: 0;
 }
 
-#nd-page article > div:first-of-type {
-  display: none !important;
-}
-
 #nd-toc {
   border-left: 1px solid #e5e7eb;
 
@@ -884,7 +858,7 @@ aside#nd-sidebar-mobile > div:first-child > button {
 }
 
 #nd-toc #toc-title + div {
-  @apply max-h-150;
+  @apply max-h-90 2xl:max-h-140;
 }
 
 .dark #nd-toc {
