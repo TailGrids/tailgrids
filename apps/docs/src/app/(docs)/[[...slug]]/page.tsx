@@ -1,4 +1,5 @@
 import { PageContentProvider } from "@/components/page-content-provider";
+import { TocBanner } from "@/components/sidebar-components";
 import { getPageImage, source } from "@/lib/source";
 import { getMDXComponents } from "@/mdx-components";
 import { cn } from "@/utils/cn";
@@ -24,6 +25,10 @@ export default async function Page(props: PageProps<"/[[...slug]]">) {
     <DocsPage
       toc={page.data.toc}
       full={page.data.full}
+      breadcrumb={{ enabled: false }}
+      tableOfContent={{
+        footer: <TocBanner />
+      }}
       footer={{
         enabled: true,
         component: (
