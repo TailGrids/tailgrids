@@ -851,6 +851,14 @@ aside#nd-sidebar-mobile > div:first-child > button {
   flex-shrink: 0;
 }
 
+#nd-page article table {
+  @apply bg-white dark:bg-[#030712];
+
+  & th {
+    @apply dark:bg-[#0d1222];
+  }
+}
+
 #nd-toc {
   border-left: 1px solid #e5e7eb;
 
