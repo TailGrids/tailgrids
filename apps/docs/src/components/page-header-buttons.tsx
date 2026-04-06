@@ -92,10 +92,7 @@ export function PageHeaderButtons() {
     <div className="flex items-center gap-2">
       <button
         onClick={handleCopy}
-        className={cn(
-          buttonClasses,
-          "hover:text-[rgb(31,41,55)] dark:hover:text-white"
-        )}
+        className={cn(buttonClasses, "text-text-50 dark:hover:text-white")}
       >
         {isCoping ? (
           <RefreshCircle1Clockwise className="size-5 stroke-[1.5] animate-spin" />
@@ -114,11 +111,11 @@ export function PageHeaderButtons() {
           data-state={isDropdownOpen ? "open" : "closed"}
           className={cn(
             buttonClasses,
-            "group pr-2 hover:text-[rgb(31,41,55)] dark:hover:text-white"
+            "group pr-2 text-text-50 dark:hover:text-white"
           )}
         >
           <span>Open in</span>
-          <ChevronRightIcon className="size-4 text-[#6B7280] transition-transform duration-200 rotate-90 group-data-[state=open]:-rotate-90 group-hover:text-[rgb(31,41,55)] dark:group-hover:text-white" />
+          <ChevronRightIcon className="size-4 transition-transform duration-200 rotate-90 group-data-[state=open]:-rotate-90 dark:group-hover:text-white" />
         </DropdownMenuTrigger>
 
         <DropdownMenuContent className="w-52 p-2 border border-[#EDEDED] shadow-lg rounded-xl bg-white text-gray-700 dark:bg-gray-950 dark:border-gray-800 dark:text-gray-300">
