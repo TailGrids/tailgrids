@@ -66,7 +66,7 @@ export function TocBanner() {
       <Link
         href="https://tailgrids.com/blocks"
         target="_blank"
-        className="p-0.75 inline-block bg-white rounded-lg shadow-terminal"
+        className="p-0.75 inline-block bg-white rounded-lg shadow-terminal dark:bg-white/17"
       >
         <Image
           height={116}
