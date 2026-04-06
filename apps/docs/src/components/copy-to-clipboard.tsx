@@ -28,7 +28,7 @@ export function CopyToClipboard({ content, showLabel, className }: PropsType) {
     <button
       onClick={handleClick}
       className={cn(
-        "group flex items-center gap-1.5 text-sm text-text-50 hover:opacity-85 font-normal dark:hover:text-white",
+        "group flex items-center gap-1.5 text-sm text-[#374151] hover:opacity-85 font-normal dark:text-white",
         className
       )}
       title={!showLabel ? "Copy to clipboard" : undefined}

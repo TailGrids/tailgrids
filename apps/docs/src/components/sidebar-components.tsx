@@ -62,7 +62,7 @@ export function CustomSeparator({ item }: { item: PageTree.Separator }) {
 
 export function TocBanner() {
   return (
-    <div className="mt-6 p-1.5 pb-3 bg-background-soft-100 rounded-xl">
+    <div className="mt-6 p-1.5 pb-3 bg-[#f3f4f6] rounded-xl dark:bg-[#111827]">
       <Link
         href="https://tailgrids.com/blocks"
         target="_blank"
@@ -73,12 +73,12 @@ export function TocBanner() {
           width={247}
           src="/docs/images/products/tailgrids-pro.png"
           alt="Tailgrids Pro"
-          className="border-[0.3px] border-base-100 rounded-[5px]"
+          className="border-[0.3px] border-[#e5e7eb] rounded-[5px] dark:border-[#111827]"
         />
       </Link>
 
       <div className="px-1.5 mt-3">
-        <p className="text-xs text-text-50 -tracking-[0.2px]">
+        <p className="text-xs text-[#374151] -tracking-[0.2px] dark:text-[#ffffffcc]">
           Looking for creative Tailwind CSS Blocks, Pages &amp; Templates
         </p>
 

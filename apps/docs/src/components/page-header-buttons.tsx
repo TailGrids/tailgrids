@@ -92,7 +92,10 @@ export function PageHeaderButtons() {
     <div className="flex items-center gap-2">
       <button
         onClick={handleCopy}
-        className={cn(buttonClasses, "text-text-50 dark:hover:text-white")}
+        className={cn(
+          buttonClasses,
+          "text-[#374151] hover:text-[#374151] dark:text-white"
+        )}
       >
         {isCoping ? (
           <RefreshCircle1Clockwise className="size-5 stroke-[1.5] animate-spin" />
@@ -111,7 +114,7 @@ export function PageHeaderButtons() {
           data-state={isDropdownOpen ? "open" : "closed"}
           className={cn(
             buttonClasses,
-            "group pr-2 text-text-50 dark:hover:text-white"
+            "group pr-2 text-[#374151] hover:text-[#374151] dark:text-white"
           )}
         >
           <span>Open in</span>
