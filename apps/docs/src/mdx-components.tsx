@@ -9,11 +9,16 @@ import HeaderBanner from "./components/header-banner";
 import { PageHeaderButtons } from "./components/page-header-buttons";
 import { Button } from "./registry/core/button";
 import { getFileContent } from "./utils/get-file-content";
+import { CodeBlockTabs, CodeBlockTabsList, CodeBlockTabsTrigger, CodeBlockTab } from "./components/package-manager-tabs";
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
     ...defaultMdxComponents,
     ...components,
+    CodeBlockTabs,
+    CodeBlockTabsList,
+    CodeBlockTabsTrigger,
+    CodeBlockTab,
     h1: ({ children, ...props }) => (
       <div className="flex items-center gap-5 mb-8 flex-wrap">
         <h1

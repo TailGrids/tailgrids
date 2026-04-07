@@ -89,7 +89,9 @@ export default function FrameworkCards() {
                 className="size-10"
               />
             )}
-            <p className="text-neutral-950 dark:text-white">{framework.name}</p>
+            <p className="text-neutral-950 dark:text-white text-nowrap">
+              {framework.name}
+            </p>
           </Card>
         </Link>
       ))}

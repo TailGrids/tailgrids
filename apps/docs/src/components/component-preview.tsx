@@ -55,7 +55,7 @@ export function ComponentPreview({
         {activeTab === "preview" && (
           <div
             className={cn(
-              "min-h-100 flex flex-col items-center justify-center rounded-[20px] border border-gray-200 dark:border-gray-800 bg-background-soft-50 not-prose",
+              "min-h-100 bg-card-background-50 border flex flex-col items-center justify-center rounded-[20px] not-prose shadow-terminal",
               noPaddingOnPreviewForMobile
                 ? "p-0 sm:px-15 sm:py-10"
                 : "px-15 py-10"
@@ -66,7 +66,7 @@ export function ComponentPreview({
         )}
 
         {activeTab === "code" && (
-          <div className="max-h-180 h-full overflow-y-auto overflow-x-auto custom-scrollbar">
+          <div className="max-h-180 h-full border bg-white dark:bg-[#030712] rounded-[20px] shadow-terminal overflow-hidden">
             <CodeBlock
               lang={codeSnippetLang}
               showLineNumbers

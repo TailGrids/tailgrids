@@ -11,15 +11,15 @@ type PropsType = {
 };
 
 export function CodeBlock({ snippet, lang, showLineNumbers }: PropsType) {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   return (
     <div className="w-full">
       <SyntaxHighlighter
         showLineNumbers={showLineNumbers}
         language={lang}
-        key={theme}
-        style={theme === "dark" ? okaidia : prism}
+        key={resolvedTheme}
+        style={resolvedTheme === "dark" ? okaidia : prism}
         customStyle={{
           overflow: "initial",
           background: "none",
@@ -28,12 +28,11 @@ export function CodeBlock({ snippet, lang, showLineNumbers }: PropsType) {
           padding: 0
         }}
         codeTagProps={{
-          className: `language-${lang} bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800 [&>*.react-syntax-highlighter-line-number]:text-neutral-400!`,
+          className: `language-${lang} bg-[#fff]! border-none [&>*.react-syntax-highlighter-line-number]:text-neutral-400! dark:bg-[#030712]!`,
           style: {
             padding: "1.4rem 1.1rem",
             display: "inline-block",
-            minWidth: "100%",
-            borderRadius: "1.25rem"
+            minWidth: "100%"
           }
         }}
       >
