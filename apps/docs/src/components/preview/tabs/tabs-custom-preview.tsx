@@ -93,7 +93,7 @@ export default function TabsCustomPreview() {
 
           <TabContent value="messages" className="p-0">
             <div className="p-6 rounded-2xl bg-background-50 border border-base-100 shadow-sm">
-              <div className="flex items-center justifying-between mb-6">
+              <div className="flex items-center justify-between mb-6">
                 <h3 className="text-lg font-semibold text-title-50">Inbox</h3>
               </div>
               <div className="space-y-4">
