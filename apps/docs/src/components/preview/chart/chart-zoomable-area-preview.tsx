@@ -1,5 +1,6 @@
 "use client";
 
+import { buttonStyles } from "@/registry/core/button";
 import {
   ChartContainer,
   ChartTooltip,
@@ -50,7 +51,7 @@ export default function ChartZoomableAreaPreview() {
   const getAxisYDomain = (
     from: number,
     to: number,
-    ref: keyof Omit<typeof initialData[0], "name">,
+    ref: keyof Omit<(typeof initialData)[0], "name">,
     offset: number
   ) => {
     const fromIndex = data.findIndex(d => d.name === from);
@@ -118,16 +119,25 @@ export default function ChartZoomableAreaPreview() {
     <div className="w-80 p-4 md:p-8 md:w-140 aspect-video bg-background-50 rounded select-none relative">
       <button
         onClick={zoomOut}
-        className="absolute top-2 right-2 z-10 text-xs px-2 py-1 bg-white border rounded shadow-sm hover:bg-slate-50 cursor-pointer"
+        className={buttonStyles({
+          appearance: "fill",
+          variant: "ghost",
+          size: "xs",
+          className: "border absolute -top-2 right-10 z-10"
+        })}
       >
         Zoom Out
       </button>
       <ChartContainer initialDimension={{ width: 280, height: 160 }}>
         <AreaChart
           data={data}
-          onMouseDown={e => e?.activeLabel && setRefAreaLeft(e.activeLabel as number)}
+          onMouseDown={e =>
+            e?.activeLabel && setRefAreaLeft(e.activeLabel as number)
+          }
           onMouseMove={e =>
-            e?.activeLabel && refAreaLeft && setRefAreaRight(e.activeLabel as number)
+            e?.activeLabel &&
+            refAreaLeft &&
+            setRefAreaRight(e.activeLabel as number)
           }
           onMouseUp={zoom}
         >

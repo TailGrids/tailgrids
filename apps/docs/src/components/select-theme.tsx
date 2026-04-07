@@ -60,7 +60,7 @@ export function SelectTheme() {
                 <button
                   onClick={() => handleSelect(themeOption.value)}
                   className={cn(
-                    "w-full px-1.5 py-1 cursor-pointer flex items-center justify-between rounded-lg text-left font-medium",
+                    "w-full px-1.5 py-1 text-left text-sm font-medium flex items-center justify-between rounded-lg cursor-pointer",
                     theme === themeOption.value
                       ? "bg-gray-100 text-gray-700 dark:text-gray-200 dark:bg-gray-800"
                       : "text-gray-500 dark:text-gray-400 hover:bg-gray-100/60 dark:hover:bg-gray-800"
