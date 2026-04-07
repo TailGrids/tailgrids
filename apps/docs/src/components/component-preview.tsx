@@ -66,7 +66,7 @@ export function ComponentPreview({
         )}
 
         {activeTab === "code" && (
-          <div className="max-h-180 h-full border bg-white dark:bg-[#030712] overflow-y-auto overflow-x-auto rounded-[20px] shadow-terminal">
+          <div className="max-h-180 h-full border bg-white dark:bg-[#030712] rounded-[20px] shadow-terminal overflow-hidden">
             <CodeBlock
               lang={codeSnippetLang}
               showLineNumbers
