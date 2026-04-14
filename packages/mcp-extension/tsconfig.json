@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "ES2020",
+    "outDir": "out",
+    "lib": ["ES2020"],
+    "sourceMap": false,
+    "rootDir": "src",
+    "strict": true,
+    "skipLibCheck": true,
+    "types": ["node", "vscode"],
+    "noEmitOnError": true,
+    "isolatedModules": true,
+    "declaration": false
+  },
+  "include": ["src/extension.ts"],
+  "exclude": ["node_modules", "out"]
+}
