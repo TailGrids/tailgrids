@@ -10,7 +10,7 @@ export function activate(context: vscode.ExtensionContext): void {
       return [
         new vscode.McpStdioServerDefinition("Tailgrids MCP", "npx", [
           "-y",
-          "tailgrids-mcp"
+          "@tailgrids/mcp"
         ])
       ];
     },
