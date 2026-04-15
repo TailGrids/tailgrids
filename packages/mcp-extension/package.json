@@ -1,6 +1,7 @@
 {
   "name": "tailgrids-mcp",
   "displayName": "Tailgrids MCP",
+  "private": true,
   "extensionKind": [
     "workspace"
   ],
