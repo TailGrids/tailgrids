@@ -5,7 +5,7 @@
   "license": "MIT",
   "description": "An MCP (Model Context Protocol) server that exposes the Tailgrids UI components to AI agents",
   "bin": {
-    "@tailgrids/mcp": "dist/main.js"
+    "tailgrids-mcp": "dist/main.js"
   },
   "scripts": {
     "build": "tsc",
