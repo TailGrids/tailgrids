@@ -8,7 +8,7 @@
     "access": "public"
   },
   "bin": {
-    "@tailgrids/mcp": "dist/main.js"
+    "tailgrids-mcp": "dist/main.js"
   },
   "scripts": {
     "build": "tsc",
