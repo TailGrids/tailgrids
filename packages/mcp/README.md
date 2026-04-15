@@ -298,7 +298,7 @@ If any TODO lines remain for your target component(s), go back and fill them in.
 ### Step 13 — Build and confirm
 
 ```bash
-pnpm build
+npm build
 ```
 
 The build must pass with zero TypeScript errors. If there are type errors, fix them before finishing. Common causes:
@@ -317,6 +317,6 @@ When done, respond with:
 
 1. Which component(s) you processed
 2. Any fields you were unsure about (flag them for human review)
-3. Confirmation that `pnpm build` passed
+3. Confirmation that `npm build` passed
 
 ---PROMPT END---

@@ -6,7 +6,7 @@ export const accordionMeta: ComponentMeta = {
   category: "core",
   tier: "free",
   description:
-    "A vertical stack of interactive headings that each reveal a section of content.",
+    "A vertically stacked list of expandable sections. Use it to organize related content and reduce visual clutter.",
   sourceFile: "apps/docs/src/registry/core/accordion.tsx",
   primitives: ["none"],
   variants: [
@@ -23,13 +23,90 @@ export const accordionMeta: ComponentMeta = {
     }
   ],
   props: [],
+  subComponents: [
+    {
+      name: "AccordionRoot",
+      props: [
+        {
+          name: "className",
+          type: "string",
+          required: false,
+          description: "Additional CSS classes to apply to the component"
+        },
+        {
+          name: "children",
+          type: "React.ReactNode",
+          required: true,
+          description: "The content to display inside the component"
+        },
+        {
+          name: "variant",
+          type: "Variant",
+          required: false,
+          description: "Controls the visual style of the component"
+        }
+      ]
+    },
+    {
+      name: "AccordionItem",
+      props: [
+        {
+          name: "children",
+          type: "React.ReactNode",
+          required: true,
+          description: "The children property"
+        },
+        {
+          name: "className",
+          type: "string",
+          required: false,
+          description: "The className property"
+        }
+      ]
+    },
+    {
+      name: "AccordionTrigger",
+      props: [
+        {
+          name: "children",
+          type: "React.ReactNode",
+          required: true,
+          description: "The children property"
+        },
+        {
+          name: "className",
+          type: "string",
+          required: false,
+          description: "The className property"
+        }
+      ]
+    },
+    {
+      name: "AccordionContent",
+      props: [
+        {
+          name: "children",
+          type: "React.ReactNode",
+          required: true,
+          description: "The children property"
+        },
+        {
+          name: "className",
+          type: "string",
+          required: false,
+          description: "The className property"
+        }
+      ]
+    }
+  ],
   examples: [
     {
       title: "Basic usage",
       code: 'import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/core/accordion";\n\n<Accordion>\n  <AccordionItem value="item-1">\n    <AccordionTrigger>Is it accessible?</AccordionTrigger>\n    <AccordionContent>Yes.</AccordionContent>\n  </AccordionItem>\n</Accordion>'
     }
   ],
-  a11yNotes: "Uses native semantic HTML. Ensure heading levels are correct.",
+  a11yNotes:
+    "Ensure proper semantic HTML structure and keyboard navigation support. Always provide appropriate ARIA labels and roles where needed.",
   darkModeSupport: true,
   installCommand: "npx @tailgrids/cli@latest add accordion",
   tags: ["interactive", "disclosure", "content"]
@@ -59,6 +136,30 @@ export const alert_dialogMeta: ComponentMeta = {
       description: "Optional CSS classes to apply."
     }
   ],
+  subComponents: [
+    {
+      name: "AlertDialogContent",
+      props: [
+        {
+          name: "overlayClassName",
+          type: "string",
+          required: false,
+          description: "The overlayClassName property"
+        }
+      ]
+    },
+    {
+      name: "AlertDialogTitle",
+      props: [
+        {
+          name: "className",
+          type: "string",
+          required: false,
+          description: "The className property"
+        }
+      ]
+    }
+  ],
   examples: [
     {
       title: "Basic usage",
@@ -77,7 +178,8 @@ export const alertMeta: ComponentMeta = {
   displayName: "Alert",
   category: "feedback",
   tier: "free",
-  description: "A visual banner that displays an important, succinct message.",
+  description:
+    "A prominent message container. Use it to display important information or warnings.",
   sourceFile: "apps/docs/src/registry/core/alert.tsx",
   primitives: ["none"],
   variants: [
@@ -87,14 +189,58 @@ export const alertMeta: ComponentMeta = {
       tailwindClasses: ["success", "warning", "danger", "info", "gray"]
     }
   ],
-  props: [],
+  props: [
+    {
+      name: "title",
+      type: "string",
+      required: false,
+      description: "The title text"
+    },
+    {
+      name: "message",
+      type: "string",
+      required: true,
+      description: "The message property"
+    },
+    {
+      name: "variant",
+      type: '"success" | "danger" | "info" | "warning" | "gray"',
+      required: false,
+      description: "The variant property"
+    },
+    {
+      name: "icon",
+      type: "React.ReactNode",
+      required: false,
+      description: "The icon to display"
+    },
+    {
+      name: "actions",
+      type: "{\n    primary?: {\n      label: string;\n      onClick: () => void;\n    };\n    secondary?: {\n      label: string;\n    };\n  }",
+      required: false,
+      description: "The actions property"
+    },
+    {
+      name: "open",
+      type: "boolean",
+      required: false,
+      description: "Controls whether the element is open"
+    },
+    {
+      name: "onClose",
+      type: "() => void",
+      required: false,
+      description: "Called when the element closes"
+    }
+  ],
   examples: [
     {
       title: "Basic usage",
       code: 'import { Alert, AlertTitle, AlertDescription } from "@/components/core/alert";\n\n<Alert variant="info">\n  <AlertTitle>Heads up!</AlertTitle>\n  <AlertDescription>You can add your own content here.</AlertDescription>\n</Alert>'
     }
   ],
-  a11yNotes: "Use role='alert' for dynamic critical information.",
+  a11yNotes:
+    "Ensure proper semantic HTML structure and keyboard navigation support. Always provide appropriate ARIA labels and roles where needed.",
   darkModeSupport: true,
   installCommand: "npx @tailgrids/cli@latest add alert",
   tags: ["feedback", "banner", "status"]
@@ -105,7 +251,8 @@ export const aspect_ratioMeta: ComponentMeta = {
   displayName: "AspectRatio",
   category: "layout",
   tier: "free",
-  description: "Displays content within a desired ratio.",
+  description:
+    "A container maintaining fixed aspect ratio. Use it to prevent layout shift.",
   sourceFile: "apps/docs/src/registry/core/aspect-ratio.tsx",
   primitives: ["none"],
   variants: [
@@ -124,7 +271,21 @@ export const aspect_ratioMeta: ComponentMeta = {
       ]
     }
   ],
-  props: [],
+  props: [
+    {
+      name: "customRatio",
+      type: "number",
+      required: false,
+      description: "The customRatio property"
+    },
+    {
+      name: "children",
+      type: "React.ReactNode",
+      required: true,
+      description: "The children property"
+    }
+  ],
+  subComponents: undefined,
   examples: [
     {
       title: "Basic usage",
@@ -206,7 +367,20 @@ export const badgeMeta: ComponentMeta = {
       ]
     }
   ],
-  props: [],
+  props: [
+    {
+      name: "prefixIcon",
+      type: "React.ReactNode",
+      required: false,
+      description: "Icon or element to display before the main content"
+    },
+    {
+      name: "suffixIcon",
+      type: "React.ReactNode",
+      required: false,
+      description: "Icon or element to display after the main content"
+    }
+  ],
   examples: [
     {
       title: "Basic usage",
@@ -230,7 +404,27 @@ export const breadcrumbsMeta: ComponentMeta = {
   sourceFile: "apps/docs/src/registry/core/breadcrumbs.tsx",
   primitives: ["none"],
   variants: [],
-  props: [],
+  props: [
+    {
+      name: "items",
+      type: "{\n    href: string;\n    label: string;\n    icon?: React.ReactNode;\n  }[]",
+      required: true,
+      description: "The items property"
+    },
+    {
+      name: "dividerType",
+      type: '"slash" | "chevron" | "dot"',
+      required: false,
+      description: "The dividerType property"
+    },
+    {
+      name: "activeHref",
+      type: "string",
+      required: false,
+      description: "The activeHref property"
+    }
+  ],
+  subComponents: undefined,
   examples: [
     {
       title: "Basic usage",
@@ -249,7 +443,8 @@ export const button_groupMeta: ComponentMeta = {
   displayName: "ButtonGroup",
   category: "core",
   tier: "free",
-  description: "Groups multiple buttons visually together.",
+  description:
+    "Related buttons displayed together. Use it for organizing actions.",
   sourceFile: "apps/docs/src/registry/core/button-group.tsx",
   primitives: ["none"],
   variants: [
@@ -304,7 +499,33 @@ export const buttonMeta: ComponentMeta = {
       tailwindClasses: ["xs", "sm", "md", "lg"]
     }
   ],
-  props: [],
+  props: [
+    {
+      name: "variant",
+      type: '"primary" | "danger" | "success" | "ghost"',
+      required: false,
+      description: "The variant property"
+    },
+    {
+      name: "appearance",
+      type: '"fill" | "outline"',
+      required: false,
+      description: "Controls the appearance style of the component"
+    },
+    {
+      name: "iconOnly",
+      type: "boolean",
+      required: false,
+      description: "The iconOnly property"
+    },
+    {
+      name: "size",
+      type: '"xs" | "sm" | "md" | "lg"',
+      required: false,
+      description: "Controls the size of the component"
+    }
+  ],
+  subComponents: undefined,
   examples: [
     {
       title: "Basic usage",
@@ -351,7 +572,33 @@ export const carouselMeta: ComponentMeta = {
   sourceFile: "apps/docs/src/registry/core/carousel.tsx",
   primitives: ["none"],
   variants: [],
-  props: [],
+  props: [
+    {
+      name: "opts",
+      type: "CarouselOptions",
+      required: false,
+      description: "The opts property"
+    },
+    {
+      name: "plugins",
+      type: "CarouselPlugin",
+      required: false,
+      description: "The plugins property"
+    },
+    {
+      name: "orientation",
+      type: '"horizontal" | "vertical"',
+      required: false,
+      description: "The orientation property"
+    },
+    {
+      name: "setApi",
+      type: "(api: CarouselApi) => void",
+      required: false,
+      description: "The setApi property"
+    }
+  ],
+  subComponents: undefined,
   examples: [
     {
       title: "Basic usage",
@@ -400,6 +647,31 @@ export const chartMeta: ComponentMeta = {
       description: "Optional CSS classes to apply."
     }
   ],
+  subComponents: [
+    {
+      name: "ChartTooltipContent",
+      props: [
+        {
+          name: "hideLabel",
+          type: "boolean",
+          required: false,
+          description: "The hideLabel property"
+        },
+        {
+          name: "hideIndicator",
+          type: "boolean",
+          required: false,
+          description: "The hideIndicator property"
+        },
+        {
+          name: "className",
+          type: "string",
+          required: false,
+          description: "The className property"
+        }
+      ]
+    }
+  ],
   examples: [
     {
       title: "Basic usage",
@@ -429,7 +701,15 @@ export const checkboxMeta: ComponentMeta = {
       tailwindClasses: ["sm", "md"]
     }
   ],
-  props: [],
+  props: [
+    {
+      name: "label",
+      type: "string",
+      required: false,
+      description: "The label text displayed for the component"
+    }
+  ],
+  subComponents: undefined,
   examples: [
     {
       title: "Basic usage",
@@ -476,6 +756,36 @@ export const collapsibleMeta: ComponentMeta = {
       type: "string",
       required: false,
       description: "Optional CSS classes to apply."
+    }
+  ],
+  subComponents: [
+    {
+      name: "CollapsibleTrigger",
+      props: [
+        {
+          name: "level",
+          type: 'HeadingProps["level"]',
+          required: false,
+          description: "The level property"
+        },
+        {
+          name: "className",
+          type: "string",
+          required: false,
+          description: "The className property"
+        }
+      ]
+    },
+    {
+      name: "CollapsibleContent",
+      props: [
+        {
+          name: "className",
+          type: "string",
+          required: false,
+          description: "The className property"
+        }
+      ]
     }
   ],
   examples: [
@@ -537,6 +847,47 @@ export const commandMeta: ComponentMeta = {
       type: "React.ReactNode",
       required: false,
       description: "The heading content."
+    }
+  ],
+  subComponents: [
+    {
+      name: "CommandDialog",
+      props: [
+        {
+          name: "isOpen",
+          type: "boolean",
+          required: true,
+          description: "Controls whether the component is open or closed"
+        },
+        {
+          name: "onOpenChange",
+          type: "(isOpen: boolean) => void",
+          required: true,
+          description: "Called when the open state changes"
+        }
+      ]
+    },
+    {
+      name: "CommandInput",
+      props: [
+        {
+          name: "placeholder",
+          type: "string",
+          required: false,
+          description: "Placeholder text shown when the input is empty"
+        }
+      ]
+    },
+    {
+      name: "CommandGroup",
+      props: [
+        {
+          name: "heading",
+          type: "React.ReactNode",
+          required: false,
+          description: "The heading property"
+        }
+      ]
     }
   ],
   examples: [
@@ -621,6 +972,64 @@ export const dialogMeta: ComponentMeta = {
       type: "boolean",
       required: false,
       description: "Whether to show a close button."
+    }
+  ],
+  subComponents: [
+    {
+      name: "DialogOverlay",
+      props: [
+        {
+          name: "className",
+          type: "string",
+          required: false,
+          description: "The className property"
+        }
+      ]
+    },
+    {
+      name: "DialogContent",
+      props: [
+        {
+          name: "modalProps",
+          type: "ComponentProps<typeof Modal>",
+          required: false,
+          description: "The modalProps property"
+        },
+        {
+          name: "showCloseButton",
+          type: "boolean",
+          required: false,
+          description: "The showCloseButton property"
+        },
+        {
+          name: "className",
+          type: "string",
+          required: false,
+          description: "The className property"
+        }
+      ]
+    },
+    {
+      name: "DialogTitle",
+      props: [
+        {
+          name: "className",
+          type: "string",
+          required: false,
+          description: "The className property"
+        }
+      ]
+    },
+    {
+      name: "DialogFooter",
+      props: [
+        {
+          name: "showCloseButton",
+          type: "boolean",
+          required: false,
+          description: "The showCloseButton property"
+        }
+      ]
     }
   ],
   examples: [
@@ -716,6 +1125,59 @@ export const drawerMeta: ComponentMeta = {
       type: "boolean",
       required: false,
       description: "Whether to show a close button."
+    }
+  ],
+  subComponents: [
+    {
+      name: "DrawerContent",
+      props: [
+        {
+          name: "showCloseButton",
+          type: "boolean",
+          required: false,
+          description: "The showCloseButton property"
+        },
+        {
+          name: "showHandle",
+          type: "boolean",
+          required: false,
+          description: "The showHandle property"
+        },
+        {
+          name: "className",
+          type: "string",
+          required: false,
+          description: "The className property"
+        },
+        {
+          name: "snapThreshold",
+          type: "number",
+          required: false,
+          description: "The snapThreshold property"
+        }
+      ]
+    },
+    {
+      name: "DrawerTitle",
+      props: [
+        {
+          name: "className",
+          type: "string",
+          required: false,
+          description: "The className property"
+        }
+      ]
+    },
+    {
+      name: "DrawerFooter",
+      props: [
+        {
+          name: "showCloseButton",
+          type: "boolean",
+          required: false,
+          description: "The showCloseButton property"
+        }
+      ]
     }
   ],
   examples: [
@@ -895,7 +1357,20 @@ export const inputMeta: ComponentMeta = {
       tailwindClasses: ["default", "error", "success"]
     }
   ],
-  props: [],
+  props: [
+    {
+      name: "label",
+      type: "string",
+      required: false,
+      description: "The label property"
+    },
+    {
+      name: "hint",
+      type: "string",
+      required: false,
+      description: "The hint property"
+    }
+  ],
   examples: [
     {
       title: "Basic usage",
@@ -952,7 +1427,14 @@ export const linkMeta: ComponentMeta = {
       tailwindClasses: ["sm", "md"]
     }
   ],
-  props: [],
+  props: [
+    {
+      name: "href",
+      type: "string",
+      required: true,
+      description: "The href property"
+    }
+  ],
   examples: [
     {
       title: "Basic usage",
@@ -981,7 +1463,20 @@ export const listMeta: ComponentMeta = {
       tailwindClasses: ["vertical", "horizontal"]
     }
   ],
-  props: [],
+  props: [
+    {
+      name: "direction",
+      type: '"vertical" | "horizontal"',
+      required: false,
+      description: "The direction property"
+    },
+    {
+      name: "hideDividers",
+      type: "boolean",
+      required: false,
+      description: "The hideDividers property"
+    }
+  ],
   examples: [
     {
       title: "Basic usage",
@@ -1025,7 +1520,33 @@ export const modalMeta: ComponentMeta = {
   sourceFile: "apps/docs/src/registry/core/modal.tsx",
   primitives: ["none"],
   variants: [],
-  props: [],
+  props: [
+    {
+      name: "open",
+      type: "boolean",
+      required: true,
+      description: "The open property"
+    },
+    {
+      name: "onClose",
+      type: "() => void",
+      required: true,
+      description: "The onClose property"
+    },
+    {
+      name: "children",
+      type: "React.ReactNode",
+      required: true,
+      description: "The children property"
+    },
+    {
+      name: "className",
+      type: "string",
+      required: false,
+      description: "The className property"
+    }
+  ],
+  subComponents: undefined,
   examples: [
     {
       title: "Basic usage",
@@ -1053,7 +1574,38 @@ export const native_selectMeta: ComponentMeta = {
       tailwindClasses: ["default", "error", "success"]
     }
   ],
-  props: [],
+  props: [
+    {
+      name: "placeholder",
+      type: "string",
+      required: false,
+      description: "The placeholder property"
+    }
+  ],
+  subComponents: [
+    {
+      name: "NativeSelectOptGroup",
+      props: [
+        {
+          name: "placeholder",
+          type: "string",
+          required: false,
+          description: "The placeholder property"
+        }
+      ]
+    },
+    {
+      name: "NativeSelectOption",
+      props: [
+        {
+          name: "placeholder",
+          type: "string",
+          required: false,
+          description: "The placeholder property"
+        }
+      ]
+    }
+  ],
   examples: [
     {
       title: "Basic usage",
@@ -1098,7 +1650,33 @@ export const otp_inputMeta: ComponentMeta = {
   sourceFile: "apps/docs/src/registry/core/otp-input.tsx",
   primitives: ["react-aria"],
   variants: [],
-  props: [],
+  props: [
+    {
+      name: "digitLength",
+      type: "4 | 6",
+      required: false,
+      description: "The digitLength property"
+    },
+    {
+      name: "label",
+      type: "string",
+      required: false,
+      description: "The label property"
+    },
+    {
+      name: "hint",
+      type: "string",
+      required: false,
+      description: "The hint property"
+    },
+    {
+      name: "value",
+      type: "string",
+      required: false,
+      description: "The current value of the component"
+    }
+  ],
+  subComponents: undefined,
   examples: [
     {
       title: "Basic usage",
@@ -1128,7 +1706,39 @@ export const paginationMeta: ComponentMeta = {
       tailwindClasses: ["default", "compact"]
     }
   ],
-  props: [],
+  props: [
+    {
+      name: "currentPage",
+      type: "number",
+      required: true,
+      description: "The currentPage property"
+    },
+    {
+      name: "totalPages",
+      type: "number",
+      required: true,
+      description: "The totalPages property"
+    },
+    {
+      name: "onPageChange",
+      type: "(page: number) => void",
+      required: false,
+      description: "The onPageChange property"
+    },
+    {
+      name: "variant",
+      type: '"default" | "compact"',
+      required: false,
+      description: "The variant property"
+    },
+    {
+      name: "sideLayout",
+      type: '"full" | "label" | "icon"',
+      required: false,
+      description: "The sideLayout property"
+    }
+  ],
+  subComponents: undefined,
   examples: [
     {
       title: "Basic usage",
@@ -1165,6 +1775,93 @@ export const popoverMeta: ComponentMeta = {
       description: "Whether to delegate rendering to the child element."
     }
   ],
+  subComponents: [
+    {
+      name: "PopoverTrigger",
+      props: [
+        {
+          name: "children",
+          type: "React.ReactNode",
+          required: true,
+          description: "The children property"
+        },
+        {
+          name: "asChild",
+          type: "boolean",
+          required: false,
+          description: "The asChild property"
+        }
+      ]
+    },
+    {
+      name: "PopoverContent",
+      props: [
+        {
+          name: "children",
+          type: "React.ReactNode",
+          required: true,
+          description: "The children property"
+        },
+        {
+          name: "asChild",
+          type: "boolean",
+          required: false,
+          description: "The asChild property"
+        }
+      ]
+    },
+    {
+      name: "PopoverHeading",
+      props: [
+        {
+          name: "children",
+          type: "React.ReactNode",
+          required: true,
+          description: "The children property"
+        },
+        {
+          name: "asChild",
+          type: "boolean",
+          required: false,
+          description: "The asChild property"
+        }
+      ]
+    },
+    {
+      name: "PopoverDescription",
+      props: [
+        {
+          name: "children",
+          type: "React.ReactNode",
+          required: true,
+          description: "The children property"
+        },
+        {
+          name: "asChild",
+          type: "boolean",
+          required: false,
+          description: "The asChild property"
+        }
+      ]
+    },
+    {
+      name: "PopoverClose",
+      props: [
+        {
+          name: "children",
+          type: "React.ReactNode",
+          required: true,
+          description: "The children property"
+        },
+        {
+          name: "asChild",
+          type: "boolean",
+          required: false,
+          description: "The asChild property"
+        }
+      ]
+    }
+  ],
   examples: [
     {
       title: "Basic usage",
@@ -1188,7 +1885,39 @@ export const progressMeta: ComponentMeta = {
   sourceFile: "apps/docs/src/registry/core/progress.tsx",
   primitives: ["base-ui"],
   variants: [],
-  props: [],
+  props: [
+    {
+      name: "progress",
+      type: "number",
+      required: true,
+      description: "The progress property"
+    },
+    {
+      name: "withLabel",
+      type: "boolean",
+      required: false,
+      description: "The withLabel property"
+    },
+    {
+      name: "className",
+      type: "string",
+      required: false,
+      description: "The className property"
+    },
+    {
+      name: "trackColor",
+      type: "string",
+      required: false,
+      description: "The trackColor property"
+    },
+    {
+      name: "barColor",
+      type: "string",
+      required: false,
+      description: "The barColor property"
+    }
+  ],
+  subComponents: undefined,
   examples: [
     {
       title: "Basic usage",
@@ -1349,6 +2078,19 @@ export const selectMeta: ComponentMeta = {
       description: "Whether the input is in an invalid state."
     }
   ],
+  subComponents: [
+    {
+      name: "SelectTrigger",
+      props: [
+        {
+          name: "isInvalid",
+          type: "boolean",
+          required: false,
+          description: "The isInvalid property"
+        }
+      ]
+    }
+  ],
   examples: [
     {
       title: "Basic usage",
@@ -1450,6 +2192,70 @@ export const sheetMeta: ComponentMeta = {
       description: "Whether to show a close button."
     }
   ],
+  subComponents: [
+    {
+      name: "SheetOverlay",
+      props: [
+        {
+          name: "className",
+          type: "string",
+          required: false,
+          description: "The className property"
+        },
+        {
+          name: "isDismissable",
+          type: "boolean",
+          required: false,
+          description: "The isDismissable property"
+        }
+      ]
+    },
+    {
+      name: "SheetContent",
+      props: [
+        {
+          name: "modalProps",
+          type: "ComponentProps<typeof Modal>",
+          required: false,
+          description: "The modalProps property"
+        },
+        {
+          name: "showCloseButton",
+          type: "boolean",
+          required: false,
+          description: "The showCloseButton property"
+        },
+        {
+          name: "className",
+          type: "string",
+          required: false,
+          description: "The className property"
+        }
+      ]
+    },
+    {
+      name: "SheetTitle",
+      props: [
+        {
+          name: "className",
+          type: "string",
+          required: false,
+          description: "The className property"
+        }
+      ]
+    },
+    {
+      name: "SheetFooter",
+      props: [
+        {
+          name: "showCloseButton",
+          type: "boolean",
+          required: false,
+          description: "The showCloseButton property"
+        }
+      ]
+    }
+  ],
   examples: [
     {
       title: "Basic usage",
@@ -1538,6 +2344,48 @@ export const sidebarMeta: ComponentMeta = {
       type: "string | React.ComponentProps<typeof TooltipContent>",
       required: false,
       description: "The tooltip content."
+    }
+  ],
+  subComponents: [
+    {
+      name: "SidebarMenuButton",
+      props: [
+        {
+          name: "isActive",
+          type: "boolean",
+          required: false,
+          description: "The isActive property"
+        },
+        {
+          name: "tooltip",
+          type: "string | React.ComponentProps<typeof TooltipContent>",
+          required: false,
+          description: "The tooltip property"
+        }
+      ]
+    },
+    {
+      name: "SidebarProvider",
+      props: [
+        {
+          name: "defaultOpen",
+          type: "boolean",
+          required: false,
+          description: "The defaultOpen property"
+        },
+        {
+          name: "open",
+          type: "boolean",
+          required: false,
+          description: "The open property"
+        },
+        {
+          name: "onOpenChange",
+          type: "(open: boolean) => void",
+          required: false,
+          description: "The onOpenChange property"
+        }
+      ]
     }
   ],
   examples: [
@@ -1642,6 +2490,7 @@ export const sliderMeta: ComponentMeta = {
       description: "The type of value represented by the thumbs."
     }
   ],
+  subComponents: undefined,
   examples: [
     {
       title: "Basic usage",
@@ -1716,6 +2565,7 @@ export const tabsMeta: ComponentMeta = {
     "A set of layered sections of content that are displayed one at a time.",
   sourceFile: "apps/docs/src/registry/core/tabs.tsx",
   primitives: ["react-aria"],
+
   variants: [
     {
       name: "variant",
@@ -1728,7 +2578,26 @@ export const tabsMeta: ComponentMeta = {
       tailwindClasses: ["vertical", "horizontal"]
     }
   ],
-  props: [],
+  props: [
+    {
+      name: "defaultValue",
+      type: "string",
+      required: true,
+      description: "The initial value when the component mounts"
+    },
+    {
+      name: "children",
+      type: "React.ReactNode",
+      required: true,
+      description: "The children property"
+    },
+    {
+      name: "className",
+      type: "string",
+      required: false,
+      description: "The className property"
+    }
+  ],
   examples: [
     {
       title: "Basic usage",
@@ -1757,7 +2626,21 @@ export const text_areaMeta: ComponentMeta = {
       tailwindClasses: ["default", "error", "success"]
     }
   ],
-  props: [],
+  props: [
+    {
+      name: "label",
+      type: "string",
+      required: false,
+      description: "The label property"
+    },
+    {
+      name: "hint",
+      type: "string",
+      required: false,
+      description: "The hint property"
+    }
+  ],
+  subComponents: undefined,
   examples: [
     {
       title: "Basic usage",
@@ -1829,7 +2712,21 @@ export const toggleMeta: ComponentMeta = {
   sourceFile: "apps/docs/src/registry/core/toggle.tsx",
   primitives: ["none"],
   variants: [],
-  props: [],
+  props: [
+    {
+      name: "label",
+      type: "string",
+      required: false,
+      description: "The label property"
+    },
+    {
+      name: "size",
+      type: '"sm" | "md"',
+      required: false,
+      description: "The size property"
+    }
+  ],
+  subComponents: undefined,
   examples: [
     {
       title: "Basic usage",
@@ -1868,73 +2765,94 @@ export const tooltipMeta: ComponentMeta = {
 export const comboboxMeta: ComponentMeta = {
   name: "combobox",
   displayName: "Combobox",
-  category: "forms",
+  category: "core",
   tier: "free",
-  description: "An autocomplete input and listbox pair.",
+  description:
+    "A searchable select dropdown component combining input and list selection.",
   sourceFile: "apps/docs/src/registry/core/combobox/combobox.tsx",
   primitives: ["react-aria"],
-  variants: [],
+  variants: [
+    {
+      name: "default",
+      description: "The default variant styling",
+      tailwindClasses: []
+    }
+  ],
   props: [
     {
       name: "label",
       type: "string",
       required: false,
-      description: "The label text."
+      description: "The label property"
     },
     {
       name: "description",
       type: "string",
       required: false,
-      description: "The description or helper text."
+      description: "The description property"
     },
     {
       name: "errorMessage",
       type: "string | ((validation: any) => string)",
       required: false,
-      description: "The error message to display when invalid."
+      description: "The errorMessage property"
     },
     {
       name: "children",
       type: "React.ReactNode | ((item: T) => React.ReactNode)",
       required: false,
-      description: "The content elements."
+      description: "The children property"
+    },
+    {
+      name: "className",
+      type: "string",
+      required: false,
+      description: "Additional CSS classes to apply"
     },
     {
       name: "value",
       type: 'AriaComboBoxProps<T>["selectedKey"]',
       required: false,
-      description: "The controlled or uncontrolled value."
+      description: "The value property"
     },
     {
       name: "defaultValue",
       type: 'AriaComboBoxProps<T>["defaultSelectedKey"]',
       required: false,
-      description: "The default uncontrolled value."
+      description: "The defaultValue property"
     },
     {
       name: "onChange",
       type: 'AriaComboBoxProps<T>["onSelectionChange"]',
       required: false,
-      description: "Event handler called when the value changes."
-    },
+      description: "The onChange property"
+    }
+  ],
+  subComponents: [
     {
-      name: "children",
-      type: "React.ReactNode",
-      required: false,
-      description: "The content elements."
+      name: "ComboboxContent",
+      props: [
+        {
+          name: "children",
+          type: "React.ReactNode",
+          required: false,
+          description: "The children property"
+        }
+      ]
     }
   ],
   examples: [
     {
       title: "Basic usage",
-      code: 'import { Combobox } from "@/components/core/combobox/combobox";\n\n<Combobox options={[{label: "A", value: "a"}]} />'
+      description: "Simple Combobox component example",
+      code: 'import { Combobox } from "@/components/core/combobox";\n\n<Combobox />'
     }
   ],
   a11yNotes:
-    "Built with react-aria. Very robust handling of the combobox accessibility spec.",
-  darkModeSupport: true,
+    "Built with React Aria for comprehensive keyboard navigation, screen reader support, and ARIA attributes. Includes proper ARIA labels and roles for assistive technology. Supports disabled states with proper accessibility semantics.",
+  darkModeSupport: false,
   installCommand: "npx @tailgrids/cli@latest add combobox",
-  tags: ["forms", "selection", "search"]
+  tags: ["data-display", "interactive", "selection"]
 };
 
 export const multi_comboboxMeta: ComponentMeta = {
@@ -1978,6 +2896,19 @@ export const multi_comboboxMeta: ComponentMeta = {
       description: "Custom render function for tags."
     }
   ],
+  subComponents: [
+    {
+      name: "MultiComboboxDisplay",
+      props: [
+        {
+          name: "renderTag",
+          type: "(key: Key) => React.ReactNode",
+          required: false,
+          description: "The renderTag property"
+        }
+      ]
+    }
+  ],
   examples: [
     {
       title: "Basic usage",
@@ -1988,6 +2919,71 @@ export const multi_comboboxMeta: ComponentMeta = {
   darkModeSupport: true,
   installCommand: "npx @tailgrids/cli@latest add multi-combobox",
   tags: ["forms", "selection", "search", "multiple"]
+};
+
+export const date_pickerMeta: ComponentMeta = {
+  name: "date-picker",
+  displayName: "DatePicker",
+  category: "core",
+  tier: "free",
+  description:
+    "A calendar-based date selection component with single and range modes.",
+  sourceFile: "apps/docs/src/registry/core/date-picker/range-date.tsx",
+  primitives: ["none"],
+  variants: [
+    {
+      name: "default",
+      description: "The default variant styling",
+      tailwindClasses: []
+    }
+  ],
+  props: [
+    {
+      name: "defaultStartDate",
+      type: "Date",
+      required: false,
+      description: "The defaultStartDate property"
+    },
+    {
+      name: "defaultEndDate",
+      type: "Date",
+      required: false,
+      description: "The defaultEndDate property"
+    },
+    {
+      name: "onDateChange",
+      type: "(startDate: Date | null, endDate: Date | null) => void",
+      required: false,
+      description: "The onDateChange property"
+    },
+    {
+      name: "className",
+      type: "string",
+      required: false,
+      description: "Additional CSS classes to apply"
+    }
+  ],
+  subComponents: [
+    {
+      name: "RangeDatePicker",
+      props: []
+    },
+    {
+      name: "DatePicker",
+      props: []
+    }
+  ],
+  examples: [
+    {
+      title: "Basic usage",
+      description: "Simple DatePicker component example",
+      code: 'import { RangeDatePicker } from "@/components/core/date-picker";\n\n<RangeDatePicker />'
+    }
+  ],
+  a11yNotes: "Provides standard web accessibility features with semantic HTML.",
+  darkModeSupport: false,
+  installCommand: "npx @tailgrids/cli@latest add date-picker",
+  tags: ["input", "interactive", "selection"]
 };
 
 export const range_dateMeta: ComponentMeta = {
@@ -2033,6 +3029,56 @@ export const single_dateMeta: ComponentMeta = {
   darkModeSupport: true,
   installCommand: "npx @tailgrids/cli@latest add single-date",
   tags: ["forms", "calendar"]
+};
+
+export const spinnerMeta: ComponentMeta = {
+  name: "spinner",
+  displayName: "Spinner",
+  category: "core",
+  tier: "free",
+  description: "An animated loading indicator component with multiple styles.",
+  sourceFile: "apps/docs/src/registry/core/spinner/dotted.tsx",
+  primitives: ["none"],
+  variants: [
+    {
+      name: "default",
+      description: "The default variant styling",
+      tailwindClasses: []
+    }
+  ],
+  props: [
+    {
+      name: "className",
+      type: "string",
+      required: false,
+      description: "Additional CSS classes to apply"
+    }
+  ],
+  subComponents: [
+    {
+      name: "DefaultSpinner",
+      props: []
+    },
+    {
+      name: "DottedRoundSpinner",
+      props: []
+    },
+    {
+      name: "DottedSpinner",
+      props: []
+    }
+  ],
+  examples: [
+    {
+      title: "Basic usage",
+      description: "Simple Spinner component example",
+      code: 'import { DottedSpinner } from "@/components/core/spinner";\n\n<DottedSpinner />'
+    }
+  ],
+  a11yNotes: "Provides standard web accessibility features with semantic HTML.",
+  darkModeSupport: false,
+  installCommand: "npx @tailgrids/cli@latest add spinner",
+  tags: ["status"]
 };
 
 export const defaultMeta: ComponentMeta = {
@@ -2161,8 +3207,10 @@ export const allComponents: ComponentMeta[] = [
   tooltipMeta,
   comboboxMeta,
   multi_comboboxMeta,
+  date_pickerMeta,
   range_dateMeta,
   single_dateMeta,
+  spinnerMeta,
   defaultMeta,
   dotted_roundMeta,
   dottedMeta

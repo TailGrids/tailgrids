@@ -1,7 +1,7 @@
 import { writeFileSync } from "fs";
 import { globSync } from "glob";
 import { basename, dirname, join } from "path";
-import { Project } from "ts-morph";
+import { Project, SourceFile } from "ts-morph";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -75,7 +75,7 @@ const CATEGORY_MAP: Record<string, string> = {
   tooltip: "overlay"
 };
 
-// Map component filename → known primitives (supplement what we detect from imports)
+// Map component filename → known primitives
 const KNOWN_PRIMITIVES: Record<string, string[]> = {
   button: ["react-aria"],
   checkbox: ["react-aria"],
@@ -110,14 +110,81 @@ function toPascalCase(kebab: string): string {
     .join("");
 }
 
-function toKebabCase(name: string): string {
-  return name
-    .replace(/([A-Z])/g, "-$1")
-    .toLowerCase()
-    .replace(/^-/, "");
+function getExportedSubComponentNames(sourceFile: SourceFile, displayName: string): string[] {
+  const names = new Set<string>();
+
+  sourceFile.getExportDeclarations().forEach(decl => {
+      decl.getNamedExports().forEach(ne => names.add(ne.getName()));
+  });
+
+  sourceFile.getVariableDeclarations().forEach(vd => {
+      if (vd.isExported()) names.add(vd.getName());
+  });
+
+  sourceFile.getFunctions().forEach(fn => {
+      if (fn.isExported() && fn.getName()) names.add(fn.getName()!);
+  });
+  
+  return [...names].filter(n => n.startsWith(displayName) && n !== displayName && /^[A-Z]/.test(n));
 }
 
-// Find all component source files
+function extractPropsForName(sourceFile: SourceFile, name: string): string[] {
+  let propsContainers: any[] = sourceFile.getInterfaces().filter(i => i.getName() === `${name}Props`);
+  
+  if (propsContainers.length === 0) {
+    propsContainers = sourceFile.getTypeAliases().filter(t => t.getName() === `${name}Props`);
+  }
+
+  // Fallback
+  if (propsContainers.length === 0) {
+    const allPropsInterfaces = sourceFile.getInterfaces().filter(i => i.getName().endsWith('Props'));
+    const allPropsTypes = sourceFile.getTypeAliases().filter(t => t.getName().endsWith('Props') || t.getName().includes('PropsType'));
+    const all = [...allPropsInterfaces, ...allPropsTypes];
+    if (all.length === 1) {
+      propsContainers = all;
+    }
+  }
+
+  const props: string[] = [];
+  const seen = new Set<string>();
+
+  for (const container of propsContainers) {
+    let properties: any[] = [];
+    if (container.getKindName() === 'InterfaceDeclaration') {
+         properties = container.getProperties();
+    } else if (container.getKindName() === 'TypeAliasDeclaration') {
+         const typeNode = container.getTypeNode();
+         if (typeNode && typeNode.getKindName() === 'TypeLiteral') {
+              properties = typeNode.getProperties();
+         } else if (typeNode && typeNode.getKindName() === 'IntersectionType') {
+              typeNode.getTypeNodes().forEach((n: any) => {
+                  if (n.getKindName() === 'TypeLiteral') {
+                      properties.push(...n.getProperties());
+                  }
+              });
+         }
+    }
+
+    for (const prop of properties) {
+      const propName = prop.getName();
+      if (seen.has(propName)) continue;
+      seen.add(propName);
+
+      const propType = prop.getTypeNode ? (prop.getTypeNode()?.getText() ?? "unknown") : "unknown";
+      const isRequired = prop.hasQuestionToken ? !prop.hasQuestionToken() : true;
+      const jsDoc = prop.getJsDocs ? prop.getJsDocs().map((d: any) => d.getComment()).join(" ").trim() : "";
+
+      props.push(`    {
+      name: ${JSON.stringify(propName)},
+      type: ${JSON.stringify(propType)},
+      required: ${isRequired},
+      description: ${JSON.stringify(jsDoc || `TODO: describe ${propName}`)},
+    }`);
+    }
+  }
+  return props;
+}
+
 const componentFiles = globSync(
   `${COMPONENT_DIR}/apps/docs/src/registry/core/**/*.tsx`
 );
@@ -132,7 +199,6 @@ for (const sourceFile of project.getSourceFiles()) {
   const filePath = sourceFile.getFilePath();
   const fileName = basename(filePath, ".tsx");
 
-  // Skip index files and non-component files
   if (fileName === "index" || fileName.startsWith("_")) continue;
 
   const relativeSourceFile = filePath.replace(COMPONENT_DIR + "/", "");
@@ -141,7 +207,6 @@ for (const sourceFile of project.getSourceFiles()) {
   const varName = `${componentName.replace(/-/g, "_")}Meta`;
   exportNames.push(varName);
 
-  // --- Detect primitives from imports ---
   const detectedPrimitives = new Set<string>(
     KNOWN_PRIMITIVES[componentName] ?? []
   );
@@ -156,31 +221,11 @@ for (const sourceFile of project.getSourceFiles()) {
   const primitives =
     detectedPrimitives.size > 0 ? [...detectedPrimitives] : ["none"];
 
-  // --- Extract prop interfaces ---
-  const propInterfaces = sourceFile
-    .getInterfaces()
-    .filter(i => i.getName().endsWith("Props"));
-
-  const props: string[] = [];
-  for (const iface of propInterfaces) {
-    for (const prop of iface.getProperties()) {
-      const propName = prop.getName();
-      const propType = prop.getTypeNode()?.getText() ?? "unknown";
-      const isRequired = !prop.hasQuestionToken();
-      const jsDoc = prop
-        .getJsDocs()
-        .map(d => d.getComment())
-        .join(" ")
-        .trim();
-
-      props.push(`    {
-      name: ${JSON.stringify(propName)},
-      type: ${JSON.stringify(propType)},
-      required: ${isRequired},
-      description: ${JSON.stringify(jsDoc || `TODO: describe ${propName}`)},
-    }`);
-    }
-  }
+  const primaryProps = extractPropsForName(sourceFile, displayName);
+  const subComponentNames = getExportedSubComponentNames(sourceFile, displayName);
+  const subComponents = subComponentNames
+    .map(name => ({ name, props: extractPropsForName(sourceFile, name) }))
+    .filter(s => s.props.length > 0);
 
   const category = CATEGORY_MAP[componentName] ?? "core";
   const installCmd = `npx @tailgrids/cli@latest add ${componentName}`;
@@ -198,12 +243,20 @@ export const ${varName}: ComponentMeta = {
     // TODO: List variants from the source (look for cva() or className maps)
   ],
   props: [
-${props.join(",\n")}
+${primaryProps.join(",\n")}
   ],
+  subComponents: ${subComponents.length > 0 ? `[
+${subComponents.map(s => `    {
+      name: ${JSON.stringify(s.name)},
+      props: [
+${s.props.join(",\n")}
+      ]
+    }`).join(',\n')}
+  ]` : 'undefined'},
   examples: [
     {
       title: "Basic usage",
-      code: \`import { ${displayName} } from "@/components/core/${componentName}";\n\n<${displayName}>TODO: add example</${displayName}>\`,
+      code: \`import { ${displayName} } from "@/components/core/${componentName}";\\n\\n<${displayName}>TODO: add example</${displayName}>\`,
     },
   ],
   a11yNotes: "TODO: Write accessibility notes for ${displayName}.",

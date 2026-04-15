@@ -1,6 +1,6 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
-import { getComponentByName } from '../registry/queries.js';
+import { getComponentOrSubComponentByName } from '../registry/queries.js';
 import type { ComponentProp } from '../registry/types.js';
 
 /**
@@ -38,8 +38,8 @@ export function registerPropsTools(server: McpServer): void {
                 ),
         },
         async ({ name, include_primitive_props }) => {
-            const component = getComponentByName(name);
-            if (!component) {
+            const resolved = getComponentOrSubComponentByName(name);
+            if (!resolved) {
                 return {
                     content: [
                         {
@@ -50,7 +50,8 @@ export function registerPropsTools(server: McpServer): void {
                 };
             }
 
-            let props: ComponentProp[] = component.props;
+            const { component, props: resolvedProps } = resolved;
+            let props: ComponentProp[] = resolvedProps;
             if (!include_primitive_props) {
                 props = props.filter((p) => !p.fromPrimitive);
             }
@@ -60,13 +61,13 @@ export function registerPropsTools(server: McpServer): void {
                     content: [
                         {
                             type: 'text' as const,
-                            text: `${component.displayName} has no props${include_primitive_props ? '' : ' (excluding primitive props)'}.`,
+                            text: `${name} has no props${include_primitive_props ? '' : ' (excluding primitive props)'}.`,
                         },
                     ],
                 };
             }
 
-            const header = `## ${component.displayName} — Props\n`;
+            const header = `## ${name} — Props\n`;
             const tableHeader =
                 '| Prop | Type | Required | Default | Description | Source |';
             const separator =
@@ -102,8 +103,8 @@ export function registerPropsTools(server: McpServer): void {
                 ),
         },
         async ({ name, props }) => {
-            const component = getComponentByName(name);
-            if (!component) {
+            const resolved = getComponentOrSubComponentByName(name);
+            if (!resolved) {
                 return {
                     content: [
                         {
@@ -114,10 +115,11 @@ export function registerPropsTools(server: McpServer): void {
                 };
             }
 
+            const { component, props: resolvedProps } = resolved;
             const errors: string[] = [];
             const warnings: string[] = [];
             const propMap = new Map<string, ComponentProp>(
-                component.props.map((p) => [p.name, p]),
+                resolvedProps.map((p) => [p.name, p]),
             );
 
             // 1. Check for unknown props
@@ -128,13 +130,13 @@ export function registerPropsTools(server: McpServer): void {
                         continue;
                     }
                     errors.push(
-                        `Unknown prop "${key}". ${component.displayName} does not accept this prop.`,
+                        `Unknown prop "${key}". ${name} does not accept this prop.`,
                     );
                 }
             }
 
             // 2. Check for missing required props
-            for (const prop of component.props) {
+            for (const prop of resolvedProps) {
                 if (prop.required && !(prop.name in props)) {
                     errors.push(
                         `Missing required prop "${prop.name}" (${prop.type}).`,
@@ -175,7 +177,7 @@ export function registerPropsTools(server: McpServer): void {
 
             // Build report
             const lines: string[] = [
-                `## Validation Report — ${component.displayName}`,
+                `## Validation Report — ${name}`,
                 '',
             ];
 

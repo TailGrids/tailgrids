@@ -6,16 +6,38 @@ import type { ComponentMeta, ComponentCategory } from './types.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-// Resolves to the tailgrids-source/ directory at the project root.
+// Resolves to the project root directory.
 // The TAILGRIDS_SOURCE_PATH env var can override this for custom setups.
 const TAILGRIDS_SOURCE =
     process.env['TAILGRIDS_SOURCE_PATH'] ??
-    join(__dirname, '../../tailgrids-source');
+    join(__dirname, '../../../..');
 
 export function getComponentByName(name: string): ComponentMeta | undefined {
     return allComponents.find(
-        (c) => c.name.toLowerCase() === name.toLowerCase(),
+        (c) => c.name.toLowerCase() === name.toLowerCase() || c.displayName.toLowerCase() === name.toLowerCase(),
     );
+}
+
+export function getComponentOrSubComponentByName(name: string): { component: ComponentMeta, props: import('./types.js').ComponentProp[] } | undefined {
+    // Check if it's a primary component first
+    const primary = getComponentByName(name);
+    if (primary) {
+        return { component: primary, props: primary.props };
+    }
+
+    // Check if it's a subcomponent
+    for (const component of allComponents) {
+        if (component.subComponents) {
+            const sub = component.subComponents.find(
+                (s) => s.name.toLowerCase() === name.toLowerCase()
+            );
+            if (sub) {
+                return { component, props: sub.props }; // return parent component context + sub props
+            }
+        }
+    }
+
+    return undefined;
 }
 
 export function listComponents(filters?: {
@@ -52,7 +74,7 @@ export function getComponentSource(component: ComponentMeta): string {
     } catch {
         throw new Error(
             `Could not read source for "${component.name}" at ${fullPath}. ` +
-                `Make sure tailgrids-source/ is cloned: git clone https://github.com/TailGrids/tailgrids.git tailgrids-source`,
+                `Make sure you are running the MCP server inside the Tailgrids monorepo.`,
         );
     }
 }
