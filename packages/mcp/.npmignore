@@ -1,0 +1,6 @@
+src/
+scripts/
+*.ts
+tsconfig.json
+.env
+*.map

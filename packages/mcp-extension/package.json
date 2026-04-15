@@ -1,0 +1,75 @@
+{
+  "name": "tailgrids-mcp",
+  "displayName": "Tailgrids MCP",
+  "extensionKind": [
+    "workspace"
+  ],
+  "description": "AI-powered Tailgrids UI component assistant. Install the Tailgrids MCP server to generate, search, and customize Tailwind CSS UI components directly from your AI agent.",
+  "version": "1.0.0",
+  "publisher": "tailgrids",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "AI",
+    "Other"
+  ],
+  "keywords": [
+    "mcp",
+    "tailgrids",
+    "tailwind",
+    "tailwindcss",
+    "components",
+    "ui",
+    "ai",
+    "copilot",
+    "agent"
+  ],
+  "icon": "assets/icon.png",
+  "galleryBanner": {
+    "color": "#0F172A",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tailgrids/tailgrids"
+  },
+  "homepage": "https://tailgrids.com",
+  "bugs": {
+    "url": "https://github.com/Tailgrids/tailgrids/issues"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "mcpServerDefinitionProviders": [
+      {
+        "id": "tailgrids.mcpServer",
+        "label": "Tailgrids MCP Server"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "npm run compile && npm run package",
+    "compile": "tsc --project tsconfig.json --noEmitOnError --isolatedModules",
+    "watch": "tsc --watch --project tsconfig.json --isolatedModules",
+    "dev": "npm run watch",
+    "package": "vsce package --no-dependencies",
+    "package:dev": "vsce package --no-dependencies --out tailgrids-mcp-dev.vsix",
+    "publish": "vsce publish",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.99.0",
+    "@types/node": "^22.15.3",
+    "@vscode/vsce": "^3.0.0",
+    "typescript": "^5.9.2",
+    "eslint": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0"
+  }
+}

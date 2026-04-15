@@ -1,0 +1,31 @@
+# Source — not needed at runtime
+src/**
+
+# VS Code workspace files
+.vscode/**
+.vscode-test/**
+
+# Config files
+.gitignore
+**/tsconfig.json
+**/.eslintrc.json
+vsc-extension-quickstart.md
+
+# Maps and artifacts we don't ship
+**/*.map
+dist/
+build/
+coverage/
+
+# OS and tooling noise
+node_modules/**
+.DS_Store
+Thumbs.db
+.turbo
+.env
+.env.*
+*.log
+*.tgz
+*.tar.gz
+*.vsix
+../
