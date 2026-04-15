@@ -10,6 +10,9 @@
   "bin": {
     "tailgrids-mcp": "dist/main.js"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc",
     "postbuild": "chmod +x dist/main.js",
