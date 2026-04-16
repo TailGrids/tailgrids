@@ -89,7 +89,7 @@ export default function SidebarPreview() {
             <SidebarTrigger>
               <AngleDoubleLeft className="group-data-[sidebar=closed]/sidebar-wrapper:rotate-180 duration-300" />
             </SidebarTrigger>
-            <h1 className="text-lg font-semibold">Home</h1>
+            <p className="text-lg font-semibold">Home</p>
           </header>
 
           <main className="flex-1 overflow-auto p-6 bg-background-50">

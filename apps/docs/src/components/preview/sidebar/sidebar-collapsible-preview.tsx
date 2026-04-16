@@ -95,9 +95,9 @@ export default function SidebarCollapsiblePreview() {
                 <AngleDoubleLeft className="group-data-[sidebar=closed]/sidebar-wrapper:rotate-180 duration-300" />
               </SidebarTrigger>
 
-              <h1 className="text-sm font-semibold capitalize">
+              <p className="text-sm font-semibold capitalize">
                 {collapsibleType} style
-              </h1>
+              </p>
             </header>
 
             <main className="flex-1 overflow-auto p-6 bg-background-50">

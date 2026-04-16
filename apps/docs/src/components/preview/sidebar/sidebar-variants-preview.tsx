@@ -105,9 +105,9 @@ export default function SidebarVariantsPreview() {
                 <AngleDoubleLeft className="group-data-[sidebar=closed]/sidebar-wrapper:rotate-180 duration-300" />
               </SidebarTrigger>
 
-              <h1 className="text-sm font-semibold capitalize">
+              <p className="text-sm font-semibold capitalize">
                 {variant} layout
-              </h1>
+              </p>
             </header>
 
             <main className="flex-1 overflow-auto p-4 md:p-6 bg-background-50">
