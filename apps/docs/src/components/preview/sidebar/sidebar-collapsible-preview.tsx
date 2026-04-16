@@ -14,8 +14,12 @@ import {
   SidebarProvider,
   SidebarTrigger
 } from "@/registry/core/sidebar";
-import { AngleDoubleLeft } from "@tailgrids/icons";
-import { BarChart2, LayoutGrid, MessageSquare } from "lucide-react";
+import {
+  AngleDoubleLeft,
+  BarChart2,
+  Layout5,
+  Message1
+} from "@tailgrids/icons";
 import { useState } from "react";
 
 export default function SidebarCollapsiblePreview() {
@@ -49,7 +53,7 @@ export default function SidebarCollapsiblePreview() {
           <Sidebar collapsible={collapsibleType}>
             <SidebarHeader>
               <p className="flex items-center gap-2 h-8 w-full group-data-[collapsible=icon]:size-8 group-data-[collapsible=icon]:justify-center">
-                <LayoutGrid className="size-5 shrink-0" />
+                <Layout5 className="size-5 shrink-0" />
                 <span className="group-data-[collapsible=icon]:hidden truncate font-semibold">
                   Collapsible App
                 </span>
@@ -64,7 +68,7 @@ export default function SidebarCollapsiblePreview() {
                   <SidebarMenu>
                     <SidebarMenuItem>
                       <SidebarMenuButton tooltip="Messages">
-                        <MessageSquare />
+                        <Message1 />
                         <span className="group-data-[collapsible=icon]:hidden">
                           Messages
                         </span>
