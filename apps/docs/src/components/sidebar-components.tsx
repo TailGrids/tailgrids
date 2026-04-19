@@ -66,14 +66,14 @@ export function TocBanner() {
       <Link
         href="https://tailgrids.com/blocks"
         target="_blank"
-        className="p-0.75 inline-block bg-white rounded-lg shadow-terminal dark:bg-white/17"
+        className="inline-block bg-white rounded-lg shadow-terminal dark:bg-white/17"
       >
         <Image
+          width={253}
           height={116}
-          width={247}
           src="/docs/images/products/tailgrids-pro.png"
           alt="Tailgrids Pro"
-          className="border-[0.3px] border-[#e5e7eb] rounded-[5px] dark:border-[#111827]"
+          className="rounded-[5px]"
         />
       </Link>
 

@@ -5,6 +5,7 @@ export default function AvatarPreview() {
     <div className="flex flex-col items-center gap-10 w-full p-4">
       <Avatar
         src="/docs/images/avatar/avatar-1.webp"
+        alt="avatar"
         fallback="J"
         size="md"
         status="online"
