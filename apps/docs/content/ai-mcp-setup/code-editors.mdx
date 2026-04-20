@@ -1,0 +1,67 @@
+---
+title: Code Editors
+description: Install Tailgrids MCP server in your favorite code editor.
+---
+
+import IdeCards from "@/components/ide-cards";
+
+# AI & MCP Setup
+
+The Tailgrids MCP (Model Context Protocol) server allows AI agents like Cursor, Windsurf, and VS Code Copilot to access and use Tailgrids UI components directly into your codebase and generate, modify or replace components based on your needs and preferences.
+
+## Quick Installation
+
+The easiest way to get started is by installing our extension in your preferred code editor. Click on your editor below to open the installation page directly.
+
+<IdeCards />
+
+## Manual Installation
+
+If you prefer to configure the MCP server manually, you can add it to your editor's configuration.
+
+### VS Code
+
+For VS Code or other similar MCP agents, add the following to your MCP settings:
+
+```json
+{
+  "mcpServers": {
+    "tailgrids": {
+      "command": "npx",
+      "args": ["-y", "@tailgrids/mcp-server@latest"]
+    }
+  }
+}
+```
+
+### Cursor
+
+1. Go to **Settings** > **Tools & MCP**.
+2. Click **Add Custom MCP**.
+3. Paste the following code:
+
+```json
+{
+  "mcpServers": {
+    "tailgrids": {
+      "command": "npx",
+      "args": ["-y", "@tailgrids/mcp-server@latest"]
+    }
+  }
+}
+```
+
+### Windsurf
+
+Add the following to your `~/.codeium/windsurf/mcp_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "tailgrids": {
+      "command": "npx",
+      "args": ["-y", "@tailgrids/mcp-server@latest"]
+    }
+  }
+}
+```

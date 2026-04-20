@@ -3,7 +3,9 @@
   "pages": [
     "get-started",
     "components",
+    "ai-mcp-setup",
     "icons",
+    "[LLMs.txt](/llms.txt)",
     "[Changelog](/changelog)",
     "[Credits](/credits)"
   ]
