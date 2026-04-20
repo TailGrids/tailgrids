@@ -1,6 +1,6 @@
 import { PageContentProvider } from "@/components/page-content-provider";
 import { TocBanner } from "@/components/sidebar-components";
-import { getPageImage, source } from "@/lib/source";
+import { source } from "@/lib/source";
 import { getMDXComponents } from "@/mdx-components";
 import { cn } from "@/utils/cn";
 import { findNeighbour } from "fumadocs-core/page-tree";
@@ -78,9 +78,6 @@ export async function generateMetadata(
   return {
     title: page.data.title,
     description: page.data.description,
-    openGraph: {
-      images: getPageImage(page).url
-    },
     alternates: {
       canonical
     }

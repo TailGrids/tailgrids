@@ -1,0 +1,4 @@
+# WARNING: Do not delete this file. It configures cache headers for Cloudflare deployments.
+
+/docs/_next/static/*
+  Cache-Control: public,max-age=31536000,immutable
