@@ -51,7 +51,7 @@ export function ComponentPreview({
         />
       </div>
 
-      <div className="bg-gray-50 dark:bg-gray-900 rounded-[1.75rem] border p-2.5 my-4">
+      <div className="bg-gray-50 dark:bg-gray-900 rounded-[1.75rem] border p-2.5 my-4 overflow-hidden">
         {activeTab === "preview" && (
           <div
             className={cn(
@@ -66,7 +66,7 @@ export function ComponentPreview({
         )}
 
         {activeTab === "code" && (
-          <div className="max-h-180 h-full border bg-white dark:bg-[#030712] rounded-[20px] shadow-terminal overflow-hidden">
+          <div className="max-h-180 h-full border bg-white dark:bg-[#030712] rounded-[20px] shadow-terminal overflow-auto">
             <CodeBlock
               lang={codeSnippetLang}
               showLineNumbers

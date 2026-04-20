@@ -863,7 +863,7 @@ aside#nd-sidebar-mobile > div:first-child > button {
   @apply relative before:absolute before:-left-10 md:before:-left-11 before:-top-[0.2rem] before:content-[counter(step)] before:text-title-50 before:font-semibold before:bg-white before:border before:border-base-100 before:z-9 after:absolute after:content-[''] after:size-10 after:bg-white after:-top-[0.45rem] after:-left-11 md:after:-left-12;
 }
 
-#nd-page article figure {
+#nd-page article figure.shiki {
   @apply shadow-terminal!;
 }
 
