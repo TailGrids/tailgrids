@@ -3,9 +3,9 @@
   "pages": [
     "get-started",
     "components",
-    "ai-mcp-setup",
+    "mcp",
     "icons",
-    "[LLMs.txt](/llms.txt)",
+    "[LLMs.txt](https://tailgrids.com/llms.txt)",
     "[Changelog](/changelog)",
     "[Credits](/credits)"
   ]
