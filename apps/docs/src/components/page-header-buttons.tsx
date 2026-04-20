@@ -25,6 +25,11 @@ export function PageHeaderButtons() {
   const [isCoping, setIsCoping] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const normalizedPathname = pathname.replace(/^\/docs(?=\/|$)/, "") || "/";
+  const markdownPath =
+    normalizedPathname === "/"
+      ? "/docs/index.md"
+      : `/docs${normalizedPathname}.md`;
 
   const slug = pathname.split("/").filter(Boolean).pop();
   const componentName = slug
@@ -56,7 +61,7 @@ export function PageHeaderButtons() {
       label: "View as Markdown",
       icon: <FileText className="size-5 font-normal dark:text-white/75" />,
       onAction: () => {
-        window.open(`/docs${pathname}.md`, "_blank");
+        window.open(markdownPath, "_blank");
       }
     },
     {
