@@ -1,7 +1,7 @@
-import Glow from "@/assets/glow.png";
 import GlowDark from "@/assets/glow-dark.png";
-import LogoBanner from "@/assets/logo/banner.png";
+import Glow from "@/assets/glow.png";
 import LogoBannerDark from "@/assets/logo/banner-dark.png";
+import LogoBanner from "@/assets/logo/banner.png";
 import Image from "next/image";
 
 export default function HeaderBanner() {
@@ -14,6 +14,7 @@ export default function HeaderBanner() {
         width={100}
         height={0}
         className="w-full h-full rounded-r-3xl block dark:hidden absolute top-0 right-0 m-0!"
+        unoptimized
       />
       <Image
         src={GlowDark}
@@ -22,6 +23,7 @@ export default function HeaderBanner() {
         width={100}
         height={0}
         className="w-full h-full rounded-r-3xl hidden dark:block absolute top-0 right-0 m-0!"
+        unoptimized
       />
       <div className="absolute right-0 top-1/2 -translate-y-1/2">
         <Image
@@ -29,14 +31,16 @@ export default function HeaderBanner() {
           alt="Logo Banner"
           width={316}
           height={183}
-          className="lg:block dark:hidden hidden "
+          className="lg:block dark:hidden hidden"
+          unoptimized
         />
         <Image
           src={LogoBannerDark}
           alt="Logo Banner"
           width={316}
           height={183}
-          className="hidden lg:dark:block "
+          className="hidden lg:dark:block"
+          unoptimized
         />
       </div>
       <div className="px-8 py-7  relative z-20">

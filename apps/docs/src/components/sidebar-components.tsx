@@ -70,10 +70,12 @@ export function TocBanner() {
       >
         <Image
           width={253}
-          height={116}
+          height={136}
+          quality={100}
           src="/docs/images/products/tailgrids-pro.png"
           alt="Tailgrids Pro"
           className="rounded-[5px]"
+          unoptimized
         />
       </Link>
 
