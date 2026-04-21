@@ -1,5 +1,11 @@
 name: Deploy Docs to Cloudflare Workers
 
+env:
+  NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+  NEXT_PUBLIC_GTM_ID: ${{ secrets.NEXT_PUBLIC_GTM_ID }}
+  NEXT_PUBLIC_MEILISEARCH_HOST: ${{ secrets.NEXT_PUBLIC_MEILISEARCH_HOST }}
+  NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY: ${{ secrets.NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY }}
+
 on:
   push:
     branches:
@@ -39,11 +45,6 @@ jobs:
 
       - name: Build docs
         run: npm run build:cf --workspace=docs
-        env:
-          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
-          NEXT_PUBLIC_GTM_ID: ${{ secrets.NEXT_PUBLIC_GTM_ID }}
-          NEXT_PUBLIC_MEILISEARCH_HOST: ${{ secrets.NEXT_PUBLIC_MEILISEARCH_HOST }}
-          NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY: ${{ secrets.NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY }}
 
       # Production deploy (push to main)
       - name: Deploy to Cloudflare Workers (Production)
