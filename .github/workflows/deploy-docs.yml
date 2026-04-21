@@ -1,6 +1,5 @@
 name: Deploy Docs to Cloudflare Workers
 
-
 on:
   push:
     branches:
@@ -39,7 +38,7 @@ jobs:
         run: npm run build --workspace=@tailgrids/icons
 
       - name: Build docs
-        run: npm run build --workspace=docs
+        run: npm run build:cf --workspace=docs
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
           NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
