@@ -3565,3 +3565,81 @@ export function FullScreenIconAlt(props: IconProps) {
     </svg>
   );
 }
+
+export function MCPIcon(props: IconProps) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      {...props}
+    >
+      <g clipPath="url(#clip0_16479_41488)">
+        <mask
+          id="mask0_16479_41488"
+          style={{ maskType: "luminance" }}
+          maskUnits="userSpaceOnUse"
+          x="0"
+          y="0"
+          width="24"
+          height="24"
+        >
+          <path d="M24 0H0V24H24V0Z" fill="white" />
+        </mask>
+        <g mask="url(#mask0_16479_41488)">
+          <g filter="url(#filter0_i_16479_41488)">
+            <path
+              d="M2.40039 11.3144L11.4514 2.26343C12.701 1.01375 14.7272 1.01375 15.9768 2.26343C17.2265 3.5131 17.2265 5.53923 15.9768 6.78891M15.9768 6.78891L9.14147 13.6243M15.9768 6.78891L9.23581 13.5301M15.9768 6.78891C17.2265 5.53923 19.2527 5.53927 20.5024 6.78895L20.5495 6.83609C21.7992 8.08577 21.7992 10.1119 20.5495 11.3616L12.3638 19.5474C11.9472 19.9639 11.9472 20.6393 12.3638 21.0558L14.0446 22.7367M13.7142 4.52617L7.0202 11.2201C5.77052 12.4698 5.77052 14.4959 7.0202 15.7456C8.26988 16.9952 10.296 16.9952 11.5457 15.7456L18.2396 9.05165"
+              stroke="#9CA3AF"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </g>
+        </g>
+      </g>
+      <defs>
+        <filter
+          id="filter0_i_16479_41488"
+          x="1.65039"
+          y="0.576172"
+          width="20.5859"
+          height="23.4102"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="0.5" />
+          <feGaussianBlur stdDeviation="0.25" />
+          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0.121569 0 0 0 0 0.160784 0 0 0 0 0.215686 0 0 0 0.2 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="shape"
+            result="effect1_innerShadow_16479_41488"
+          />
+        </filter>
+        <clipPath id="clip0_16479_41488">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+}
