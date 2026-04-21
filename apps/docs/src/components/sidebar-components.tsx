@@ -80,7 +80,7 @@ export function TocBanner() {
       </Link>
 
       <div className="px-1.5 mt-3">
-        <p className="text-xs text-[#374151] -tracking-[0.2px] dark:text-[#ffffffcc]">
+        <p className="text-sm text-[#374151] -tracking-[0.2px] dark:text-[#ffffffcc]">
           Looking for creative Tailwind CSS Blocks, Pages &amp; Templates
         </p>
 
