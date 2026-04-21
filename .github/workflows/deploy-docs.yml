@@ -1,0 +1,130 @@
+name: Deploy Docs to Cloudflare Workers
+
+env:
+  NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+  NEXT_PUBLIC_GTM_ID: ${{ secrets.NEXT_PUBLIC_GTM_ID }}
+  NEXT_PUBLIC_MEILISEARCH_HOST: ${{ secrets.NEXT_PUBLIC_MEILISEARCH_HOST }}
+  NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY: ${{ secrets.NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY }}
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: docs-deploy-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy Docs
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install --frozen-lockfile
+
+      - name: Build icons package
+        run: npm run build --workspace=@tailgrids/icons
+
+      - name: Build docs
+        run: npm run build:cf --workspace=docs
+
+      - name: Create .env for Wrangler
+        run: |
+          echo "NEXT_PUBLIC_SITE_URL=${{ secrets.NEXT_PUBLIC_SITE_URL }}" >> apps/docs/.env
+          echo "NEXT_PUBLIC_GTM_ID=${{ secrets.NEXT_PUBLIC_GTM_ID }}" >> apps/docs/.env
+          echo "NEXT_PUBLIC_MEILISEARCH_HOST=${{ secrets.NEXT_PUBLIC_MEILISEARCH_HOST }}" >> apps/docs/.env
+          echo "NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY=${{ secrets.NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY }}" >> apps/docs/.env
+
+      # Production deploy (push to main)
+      - name: Deploy to Cloudflare Workers (Production)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: "apps/docs"
+          command: deploy
+
+      # Preview deploy (PR to main)
+      - name: Upload Preview Version
+        if: github.event_name == 'pull_request'
+        id: preview
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: "apps/docs"
+          command: versions upload
+
+      # Comment on PR with preview URL
+      - name: Comment Preview URL on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const deploymentUrl = '${{ steps.preview.outputs.deployment-url }}';
+            const commitSha = '${{ github.event.pull_request.head.sha }}';
+            const shortSha = commitSha.substring(0, 7);
+            const timestamp = new Date().toLocaleDateString('en-US', {
+              month: 'short', 
+              day: '2-digit', 
+              year: 'numeric', 
+              hour: '2-digit', 
+              minute: '2-digit', 
+              hour12: true, 
+              timeZone: 'UTC'
+            });
+
+            const marker = '<!-- cf-workers-preview-comment -->';
+
+            const body = `${marker}
+            ## Cloudflare Workers Deployment
+
+            | | |
+            |---|---|
+            | **Status** | ✅ Deployed |
+            | **Preview URL** | ${deploymentUrl || '⚠️ No preview URL available'} |
+            | **Latest Commit** | ${shortSha} |
+            | **Updated (UTC)** | ${timestamp} |`;
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const existing = comments.find(c => c.body.includes(marker));
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
