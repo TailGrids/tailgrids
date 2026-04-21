@@ -6,7 +6,7 @@
     "workspace"
   ],
   "description": "AI-powered Tailgrids UI component assistant. Install the Tailgrids MCP server to generate, search, and customize Tailwind CSS UI components directly from your AI agent.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "tailgrids",
   "license": "MIT",
   "engines": {
