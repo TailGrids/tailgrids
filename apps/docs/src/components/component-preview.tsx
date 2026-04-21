@@ -51,7 +51,7 @@ export function ComponentPreview({
         />
       </div>
 
-      <div className="bg-gray-50 dark:bg-gray-900 rounded-[1.75rem] border p-2.5 my-4 overflow-hidden">
+      <div className="bg-gray-50 dark:bg-gray-900 rounded-[1.75rem] border p-2.5 my-4">
         {activeTab === "preview" && (
           <div
             className={cn(

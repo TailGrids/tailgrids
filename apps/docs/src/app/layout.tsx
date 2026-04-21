@@ -45,7 +45,7 @@ export default function Layout({ children }: LayoutProps<"/">) {
       className={`${dmSans.variable} ${geistMono.variable}`}
       suppressHydrationWarning
       data-theme="light"
-      style={{ scrollbarGutter: "stable" }}
+      style={{ height: "100%", overflow: "hidden" }}
     >
       <head>
         <script src="https://accounts.google.com/gsi/client" async defer />
@@ -53,7 +53,10 @@ export default function Layout({ children }: LayoutProps<"/">) {
 
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
 
-      <body className="flex flex-col min-h-screen bg-white dark:bg-[#030712] antialiased relative">
+      <body
+        className="flex flex-col h-full overflow-y-auto bg-white dark:bg-[#030712] antialiased relative"
+        style={{ scrollbarGutter: "stable" }}
+      >
         <RootProvider
           theme={{
             defaultTheme: "light",

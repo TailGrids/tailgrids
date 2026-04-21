@@ -143,7 +143,7 @@ const menuData: MenuItem[] = [
         path: "https://pimjo.com/community",
         desc: "Connect, share, and grow with fellow users",
         icon: <CommunityIcon className="size-6" />,
-        external: false
+        external: true
       },
       {
         title: "Support",
