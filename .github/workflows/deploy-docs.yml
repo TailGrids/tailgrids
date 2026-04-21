@@ -29,13 +29,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: "npm"
 
       - name: Install dependencies
         run: npm install --frozen-lockfile
 
       - name: Build docs (with dependencies)
         run: npx turbo build --filter=docs --ui=stream
+        env:
+          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+          NEXT_PUBLIC_GTM_ID: ${{ secrets.NEXT_PUBLIC_GTM_ID }}
+          NEXT_PUBLIC_MEILISEARCH_HOST: ${{ secrets.NEXT_PUBLIC_MEILISEARCH_HOST }}
+          NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY: ${{ secrets.NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY }}
 
       # Production deploy (push to main)
       - name: Deploy to Cloudflare Workers (Production)
@@ -44,7 +49,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          workingDirectory: 'apps/docs'
+          workingDirectory: "apps/docs"
           command: deploy
 
       # Preview deploy (PR to main)
@@ -55,7 +60,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          workingDirectory: 'apps/docs'
+          workingDirectory: "apps/docs"
           command: versions upload
 
       # Comment on PR with preview URL
