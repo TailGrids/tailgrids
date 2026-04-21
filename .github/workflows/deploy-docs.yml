@@ -46,6 +46,13 @@ jobs:
       - name: Build docs
         run: npm run build:cf --workspace=docs
 
+      - name: Create .env for Wrangler
+        run: |
+          echo "NEXT_PUBLIC_SITE_URL=${{ secrets.NEXT_PUBLIC_SITE_URL }}" >> apps/docs/.env
+          echo "NEXT_PUBLIC_GTM_ID=${{ secrets.NEXT_PUBLIC_GTM_ID }}" >> apps/docs/.env
+          echo "NEXT_PUBLIC_MEILISEARCH_HOST=${{ secrets.NEXT_PUBLIC_MEILISEARCH_HOST }}" >> apps/docs/.env
+          echo "NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY=${{ secrets.NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY }}" >> apps/docs/.env
+
       # Production deploy (push to main)
       - name: Deploy to Cloudflare Workers (Production)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -55,11 +62,6 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: "apps/docs"
           command: deploy
-          secrets: |
-            NEXT_PUBLIC_SITE_URL
-            NEXT_PUBLIC_GTM_ID
-            NEXT_PUBLIC_MEILISEARCH_HOST
-            NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY
 
       # Preview deploy (PR to main)
       - name: Upload Preview Version
@@ -71,11 +73,6 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: "apps/docs"
           command: versions upload
-          secrets: |
-            NEXT_PUBLIC_SITE_URL
-            NEXT_PUBLIC_GTM_ID
-            NEXT_PUBLIC_MEILISEARCH_HOST
-            NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY
 
       # Comment on PR with preview URL
       - name: Comment Preview URL on PR
