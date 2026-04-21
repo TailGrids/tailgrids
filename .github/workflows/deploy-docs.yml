@@ -88,17 +88,14 @@ jobs:
             const marker = '<!-- cf-workers-preview-comment -->';
 
             const body = `${marker}
-            ## Cloudflare Workers Preview Deployment
+            ## Cloudflare Workers Deployment
 
             | | |
             |---|---|
             | **Status** | ✅ Deployed |
-            | **Preview URL** | ${deploymentUrl ? `[${deploymentUrl}](${deploymentUrl})` : '⚠️ No preview URL available'} |
-            | **Latest Commit** | \`${shortSha}\` |
-            | **Updated (UTC)** | ${timestamp} |
-
-            ---
-            <sub>Deployed via Cloudflare Workers • ${shortSha}</sub>`;
+            | **Preview URL** | ${deploymentUrl || '⚠️ No preview URL available'} |
+            | **Latest Commit** | ${shortSha} |
+            | **Updated (UTC)** | ${timestamp} |`;
 
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
