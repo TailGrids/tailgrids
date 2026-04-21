@@ -1,5 +1,11 @@
 # tailgrids-mcp
 
+## 1.0.1
+
+### Patch Changes
+
+- Update readme.md with proper instructions
+
 ## 1.0.0
 
 ### Major Changes
