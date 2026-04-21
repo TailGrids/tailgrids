@@ -12,7 +12,7 @@ on:
       - main
 
 concurrency:
-  group: docs-deploy-${{ github.event.pull_request.number || github.ref }}
+  group: docs-deploy-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -21,8 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pull-requests: write
-    timeout-minutes: 30
+    timeout-minutes: 15
 
     steps:
       - name: Checkout repository
@@ -31,7 +30,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: "npm"
 
       - name: Install dependencies
