@@ -40,7 +40,6 @@ jobs:
       - name: Build docs
         run: npm run build:cf --workspace=docs
         env:
-          NODE_OPTIONS: "--max_old_space_size=4096"
           NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
           NEXT_PUBLIC_GTM_ID: ${{ secrets.NEXT_PUBLIC_GTM_ID }}
           NEXT_PUBLIC_MEILISEARCH_HOST: ${{ secrets.NEXT_PUBLIC_MEILISEARCH_HOST }}
@@ -76,18 +75,27 @@ jobs:
             const deploymentUrl = '${{ steps.preview.outputs.deployment-url }}';
             const commitSha = '${{ github.event.pull_request.head.sha }}';
             const shortSha = commitSha.substring(0, 7);
-            const timestamp = new Date().toISOString();
+            const timestamp = new Date().toLocaleDateString('en-US', {
+              month: 'short', 
+              day: '2-digit', 
+              year: 'numeric', 
+              hour: '2-digit', 
+              minute: '2-digit', 
+              hour12: true, 
+              timeZone: 'UTC'
+            });
+
             const marker = '<!-- cf-workers-preview-comment -->';
 
             const body = `${marker}
-            ## ⚡ Cloudflare Workers Preview Deployment
+            ## Cloudflare Workers Preview Deployment
 
             | | |
             |---|---|
             | **Status** | ✅ Deployed |
             | **Preview URL** | ${deploymentUrl ? `[${deploymentUrl}](${deploymentUrl})` : '⚠️ No preview URL available'} |
-            | **Commit** | \`${shortSha}\` |
-            | **Updated** | ${timestamp} |
+            | **Latest Commit** | \`${shortSha}\` |
+            | **Updated (UTC)** | ${timestamp} |
 
             ---
             <sub>Deployed via Cloudflare Workers • ${shortSha}</sub>`;
