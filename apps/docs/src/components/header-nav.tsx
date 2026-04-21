@@ -13,6 +13,7 @@ import {
   CommunityIcon,
   ConfettiIcon,
   LongArrowUpRightIcon,
+  MCPIcon,
   PencilTextIcon,
   RoadMapIcon
 } from "./ui/icons";
@@ -171,6 +172,13 @@ const menuData: MenuItem[] = [
         path: "https://tailgrids.com/blog",
         desc: "Fresh news and product updates",
         icon: <PencilTextIcon className="size-6" />,
+        external: false
+      },
+      {
+        title: "Tailgrids MCP",
+        path: "https://tailgrids.com/docs/mcp",
+        desc: "Generate modern UI instantly with AI",
+        icon: <MCPIcon className="size-6" />,
         external: false
       }
     ]
