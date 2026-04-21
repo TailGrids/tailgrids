@@ -55,6 +55,11 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: "apps/docs"
           command: deploy
+          secrets: |
+            NEXT_PUBLIC_SITE_URL
+            NEXT_PUBLIC_GTM_ID
+            NEXT_PUBLIC_MEILISEARCH_HOST
+            NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY
 
       # Preview deploy (PR to main)
       - name: Upload Preview Version
@@ -66,6 +71,11 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: "apps/docs"
           command: versions upload
+          secrets: |
+            NEXT_PUBLIC_SITE_URL
+            NEXT_PUBLIC_GTM_ID
+            NEXT_PUBLIC_MEILISEARCH_HOST
+            NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY
 
       # Comment on PR with preview URL
       - name: Comment Preview URL on PR
