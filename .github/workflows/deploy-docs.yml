@@ -1,5 +1,6 @@
 name: Deploy Docs to Cloudflare Workers
 
+
 on:
   push:
     branches:
@@ -34,9 +35,13 @@ jobs:
       - name: Install dependencies
         run: npm install --frozen-lockfile
 
-      - name: Build docs (with dependencies)
-        run: npx turbo build --filter=docs --ui=stream
+      - name: Build icons package
+        run: npm run build --workspace=@tailgrids/icons
+
+      - name: Build docs
+        run: npm run build --workspace=docs
         env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
           NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
           NEXT_PUBLIC_GTM_ID: ${{ secrets.NEXT_PUBLIC_GTM_ID }}
           NEXT_PUBLIC_MEILISEARCH_HOST: ${{ secrets.NEXT_PUBLIC_MEILISEARCH_HOST }}
