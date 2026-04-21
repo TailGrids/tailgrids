@@ -35,7 +35,7 @@ jobs:
         run: npm install --frozen-lockfile
 
       - name: Build docs (with dependencies)
-        run: npx turbo build --filter=docs
+        run: npx turbo build --filter=docs --ui=stream
 
       # Production deploy (push to main)
       - name: Deploy to Cloudflare Workers (Production)
