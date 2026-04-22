@@ -3,9 +3,9 @@ title: React Time Picker Components
 description: A React time picker component that allows users to select a time value. Used in forms to choose hours and minutes through an accessible time input.
 ---
 
-import TimePickerCustomTriggerPreview from "@/components/preview/time-picker/time-picker-custom-trigger-preview";
-import TimePickerLabelPreview from "@/components/preview/time-picker/time-picker-label-preview";
 import TimePickerPreview from "@/components/preview/time-picker/time-picker-preview";
+import TimePickerLabelPreview from "@/components/preview/time-picker/time-picker-label-preview";
+import TimePickerCustomTriggerPreview from "@/components/preview/time-picker/time-picker-custom-trigger-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
@@ -13,7 +13,7 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 React Time Picker components allow users to select a specific time value using a clear, scrollable interface. They are commonly used in booking forms, scheduling flows, reminders, and time-based filters.
 
-This Time Picker is built with React and uses `react-aria` primitives for accessibility and focus management. It provides scrollable columns for hours, minutes, and AM/PM selection, making time selection fast and predictable.
+For a segment-based keyboard input, see the [Time Field](/docs/components/time-field) component.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -110,6 +110,8 @@ The `TimePickerTrigger` can be customized or replaced with any element that acce
 
 ### TimePicker
 
+The popover-based time picker component.
+
 | Prop       | Type                   | Default | Description                                        |
 | :--------- | :--------------------- | :------ | :------------------------------------------------- |
 | `children` | `React.ReactNode`      | -       | Trigger element (usually `TimePickerTrigger`)      |
@@ -125,7 +127,6 @@ Extends `Button` props from `react-aria-components`.
 
 ## Accessibility
 
-- **Keyboard Support**: Full keyboard navigation support for all time values.
-- **Screen Readers**: Works correctly with screen readers and assistive technologies.
-- **Focus Management**: Popover automatically manages focus and closes on selection to trigger.
-- **Semantic HTML**: Uses `MenuTrigger` and `Popover` from `react-aria` for proper ARIA roles.
+- **Keyboard Support**: Users can navigate the popover columns using `Arrow` keys and select values with `Enter`.
+- **Screen Readers**: Uses `MenuTrigger` and `Popover` roles to ensure screen readers announce the interactive elements correctly.
+- **Focus Management**: Focus is moved into the popover when opened and returned to the trigger upon selection or dismissal.

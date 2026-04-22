@@ -9,7 +9,7 @@ export default function TimePickerLabelPreview() {
   const [selectedTime, setSelectedTime] = useState<Date | null>(null);
 
   return (
-    <div className="flex flex-col gap-2 w-full max-w-lg mx-auto">
+    <div className="flex flex-col gap-2 w-full max-w-xs mx-auto">
       <Label className="text-sm font-medium text-text-50">
         Select Meeting Time
       </Label>

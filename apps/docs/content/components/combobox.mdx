@@ -37,42 +37,40 @@ Built with React and styled using Tailwind CSS. It supports filtering, keyboard 
 ## Installation
 
 <Accordions defaultValue="CLI">
-<Accordion title="CLI">
-Install the component using the Tailgrids CLI.
-```npm
-npx @tailgrids/cli add combobox
-```
+  <Accordion title="CLI">
+    Install the component using the Tailgrids CLI.
 
-</Accordion>
+    ```npm
+    npx @tailgrids/cli add combobox
+    ```
 
-<Accordion title="Manual">
-Install the required dependencies:
+  </Accordion>
 
-```npm
-npm i react-aria-components @tailgrids/icons
-```
+  <Accordion title="Manual">
+    Install the required dependencies:
 
-Copy and paste the following component code into your project.
+    ```npm
+    npm i react-aria-components @tailgrids/icons
+    ```
 
-<Tabs defaultValue="combobox">
-<Tab value="combobox" label="combobox.tsx">
-<CodeBlockCard
-snippet={getFileContent("/src/registry/core/combobox/combobox.tsx")}
-lang="tsx"
-  fileName="combobox.tsx"
-  showLineNumbers
-/>
-</Tab>
-<Tab value="multi-combobox" label="multi-combobox.tsx">
-<CodeBlockCard
-snippet={getFileContent("/src/registry/core/combobox/multi-combobox.tsx")}
-lang="tsx"
-  fileName="multi-combobox.tsx"
-  showLineNumbers
-/>
-</Tab>
-</Tabs>
-</Accordion>
+    Create a `combobox` directory under your `components` directory and add the following components code into that folder.
+
+    <CodeBlockCard
+      snippet={getFileContent("/src/registry/core/combobox/combobox.tsx")}
+      lang="tsx"
+      fileName="combobox.tsx"
+      showLineNumbers
+    />
+
+    <CodeBlockCard
+      snippet={getFileContent("/src/registry/core/combobox/multi-combobox.tsx")}
+      lang="tsx"
+      fileName="multi-combobox.tsx"
+      showLineNumbers
+    />
+
+  </Accordion>
+
 </Accordions>
 
 ## Anatomy
