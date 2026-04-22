@@ -43,6 +43,7 @@ import SwitchImage from "@/assets/skeleton-image/switch.png";
 import TableImage from "@/assets/skeleton-image/table.png";
 import TabsImage from "@/assets/skeleton-image/tabs.png";
 import TextAreaImage from "@/assets/skeleton-image/text-area.png";
+import TimeFieldImage from "@/assets/skeleton-image/time-field.png";
 import TimePickerImage from "@/assets/skeleton-image/time-picker.png";
 import ToastImage from "@/assets/skeleton-image/toast.png";
 import TooltipImage from "@/assets/skeleton-image/tooltip.png";
@@ -98,6 +99,7 @@ export const componentImages: Record<string, StaticImageData> = {
   table: TableImage,
   tabs: TabsImage,
   "text-area": TextAreaImage,
+  "time-field": TimeFieldImage,
   "time-picker": TimePickerImage,
   toast: ToastImage,
   toggle: SwitchImage,

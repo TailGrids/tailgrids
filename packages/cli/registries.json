@@ -719,6 +719,20 @@
     "dependencies": ["class-variance-authority"]
   },
   {
+    "id": "time-field",
+    "name": "Time Field",
+    "description": "A segment-based time input component.",
+    "type": "component",
+    "exampleCount": 6,
+    "files": [
+      {
+        "type": "core",
+        "path": "/core/time-field.tsx"
+      }
+    ],
+    "dependencies": ["react-aria-components", "react-stately"]
+  },
+  {
     "id": "time-picker",
     "name": "Time Picker",
     "description": "A component to select a time.",
