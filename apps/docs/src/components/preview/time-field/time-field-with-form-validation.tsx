@@ -14,7 +14,7 @@ export default function TimeFieldWithFormValidation() {
         <TimeField
           name="meeting_time"
           label="Meeting"
-          isRequired
+          required
           validationBehavior="native"
           validate={v => {
             if (v && v.hour < 8) return "Too early!";
@@ -30,4 +30,3 @@ export default function TimeFieldWithFormValidation() {
     </div>
   );
 }
-

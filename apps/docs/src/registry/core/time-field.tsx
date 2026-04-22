@@ -55,22 +55,32 @@ const timeSegmentStyles = cva(
   }
 );
 
-export interface TimeFieldProps<
-  T extends TimeValue
-> extends AriaTimeFieldProps<T> {
+export interface TimeFieldProps<T extends TimeValue> extends Omit<
+  AriaTimeFieldProps<T>,
+  "isRequired" | "isInvalid" | "isDisabled" | "isReadOnly"
+> {
+  required?: boolean;
+  invalid?: boolean;
+  disabled?: boolean;
+  readOnly?: boolean;
   className?: string;
   children?: ReactNode;
 }
 
-export interface TimeFieldProviderProps<
-  T extends TimeValue
-> extends AriaTimeFieldProps<T> {
+export interface TimeFieldProviderProps<T extends TimeValue> extends Omit<
+  AriaTimeFieldProps<T>,
+  "isRequired" | "isInvalid" | "isDisabled" | "isReadOnly"
+> {
+  required?: boolean;
+  invalid?: boolean;
+  disabled?: boolean;
+  readOnly?: boolean;
   children?: ReactNode;
 }
 
-interface TimeFieldContextValue<T extends TimeValue = TimeValue> {
-  props: Pick<
-    AriaTimeFieldProps<TimeValue>,
+interface TimeFieldContextValue {
+  displayProps: Pick<
+    TimeFieldProviderProps<TimeValue>,
     "label" | "description" | "errorMessage"
   >;
   state: TimeFieldState;
@@ -87,7 +97,7 @@ interface TimeFieldContextValue<T extends TimeValue = TimeValue> {
 
 const TimeFieldContext = createContext<TimeFieldContextValue | null>(null);
 
-function useTimeFieldContext<T extends TimeValue>() {
+function useTimeFieldContext() {
   const context = useContext(TimeFieldContext);
 
   if (!context) {
@@ -96,15 +106,27 @@ function useTimeFieldContext<T extends TimeValue>() {
     );
   }
 
-  return context as TimeFieldContextValue<T>;
+  return context;
 }
 
 export function TimeFieldProvider<T extends TimeValue>({
   children,
+  required,
+  invalid,
+  disabled,
+  readOnly,
   ...props
 }: TimeFieldProviderProps<T>) {
   const { locale } = useLocale();
-  const state = useTimeFieldState({ ...props, locale });
+  const ariaProps: AriaTimeFieldProps<T> = {
+    ...props,
+    isRequired: required,
+    isInvalid: invalid,
+    isDisabled: disabled,
+    isReadOnly: readOnly
+  };
+
+  const state = useTimeFieldState({ ...ariaProps, locale });
   const fieldRef = useRef<HTMLDivElement>(null);
 
   const {
@@ -116,12 +138,12 @@ export function TimeFieldProvider<T extends TimeValue>({
     isInvalid,
     validationErrors,
     validationDetails
-  } = useTimeField(props, state, fieldRef);
+  } = useTimeField(ariaProps, state, fieldRef);
 
   return (
     <TimeFieldContext.Provider
       value={{
-        props,
+        displayProps: props,
         state,
         fieldRef,
         labelProps,
@@ -165,8 +187,8 @@ export function TimeField<T extends TimeValue>({
 }
 
 export function TimeFieldLabel({ className, children }: TimeFieldSlotProps) {
-  const { labelProps, props } = useTimeFieldContext();
-  const content = children ?? props.label;
+  const { labelProps, displayProps } = useTimeFieldContext();
+  const content = children ?? displayProps.label;
 
   if (content == null) {
     return null;
@@ -213,8 +235,8 @@ export function TimeFieldDescription({
   className,
   children
 }: TimeFieldSlotProps) {
-  const { descriptionProps, props } = useTimeFieldContext();
-  const content = children ?? props.description;
+  const { descriptionProps, displayProps } = useTimeFieldContext();
+  const content = children ?? displayProps.description;
 
   if (content == null) {
     return null;
@@ -231,18 +253,18 @@ export function TimeFieldError({ className, children }: TimeFieldSlotProps) {
   const {
     errorMessageProps,
     isInvalid,
-    props,
+    displayProps,
     validationDetails,
     validationErrors
   } = useTimeFieldContext();
 
-  if (!isInvalid && children == null && props.errorMessage == null) {
+  if (!isInvalid && children == null && displayProps.errorMessage == null) {
     return null;
   }
 
   const content =
     children ??
-    resolveTimeFieldErrorMessage(props.errorMessage, {
+    resolveTimeFieldErrorMessage(displayProps.errorMessage, {
       isInvalid,
       validationErrors,
       validationDetails
