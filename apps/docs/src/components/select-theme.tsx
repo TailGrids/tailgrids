@@ -55,12 +55,15 @@ export function SelectTheme() {
       {open && (
         <div className="absolute right-0 z-20 mt-2 w-32 rounded-xl border bg-white dark:bg-gray-900 p-1">
           <ul className="py-1 text-sm [all:unset]">
-            {themes.map(themeOption => (
+            {themes.map((themeOption, i) => (
               <li key={themeOption.value} className="list-none [all:unset]">
                 <button
                   onClick={() => handleSelect(themeOption.value)}
                   className={cn(
                     "w-full px-1.5 py-1 text-left text-sm font-medium flex items-center justify-between rounded-lg cursor-pointer",
+                    {
+                      "mb-0.5": i % 2 === 0
+                    },
                     theme === themeOption.value
                       ? "bg-gray-100 text-gray-700 dark:text-gray-200 dark:bg-gray-800"
                       : "text-gray-500 dark:text-gray-400 hover:bg-gray-100/60 dark:hover:bg-gray-800"
