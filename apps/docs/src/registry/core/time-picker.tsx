@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/utils/cn";
 import { useState } from "react";
 import {
@@ -50,8 +52,8 @@ export function TimePicker({
   return (
     <MenuTrigger>
       {children}
-      <Popover className="bg-background-50 rounded-xl border border-base-200 p-3 shadow-xl outline-none">
-        <div className="grid max-w-fit min-w-41.5 grid-cols-3 gap-1">
+      <Popover className="bg-background-50 rounded-xl border border-base-100 p-2 shadow-lg outline-none">
+        <div className="grid max-w-fit min-w-40 grid-cols-3 gap-1.5 divide-x">
           <TimeColumn
             values={range(1, 12)}
             onChange={v => handleChange("hour", v)}
@@ -80,7 +82,7 @@ function TimeColumn({
   const [selected, setSelected] = useState(values[0]);
 
   return (
-    <div className="flex max-h-73 flex-col gap-2 overflow-y-auto">
+    <div className="pr-1.5 flex max-h-73 flex-col gap-1 overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       {values.map(value => (
         <button
           key={value}
