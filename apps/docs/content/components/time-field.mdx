@@ -1,0 +1,202 @@
+---
+title: React Time Field Components
+description: A React time field component that allows users to select a time value. Used in forms to choose hours and minutes through an accessible time input.
+---
+
+import TimeFieldPreview from "@/components/preview/time-field/time-field-preview";
+import TimeFieldBasicPreview from "@/components/preview/time-field/time-field-basic-preview";
+import TimeFieldUncontrolled from "@/components/preview/time-field/time-field-uncontrolled";
+import TimeFieldControlled from "@/components/preview/time-field/time-field-controlled";
+import TimeFieldWithSeconds from "@/components/preview/time-field/time-field-with-seconds";
+import TimeFieldWithTimezone from "@/components/preview/time-field/time-field-with-timezone";
+import TimeFieldWithValidation from "@/components/preview/time-field/time-field-with-validation";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Time Field
+
+React Time Field components allow users to select a specific time value using a segment-based input. They are commonly used in booking forms, scheduling flows, reminders, and time-based filters where precise keyboard entry is preferred.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/time-field/time-field-preview.tsx"
+  )}
+>
+  <TimeFieldPreview />
+</ComponentPreview>
+
+## Installation
+
+The Time Field relies on the `react-aria-components` and `react-stately` libraries.
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+```npm
+npx @tailgrids/cli add time-field
+```
+</Accordion>
+
+<Accordion title="Manual">
+
+Install the required dependencies:
+
+```npm
+npm i react-aria-components react-stately
+```
+
+Copy and paste the component code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/time-field.tsx")}
+  lang="tsx"
+  fileName="time-field.tsx"
+  showLineNumbers
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+```tsx
+import {
+  TimeField,
+  TimeFieldInput,
+  TimeFieldLabel,
+  TimeFieldDescription,
+  TimeFieldError
+} from "@/registry/core/time-field";
+
+export const TimeFieldExample = () => (
+  <TimeField label="Meeting time">
+    <TimeFieldLabel />
+    <TimeFieldInput />
+    <TimeFieldDescription />
+    <TimeFieldError />
+  </TimeField>
+);
+```
+
+## Examples
+
+### Basic Usage
+A standard time field implementation using segments for precise time entry.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/time-field/time-field-basic-preview.tsx"
+  )}
+>
+  <TimeFieldBasicPreview />
+</ComponentPreview>
+
+### Controlled
+Manage the time value externally using the `value` and `onChange` props.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/time-field/time-field-controlled.tsx"
+  )}
+>
+  <TimeFieldControlled />
+</ComponentPreview>
+
+### Uncontrolled
+An uncontrolled time field with a `defaultValue` prop.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/time-field/time-field-uncontrolled.tsx"
+  )}
+>
+  <TimeFieldUncontrolled />
+</ComponentPreview>
+
+### With Seconds
+Enable second selection by setting the `granularity` prop to `second`.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/time-field/time-field-with-seconds.tsx"
+  )}
+>
+  <TimeFieldWithSeconds />
+</ComponentPreview>
+
+### With Timezone
+Display and manage time zones within the time field.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/time-field/time-field-with-timezone.tsx"
+  )}
+>
+  <TimeFieldWithTimezone />
+</ComponentPreview>
+
+### Validation
+Display error messages and validation states when the time value is invalid.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/time-field/time-field-with-validation.tsx"
+  )}
+>
+  <TimeFieldWithValidation />
+</ComponentPreview>
+
+## API Reference
+
+### TimeField
+
+
+The segment-based time input component.
+
+| Prop | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `value` | `TimeValue` | - | The current value (controlled). |
+| `defaultValue` | `TimeValue` | - | The default value (uncontrolled). |
+| `onChange` | `(value: TimeValue) => void` | - | Handler that is called when the value changes. |
+| `label` | `string` | - | The content to display as the label. |
+| `description` | `string` | - | The content to display as the description. |
+| `errorMessage` | `string \| ((v: ValidationResult) => string)` | - | The content to display as the error message. |
+| `hourCycle` | `12 \| 24` | - | Whether to use 12 or 24 hour cycle. |
+| `granularity` | `'hour' \| 'minute' \| 'second'` | `'minute'` | The smallest unit of time to display. |
+| `hideTimeZone` | `boolean` | `false` | Whether to hide the time zone abbreviation. |
+| `minValue` | `TimeValue` | - | The minimum allowed time. |
+| `maxValue` | `TimeValue` | - | The maximum allowed time. |
+| `isDisabled` | `boolean` | `false` | Whether the input is disabled. |
+| `isReadOnly` | `boolean` | `false` | Whether the input is read only. |
+| `isRequired` | `boolean` | `false` | Whether the input is required. |
+| `className` | `string` | - | Additional CSS classes to apply to the container. |
+
+### TimeFieldLabel
+
+| Prop | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `className` | `string` | - | Additional CSS classes to apply to the label. |
+
+### TimeFieldInput
+
+| Prop | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `className` | `string` | - | Additional CSS classes to apply to the input container. |
+
+### TimeFieldDescription
+
+| Prop | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `className` | `string` | - | Additional CSS classes to apply to the description. |
+
+### TimeFieldError
+
+| Prop | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `className` | `string` | - | Additional CSS classes to apply to the error message. |
+
+
+## Accessibility
+
+- **Keyboard Support**: Users can navigate between time segments (hours, minutes, seconds, AM/PM) using `Arrow` keys and edit values using the number keys.
+- **Screen Readers**: Each segment is properly labeled and provides live updates to screen readers as values change.
+- **Focus Management**: Focus is managed automatically between segments for a seamless typing experience.

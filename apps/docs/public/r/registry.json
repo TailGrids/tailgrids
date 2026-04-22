@@ -795,6 +795,22 @@
       ]
     },
     {
+      "name": "time-field",
+      "type": "registry:ui",
+      "description": "A segment-based time input component.",
+      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components",
+        "react-stately"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/time-field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "time-picker",
       "type": "registry:ui",
       "description": "A component to select a time.",
