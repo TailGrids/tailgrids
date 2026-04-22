@@ -59,6 +59,7 @@ export interface TimeFieldProps<T extends TimeValue> extends Omit<
   AriaTimeFieldProps<T>,
   "isRequired" | "isInvalid" | "isDisabled" | "isReadOnly"
 > {
+  // Tailgrids public API naming. These are mapped to React Aria `is*` flags internally.
   required?: boolean;
   invalid?: boolean;
   disabled?: boolean;
@@ -79,6 +80,8 @@ export interface TimeFieldProviderProps<T extends TimeValue> extends Omit<
 }
 
 interface TimeFieldContextValue {
+  // Display-oriented props consumed by children (Label/Description/Error).
+  // Kept separate from `ariaProps` because only these are needed for content fallback.
   displayProps: Pick<
     TimeFieldProviderProps<TimeValue>,
     "label" | "description" | "errorMessage"
@@ -118,6 +121,8 @@ export function TimeFieldProvider<T extends TimeValue>({
   ...props
 }: TimeFieldProviderProps<T>) {
   const { locale } = useLocale();
+
+  // Merge Tailgrids prop names to React Aria prop names.
   const ariaProps: AriaTimeFieldProps<T> = {
     ...props,
     isRequired: required,
@@ -143,6 +148,7 @@ export function TimeFieldProvider<T extends TimeValue>({
   return (
     <TimeFieldContext.Provider
       value={{
+        // Only pass display text props through context for compound slots.
         displayProps: props,
         state,
         fieldRef,
