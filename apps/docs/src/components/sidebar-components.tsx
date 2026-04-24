@@ -81,7 +81,7 @@ export function TocBanner() {
 
       <div className="px-1.5 mt-3">
         <p className="text-sm text-[#374151] -tracking-[0.2px] dark:text-[#ffffffcc]">
-          Looking for creative Tailwind CSS Blocks, Pages &amp; Templates
+          Access 600+ blocks, components and templates - built for speed, consistency, and scale.
         </p>
 
         <Link
@@ -89,7 +89,7 @@ export function TocBanner() {
           target="_blank"
           className="w-full mt-3 px-[18px_12px] py-2.75 text-white text-sm font-medium bg-primary-500 flex items-center justify-center gap-2 -tracking-[0.2px] rounded-lg shadow-[0_16px_8px_0_rgba(31,31,31,0.01),0_12px_6px_0_rgba(31,31,31,0.04),0_4px_4px_0_rgba(31,31,31,0.07),0_1.5px_3px_0_rgba(31,31,31,0.08),0_0_0_1px_#2237EE,0_1px_3px_0_rgba(255,255,255,0.30)_inset] transition-colors duration-200 hover:bg-primary-600 focus-visible:bg-primary-600"
         >
-          Visit Tailgrids Pro
+          Get Tailgrids Pro
           <ChevronRight size={20} className="text-white/70" />
         </Link>
       </div>
