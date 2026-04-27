@@ -13,6 +13,7 @@ export function CodeBlockTabs({
   return (
     <UnstyledTabs.Tabs
       data-pkg-tabs=""
+      groupId="language"
       className={cn(
         "p-2.5 flex flex-col gap-2.5 bg-[#f9fafb] rounded-[1.75rem] shadow-[0_0_0_1px_#e5e7eb] dark:bg-[#111827] dark:shadow-[0_0_0_1px_#1f2937]",
         className

@@ -36,7 +36,7 @@ npm install tailwindcss @tailwindcss/vite
 <Step>
 ### Configure Path Aliases
 
-Vite requires some configuration for path aliases. Update your `tsconfig.json` and `vite.config.ts`.
+Vite requires some configuration for path aliases. Update your `tsconfig.json`, `tsconfig.app.json`, and `vite.config.ts`.
 
 #### tsconfig.json
 
@@ -44,6 +44,21 @@ Vite requires some configuration for path aliases. Update your `tsconfig.json` a
 {
   // ...existing code
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+#### tsconfig.app.json
+
+```jsonc title="tsconfig.app.json"
+{
+  // ...existing code
+  "compilerOptions": {
+    // ...existing code
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
@@ -122,3 +137,16 @@ export default App;
 </Step>
 
 </Steps>
+
+## Troubleshooting
+
+Afther the path alias configuration, if the component still imports from relative paths, add the following to your code editor's `settings.json`:
+
+```jsonc title="settings.json"
+{
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "typescript.preferences.importModuleSpecifierEnding": "minimal",
+    "javascript.preferences.importModuleSpecifier": "non-relative",
+    "javascript.preferences.importModuleSpecifierEnding": "minimal"
+}
+```
