@@ -17,8 +17,15 @@ export default function ListWithInputsPreview() {
       {/* Checkbox List */}
       <List className="max-w-70">
         {features.map((feature, index) => (
-          <li key={index}>
-            <Checkbox label={feature} className="w-full" />
+          <li key={index} className="flex items-center gap-2">
+            <Checkbox id={`list-${index}`} />
+
+            <Label
+              htmlFor={`list-${index}`}
+              className="cursor-pointer select-none"
+            >
+              {feature}
+            </Label>
           </li>
         ))}
       </List>
