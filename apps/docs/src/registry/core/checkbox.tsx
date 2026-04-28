@@ -1,6 +1,8 @@
+"use client";
+
 import { cn } from "@/utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
-import { SVGProps, useId, type ComponentProps } from "react";
+import { type ComponentProps, type SVGProps, useRef } from "react";
 
 const checkboxStyles = cva(
   "bg-checkbox-background peer-focus:border-primary-300 group-hover:border-checkbox-checked-border peer-checked:bg-checkbox-checked-background peer-checked:border-checkbox-checked-border! peer-focus:ring-checkbox-checked-border/20 grid place-items-center border border-base-200 transition peer-focus:ring-4 peer-disabled:border-base-50 [&>svg]:hidden [&>svg]:text-checkbox-checked-icon-color peer-checked:[&>svg]:block peer-disabled:[&>svg]:text-(--border-color-base-50)",
@@ -18,51 +20,39 @@ const checkboxStyles = cva(
 );
 
 type PropsType = Omit<ComponentProps<"input">, "size"> &
-  VariantProps<typeof checkboxStyles> & {
-    label?: string;
-  };
+  VariantProps<typeof checkboxStyles> & {};
 
 export function Checkbox({
-  label,
-  id: inputId,
   size,
   disabled,
   className,
   ...inputProps
 }: PropsType) {
-  const id = useId();
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleClick = () => {
+    if (inputRef.current && !disabled) {
+      inputRef.current.click();
+    }
+  };
 
   return (
-    <label
-      htmlFor={id}
-      className={cn(
-        "group flex cursor-pointer items-center gap-3 select-none aria-disabled:cursor-not-allowed",
-        className
-      )}
-      aria-disabled={disabled}
-    >
-      <div>
-        <input
-          type="checkbox"
-          id={id}
-          className="peer sr-only"
-          disabled={disabled}
-          {...inputProps}
-        />
+    <div className={cn("group inline-flex select-none", className)}>
+      <input
+        ref={inputRef}
+        type="checkbox"
+        className="peer sr-only"
+        disabled={disabled}
+        {...inputProps}
+      />
 
-        <div className={checkboxStyles({ size })}>
-          <CheckIcon />
-        </div>
+      <div
+        className={cn(checkboxStyles({ size }), !disabled && "cursor-pointer")}
+        onClick={handleClick}
+      >
+        <CheckIcon />
       </div>
-
-      {label && (
-        <span
-          className={cn("text-sm text-text-50", disabled && "text-text-200")}
-        >
-          {label}
-        </span>
-      )}
-    </label>
+    </div>
   );
 }
 

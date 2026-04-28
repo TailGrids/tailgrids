@@ -26,6 +26,8 @@ This Checkbox component is built with React and styled using Tailwind CSS, provi
   <CheckboxPreview />
 </ComponentPreview>
 
+Because the component is intentionally label-free, provide an accessible name with `aria-label` or `aria-labelledby` when you use it in your app.
+
 ## Installation
 
 <Accordions defaultValue="CLI">
@@ -59,14 +61,23 @@ You'll also need the check icon SVG referenced in the component.
 
 ## Usage
 
-Import the component and pass the required props.
+Import the component and either provide an accessible name directly or pair it with the standalone `Label` component.
 
 ```tsx
 import { Checkbox } from "@/registry/core/checkbox";
+import { Label } from "@/registry/core/label";
+import { useId } from "react";
 
-export default CheckboxPreview = () => (
-  <Checkbox label="Accept terms and conditions" />
-);
+export default function CheckboxExample() {
+  const id = useId();
+
+  return (
+    <div className="flex items-center gap-3">
+      <Checkbox id={id} defaultChecked />
+      <Label htmlFor={id}>Accept terms and conditions</Label>
+    </div>
+  );
+}
 ```
 
 ## Examples
@@ -85,7 +96,7 @@ The Checkbox component supports two sizes: `sm` (default) and `md`.
 
 ### With Label
 
-Use the label prop to display text next to the checkbox.
+Use the standalone `Label` component when you want visible text next to the checkbox.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -94,8 +105,6 @@ Use the label prop to display text next to the checkbox.
 >
   <CheckboxWithLabelPreview />
 </ComponentPreview>
-
-Note: Hover effects apply to both the checkbox and label for better UX.
 
 ### Controlled
 
@@ -115,22 +124,24 @@ Control the checked state using React state.
 
 Extends `input` element props.
 
-| Prop             | Type                       | Default | Description                                      |
-| ---------------- | -------------------------- | ------- | ------------------------------------------------ |
-| `size`           | `'sm' \| 'md'`             | `'sm'`  | Checkbox size                                    |
-| `label`          | `string`                   | -       | Label text next to checkbox                      |
-| `id`             | `string`                   | -       | Custom input ID (auto-generated if not provided) |
-| `disabled`       | `boolean`                  | `false` | Disable checkbox interaction                     |
-| `checked`        | `boolean`                  | -       | Controlled checked state                         |
-| `defaultChecked` | `boolean`                  | -       | Uncontrolled default checked state               |
-| `onChange`       | `(e: ChangeEvent) => void` | -       | Change event handler                             |
+| Prop             | Type                       | Default | Description                                              |
+| ---------------- | -------------------------- | ------- | -------------------------------------------------------- |
+| `id`             | `string`                   | -       | Input ID used with the standalone `Label` component      |
+| `className`      | `string`                   | -       | Additional wrapper classes                               |
+| `size`           | `'sm' \| 'md'`             | `'sm'`  | Checkbox size                                            |
+| `disabled`       | `boolean`                  | `false` | Disable checkbox interaction                             |
+| `checked`        | `boolean`                  | -       | Controlled checked state                                 |
+| `defaultChecked` | `boolean`                  | -       | Uncontrolled default checked state                       |
+| `aria-label`     | `string`                   | -       | Accessible name when no visible label is used           |
+| `aria-labelledby` | `string`                  | -       | Accessible name via an external label element           |
+| `onChange`       | `(e: ChangeEvent) => void` | -       | Change event handler                                     |
 
 ## Accessibility
 
-- Uses native `<input type="checkbox">` with screen reader support
-- Automatically generates unique IDs if not provided
-- Label is properly associated with input via `htmlFor`
+- Uses a native `<input type="checkbox">` with standard keyboard support
+- Pair with the standalone `Label` component for visible text and `htmlFor`/`id` association
+- Requires an accessible name via `aria-label` or `aria-labelledby` when no visible label is used
 - Fully keyboard accessible with standard checkbox behavior
 - Visible focus ring provides clear keyboard feedback
-- Disabled state is communicated via `aria-disabled` on the label
+- Disabled state is communicated by the native input `disabled` attribute
 - Hover states are disabled when checkbox is disabled
