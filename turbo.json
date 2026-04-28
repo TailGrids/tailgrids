@@ -9,7 +9,7 @@
         ".next/**",
         "!.next/cache/**",
         ".open-next/**",
-        "dist",
+        "dist/**",
         "out/**",
         ".vercel/**"
       ]

@@ -3,9 +3,11 @@ import path from "node:path";
 
 export function getFileContent(filePath: string) {
   try {
-    const data = fs.readFileSync(path.join(process.cwd(), filePath), {
-      encoding: "utf8"
-    });
+    const data = fs
+      .readFileSync(path.join(process.cwd(), filePath), {
+        encoding: "utf8"
+      })
+      .replaceAll("@/registry/core/", "@/components/tailgrids/core/");
 
     return data;
   } catch (error) {
