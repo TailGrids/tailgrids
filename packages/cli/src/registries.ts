@@ -231,11 +231,18 @@ export const REGISTRIES: Registry[] = [
     files: [
       {
         type: "core",
-        path: "/core/combobox/combobox.tsx"
+        path: "/core/combobox/combobox.tsx",
+        targetPath: "/core/combobox/combobox.tsx"
       },
       {
         type: "core",
-        path: "/core/combobox/multi-combobox.tsx"
+        path: "/core/combobox/multi-combobox.tsx",
+        targetPath: "/core/combobox/multi-combobox.tsx"
+      },
+      {
+        type: "core",
+        path: "/core/combobox/index.ts",
+        targetPath: "/core/combobox/index.ts"
       }
     ],
     dependencies: ["react-aria-components", "@tailgrids/icons"],
