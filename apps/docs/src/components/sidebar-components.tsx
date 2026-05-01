@@ -85,7 +85,7 @@ export function TocBanner() {
         </p>
 
         <Link
-          href="https://tailgrids.com/blocks"
+          href="https://tailgrids.com/pricing?utm_source=docs&utm_medium=banner&utm_campaign=pro"
           target="_blank"
           className="w-full mt-3 px-[18px_12px] py-2.75 text-white text-sm font-medium bg-primary-500 flex items-center justify-center gap-2 -tracking-[0.2px] rounded-lg shadow-[0_16px_8px_0_rgba(31,31,31,0.01),0_12px_6px_0_rgba(31,31,31,0.04),0_4px_4px_0_rgba(31,31,31,0.07),0_1.5px_3px_0_rgba(31,31,31,0.08),0_0_0_1px_#2237EE,0_1px_3px_0_rgba(255,255,255,0.30)_inset] transition-colors duration-200 hover:bg-primary-600 focus-visible:bg-primary-600"
         >

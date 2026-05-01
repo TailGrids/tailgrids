@@ -15,6 +15,9 @@ const config = {
         destination: "/api/docs/md/:path*"
       }
     ];
+  },
+    images: {
+    unoptimized: true,
   }
 };
 
