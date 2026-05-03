@@ -8,7 +8,7 @@ import CheckboxControlledPreview from "@/components/preview/checkbox/checkbox-co
 import CheckboxPreview from "@/components/preview/checkbox/checkbox-preview";
 import CheckboxSizesPreview from "@/components/preview/checkbox/checkbox-sizes-preview";
 import CheckboxWithLabelPreview from "@/components/preview/checkbox/checkbox-with-label-preview";
-import { Checkbox } from "@/registry/core/checkbox";
+import { Checkbox } from "@/components/tailgrids/checkbox";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
@@ -62,8 +62,8 @@ You'll also need the check icon SVG referenced in the component.
 Import the component and either provide an accessible name directly or pair it with the standalone `Label` component.
 
 ```tsx
-import { Checkbox } from "@/registry/core/checkbox";
-import { Label } from "@/registry/core/label";
+import { Checkbox } from "@/components/tailgrids/checkbox";
+import { Label } from "@/components/tailgrids/label";
 import { useId } from "react";
 
 export default function CheckboxExample() {
@@ -122,17 +122,17 @@ Control the checked state using React state.
 
 Extends `input` element props.
 
-| Prop             | Type                       | Default | Description                                              |
-| ---------------- | -------------------------- | ------- | -------------------------------------------------------- |
-| `id`             | `string`                   | -       | Input ID used with the standalone `Label` component      |
-| `className`      | `string`                   | -       | Additional wrapper classes                               |
-| `size`           | `'sm' \| 'md'`             | `'sm'`  | Checkbox size                                            |
-| `disabled`       | `boolean`                  | `false` | Disable checkbox interaction                             |
-| `checked`        | `boolean`                  | -       | Controlled checked state                                 |
-| `defaultChecked` | `boolean`                  | -       | Uncontrolled default checked state                       |
-| `aria-label`     | `string`                   | -       | Accessible name when no visible label is used           |
-| `aria-labelledby` | `string`                  | -       | Accessible name via an external label element           |
-| `onChange`       | `(e: ChangeEvent) => void` | -       | Change event handler                                     |
+| Prop              | Type                       | Default | Description                                         |
+| ----------------- | -------------------------- | ------- | --------------------------------------------------- |
+| `id`              | `string`                   | -       | Input ID used with the standalone `Label` component |
+| `className`       | `string`                   | -       | Additional wrapper classes                          |
+| `size`            | `'sm' \| 'md'`             | `'sm'`  | Checkbox size                                       |
+| `disabled`        | `boolean`                  | `false` | Disable checkbox interaction                        |
+| `checked`         | `boolean`                  | -       | Controlled checked state                            |
+| `defaultChecked`  | `boolean`                  | -       | Uncontrolled default checked state                  |
+| `aria-label`      | `string`                   | -       | Accessible name when no visible label is used       |
+| `aria-labelledby` | `string`                   | -       | Accessible name via an external label element       |
+| `onChange`        | `(e: ChangeEvent) => void` | -       | Change event handler                                |
 
 ## Accessibility
 

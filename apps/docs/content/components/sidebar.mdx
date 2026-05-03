@@ -64,7 +64,10 @@ The Sidebar is composed of several complementary primitives allowing you to buil
 A typical application layout places a `SidebarProvider` wrapping your entire application shell. Inside it goes your `Sidebar` (which behaves like navigation off-canvas) alongside your `<main>` content container.
 
 ```tsx
-import { SidebarProvider, SidebarTrigger } from "@/registry/core/sidebar";
+import {
+  SidebarProvider,
+  SidebarTrigger
+} from "@/components/tailgrids/sidebar";
 import { AppSidebar } from "./app-sidebar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {

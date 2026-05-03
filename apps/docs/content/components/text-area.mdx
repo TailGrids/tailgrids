@@ -9,7 +9,7 @@ import TextAreaPreview from "@/components/preview/text-area/text-area-preview";
 import TextAreaSuccessPreview from "@/components/preview/text-area/text-area-success-preview";
 import TextAreaWithHintPreview from "@/components/preview/text-area/text-area-with-hint-preview";
 import TextAreaWithLabelPreview from "@/components/preview/text-area/text-area-with-label-preview";
-import { TextArea } from "@/registry/core/text-area";
+import { TextArea } from "@/components/tailgrids/text-area";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
@@ -61,7 +61,7 @@ fileName="text-area.tsx"
 Import the component and pass the required props.
 
 ```tsx
-import { TextArea } from "@/registry/core/text-area";
+import { TextArea } from "@/components/tailgrids/text-area";
 
 export default TextAreaExample = () => (
   <TextArea label="Message" placeholder="Write your message..." />
