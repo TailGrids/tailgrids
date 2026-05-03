@@ -8,7 +8,7 @@ import ToastPreview from "@/components/preview/toast/toast-preview";
 import ToastVariantsPreview from "@/components/preview/toast/toast-variants-preview";
 import ToastWithTitlePreview from "@/components/preview/toast/toast-with-title-preview";
 import ToastWithUndoPreview from "@/components/preview/toast/toast-with-undo-preview";
-import { AvatarToast, Toast } from "@/components/tailgrids/toast";
+import { AvatarToast, Toast } from "@/registry/core/toast";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
@@ -67,7 +67,7 @@ fileName="avatar.tsx"
 Import the component and pass the required props.
 
 ```tsx
-import { Toast, AvatarToast } from "@/components/tailgrids/toast";
+import { Toast, AvatarToast } from "@/components/tailgrids/core/toast";
 
 export const ToastExample = () => (
   <Toast

@@ -8,7 +8,7 @@ import CheckboxControlledPreview from "@/components/preview/checkbox/checkbox-co
 import CheckboxPreview from "@/components/preview/checkbox/checkbox-preview";
 import CheckboxSizesPreview from "@/components/preview/checkbox/checkbox-sizes-preview";
 import CheckboxWithLabelPreview from "@/components/preview/checkbox/checkbox-with-label-preview";
-import { Checkbox } from "@/components/tailgrids/checkbox";
+import { Checkbox } from "@/registry/core/checkbox";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
@@ -62,8 +62,8 @@ You'll also need the check icon SVG referenced in the component.
 Import the component and either provide an accessible name directly or pair it with the standalone `Label` component.
 
 ```tsx
-import { Checkbox } from "@/components/tailgrids/checkbox";
-import { Label } from "@/components/tailgrids/label";
+import { Checkbox } from "@/components/tailgrids/core/checkbox";
+import { Label } from "@/components/tailgrids/core/label";
 import { useId } from "react";
 
 export default function CheckboxExample() {

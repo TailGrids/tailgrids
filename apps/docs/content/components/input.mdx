@@ -9,7 +9,7 @@ import InputPreview from "@/components/preview/input/input-preview";
 import InputStatesPreview from "@/components/preview/input/input-states-preview";
 import InputWithHintPreview from "@/components/preview/input/input-with-hint-preview";
 import InputWithLabelPreview from "@/components/preview/input/input-with-label-preview";
-import { Input } from "@/components/tailgrids/input";
+import { Input } from "@/registry/core/input";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
@@ -63,8 +63,8 @@ Copy and paste the following component code into your project.
 Import the component and pass the required props. Use the `Label` component to provide a label for the input.
 
 ```tsx
-import { Input } from "@/components/tailgrids/input";
-import { Label } from "@/components/tailgrids/label";
+import { Input } from "@/components/tailgrids/core/input";
+import { Label } from "@/components/tailgrids/core/label";
 import { useId } from "react";
 
 export default function InputPreview() {
