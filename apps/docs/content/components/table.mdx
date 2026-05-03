@@ -66,9 +66,9 @@ import {
   TableHead,
   TableRow,
   TableCell
-} from "@/registry/core/table";
+} from "@/components/tailgrids/core/table";
 
-export default TablePreview = () => (
+const TablePreview = () => (
   <TableRoot>
     <TableHeader>
       <TableRow>
@@ -82,6 +82,8 @@ export default TablePreview = () => (
     </TableBody>
   </TableRoot>
 );
+
+export default TablePreview;
 ```
 
 ## Usage
@@ -94,7 +96,7 @@ import {
   TableHead,
   TableRow,
   TableCell
-} from "@/registry/core/table";
+} from "@/components/tailgrids/core/table";
 
 export default function TableExample() {
   return (

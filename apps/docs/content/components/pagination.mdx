@@ -62,15 +62,17 @@ Copy and paste the following component code into your project.
 Import the component and control the active page using state.
 
 ```tsx
-import { Pagination } from "@/registry/core/pagination";
+import { Pagination } from "@/components/tailgrids/core/pagination";
 
-export default PaginationExample = () => (
+const PaginationExample = () => (
   <Pagination
     currentPage={2}
     totalPages={10}
     onPageChange={p => console.log(p)}
   />
 );
+
+export default PaginationExample;
 ```
 
 ## Examples

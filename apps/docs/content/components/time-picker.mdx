@@ -3,9 +3,9 @@ title: React Time Picker Components
 description: A React time picker component that allows users to select a time value. Used in forms to choose hours and minutes through an accessible time input.
 ---
 
-import TimePickerPreview from "@/components/preview/time-picker/time-picker-preview";
-import TimePickerLabelPreview from "@/components/preview/time-picker/time-picker-label-preview";
 import TimePickerCustomTriggerPreview from "@/components/preview/time-picker/time-picker-custom-trigger-preview";
+import TimePickerLabelPreview from "@/components/preview/time-picker/time-picker-label-preview";
+import TimePickerPreview from "@/components/preview/time-picker/time-picker-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
@@ -59,7 +59,10 @@ Copy and paste the component code into your project.
 Import the component and pass the required props.
 
 ```tsx
-import { TimePicker, TimePickerTrigger } from "@/registry/core/time-picker";
+import {
+  TimePicker,
+  TimePickerTrigger
+} from "@/components/tailgrids/core/time-picker";
 
 export const TimePickerExample = () => (
   <TimePicker onSelect={date => console.log(date)}>

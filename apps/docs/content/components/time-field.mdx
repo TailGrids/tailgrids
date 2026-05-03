@@ -3,10 +3,10 @@ title: React Time Field Components
 description: A React time field component that allows users to select a time value. Used in forms to choose hours and minutes through an accessible time input.
 ---
 
-import TimeFieldPreview from "@/components/preview/time-field/time-field-preview";
 import TimeFieldBasicPreview from "@/components/preview/time-field/time-field-basic-preview";
-import TimeFieldUncontrolled from "@/components/preview/time-field/time-field-uncontrolled";
 import TimeFieldControlled from "@/components/preview/time-field/time-field-controlled";
+import TimeFieldPreview from "@/components/preview/time-field/time-field-preview";
+import TimeFieldUncontrolled from "@/components/preview/time-field/time-field-uncontrolled";
 import TimeFieldWithSeconds from "@/components/preview/time-field/time-field-with-seconds";
 import TimeFieldWithTimezone from "@/components/preview/time-field/time-field-with-timezone";
 import TimeFieldWithValidation from "@/components/preview/time-field/time-field-with-validation";
@@ -65,7 +65,7 @@ import {
   TimeFieldLabel,
   TimeFieldDescription,
   TimeFieldError
-} from "@/registry/core/time-field";
+} from "@/components/tailgrids/core/time-field";
 
 export const TimeFieldExample = () => (
   <TimeField label="Meeting time">
@@ -80,6 +80,7 @@ export const TimeFieldExample = () => (
 ## Examples
 
 ### Basic Usage
+
 A standard time field implementation using segments for precise time entry.
 
 <ComponentPreview
@@ -91,6 +92,7 @@ A standard time field implementation using segments for precise time entry.
 </ComponentPreview>
 
 ### Controlled
+
 Manage the time value externally using the `value` and `onChange` props.
 
 <ComponentPreview
@@ -102,6 +104,7 @@ Manage the time value externally using the `value` and `onChange` props.
 </ComponentPreview>
 
 ### Uncontrolled
+
 An uncontrolled time field with a `defaultValue` prop.
 
 <ComponentPreview
@@ -113,6 +116,7 @@ An uncontrolled time field with a `defaultValue` prop.
 </ComponentPreview>
 
 ### With Seconds
+
 Enable second selection by setting the `granularity` prop to `second`.
 
 <ComponentPreview
@@ -124,6 +128,7 @@ Enable second selection by setting the `granularity` prop to `second`.
 </ComponentPreview>
 
 ### With Timezone
+
 Display and manage time zones within the time field.
 
 <ComponentPreview
@@ -135,6 +140,7 @@ Display and manage time zones within the time field.
 </ComponentPreview>
 
 ### Validation
+
 Display error messages and validation states when the time value is invalid.
 
 <ComponentPreview
@@ -149,52 +155,50 @@ Display error messages and validation states when the time value is invalid.
 
 ### TimeField
 
-
 The segment-based time input component.
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `value` | `TimeValue` | - | The current value (controlled). |
-| `defaultValue` | `TimeValue` | - | The default value (uncontrolled). |
-| `onChange` | `(value: TimeValue) => void` | - | Handler that is called when the value changes. |
-| `label` | `string` | - | The content to display as the label. |
-| `description` | `string` | - | The content to display as the description. |
-| `errorMessage` | `string \| ((v: ValidationResult) => string)` | - | The content to display as the error message. |
-| `hourCycle` | `12 \| 24` | - | Whether to use 12 or 24 hour cycle. |
-| `granularity` | `'hour' \| 'minute' \| 'second'` | `'minute'` | The smallest unit of time to display. |
-| `hideTimeZone` | `boolean` | `false` | Whether to hide the time zone abbreviation. |
-| `minValue` | `TimeValue` | - | The minimum allowed time. |
-| `maxValue` | `TimeValue` | - | The maximum allowed time. |
-| `disabled` | `boolean` | `false` | Whether the input is disabled. |
-| `readOnly` | `boolean` | `false` | Whether the input is read only. |
-| `required` | `boolean` | `false` | Whether the input is required. |
-| `invalid` | `boolean` | `false` | Whether the input is shown in invalid state. |
-| `className` | `string` | - | Additional CSS classes to apply to the container. |
+| Prop           | Type                                          | Default    | Description                                       |
+| :------------- | :-------------------------------------------- | :--------- | :------------------------------------------------ |
+| `value`        | `TimeValue`                                   | -          | The current value (controlled).                   |
+| `defaultValue` | `TimeValue`                                   | -          | The default value (uncontrolled).                 |
+| `onChange`     | `(value: TimeValue) => void`                  | -          | Handler that is called when the value changes.    |
+| `label`        | `string`                                      | -          | The content to display as the label.              |
+| `description`  | `string`                                      | -          | The content to display as the description.        |
+| `errorMessage` | `string \| ((v: ValidationResult) => string)` | -          | The content to display as the error message.      |
+| `hourCycle`    | `12 \| 24`                                    | -          | Whether to use 12 or 24 hour cycle.               |
+| `granularity`  | `'hour' \| 'minute' \| 'second'`              | `'minute'` | The smallest unit of time to display.             |
+| `hideTimeZone` | `boolean`                                     | `false`    | Whether to hide the time zone abbreviation.       |
+| `minValue`     | `TimeValue`                                   | -          | The minimum allowed time.                         |
+| `maxValue`     | `TimeValue`                                   | -          | The maximum allowed time.                         |
+| `disabled`     | `boolean`                                     | `false`    | Whether the input is disabled.                    |
+| `readOnly`     | `boolean`                                     | `false`    | Whether the input is read only.                   |
+| `required`     | `boolean`                                     | `false`    | Whether the input is required.                    |
+| `invalid`      | `boolean`                                     | `false`    | Whether the input is shown in invalid state.      |
+| `className`    | `string`                                      | -          | Additional CSS classes to apply to the container. |
 
 ### TimeFieldLabel
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `className` | `string` | - | Additional CSS classes to apply to the label. |
+| Prop        | Type     | Default | Description                                   |
+| :---------- | :------- | :------ | :-------------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes to apply to the label. |
 
 ### TimeFieldInput
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `className` | `string` | - | Additional CSS classes to apply to the input container. |
+| Prop        | Type     | Default | Description                                             |
+| :---------- | :------- | :------ | :------------------------------------------------------ |
+| `className` | `string` | -       | Additional CSS classes to apply to the input container. |
 
 ### TimeFieldDescription
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `className` | `string` | - | Additional CSS classes to apply to the description. |
+| Prop        | Type     | Default | Description                                         |
+| :---------- | :------- | :------ | :-------------------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes to apply to the description. |
 
 ### TimeFieldError
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `className` | `string` | - | Additional CSS classes to apply to the error message. |
-
+| Prop        | Type     | Default | Description                                           |
+| :---------- | :------- | :------ | :---------------------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes to apply to the error message. |
 
 ## Accessibility
 
