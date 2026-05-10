@@ -66,7 +66,7 @@ export function DialogContent({
     <Modal className="w-fit">
       <AriaDialog
         className={cn(
-          "w-full max-w-[calc(100%-2rem)] p-6 border border-base-100 bg-background-100 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl shadow-lg outline-none",
+          "w-full max-w-140 max-sm:max-w-[calc(100%-2rem)] p-6 border border-base-100 bg-background-100 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl shadow-lg outline-none",
           className
         )}
         {...props}
