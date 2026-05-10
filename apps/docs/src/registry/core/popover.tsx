@@ -175,7 +175,7 @@ export const PopoverTrigger = React.forwardRef<
 export const PopoverContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLProps<HTMLDivElement>
->(function PopoverContent({ style, ...props }, propRef) {
+>(function PopoverContent({ className, style, children, ...props }, propRef) {
   const { context: floatingContext, ...context } = usePopoverContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
 
@@ -190,7 +190,10 @@ export const PopoverContent = React.forwardRef<
           aria-labelledby={context.labelId}
           aria-describedby={context.descriptionId}
           {...context.getFloatingProps(props)}
-          className="max-w-97.5 p-5 pt-3 border border-popover-border text-text-50 bg-background-100 rounded-xl"
+          className={cn(
+            "max-w-97.5 p-5 pt-3 border border-popover-border text-text-50 bg-background-100 rounded-xl",
+            className
+          )}
         >
           <FloatingArrow
             ref={context.arrowRef}
@@ -200,7 +203,7 @@ export const PopoverContent = React.forwardRef<
             height={18}
             d="M0 20C0 20 2.06906 19.9829 5.91817 15.4092C7.49986 13.5236 8.97939 12.3809 10.0002 12.3809C11.0202 12.3809 12.481 13.6451 14.0814 15.5472C17.952 20.1437 20 20 20 20H0Z"
           />
-          {props.children}
+          {children}
         </div>
       </FloatingFocusManager>
     </FloatingPortal>

@@ -257,6 +257,10 @@
         {
           "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/combobox/multi-combobox.tsx",
           "type": "registry:ui"
+        },
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/combobox/index.ts",
+          "type": "registry:ui"
         }
       ]
     },

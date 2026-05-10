@@ -678,6 +678,10 @@
   }
 }
 
+#nd-docs-layout {
+  isolation: isolate;
+}
+
 /* Custom sidebar styles */
 .bg-fd-card {
   background-color: white;

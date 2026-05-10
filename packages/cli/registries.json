@@ -219,11 +219,18 @@
     "files": [
       {
         "type": "core",
-        "path": "/core/combobox/combobox.tsx"
+        "path": "/core/combobox/combobox.tsx",
+        "targetPath": "/core/combobox/combobox.tsx"
       },
       {
         "type": "core",
-        "path": "/core/combobox/multi-combobox.tsx"
+        "path": "/core/combobox/multi-combobox.tsx",
+        "targetPath": "/core/combobox/multi-combobox.tsx"
+      },
+      {
+        "type": "core",
+        "path": "/core/combobox/index.ts",
+        "targetPath": "/core/combobox/index.ts"
       }
     ],
     "dependencies": ["react-aria-components", "@tailgrids/icons"],
@@ -252,11 +259,13 @@
     "files": [
       {
         "type": "core",
-        "path": "/core/date-picker/single-date.tsx"
+        "path": "/core/date-picker/single-date.tsx",
+        "targetPath": "/core/date-picker/single-date.tsx"
       },
       {
         "type": "core",
-        "path": "/core/date-picker/range-date.tsx"
+        "path": "/core/date-picker/range-date.tsx",
+        "targetPath": "/core/date-picker/range-date.tsx"
       }
     ],
     "dependencies": ["react-stately", "date-fns", "@tailgrids/icons"],

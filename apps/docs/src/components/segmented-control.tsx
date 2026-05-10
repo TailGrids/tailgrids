@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useId } from "react";
 import { motion } from "framer-motion";
+import { useId } from "react";
 
 type SegmentedControlProps = {
   items: { label: string; value: string }[];
@@ -17,7 +17,7 @@ export function SegmentedControl({
   const id = useId();
 
   return (
-    <div className="relative p-[3px] rounded-[0.6rem] border bg-gray-100 border-[#EDEDED] dark:border-gray-800 flex text-sm dark:bg-gray-900">
+    <div className="relative p-0.75 rounded-[0.6rem] border bg-gray-100 border-[#EDEDED] dark:border-gray-800 flex text-sm dark:bg-gray-900">
       {items.map(item => (
         <button
           key={item.value}
