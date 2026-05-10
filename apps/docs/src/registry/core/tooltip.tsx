@@ -147,7 +147,7 @@ export const TooltipTrigger = React.forwardRef<
 
 export const TooltipContent = React.forwardRef<
   HTMLDivElement,
-  React.HTMLProps<HTMLDivElement>
+  React.ComponentPropsWithoutRef<"div">
 >(function TooltipContent({ style, className, ...props }, propRef) {
   const context = useTooltipContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
@@ -164,7 +164,7 @@ export const TooltipContent = React.forwardRef<
         }}
         {...context.getFloatingProps(props)}
         className={cn(
-          "bg-background-100 rounded-lg px-3 py-2 text-sm font-medium text-tooltip-text shadow-md border border-tooltip-border",
+          "bg-background-100 hidden sm:block rounded-lg px-3 py-2 text-sm font-medium text-tooltip-text shadow-md border border-tooltip-border",
           className
         )}
       >

@@ -48,8 +48,9 @@ export interface ComboboxProps<T extends object> extends Omit<
 > {
   label?: string;
   description?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   errorMessage?: string | ((validation: any) => string);
-  children?: React.ReactNode | ((item: T) => React.ReactNode);
+  children?: AriaComboBoxProps<T>["children"];
   value?: AriaComboBoxProps<T>["selectedKey"];
   defaultValue?: AriaComboBoxProps<T>["defaultSelectedKey"];
   onChange?: AriaComboBoxProps<T>["onSelectionChange"];
@@ -87,7 +88,7 @@ export function Combobox<T extends object>({
             isRequired: props.isRequired ?? values.isRequired
           }}
         >
-          {typeof children === "function" ? children(values as any) : children}
+          {typeof children === "function" ? children(values) : children}
         </ComboboxContext.Provider>
       )}
     </AriaComboBox>
@@ -105,7 +106,7 @@ export function ComboboxInputWrapper({
   return (
     <Group
       className={cn(
-        "bg-input-background relative flex w-full min-w-sm min-h-12 items-center rounded-lg border border-base-300 hover:border-base-400 focus-within:border-input-primary-focus-border focus-within:ring-4 focus-within:ring-input-primary-focus-border/20",
+        "bg-input-background relative flex w-full min-h-12 items-center rounded-lg border border-base-300 hover:border-base-400 focus-within:border-input-primary-focus-border focus-within:ring-4 focus-within:ring-input-primary-focus-border/20",
         context?.isInvalid &&
           "border-input-error-focus-border focus-within:border-input-error-focus-border focus-within:ring-input-error-focus-border/20",
         className

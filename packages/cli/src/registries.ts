@@ -690,19 +690,23 @@ export const REGISTRIES: Registry[] = [
     files: [
       {
         type: "core",
-        path: "/core/spinner/index.tsx"
+        path: "/core/spinner/index.tsx",
+        targetPath: "/core/spinner/index.tsx"
       },
       {
         type: "core",
-        path: "/core/spinner/default.tsx"
+        path: "/core/spinner/default.tsx",
+        targetPath: "/core/spinner/default.tsx"
       },
       {
         type: "core",
-        path: "/core/spinner/dotted.tsx"
+        path: "/core/spinner/dotted.tsx",
+        targetPath: "/core/spinner/dotted.tsx"
       },
       {
         type: "core",
-        path: "/core/spinner/dotted-round.tsx"
+        path: "/core/spinner/dotted-round.tsx",
+        targetPath: "/core/spinner/dotted-round.tsx"
       }
     ],
     exampleCount: 4
