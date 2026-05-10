@@ -13,8 +13,9 @@ import {
   startOfWeek,
   subMonths
 } from "date-fns";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { Button } from "../button";
+import { Popover, PopoverContent, PopoverTrigger } from "../popover";
 
 type PropsType = {
   value?: Date | null;
@@ -33,19 +34,6 @@ export function DatePicker({
   const [selectedDate, setSelectedDate] = useState<Date | null>(value);
   const [tempSelected, setTempSelected] = useState<Date | null>(value);
   const [isOpen, setIsOpen] = useState(false);
-
-  const pickerRef = useRef<HTMLDivElement>(null);
-
-  // Close picker when clicking outside
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (pickerRef.current && !pickerRef.current.contains(e.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, []);
 
   const togglePicker = () => {
     setTempSelected(selectedDate);
@@ -82,24 +70,24 @@ export function DatePicker({
     : placeholder;
 
   return (
-    <div ref={pickerRef} className={`relative w-full max-w-sm ${className}`}>
-      {/* Trigger Button */}
-      <Button
-        appearance="outline"
-        type="button"
-        onClick={togglePicker}
-        className="flex w-full justify-start"
-      >
-        <Calendar className="text-text-100" />
+    <Popover open={isOpen} onOpenChange={setIsOpen}>
+      <div className={`relative w-full max-w-sm ${className}`}>
+        <PopoverTrigger asChild>
+          <Button
+            appearance="outline"
+            type="button"
+            onClick={togglePicker}
+            className="flex w-full justify-start"
+          >
+            <Calendar className="text-text-100" />
 
-        <span className="text-sm font-normal text-title-50">
-          {selectedDateText}
-        </span>
-      </Button>
+            <span className="text-sm font-normal text-title-50">
+              {selectedDateText}
+            </span>
+          </Button>
+        </PopoverTrigger>
 
-      {/* Calendar Popup */}
-      {isOpen && (
-        <div className="absolute left-1/2 -translate-x-1/2 sm:left-0 sm:translate-x-0 z-20 mt-2 w-[calc(100vw-2rem)] max-w-sm sm:w-full rounded-xl border border-base-100 bg-background-50 shadow-xl">
+        <PopoverContent className="w-[calc(100vw-2rem)] max-w-sm overflow-hidden rounded-xl border border-base-100 bg-background-50 p-0 shadow-xl sm:w-full">
           <div className="p-3 sm:p-5">
             {/* Header */}
             <div className="mb-6 flex items-center justify-between">
@@ -127,7 +115,7 @@ export function DatePicker({
             </div>
 
             {/* Week Days */}
-            <div className="mb-2 grid grid-cols-7 gap-1 sm:gap-2 text-center">
+            <div className="mb-2 grid grid-cols-7 gap-1 text-center sm:gap-2">
               {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map(d => (
                 <span
                   key={d}
@@ -139,7 +127,7 @@ export function DatePicker({
             </div>
 
             {/* Calendar Days */}
-            <div className="grid grid-cols-7 gap-1 sm:gap-2 text-center">
+            <div className="grid grid-cols-7 gap-1 text-center sm:gap-2">
               {days.map(day => {
                 const inMonth = isSameMonth(day, currentMonth);
                 const selected = tempSelected && isSameDay(day, tempSelected);
@@ -151,7 +139,7 @@ export function DatePicker({
                     disabled={!inMonth}
                     onClick={() => inMonth && handleDateClick(day)}
                     className={cn(
-                      "size-9 sm:size-11 rounded-full text-sm font-medium transition-all",
+                      "size-9 rounded-full text-sm font-medium transition-all sm:size-11",
                       {
                         "text-text-200 cursor-not-allowed": !inMonth,
                         "bg-datepicker-selected-background text-white-100":
@@ -184,8 +172,8 @@ export function DatePicker({
               Apply
             </Button>
           </div>
-        </div>
-      )}
-    </div>
+        </PopoverContent>
+      </div>
+    </Popover>
   );
 }

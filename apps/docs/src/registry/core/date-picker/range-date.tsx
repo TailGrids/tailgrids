@@ -13,6 +13,7 @@ import {
 } from "date-fns";
 import { useState } from "react";
 import { Button } from "../button";
+import { Popover, PopoverContent, PopoverTrigger } from "../popover";
 
 type PropsType = {
   defaultStartDate?: Date;
@@ -171,20 +172,21 @@ export function RangeDatePicker({
   };
 
   return (
-    <div className="relative mx-auto">
-      <Button
-        appearance="outline"
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex justify-start w-full sm:w-auto sm:min-w-75"
-      >
-        <Calendar className="text-text-100" />
+    <Popover open={isOpen} onOpenChange={setIsOpen}>
+      <div className="relative mx-auto">
+        <PopoverTrigger asChild>
+          <Button
+            appearance="outline"
+            onClick={() => setIsOpen(!isOpen)}
+            className="flex w-full justify-start sm:w-auto sm:min-w-75"
+          >
+            <Calendar className="text-text-100" />
 
-        <span>{formatDateRange()}</span>
-      </Button>
+            <span>{formatDateRange()}</span>
+          </Button>
+        </PopoverTrigger>
 
-      {/* Calendar Container */}
-      {isOpen && (
-        <div className="absolute left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 z-50 w-[calc(100vw-2rem)] md:w-max max-w-[calc(100vw-2rem)] sm:max-w-none overflow-hidden sm:overflow-visible translate-y-4 rounded-xl border border-base-100 bg-background-50 shadow-lg">
+        <PopoverContent className="w-[calc(100vw-2rem)] max-w-[calc(100vw-2rem)] overflow-hidden rounded-xl border border-base-100 bg-background-50 p-0 shadow-lg sm:max-w-none md:w-max">
           {/* Two Month View */}
           <div className="flex flex-col divide-y divide-(--border-color-base-100) md:flex-row md:divide-x md:divide-y-0">
             {/* First Month */}
@@ -244,13 +246,13 @@ export function RangeDatePicker({
             </div>
 
             <div className="p-4">
-              <Button onClick={handleOk} className="w-full h-full">
+              <Button onClick={handleOk} className="h-full w-full">
                 Ok
               </Button>
             </div>
           </div>
-        </div>
-      )}
-    </div>
+        </PopoverContent>
+      </div>
+    </Popover>
   );
 }

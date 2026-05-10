@@ -271,11 +271,13 @@ export const REGISTRIES: Registry[] = [
     files: [
       {
         type: "core",
-        path: "/core/date-picker/single-date.tsx"
+        path: "/core/date-picker/single-date.tsx",
+        targetPath: "/core/date-picker/single-date.tsx"
       },
       {
         type: "core",
-        path: "/core/date-picker/range-date.tsx"
+        path: "/core/date-picker/range-date.tsx",
+        targetPath: "/core/date-picker/range-date.tsx"
       }
     ],
     dependencies: ["react-stately", "date-fns", "@tailgrids/icons"],
