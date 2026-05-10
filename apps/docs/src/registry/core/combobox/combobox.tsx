@@ -50,7 +50,7 @@ export interface ComboboxProps<T extends object> extends Omit<
   description?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   errorMessage?: string | ((validation: any) => string);
-  children?: React.ReactNode | ((item: T) => React.ReactNode);
+  children?: AriaComboBoxProps<T>["children"];
   value?: AriaComboBoxProps<T>["selectedKey"];
   defaultValue?: AriaComboBoxProps<T>["defaultSelectedKey"];
   onChange?: AriaComboBoxProps<T>["onSelectionChange"];
@@ -88,8 +88,7 @@ export function Combobox<T extends object>({
             isRequired: props.isRequired ?? values.isRequired
           }}
         >
-          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-          {typeof children === "function" ? children(values as any) : children}
+          {typeof children === "function" ? children(values) : children}
         </ComboboxContext.Provider>
       )}
     </AriaComboBox>
