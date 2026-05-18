@@ -8,7 +8,7 @@
     "access": "public"
   },
   "bin": {
-    "tailgrids": "./dist/index.js"
+    "tailgrids": "dist/index.js"
   },
   "scripts": {
     "dev": "tsup --watch",
@@ -29,8 +29,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Tailgrids/tailgrids.git",
-    "directory": "/packages/cli"
+    "url": "git+https://github.com/TailGrids/tailgrids.git",
+    "directory": "packages/cli"
   },
   "homepage": "https://tailgrids.com",
   "devDependencies": {
