@@ -34,7 +34,7 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm install --frozen-lockfile
+        run: npm ci
 
       - name: Build icons package
         run: npm run build --workspace=@tailgrids/icons

@@ -7,14 +7,15 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
 jobs:
   publish:
     name: Publish packages to NPM
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-      id-token: write
 
     steps:
       - name: Checkout repository
@@ -25,12 +26,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'npm'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: 24
+          cache: "npm"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
-        run: npm install --frozen-lockfile
+        run: npm ci
 
       - name: Build packages
         run: npm run build:packages
@@ -39,11 +40,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          commit: 'chore(release): version packages'
-          title: 'chore(release): version packages'
+          commit: "chore(release): version packages"
+          title: "chore(release): version packages"
           version: node .github/changeset-version.js
           publish: npx changeset publish
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
