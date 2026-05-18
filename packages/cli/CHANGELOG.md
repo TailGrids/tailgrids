@@ -1,5 +1,11 @@
 # @tailgrids/cli
 
+## 1.4.0
+
+### Minor Changes
+
+- Support for `targetPath` property to specify where to component should be placed
+
 ## 1.3.0
 
 ### Minor Changes
