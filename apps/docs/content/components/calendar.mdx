@@ -11,6 +11,7 @@ import CalendarInternationalizedPreview from "@/components/preview/calendar/cale
 import CalendarMinMaxUnavailablePreview from "@/components/preview/calendar/calendar-unavailable-preview";
 import CalendarPreview from "@/components/preview/calendar/calendar-preview";
 import CalendarYearPickerPreview from "@/components/preview/calendar/calendar-year-picker-preview";
+import CalendarValidationPreview from "@/components/preview/calendar/calendar-validation-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
@@ -143,18 +144,6 @@ Use `isDateUnavailable` for marking specific dates, such as weekends, as unavail
   <CalendarMinMaxUnavailablePreview />
 </ComponentPreview>
 
-### Year Picker
-
-Use `CalendarYearPicker` component that opens a year menu and updates the focused date. This is a wrapper-specific addition and is not part of React Aria's base `Calendar` API.
-
-<ComponentPreview
-  codeSnippet={getFileContent(
-    "/src/components/preview/calendar/calendar-year-picker-preview.tsx"
-  )}
->
-  <CalendarYearPickerPreview />
-</ComponentPreview>
-
 ### Cell Indicator
 
 Because `CalendarCell` accepts `className`, you can add a visual marker for selected or important dates without changing the component API.
@@ -167,9 +156,35 @@ Because `CalendarCell` accepts `className`, you can add a visual marker for sele
   <CalendarCellIndicatorPreview />
 </ComponentPreview>
 
+### Validation
+
+Calendar component state can be used to implement custom validation logic according to your application's needs.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/calendar/calendar-validation-preview.tsx"
+  )}
+>
+  <CalendarValidationPreview />
+</ComponentPreview>
+
+### Year Picker
+
+Use `CalendarYearPicker` component that opens a year menu and updates the focused date. This is a wrapper-specific addition and is not part of React Aria's base `Calendar` API.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/calendar/calendar-year-picker-preview.tsx"
+  )}
+>
+  <CalendarYearPickerPreview />
+</ComponentPreview>
+
 ### International Calendar
 
-The Calendar component fully supports internationalization. Use the `I18nProvider` wrapper to localize the calendar for different regions, languages, and calendar systems. See [here](https://react-aria.adobe.com/Calendar#international-calendars) for more information.
+The Calendar component fully supports internationalization. Use the `I18nProvider` wrapper to localize the calendar for different regions, languages, and calendar systems.
+
+See [here](https://react-aria.adobe.com/Calendar#international-calendars) for more information.
 
 <ComponentPreview
   codeSnippet={getFileContent(

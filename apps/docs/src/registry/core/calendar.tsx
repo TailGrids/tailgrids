@@ -6,8 +6,8 @@ import { ChevronDown, ChevronLeft, ChevronRight } from "@tailgrids/icons";
 import { cva } from "class-variance-authority";
 import {
   useContext,
-  useMemo,
   useLayoutEffect,
+  useMemo,
   useRef,
   useState,
   type ComponentProps
@@ -23,9 +23,9 @@ import {
   CalendarCellRenderProps,
   CalendarHeaderCell,
   CalendarStateContext,
-  Popover,
   ListBox,
   ListBoxItem,
+  Popover,
   useLocale,
   type CalendarCellProps as AriaCalendarCellProps,
   type CalendarProps as AriaCalendarProps,
@@ -33,7 +33,7 @@ import {
 } from "react-aria-components";
 
 const calendarStyles = cva(
-  "flex w-full max-w-84 flex-col rounded-3xl border border-base-100 bg-background-50 p-4 shadow-[0_20px_45px_rgba(15,23,42,0.08)] sm:p-5"
+  "flex w-full flex-col rounded-3xl border border-base-100 bg-background-50 p-4 shadow-[0_20px_45px_rgba(15,23,42,0.08)] sm:p-5"
 );
 
 export interface CalendarProps<T extends DateValue> extends Omit<
@@ -157,10 +157,7 @@ export function CalendarYearPicker({ className }: YearPickerProps) {
         listboxElement.clientHeight / 2 +
         selectedItem.clientHeight / 2;
 
-      listboxElement.scrollTop = Math.max(
-        0,
-        targetScrollTop
-      );
+      listboxElement.scrollTop = Math.max(0, targetScrollTop);
     });
 
     return () => {
@@ -169,7 +166,7 @@ export function CalendarYearPicker({ className }: YearPickerProps) {
   }, [isOpen, currentYear]);
 
   if (!state) {
-      return;
+    return;
   }
 
   const focusedDate = state.focusedDate;

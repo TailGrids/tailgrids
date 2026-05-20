@@ -10,15 +10,11 @@ import {
   CalendarYearPicker,
   NavButton
 } from "@/registry/core/calendar";
-import { CalendarDate } from "@internationalized/date";
 
 export default function CalendarYearPickerPreview() {
   return (
     <div className="flex justify-center p-6">
-      <Calendar
-        aria-label="Birth date"
-        defaultValue={new CalendarDate(2024, 11, 12)}
-      >
+      <Calendar aria-label="Birth date">
         <CalendarHeader>
           <NavButton slot="previous" />
           <span className="flex flex-1 justify-center">
