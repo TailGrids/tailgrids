@@ -137,6 +137,25 @@ export const REGISTRIES: Registry[] = [
     dependencies: ["class-variance-authority"]
   },
   {
+    id: "calendar",
+    name: "Calendar",
+    description: "A calendar component with internationalization support.",
+    type: "component",
+    exampleCount: 7,
+    files: [
+      {
+        type: "core",
+        path: "/core/calendar.tsx"
+      }
+    ],
+    dependencies: [
+      "react-aria-components",
+      "@tailgrids/icons",
+      "class-variance-authority"
+    ],
+    requires: ["button"]
+  },
+  {
     id: "card",
     name: "Card",
     description:
@@ -248,25 +267,6 @@ export const REGISTRIES: Registry[] = [
     dependencies: ["react-aria-components", "@tailgrids/icons"],
     exampleCount: 10,
     requires: ["badge"]
-  },
-  {
-    id: "calendar",
-    name: "Calendar",
-    description: "A calendar component with internationalization support.",
-    type: "component",
-    exampleCount: 7,
-    files: [
-      {
-        type: "core",
-        path: "/core/calendar.tsx"
-      }
-    ],
-    dependencies: [
-      "react-aria-components",
-      "@tailgrids/icons",
-      "class-variance-authority"
-    ],
-    requires: ["button"]
   },
   {
     id: "command",
