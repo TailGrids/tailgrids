@@ -265,6 +265,25 @@
       ]
     },
     {
+      "name": "calendar",
+      "type": "registry:ui",
+      "description": "A calendar component with internationalization support.",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "@tailgrids/icons",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "command",
       "type": "registry:ui",
       "description": "A command menu component with multiple variants.",

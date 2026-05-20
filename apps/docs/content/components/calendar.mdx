@@ -1,0 +1,297 @@
+---
+title: React Calendar Components
+description: A React calendar component built with Tailwind CSS. Select dates, mark unavailable days, and navigate through one or more months with accessible keyboard support.
+---
+
+import CalendarCellIndicatorPreview from "@/components/preview/calendar/calendar-cell-indicator-preview";
+import CalendarControlledPreview from "@/components/preview/calendar/calendar-controlled-preview";
+import CalendarDefaultValuePreview from "@/components/preview/calendar/calendar-default-value-preview";
+import CalendarDisabledCellPreview from "@/components/preview/calendar/calendar-disabled-cell-preview";
+import CalendarInternationalizedPreview from "@/components/preview/calendar/calendar-internationalized-preview";
+import CalendarMinMaxUnavailablePreview from "@/components/preview/calendar/calendar-unavailable-preview";
+import CalendarPreview from "@/components/preview/calendar/calendar-preview";
+import CalendarYearPickerPreview from "@/components/preview/calendar/calendar-year-picker-preview";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Calendar
+
+The React Calendar component lets users pick a date from an accessible grid of days. It is a good fit for scheduling, bookings, reminders, and any interface where date selection needs to stay clear and keyboard-friendly.
+
+It is built on top of **React Aria Components** and our Tailwind-styled registry wrapper in `calendar.tsx`. That wrapper adds a polished header, month navigation, a year picker, and accessible day cells with state-driven styling.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/calendar/calendar-preview.tsx"
+  )}
+>
+  <CalendarPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+
+```npm
+npx @tailgrids/cli add calendar
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+The Calendar component is built on `react-aria-components` and uses date utilities from `@internationalized/date`.
+
+```npm
+npm i react-aria-components @internationalized/date @tailgrids/icons class-variance-authority
+```
+
+Copy the component code into your project. The registry exports `Calendar`, `CalendarHeader`, `NavButton`, `CalendarYearPicker`, `CalendarGrid`, `CalendarGridHeader`, `CalendarGridBody`, and `CalendarCell`.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/calendar.tsx")}
+  lang="tsx"
+  fileName="calendar.tsx"
+  showLineNumbers
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the building blocks and compose the calendar.
+
+```tsx
+import {
+  Calendar,
+  CalendarHeader,
+  NavButton,
+  CalendarYearPicker,
+  CalendarGrid,
+  CalendarGridHeader,
+  CalendarGridBody,
+  CalendarCell
+} from "@/components/tailgrids/core/calendar";
+
+export default function CalendarExample() {
+  return (
+    <Calendar aria-label="Choose a date">
+      <CalendarHeader>
+        <NavButton slot="previous" />
+        <CalendarYearPicker />
+        <NavButton slot="next" />
+      </CalendarHeader>
+      <CalendarGrid>
+        <CalendarGridHeader />
+        <CalendarGridBody>
+          {date => <CalendarCell date={date} />}
+        </CalendarGridBody>
+      </CalendarGrid>
+    </Calendar>
+  );
+}
+```
+
+## Examples
+
+### Default Value
+
+Use `defaultValue` to start the calendar on a selected date while keeping it uncontrolled.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/calendar/calendar-default-value-preview.tsx"
+  )}
+>
+  <CalendarDefaultValuePreview />
+</ComponentPreview>
+
+### Controlled
+
+Use `value` and `onChange` to fully control the selected date from React state.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/calendar/calendar-controlled-preview.tsx"
+  )}
+>
+  <CalendarControlledPreview />
+</ComponentPreview>
+
+### Disabled
+
+Dates outside `minValue` and `maxValue` are rendered as disabled cells and are not selectable.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/calendar/calendar-disabled-cell-preview.tsx"
+  )}
+>
+  <CalendarDisabledCellPreview />
+</ComponentPreview>
+
+### Unavailable Dates
+
+Use `isDateUnavailable` for marking specific dates, such as weekends, as unavailable.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/calendar/calendar-unavailable-preview.tsx"
+  )}
+>
+  <CalendarMinMaxUnavailablePreview />
+</ComponentPreview>
+
+### Year Picker
+
+Use `CalendarYearPicker` component that opens a year menu and updates the focused date. This is a wrapper-specific addition and is not part of React Aria's base `Calendar` API.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/calendar/calendar-year-picker-preview.tsx"
+  )}
+>
+  <CalendarYearPickerPreview />
+</ComponentPreview>
+
+### Cell Indicator
+
+Because `CalendarCell` accepts `className`, you can add a visual marker for selected or important dates without changing the component API.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/calendar/calendar-cell-indicator-preview.tsx"
+  )}
+>
+  <CalendarCellIndicatorPreview />
+</ComponentPreview>
+
+### International Calendar
+
+The Calendar component fully supports internationalization. Use the `I18nProvider` wrapper to localize the calendar for different regions, languages, and calendar systems. See [here](https://react-aria.adobe.com/Calendar#international-calendars) for more information.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/calendar/calendar-internationalized-preview.tsx"
+  )}
+>
+  <CalendarInternationalizedPreview />
+</ComponentPreview>
+
+## API Reference
+
+### Calendar
+
+The root component wraps React Aria’s `Calendar` but exposes the registry wrapper props below.
+
+| Prop                  | Type                                                          | Default      | Description                                  |
+| :-------------------- | :------------------------------------------------------------ | :----------- | :------------------------------------------- |
+| `value`               | `DateValue \| null`                                           | —            | Controlled selected date                     |
+| `defaultValue`        | `DateValue \| null`                                           | —            | Initial selected date for uncontrolled usage |
+| `onChange`            | `(value: DateValue \| null) => void`                          | —            | Called when the selected date changes        |
+| `minValue`            | `DateValue`                                                   | —            | Lowest selectable date                       |
+| `maxValue`            | `DateValue`                                                   | —            | Highest selectable date                      |
+| `isDateUnavailable`   | `(date: DateValue) => boolean`                                | —            | Marks specific dates as unavailable          |
+| `disabled`            | `boolean`                                                     | `false`      | Disables the entire calendar                 |
+| `readonly`            | `boolean`                                                     | `false`      | Prevents changing the selected date          |
+| `focusedValue`        | `DateValue \| null`                                           | —            | Controlled focused date                      |
+| `defaultFocusedValue` | `DateValue \| null`                                           | —            | Initial focused date                         |
+| `pageBehavior`        | `"visible" \| "single"`                                       | `"visible"`  | Controls how paging advances                 |
+| `firstDayOfWeek`      | `'sun' \| 'mon' \| 'tue' \| 'wed' \| 'thu' \| 'fri' \| 'sat'` | locale-based | Overrides the first weekday                  |
+| `className`           | `string`                                                      | —            | Additional classes applied to the root       |
+| `children`            | `ReactNode`                                                   | —            | Calendar content                             |
+
+### CalendarHeader
+
+The header wrapper used for navigation and month/year controls. This is a Tailgrids registry wrapper around a native `<header>` element, not a React Aria component.
+
+| Prop        | Type        | Default | Description               |
+| :---------- | :---------- | :------ | :------------------------ |
+| `className` | `string`    | —       | Additional header classes |
+| `children`  | `ReactNode` | —       | Header content            |
+
+### NavButton
+
+The previous and next month buttons. Labels are fixed to `Previous month` and `Next month` in the registry wrapper.
+
+| Prop         | Type                   | Default        | Description                      |
+| :----------- | :--------------------- | :------------- | :------------------------------- |
+| `slot`       | `"previous" \| "next"` | —              | Chooses the navigation direction |
+| `className`  | `string`               | —              | Additional button classes        |
+| `aria-label` | `string`               | auto-generated | Accessible label for the button  |
+
+### CalendarHeading
+
+The centered month and year heading used inside the header row. This is a direct wrapper around React Aria’s `Heading` component.
+
+| Prop        | Type     | Default | Description                |
+| :---------- | :------- | :------ | :------------------------- |
+| `className` | `string` | —       | Additional heading classes |
+
+### CalendarYearPicker
+
+An in-header year picker driven by `CalendarStateContext`. This is a Tailgrids-specific control and is not part of React Aria’s public `Calendar` API.
+
+| Prop        | Type     | Default | Description                |
+| :---------- | :------- | :------ | :------------------------- |
+| `className` | `string` | —       | Additional trigger classes |
+
+### CalendarGrid
+
+Wraps React Aria’s `CalendarGrid` for each visible month.
+
+| Prop           | Type                                                                  | Default    | Description                                          |
+| :------------- | :-------------------------------------------------------------------- | :--------- | :--------------------------------------------------- |
+| `children`     | `ReactElement \| ReactElement[] \| (date: DateValue) => ReactElement` | —          | Renders calendar cells or custom grid children       |
+| `weekdayStyle` | `"narrow" \| "short" \| "long"`                                       | `"narrow"` | Controls weekday label formatting in the grid header |
+| `className`    | `string`                                                              | —          | Additional grid classes                              |
+
+### CalendarGridHeader
+
+Renders the weekday labels for a month grid.
+
+| Prop       | Type                         | Default | Description                                     |
+| :--------- | :--------------------------- | :------ | :---------------------------------------------- |
+| `children` | `(day: string) => ReactNode` | —       | Renders a `CalendarHeaderCell` for each weekday |
+
+### CalendarGridBody
+
+Renders the calendar week rows and day cells.
+
+| Prop       | Type                             | Default | Description                            |
+| :--------- | :------------------------------- | :------ | :------------------------------------- |
+| `children` | `(date: DateValue) => ReactNode` | —       | Renders a `CalendarCell` for each date |
+
+### CalendarCell
+
+Renders a date cell using React Aria’s calendar cell state.
+
+| Prop           | Type        | Default | Description                                      |
+| :------------- | :---------- | :------ | :----------------------------------------------- |
+| `date`         | `DateValue` | —       | The date represented by the cell                 |
+| `className`    | `string`    | —       | Additional classes applied to the day pill       |
+| `disabled`     | `boolean`   | —       | Overrides the disabled state data attribute      |
+| `focusVisible` | `boolean`   | —       | Overrides the focus-visible state data attribute |
+| `outsideMonth` | `boolean`   | —       | Overrides the outside-month state data attribute |
+| `pressed`      | `boolean`   | —       | Overrides the pressed state data attribute       |
+| `selected`     | `boolean`   | —       | Overrides the selected state data attribute      |
+
+Data attributes exposed by the cell content:
+
+| Attribute            | Meaning                                                       |
+| :------------------- | :------------------------------------------------------------ |
+| `data-selected`      | The date is selected                                          |
+| `data-disabled`      | The date is disabled by `minValue`, `maxValue`, or `disabled` |
+| `data-focus-visible` | The date has keyboard focus                                   |
+| `data-outside-month` | The date belongs to a different month in the grid             |
+| `data-pressed`       | The cell is being pressed                                     |
+
+Visit React Aria's [Calendar](https://react-aria.adobe.com/Calendar#api) documentation for more information.
+
+## Accessibility
+
+- **Keyboard support:** Users can move between days with arrow keys and activate dates with `Enter` or `Space`.
+- **Screen reader support:** React Aria provides the correct calendar roles, labels, and state announcements.
+- **Disabled and unavailable states:** Disabled dates cannot be focused or selected, while unavailable dates remain focusable but blocked from selection.
+- **Year navigation:** The custom year picker updates focused calendar state instead of bypassing it.
