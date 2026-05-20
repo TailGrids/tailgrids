@@ -858,7 +858,7 @@ aside#nd-sidebar-mobile > div:first-child > button {
 #nd-page article table {
   @apply bg-white dark:bg-[#030712];
 
-  & th {
+  & th:not(.table-grid-header-cell) {
     @apply dark:bg-[#0d1222];
   }
 }

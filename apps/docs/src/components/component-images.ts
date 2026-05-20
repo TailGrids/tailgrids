@@ -7,6 +7,7 @@ import BadgeImage from "@/assets/skeleton-image/badge.png";
 import BreadcrumbImage from "@/assets/skeleton-image/breadcrumb.png";
 import ButtonGroupImage from "@/assets/skeleton-image/button-group.png";
 import ButtonImage from "@/assets/skeleton-image/button.png";
+import CalendarImage from "@/assets/skeleton-image/calendar.png";
 import CardImage from "@/assets/skeleton-image/card.png";
 import CarouselImage from "@/assets/skeleton-image/carousel.png";
 import ChartImage from "@/assets/skeleton-image/chart.png";
@@ -59,6 +60,7 @@ export const componentImages: Record<string, StaticImageData> = {
   breadcrumbs: BreadcrumbImage,
   button: ButtonImage,
   "button-group": ButtonGroupImage,
+  calendar: CalendarImage,
   card: CardImage,
   carousel: CarouselImage,
   chart: ChartImage,
