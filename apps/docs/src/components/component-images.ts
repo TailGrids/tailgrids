@@ -88,6 +88,7 @@ export const componentImages: Record<string, StaticImageData> = {
   popover: PopoverImage,
   progress: ProgressImage,
   "radio-input": RadioImage,
+  "range-calendar": CalendarImage, // Fallback
   resizable: ResizableImage,
   "scroll-area": ScrollAreaImage,
   select: DropdownImage, // Fallback

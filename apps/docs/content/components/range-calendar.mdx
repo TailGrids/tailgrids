@@ -1,0 +1,336 @@
+---
+title: React Range Calendar Components
+description: A React Range Calendar component built with Tailwind CSS. Select date ranges, mark unavailable dates, and navigate through months with accessible keyboard support and full range selection.
+---
+
+import RangeCalendarPreview from "@/components/preview/range-calendar/range-calendar-preview";
+import RangeCalendarControlledPreview from "@/components/preview/range-calendar/range-calendar-controlled-preview";
+import RangeCalendarDefaultValuePreview from "@/components/preview/range-calendar/range-calendar-default-value-preview";
+import RangeCalendarDisabledCellPreview from "@/components/preview/range-calendar/range-calendar-disabled-cell-preview";
+import RangeCalendarUnavailablePreview from "@/components/preview/range-calendar/range-calendar-unavailable-preview";
+import RangeCalendarYearPickerPreview from "@/components/preview/range-calendar/range-calendar-year-picker-preview";
+import RangeCalendarMultipleMonthsPreview from "@/components/preview/range-calendar/range-calendar-multiple-months-preview";
+import RangeCalendarInternationalizedPreview from "@/components/preview/range-calendar/range-calendar-internationalized-preview";
+import RangeCalendarValidationPreview from "@/components/preview/range-calendar/range-calendar-validation-preview";
+import RangeCalendarAllowsNonContiguousPreview from "@/components/preview/range-calendar/range-calendar-allows-non-contiguous-preview";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Range Calendar
+
+The React Range Calendar component lets users select a contiguous range of dates from an accessible grid of days. Perfect for booking systems, date range filters, trip planners, and any interface where users need to choose a start and end date with full keyboard and screen reader support.
+
+It is built on top of **React Aria Components** and our Tailwind-styled registry wrapper in `range-calendar.tsx`. That wrapper adds a polished header with month navigation, a year picker, and accessible day cells with state-driven styling for range visualization.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/range-calendar/range-calendar-preview.tsx"
+  )}
+>
+  <RangeCalendarPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+
+```npm
+npx @tailgrids/cli add range-calendar
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+The Range Calendar component is built on `react-aria-components` and uses date utilities from `@internationalized/date`.
+
+```npm
+npm i react-aria-components @internationalized/date @tailgrids/icons class-variance-authority
+```
+
+Copy the component code into your project. The registry exports `RangeCalendar`, `RangeCalendarHeader`, `RangeNavButton`, `RangeCalendarYearPicker`, `RangeCalendarGrid`, `RangeCalendarGridHeader`, `RangeCalendarGridBody`, and `RangeCalendarCell`.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/range-calendar.tsx")}
+  lang="tsx"
+  fileName="range-calendar.tsx"
+  showLineNumbers
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+Import the building blocks and compose the range calendar.
+
+```tsx
+import {
+  RangeCalendar,
+  RangeCalendarHeader,
+  RangeNavButton,
+  RangeCalendarYearPicker,
+  RangeCalendarGrid,
+  RangeCalendarGridHeader,
+  RangeCalendarGridBody,
+  RangeCalendarCell
+} from "@/components/tailgrids/core/range-calendar";
+
+export default function RangeCalendarExample() {
+  return (
+    <RangeCalendar aria-label="Choose a date range">
+      <RangeCalendarHeader>
+        <RangeNavButton slot="previous" />
+        <RangeCalendarYearPicker />
+        <RangeNavButton slot="next" />
+      </RangeCalendarHeader>
+      <RangeCalendarGrid>
+        <RangeCalendarGridHeader />
+        <RangeCalendarGridBody>
+          {date => <RangeCalendarCell date={date} />}
+        </RangeCalendarGridBody>
+      </RangeCalendarGrid>
+    </RangeCalendar>
+  );
+}
+```
+
+## Examples
+
+### Default Value
+
+Use `defaultValue` to initialize the range calendar with a pre-selected date range while keeping it uncontrolled.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/range-calendar/range-calendar-default-value-preview.tsx"
+  )}
+>
+  <RangeCalendarDefaultValuePreview />
+</ComponentPreview>
+
+### Controlled
+
+Use `value` and `onChange` to fully control the selected date range from React state.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/range-calendar/range-calendar-controlled-preview.tsx"
+  )}
+>
+  <RangeCalendarControlledPreview />
+</ComponentPreview>
+
+### Disabled Dates
+
+Dates outside `minValue` and `maxValue` are rendered as disabled cells and are not selectable. This restricts the selectable date range to a specific window.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/range-calendar/range-calendar-disabled-cell-preview.tsx"
+  )}
+>
+  <RangeCalendarDisabledCellPreview />
+</ComponentPreview>
+
+### Unavailable Dates
+
+Use `isDateUnavailable` for marking specific dates as unavailable, such as weekends or blackout dates. Unlike disabled dates, unavailable dates remain focusable but cannot be selected.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/range-calendar/range-calendar-unavailable-preview.tsx"
+  )}
+>
+  <RangeCalendarUnavailablePreview />
+</ComponentPreview>
+
+### Allow Non-Contiguous Ranges
+
+Use `allowNonContiguousRanges` to enable selecting date ranges that include unavailable dates.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/range-calendar/range-calendar-allows-non-contiguous-preview.tsx"
+  )}
+  noPaddingOnPreviewForMobile
+>
+  <RangeCalendarAllowsNonContiguousPreview />
+</ComponentPreview>
+
+### Validation and Constraints
+
+Combine `minValue`, `maxValue`, `isDateUnavailable`, and `isInvalid` with a visible helper message to enforce booking constraints and validation rules.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/range-calendar/range-calendar-validation-preview.tsx"
+  )}
+>
+  <RangeCalendarValidationPreview />
+</ComponentPreview>
+
+### Multiple Months
+
+Use `visibleDuration` to show more than one month at a time in a single calendar.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/range-calendar/range-calendar-multiple-months-preview.tsx"
+  )}
+  noPaddingOnPreviewForLaptop
+>
+  <RangeCalendarMultipleMonthsPreview />
+</ComponentPreview>
+
+### Year Picker
+
+Use `RangeCalendarYearPicker` component that opens a year menu and updates the focused date. This is a wrapper-specific addition and is not part of React Aria's base API.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/range-calendar/range-calendar-year-picker-preview.tsx"
+  )}
+>
+  <RangeCalendarYearPickerPreview />
+</ComponentPreview>
+
+### International Calendar
+
+The Range Calendar component fully supports internationalization. Use the `I18nProvider` wrapper to localize the calendar for different regions, languages, and calendar systems.
+
+See [here](https://react-aria.adobe.com/RangeCalendar#international-calendars) for more information.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/range-calendar/range-calendar-internationalized-preview.tsx"
+  )}
+>
+  <RangeCalendarInternationalizedPreview />
+</ComponentPreview>
+
+## API Reference
+
+### RangeCalendar
+
+The root component wraps React Aria's `RangeCalendar` but exposes the registry wrapper props below.
+
+| Prop                        | Type                                                          | Default         | Description                                              |
+| :-------------------------- | :------------------------------------------------------------ | :-------------- | :------------------------------------------------------- |
+| `value`                     | `RangeValue<DateValue> \| null`                               | —               | Controlled selected date range                           |
+| `defaultValue`              | `RangeValue<DateValue> \| null`                               | —               | Initial selected date range for uncontrolled usage       |
+| `onChange`                  | `(value: RangeValue<DateValue>) => void`                      | —               | Called when the selected date range changes              |
+| `minValue`                  | `DateValue`                                                   | —               | Lowest selectable date                                   |
+| `maxValue`                  | `DateValue`                                                   | —               | Highest selectable date                                  |
+| `isDateUnavailable`         | `(date: DateValue) => boolean`                                | —               | Marks specific dates as unavailable                      |
+| `allowsNonContiguousRanges` | `boolean`                                                     | `false`         | Allows selecting ranges containing unavailable dates     |
+| `disabled`                  | `boolean`                                                     | `false`         | Disables the entire calendar                             |
+| `readonly`                  | `boolean`                                                     | `false`         | Prevents changing the selected date range                |
+| `focusedValue`              | `DateValue \| null`                                           | —               | Controlled focused date                                  |
+| `defaultFocusedValue`       | `DateValue \| null`                                           | —               | Initial focused date                                     |
+| `onFocusChange`             | `(date: DateValue) => void`                                   | —               | Called when the focused date changes                     |
+| `isInvalid`                 | `boolean`                                                     | —               | Whether the current selection is invalid                 |
+| `pageBehavior`              | `"visible" \| "single"`                                       | `"visible"`     | Controls how paging advances                             |
+| `firstDayOfWeek`            | `'sun' \| 'mon' \| 'tue' \| 'wed' \| 'thu' \| 'fri' \| 'sat'` | locale-based    | Overrides the first weekday                              |
+| `visibleDuration`           | `{ months: number }`                                          | `{ months: 1 }` | The number of months to display at once                  |
+| `commitBehavior`            | `"clear" \| "reset" \| "select"`                              | `"select"`      | Behavior when pointer is released outside or blur occurs |
+| `className`                 | `string`                                                      | —               | Additional classes applied to the root                   |
+| `children`                  | `ReactNode`                                                   | —               | Calendar content                                         |
+
+### RangeCalendarHeader
+
+The header wrapper used for navigation and month/year controls. This is a Tailgrids registry wrapper around a native `<header>` element, not a React Aria component.
+
+| Prop        | Type        | Default | Description               |
+| :---------- | :---------- | :------ | :------------------------ |
+| `className` | `string`    | —       | Additional header classes |
+| `children`  | `ReactNode` | —       | Header content            |
+
+### RangeNavButton
+
+The previous and next month buttons. Labels are fixed to `Previous month` and `Next month` in the registry wrapper.
+
+| Prop         | Type                   | Default        | Description                      |
+| :----------- | :--------------------- | :------------- | :------------------------------- |
+| `slot`       | `"previous" \| "next"` | —              | Chooses the navigation direction |
+| `className`  | `string`               | —              | Additional button classes        |
+| `aria-label` | `string`               | auto-generated | Accessible label for the button  |
+
+### RangeCalendarHeading
+
+The centered month and year heading used inside the header row. This is a direct wrapper around React Aria's `Heading` component.
+
+| Prop        | Type     | Default | Description                |
+| :---------- | :------- | :------ | :------------------------- |
+| `className` | `string` | —       | Additional heading classes |
+
+### RangeCalendarYearPicker
+
+An in-header year picker driven by `RangeCalendarStateContext`. This is a Tailgrids-specific control and is not part of React Aria's public API.
+
+| Prop        | Type     | Default | Description                |
+| :---------- | :------- | :------ | :------------------------- |
+| `className` | `string` | —       | Additional trigger classes |
+
+### RangeCalendarGrid
+
+Wraps React Aria's `CalendarGrid` for rendering the date cells.
+
+| Prop        | Type                                | Default | Description                          |
+| :---------- | :---------------------------------- | :------ | :----------------------------------- |
+| `children`  | `(date: DateValue) => ReactElement` | —       | Renders calendar cells for each date |
+| `className` | `string`                            | —       | Additional grid classes              |
+
+### RangeCalendarGridHeader
+
+Renders the weekday labels for the calendar grid.
+
+| Prop       | Type                         | Default | Description                     |
+| :--------- | :--------------------------- | :------ | :------------------------------ |
+| `children` | `(day: string) => ReactNode` | —       | Renders a cell for each weekday |
+
+### RangeCalendarGridBody
+
+Renders the calendar week rows and day cells.
+
+| Prop       | Type                             | Default | Description                  |
+| :--------- | :------------------------------- | :------ | :--------------------------- |
+| `children` | `(date: DateValue) => ReactNode` | —       | Renders a cell for each date |
+
+### RangeCalendarCell
+
+Renders a date cell for the range calendar.
+
+| Prop             | Type        | Default | Description                                      |
+| :--------------- | :---------- | :------ | :----------------------------------------------- |
+| `date`           | `DateValue` | —       | The date represented by the cell                 |
+| `className`      | `string`    | —       | Additional classes applied to the day pill       |
+| `disabled`       | `boolean`   | —       | Overrides the disabled state data attribute      |
+| `focusVisible`   | `boolean`   | —       | Overrides the focus-visible state data attribute |
+| `outsideMonth`   | `boolean`   | —       | Overrides the outside-month state data attribute |
+| `pressed`        | `boolean`   | —       | Overrides the pressed state data attribute       |
+| `selected`       | `boolean`   | —       | Overrides the selected state data attribute      |
+| `selectionStart` | `boolean`   | —       | Indicates the cell is the range start            |
+| `selectionEnd`   | `boolean`   | —       | Indicates the cell is the range end              |
+
+Data attributes exposed by the cell content:
+
+| Attribute              | Meaning                                                       |
+| :--------------------- | :------------------------------------------------------------ |
+| `data-selected`        | The date is within the selected range                         |
+| `data-selection-start` | The date is the start of the selected range                   |
+| `data-selection-end`   | The date is the end of the selected range                     |
+| `data-disabled`        | The date is disabled by `minValue`, `maxValue`, or `disabled` |
+| `data-focus-visible`   | The date has keyboard focus                                   |
+| `data-outside-month`   | The date belongs to a different month in the grid             |
+| `data-pressed`         | The cell is being pressed                                     |
+
+Visit React Aria's [RangeCalendar](https://react-aria.adobe.com/RangeCalendar#api) documentation for more information.
+
+## Accessibility
+
+- **Keyboard support:** Users can navigate between days using arrow keys. They can activate range selection with `Enter` or `Space`, and extend the selection by holding `Shift` while navigating.
+- **Screen reader support:** React Aria provides correct calendar roles, labels, and state announcements for range selection.
+- **Disabled and unavailable states:** Disabled dates cannot be focused or selected, while unavailable dates remain focusable but blocked from selection.
+- **Range visualization:** Selection start and end dates are announced distinctly to clarify range boundaries.
+- **Year navigation:** The custom year picker updates focused calendar state, providing seamless month and year selection.

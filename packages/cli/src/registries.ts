@@ -141,7 +141,7 @@ export const REGISTRIES: Registry[] = [
     name: "Calendar",
     description: "A calendar component with internationalization support.",
     type: "component",
-    exampleCount: 7,
+    exampleCount: 8,
     files: [
       {
         type: "core",
@@ -151,7 +151,8 @@ export const REGISTRIES: Registry[] = [
     dependencies: [
       "react-aria-components",
       "@tailgrids/icons",
-      "class-variance-authority"
+      "class-variance-authority",
+      "@internationalized/date"
     ],
     requires: ["button"]
   },
@@ -567,6 +568,26 @@ export const REGISTRIES: Registry[] = [
       }
     ],
     dependencies: ["class-variance-authority"]
+  },
+  {
+    id: "range-calendar",
+    name: "Range Calendar",
+    description: "A calendar component for selecting a range of dates.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/range-calendar.tsx"
+      }
+    ],
+    dependencies: [
+      "@tailgrids/icons",
+      "class-variance-authority",
+      "react-aria-components",
+      "@internationalized/date"
+    ],
+    requires: ["button"],
+    exampleCount: 9
   },
   {
     id: "resizable",

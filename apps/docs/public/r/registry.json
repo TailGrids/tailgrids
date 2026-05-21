@@ -145,6 +145,26 @@
       ]
     },
     {
+      "name": "calendar",
+      "type": "registry:ui",
+      "description": "A calendar component with internationalization support.",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "@tailgrids/icons",
+        "class-variance-authority",
+        "@internationalized/date"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "card",
       "type": "registry:ui",
       "description": "A card component with ultimate flexibility and customization.",
@@ -260,25 +280,6 @@
         },
         {
           "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/combobox/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "calendar",
-      "type": "registry:ui",
-      "description": "A calendar component with internationalization support.",
-      "registryDependencies": [
-        "button"
-      ],
-      "dependencies": [
-        "react-aria-components",
-        "@tailgrids/icons",
-        "class-variance-authority"
-      ],
-      "files": [
-        {
-          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/calendar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -597,6 +598,26 @@
       "files": [
         {
           "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/radio-input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "range-calendar",
+      "type": "registry:ui",
+      "description": "A calendar component for selecting a range of dates.",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "@tailgrids/icons",
+        "class-variance-authority",
+        "react-aria-components",
+        "@internationalized/date"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/range-calendar.tsx",
           "type": "registry:ui"
         }
       ]
