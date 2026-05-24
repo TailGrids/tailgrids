@@ -128,6 +128,26 @@
     "dependencies": ["class-variance-authority"]
   },
   {
+    "id": "calendar",
+    "name": "Calendar",
+    "description": "A calendar component with internationalization support.",
+    "type": "component",
+    "exampleCount": 8,
+    "files": [
+      {
+        "type": "core",
+        "path": "/core/calendar.tsx"
+      }
+    ],
+    "dependencies": [
+      "react-aria-components",
+      "@tailgrids/icons",
+      "class-variance-authority",
+      "@internationalized/date"
+    ],
+    "requires": ["button"]
+  },
+  {
     "id": "card",
     "name": "Card",
     "description": "A card component with ultimate flexibility and customization.",
@@ -236,25 +256,6 @@
     "dependencies": ["react-aria-components", "@tailgrids/icons"],
     "exampleCount": 10,
     "requires": ["badge"]
-  },
-  {
-    "id": "calendar",
-    "name": "Calendar",
-    "description": "A calendar component with internationalization support.",
-    "type": "component",
-    "exampleCount": 7,
-    "files": [
-      {
-        "type": "core",
-        "path": "/core/calendar.tsx"
-      }
-    ],
-    "dependencies": [
-      "react-aria-components",
-      "@tailgrids/icons",
-      "class-variance-authority"
-    ],
-    "requires": ["button"]
   },
   {
     "id": "command",
@@ -546,6 +547,26 @@
       }
     ],
     "dependencies": ["class-variance-authority"]
+  },
+  {
+    "id": "range-calendar",
+    "name": "Range Calendar",
+    "description": "A calendar component for selecting a range of dates.",
+    "type": "component",
+    "files": [
+      {
+        "type": "core",
+        "path": "/core/range-calendar.tsx"
+      }
+    ],
+    "dependencies": [
+      "@tailgrids/icons",
+      "class-variance-authority",
+      "react-aria-components",
+      "@internationalized/date"
+    ],
+    "requires": ["button"],
+    "exampleCount": 9
   },
   {
     "id": "resizable",

@@ -127,12 +127,17 @@ export function CalendarYearPicker({ className }: YearPickerProps) {
 
   const currentMonth = state?.focusedDate.month ?? new Date().getMonth() + 1;
   const currentYear = state?.focusedDate.year ?? new Date().getFullYear();
-  const yearStart = currentYear - 20;
-  const years = Array.from({ length: 40 }, (_, index) => yearStart + index);
+
+  const years = useMemo(() => {
+    const yearStart = currentYear - 20;
+    return Array.from({ length: 40 }, (_, index) => yearStart + index);
+  }, [currentYear]);
+
   const monthFormatter = useMemo(
     () => new Intl.DateTimeFormat(locale, { month: "short" }),
     [locale]
   );
+
   const currentMonthLabel = monthFormatter.format(
     new Date(Date.UTC(2000, currentMonth - 1, 1))
   );

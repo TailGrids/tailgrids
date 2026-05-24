@@ -23,12 +23,14 @@ type PropsType = {
   codeSnippet: string;
   children: React.ReactNode;
   noPaddingOnPreviewForMobile?: boolean;
+  noPaddingOnPreviewForLaptop?: boolean;
 };
 
 export function ComponentPreview({
   codeSnippet,
   codeSnippetLang = "tsx",
   noPaddingOnPreviewForMobile,
+  noPaddingOnPreviewForLaptop,
   children
 }: PropsType) {
   const [activeTab, setActiveTab] = useState("preview");
@@ -58,6 +60,9 @@ export function ComponentPreview({
               "min-h-100 bg-card-background-50 border flex flex-col items-center justify-center rounded-[20px] not-prose shadow-terminal",
               noPaddingOnPreviewForMobile
                 ? "p-0 sm:px-15 sm:py-10"
+                : "px-15 py-10",
+              noPaddingOnPreviewForLaptop
+                ? "p-0 2xl:px-15 2xl:py-10"
                 : "px-15 py-10"
             )}
           >
