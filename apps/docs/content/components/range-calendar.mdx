@@ -170,6 +170,18 @@ Combine `minValue`, `maxValue`, `isDateUnavailable`, and `isInvalid` with a visi
   <RangeCalendarValidationPreview />
 </ComponentPreview>
 
+### Year Picker
+
+Use `RangeCalendarYearPicker` component that opens a year menu and updates the focused date. This is a wrapper-specific addition and is not part of React Aria's base API.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/range-calendar/range-calendar-year-picker-preview.tsx"
+  )}
+>
+  <RangeCalendarYearPickerPreview />
+</ComponentPreview>
+
 ### Multiple Months
 
 Use `visibleDuration` to show more than one month at a time in a single calendar.
@@ -181,18 +193,6 @@ Use `visibleDuration` to show more than one month at a time in a single calendar
   noPaddingOnPreviewForLaptop
 >
   <RangeCalendarMultipleMonthsPreview />
-</ComponentPreview>
-
-### Year Picker
-
-Use `RangeCalendarYearPicker` component that opens a year menu and updates the focused date. This is a wrapper-specific addition and is not part of React Aria's base API.
-
-<ComponentPreview
-  codeSnippet={getFileContent(
-    "/src/components/preview/range-calendar/range-calendar-year-picker-preview.tsx"
-  )}
->
-  <RangeCalendarYearPickerPreview />
 </ComponentPreview>
 
 ### International Calendar
