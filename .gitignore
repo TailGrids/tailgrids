@@ -36,3 +36,8 @@ yarn-error.log*
 # Misc
 .DS_Store
 *.pem
+
+.agents
+.continue
+.mcpjam
+skills-lock.json
