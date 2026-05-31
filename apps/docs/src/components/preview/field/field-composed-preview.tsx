@@ -16,7 +16,7 @@ export default function FieldComposedPreview() {
         label="Username"
         errorMessage="This username is already taken."
         className="w-full"
-        isInvalid
+        invalid
       >
         <Input state="error" defaultValue="evilrabbit" />
       </ComposedField>

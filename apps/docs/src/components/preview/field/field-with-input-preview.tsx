@@ -17,7 +17,7 @@ export default function FieldWithInputPreview() {
         </FieldDescription>
       </Field>
 
-      <Field className="w-full">
+      <Field className="w-full" invalid>
         <FieldLabel htmlFor="username">Username</FieldLabel>
         <Input id="username" state="error" placeholder="Evil Rabbit" />
         <FieldError>This username is already taken.</FieldError>
