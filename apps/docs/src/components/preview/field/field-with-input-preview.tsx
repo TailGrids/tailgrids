@@ -19,7 +19,12 @@ export default function FieldWithInputPreview() {
 
       <Field className="w-full" invalid>
         <FieldLabel htmlFor="username">Username</FieldLabel>
-        <Input id="username" state="error" placeholder="Evil Rabbit" />
+        <Input
+          id="username"
+          state="error"
+          defaultValue="Evil Rabbit"
+          placeholder="Enter your name"
+        />
         <FieldError>This username is already taken.</FieldError>
       </Field>
     </div>

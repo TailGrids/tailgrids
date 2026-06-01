@@ -18,7 +18,11 @@ export default function FieldComposedPreview() {
         className="w-full"
         invalid
       >
-        <Input state="error" defaultValue="evilrabbit" />
+        <Input
+          state="error"
+          defaultValue="evil-rabbit"
+          placeholder="Enter your name"
+        />
       </ComposedField>
     </div>
   );
