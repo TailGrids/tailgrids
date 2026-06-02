@@ -242,9 +242,7 @@ export function ComposedField({
       {label && <FieldLabel>{label}</FieldLabel>}
       {children}
       {description && <FieldDescription>{description}</FieldDescription>}
-      {invalid && errorMessage && (
-        <FieldError>{errorMessage as unknown as React.ReactNode}</FieldError>
-      )}
+      {errorMessage && <FieldError>{errorMessage}</FieldError>}
     </Field>
   );
 }

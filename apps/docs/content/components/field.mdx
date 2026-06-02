@@ -7,6 +7,7 @@ import FieldComposedPreview from "@/components/preview/field/field-composed-prev
 import FieldHorizontalPreview from "@/components/preview/field/field-horizontal-preview";
 import FieldPreview from "@/components/preview/field/field-preview";
 import FieldSetPreview from "@/components/preview/field/field-set-preview";
+import FieldWithValidationPreview from "@/components/preview/field/field-with-validation-preview";
 import FieldWithInputPreview from "@/components/preview/field/field-with-input-preview";
 import FieldWithTextareaPreview from "@/components/preview/field/field-with-textarea-preview";
 import { getFileContent } from "@/utils/get-file-content";
@@ -164,6 +165,18 @@ The `ComposedField` component composes `Field`, `FieldLabel`, `FieldDescription`
   )}
 >
   <FieldComposedPreview />
+</ComponentPreview>
+
+### Validation
+
+Both `Field` and `ComposedField` are designed to work with validation. Pass an `errorMessage` and set `invalid` to show error states. You can also provide a validation function via the `validate` prop to handle validation logic.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/field/field-with-validation-preview.tsx"
+  )}
+>
+  <FieldWithValidationPreview />
 </ComponentPreview>
 
 ## API Reference
