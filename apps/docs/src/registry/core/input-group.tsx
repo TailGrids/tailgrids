@@ -1,8 +1,8 @@
-import { Input } from "@/registry/core/input";
-import { TextArea } from "@/registry/core/text-area";
 import { cn } from "@/utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
+import { Input } from "./input";
+import { TextArea } from "./text-area";
 
 const InputGroup = React.forwardRef<
   HTMLDivElement,
