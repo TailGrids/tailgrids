@@ -357,7 +357,7 @@ export const REGISTRIES: Registry[] = [
     id: "field",
     name: "Field",
     description:
-      "A field component with multiple variants and support for icons.",
+      "A collection of components for building accessible and flexible form fields.",
     type: "component",
     exampleCount: 5,
     files: [
@@ -792,7 +792,7 @@ export const REGISTRIES: Registry[] = [
         path: "/core/text-area.tsx"
       }
     ],
-    dependencies: ["class-variance-authority"]
+    dependencies: ["class-variance-authority", "react-aria-components"]
   },
   {
     id: "time-field",

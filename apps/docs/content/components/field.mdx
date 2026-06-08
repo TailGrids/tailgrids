@@ -3,7 +3,6 @@ title: React Field Components
 description: A React field component built with Tailwind CSS. Create form fields with labels, inputs, helper text, and error messages, using accessible, structured form layouts.
 ---
 
-import FieldComposedPreview from "@/components/preview/field/field-composed-preview";
 import FieldHorizontalPreview from "@/components/preview/field/field-horizontal-preview";
 import FieldPreview from "@/components/preview/field/field-preview";
 import FieldSetPreview from "@/components/preview/field/field-set-preview";
@@ -45,7 +44,7 @@ Install the required dependencies:
 npm i react-aria-components class-variance-authority
 ```
 
-Copy and paste the following component code into your project. The component includes `Field`, `FieldGroup`, `FieldLabel`, `FieldTitle`, `FieldDescription`, `FieldError`, `FieldSeparator`, and `ComposedField`.
+Copy and paste the following component code into your project. The component includes `FieldSet`, `FieldLegend`, `FieldGroup`, `FieldContent`, `FieldLabel`, `FieldTitle`, `FieldDescription`, `FieldError`, and `FieldSeparator`.
 
 <CodeBlockCard
   snippet={getFileContent("/src/registry/core/field.tsx")}
@@ -62,54 +61,48 @@ Import the sub-components you need and compose them together.
 
 ```tsx
 import {
+  FieldSet,
+  FieldLegend,
   FieldGroup,
-  Field,
+  FieldContent,
   FieldLabel,
   FieldTitle,
   FieldDescription,
   FieldError,
-  FieldSeparator,
-  ComposedField
+  FieldSeparator
 } from "@/components/tailgrids/core/field";
+import { TextField } from "@/components/tailgrids/core/text-field";
 
 export const FieldAnatomy = () => (
-  <FieldGroup>
-    <Field>
-      <FieldLabel htmlFor="input-id">Label</FieldLabel>
-      {/* Input, Select, Textarea, etc. */}
-      <FieldDescription>Optional helper text.</FieldDescription>
-      <FieldError>Validation message.</FieldError>
-    </Field>
+  <FieldSet>
+    <FieldLegend>Section heading</FieldLegend>
+    <FieldDescription>Short description</FieldDescription>
 
-    <FieldSeparator />
+    <FieldGroup>
+      <TextField>
+        <FieldLabel htmlFor="input-id">Label</FieldLabel>
+        {/* Input, Select, Textarea, etc. */}
+        <FieldDescription>Optional helper text.</FieldDescription>
+        <FieldError>Validation message.</FieldError>
+      </TextField>
 
-    <Field orientation="horizontal">
-      <FieldTitle>Title</FieldTitle>
-      <FieldDescription>Helper text.</FieldDescription>
-      {/* Input, Select, Textarea, etc. */}
-    </Field>
+      <FieldSeparator />
 
-    <ComposedField
-      label="Label"
-      description="Helper text"
-      errorMessage="Error message"
-      invalid
-    >
-      {/* Input, Select, Textarea, etc. */}
-    </ComposedField>
-  </FieldGroup>
+      <TextField orientation="horizontal">
+        <FieldTitle>Title</FieldTitle>
+        {/* Input, Select, Textarea, etc. */}
+        <FieldDescription>Helper text.</FieldDescription>
+      </TextField>
+    </FieldGroup>
+  </FieldSet>
 );
 ```
-
-- `Field` wraps React Aria's `TextField` primitive. Place `FieldLabel`, form controls, `FieldDescription`, and `FieldError` inside it — ARIA linking is handled automatically via context. Supports `vertical`, `horizontal`, and `responsive` orientations.
-- `FieldGroup` wraps React Aria's `Group` component to stack multiple `Field` components with consistent spacing.
-- `ComposedField` composes `Field`, `FieldLabel`, `FieldDescription`, and `FieldError` into a single declarative component. Uses `TextField` context to automatically wire up `aria-labelledby` and `aria-describedby`.
 
 ## Examples
 
 ### Input
 
-Compose a `Field` with an `Input` to create a labeled text field with optional description and error state.
+Compose a `TextField` with `FieldLabel`, `Input`, `FieldDescription`, and `FieldError` to create a labeled text field with optional description and error state.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -133,7 +126,7 @@ The same composition pattern works with any form control, including `TextArea`.
 
 ### Horizontal
 
-Use `ComposedField` with `orientation="horizontal"` to place the label and control side by side.
+Use `TextField` with `orientation="horizontal"` to place the label and control side by side.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -143,33 +136,9 @@ Use `ComposedField` with `orientation="horizontal"` to place the label and contr
   <FieldHorizontalPreview />
 </ComponentPreview>
 
-### Field Group
-
-Use `FieldGroup` to visually group related fields with consistent spacing. Add `FieldSeparator` to create visual dividers between sections.
-
-<ComponentPreview
-  codeSnippet={getFileContent(
-    "/src/components/preview/field/field-set-preview.tsx"
-  )}
->
-  <FieldSetPreview />
-</ComponentPreview>
-
-### Composed Field
-
-The `ComposedField` component composes `Field`, `FieldLabel`, `FieldDescription`, and `FieldError` into a single declarative interface. It uses React Aria's `TextField` context under the hood to auto-generate ARIA attributes.
-
-<ComponentPreview
-  codeSnippet={getFileContent(
-    "/src/components/preview/field/field-composed-preview.tsx"
-  )}
->
-  <FieldComposedPreview />
-</ComponentPreview>
-
 ### Validation
 
-Both `Field` and `ComposedField` are designed to work with validation. Pass an `errorMessage` and set `invalid` to show error states. You can also provide a validation function via the `validate` prop to handle validation logic.
+Pass a `validate` function and use `FieldError` to display error messages within any field components (i.e. `TextField`, `NumberField` etc.). Set `invalid` on the field to trigger the error state.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -179,122 +148,150 @@ Both `Field` and `ComposedField` are designed to work with validation. Pass an `
   <FieldWithValidationPreview />
 </ComponentPreview>
 
+### Field Set and Field Group
+
+Use `FieldSet` and `FieldGroup` to visually group related fields with consistent spacing. Add `FieldSeparator` to create visual dividers between sections.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/field/field-set-preview.tsx"
+  )}
+>
+  <FieldSetPreview />
+</ComponentPreview>
+
+See the [Composition](#composition) section below for more details on how to use these components together.
+
 ## API Reference
+
+### FieldSet
+
+Semantic `<fieldset>` wrapper for grouping related form controls.
+
+| Prop               | Type              | Default | Description                                                       |
+| :----------------- | :---------------- | :------ | :---------------------------------------------------------------- |
+| `hasCheckboxGroup` | `boolean`         | `false` | Reduces gap when a checkbox group is present inside the fieldset. |
+| `hasRadioGroup`    | `boolean`         | `false` | Reduces gap when a radio group is present inside the fieldset.    |
+| `className`        | `string`          | —       | Additional CSS classes.                                           |
+| `children`         | `React.ReactNode` | —       | The field controls rendered inside the fieldset.                  |
+
+### FieldLegend
+
+Styled `<legend>` element for use inside `FieldSet`.
+
+| Prop        | Type                  | Default    | Description                                                                   |
+| :---------- | :-------------------- | :--------- | :---------------------------------------------------------------------------- |
+| `variant`   | `'label' \| 'legend'` | `'legend'` | Visual variant. `'label'` renders smaller text, `'legend'` renders base size. |
+| `className` | `string`              | —          | Additional CSS classes.                                                       |
+| `children`  | `React.ReactNode`     | —          | Legend content.                                                               |
 
 ### FieldGroup
 
-Layout wrapper that stacks `Field` components with consistent spacing. Enables container queries for responsive orientations.
+Layout wrapper for related fields. It keeps field groups aligned and passes shared state to its children.
 
-| Prop        | Type              | Default | Description                                                                                 |
-| :---------- | :---------------- | :------ | :------------------------------------------------------------------------------------------ |
-| `children`  | `React.ReactNode` | —       | The field controls rendered inside the group.                                               |
-| `disabled`  | `boolean`         | —       | Disables the grouped controls. React Aria exposes this state on the group and its children. |
-| `readOnly`  | `boolean`         | —       | Marks the grouped controls as read only.                                                    |
-| `className` | `string`          | —       | Additional CSS classes applied to the container.                                            |
+| Prop        | Type              | Default | Description                                      |
+| :---------- | :---------------- | :------ | :----------------------------------------------- |
+| `children`  | `React.ReactNode` | —       | The field controls rendered inside the group.    |
+| `disabled`  | `boolean`         | —       | Disables the grouped controls.                   |
+| `readOnly`  | `boolean`         | —       | Marks the grouped controls as read only.         |
+| `className` | `string`          | —       | Additional CSS classes applied to the container. |
 
-### Field
+### FieldContent
 
-Core wrapper for a single field.
-
-| Prop                 | Type                                                                                  | Default      | Description                                                                       |
-| :------------------- | :------------------------------------------------------------------------------------ | :----------- | :-------------------------------------------------------------------------------- |
-| `orientation`        | `'vertical' \| 'horizontal' \| 'responsive'`                                          | `'vertical'` | Layout variant applied by the component's styles.                                 |
-| `invalid`            | `boolean`                                                                             | —            | Marks the field as invalid.                                                       |
-| `required`           | `boolean`                                                                             | —            | Marks the field as required.                                                      |
-| `disabled`           | `boolean`                                                                             | —            | Disables the field.                                                               |
-| `readOnly`           | `boolean`                                                                             | —            | Makes the field read only.                                                        |
-| `name`               | `string`                                                                              | —            | Name used when submitting the field value in a form.                              |
-| `type`               | `string`                                                                              | `'text'`     | Input type passed to the underlying text field.                                   |
-| `value`              | `string`                                                                              | —            | Controlled value for the field.                                                   |
-| `defaultValue`       | `string`                                                                              | —            | Uncontrolled initial value for the field.                                         |
-| `onChange`           | `(value: string) => void`                                                             | —            | Called when the value changes.                                                    |
-| `description`        | `React.ReactNode`                                                                     | —            | Helper text linked to the field via ARIA.                                         |
-| `errorMessage`       | `React.ReactNode \| ((validation: ValidationResult) => React.ReactNode)`              | —            | Error content associated with the field.                                          |
-| `validationBehavior` | `'aria' \| 'native'`                                                                  | `'aria'`     | Controls whether validation is handled with native form validation or ARIA state. |
-| `validate`           | `(value: string) => ValidationError \| true \| null \| undefined`                     | —            | Validation function used to determine whether the value is valid.                 |
-| `autoFocus`          | `boolean`                                                                             | —            | Whether the field should receive focus on mount.                                  |
-| `enterKeyHint`       | `'enter' \| 'done' \| 'go' \| 'next' \| 'previous' \| 'search' \| 'send'`             | —            | Hints which action label to show for the virtual keyboard enter key.              |
-| `inputMode`          | `'none' \| 'text' \| 'tel' \| 'url' \| 'email' \| 'numeric' \| 'decimal' \| 'search'` | —            | Hints what kind of data the user is entering.                                     |
-| `autoCorrect`        | `string`                                                                              | —            | Controls browser autocorrection behavior.                                         |
-| `spellCheck`         | `string`                                                                              | —            | Controls browser spell checking behavior.                                         |
-| `placeholder`        | `string`                                                                              | —            | Placeholder text shown when the field is empty.                                   |
-| `minLength`          | `number`                                                                              | —            | Minimum accepted text length.                                                     |
-| `maxLength`          | `number`                                                                              | —            | Maximum accepted text length.                                                     |
-| `pattern`            | `string`                                                                              | —            | Regular expression pattern used for validation.                                   |
-| `children`           | `React.ReactNode`                                                                     | —            | The input, textarea, or other field control rendered inside the component.        |
-| `className`          | `string`                                                                              | —            | Extra classes merged with the generated field styles.                             |
-
-### FieldLabel
-
-Styled label element for form controls.
+Layout helper for arranging field text content.
 
 | Prop        | Type              | Default | Description                                    |
 | :---------- | :---------------- | :------ | :--------------------------------------------- |
-| `children`  | `React.ReactNode` | —       | Label content.                                 |
-| `htmlFor`   | `string`          | —       | Standard `htmlFor` for standalone label usage. |
-| `id`        | `string`          | —       | Optional id for the label element.             |
 | `className` | `string`          | —       | Additional CSS classes.                        |
+| `children`  | `React.ReactNode` | —       | Content elements (labels, descriptions, etc.). |
+
+### FieldLabel
+
+Visible label for a field.
+
+| Prop        | Type              | Default | Description             |
+| :---------- | :---------------- | :------ | :---------------------- |
+| `children`  | `React.ReactNode` | —       | Label content.          |
+| `className` | `string`          | —       | Additional CSS classes. |
 
 ### FieldTitle
 
-Renders a title with label styling inside `FieldContent`. Useful for non-interactive labels.
+Label-like text for horizontal layouts or supporting text blocks.
 
-| Prop        | Type              | Default | Description                                        |
-| :---------- | :---------------- | :------ | :------------------------------------------------- |
-| `children`  | `React.ReactNode` | —       | Title text or elements.                            |
-| `slot`      | `string`          | —       | Optional slot prop supported by React Aria `Text`. |
-| `className` | `string`          | —       | Additional CSS classes.                            |
+| Prop        | Type              | Default | Description                                                         |
+| :---------- | :---------------- | :------ | :------------------------------------------------------------------ |
+| `children`  | `React.ReactNode` | —       | Title text or elements.                                             |
+| `slot`      | `string`          | —       | Optional slot prop supported by React Aria `Text` for ARIA linking. |
+| `className` | `string`          | —       | Additional CSS classes.                                             |
 
 ### FieldDescription
 
-Helper text slot for providing context about a form field.
+Helper text for hints, instructions, or supplemental details. It is linked to the field through the `description` slot.
 
-| Prop        | Type              | Default         | Description                                                            |
-| :---------- | :---------------- | :-------------- | :--------------------------------------------------------------------- |
-| `children`  | `React.ReactNode` | —               | Helper text content.                                                   |
-| `slot`      | `"description"`   | `"description"` | The description slot used by React Aria to link the text to the field. |
-| `className` | `string`          | —               | Additional CSS classes.                                                |
+| Prop        | Type              | Default | Description             |
+| :---------- | :---------------- | :------ | :---------------------- |
+| `children`  | `React.ReactNode` | —       | Helper text content.    |
+| `className` | `string`          | —       | Additional CSS classes. |
+
+Note: `FieldDescription` uses the `description` slot so React Aria can connect it to the active field.
 
 ### FieldError
 
-Validation message slot, styled with error color.
+Validation message for invalid fields. Accepts either static text or a render function for validation-aware messaging.
 
-| Prop        | Type              | Default | Description                 |
-| :---------- | :---------------- | :------ | :-------------------------- |
-| `children`  | `React.ReactNode` | —       | Validation message content. |
-| `className` | `string`          | —       | Additional CSS classes.     |
+| Prop        | Type                                                                     | Default | Description                                                                                  |
+| :---------- | :----------------------------------------------------------------------- | :------ | :------------------------------------------------------------------------------------------- |
+| `children`  | `React.ReactNode \| ((validation: ValidationResult) => React.ReactNode)` | —       | Validation message content. Can be a render function receiving the current validation state. |
+| `className` | `string`                                                                 | —       | Additional CSS classes.                                                                      |
+
+Note: When used with a render function, `FieldError` can adapt the message to the current validation result.
 
 ### FieldSeparator
 
-Visual divider. If no children are provided, this component renders the `react-aria-components` `Separator`. If children are provided, it renders a `div` with `role="separator"` and centered content.
+Visual divider between field sections. It can also show centered inline content.
 
-| Prop        | Type              | Default       | Description                                                                                                                               |
-| :---------- | :---------------- | :------------ | :---------------------------------------------------------------------------------------------------------------------------------------- |
-| `children`  | `React.ReactNode` | —             | Optional inline content. If present, the component renders a `div` with the children centered; otherwise it renders the Aria `Separator`. |
-| `role`      | `"separator"`     | `"separator"` | Present only when children are provided and the component renders a `div`.                                                                |
-| `className` | `string`          | —             | Additional CSS classes.                                                                                                                   |
+| Prop        | Type              | Default       | Description                                                                |
+| :---------- | :---------------- | :------------ | :------------------------------------------------------------------------- |
+| `children`  | `React.ReactNode` | —             | Optional inline content. If present, the divider centers the content.      |
+| `role`      | `"separator"`     | `"separator"` | Present only when children are provided and the component renders a `div`. |
+| `className` | `string`          | —             | Additional CSS classes.                                                    |
 
-### ComposedField
+Note: `FieldSeparator` renders either as a plain separator or as a centered-content divider depending on whether `children` are provided.
 
-Convenience component that renders a `Field` with optional `FieldLabel`, `FieldDescription`, and `FieldError`.
+## Composition
 
-| Prop           | Type                                                                     | Default      | Description                                                                                                         |
-| :------------- | :----------------------------------------------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------ |
-| `label`        | `React.ReactNode`                                                        | —            | If provided, a `FieldLabel` is rendered with this content.                                                          |
-| `description`  | `React.ReactNode`                                                        | —            | If provided, a `FieldDescription` is rendered.                                                                      |
-| `errorMessage` | `React.ReactNode \| ((validation: ValidationResult) => React.ReactNode)` | —            | Error content rendered inside `FieldError` when `invalid` is truthy.                                                |
-| `invalid`      | `boolean`                                                                | —            | Passed to the underlying `Field` as `invalid`; when truthy and `errorMessage` is present, `FieldError` is rendered. |
-| `orientation`  | `'vertical' \| 'horizontal' \| 'responsive'`                             | `'vertical'` | Layout passed to `Field`.                                                                                           |
-| `required`     | `boolean`                                                                | —            | Forwarded to `Field` (maps to `isRequired`).                                                                        |
-| `disabled`     | `boolean`                                                                | —            | Forwarded to `Field` (maps to `isDisabled`).                                                                        |
-| `readOnly`     | `boolean`                                                                | —            | Forwarded to `Field` (maps to `isReadOnly`).                                                                        |
-| `children`     | `React.ReactNode`                                                        | **required** | The form control element(s) (Input, TextArea, Select, etc.).                                                        |
-| `className`    | `string`                                                                 | —            | Additional CSS classes forwarded to `Field`.                                                                        |
+Use these components together to build accessible field layouts. Each piece has a clear role, so you can choose only the parts your form needs.
+
+```
+FieldSet
+├── FieldLegend
+└── FieldGroup
+    ├── TextField / NumberField / DateField / TimeField
+    │   ├── FieldLabel
+    │   ├── FieldContent
+    │   │   ├── FieldTitle
+    │   │   └── FieldDescription
+    │   ├── FieldError
+    │   └── Input / DateInput / TimeInput / etc.
+    └── FieldSeparator
+```
+
+- Use `FieldSet` for section-level grouping, such as a billing address or account settings block.
+- Use `FieldLegend` for the section title inside a `FieldSet`.
+- Use `FieldGroup` to keep related fields together and preserve shared field state like disabled or read-only.
+- Use `TextField`, `NumberField`, `DateField`, or `TimeField` as the actual interactive control, depending on the value type you want to collect.
+- Use `FieldLabel` for the visible label attached to a field.
+- Use `FieldTitle` when you want label-like text that is not the primary interactive label, such as a row title in a horizontal layout.
+- Use `FieldContent` to group the title, description, and related helper content in horizontal field layouts.
+- Use `FieldDescription` for helper text, hints, or short instructions.
+- Use `FieldError` for validation messages.
+- Use `FieldSeparator` to visually divide related fields inside a group.
 
 ## Accessibility
 
-- **Label association:** Inside `Field`, React Aria's `TextField` context automatically links labels to inputs via `aria-labelledby`. Clicking a label focuses the input.
-- **ARIA linking:** `Field` wraps `TextField`, which automatically links the label, description, and error message to the input. `ComposedField` provides the same via composition.
+- **Label association:** Inside `TextField`, React Aria's context automatically links labels to inputs via `aria-labelledby`. Clicking a label focuses the input.
+- **ARIA linking:** `TextField` automatically links the label, description, and error message to the input. `FieldDescription` and `FieldError` are wired via `slot` and React Aria context.
 - **Error messages:** `FieldError` displays validation messages and connects them to the input via `aria-errormessage` so screen readers can announce them.
 - **Descriptions:** `FieldDescription` provides helper text that is linked to the input via `aria-describedby`.
-- **Semantic grouping:** `FieldGroup` wraps React Aria's `Group` component, providing interactive state support (`isDisabled`, `isInvalid`, `isReadOnly`) for groups of related fields.
+- **Semantic grouping:** `FieldGroup` wraps React Aria's `Group` component, providing interactive state support (`isDisabled`, `isInvalid`, `isReadOnly`) for groups of related fields. `FieldSet` provides native `<fieldset>` semantics for section-level grouping.
+- **Legend:** `FieldLegend` renders a `<legend>` inside `FieldSet`, providing accessible section labeling for grouped controls.

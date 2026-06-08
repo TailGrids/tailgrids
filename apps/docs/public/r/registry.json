@@ -829,7 +829,8 @@
       "description": "A text area component with multiple variants.",
       "registryDependencies": [],
       "dependencies": [
-        "class-variance-authority"
+        "class-variance-authority",
+        "react-aria-components"
       ],
       "files": [
         {

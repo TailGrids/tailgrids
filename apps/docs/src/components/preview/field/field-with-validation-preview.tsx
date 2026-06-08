@@ -2,13 +2,12 @@
 
 import { Button } from "@/registry/core/button";
 import {
-  ComposedField,
-  Field,
   FieldDescription,
   FieldError,
   FieldLabel
 } from "@/registry/core/field";
 import { Input } from "@/registry/core/input";
+import { TextField } from "@/registry/core/text-field";
 import { useRef, useState, type FormEvent } from "react";
 import { Form } from "react-aria-components";
 
@@ -31,7 +30,7 @@ export default function FieldWithValidationPreview() {
       ref={formRef}
       className="flex flex-col items-center gap-6 w-full max-w-sm p-4"
     >
-      <Field
+      <TextField
         className="w-full"
         name="email"
         type="email"
@@ -58,15 +57,13 @@ export default function FieldWithValidationPreview() {
         <FieldError>
           {validation => validation.validationErrors.join(", ")}
         </FieldError>
-      </Field>
+      </TextField>
 
-      <ComposedField
+      <TextField
         className="w-full"
         name="password"
         type="password"
         required
-        label="Password"
-        description="At least 8 characters."
         validate={v =>
           !v
             ? "Password is required."
@@ -74,8 +71,8 @@ export default function FieldWithValidationPreview() {
               ? "Password must be at least 8 characters."
               : null
         }
-        errorMessage={validation => validation.validationErrors.join(", ")}
       >
+        <FieldLabel>Password</FieldLabel>
         <Input
           id="password"
           name="password"
@@ -84,15 +81,18 @@ export default function FieldWithValidationPreview() {
           value={passwordValue}
           onChange={e => setPasswordValue(e.target.value)}
         />
-      </ComposedField>
+        <FieldDescription>We&apos;ll never share your email.</FieldDescription>
 
-      <ComposedField
+        <FieldError>
+          {validation => validation.validationErrors.join(", ")}
+        </FieldError>
+      </TextField>
+
+      <TextField
         className="w-full"
         name="confirmPassword"
         type="password"
         required
-        label="Confirm password"
-        description="Re-enter your password."
         validate={v =>
           !v
             ? "Please confirm your password."
@@ -100,15 +100,20 @@ export default function FieldWithValidationPreview() {
               ? "Passwords do not match."
               : null
         }
-        errorMessage={validation => validation.validationErrors.join(", ")}
       >
+        <FieldLabel>Confirm password</FieldLabel>
         <Input
           id="confirm-password"
           name="confirmPassword"
           type="password"
           placeholder="Confirm your password"
         />
-      </ComposedField>
+        <FieldDescription>Re-enter your password.</FieldDescription>
+
+        <FieldError>
+          {validation => validation.validationErrors.join(", ")}
+        </FieldError>
+      </TextField>
 
       {submitted && (
         <div className="flex flex-col items-center gap-4 w-full max-w-sm p-4">

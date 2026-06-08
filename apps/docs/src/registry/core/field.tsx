@@ -9,14 +9,87 @@ import {
   Label as AriaLabel,
   Separator as AriaSeparator,
   Text as AriaText,
-  TextField,
   type FieldErrorProps as AriaFieldErrorProps,
   type GroupProps,
   type LabelProps,
-  type TextFieldProps,
-  type TextProps,
-  type ValidationResult
+  type TextProps
 } from "react-aria-components";
+
+// FieldSet
+
+const fieldSetStyles = cva("flex flex-col gap-4", {
+  variants: {
+    hasCheckboxGroup: {
+      true: "has-[>[data-slot=checkbox-group]]:gap-3",
+      false: ""
+    },
+    hasRadioGroup: {
+      true: "has-[>[data-slot=radio-group]]:gap-3",
+      false: ""
+    }
+  },
+  defaultVariants: {
+    hasCheckboxGroup: false,
+    hasRadioGroup: false
+  }
+});
+
+export interface FieldSetProps
+  extends
+    React.ComponentProps<"fieldset">,
+    VariantProps<typeof fieldSetStyles> {}
+
+export function FieldSet({
+  className,
+  hasCheckboxGroup,
+  hasRadioGroup,
+  ...props
+}: FieldSetProps) {
+  return (
+    <fieldset
+      data-slot="field-set"
+      className={cn(
+        fieldSetStyles({ hasCheckboxGroup, hasRadioGroup }),
+        className
+      )}
+      {...props}
+    />
+  );
+}
+
+// FieldLegend
+
+const fieldLegendStyles = cva("mb-1.5 font-medium", {
+  variants: {
+    variant: {
+      label: "text-sm",
+      legend: "text-base"
+    }
+  },
+  defaultVariants: {
+    variant: "legend"
+  }
+});
+
+export interface FieldLegendProps
+  extends
+    React.ComponentProps<"legend">,
+    VariantProps<typeof fieldLegendStyles> {}
+
+export function FieldLegend({
+  className,
+  variant = "legend",
+  ...props
+}: FieldLegendProps) {
+  return (
+    <legend
+      data-slot="field-legend"
+      data-variant={variant}
+      className={cn(fieldLegendStyles({ variant }), className)}
+      {...props}
+    />
+  );
+}
 
 // FieldGroup
 
@@ -46,51 +119,22 @@ export function FieldGroup({
   );
 }
 
-// Field
+// FieldContent
 
-const fieldStyles = cva("flex gap-3", {
-  variants: {
-    orientation: {
-      vertical: "flex-col",
-      horizontal: "flex-row items-center",
-      responsive:
-        "flex-col @sm/field-group:flex-row @sm/field-group:items-start"
-    }
-  },
-  defaultVariants: {
-    orientation: "vertical"
-  }
-});
+const fieldContentStyles = cva(
+  "group/field-content flex flex-1 flex-col gap-0.5 leading-snug"
+);
 
-export interface FieldProps
+export interface FieldContentProps
   extends
-    Omit<
-      TextFieldProps,
-      "isInvalid" | "isRequired" | "isDisabled" | "isReadOnly"
-    >,
-    VariantProps<typeof fieldStyles> {
-  invalid?: boolean;
-  required?: boolean;
-  disabled?: boolean;
-  readOnly?: boolean;
-}
+    React.ComponentPropsWithoutRef<"div">,
+    VariantProps<typeof fieldContentStyles> {}
 
-export function Field({
-  className,
-  orientation,
-  invalid,
-  required,
-  disabled,
-  readOnly,
-  ...props
-}: FieldProps) {
+export function FieldContent({ className, ...props }: FieldContentProps) {
   return (
-    <TextField
-      className={cn(fieldStyles({ orientation }), className)}
-      isInvalid={invalid}
-      isRequired={required}
-      isDisabled={disabled}
-      isReadOnly={readOnly}
+    <div
+      data-slot="field-content"
+      className={cn(fieldContentStyles(), className)}
       {...props}
     />
   );
@@ -203,46 +247,5 @@ export function FieldSeparator({
     >
       {children}
     </div>
-  );
-}
-
-// ComposedField
-
-export interface ComposedFieldProps extends Omit<
-  FieldProps,
-  "orientation" | "children" | "className"
-> {
-  orientation?: FieldProps["orientation"];
-  label?: React.ReactNode;
-  description?: React.ReactNode;
-  errorMessage?:
-    | React.ReactNode
-    | ((validation: ValidationResult) => React.ReactNode);
-  children: React.ReactNode;
-  className?: string;
-}
-
-export function ComposedField({
-  orientation = "vertical",
-  label,
-  description,
-  errorMessage,
-  children,
-  className,
-  invalid,
-  ...props
-}: ComposedFieldProps) {
-  return (
-    <Field
-      orientation={orientation}
-      className={className}
-      invalid={invalid}
-      {...props}
-    >
-      {label && <FieldLabel>{label}</FieldLabel>}
-      {children}
-      {description && <FieldDescription>{description}</FieldDescription>}
-      {errorMessage && <FieldError>{errorMessage}</FieldError>}
-    </Field>
   );
 }

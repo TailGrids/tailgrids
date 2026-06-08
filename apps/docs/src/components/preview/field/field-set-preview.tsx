@@ -1,53 +1,57 @@
+"use client";
+
 import {
-  Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-  FieldSeparator
+  FieldSeparator,
+  FieldSet,
+  FieldTitle
 } from "@/registry/core/field";
 import { Input } from "@/registry/core/input";
+import { TextField } from "@/registry/core/text-field";
 
 export default function FieldSetPreview() {
   return (
     <div className="flex flex-col items-center gap-10 w-full max-w-sm p-4">
-      <div className="flex flex-col gap-6 w-full">
+      <FieldSet className="flex flex-col gap-6 w-full">
         <div>
-          <h2 className="text-title-50 block text-lg font-semibold mb-1">
+          <FieldTitle className="text-title-50 block text-lg font-semibold mb-1">
             Profile
-          </h2>
-          <p>Update your personal information.</p>
+          </FieldTitle>
+          <FieldDescription>Update your personal information.</FieldDescription>
         </div>
 
         <FieldGroup>
-          <Field>
+          <TextField>
             <FieldLabel htmlFor="profile-name">Full name</FieldLabel>
             <Input id="profile-name" placeholder="Evil Rabbit" />
-          </Field>
+          </TextField>
 
-          <Field>
+          <TextField>
             <FieldLabel htmlFor="profile-email">Email</FieldLabel>
             <Input
               id="profile-email"
               type="email"
-              placeholder="rabbit@example.com"
+              placeholder="rabbit@pimjo.com"
             />
             <FieldDescription>
               This will be used for account recovery.
             </FieldDescription>
-          </Field>
+          </TextField>
 
           <FieldSeparator />
 
-          <Field>
+          <TextField>
             <FieldLabel htmlFor="profile-website">Website</FieldLabel>
             <Input
               id="profile-website"
               type="url"
-              placeholder="https://example.com"
+              placeholder="https://pimjo.com/"
             />
-          </Field>
+          </TextField>
         </FieldGroup>
-      </div>
+      </FieldSet>
     </div>
   );
 }
