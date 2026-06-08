@@ -43,7 +43,7 @@ npx @tailgrids/cli add button
 Install the required dependencies:
 
 ```npm
-npm i class-variance-authority
+npm i react-aria-components class-variance-authority
 ```
 
 Copy and paste the following component code into your project.
@@ -149,22 +149,20 @@ You can use `className` to add custom styles or create custom states like loadin
 
 ## API Reference
 
-Extends `button` element props.
-
-| Prop         | Type                                            | Default     | Description                      |
-| :----------- | :---------------------------------------------- | :---------- | :------------------------------- |
-| `variant`    | `'primary' \| 'danger' \| 'success' \| 'ghost'` | `'primary'` | Visual style variant             |
-| `appearance` | `'fill' \| 'outline'`                           | `'fill'`    | Filled or outlined style         |
-| `size`       | `'xs' \| 'sm' \| 'md' \| 'lg'`                  | `'md'`      | Button size                      |
-| `iconOnly`   | `boolean`                                       | `false`     | Icon-only button (square aspect) |
-| `className`  | `string`                                        | -           | Additional CSS classes           |
-| `children`   | `React.ReactNode`                               | -           | Button content                   |
-| `disabled`   | `boolean`                                       | `false`     | Disable button interaction       |
+| Prop         | Type                                            | Default     | Description                                                         |
+| :----------- | :---------------------------------------------- | :---------- | :------------------------------------------------------------------ |
+| `variant`    | `'primary' \| 'danger' \| 'success' \| 'ghost'` | `'primary'` | Visual style variant                                                |
+| `appearance` | `'fill' \| 'outline'`                           | `'fill'`    | Filled or outlined style                                            |
+| `size`       | `'xs' \| 'sm' \| 'md' \| 'lg'`                  | `'md'`      | Button size                                                         |
+| `iconOnly`   | `boolean`                                       | `false`     | Icon-only button (square aspect)                                    |
+| `disabled`   | `boolean`                                       | `false`     | Disable button interaction (maps to React Aria's `isDisabled` prop) |
+| `pending`    | `boolean`                                       | `false`     | Whether the button is in a pending state                            |
+| `onPress`    | `(e: PressEvent) => void`                       | -           | Handler that is called when the press is released over the target   |
+| `readOnly`   | `boolean`                                       | `false`     | Prevent interaction while keeping focusable                         |
 
 ## Accessibility
 
-- Uses `type="button"` by default to avoid accidental form submission
-- Includes focus ring styling with `focus:ring-3` for keyboard navigation
-- Disabled state removes pointer events and applies appropriate visual styling
-- Icons inherit text color for consistent styling
-- All standard button HTML attributes are supported
+- Built using React Aria `Button` which provides robust accessibility features across devices and input modalities
+- Full keyboard navigation and screen reader support out of the box
+- Handles press events normalized across mouse, keyboard, and touch interactions
+- Supports `pending` state which is announced to assistive technologies while keeping the element focusable

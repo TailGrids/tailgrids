@@ -120,7 +120,7 @@ export const REGISTRIES: Registry[] = [
         path: "/core/button.tsx"
       }
     ],
-    dependencies: ["class-variance-authority"]
+    dependencies: ["react-aria-components", "class-variance-authority"]
   },
   {
     id: "button-group",

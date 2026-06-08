@@ -1,11 +1,9 @@
-import type { ComponentProps } from "react";
-import { Button } from "./button";
-import { cn } from "@/utils/cn";
+"use client";
 
-export function SocialButton({
-  className,
-  ...props
-}: ComponentProps<"button">) {
+import { cn } from "@/utils/cn";
+import { Button, type ButtonProps } from "./button";
+
+export function SocialButton({ className, ...props }: ButtonProps) {
   return (
     <Button
       appearance="outline"

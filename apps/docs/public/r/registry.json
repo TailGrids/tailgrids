@@ -374,7 +374,7 @@
     {
       "name": "field",
       "type": "registry:ui",
-      "description": "A field component with multiple variants and support for icons.",
+      "description": "A collection of components for building accessible and flexible form fields.",
       "registryDependencies": [],
       "dependencies": [
         "class-variance-authority",
