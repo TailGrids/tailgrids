@@ -2,7 +2,7 @@
 
 import { memo } from "react";
 
-import { CodeBlock } from "./code-block";
+import { CodeBlock, type HighlightLine } from "./code-block";
 import { CopyToClipboard } from "./copy-to-clipboard";
 
 type CodeBlockCardProps = {
@@ -10,13 +10,17 @@ type CodeBlockCardProps = {
   lang: string;
   showLineNumbers?: boolean;
   fileName?: string;
+  highlightLines?: HighlightLine[];
+  highlightWords?: string[];
 };
 
 function CodeBlockCard({
   snippet,
   lang,
   showLineNumbers,
-  fileName
+  fileName,
+  highlightLines,
+  highlightWords
 }: CodeBlockCardProps) {
   return (
     <div className="mb-4 p-2.5 border bg-[#f9fafb] rounded-[1.75rem] dark:bg-[#111827]">
@@ -33,6 +37,8 @@ function CodeBlockCard({
           snippet={snippet.trim()}
           lang={lang}
           showLineNumbers={showLineNumbers}
+          highlightLines={highlightLines}
+          highlightWords={highlightWords}
         />
       </div>
     </div>
