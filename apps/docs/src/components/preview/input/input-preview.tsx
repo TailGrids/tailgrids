@@ -1,3 +1,5 @@
+"use client";
+
 import { Input } from "@/registry/core/input";
 import { Label } from "@/registry/core/label";
 import { useId } from "react";
