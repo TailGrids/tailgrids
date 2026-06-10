@@ -11,11 +11,9 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Label
 
-The React Label component is used to describe a form input like a text field, textarea, or select. It helps users understand what information they need to enter.
+The React Label component is used to describe a form input like a text field, textarea, select, or any other control that needs an accessible name. It helps users understand what information they need to enter.
 
-It is linked to an input using the htmlFor and id props, so clicking the label focuses the input. For example, clicking “Email Address” will focus the email input field.
-
-Built with `React Aria` and styled using Tailwind CSS. It supports accessibility and works well with all form components.
+It is built on top of React Aria's `Label` primitive and styled with Tailwind CSS. Use `htmlFor` with a matching input `id` when the label and field are separate elements. For example, clicking “Email Address” will focus the email input field.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -56,13 +54,27 @@ lang="tsx"
 
 ## Anatomy
 
-Import the component and pass the required props.
+Import the component and connect it to the control you want to describe.
 
 ```tsx
 import { Label } from "@/components/tailgrids/core/label";
 
-export const LabelExample = () => <Label htmlFor="input-id">Label Text</Label>;
+export const LabelExample = () => {
+  return (
+    <TextField className="w-sm">
+      <Label htmlFor="email">Email Address:</Label>
+      <Input
+        id="email"
+        type="email"
+        placeholder="Enter your email"
+        className="w-full"
+      />
+    </TextField>
+  );
+};
 ```
+
+If your control already wraps the label and field together, you can omit `htmlFor` and let React Aria handle the association through context.
 
 ## Examples
 
@@ -74,9 +86,12 @@ Use the Label component with a description-heavy field like `TextArea`.
   codeSnippet={getFileContent(
     "/src/components/preview/label/label-textarea-preview.tsx"
   )}
+  highlightLines={[11]}
 >
   <LabelTextAreaPreview />
 </ComponentPreview>
+
+**Note:** When `Label` is used inside a React Aria field component, the label can be associated through context. For separate elements, provide matching `htmlFor` and `id` props.
 
 ### With Select
 
@@ -86,6 +101,7 @@ Associate the Label with a `NativeSelect` component.
   codeSnippet={getFileContent(
     "/src/components/preview/label/label-select-preview.tsx"
   )}
+  highlightLines={[13]}
 >
   <LabelSelectPreview />
 </ComponentPreview>
@@ -94,16 +110,21 @@ Associate the Label with a `NativeSelect` component.
 
 ### Label
 
-| Prop        | Type        | Default | Description                                   |
-| :---------- | :---------- | :------ | :-------------------------------------------- |
-| `className` | `string`    | -       | Additional CSS classes to apply to the label. |
-| `children`  | `ReactNode` | -       | The content to be displayed within the label. |
+The `Label` component wraps React Aria's `Label` and inherits its full prop surface.
 
-Note: `Label` also inherits all props from `react-aria-components`'s `LabelProps`.
+| Prop        | Type        | Default | Description                                                    |
+| :---------- | :---------- | :------ | :------------------------------------------------------------- |
+| `children`  | `ReactNode` | -       | The text or content displayed inside the label.                |
+| `className` | `string`    | -       | Additional CSS classes to apply to the label.                  |
+| `htmlFor`   | `string`    | -       | Associates the label with a form control by matching its `id`. |
+| `id`        | `string`    | -       | Optional identifier for the label element itself.              |
+| `slot`      | `string`    | -       | Optional slot name for React Aria composition patterns.        |
+
+**Note:** `id` and `htmlFor` props are automatically provided by the field container. So it is discouraged to set them manually.
 
 ## Accessibility
 
-- **Label association:** Use the `htmlFor` prop to connect the label to a form input using its `id`. This ensures clicking the label focuses the input.
-- **Screen reader support:** The label provides a clear name for the input, so screen readers can describe what the field is for.
-- **Clickable area:** Users can click the label to focus the input, making forms easier to use.
-- **Semantic structure:** The component renders a native `<label>` element, which works with all standard form controls.
+- **Accessible name:** The label provides the accessible name for the associated control, so screen readers can announce what the field is for.
+- **Label association:** Use `htmlFor` with a matching `id` when the label and control are separate. If the field is wrapped by a React Aria field component, the association can come from context instead.
+- **Native semantics:** The component renders a native `<label>` by default, which gives users a larger click target and supports standard form controls.
+- **Non-native controls:** If you are labeling a non-native element, set `labelElementType` to a non-label element such as `span` so the markup stays valid.

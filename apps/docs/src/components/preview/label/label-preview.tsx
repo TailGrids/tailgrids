@@ -1,18 +1,19 @@
+"use client";
+
 import { Input } from "@/registry/core/input";
 import { Label } from "@/registry/core/label";
+import { TextField } from "@/registry/core/text-field";
 
 export default function LabelPreview() {
   return (
-    <div className="w-sm flex items-center justify-between gap-2">
-      <Label htmlFor="email" className="shrink-0">
-        Email Address:
-      </Label>
+    <TextField className="w-sm">
+      <Label htmlFor="email">Email Address:</Label>
       <Input
         id="email"
         type="email"
         placeholder="Enter your email"
         className="w-full"
       />
-    </div>
+    </TextField>
   );
 }
