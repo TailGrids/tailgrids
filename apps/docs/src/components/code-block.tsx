@@ -1,9 +1,9 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import React, { useId, useMemo } from "react";
+import React, { CSSProperties, useId, useMemo } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { createStyleObject } from "react-syntax-highlighter/dist/esm/create-element";
+import createElement from "react-syntax-highlighter/dist/esm/create-element";
 import { okaidia, prism } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export type HighlightLine = number | [number, number];
@@ -35,83 +35,78 @@ function escapeRegExp(str: string): string {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function highlightWordsInText(
-  text: string,
-  pattern: RegExp,
-  bgColor: string
-): React.ReactNode[] {
-  const str = String(text);
-  const parts = str.split(pattern);
-  return parts.map((part, i) => {
-    if (i % 2 === 1) {
-      return (
-        <span
-          key={i}
-          style={{
-            backgroundColor: bgColor,
-            borderRadius: 2,
-            paddingInline: 4
-          }}
-        >
-          {part}
-        </span>
-      );
-    }
-    return part;
-  });
+function buildUnionPattern(parts: string[] | undefined): RegExp | null {
+  if (!parts || parts.length === 0) return null;
+  return new RegExp(`(${parts.map(escapeRegExp).join("|")})`, "g");
 }
 
-function renderNode(
-  node: any,
-  stylesheet: any,
-  useInlineStyles: boolean,
+function isAstNode(x: unknown): x is rendererNode {
+  return typeof x === "object" && x !== null && "type" in (x as object);
+}
+
+function splitTextWithHighlight(
+  value: string,
+  pattern: RegExp,
+  bgColor: string
+): rendererNode[] {
+  const out: rendererNode[] = [];
+  let lastIndex = 0;
+  for (const m of value.matchAll(pattern)) {
+    const start = m.index ?? 0;
+    if (start > lastIndex) {
+      out.push({ type: "text", value: value.slice(lastIndex, start) });
+    }
+    out.push({
+      type: "element",
+      tagName: "span",
+      properties: {
+        style: {
+          backgroundColor: bgColor,
+          borderRadius: 2,
+          paddingInline: 4
+        },
+        className: ["inline-highlight"]
+      },
+      children: [{ type: "text", value: m[0] }]
+    });
+    lastIndex = start + m[0].length;
+  }
+  if (lastIndex < value.length) {
+    out.push({ type: "text", value: value.slice(lastIndex) });
+  }
+  return out;
+}
+
+function rewriteNode(
+  node: rendererNode,
   wordPattern: RegExp | null,
-  wordBg: string,
-  key: string
-): React.ReactNode {
-  if (!node) return null;
-  if (node.type === "text") {
-    const textValue = node.value != null ? String(node.value) : "";
-    if (wordPattern && textValue) {
-      return (
-        <span key={key}>
-          {highlightWordsInText(textValue, wordPattern, wordBg)}
-        </span>
-      );
+  bgColor: string
+): rendererNode {
+  if (node.type === "text" && typeof node.value === "string") {
+    if (!wordPattern) return node;
+    if (!wordPattern.test(node.value)) {
+      wordPattern.lastIndex = 0;
+      return node;
     }
-    return textValue;
+    wordPattern.lastIndex = 0;
+    return {
+      type: "element",
+      tagName: "span",
+      properties: {
+        className: ["inline-highlight"]
+      },
+      children: splitTextWithHighlight(node.value, wordPattern, bgColor)
+    };
   }
 
-  if (node.type === "element") {
-    const props: any = { key };
-    if (useInlineStyles && node.properties?.className) {
-      props.style = (createStyleObject as any)(
-        node.properties.className,
-        node.properties.style || {},
-        stylesheet
-      );
-    } else if (node.properties?.style) {
-      props.style = node.properties.style;
-    }
-    if (node.properties?.className) {
-      props.className = node.properties.className.join(" ");
-    }
-
-    const children = (node.children || []).map((child: any, i: number) =>
-      renderNode(
-        child,
-        stylesheet,
-        useInlineStyles,
-        wordPattern,
-        wordBg,
-        `${key}-${i}`
-      )
-    );
-
-    return React.createElement(node.tagName, props, ...children);
+  if (node.type === "element" && Array.isArray(node.children)) {
+    return {
+      ...node,
+      children: node.children.map(c => rewriteNode(c, wordPattern, bgColor))
+    };
   }
 
-  return null;
+  return node;
 }
 
 export function CodeBlock({
@@ -124,19 +119,6 @@ export function CodeBlock({
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
 
-  const highlightedLines = useMemo(
-    () => expandLineRanges(highlightLines || []),
-    [highlightLines]
-  );
-
-  const wordPattern = useMemo(() => {
-    if (!highlightWords?.length) return null;
-    return new RegExp(`(${highlightWords.map(escapeRegExp).join("|")})`);
-  }, [highlightWords]);
-
-  const hasWordHighlight = !!wordPattern;
-  const hasLineHighlight = highlightedLines.size > 0;
-
   const lineBg = isDark
     ? "rgba(94, 132, 252, 0.15)"
     : "rgba(55, 88, 249, 0.08)";
@@ -144,6 +126,19 @@ export function CodeBlock({
   const wordBg = isDark
     ? "rgba(94, 132, 252, 0.25)"
     : "rgba(55, 88, 249, 0.15)";
+
+  const highlightedLines = useMemo(
+    () => expandLineRanges(highlightLines || []),
+    [highlightLines]
+  );
+
+  const wordPattern = useMemo(
+    () => buildUnionPattern(highlightWords),
+    [highlightWords]
+  );
+
+  const hasInlineHighlight = !!wordPattern;
+  const hasLineHighlight = highlightedLines.size > 0;
 
   const linePosition = useMemo(() => {
     const sorted = [...highlightedLines].sort((a, b) => a - b);
@@ -185,22 +180,27 @@ export function CodeBlock({
   }, [hasLineHighlight, highlightedLines, linePosition]);
 
   const renderer = useMemo(() => {
-    if (!hasWordHighlight) return undefined;
-
-    return ({ rows, stylesheet, useInlineStyles }: any) =>
-      rows
-        .filter(Boolean)
-        .map((row: any, index: number) =>
-          renderNode(
-            row,
-            stylesheet,
-            useInlineStyles,
-            wordPattern,
-            wordBg,
-            `line-${index}`
-          )
-        );
-  }, [hasWordHighlight, wordPattern, wordBg]);
+    if (!hasInlineHighlight) return undefined;
+    return ({
+      rows,
+      stylesheet,
+      useInlineStyles
+    }: {
+      rows: unknown[];
+      stylesheet: { [key: string]: CSSProperties };
+      useInlineStyles: boolean;
+    }) =>
+      rows.map((row, i) => {
+        if (!isAstNode(row)) return row as React.ReactNode;
+        const rewritten = rewriteNode(row, wordPattern, wordBg);
+        return createElement({
+          node: rewritten,
+          stylesheet,
+          useInlineStyles,
+          key: `code-segment-${i}`
+        }) as React.ReactNode;
+      });
+  }, [hasInlineHighlight, wordPattern, wordBg]);
 
   const uid = useId();
 
@@ -252,7 +252,7 @@ export function CodeBlock({
       {highlightCss && <style>{highlightCss}</style>}
       <SyntaxHighlighter
         showLineNumbers={showLineNumbers}
-        wrapLines={hasLineHighlight || hasWordHighlight}
+        wrapLines={hasLineHighlight || hasInlineHighlight}
         lineProps={lineProps}
         renderer={renderer}
         language={lang}
