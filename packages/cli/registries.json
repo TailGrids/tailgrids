@@ -293,6 +293,20 @@
     "requires": ["button"]
   },
   {
+    "id": "description",
+    "name": "Description",
+    "description": "A description component that provides additional context or instructions for form fields.",
+    "type": "component",
+    "exampleCount": 2,
+    "files": [
+      {
+        "type": "core",
+        "path": "/core/description.tsx"
+      }
+    ],
+    "dependencies": ["react-aria-components"]
+  },
+  {
     "id": "dialog",
     "name": "Dialog",
     "description": "A dialog component that display a modal overlay above the main page content.",
@@ -371,19 +385,19 @@
     "name": "Input",
     "description": "An input component with multiple variants and support for icons.",
     "type": "component",
-    "exampleCount": 5,
+    "exampleCount": 6,
     "files": [
       {
         "type": "core",
         "path": "/core/input.tsx"
       }
     ],
-    "dependencies": ["class-variance-authority"]
+    "dependencies": ["class-variance-authority", "react-aria-components"]
   },
   {
     "id": "input-group",
     "name": "Input Group",
-    "description": "An input group component with multiple variants and support for icons.",
+    "description": "A flexible and accessible input group component that allows you to combine multiple input elements, such as text inputs, buttons, and icons, into a single cohesive unit.",
     "type": "component",
     "files": [
       {
@@ -393,7 +407,7 @@
     ],
     "dependencies": ["class-variance-authority"],
     "exampleCount": 4,
-    "requires": ["input", "text-area"]
+    "requires": ["input", "text-area", "button"]
   },
   {
     "id": "label",
@@ -760,9 +774,9 @@
   {
     "id": "text-area",
     "name": "Text Area",
-    "description": "A text area component with multiple variants.",
+    "description": "A multiline text input component.",
     "type": "component",
-    "exampleCount": 5,
+    "exampleCount": 7,
     "files": [
       {
         "type": "core",

@@ -305,6 +305,21 @@ export const REGISTRIES: Registry[] = [
     requires: ["button"]
   },
   {
+    id: "description",
+    name: "Description",
+    description:
+      "A description component that provides additional context or instructions for form fields.",
+    type: "component",
+    exampleCount: 2,
+    files: [
+      {
+        type: "core",
+        path: "/core/description.tsx"
+      }
+    ],
+    dependencies: ["react-aria-components"]
+  },
+  {
     id: "dialog",
     name: "Dialog",
     description:
@@ -389,20 +404,20 @@ export const REGISTRIES: Registry[] = [
     description:
       "An input component with multiple variants and support for icons.",
     type: "component",
-    exampleCount: 5,
+    exampleCount: 6,
     files: [
       {
         type: "core",
         path: "/core/input.tsx"
       }
     ],
-    dependencies: ["class-variance-authority"]
+    dependencies: ["class-variance-authority", "react-aria-components"]
   },
   {
     id: "input-group",
     name: "Input Group",
     description:
-      "An input group component with multiple variants and support for icons.",
+      "A flexible and accessible input group component that allows you to combine multiple input elements, such as text inputs, buttons, and icons, into a single cohesive unit.",
     type: "component",
     files: [
       {
@@ -412,7 +427,7 @@ export const REGISTRIES: Registry[] = [
     ],
     dependencies: ["class-variance-authority"],
     exampleCount: 4,
-    requires: ["input", "text-area"]
+    requires: ["input", "text-area", "button"]
   },
   {
     id: "label",
@@ -783,9 +798,9 @@ export const REGISTRIES: Registry[] = [
   {
     id: "text-area",
     name: "Text Area",
-    description: "A text area component with multiple variants.",
+    description: "A multiline text input component.",
     type: "component",
-    exampleCount: 5,
+    exampleCount: 7,
     files: [
       {
         type: "core",

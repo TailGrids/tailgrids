@@ -70,6 +70,7 @@ export const componentImages: Record<string, StaticImageData> = {
   combobox: ComboboxImage,
   command: CommandImage,
   "date-picker": DatePickerImage,
+  description: FieldImage, // Fallback
   dialog: DialogImage,
   drawer: DrawerImage,
   dropdown: DropdownImage,

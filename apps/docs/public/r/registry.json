@@ -120,6 +120,7 @@
       "description": "Button component with multiple variants, sizes, and support for icons.",
       "registryDependencies": [],
       "dependencies": [
+        "react-aria-components",
         "class-variance-authority"
       ],
       "files": [
@@ -324,6 +325,21 @@
       ]
     },
     {
+      "name": "description",
+      "type": "registry:ui",
+      "description": "A description component that provides additional context or instructions for form fields.",
+      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/description.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "dialog",
       "type": "registry:ui",
       "description": "A dialog component that display a modal overlay above the main page content.",
@@ -408,7 +424,8 @@
       "description": "An input component with multiple variants and support for icons.",
       "registryDependencies": [],
       "dependencies": [
-        "class-variance-authority"
+        "class-variance-authority",
+        "react-aria-components"
       ],
       "files": [
         {
@@ -420,10 +437,11 @@
     {
       "name": "input-group",
       "type": "registry:ui",
-      "description": "An input group component with multiple variants and support for icons.",
+      "description": "A flexible and accessible input group component that allows you to combine multiple input elements, such as text inputs, buttons, and icons, into a single cohesive unit.",
       "registryDependencies": [
         "input",
-        "text-area"
+        "text-area",
+        "button"
       ],
       "dependencies": [
         "class-variance-authority"
@@ -826,7 +844,7 @@
     {
       "name": "text-area",
       "type": "registry:ui",
-      "description": "A text area component with multiple variants.",
+      "description": "A multiline text input component.",
       "registryDependencies": [],
       "dependencies": [
         "class-variance-authority",
