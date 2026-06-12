@@ -1,0 +1,284 @@
+---
+title: React DateField Components
+description: A React date field component that lets users input a date. Used for forms, filters, and scheduling with keyboard-friendly interaction.
+---
+
+import DateFieldBasicPreview from "@/components/preview/date-field/date-field-basic-preview";
+import DateFieldControlled from "@/components/preview/date-field/date-field-controlled";
+import DateFieldPreview from "@/components/preview/date-field/date-field-preview";
+import DateFieldUncontrolled from "@/components/preview/date-field/date-field-uncontrolled";
+import DateFieldWithMinMax from "@/components/preview/date-field/date-field-with-min-max";
+import DateFieldWithDateTime from "@/components/preview/date-field/date-field-with-datetime";
+import DateFieldWithLeadingZero from "@/components/preview/date-field/date-field-with-leading-zero";
+import DateFieldWithValidation from "@/components/preview/date-field/date-field-with-validation";
+import DateFieldDisabled from "@/components/preview/date-field/date-field-disabled";
+import DateFieldInternationalizationPreview from "@/components/preview/date-field/date-field-internationalization-preview";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# DateField
+
+React Date Field components allow users to select a specific date value using a segment-based input. They are commonly used in booking forms, event scheduling, date filters, and registration flows where precise keyboard entry is preferred.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-field/date-field-preview.tsx"
+  )}
+>
+  <DateFieldPreview />
+</ComponentPreview>
+
+## Installation
+
+The Date Field relies on the `react-aria-components` library.
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+```npm
+npx @tailgrids/cli add date-field
+```
+</Accordion>
+
+<Accordion title="Manual">
+
+Install the required dependency:
+
+```npm
+npm i react-aria-components
+```
+
+Copy and paste the component code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/date-field.tsx")}
+  lang="tsx"
+  fileName="date-field.tsx"
+  showLineNumbers
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+```tsx
+import { Label } from "@/components/tailgrids/core/label";
+import { Description } from "@/components/tailgrids/core/description";
+import { DateField } from "@/components/tailgrids/core/date-field";
+import { DateInput, DateSegment } from "@/components/tailgrids/core/date-field";
+
+export const DateFieldExample = () => (
+  <DateField>
+    <Label>Appointment date</Label>
+    <DateInput>{segment => <DateSegment segment={segment} />}</DateInput>
+    <Description>Select your preferred appointment date.</Description>
+  </DateField>
+);
+```
+
+## Examples
+
+### Basic Usage
+
+A standard date field implementation using segments for precise date entry.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-field/date-field-basic-preview.tsx"
+  )}
+>
+  <DateFieldBasicPreview />
+</ComponentPreview>
+
+### Controlled
+
+Manage the date value externally using the `value` and `onChange` props.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-field/date-field-controlled.tsx"
+  )}
+  highlightLines={[5, [9, 11], 15]}
+>
+  <DateFieldControlled />
+</ComponentPreview>
+
+### Uncontrolled
+
+An uncontrolled date field with a `defaultValue` prop.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-field/date-field-uncontrolled.tsx"
+  )}
+  highlightLines={[5, 10]}
+>
+  <DateFieldUncontrolled />
+</ComponentPreview>
+
+### Disabled
+
+A disabled date field prevents user interaction.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-field/date-field-disabled.tsx"
+  )}
+  highlightWords={["disabled"]}
+>
+
+  <DateFieldDisabled />
+</ComponentPreview>
+
+### Validation
+
+Display error messages and validation states when the date value is outside the allowed range.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-field/date-field-with-validation.tsx"
+  )}
+  highlightLines={[14, [21, 23], 28]}
+>
+
+  <DateFieldWithValidation />
+</ComponentPreview>
+
+### With Date and Time
+
+Combine date and time by using a `CalendarDateTime` value. Set `granularity` to `"minute"` to expose time segments.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-field/date-field-with-datetime.tsx"
+  )}
+  highlightLines={[5, [11, 12]]}
+>
+  <DateFieldWithDateTime />
+</ComponentPreview>
+
+### With Min / Max
+
+Constrain the selectable date range using `minValue` and `maxValue`.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-field/date-field-with-min-max.tsx"
+  )}
+    highlightLines={[6, [12, 13]]}
+>
+
+  <DateFieldWithMinMax />
+</ComponentPreview>
+
+### With Leading Zeros
+
+Use the `shouldForceLeadingZeros` prop to display leading zeros in day and month segments.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-field/date-field-with-leading-zero.tsx"
+  )}
+  highlightWords={["shouldForceLeadingZeros"]}
+>
+  <DateFieldWithLeadingZero />
+</ComponentPreview>
+
+### International Calendar
+
+Wrap the `DateField` with an `I18nProvider` and set the `locale` prop to use a different calendar system.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-field/date-field-internationalization-preview.tsx"
+  )}
+  highlightLines={[5, 10, 15]}
+>
+
+  <DateFieldInternationalizationPreview />
+</ComponentPreview>
+
+## API Reference
+
+### DateField
+
+The field container that provides context for the date input and segments. Manages state, validation, and ARIA attributes.
+
+| Prop                      | Type                                                                  | Default      | Description                                                  |
+| :------------------------ | :-------------------------------------------------------------------- | :----------- | :----------------------------------------------------------- |
+| `value`                   | `DateValue \| null`                                                   | -            | The current date value (controlled).                         |
+| `defaultValue`            | `DateValue \| null`                                                   | -            | The default date value (uncontrolled).                       |
+| `onChange`                | `(value: DateValue \| null) => void`                                  | -            | Handler called when the value changes.                       |
+| `name`                    | `string`                                                              | -            | The name of the input, used when submitting an HTML form.    |
+| `form`                    | `string`                                                              | -            | The `<form>` element to associate the input with.            |
+| `id`                      | `string`                                                              | -            | The element's unique identifier.                             |
+| `autoFocus`               | `boolean`                                                             | `false`      | Whether the input should receive focus on mount.             |
+| `granularity`             | `'day' \| 'hour' \| 'minute' \| 'second'`                             | `'day'`      | The smallest unit of date/time to display.                   |
+| `hourCycle`               | `12 \| 24`                                                            | -            | Whether to use 12-hour or 24-hour format.                    |
+| `hideTimeZone`            | `boolean`                                                             | `false`      | Whether to hide the time zone abbreviation.                  |
+| `shouldForceLeadingZeros` | `boolean`                                                             | `false`      | Whether to always show leading zeros in day and month.       |
+| `minValue`                | `DateValue`                                                           | -            | The minimum allowed date.                                    |
+| `maxValue`                | `DateValue`                                                           | -            | The maximum allowed date.                                    |
+| `placeholderValue`        | `DateValue`                                                           | -            | A placeholder date value when no value is set.               |
+| `orientation`             | `'vertical' \| 'horizontal' \| 'responsive'`                          | `'vertical'` | Layout direction of the field container.                     |
+| `disabled`                | `boolean`                                                             | `false`      | Whether the input is disabled.                               |
+| `readOnly`                | `boolean`                                                             | `false`      | Whether the input is read only.                              |
+| `required`                | `boolean`                                                             | `false`      | Whether the input is required.                               |
+| `invalid`                 | `boolean`                                                             | `false`      | Whether the input is shown in an invalid state.              |
+| `validate`                | `(value: DateValue) => ValidationResult \| true \| null \| undefined` | -            | Custom validation function for the date value.               |
+| `validationBehavior`      | `'aria' \| 'native'`                                                  | `'native'`   | Whether to use native HTML or ARIA form validation.          |
+| `aria-label`              | `string`                                                              | -            | Defines a string that labels the current element.            |
+| `aria-labelledby`         | `string`                                                              | -            | Identifies the element (or elements) that label the element. |
+| `aria-describedby`        | `string`                                                              | -            | Identifies the element that describes the object.            |
+| `aria-details`            | `string`                                                              | -            | Identifies the element providing extended description.       |
+| `onBlur`                  | `(e: FocusEvent) => void`                                             | -            | Handler called when the element loses focus.                 |
+| `onFocus`                 | `(e: FocusEvent) => void`                                             | -            | Handler called when the element receives focus.              |
+| `onFocusChange`           | `(isFocused: boolean) => void`                                        | -            | Handler called when the element's focus status changes.      |
+| `onKeyDown`               | `(e: KeyboardEvent) => void`                                          | -            | Handler called when a key is pressed.                        |
+| `onKeyUp`                 | `(e: KeyboardEvent) => void`                                          | -            | Handler called when a key is released.                       |
+| `className`               | `string`                                                              | -            | Additional CSS classes to apply to the container.            |
+
+### DateInput
+
+The styled input container that wraps date segments. Supports visual state variants for form feedback.
+
+| Prop        | Type                                         | Default     | Description                                      |
+| :---------- | :------------------------------------------- | :---------- | :----------------------------------------------- |
+| `state`     | `'default' \| 'error' \| 'success'`          | `'default'` | Visual state variant for the input container.    |
+| `className` | `string \| ((props: RenderProps) => string)` | -           | Additional CSS classes or render-prop className. |
+
+### DateSegment
+
+An individual editable segment of the date (day, month, year, hour, etc.).
+
+| Prop        | Type                                                    | Default | Description                                        |
+| :---------- | :------------------------------------------------------ | :------ | :------------------------------------------------- |
+| `segment`   | `DateSegment`                                           | -       | The segment object from the DateInput render prop. |
+| `className` | `string \| ((props: DateSegmentRenderProps) => string)` | -       | Additional CSS classes or render-prop className.   |
+
+See the [React Aria DateField documentation](https://react-aria.adobe.com/DateField) for more details.
+
+## Composition
+
+The Date Field is composed of the root `DateField` component plus `DateInput` and `DateSegment`. It can be combined with shared field components (`Label`, `Description`, `FieldError`) for a complete form control.
+
+```
+DateField                                — Root container. Manages date state, validation, and ARIA context.
+├── Label                                — Visible label.
+├── DateInput                            — Groups editable segments into a styled input area.
+│   └── DateSegment                      — Individual editable segment (day, month, year, hour, minute).
+└── Description                          — Helper text.
+```
+
+- Use `DateField` as the root. It provides the date value, validation state, and keyboard context to all children.
+- Use `Label` to label the field. It is automatically linked to the input.
+- Use `DateInput` to render the segment group. It accepts a render function that receives each `segment` and returns a `DateSegment`.
+- Use `DateSegment` inside `DateInput` to render each editable part of the date. It handles focus, typing, and arrow-key incrementing.
+- Use `Description` for helper text. It is automatically announced by screen readers.
+- Use `FieldError` for validation messages. It is linked via `aria-errormessage` when `invalid` is set.
+
+## Accessibility
+
+- **Keyboard Support**: Users can navigate between date segments (day, month, year) using `Arrow` keys and edit values using the number keys.
+- **Screen Readers**: Each segment is properly labeled and provides live updates to screen readers as values change.
+- **Focus Management**: Focus is managed automatically between segments for a seamless typing experience.
