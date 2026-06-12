@@ -1,11 +1,9 @@
 "use client";
 
-import {
-  TimeField,
-  TimeFieldError,
-  TimeFieldInput,
-  TimeFieldLabel
-} from "@/registry/core/time-field";
+import { Button } from "@/components/ui/Button";
+import { Label } from "@/registry/core/label";
+import { TimeField } from "@/registry/core/time-field";
+import { DateInput, DateSegment } from "@/registry/core/date-field";
 
 export default function TimeFieldWithFormValidation() {
   return (
@@ -13,7 +11,6 @@ export default function TimeFieldWithFormValidation() {
       <form>
         <TimeField
           name="meeting_time"
-          label="Meeting"
           required
           validationBehavior="native"
           validate={v => {
@@ -21,11 +18,10 @@ export default function TimeFieldWithFormValidation() {
             return null;
           }}
         >
-          <TimeFieldLabel />
-          <TimeFieldInput />
-          <TimeFieldError />
+          <Label>Meeting time</Label>
+          <DateInput>{segment => <DateSegment segment={segment} />}</DateInput>
         </TimeField>
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </form>
     </div>
   );
