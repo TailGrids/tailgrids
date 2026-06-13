@@ -715,12 +715,6 @@
   font-weight: 500;
 }
 
-button > svg,
-a > svg {
-  width: 20px;
-  height: 20px;
-}
-
 .dark .text-fd-muted-foreground {
   color: #9ca3af !important;
 }

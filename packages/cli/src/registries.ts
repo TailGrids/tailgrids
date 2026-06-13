@@ -284,6 +284,21 @@ export const REGISTRIES: Registry[] = [
     dependencies: ["react-aria-components", "@tailgrids/icons"]
   },
   {
+    id: "date-field",
+    name: "Date Field",
+    description: "A React date field component that lets users input a date.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/date-field.tsx",
+        targetPath: "/core/date-field.tsx"
+      }
+    ],
+    dependencies: ["class-variance-authority", "react-aria-components"],
+    exampleCount: 9
+  },
+  {
     id: "date-picker",
     name: "Date Picker",
     description: "A component to select a date or a range of dates.",
@@ -514,6 +529,21 @@ export const REGISTRIES: Registry[] = [
       }
     ],
     dependencies: ["@base-ui/react", "@tailgrids/icons"]
+  },
+  {
+    id: "number-field",
+    name: "Number Field",
+    description:
+      "A component for entering numeric values with increment and decrement buttons.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/number-field.tsx"
+      }
+    ],
+    exampleCount: 9,
+    dependencies: ["react-aria-components", "class-variance-authority"]
   },
   {
     id: "otp-input",
@@ -810,18 +840,32 @@ export const REGISTRIES: Registry[] = [
     dependencies: ["class-variance-authority", "react-aria-components"]
   },
   {
+    id: "text-field",
+    name: "Text Field",
+    description: "A wrapper for text inputs.",
+    type: "component",
+    exampleCount: 5,
+    files: [
+      {
+        type: "core",
+        path: "/core/text-field.tsx"
+      }
+    ],
+    dependencies: ["class-variance-authority", "react-aria-components"]
+  },
+  {
     id: "time-field",
     name: "Time Field",
     description: "A segment-based time input component.",
     type: "component",
-    exampleCount: 6,
+    exampleCount: 7,
     files: [
       {
         type: "core",
         path: "/core/time-field.tsx"
       }
     ],
-    dependencies: ["react-aria-components", "react-stately"]
+    dependencies: ["react-aria-components"]
   },
   {
     id: "time-picker",

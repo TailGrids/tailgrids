@@ -40,7 +40,7 @@ export default function TextAreaWithValidationPreview() {
           onChange={e => setMessage(e.currentTarget.value)}
           placeholder="Tell us what happened..."
         />
-        <Description slot="description">
+        <Description>
           Add enough detail so we can respond with the right context.
         </Description>
         <FieldError>

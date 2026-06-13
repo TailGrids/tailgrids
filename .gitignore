@@ -41,3 +41,4 @@ yarn-error.log*
 .continue
 .mcpjam
 skills-lock.json
+.commandcode

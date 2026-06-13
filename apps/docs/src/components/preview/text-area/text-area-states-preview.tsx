@@ -21,7 +21,7 @@ export default function TextAreaStatesPreview() {
           state="success"
           placeholder="Success textarea state"
         />
-        <Description slot="description" className="text-sm text-input-success">
+        <Description className="text-sm text-input-success">
           Saved successfully.
         </Description>
       </TextField>

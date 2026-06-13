@@ -302,6 +302,22 @@
       ]
     },
     {
+      "name": "date-field",
+      "type": "registry:ui",
+      "description": "A React date field component that lets users input a date.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority",
+        "react-aria-components"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/date-field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "date-picker",
       "type": "registry:ui",
       "description": "A component to select a date or a range of dates.",
@@ -542,6 +558,22 @@
       "files": [
         {
           "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "number-field",
+      "type": "registry:ui",
+      "description": "A component for entering numeric values with increment and decrement buttons.",
+      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/number-field.tsx",
           "type": "registry:ui"
         }
       ]
@@ -858,13 +890,28 @@
       ]
     },
     {
+      "name": "text-field",
+      "type": "registry:ui",
+      "description": "A wrapper for text inputs.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority",
+        "react-aria-components"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/text-field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "time-field",
       "type": "registry:ui",
       "description": "A segment-based time input component.",
       "registryDependencies": [],
       "dependencies": [
-        "react-aria-components",
-        "react-stately"
+        "react-aria-components"
       ],
       "files": [
         {
