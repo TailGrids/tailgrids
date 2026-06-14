@@ -120,7 +120,7 @@ export const REGISTRIES: Registry[] = [
         path: "/core/button.tsx"
       }
     ],
-    dependencies: ["class-variance-authority"]
+    dependencies: ["react-aria-components", "class-variance-authority"]
   },
   {
     id: "button-group",
@@ -284,25 +284,49 @@ export const REGISTRIES: Registry[] = [
     dependencies: ["react-aria-components", "@tailgrids/icons"]
   },
   {
-    id: "date-picker",
-    name: "Date Picker",
-    description: "A component to select a date or a range of dates.",
+    id: "date-field",
+    name: "Date Field",
+    description: "A React date field component that lets users input a date.",
     type: "component",
     files: [
       {
         type: "core",
-        path: "/core/date-picker/single-date.tsx",
-        targetPath: "/core/date-picker/single-date.tsx"
-      },
-      {
-        type: "core",
-        path: "/core/date-picker/range-date.tsx",
-        targetPath: "/core/date-picker/range-date.tsx"
+        path: "/core/date-field.tsx",
+        targetPath: "/core/date-field.tsx"
       }
     ],
-    dependencies: ["react-stately", "date-fns", "@tailgrids/icons"],
+    dependencies: ["class-variance-authority", "react-aria-components"],
+    exampleCount: 9
+  },
+  {
+    id: "date-picker",
+    name: "Date Picker",
+    description: "A component to select a date.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/date-picker.tsx",
+        targetPath: "/core/date-picker.tsx"
+      }
+    ],
+    dependencies: ["react-aria-components"],
+    exampleCount: 11
+  },
+  {
+    id: "description",
+    name: "Description",
+    description:
+      "A description component that provides additional context or instructions for form fields.",
+    type: "component",
     exampleCount: 2,
-    requires: ["button"]
+    files: [
+      {
+        type: "core",
+        path: "/core/description.tsx"
+      }
+    ],
+    dependencies: ["react-aria-components"]
   },
   {
     id: "dialog",
@@ -357,7 +381,7 @@ export const REGISTRIES: Registry[] = [
     id: "field",
     name: "Field",
     description:
-      "A field component with multiple variants and support for icons.",
+      "A collection of components for building accessible and flexible form fields.",
     type: "component",
     exampleCount: 5,
     files: [
@@ -389,20 +413,20 @@ export const REGISTRIES: Registry[] = [
     description:
       "An input component with multiple variants and support for icons.",
     type: "component",
-    exampleCount: 5,
+    exampleCount: 6,
     files: [
       {
         type: "core",
         path: "/core/input.tsx"
       }
     ],
-    dependencies: ["class-variance-authority"]
+    dependencies: ["class-variance-authority", "react-aria-components"]
   },
   {
     id: "input-group",
     name: "Input Group",
     description:
-      "An input group component with multiple variants and support for icons.",
+      "A flexible and accessible input group component that allows you to combine multiple input elements, such as text inputs, buttons, and icons, into a single cohesive unit.",
     type: "component",
     files: [
       {
@@ -412,7 +436,7 @@ export const REGISTRIES: Registry[] = [
     ],
     dependencies: ["class-variance-authority"],
     exampleCount: 4,
-    requires: ["input", "text-area"]
+    requires: ["input", "text-area", "button"]
   },
   {
     id: "label",
@@ -499,6 +523,21 @@ export const REGISTRIES: Registry[] = [
       }
     ],
     dependencies: ["@base-ui/react", "@tailgrids/icons"]
+  },
+  {
+    id: "number-field",
+    name: "Number Field",
+    description:
+      "A component for entering numeric values with increment and decrement buttons.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/number-field.tsx"
+      }
+    ],
+    exampleCount: 9,
+    dependencies: ["react-aria-components", "class-variance-authority"]
   },
   {
     id: "otp-input",
@@ -783,30 +822,44 @@ export const REGISTRIES: Registry[] = [
   {
     id: "text-area",
     name: "Text Area",
-    description: "A text area component with multiple variants.",
+    description: "A multiline text input component.",
     type: "component",
-    exampleCount: 5,
+    exampleCount: 7,
     files: [
       {
         type: "core",
         path: "/core/text-area.tsx"
       }
     ],
-    dependencies: ["class-variance-authority"]
+    dependencies: ["class-variance-authority", "react-aria-components"]
+  },
+  {
+    id: "text-field",
+    name: "Text Field",
+    description: "A wrapper for text inputs.",
+    type: "component",
+    exampleCount: 5,
+    files: [
+      {
+        type: "core",
+        path: "/core/text-field.tsx"
+      }
+    ],
+    dependencies: ["class-variance-authority", "react-aria-components"]
   },
   {
     id: "time-field",
     name: "Time Field",
     description: "A segment-based time input component.",
     type: "component",
-    exampleCount: 6,
+    exampleCount: 7,
     files: [
       {
         type: "core",
         path: "/core/time-field.tsx"
       }
     ],
-    dependencies: ["react-aria-components", "react-stately"]
+    dependencies: ["react-aria-components"]
   },
   {
     id: "time-picker",

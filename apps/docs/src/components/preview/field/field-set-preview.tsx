@@ -1,45 +1,55 @@
+"use client";
+
 import {
-  Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-  FieldLegend,
   FieldSeparator,
-  FieldSet
+  FieldSet,
+  FieldTitle
 } from "@/registry/core/field";
 import { Input } from "@/registry/core/input";
+import { TextField } from "@/registry/core/text-field";
 
 export default function FieldSetPreview() {
   return (
     <div className="flex flex-col items-center gap-10 w-full max-w-sm p-4">
-      <FieldSet className="w-full">
-        <FieldLegend>Profile</FieldLegend>
-        <FieldDescription>Update your personal information.</FieldDescription>
+      <FieldSet className="flex flex-col gap-6 w-full">
+        <div>
+          <FieldTitle className="text-title-50 block text-lg font-semibold mb-1">
+            Profile
+          </FieldTitle>
+          <FieldDescription>Update your personal information.</FieldDescription>
+        </div>
+
         <FieldGroup>
-          <Field>
+          <TextField>
             <FieldLabel htmlFor="profile-name">Full name</FieldLabel>
             <Input id="profile-name" placeholder="Evil Rabbit" />
-          </Field>
-          <Field>
+          </TextField>
+
+          <TextField>
             <FieldLabel htmlFor="profile-email">Email</FieldLabel>
             <Input
               id="profile-email"
               type="email"
-              placeholder="rabbit@example.com"
+              placeholder="rabbit@pimjo.com"
             />
             <FieldDescription>
               This will be used for account recovery.
             </FieldDescription>
-          </Field>
+          </TextField>
+
           <FieldSeparator />
-          <Field>
+
+          <TextField>
             <FieldLabel htmlFor="profile-website">Website</FieldLabel>
             <Input
               id="profile-website"
               type="url"
-              placeholder="https://example.com"
+              placeholder="https://pimjo.com/"
             />
-          </Field>
+          </TextField>
         </FieldGroup>
       </FieldSet>
     </div>

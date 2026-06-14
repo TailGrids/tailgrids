@@ -4,8 +4,10 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
-  InputGroupInput
+  InputGroupTextarea
 } from "@/registry/core/input-group";
+import { Label } from "@/registry/core/label";
+import { TextField } from "@/registry/core/text-field";
 import { useState } from "react";
 
 export default function InputGroupAlignPreview() {
@@ -13,42 +15,42 @@ export default function InputGroupAlignPreview() {
   const [commentValue, setCommentValue] = useState("");
 
   return (
-    <div className="flex w-full max-w-sm flex-col gap-6 p-4">
+    <div className="flex w-full max-w-sm flex-col gap-10 p-4">
       {/* Block Start */}
-      <div className="flex flex-col gap-2">
-        <label className="text-sm text-title-50 font-medium">
-          Header Addon
-        </label>
+      <TextField>
+        <Label>Header Addon</Label>
+
         <InputGroup className="flex-col overflow-hidden items-stretch">
           <InputGroupAddon
             align="block-start"
             className="w-full bg-base-200 justify-start py-2 border-b border-base-300 rounded-t-lg"
           >
             <span className="text-xs font-semibold uppercase tracking-wider text-base-500">
-              Format Message
+              Support Message
             </span>
           </InputGroupAddon>
-          <InputGroupInput
+
+          <InputGroupTextarea
             placeholder="Type your message here..."
             className="py-3 px-3"
             value={headerValue}
             onChange={e => setHeaderValue(e.target.value)}
           />
         </InputGroup>
-      </div>
+      </TextField>
 
       {/* Block End */}
-      <div className="flex flex-col gap-2">
-        <label className="text-sm text-title-50 font-medium">
-          Footer Actions
-        </label>
+      <TextField className="flex flex-col gap-2">
+        <Label>Footer Actions</Label>
+
         <InputGroup className="flex-col overflow-hidden items-stretch">
-          <InputGroupInput
+          <InputGroupTextarea
             placeholder="Add a comment..."
             className="py-3 px-3"
             value={commentValue}
             onChange={e => setCommentValue(e.target.value)}
           />
+
           <InputGroupAddon
             align="block-end"
             className="w-full bg-base-200 justify-end py-1.5 px-3 border-t border-base-300 rounded-b-lg gap-3"
@@ -56,9 +58,10 @@ export default function InputGroupAlignPreview() {
             <span className="text-xs text-base-500 mr-auto">
               Supports Markdown
             </span>
+
             <InputGroupButton
               size="xs"
-              className="px-0"
+              className="p-0 hover:bg-transparent opacity-75"
               onClick={() => setCommentValue("")}
             >
               Cancel
@@ -66,9 +69,9 @@ export default function InputGroupAlignPreview() {
             <InputGroupButton
               size="xs"
               className="bg-primary text-primary-foreground hover:bg-primary/90 px-0"
+              disabled={!commentValue.trim()}
               onClick={() => {
                 if (commentValue.trim()) {
-                  console.log("Comment submitted:", commentValue);
                   setCommentValue("");
                 }
               }}
@@ -77,7 +80,7 @@ export default function InputGroupAlignPreview() {
             </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
-      </div>
+      </TextField>
     </div>
   );
 }

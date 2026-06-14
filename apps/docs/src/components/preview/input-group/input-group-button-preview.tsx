@@ -6,6 +6,8 @@ import {
   InputGroupButton,
   InputGroupInput
 } from "@/registry/core/input-group";
+import { Label } from "@/registry/core/label";
+import { TextField } from "@/registry/core/text-field";
 import { Eye, EyeDisabled, Send4, Xmark } from "@tailgrids/icons";
 import { useState } from "react";
 
@@ -17,32 +19,33 @@ export default function InputGroupButtonPreview() {
   return (
     <div className="flex w-full max-w-sm flex-col gap-6 p-4">
       {/* Single Icon Button */}
-      <div className="flex flex-col gap-2">
-        <label className="text-sm text-title-50 font-medium">
+      <TextField className="flex flex-col gap-2">
+        <Label className="text-sm text-title-50 font-medium">
           Password Visibility
-        </label>
+        </Label>
+
         <InputGroup>
           <InputGroupInput
+            placeholder="secretpassword123"
             type={showPassword ? "text" : "password"}
-            defaultValue="secretpassword123"
           />
           <InputGroupAddon align="inline-end">
             <InputGroupButton
               aria-label="Show password"
-              className="w-fit px-0"
-              onClick={() => setShowPassword(!showPassword)}
+              className="w-fit px-0 hover:bg-transparent opacity-75 data-hovered:opacity-100"
+              onPress={() => setShowPassword(current => !current)}
             >
               {showPassword ? <EyeDisabled /> : <Eye />}
             </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
-      </div>
+      </TextField>
 
       {/* Button with Text */}
-      <div className="flex flex-col gap-2">
-        <label className="text-sm text-title-50 font-medium">
+      <TextField className="flex flex-col gap-2">
+        <Label className="text-sm text-title-50 font-medium">
           Newsletter Subscribe
-        </label>
+        </Label>
         <InputGroup>
           <InputGroupInput
             placeholder="Enter your email"
@@ -53,8 +56,8 @@ export default function InputGroupButtonPreview() {
           <InputGroupAddon align="inline-end" className="px-0">
             <InputGroupButton
               size="sm"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 h-full rounded-md px-3"
-              onClick={() => {
+              className="px-3 hover:bg-transparent"
+              onPress={() => {
                 if (email) {
                   alert(`Subscribed with: ${email}`);
                   setEmail("");
@@ -65,46 +68,47 @@ export default function InputGroupButtonPreview() {
             </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
-      </div>
+      </TextField>
 
       {/* Multiple Buttons */}
-      <div className="flex flex-col gap-2">
-        <label className="text-sm text-title-50 font-medium">
+      <TextField className="flex flex-col gap-2">
+        <Label className="text-sm text-title-50 font-medium">
           Chat Message
-        </label>
+        </Label>
         <InputGroup>
           <InputGroupInput
             placeholder="Type a message..."
             value={message}
             onChange={e => setMessage(e.target.value)}
           />
-          <InputGroupAddon align="inline-end">
-            <div className="flex items-center gap-1.5">
-              {message && (
-                <InputGroupButton
-                  className="text-error px-0"
-                  aria-label="Clear"
-                  onClick={() => setMessage("")}
-                >
-                  <Xmark className="size-4" />
-                </InputGroupButton>
-              )}
+          <InputGroupAddon align="inline-end" className="gap-1">
+            {message && (
               <InputGroupButton
-                className="text-primary px-0"
-                aria-label="Send"
-                onClick={() => {
-                  if (message) {
-                    alert(`Message sent: ${message}`);
-                    setMessage("");
-                  }
-                }}
+                className="opacity-75 p-0 size-6 [&>svg]:size-6! hover:bg-transparent hover:opacity-100!"
+                aria-label="Clear"
+                onPress={() => setMessage("")}
               >
-                <Send4 className="size-4" />
+                <Xmark />
               </InputGroupButton>
-            </div>
+            )}
+
+            <InputGroupButton
+              iconOnly
+              className="h-auto w-auto px-0 text-primary opacity-75 disabled:cursor-not-allowed hover:bg-transparent data-hovered:opacity-100"
+              aria-label="Send"
+              disabled={!message.trim()}
+              onPress={() => {
+                if (message) {
+                  alert(`Message sent: ${message}`);
+                  setMessage("");
+                }
+              }}
+            >
+              <Send4 className="size-4" />
+            </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
-      </div>
+      </TextField>
     </div>
   );
 }

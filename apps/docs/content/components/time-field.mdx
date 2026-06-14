@@ -9,6 +9,7 @@ import TimeFieldPreview from "@/components/preview/time-field/time-field-preview
 import TimeFieldUncontrolled from "@/components/preview/time-field/time-field-uncontrolled";
 import TimeFieldWithSeconds from "@/components/preview/time-field/time-field-with-seconds";
 import TimeFieldWithTimezone from "@/components/preview/time-field/time-field-with-timezone";
+import TimeFieldWithLeadingZeroPreview from "@/components/preview/time-field/time-field-with-leading-zero-preview";
 import TimeFieldWithValidation from "@/components/preview/time-field/time-field-with-validation";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
@@ -27,7 +28,7 @@ React Time Field components allow users to select a specific time value using a 
 
 ## Installation
 
-The Time Field relies on the `react-aria-components` and `react-stately` libraries.
+The Time Field relies on the `react-aria-components` library.
 
 <Accordions defaultValue="CLI">
 <Accordion title="CLI">
@@ -39,10 +40,10 @@ npx @tailgrids/cli add time-field
 
 <Accordion title="Manual">
 
-Install the required dependencies:
+Install the required dependency:
 
 ```npm
-npm i react-aria-components react-stately
+npm i react-aria-components
 ```
 
 Copy and paste the component code into your project.
@@ -59,20 +60,16 @@ Copy and paste the component code into your project.
 ## Anatomy
 
 ```tsx
-import {
-  TimeField,
-  TimeFieldInput,
-  TimeFieldLabel,
-  TimeFieldDescription,
-  TimeFieldError
-} from "@/components/tailgrids/core/time-field";
+import { Label } from "@/components/tailgrids/core/label";
+import { Description } from "@/components/tailgrids/core/description";
+import { TimeField } from "@/components/tailgrids/core/time-field";
+import { DateInput, DateSegment } from "@/components/tailgrids/core/date-field";
 
 export const TimeFieldExample = () => (
-  <TimeField label="Meeting time">
-    <TimeFieldLabel />
-    <TimeFieldInput />
-    <TimeFieldDescription />
-    <TimeFieldError />
+  <TimeField>
+    <Label>Meeting time</Label>
+    <DateInput>{segment => <DateSegment segment={segment} />}</DateInput>
+    <Description>Choose a start time for the meeting.</Description>
   </TimeField>
 );
 ```
@@ -139,6 +136,19 @@ Display and manage time zones within the time field.
   <TimeFieldWithTimezone />
 </ComponentPreview>
 
+### With Leading Zeros
+
+Use the `shouldForceLeadingZeros` prop to display leading zeros in time segments.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/time-field/time-field-with-leading-zero-preview.tsx"
+  )}
+  highlightWords={["shouldForceLeadingZeros"]}
+>
+  <TimeFieldWithLeadingZeroPreview />
+</ComponentPreview>
+
 ### Validation
 
 Display error messages and validation states when the time value is invalid.
@@ -155,50 +165,62 @@ Display error messages and validation states when the time value is invalid.
 
 ### TimeField
 
-The segment-based time input component.
+The segment-based time input component. Wraps React Aria's `TimeField` and maps boolean props (`disabled`, `readOnly`, `required`, `invalid`) to their `is-*` equivalents.
 
-| Prop           | Type                                          | Default    | Description                                       |
-| :------------- | :-------------------------------------------- | :--------- | :------------------------------------------------ |
-| `value`        | `TimeValue`                                   | -          | The current value (controlled).                   |
-| `defaultValue` | `TimeValue`                                   | -          | The default value (uncontrolled).                 |
-| `onChange`     | `(value: TimeValue) => void`                  | -          | Handler that is called when the value changes.    |
-| `label`        | `string`                                      | -          | The content to display as the label.              |
-| `description`  | `string`                                      | -          | The content to display as the description.        |
-| `errorMessage` | `string \| ((v: ValidationResult) => string)` | -          | The content to display as the error message.      |
-| `hourCycle`    | `12 \| 24`                                    | -          | Whether to use 12 or 24 hour cycle.               |
-| `granularity`  | `'hour' \| 'minute' \| 'second'`              | `'minute'` | The smallest unit of time to display.             |
-| `hideTimeZone` | `boolean`                                     | `false`    | Whether to hide the time zone abbreviation.       |
-| `minValue`     | `TimeValue`                                   | -          | The minimum allowed time.                         |
-| `maxValue`     | `TimeValue`                                   | -          | The maximum allowed time.                         |
-| `disabled`     | `boolean`                                     | `false`    | Whether the input is disabled.                    |
-| `readOnly`     | `boolean`                                     | `false`    | Whether the input is read only.                   |
-| `required`     | `boolean`                                     | `false`    | Whether the input is required.                    |
-| `invalid`      | `boolean`                                     | `false`    | Whether the input is shown in invalid state.      |
-| `className`    | `string`                                      | -          | Additional CSS classes to apply to the container. |
+| Prop                      | Type                                                                  | Default      | Description                                                  |
+| :------------------------ | :-------------------------------------------------------------------- | :----------- | :----------------------------------------------------------- |
+| `value`                   | `TimeValue \| null`                                                   | -            | The current time value (controlled).                         |
+| `defaultValue`            | `TimeValue \| null`                                                   | -            | The default time value (uncontrolled).                       |
+| `onChange`                | `(value: TimeValue \| null) => void`                                  | -            | Handler called when the value changes.                       |
+| `name`                    | `string`                                                              | -            | The name of the input, used when submitting an HTML form.    |
+| `form`                    | `string`                                                              | -            | The `<form>` element to associate the input with.            |
+| `id`                      | `string`                                                              | -            | The element's unique identifier.                             |
+| `autoFocus`               | `boolean`                                                             | `false`      | Whether the input should receive focus on mount.             |
+| `hourCycle`               | `12 \| 24`                                                            | -            | Whether to use 12-hour or 24-hour format.                    |
+| `granularity`             | `'hour' \| 'minute' \| 'second'`                                      | `'minute'`   | The smallest unit of time to display.                        |
+| `hideTimeZone`            | `boolean`                                                             | `false`      | Whether to hide the time zone abbreviation.                  |
+| `shouldForceLeadingZeros` | `boolean`                                                             | `false`      | Whether to always show leading zeros in the hour field.      |
+| `minValue`                | `TimeValue`                                                           | -            | The minimum allowed time.                                    |
+| `maxValue`                | `TimeValue`                                                           | -            | The maximum allowed time.                                    |
+| `placeholderValue`        | `TimeValue`                                                           | -            | A placeholder time value when no value is set.               |
+| `orientation`             | `'vertical' \| 'horizontal' \| 'responsive'`                          | `'vertical'` | Layout direction of the field container.                     |
+| `disabled`                | `boolean`                                                             | `false`      | Whether the input is disabled.                               |
+| `readOnly`                | `boolean`                                                             | `false`      | Whether the input is read only.                              |
+| `required`                | `boolean`                                                             | `false`      | Whether the input is required.                               |
+| `invalid`                 | `boolean`                                                             | `false`      | Whether the input is shown in an invalid state.              |
+| `validate`                | `(value: TimeValue) => ValidationResult \| true \| null \| undefined` | -            | Custom validation function for the time value.               |
+| `validationBehavior`      | `'aria' \| 'native'`                                                  | `'native'`   | Whether to use native HTML or ARIA form validation.          |
+| `aria-label`              | `string`                                                              | -            | Defines a string that labels the current element.            |
+| `aria-labelledby`         | `string`                                                              | -            | Identifies the element (or elements) that label the element. |
+| `aria-describedby`        | `string`                                                              | -            | Identifies the element that describes the object.            |
+| `aria-details`            | `string`                                                              | -            | Identifies the element providing extended description.       |
+| `onBlur`                  | `(e: FocusEvent) => void`                                             | -            | Handler called when the element loses focus.                 |
+| `onFocus`                 | `(e: FocusEvent) => void`                                             | -            | Handler called when the element receives focus.              |
+| `onFocusChange`           | `(isFocused: boolean) => void`                                        | -            | Handler called when the element's focus status changes.      |
+| `onKeyDown`               | `(e: KeyboardEvent) => void`                                          | -            | Handler called when a key is pressed.                        |
+| `onKeyUp`                 | `(e: KeyboardEvent) => void`                                          | -            | Handler called when a key is released.                       |
+| `className`               | `string`                                                              | -            | Additional CSS classes to apply to the container.            |
 
-### TimeFieldLabel
+See the [React Aria TimeField documentation](https://react-aria.adobe.com/TimeField#timefield) for more details.
 
-| Prop        | Type     | Default | Description                                   |
-| :---------- | :------- | :------ | :-------------------------------------------- |
-| `className` | `string` | -       | Additional CSS classes to apply to the label. |
+## Composition
 
-### TimeFieldInput
+The Time Field is composed of the root `TimeField` component plus `DateInput` and `DateSegment` from the Date Field package. It can be combined with shared field components (`Label`, `Description`, `FieldError`) for a complete form control.
 
-| Prop        | Type     | Default | Description                                             |
-| :---------- | :------- | :------ | :------------------------------------------------------ |
-| `className` | `string` | -       | Additional CSS classes to apply to the input container. |
+```
+TimeField                                  — Root container. Manages time state, validation, and ARIA context.
+├── Label                                  — Visible label.
+├── DateInput (from Date Field)            — Groups editable segments into a styled input area.
+│   └── DateSegment (from Date Field)      — Individual editable segment (hour, minute, second, AM/PM).
+└── Description                            — Helper text.
+```
 
-### TimeFieldDescription
-
-| Prop        | Type     | Default | Description                                         |
-| :---------- | :------- | :------ | :-------------------------------------------------- |
-| `className` | `string` | -       | Additional CSS classes to apply to the description. |
-
-### TimeFieldError
-
-| Prop        | Type     | Default | Description                                           |
-| :---------- | :------- | :------ | :---------------------------------------------------- |
-| `className` | `string` | -       | Additional CSS classes to apply to the error message. |
+- Use `TimeField` as the root. It provides the time value, validation state, and keyboard context to all children.
+- Use `Label` to label the field. It is automatically linked to the input.
+- Use `DateInput` to render the segment group. It accepts a render function that receives each `segment` and returns a `DateSegment`.
+- Use `DateSegment` inside `DateInput` to render each editable part of the time. It handles focus, typing, and arrow-key incrementing.
+- Use `Description` for helper text. It is automatically announced by screen readers.
+- Use `FieldError` for validation messages. It is linked via `aria-errormessage` when `invalid` is set.
 
 ## Accessibility
 

@@ -3,28 +3,67 @@
 import { cn } from "@/utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
-import { useField as useAriaField, type AriaFieldProps } from "react-aria";
+import {
+  FieldError as AriaFieldError,
+  Group as AriaGroup,
+  Label as AriaLabel,
+  Separator as AriaSeparator,
+  Text as AriaText,
+  type FieldErrorProps as AriaFieldErrorProps,
+  type GroupProps,
+  type LabelProps,
+  type TextProps
+} from "react-aria-components";
 
 // FieldSet
 
-const fieldSetStyles = cva("flex flex-col gap-6");
+const fieldSetStyles = cva("flex flex-col gap-4", {
+  variants: {
+    hasCheckboxGroup: {
+      true: "has-[>[data-slot=checkbox-group]]:gap-3",
+      false: ""
+    },
+    hasRadioGroup: {
+      true: "has-[>[data-slot=radio-group]]:gap-3",
+      false: ""
+    }
+  },
+  defaultVariants: {
+    hasCheckboxGroup: false,
+    hasRadioGroup: false
+  }
+});
 
 export interface FieldSetProps
   extends
-    React.ComponentPropsWithoutRef<"fieldset">,
+    React.ComponentProps<"fieldset">,
     VariantProps<typeof fieldSetStyles> {}
 
-export function FieldSet({ className, ...props }: FieldSetProps) {
-  return <fieldset className={cn(fieldSetStyles(), className)} {...props} />;
+export function FieldSet({
+  className,
+  hasCheckboxGroup,
+  hasRadioGroup,
+  ...props
+}: FieldSetProps) {
+  return (
+    <fieldset
+      data-slot="field-set"
+      className={cn(
+        fieldSetStyles({ hasCheckboxGroup, hasRadioGroup }),
+        className
+      )}
+      {...props}
+    />
+  );
 }
 
 // FieldLegend
 
-const fieldLegendStyles = cva("text-title-50 font-semibold", {
+const fieldLegendStyles = cva("mb-1.5 font-medium", {
   variants: {
     variant: {
-      legend: "text-lg mb-1",
-      label: "text-sm mb-0"
+      label: "text-sm",
+      legend: "text-base"
     }
   },
   defaultVariants: {
@@ -34,16 +73,18 @@ const fieldLegendStyles = cva("text-title-50 font-semibold", {
 
 export interface FieldLegendProps
   extends
-    React.ComponentPropsWithoutRef<"legend">,
+    React.ComponentProps<"legend">,
     VariantProps<typeof fieldLegendStyles> {}
 
 export function FieldLegend({
   className,
-  variant,
+  variant = "legend",
   ...props
 }: FieldLegendProps) {
   return (
     <legend
+      data-slot="field-legend"
+      data-variant={variant}
       className={cn(fieldLegendStyles({ variant }), className)}
       {...props}
     />
@@ -56,47 +97,23 @@ const fieldGroupStyles = cva("@container/field-group flex flex-col gap-6");
 
 export interface FieldGroupProps
   extends
-    React.ComponentPropsWithoutRef<"div">,
-    VariantProps<typeof fieldGroupStyles> {}
-
-export function FieldGroup({ className, ...props }: FieldGroupProps) {
-  return <div className={cn(fieldGroupStyles(), className)} {...props} />;
+    Omit<GroupProps, "isDisabled" | "isReadOnly">,
+    VariantProps<typeof fieldGroupStyles> {
+  disabled?: boolean;
+  readOnly?: boolean;
 }
 
-// Field
-
-const fieldStyles = cva("flex gap-3", {
-  variants: {
-    orientation: {
-      vertical: "flex-col",
-      horizontal: "flex-row items-start",
-      responsive:
-        "flex-col @sm/field-group:flex-row @sm/field-group:items-start"
-    }
-  },
-  defaultVariants: {
-    orientation: "vertical"
-  }
-});
-
-export interface FieldProps
-  extends
-    Omit<React.ComponentPropsWithoutRef<"div">, "children">,
-    VariantProps<typeof fieldStyles> {
-  children?: React.ReactNode;
-  "data-invalid"?: boolean;
-}
-
-export function Field({
+export function FieldGroup({
   className,
-  orientation,
-  "data-invalid": dataInvalid,
+  disabled,
+  readOnly,
   ...props
-}: FieldProps) {
+}: FieldGroupProps) {
   return (
-    <div
-      className={cn(fieldStyles({ orientation }), className)}
-      data-invalid={dataInvalid}
+    <AriaGroup
+      className={cn(fieldGroupStyles(), className)}
+      isDisabled={disabled}
+      isReadOnly={readOnly}
       {...props}
     />
   );
@@ -104,7 +121,9 @@ export function Field({
 
 // FieldContent
 
-const fieldContentStyles = cva("flex flex-col gap-1.5 flex-1");
+const fieldContentStyles = cva(
+  "group/field-content flex flex-1 flex-col gap-0.5 leading-snug"
+);
 
 export interface FieldContentProps
   extends
@@ -112,34 +131,26 @@ export interface FieldContentProps
     VariantProps<typeof fieldContentStyles> {}
 
 export function FieldContent({ className, ...props }: FieldContentProps) {
-  return <div className={cn(fieldContentStyles(), className)} {...props} />;
+  return (
+    <div
+      data-slot="field-content"
+      className={cn(fieldContentStyles(), className)}
+      {...props}
+    />
+  );
 }
 
 // FieldLabel
 
 const fieldLabelStyles = cva(
-  "text-sm font-medium text-input-label-text select-none cursor-pointer data-[disabled]:cursor-not-allowed data-[disabled]:text-input-disabled-text"
+  "text-sm font-medium text-input-label-text select-none cursor-pointer data-disabled:cursor-not-allowed data-disabled:text-input-disabled-text"
 );
 
 export interface FieldLabelProps
-  extends
-    React.ComponentPropsWithoutRef<"label">,
-    VariantProps<typeof fieldLabelStyles> {
-  asChild?: boolean;
-}
+  extends LabelProps, VariantProps<typeof fieldLabelStyles> {}
 
-export function FieldLabel({
-  className,
-  asChild = false,
-  ...props
-}: FieldLabelProps) {
-  const Comp = asChild ? React.Fragment : "label";
-
-  if (asChild) {
-    return <>{props.children}</>;
-  }
-
-  return <Comp className={cn(fieldLabelStyles(), className)} {...props} />;
+export function FieldLabel({ className, ...props }: FieldLabelProps) {
+  return <AriaLabel className={cn(fieldLabelStyles(), className)} {...props} />;
 }
 
 // FieldTitle
@@ -149,18 +160,16 @@ const fieldTitleStyles = cva(
 );
 
 export interface FieldTitleProps
-  extends
-    React.ComponentPropsWithoutRef<"div">,
-    VariantProps<typeof fieldTitleStyles> {}
+  extends TextProps, VariantProps<typeof fieldTitleStyles> {}
 
 export function FieldTitle({ className, ...props }: FieldTitleProps) {
-  return <div className={cn(fieldTitleStyles(), className)} {...props} />;
+  return <AriaText className={cn(fieldTitleStyles(), className)} {...props} />;
 }
 
 // FieldDescription
 
 const fieldDescriptionStyles = cva(
-  "text-sm font-normal text-text-50 data-[horizontal]:text-balance"
+  "text-sm font-normal text-text-50 data-horizontal:text-balance"
 );
 
 export interface FieldDescriptionProps
@@ -172,22 +181,28 @@ export function FieldDescription({
   className,
   ...props
 }: FieldDescriptionProps) {
-  return <div className={cn(fieldDescriptionStyles(), className)} {...props} />;
+  return (
+    <AriaText
+      slot="description"
+      className={cn(fieldDescriptionStyles(), className)}
+      {...props}
+    />
+  );
 }
 
 // FieldError
 
 const fieldErrorStyles = cva(
-  "text-sm font-normal text-input-error data-[horizontal]:text-balance"
+  "text-sm font-normal text-input-error data-horizontal:text-balance"
 );
 
 export interface FieldErrorProps
-  extends
-    React.ComponentPropsWithoutRef<"div">,
-    VariantProps<typeof fieldErrorStyles> {}
+  extends AriaFieldErrorProps, VariantProps<typeof fieldErrorStyles> {}
 
 export function FieldError({ className, ...props }: FieldErrorProps) {
-  return <div className={cn(fieldErrorStyles(), className)} {...props} />;
+  return (
+    <AriaFieldError className={cn(fieldErrorStyles(), className)} {...props} />
+  );
 }
 
 // FieldSeparator
@@ -216,6 +231,14 @@ export function FieldSeparator({
 }: FieldSeparatorProps) {
   const hasContent = Boolean(children);
 
+  if (!children) {
+    return (
+      <AriaSeparator
+        className={cn(fieldSeparatorStyles({ hasContent }), className)}
+      />
+    );
+  }
+
   return (
     <div
       className={cn(fieldSeparatorStyles({ hasContent }), className)}
@@ -224,47 +247,5 @@ export function FieldSeparator({
     >
       {children}
     </div>
-  );
-}
-
-// Composed Field with useField Hook
-
-export interface ComposedFieldProps extends AriaFieldProps {
-  orientation?: "vertical" | "horizontal" | "responsive";
-  children: React.ReactNode;
-  className?: string;
-}
-
-export function ComposedField({
-  orientation = "vertical",
-  children,
-  className,
-  ...ariaProps
-}: ComposedFieldProps) {
-  const { labelProps, fieldProps, descriptionProps, errorMessageProps } =
-    useAriaField(ariaProps);
-
-  const { label, description, errorMessage, isInvalid } = ariaProps;
-
-  return (
-    <Field
-      orientation={orientation}
-      className={className}
-      data-invalid={isInvalid}
-      {...fieldProps}
-    >
-      {label && <FieldLabel {...labelProps}>{label}</FieldLabel>}
-      <FieldContent>
-        {children}
-        {description && (
-          <FieldDescription {...descriptionProps}>
-            {description}
-          </FieldDescription>
-        )}
-        {isInvalid && errorMessage && typeof errorMessage !== "function" && (
-          <FieldError {...errorMessageProps}>{errorMessage}</FieldError>
-        )}
-      </FieldContent>
-    </Field>
   );
 }

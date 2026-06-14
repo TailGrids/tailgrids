@@ -1,9 +1,12 @@
+"use client";
+
 import { TextArea } from "@/registry/core/text-area";
+import { TextField } from "@/registry/core/text-field";
 
 export default function TextAreaPreview() {
   return (
-    <div className="w-full max-w-md">
-      <TextArea label="Message" placeholder="Write something..." />
-    </div>
+    <TextField className="w-full max-w-md">
+      <TextArea name="text-area" placeholder="Write something..." />
+    </TextField>
   );
 }

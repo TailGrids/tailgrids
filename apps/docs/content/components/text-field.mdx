@@ -1,0 +1,212 @@
+---
+title: React Text Field Components
+description: A React text field component that allows users to enter plain text values. Used in forms to collect names, emails, search queries, and other short text inputs.
+---
+
+import TextFieldBasicPreview from "@/components/preview/text-field/text-field-basic-preview";
+import TextFieldControlled from "@/components/preview/text-field/text-field-controlled";
+import TextFieldPreview from "@/components/preview/text-field/text-field-preview";
+import TextFieldUncontrolled from "@/components/preview/text-field/text-field-uncontrolled";
+import TextFieldWithDescription from "@/components/preview/text-field/text-field-with-description";
+import TextFieldWithValidation from "@/components/preview/text-field/text-field-with-validation";
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+# Text Field
+
+React Text Field components allow users to enter plain text values using a keyboard. They are commonly used in forms to collect names, email addresses, search queries, and other short text inputs where precise keyboard entry is expected.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/text-field/text-field-preview.tsx"
+  )}
+>
+  <TextFieldPreview />
+</ComponentPreview>
+
+## Installation
+
+The Text Field relies on the `react-aria-components` library and `class-variance-authority`.
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+```npm
+npx @tailgrids/cli add text-field
+```
+</Accordion>
+
+<Accordion title="Manual">
+
+Install the required dependency:
+
+```npm
+npm i class-variance-authority react-aria-components
+```
+
+Copy and paste the component code into your project.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/text-field.tsx")}
+  lang="tsx"
+  fileName="text-field.tsx"
+  showLineNumbers
+/>
+</Accordion>
+</Accordions>
+
+## Anatomy
+
+```tsx
+import { Label } from "@/components/tailgrids/core/label";
+import { Description } from "@/components/tailgrids/core/description";
+import { Input } from "@/components/tailgrids/core/input";
+import { TextField } from "@/components/tailgrids/core/text-field";
+
+export const TextFieldExample = () => (
+  <TextField>
+    <Label>Full name</Label>
+    <Input placeholder="Enter your full name" />
+    <Description>Use your legal name as it appears on your ID.</Description>
+  </TextField>
+);
+```
+
+## Examples
+
+### Basic Usage
+
+A standard text field with a label and placeholder text.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/text-field/text-field-basic-preview.tsx"
+  )}
+  highlightLines={[5, 10, 13]}
+>
+  <TextFieldBasicPreview />
+</ComponentPreview>
+
+### Controlled
+
+Manage the value externally using the `value` and `onChange` props.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/text-field/text-field-controlled.tsx"
+  )}
+  highlightLines={[9, 13]}
+>
+  <TextFieldControlled />
+</ComponentPreview>
+
+### Uncontrolled
+
+An uncontrolled text field with a `defaultValue` prop.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/text-field/text-field-uncontrolled.tsx"
+  )}
+  highlightLines={[10]}
+>
+  <TextFieldUncontrolled />
+</ComponentPreview>
+
+### With Description
+
+Add helper text below the input using the `Description` and `FieldError` component.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/text-field/text-field-with-description.tsx"
+  )}
+  highlightLines={[
+    [3, 4],
+    [15, 18]
+  ]}
+>
+  <TextFieldWithDescription />
+</ComponentPreview>
+
+### Validation
+
+The `TextField` component supports validation using the `required`, `invalid`, and `validate` props. The `FieldError` component is used to display validation messages.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/text-field/text-field-with-validation.tsx"
+  )}
+  highlightLines={[11, 14]}
+>
+  <TextFieldWithValidation />
+</ComponentPreview>
+
+## API Reference
+
+### TextField
+
+The text input component. Wraps React Aria's `TextField` and maps boolean props (`disabled`, `readOnly`, `required`, `invalid`) to their `is-*` equivalents.
+
+| Prop                 | Type                                                                                  | Default      | Description                                                  |
+| :------------------- | :------------------------------------------------------------------------------------ | :----------- | :----------------------------------------------------------- |
+| `value`              | `string`                                                                              | -            | The current text value (controlled).                         |
+| `defaultValue`       | `string`                                                                              | -            | The default text value (uncontrolled).                       |
+| `onChange`           | `(value: string) => void`                                                             | -            | Handler called when the value changes.                       |
+| `name`               | `string`                                                                              | -            | The name of the input, used when submitting an HTML form.    |
+| `type`               | `'email' \| 'password' \| 'search' \| 'tel' \| 'text' \| 'url'`                       | `'text'`     | The type of input to render.                                 |
+| `inputMode`          | `'decimal' \| 'email' \| 'none' \| 'numeric' \| 'search' \| 'tel' \| 'text' \| 'url'` | -            | Hints at the type of data that might be entered.             |
+| `autoComplete`       | `string`                                                                              | -            | Describes the type of autocomplete functionality.            |
+| `minLength`          | `number`                                                                              | -            | The minimum number of characters required.                   |
+| `maxLength`          | `number`                                                                              | -            | The maximum number of characters allowed.                    |
+| `pattern`            | `string`                                                                              | -            | Regex pattern the value must match to be valid.              |
+| `form`               | `string`                                                                              | -            | The `<form>` element to associate the input with.            |
+| `id`                 | `string`                                                                              | -            | The element's unique identifier.                             |
+| `autoFocus`          | `boolean`                                                                             | `false`      | Whether the input should receive focus on mount.             |
+| `orientation`        | `'vertical' \| 'horizontal' \| 'responsive'`                                          | `'vertical'` | Layout direction of the field container.                     |
+| `disabled`           | `boolean`                                                                             | `false`      | Whether the input is disabled.                               |
+| `readOnly`           | `boolean`                                                                             | `false`      | Whether the input is read only.                              |
+| `required`           | `boolean`                                                                             | `false`      | Whether the input is required.                               |
+| `invalid`            | `boolean`                                                                             | `false`      | Whether the input is shown in an invalid state.              |
+| `validate`           | `(value: string) => ValidationResult \| true \| null \| undefined`                    | -            | Custom validation function for the value.                    |
+| `validationBehavior` | `'aria' \| 'native'`                                                                  | `'native'`   | Whether to use native HTML or ARIA form validation.          |
+| `spellCheck`         | `boolean`                                                                             | -            | Whether the element may be checked for spelling errors.      |
+| `enterKeyHint`       | `'done' \| 'enter' \| 'go' \| 'next' \| 'previous' \| 'search' \| 'send'`             | -            | Action label for the enter key on virtual keyboards.         |
+| `aria-label`         | `string`                                                                              | -            | Defines a string that labels the current element.            |
+| `aria-labelledby`    | `string`                                                                              | -            | Identifies the element (or elements) that label the element. |
+| `aria-describedby`   | `string`                                                                              | -            | Identifies the element that describes the object.            |
+| `aria-details`       | `string`                                                                              | -            | Identifies the element providing extended description.       |
+| `onBlur`             | `(e: FocusEvent) => void`                                                             | -            | Handler called when the element loses focus.                 |
+| `onFocus`            | `(e: FocusEvent) => void`                                                             | -            | Handler called when the element receives focus.              |
+| `onFocusChange`      | `(isFocused: boolean) => void`                                                        | -            | Handler called when the element's focus status changes.      |
+| `onKeyDown`          | `(e: KeyboardEvent) => void`                                                          | -            | Handler called when a key is pressed.                        |
+| `onKeyUp`            | `(e: KeyboardEvent) => void`                                                          | -            | Handler called when a key is released.                       |
+| `className`          | `string`                                                                              | -            | Additional CSS classes to apply to the container.            |
+
+See the [React Aria TextField documentation](https://react-aria.adobe.com/TextField#textfield) for more details.
+
+## Composition
+
+The Text Field is composed of the root `TextField` component plus `Input` for the text input element. It can be combined with shared field components (`Label`, `Description`, `FieldError`) for a complete form control.
+
+```
+TextField                                  — Root container. Manages text value, validation, and ARIA context.
+├── Label                                  — Visible label.
+├── Input                                  — Native text input element with styling and ARIA integration.
+├── Description                            — Helper text.
+└── FieldError                             — Validation error message (shown when `invalid` is set).
+```
+
+- Use `TextField` as the root. It provides the text value, validation state, and keyboard context to all children.
+- Use `Label` to label the field. It is automatically linked to the input.
+- Use `Input` to render the text input element. It handles keyboard input and focus management.
+- Use `Description` for helper text. It is automatically announced by screen readers.
+- Use `FieldError` for validation messages. It is linked via `aria-errormessage` when `invalid` is set.
+
+## Accessibility
+
+- **Label Association**: The `Label` component is automatically associated with the input via ARIA, ensuring screen readers announce the label when focus is on the field.
+- **Validation Messages**: `FieldError` is linked to the input via `aria-errormessage` when the field is in an invalid state.
+- **Required Indicator**: `isRequired` applies `aria-required` to the input, signaling to assistive technology that the field must be filled.
+- **Disabled State**: When `disabled` is true, the input receives `aria-disabled` and does not respond to user interaction.
+- **Read Only**: The `readOnly` prop prevents user edits while keeping focus and selection behavior intact.

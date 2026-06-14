@@ -2,7 +2,7 @@
 
 import { cn } from "@/utils/cn";
 import { useState } from "react";
-import { CodeBlock } from "./code-block";
+import { CodeBlock, type HighlightLine } from "./code-block";
 import { CopyToClipboard } from "./copy-to-clipboard";
 import { SegmentedControl } from "./segmented-control";
 import { SelectTheme } from "./select-theme";
@@ -24,6 +24,8 @@ type PropsType = {
   children: React.ReactNode;
   noPaddingOnPreviewForMobile?: boolean;
   noPaddingOnPreviewForLaptop?: boolean;
+  highlightLines?: HighlightLine[];
+  highlightWords?: string[];
 };
 
 export function ComponentPreview({
@@ -31,6 +33,8 @@ export function ComponentPreview({
   codeSnippetLang = "tsx",
   noPaddingOnPreviewForMobile,
   noPaddingOnPreviewForLaptop,
+  highlightLines,
+  highlightWords,
   children
 }: PropsType) {
   const [activeTab, setActiveTab] = useState("preview");
@@ -71,11 +75,13 @@ export function ComponentPreview({
         )}
 
         {activeTab === "code" && (
-          <div className="max-h-180 h-full border bg-white dark:bg-[#030712] rounded-[20px] shadow-terminal overflow-auto">
+          <div className="max-h-150 h-full border bg-white dark:bg-[#030712] rounded-[20px] shadow-terminal overflow-auto">
             <CodeBlock
               lang={codeSnippetLang}
               showLineNumbers
               snippet={codeSnippet}
+              highlightLines={highlightLines}
+              highlightWords={highlightWords}
             />
           </div>
         )}

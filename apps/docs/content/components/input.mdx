@@ -4,10 +4,11 @@ description: A React input component built with Tailwind CSS. Create text input 
 ---
 
 import InputControlledPreview from "@/components/preview/input/input-controlled-preview";
+import InputUncontrolledPreview from "@/components/preview/input/input-uncontrolled-preview";
 import InputCustomPreview from "@/components/preview/input/input-custom-preview";
 import InputPreview from "@/components/preview/input/input-preview";
 import InputStatesPreview from "@/components/preview/input/input-states-preview";
-import InputWithHintPreview from "@/components/preview/input/input-with-hint-preview";
+import InputDisabledPreview from "@/components/preview/input/input-disabled-preview";
 import InputWithLabelPreview from "@/components/preview/input/input-with-label-preview";
 import { Input } from "@/registry/core/input";
 import { getFileContent } from "@/utils/get-file-content";
@@ -19,7 +20,7 @@ The React Input component lets users enter text in a form. It is used for fields
 
 It works like a standard input field and can be used with a label, placeholder, and validation messages. For example, users can type their email and see an error or success message based on the input.
 
-Built with React and styled using Tailwind CSS. It is designed to be used with the [Label component](https://tailgrids.com/docs/components/label) for accessibility and supports validation states, as well as controlled and uncontrolled inputs.
+Built with React Aria Components and styled using Tailwind CSS. It is designed to be used with the [Label component](https://tailgrids.com/docs/components/label) for accessibility and supports validation states, as well as controlled and uncontrolled inputs.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -34,6 +35,7 @@ Built with React and styled using Tailwind CSS. It is designed to be used with t
 <Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
+
 ```npm
 npx @tailgrids/cli add input
 ```
@@ -44,7 +46,7 @@ npx @tailgrids/cli add input
 Install the required dependencies:
 
 ```npm
-npm i class-variance-authority
+npm i class-variance-authority react-aria-components
 ```
 
 Copy and paste the following component code into your project.
@@ -60,7 +62,7 @@ Copy and paste the following component code into your project.
 
 ## Usage
 
-Import the component and pass the required props. Use the `Label` component to provide a label for the input.
+Import the component and pair it with a label for accessibility. The input accepts the standard HTML input props, along with the Tailgrids `state` variant and `className`.
 
 ```tsx
 import { Input } from "@/components/tailgrids/core/input";
@@ -73,7 +75,12 @@ export default function InputPreview() {
   return (
     <div className="grid gap-2">
       <Label htmlFor={id}>Email</Label>
-      <Input id={id} placeholder="Enter your email" />
+      <Input
+        id={id}
+        type="email"
+        placeholder="Enter your email"
+        autoComplete="email"
+      />
     </div>
   );
 }
@@ -81,68 +88,80 @@ export default function InputPreview() {
 
 ## Examples
 
-### With Label
+### With Label and Hint
 
-Use the `Label` component and link it to the input using the `id` and `htmlFor` props.
+Use the `Label` and `Description` components to show a label and helper text.
 
 <ComponentPreview
   codeSnippet={getFileContent(
     "/src/components/preview/input/input-with-label-preview.tsx"
   )}
+  highlightLines={[9, [11, 13]]}
 >
   <InputWithLabelPreview />
 </ComponentPreview>
 
-Note: Labels are non-selectable with `select-none` for better UX. Placeholder text uses muted color for better visual hierarchy.
-
-### With Hint
-
-Use a standard HTML element (like `p`) below the input to provide helper text.
-
-<ComponentPreview
-  codeSnippet={getFileContent(
-    "/src/components/preview/input/input-with-hint-preview.tsx"
-  )}
->
-  <InputWithHintPreview />
-</ComponentPreview>
-
-Note: You can style the hint text based on the input state using status-specific text colors.
-
-### States
-
-Use visual states to show validation feedback, or disable the input.
-
-<ComponentPreview
-  codeSnippet={getFileContent(
-    "/src/components/preview/input/input-states-preview.tsx"
-  )}
->
-  <InputStatesPreview />
-</ComponentPreview>
-
-Note: Focus ring color matches the state (primary for default, danger for error, success for success). Disabled inputs have reduced opacity and prevent pointer events.
-
 ### Controlled
 
-Control the input value using React state.
+Use the native `value` and `onChange` props for controlled usage.
 
 <ComponentPreview
   codeSnippet={getFileContent(
     "/src/components/preview/input/input-controlled-preview.tsx"
   )}
+  highlightLines={[18, 19]}
 >
   <InputControlledPreview />
 </ComponentPreview>
 
+### Uncontrolled
+
+Use the `defaultValue` prop on field container for uncontrolled usage.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/input/input-uncontrolled-preview.tsx"
+  )}
+  highlightLines={[10]}
+>
+  <InputUncontrolledPreview />
+</ComponentPreview>
+
+### States
+
+Use the `state` prop to switch between the built-in visual variants.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/input/input-states-preview.tsx"
+  )}
+  highlightLines={[13, 21]}
+>
+  <InputStatesPreview />
+</ComponentPreview>
+
+### Disabled
+
+Use `disabled` prop on field container to disable user interaction and apply disabled styles.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/input/input-disabled-preview.tsx"
+  )}
+  highlightWords={["disabled"]}
+>
+  <InputDisabledPreview />
+</ComponentPreview>
+
 ### Custom Style
 
-Use `className` to override default styles.
+Use `className` to override or extend the default styling.
 
 <ComponentPreview
   codeSnippet={getFileContent(
     "/src/components/preview/input/input-custom-preview.tsx"
   )}
+  highlightLines={[16]}
 >
   <InputCustomPreview />
 </ComponentPreview>
@@ -151,21 +170,25 @@ Use `className` to override default styles.
 
 ### Input
 
-Extends `input` element props.
+`Input` extends the native HTML `input` props from React Aria Components.
 
-| Prop          | Type                                | Default     | Description               |
-| ------------- | ----------------------------------- | ----------- | ------------------------- |
-| `state`       | `'default' \| 'error' \| 'success'` | `'default'` | Visual state of the input |
-| `className`   | `string`                            | -           | Additional CSS classes    |
-| `type`        | `string`                            | `'text'`    | HTML input type           |
-| `placeholder` | `string`                            | -           | Placeholder text          |
-| `disabled`    | `boolean`                           | `false`     | Disable input interaction |
-| `value`       | `string`                            | -           | Controlled value          |
-| `onChange`    | `(e: ChangeEvent) => void`          | -           | Change event handler      |
+| Prop           | Type                                         | Default     | Description                                                                   |
+| -------------- | -------------------------------------------- | ----------- | ----------------------------------------------------------------------------- |
+| `placeholder`  | `string`                                     | -           | Temporary text shown when the input is empty.                                 |
+| `className`    | `string`                                     | -           | CSS class name for the element. Can be a function that receives render state. |
+| `state`        | `'default' \| 'error' \| 'success'`          | `'default'` | Tailgrids visual state variant added by the wrapper component.                |
+| `value`        | `string`                                     | -           | Controlled input value.                                                       |
+| `defaultValue` | `string`                                     | -           | Uncontrolled initial value.                                                   |
+| `onChange`     | `(e: ChangeEvent<HTMLInputElement>) => void` | -           | Fires when the input value changes.                                           |
+| `disabled`     | `boolean`                                    | `false`     | Disables user interaction.                                                    |
+| `autoFocus`    | `boolean`                                    | `false`     | Automatically focuses the input on mount.                                     |
+| `type`         | `string`                                     | `'text'`    | Native input type.                                                            |
+| `name`         | `string`                                     | -           | Name submitted with form data.                                                |
+| `id`           | `string`                                     | -           | Unique input identifier.                                                      |
 
 ## Accessibility
 
-- **Label association:** Connect a label to the input using `htmlFor` and `id`, so users know what the field is for.
-- **Keyboard support:** Users can type in the input, move between fields using `Tab`, and interact using standard keyboard controls.
-- **Focus visibility:** The input shows a clear focus style when selected, helping users see which field is active.
-- **Validation feedback:** Use helper text or messages to show errors or success states clearly.
+- Associate the input with a label using `htmlFor` and `id`.
+- Use `Description` or helper text for additional context when needed.
+- Prefer native validation props like `required`, `minLength`, `maxLength`, and `pattern` when possible.
+- React Aria applies the correct focus-visible and invalid states for styling and assistive technology.

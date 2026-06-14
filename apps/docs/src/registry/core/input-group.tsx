@@ -1,43 +1,47 @@
+"use client";
+
+import { Input, InputProps } from "@/registry/core/input";
+import { TextArea, TextAreaProps } from "@/registry/core/text-area";
 import { cn } from "@/utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
-import * as React from "react";
-import { Input } from "./input";
-import { TextArea } from "./text-area";
+import { ComponentProps } from "react";
+import { Button, ButtonProps } from "./button";
 
-const InputGroup = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    data-slot="input-group"
-    className={cn(
-      "group flex w-full items-center rounded-lg border border-base-300 bg-input-background focus-within:border-input-primary-focus-border focus-within:ring-4 focus-within:ring-input-primary-focus-border/20 transition-all",
-      className
-    )}
-    {...props}
-  />
-));
+export interface InputGroupProps extends ComponentProps<"div"> {}
+
+function InputGroup({ className, ...props }: InputGroupProps) {
+  return (
+    <div
+      data-slot="input-group"
+      role="group"
+      className={cn(
+        "group flex w-full items-center rounded-lg border border-base-300 bg-input-background focus-within:border-input-primary-focus-border focus-within:ring-4 focus-within:ring-input-primary-focus-border/20 transition-all",
+        className
+      )}
+      {...props}
+    />
+  );
+}
 InputGroup.displayName = "InputGroup";
 
-const InputGroupInput = React.forwardRef<
-  React.ElementRef<typeof Input>,
-  React.ComponentPropsWithoutRef<typeof Input>
->(({ className, ...props }, ref) => (
-  <Input
-    ref={ref}
-    data-slot="input-group-control"
-    className={cn(
-      "flex-1 border-none bg-transparent shadow-none focus:ring-0 focus:border-none rounded-none w-full min-w-0 px-3",
-      className
-    )}
-    {...props}
-  />
-));
+export interface InputGroupInputProps extends InputProps {}
+
+function InputGroupInput({ className, ...props }: InputGroupInputProps) {
+  return (
+    <Input
+      data-slot="input-group-control"
+      className={cn(
+        "flex-1 border-none bg-transparent shadow-none focus:ring-0 focus:border-none rounded-none w-full min-w-0 px-0 group-[:has(>input:first-child)]:pl-3 group-[:has(>input:last-child)]:pr-3",
+        className
+      )}
+      {...props}
+    />
+  );
+}
 InputGroupInput.displayName = "InputGroupInput";
 
 const inputGroupAddonStyles = cva(
-  "flex items-center justify-center px-3 text-sm text-title-50 shrink-0",
+  "flex items-center justify-center px-3 text-sm text-title-50 shrink-0 [&>svg]:h-lh",
   {
     variants: {
       align: {
@@ -53,26 +57,23 @@ const inputGroupAddonStyles = cva(
   }
 );
 
-interface InputGroupAddonProps
-  extends
-    React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof inputGroupAddonStyles> {}
+export interface InputGroupAddonProps
+  extends ComponentProps<"div">, VariantProps<typeof inputGroupAddonStyles> {}
 
-const InputGroupAddon = React.forwardRef<HTMLDivElement, InputGroupAddonProps>(
-  ({ className, align, ...props }, ref) => (
+function InputGroupAddon({ className, align, ...props }: InputGroupAddonProps) {
+  return (
     <div
-      ref={ref}
       data-slot="input-group-addon"
       data-align={align}
       className={cn(inputGroupAddonStyles({ align }), className)}
       {...props}
     />
-  )
-);
+  );
+}
 InputGroupAddon.displayName = "InputGroupAddon";
 
 const inputGroupButtonStyles = cva(
-  "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-input-primary-focus-border disabled:pointer-events-none disabled:opacity-50 text-title-50",
+  "text-title-50 inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-input-primary-focus-border disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       size: {
@@ -88,39 +89,49 @@ const inputGroupButtonStyles = cva(
   }
 );
 
-interface InputGroupButtonProps
+export interface InputGroupButtonProps
   extends
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    Omit<ButtonProps, "size">,
     VariantProps<typeof inputGroupButtonStyles> {}
 
-const InputGroupButton = React.forwardRef<
-  HTMLButtonElement,
-  InputGroupButtonProps
->(({ className, size, ...props }, ref) => (
-  <button
-    ref={ref}
-    type="button"
-    data-slot="input-group-button"
-    className={cn(inputGroupButtonStyles({ size }), className)}
-    {...props}
-  />
-));
+function InputGroupButton({
+  className,
+  size,
+  variant = "ghost",
+  ...props
+}: InputGroupButtonProps) {
+  const iconOnly = size === "icon-xs" || size === "icon-sm";
+  const buttonSize =
+    size === "icon-xs" ? "xs" : size === "icon-sm" ? "sm" : size;
+
+  return (
+    <Button
+      type="button"
+      size={buttonSize}
+      iconOnly={iconOnly}
+      variant={variant}
+      data-slot="input-group-button"
+      className={cn(inputGroupButtonStyles({ size }), className)}
+      {...props}
+    />
+  );
+}
 InputGroupButton.displayName = "InputGroupButton";
 
-const InputGroupTextarea = React.forwardRef<
-  React.ElementRef<typeof TextArea>,
-  React.ComponentPropsWithoutRef<typeof TextArea>
->(({ className, ...props }, ref) => (
-  <TextArea
-    ref={ref}
-    data-slot="input-group-control"
-    className={cn(
-      "w-full min-w-0 px-3 py-2.5 flex-1 border-none bg-transparent shadow-none focus:ring-0 focus:border-none rounded-none resize-none",
-      className
-    )}
-    {...props}
-  />
-));
+export interface InputGroupTextareaProps extends TextAreaProps {}
+
+function InputGroupTextarea({ className, ...props }: InputGroupTextareaProps) {
+  return (
+    <TextArea
+      data-slot="input-group-control"
+      className={cn(
+        "w-full min-w-0 px-3 py-2.5 flex-1 border-none bg-transparent shadow-none focus:ring-0 focus:border-none rounded-none resize-none",
+        className
+      )}
+      {...props}
+    />
+  );
+}
 InputGroupTextarea.displayName = "InputGroupTextarea";
 
 export {

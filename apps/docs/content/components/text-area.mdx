@@ -1,23 +1,22 @@
 ---
 title: React TextArea Components
-description: A React TextArea component for multi-line text input. Uses the native <textarea> element with support for labels, validation states, controlled values, and accessible form handling.
+description: A React TextArea component for multi-line text input. Built on the React Aria textarea primitive with Tailgrids styling, validation states, controlled values, and accessible form handling.
 ---
 
+import TextAreaControlledPreview from "@/components/preview/text-area/text-area-controlled-preview";
 import TextAreaDisabledPreview from "@/components/preview/text-area/text-area-disabled-preview";
-import TextAreaErrorPreview from "@/components/preview/text-area/text-area-error-preview";
 import TextAreaPreview from "@/components/preview/text-area/text-area-preview";
-import TextAreaSuccessPreview from "@/components/preview/text-area/text-area-success-preview";
+import TextAreaUncontrolledPreview from "@/components/preview/text-area/text-area-uncontrolled-preview";
+import TextAreaRowsPreview from "@/components/preview/text-area/text-area-rows-preview";
+import TextAreaStatesPreview from "@/components/preview/text-area/text-area-states-preview";
+import TextAreaWithValidationPreview from "@/components/preview/text-area/text-area-with-validation-preview";
 import TextAreaWithHintPreview from "@/components/preview/text-area/text-area-with-hint-preview";
-import TextAreaWithLabelPreview from "@/components/preview/text-area/text-area-with-label-preview";
-import { TextArea } from "@/registry/core/text-area";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Text Area
 
 React Text Area components are used to collect longer, multi-line text input from users. They are commonly used for messages, descriptions, feedback forms, comments, and notes where a single-line input is not sufficient.
-
-This Text Area component is built with React and styled using Tailwind CSS. It supports labels, helper text, validation states, and works in both controlled and uncontrolled form setups.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -42,7 +41,7 @@ npx @tailgrids/cli add text-area
 Install the required dependency:
 
 ```npm
-npm i class-variance-authority
+npm i class-variance-authority react-aria-components
 ```
 
 Copy and paste the following component code into your project.
@@ -56,75 +55,75 @@ fileName="text-area.tsx"
 </Accordion>
 </Accordions>
 
-## Usage
+## Anatomy
 
 Import the component and pass the required props.
 
 ```tsx
 import { TextArea } from "@/components/tailgrids/core/text-area";
 
-export default TextAreaExample = () => (
-  <TextArea label="Message" placeholder="Write your message..." />
-);
+export default function TextAreaExample() {
+  return (
+    <TextArea name="message" placeholder="Write your message..." rows={5} />
+  );
+}
 ```
 
 ## Examples
 
-### With Label
+### Basic Usage
 
-Use the `label` prop to describe the text area.
-
-<ComponentPreview
-  codeSnippet={getFileContent(
-    "/src/components/preview/text-area/text-area-with-label-preview.tsx"
-  )}
->
-  <TextAreaWithLabelPreview />
-</ComponentPreview>
-
-Note: Labels are non-selectable with `select-none` for better UX.
-
-### With Hint
-
-Use the `hint` prop to show helper text below the text area.
+Compose the `TextArea` component with a `Label` and optional `Description` for a complete form field.
 
 <ComponentPreview
   codeSnippet={getFileContent(
     "/src/components/preview/text-area/text-area-with-hint-preview.tsx"
   )}
+  highlightLines={[12, [14, 16]]}
 >
   <TextAreaWithHintPreview />
 </ComponentPreview>
 
-Note: The helper text uses `peer` class to enable styling based on text area state.
+### Controlled
 
-### Success
-
-Indicating successful validation or a positive outcome by using the `state="success"` prop.
+Create a controlled textarea by passing `value` and `onChange` props to manage the input state externally.
 
 <ComponentPreview
   codeSnippet={getFileContent(
-    "/src/components/preview/text-area/text-area-success-preview.tsx"
+    "/src/components/preview/text-area/text-area-controlled-preview.tsx"
   )}
+  highlightLines={[20, 21]}
 >
-  <TextAreaSuccessPreview />
+  <TextAreaControlledPreview />
 </ComponentPreview>
 
-Note: The border and focus ring colors change to success green to indicate a valid state.
+### Uncontrolled
 
-### Error
-
-Highlight errors or validation failures to the user by setting the `state="error"` prop.
+Add `defaultValue` prop to the container field to pass an initial value.
 
 <ComponentPreview
   codeSnippet={getFileContent(
-    "/src/components/preview/text-area/text-area-error-preview.tsx"
+    "/src/components/preview/text-area/text-area-uncontrolled-preview.tsx"
   )}
+  highlightLines={[9]}
 >
-  <TextAreaErrorPreview />
+  <TextAreaUncontrolledPreview />
 </ComponentPreview>
 
-Note: Focus ring color matches the state (primary for default, danger for error, success for success).
+**Note:** React Aria manages inputs through context, so the `defaultValue` prop must be passed to the container field (`TextField`) rather than the `TextArea` itself for uncontrolled usage.
+
+### States
+
+Pass `state` for visual variants like `error` and `success`. Use the `Description` or `FieldError` component to provide feedback messages for each state.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/text-area/text-area-states-preview.tsx"
+  )}
+  highlightLines={[21, 33]}
+>
+  <TextAreaStatesPreview />
+</ComponentPreview>
 
 ### Disabled
 
@@ -134,29 +133,66 @@ Prevent user interaction and reflect an inactive state by setting the `disabled`
   codeSnippet={getFileContent(
     "/src/components/preview/text-area/text-area-disabled-preview.tsx"
   )}
+  highlightWords={["disabled"]}
 >
   <TextAreaDisabledPreview />
 </ComponentPreview>
 
-Note: Disabled state applies reduced opacity to the text area and helper text.
+**Note:** `disabled` prop can be passed to either the `TextArea` or the container field (`TextField`) to disable the entire field.
+
+### Rows
+
+Control the visible row count with the native `rows` prop.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/text-area/text-area-rows-preview.tsx"
+  )}
+  highlightLines={[14]}
+>
+  <TextAreaRowsPreview />
+</ComponentPreview>
+
+### With Validation
+
+Validation can be implemented through the container field (`TextField`) using the `validate` prop. The `invalid` prop can also be used to manually set the error state.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/text-area/text-area-with-validation-preview.tsx"
+  )}
+  highlightLines={[
+    [27, 32],
+    [44, 46]
+  ]}
+>
+  <TextAreaWithValidationPreview />
+</ComponentPreview>
 
 ## API Reference
 
 ### TextArea
 
-Extends `textarea` element props.
+Extends the native `textarea` element props and the React Aria textarea primitive props.
 
-| Prop        | Type                                | Default     | Description                             |
-| ----------- | ----------------------------------- | ----------- | --------------------------------------- |
-| `label`     | `string`                            | `-`         | Optional label displayed above textarea |
-| `hint`      | `string`                            | `-`         | Hint text displayed below textarea      |
-| `state`     | `'default' \| 'error' \| 'success'` | `'default'` | Visual validation state                 |
-| `className` | `string`                            | `-`         | Additional classes for customization    |
+| Prop           | Type                                | Default     | Description                                                                 |
+| -------------- | ----------------------------------- | ----------- | --------------------------------------------------------------------------- |
+| `state`        | `'default' \| 'error' \| 'success'` | `'default'` | Tailgrids visual state variant.                                             |
+| `value`        | `string`                            | `-`         | Controlled textarea value.                                                  |
+| `defaultValue` | `string`                            | `-`         | Uncontrolled initial value. (Not encouraged to use. Use on field container) |
+| `onChange`     | `(value: string) => void`           | `-`         | Called when the value changes.                                              |
+| `rows`         | `number`                            | `4`         | Native textarea row count.                                                  |
+| `name`         | `string`                            | `-`         | Name used when submitting a form.                                           |
+| `placeholder`  | `string`                            | `-`         | Hint text shown when the field is empty.                                    |
+| `disabled`     | `boolean`                           | `false`     | Disables the textarea programmatically.                                     |
+| `readOnly`     | `boolean`                           | `false`     | Prevents editing while keeping the value selectable.                        |
+| `required`     | `boolean`                           | `false`     | Marks the field as required by native form validation.                      |
+| `className`    | `string`                            | `-`         | Additional classes for customization.                                       |
 
 ## Accessibility
 
-- Label is automatically associated using a generated `id` and `htmlFor`.
-- Uses semantic `<textarea>` element.
-- Fully keyboard accessible.
-- Disabled state is communicated visually and programmatically.
-- Validation feedback is available through visible messaging.
+- Use a visible `Label` element when the field needs an accessible name.
+- Use a description slot or helper text for supplemental guidance.
+- The textarea remains a semantic `<textarea>` element and supports native keyboard interaction.
+- Disabled, read-only, and invalid states are communicated visually and programmatically.
+- When used inside a React Aria `Form`, validation can be driven by `validationBehavior`, `required`, and custom validation logic.

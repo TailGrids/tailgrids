@@ -20,7 +20,9 @@
     "[Combobox](/components/combobox)",
     "[Command](/components/command)",
     "[Context Menu](/components/context-menu)",
+    "[Date Field](/components/date-field)",
     "[Date Picker](/components/date-picker)",
+    "[Description](/components/description)",
     "[Dialog](/components/dialog)",
     "[Drawer](/components/drawer)",
     "[Dropdown](/components/dropdown)",
@@ -34,6 +36,7 @@
     "[Menubar](/components/menubar)",
     "[Native Select](/components/native-select)",
     "[Navigation Menu](/components/navigation-menu)",
+    "[Number Field](/components/number-field)",
     "[OTP Input](/components/otp-input)",
     "[Pagination](/components/pagination)",
     "[Popover](/components/popover)",
@@ -53,10 +56,29 @@
     "[Table](/components/table)",
     "[Tabs](/components/tabs)",
     "[Text Area](/components/text-area)",
+    "[Text Field](/components/text-field)",
     "[Time Field](/components/time-field)",
     "[Time Picker](/components/time-picker)",
     "[Toast](/components/toast)",
     "[Toggle](/components/toggle)",
     "[Tooltip](/components/tooltip)"
-  ]
+  ],
+  "badges": {
+    "/components/button": "updated",
+    "/components/button-group": "updated",
+    "/components/calendar": "new",
+    "/components/date-field": "new",
+    "/components/date-picker": "updated",
+    "/components/description": "new",
+    "/components/field": "updated",
+    "/components/input": "updated",
+    "/components/input-group": "updated",
+    "/components/number-field": "new",
+    "/components/range-calendar": "new",
+    "/components/social-button": "updated",
+    "/components/text-area": "updated",
+    "/components/text-field": "new",
+    "/components/time-field": "new",
+    "/components/time-picker": "new"
+  }
 }

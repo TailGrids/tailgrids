@@ -1,5 +1,6 @@
 "use client";
 
+import { Description } from "@/registry/core/description";
 import { Input } from "@/registry/core/input";
 import { Label } from "@/registry/core/label";
 import { useId, useState } from "react";
@@ -17,7 +18,9 @@ export default function InputControlledPreview() {
         value={value}
         onChange={e => setValue(e.target.value)}
       />
-      <p className="text-sm text-text-50">{value.length} characters</p>
+      <Description className="text-sm text-text-50">
+        {value.length} characters
+      </Description>
     </div>
   );
 }

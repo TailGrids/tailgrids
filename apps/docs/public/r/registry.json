@@ -120,6 +120,7 @@
       "description": "Button component with multiple variants, sizes, and support for icons.",
       "registryDependencies": [],
       "dependencies": [
+        "react-aria-components",
         "class-variance-authority"
       ],
       "files": [
@@ -301,24 +302,47 @@
       ]
     },
     {
-      "name": "date-picker",
+      "name": "date-field",
       "type": "registry:ui",
-      "description": "A component to select a date or a range of dates.",
-      "registryDependencies": [
-        "button"
-      ],
+      "description": "A React date field component that lets users input a date.",
+      "registryDependencies": [],
       "dependencies": [
-        "react-stately",
-        "date-fns",
-        "@tailgrids/icons"
+        "class-variance-authority",
+        "react-aria-components"
       ],
       "files": [
         {
-          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/date-picker/single-date.tsx",
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/date-field.tsx",
           "type": "registry:ui"
-        },
+        }
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "description": "A component to select a date.",
+      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "files": [
         {
-          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/date-picker/range-date.tsx",
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "description",
+      "type": "registry:ui",
+      "description": "A description component that provides additional context or instructions for form fields.",
+      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/description.tsx",
           "type": "registry:ui"
         }
       ]
@@ -374,7 +398,7 @@
     {
       "name": "field",
       "type": "registry:ui",
-      "description": "A field component with multiple variants and support for icons.",
+      "description": "A collection of components for building accessible and flexible form fields.",
       "registryDependencies": [],
       "dependencies": [
         "class-variance-authority",
@@ -408,7 +432,8 @@
       "description": "An input component with multiple variants and support for icons.",
       "registryDependencies": [],
       "dependencies": [
-        "class-variance-authority"
+        "class-variance-authority",
+        "react-aria-components"
       ],
       "files": [
         {
@@ -420,10 +445,11 @@
     {
       "name": "input-group",
       "type": "registry:ui",
-      "description": "An input group component with multiple variants and support for icons.",
+      "description": "A flexible and accessible input group component that allows you to combine multiple input elements, such as text inputs, buttons, and icons, into a single cohesive unit.",
       "registryDependencies": [
         "input",
-        "text-area"
+        "text-area",
+        "button"
       ],
       "dependencies": [
         "class-variance-authority"
@@ -524,6 +550,22 @@
       "files": [
         {
           "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "number-field",
+      "type": "registry:ui",
+      "description": "A component for entering numeric values with increment and decrement buttons.",
+      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/number-field.tsx",
           "type": "registry:ui"
         }
       ]
@@ -826,14 +868,31 @@
     {
       "name": "text-area",
       "type": "registry:ui",
-      "description": "A text area component with multiple variants.",
+      "description": "A multiline text input component.",
       "registryDependencies": [],
       "dependencies": [
-        "class-variance-authority"
+        "class-variance-authority",
+        "react-aria-components"
       ],
       "files": [
         {
           "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/text-area.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "text-field",
+      "type": "registry:ui",
+      "description": "A wrapper for text inputs.",
+      "registryDependencies": [],
+      "dependencies": [
+        "class-variance-authority",
+        "react-aria-components"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/text-field.tsx",
           "type": "registry:ui"
         }
       ]
@@ -844,8 +903,7 @@
       "description": "A segment-based time input component.",
       "registryDependencies": [],
       "dependencies": [
-        "react-aria-components",
-        "react-stately"
+        "react-aria-components"
       ],
       "files": [
         {

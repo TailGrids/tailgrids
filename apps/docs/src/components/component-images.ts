@@ -69,7 +69,9 @@ export const componentImages: Record<string, StaticImageData> = {
   "context-menu": ContextMenuImage,
   combobox: ComboboxImage,
   command: CommandImage,
+  "date-field": DatePickerImage, // Fallback
   "date-picker": DatePickerImage,
+  description: FieldImage, // Fallback
   dialog: DialogImage,
   drawer: DrawerImage,
   dropdown: DropdownImage,
@@ -83,6 +85,7 @@ export const componentImages: Record<string, StaticImageData> = {
   menubar: NavigationMenuImage, // Fallback
   "native-select": DropdownImage, // Fallback
   "navigation-menu": NavigationMenuImage,
+  "number-field": InputImage, // Fallback
   "otp-input": OtpInputImage,
   pagination: PaginationImage,
   popover: PopoverImage,
@@ -102,6 +105,7 @@ export const componentImages: Record<string, StaticImageData> = {
   table: TableImage,
   tabs: TabsImage,
   "text-area": TextAreaImage,
+  "text-field": InputImage, // Fallback
   "time-field": TimeFieldImage,
   "time-picker": TimePickerImage,
   toast: ToastImage,

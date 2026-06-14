@@ -1,9 +1,14 @@
+"use client";
+
 import { cn } from "@/utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
-import { useId, type ComponentProps } from "react";
+import {
+  TextAreaProps as AriaTextAreaProps,
+  TextArea as AriaTextAria
+} from "react-aria-components";
 
 const textAreaStyles = cva(
-  "bg-input-background peer h-32 w-full rounded-lg border px-4 py-3.5 text-title-50 outline-none placeholder:text-input-placeholder-text focus:ring-4 disabled:border-base-200 disabled:bg-background-soft-50 disabled:text-input-disabled-text disabled:placeholder:text-input-disabled-text",
+  "bg-input-background peer w-full border px-4 py-3.5 text-title-50 outline-none rounded-lg placeholder:text-input-placeholder-text focus:ring-4 disabled:border-base-200 disabled:cursor-not-allowed disabled:bg-background-soft-50 disabled:text-input-disabled-text disabled:placeholder:text-input-disabled-text data-invalid:border-input-error-focus-border data-invalid:ring-input-error-focus-border/20",
   {
     variants: {
       state: {
@@ -18,52 +23,20 @@ const textAreaStyles = cva(
   }
 );
 
-const hintStyles = cva(
-  "text-sm font-normal peer-disabled:text-input-disabled-text",
-  {
-    variants: {
-      state: {
-        default: "text-text-50",
-        error: "text-input-error",
-        success: "text-input-success"
-      }
-    }
-  }
-);
-
-type PropsType = ComponentProps<"textarea"> &
-  VariantProps<typeof textAreaStyles> & {
-    label?: string;
-    hint?: string;
-  };
+export interface TextAreaProps
+  extends AriaTextAreaProps, VariantProps<typeof textAreaStyles> {}
 
 export function TextArea({
-  label,
-  state = "default",
-  hint,
   className,
-  ...textAreaProps
-}: PropsType) {
-  const id = useId();
-
+  rows = 4,
+  state = "default",
+  ...props
+}: TextAreaProps) {
   return (
-    <div className="grid grid-cols-1 gap-2">
-      {label && (
-        <label
-          htmlFor={id}
-          className="max-w-fit text-sm font-medium text-text-50 select-none"
-        >
-          {label}
-        </label>
-      )}
-
-      <textarea
-        id={id}
-        className={cn(textAreaStyles({ state }), className)}
-        {...textAreaProps}
-      />
-
-      {hint && <p className={hintStyles({ state })}>{hint}</p>}
-    </div>
+    <AriaTextAria
+      rows={rows}
+      className={cn(textAreaStyles({ state }), className)}
+      {...props}
+    />
   );
 }

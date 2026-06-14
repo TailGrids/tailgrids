@@ -1,0 +1,123 @@
+---
+title: React Description Components
+description: A React description component to provide detailed information about input elements in a clean, accessible way.
+---
+
+import { getFileContent } from "@/utils/get-file-content";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import DescriptionPreview from "@/components/preview/description/description-preview";
+import DescriptionWithoutFieldPreview from "@/components/preview/description/description-without-field-preview";
+
+# Description
+
+The `Description` component is designed to provide detailed information about input elements in a clean and accessible way. It can be used to enhance the user experience by offering additional context or instructions for form fields.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/description/description-preview.tsx"
+  )}
+>
+  <DescriptionPreview />
+</ComponentPreview>
+
+## Installation
+
+<Accordions defaultValue="CLI">
+<Accordion title="CLI">
+Install the component using the Tailgrids CLI.
+
+```npm
+npx @tailgrids/cli add description
+```
+
+</Accordion>
+
+<Accordion title="Manual">
+The Description component relies on the `react-aria-components` library. Install the required dependencies:
+
+```npm
+npm i react-aria-components
+```
+
+Copy and paste the following component code into your project. The component includes `Description` and its associated props.
+
+<CodeBlockCard
+  snippet={getFileContent("/src/registry/core/description.tsx")}
+  lang="tsx"
+  fileName="description.tsx"
+  showLineNumbers
+/>
+</Accordion>
+</Accordions>
+
+## Usage
+
+Import the component and compose it with your field components.
+
+```tsx
+import { Input } from "@/components/tailgrids/core/input";
+import { TextField } from "@/components/tailgrids/core/input";
+import { Label } from "@/components/tailgrids/core/label";
+import { Description } from "@/components/tailgrids/core/description";
+
+export default function InputPreview() {
+  return (
+    <TextField className="grid gap-2">
+      <Label>Email</Label>
+      <Input type="email" placeholder="Enter your email" autoComplete="email" />
+      <Description>
+        We will never share your email with anyone else.
+      </Description>
+    </TextField>
+  );
+}
+```
+
+## Examples
+
+### With Field Container
+
+Compose the `Description` component within a field container with a `Label` and input element for a complete form field.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/description/description-preview.tsx"
+  )}
+  highlightLines={[10, 16]}
+>
+  <DescriptionPreview />
+</ComponentPreview>
+
+### Without Field Container
+
+Provide `id` and `aria-describedby` props to the `Description` and input components to associate them without a field container.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/description/description-without-field-preview.tsx"
+  )}
+  highlightLines={[13, 15]}
+>
+  <DescriptionWithoutFieldPreview />
+</ComponentPreview>
+
+**Note:** When using within a field container, the `Description` component is automatically connected to the context. No need to manually set `id` or `aria-describedby` props.
+
+## API Reference
+
+### Description
+
+The `Description` component wraps React Aria's `Text` component and inherits its `TextProps` surface.
+
+| Prop        | Type        | Default | Description                                                                                |
+| :---------- | :---------- | :------ | :----------------------------------------------------------------------------------------- |
+| `children`  | `ReactNode` | -       | The helper text or content shown as the description.                                       |
+| `className` | `string`    | -       | Additional CSS classes to apply to the description element.                                |
+| `id`        | `string`    | -       | Optional identifier for the description element.                                           |
+| `slot`      | `string`    | -       | React Aria slot name used for field composition. The component sets this to `description`. |
+
+## Accessibility
+
+- Use `Description` for supporting helper text, hints, or brief instructions tied to an input.
+- When the component is inside a React Aria field container, it is linked to the control automatically through the `description` slot.
+- If you render it outside a field container, connect it with `aria-describedby` on the associated control.

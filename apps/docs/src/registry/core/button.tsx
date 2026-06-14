@@ -1,9 +1,14 @@
+"use client";
+
 import { cn } from "@/utils/cn";
-import { cva } from "class-variance-authority";
-import type { ComponentProps } from "react";
+import { cva, VariantProps } from "class-variance-authority";
+import {
+  Button as AriaButton,
+  type ButtonProps as AriaButtonProps
+} from "react-aria-components";
 
 export const buttonStyles = cva(
-  "flex items-center justify-center gap-3 rounded-lg font-medium transition focus:ring-3 disabled:pointer-events-none [&>svg]:text-current! outline-none",
+  "flex items-center justify-center gap-3 rounded-lg font-medium transition focus:ring-3 disabled:pointer-events-none [&>svg]:text-current outline-none",
   {
     variants: {
       variant: {
@@ -131,12 +136,14 @@ export const buttonStyles = cva(
   }
 );
 
-type PropsType = ComponentProps<"button"> & {
-  variant?: "primary" | "danger" | "success" | "ghost";
-  appearance?: "fill" | "outline";
-  iconOnly?: boolean;
-  size?: "xs" | "sm" | "md" | "lg";
-};
+export interface ButtonProps
+  extends
+    Omit<AriaButtonProps, "isDisabled" | "isPending">,
+    VariantProps<typeof buttonStyles> {
+  disabled?: boolean;
+  pending?: boolean;
+  readOnly?: boolean;
+}
 
 export function Button({
   variant,
@@ -145,11 +152,12 @@ export function Button({
   size,
   children,
   className,
+  disabled,
+  pending,
   ...props
-}: PropsType) {
+}: ButtonProps) {
   return (
-    <button
-      type="button"
+    <AriaButton
       className={cn(
         buttonStyles({
           variant,
@@ -159,9 +167,11 @@ export function Button({
         }),
         className
       )}
+      isDisabled={disabled}
+      isPending={pending}
       {...props}
     >
       {children}
-    </button>
+    </AriaButton>
   );
 }

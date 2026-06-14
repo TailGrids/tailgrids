@@ -6,7 +6,7 @@ import { DocsLayout } from "fumadocs-ui/layouts/docs";
 import { ContainerWithGrid } from "@/components/ContainerGrid";
 import Footer from "@/components/Footer";
 import MobileNav from "@/components/mobile-nav";
-import { CustomFolder, CustomSeparator } from "@/components/sidebar-components";
+import { CustomFolder, CustomItem, CustomSeparator } from "@/components/sidebar-components";
 
 export default function Layout({ children }: LayoutProps<"/">) {
   return (
@@ -22,6 +22,7 @@ export default function Layout({ children }: LayoutProps<"/">) {
           footer: <MobileNav />,
           defaultOpenLevel: 1,
           components: {
+            Item: CustomItem,
             Folder: CustomFolder,
             Separator: CustomSeparator
           }

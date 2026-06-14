@@ -123,7 +123,7 @@ export function PageHeaderButtons() {
           )}
         >
           <span>Open in</span>
-          <ChevronRightIcon className="size-4 transition-transform duration-200 rotate-90 group-data-[state=open]:-rotate-90 dark:group-hover:text-white" />
+          <ChevronRightIcon className="size-5 transition-transform duration-200 rotate-90 group-data-[state=open]:-rotate-90 dark:group-hover:text-white" />
         </DropdownMenuTrigger>
 
         <DropdownMenuContent className="w-52 p-2 border border-[#EDEDED] shadow-lg rounded-xl bg-white text-gray-700 dark:bg-gray-950 dark:border-gray-800 dark:text-gray-300">

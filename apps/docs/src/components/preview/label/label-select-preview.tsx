@@ -1,3 +1,5 @@
+"use client";
+
 import { Label } from "@/registry/core/label";
 import {
   NativeSelect,
