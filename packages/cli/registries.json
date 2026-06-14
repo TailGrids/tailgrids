@@ -289,23 +289,17 @@
   {
     "id": "date-picker",
     "name": "Date Picker",
-    "description": "A component to select a date or a range of dates.",
+    "description": "A component to select a date.",
     "type": "component",
     "files": [
       {
         "type": "core",
-        "path": "/core/date-picker/single-date.tsx",
-        "targetPath": "/core/date-picker/single-date.tsx"
-      },
-      {
-        "type": "core",
-        "path": "/core/date-picker/range-date.tsx",
-        "targetPath": "/core/date-picker/range-date.tsx"
+        "path": "/core/date-picker.tsx",
+        "targetPath": "/core/date-picker.tsx"
       }
     ],
-    "dependencies": ["react-stately", "date-fns", "@tailgrids/icons"],
-    "exampleCount": 2,
-    "requires": ["button"]
+    "dependencies": ["react-aria-components"],
+    "exampleCount": 11
   },
   {
     "id": "description",

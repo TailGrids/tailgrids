@@ -3,29 +3,40 @@ title: React DatePicker Components
 description: A React date picker component that lets users select a date or date range from a calendar. Used for forms, filters, and scheduling with keyboard-friendly interaction.
 ---
 
-import DatePickerDefaultPreview from "@/components/preview/date-picker/date-picker-default-preview";
-import DatePickerPreselectedPreview from "@/components/preview/date-picker/date-picker-preselected-preview";
-import RangeDatePickerPreview from "@/components/preview/date-picker/range-date-picker-preview";
+import DatePickerBasicPreview from "@/components/preview/date-picker/date-picker-basic-preview";
+import DatePickerBasicUsagePreview from "@/components/preview/date-picker/date-picker-basic-usage-preview";
+import DatePickerControlledPreview from "@/components/preview/date-picker/date-picker-controlled-preview";
+import DatePickerWithConstraintsPreview from "@/components/preview/date-picker/date-picker-constraints-preview";
+import DatePickerUncontrolledPreview from "@/components/preview/date-picker/date-picker-uncontrolled-preview";
+import DatePickerWithValidationPreview from "@/components/preview/date-picker/date-picker-validation-preview";
+import DatePickerWithConfirmationPreview from "@/components/preview/date-picker/date-picker-confirm-preview";
+import DatePickerDisabledPreview from "@/components/preview/date-picker/date-picker-disabled-preview";
+import DatePickerWithDateTimePreview from "@/components/preview/date-picker/date-picker-datetime-preview";
+import DatePickerServiceBookingPreview from "@/components/preview/date-picker/date-picker-service-preview";
+import DatePickerWithAvailabilityPreview from "@/components/preview/date-picker/date-picker-availability-preview";
+import DatePickerWeekdayOnlyPreview from "@/components/preview/date-picker/date-picker-weekday-preview";
+import DatePickerDeliveryEstimatePreview from "@/components/preview/date-picker/date-picker-minimum-notice-preview";
+import DatePickerInternationalPreview from "@/components/preview/date-picker/date-picker-international-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # DatePicker
 
-React DatePicker components are used to select a single date or a range of dates from a calendar. They are commonly used in forms, filters, booking flows, and scheduling features.
+React DatePicker components are used to select a single date from a calendar. They are commonly used in forms, filters, booking flows, and scheduling features.
 
-This DatePicker component is built with React and styled using Tailwind CSS. It supports date selection with keyboard-friendly interaction.
+This DatePicker component is built with React Aria Components and styled using Tailwind CSS. It supports date selection with keyboard-friendly interaction.
 
 <ComponentPreview
   codeSnippet={getFileContent(
-    "/src/components/preview/date-picker/date-picker-default-preview.tsx"
+    "/src/components/preview/date-picker/date-picker-basic-preview.tsx"
   )}
 >
-  <DatePickerDefaultPreview />
+  <DatePickerBasicPreview />
 </ComponentPreview>
 
 ## Installation
 
-The Date Picker relies on the `date-fns` library for date manipulation.
+The Date Picker relies on `@internationalized/date` for date manipulation.
 
 <Accordions defaultValue="CLI">
 <Accordion title="CLI">
@@ -41,21 +52,15 @@ npx @tailgrids/cli add date-picker
 Install the required dependency:
 
 ```npm
-npm i date-fns
+npm i react-aria-components
 ```
 
-Copy and paste the code into `single-date.tsx` (for `DatePicker`) and `range-date.tsx` (for `RangeDatePicker`) into your project.
+Copy and paste the code into your project.
 
 <CodeBlockCard
-  snippet={getFileContent("/src/registry/core/date-picker/single-date.tsx")}
+  snippet={getFileContent("/src/registry/core/date-picker.tsx")}
   lang="tsx"
-  fileName="date-picker/single-date.tsx"
-  showLineNumbers
-/>
-<CodeBlockCard
-  snippet={getFileContent("/src/registry/core/date-picker/range-date.tsx")}
-  lang="tsx"
-  fileName="date-picker/range-date.tsx"
+  fileName="date-picker.tsx"
   showLineNumbers
 />
 </Accordion>
@@ -63,76 +68,345 @@ Copy and paste the code into `single-date.tsx` (for `DatePicker`) and `range-dat
 
 ## Usage
 
-The following example demonstrates how to use the single DatePicker component.
+The following example demonstrates how to use the DatePicker compound components.
 
 ```tsx
-import { DatePicker } from "@/components/tailgrids/core/date-picker/single-date";
-import * as React from "react";
+import {
+  DatePicker,
+  DatePickerGroup,
+  DatePickerPopover,
+  DatePickerTrigger
+} from "@/registry/core/date-picker";
+import { DateInput, DateSegment } from "@/registry/core/date-field";
+import { CalendarDate, getLocalTimeZone, today } from "@internationalized/date";
+import { useState } from "react";
 
 export default function DatePickerUsage() {
-  const [selectedDate, setSelectedDate] = React.useState<Date | null>(null);
+  const [date, setDate] = useState<CalendarDate | null>(
+    today(getLocalTimeZone())
+  );
 
   return (
-    <DatePicker
-      value={selectedDate}
-      onChange={setSelectedDate}
-      placeholder="Pick a date"
-    />
+    <DatePicker value={date} onChange={setDate}>
+      <DatePickerGroup>
+        <DateInput>{segment => <DateSegment segment={segment} />}</DateInput>
+        <DatePickerTrigger />
+      </DatePickerGroup>
+      <DatePickerPopover />
+    </DatePicker>
   );
 }
 ```
 
-Note: Both normal and range pickers use a **temporary selection state** (`tempSelected`, `tempStartDate`, `tempEndDate`) that is only committed to the main state (`value`, `startDate`, `endDate`) and triggers `onChange`/`onDateChange` when the **Apply** or **Ok** button is pressed. This allows users to cancel their selection without affecting the form's data.
-
 ## Examples
 
-### Range Date Picker
+### Basic Usage
 
-Use this picker to select a start and end date as a range. The range picker defaults to a two-month view.
+A simple date picker with a label and helper description. The popover opens when clicking the calendar icon.
 
 <ComponentPreview
   codeSnippet={getFileContent(
-    "/src/components/preview/date-picker/range-date-picker-preview.tsx"
+    "/src/components/preview/date-picker/date-picker-basic-usage-preview.tsx"
   )}
-  noPaddingOnPreviewForMobile
 >
-  <RangeDatePickerPreview />
+  <DatePickerBasicUsagePreview />
 </ComponentPreview>
 
-Note: The **RangeDatePicker** automatically handles the logic of ensuring the user-selected first date is the `tempStartDate` and the second date is the `tempEndDate`, even if they are selected in reverse order.
+### Controlled
 
-### Preselected Date
-
-An example of a DatePicker with a default value.
+Manage the date value externally using `value` and `onChange` props.
 
 <ComponentPreview
   codeSnippet={getFileContent(
-    "/src/components/preview/date-picker/date-picker-preselected-preview.tsx"
+    "/src/components/preview/date-picker/date-picker-controlled-preview.tsx"
+  )}
+  highlightLines={[22, 27, 32]}
+>
+  <DatePickerControlledPreview />
+</ComponentPreview>
+
+### Uncontrolled
+
+An uncontrolled DatePicker with a default value.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-picker/date-picker-uncontrolled-preview.tsx"
+  )}
+  highlightLines={[22, 27]}
+>
+  <DatePickerUncontrolledPreview />
+</ComponentPreview>
+
+### Disabled
+
+Use `disabled` prop to disable the DatePicker.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-picker/date-picker-disabled-preview.tsx"
+  )}
+  highlightWords={["disabled"]}
+>
+  <DatePickerDisabledPreview />
+</ComponentPreview>
+
+### With Date Constraints
+
+Restrict date selection to a valid range using `minValue` and `maxValue`.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-picker/date-picker-constraints-preview.tsx"
+  )}
+  highlightLines={[22, [27, 29], 36, 37]}
+>
+  <DatePickerWithConstraintsPreview />
+</ComponentPreview>
+
+### With Date and Time
+
+Combine date and time by using a `CalendarDateTime` value. Set `granularity` other then `"day"` to expose time segments.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-picker/date-picker-datetime-preview.tsx"
+  )}
+  highlightLines={[23, [28, 32], 40, [54, 57]]}
+>
+  <DatePickerWithDateTimePreview />
+</ComponentPreview>
+
+### Validation
+
+A DatePicker with custom validation that rejects weekend selections using the `validate` prop.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-picker/date-picker-validation-preview.tsx"
   )}
 >
-  <DatePickerPreselectedPreview />
+  <DatePickerWithValidationPreview />
+</ComponentPreview>
+
+### Service Booking
+
+A DatePicker for selecting a service date, followed by a time slot picker that appears after a date is chosen.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-picker/date-picker-service-preview.tsx"
+  )}
+>
+  <DatePickerServiceBookingPreview />
+</ComponentPreview>
+
+### Availability Indicators
+
+A DatePicker that uses `isDateUnavailable` to mark weekend dates as unavailable, with a legend inside the popover footer showing available and unavailable indicators.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-picker/date-picker-availability-preview.tsx"
+  )}
+>
+  <DatePickerWithAvailabilityPreview />
+</ComponentPreview>
+
+### Weekday Only
+
+A DatePicker restricted to weekdays only using `isWeekday` from `@internationalized/date`. Useful for scheduling business appointments and professional meetings.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-picker/date-picker-weekday-preview.tsx"
+  )}
+>
+  <DatePickerWeekdayOnlyPreview />
+</ComponentPreview>
+
+### Delivery Date Estimate
+
+A DatePicker with a 3-day minimum notice period and shipping speed selection (Standard or Express) that estimates the arrival date.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-picker/date-picker-minimum-notice-preview.tsx"
+  )}
+>
+  <DatePickerDeliveryEstimatePreview />
+</ComponentPreview>
+
+### International Calendar
+
+Wrap the `DatePicker` with an `I18nProvider` and set the `locale` prop to use a different calendar system.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/date-picker/date-picker-international-preview.tsx"
+  )}
+>
+  <DatePickerInternationalPreview />
 </ComponentPreview>
 
 ## API Reference
 
-### DatePicker
+### DatePicker (Root)
 
-Extends `HTMLDivElement` props.
+The root component that wraps `react-aria-components` `DatePicker`. Accepts all `AriaDatePickerProps` with renamed boolean props.
 
-| Prop          | Type                   | Default         | Description                                            |
-| :------------ | :--------------------- | :-------------- | :----------------------------------------------------- |
-| `value`       | `Date \| null`         | `null`          | The currently selected date (controlled state).        |
-| `onChange`    | `(date: Date) => void` | -               | Callback function when a date is selected and applied. |
-| `placeholder` | `string`               | `'Select date'` | Placeholder text when no date is selected.             |
-| `className`   | `string`               | -               | Custom class for the main wrapper `div`.               |
+| Prop                  | Type                                                          | Default    | Description                                                            |
+| :-------------------- | :------------------------------------------------------------ | :--------- | :--------------------------------------------------------------------- |
+| `value`               | `DateValue \| null`                                           | —          | The currently selected date (controlled).                              |
+| `defaultValue`        | `DateValue`                                                   | —          | The initial default value (uncontrolled).                              |
+| `onChange`            | `(value: DateValue \| null) => void`                          | —          | Callback when the value changes.                                       |
+| `disabled`            | `boolean`                                                     | `false`    | Whether the input is disabled.                                         |
+| `readOnly`            | `boolean`                                                     | `false`    | Whether the input is read-only.                                        |
+| `required`            | `boolean`                                                     | `false`    | Whether the input is required.                                         |
+| `invalid`             | `boolean`                                                     | `false`    | Whether the input is in an invalid state.                              |
+| `minValue`            | `DateValue`                                                   | —          | The minimum allowed date.                                              |
+| `maxValue`            | `DateValue`                                                   | —          | The maximum allowed date.                                              |
+| `className`           | `string`                                                      | —          | Custom class for the root wrapper.                                     |
+| `name`                | `string`                                                      | —          | Input name for HTML form submission.                                   |
+| `autoFocus`           | `boolean`                                                     | —          | Whether to auto-focus on render.                                       |
+| `granularity`         | `"day" \| "hour" \| "minute" \| "second"`                     | `"day"`    | Smallest displayed unit.                                               |
+| `hourCycle`           | `12 \| 24`                                                    | —          | Display time in 12 or 24 hour format.                                  |
+| `hideTimeZone`        | `boolean`                                                     | `false`    | Whether to hide the time zone abbreviation.                            |
+| `placeholderValue`    | `DateValue \| null`                                           | —          | Placeholder date influencing display format when no value is selected. |
+| `firstDayOfWeek`      | `"sun" \| "mon" \| "tue" \| "wed" \| "thu" \| "fri" \| "sat"` | —          | The day that starts the week.                                          |
+| `isDateUnavailable`   | `(date: DateValue) => boolean`                                | —          | Callback to mark specific dates as unavailable.                        |
+| `isOpen`              | `boolean`                                                     | —          | Whether the popover is open (controlled).                              |
+| `defaultOpen`         | `boolean`                                                     | —          | Whether the popover is open by default (uncontrolled).                 |
+| `onOpenChange`        | `(isOpen: boolean) => void`                                   | —          | Handler called when the popover open state changes.                    |
+| `shouldCloseOnSelect` | `boolean \| (() => boolean)`                                  | `true`     | Whether the popover closes automatically when a date is selected.      |
+| `validate`            | `(value: DateValue) => string \| true \| undefined`           | —          | Validation function. Return error message for invalid values.          |
+| `validationBehavior`  | `"aria" \| "native"`                                          | `"native"` | Whether to use native HTML form validation or ARIA.                    |
 
-### RangeDatePicker
+### DatePickerGroup
 
-| Prop               | Type                                                       | Default                           | Description                                                    |
-| :----------------- | :--------------------------------------------------------- | :-------------------------------- | :------------------------------------------------------------- |
-| `defaultStartDate` | `Date`                                                     | Date set to **August 25, 2028**   | The initial start date for the range.                          |
-| `defaultEndDate`   | `Date`                                                     | Date set to **September 9, 2028** | The initial end date for the range.                            |
-| `onDateChange`     | `(startDate: Date \| null, endDate: Date \| null) => void` | -                                 | Callback function triggered when the **Ok** button is clicked. |
+A styled wrapper that groups the input and trigger button. Wraps `react-aria-components` `Group`.
+
+| Prop         | Type                                              | Default   | Description                                                     |
+| :----------- | :------------------------------------------------ | :-------- | :-------------------------------------------------------------- |
+| `className`  | `string \| ((props: GroupRenderProps) => string)` | —         | Custom class for the group element.                             |
+| `isDisabled` | `boolean`                                         | —         | Whether the group is disabled.                                  |
+| `isInvalid`  | `boolean`                                         | —         | Whether the group is invalid.                                   |
+| `isReadOnly` | `boolean`                                         | —         | Whether the group is read only.                                 |
+| `role`       | `"group" \| "presentation" \| "region"`           | `"group"` | ARIA role for the group.                                        |
+| `slot`       | `string \| null`                                  | —         | Slot name to receive props from a parent component.             |
+| `autoFocus`  | `boolean`                                         | —         | Whether to auto-focus on render.                                |
+| `id`         | `string`                                          | —         | The element's unique identifier.                                |
+| `style`      | `CSSProperties \| ((props) => CSSProperties)`     | —         | Inline style for the element.                                   |
+| `render`     | `DOMRenderFunction`                               | —         | Override the default DOM element with a custom render function. |
+| `children`   | `ReactNode \| ((props) => ReactNode)`             | —         | The children of the component.                                  |
+
+### DatePickerTrigger
+
+Renders the calendar trigger button. Wraps `react-aria-components` `Button`.
+
+| Prop                  | Type                                               | Default    | Description                                                       |
+| :-------------------- | :------------------------------------------------- | :--------- | :---------------------------------------------------------------- |
+| `className`           | `string \| ((props: ButtonRenderProps) => string)` | —          | Custom class for the trigger button.                              |
+| `isDisabled`          | `boolean`                                          | —          | Whether the button is disabled.                                   |
+| `isPending`           | `boolean`                                          | —          | Whether the button is in a pending state.                         |
+| `type`                | `"button" \| "reset" \| "submit"`                  | `"button"` | The behavior of the button when used in an HTML form.             |
+| `autoFocus`           | `boolean`                                          | —          | Whether to auto-focus on render.                                  |
+| `excludeFromTabOrder` | `boolean`                                          | —          | Whether to exclude from sequential tab order.                     |
+| `preventFocusOnPress` | `boolean`                                          | —          | Whether to prevent focus from moving to the button when pressing. |
+| `slot`                | `string \| null`                                   | —          | Slot name to receive props from a parent component.               |
+| `form`                | `string`                                           | —          | The `<form>` element to associate the button with.                |
+| `formAction`          | `string \| ((data: FormData) => void \| Promise)`  | —          | URL that processes form submission.                               |
+| `formEncType`         | `string`                                           | —          | How to encode form data that is submitted.                        |
+| `formMethod`          | `string`                                           | —          | HTTP method used to submit the form.                              |
+| `formNoValidate`      | `boolean`                                          | —          | Whether form validation is skipped on submission.                 |
+| `formTarget`          | `string`                                           | —          | Overrides the target attribute of the button's form owner.        |
+| `name`                | `string`                                           | —          | Submitted as a pair with the button's value as part of form data. |
+| `value`               | `string`                                           | —          | The value associated with the button's name when submitted.       |
+| `id`                  | `string`                                           | —          | The element's unique identifier.                                  |
+| `style`               | `CSSProperties \| ((props) => CSSProperties)`      | —          | Inline style for the element.                                     |
+| `render`              | `DOMRenderFunction`                                | —          | Override the default DOM element with a custom render function.   |
+| `children`            | `ReactNode \| ((props) => ReactNode)`              | —          | The children of the component.                                    |
+| `onPress`             | `(e: PressEvent) => void`                          | —          | Handler called when the press is released over the target.        |
+| `onPressStart`        | `(e: PressEvent) => void`                          | —          | Handler called when a press interaction starts.                   |
+| `onPressEnd`          | `(e: PressEvent) => void`                          | —          | Handler called when a press interaction ends.                     |
+| `onPressChange`       | `(isPressed: boolean) => void`                     | —          | Handler called when the press state changes.                      |
+| `onPressUp`           | `(e: PressEvent) => void`                          | —          | Handler called when a press is released over the target.          |
+| `onFocus`             | `(e: FocusEvent) => void`                          | —          | Handler called when the element receives focus.                   |
+| `onBlur`              | `(e: FocusEvent) => void`                          | —          | Handler called when the element loses focus.                      |
+| `onFocusChange`       | `(isFocused: boolean) => void`                     | —          | Handler called when the element's focus status changes.           |
+| `onKeyDown`           | `(e: KeyboardEvent) => void`                       | —          | Handler called when a key is pressed.                             |
+| `onKeyUp`             | `(e: KeyboardEvent) => void`                       | —          | Handler called when a key is released.                            |
+| `onHoverStart`        | `(e: HoverEvent) => void`                          | —          | Handler called when a hover interaction starts.                   |
+| `onHoverEnd`          | `(e: HoverEvent) => void`                          | —          | Handler called when a hover interaction ends.                     |
+| `onHoverChange`       | `(isHovering: boolean) => void`                    | —          | Handler called when the hover state changes.                      |
+
+### DatePickerPopover
+
+Renders the calendar popover. Wraps `react-aria-components` `Popover`.
+
+| Prop                           | Type                                                | Default         | Description                                                                               |
+| :----------------------------- | :-------------------------------------------------- | :-------------- | :---------------------------------------------------------------------------------------- |
+| `className`                    | `string \| ((props: PopoverRenderProps) => string)` | —               | Custom class for the popover element.                                                     |
+| `placement`                    | `Placement`                                         | `"bottom"`      | The placement of the popover relative to its anchor element.                              |
+| `offset`                       | `number`                                            | `8`             | Additional offset along the main axis between the popover and anchor.                     |
+| `crossOffset`                  | `number`                                            | `0`             | Additional offset along the cross axis between the popover and anchor.                    |
+| `containerPadding`             | `number`                                            | `12`            | Padding between the popover and its surrounding container.                                |
+| `arrowBoundaryOffset`          | `number`                                            | `0`             | Minimum distance the arrow's edge from the edge of the overlay.                           |
+| `maxHeight`                    | `number`                                            | —               | Maximum height of the popover. Defaults to available viewport height.                     |
+| `shouldFlip`                   | `boolean`                                           | `true`          | Whether to flip orientation when there is insufficient room.                              |
+| `shouldUpdatePosition`         | `boolean`                                           | `true`          | Whether to update position automatically.                                                 |
+| `isKeyboardDismissDisabled`    | `boolean`                                           | `false`         | Whether pressing Escape to close is disabled.                                             |
+| `isNonModal`                   | `boolean`                                           | —               | Whether elements outside the popover may be interacted with by assistive tech.            |
+| `shouldCloseOnInteractOutside` | `(element: Element) => boolean`                     | —               | Filter interactions outside the popover that should not dismiss it.                       |
+| `isOpen`                       | `boolean`                                           | —               | Whether the overlay is open (controlled).                                                 |
+| `defaultOpen`                  | `boolean`                                           | —               | Whether the overlay is open by default (uncontrolled).                                    |
+| `onOpenChange`                 | `(isOpen: boolean) => void`                         | —               | Handler called when the overlay's open state changes.                                     |
+| `isEntering`                   | `boolean`                                           | —               | Whether the popover is performing an entry animation.                                     |
+| `isExiting`                    | `boolean`                                           | —               | Whether the popover is performing an exit animation.                                      |
+| `triggerRef`                   | `RefObject<Element \| null>`                        | —               | Ref for the element the popover positions relative to.                                    |
+| `scrollRef`                    | `RefObject<Element \| null>`                        | —               | Ref for the scrollable region within the overlay.                                         |
+| `arrowRef`                     | `RefObject<Element \| null>`                        | —               | Ref for the popover arrow element.                                                        |
+| `boundaryElement`              | `Element`                                           | `document.body` | Element that serves as the positioning boundary.                                          |
+| `trigger`                      | `string`                                            | —               | Name of the component that triggered the popover (reflected as `data-trigger` attribute). |
+| `slot`                         | `string \| null`                                    | —               | Slot name to receive props from a parent component.                                       |
+| `id`                           | `string`                                            | —               | The element's unique identifier.                                                          |
+| `style`                        | `CSSProperties \| ((props) => CSSProperties)`       | —               | Inline style for the element.                                                             |
+| `render`                       | `DOMRenderFunction`                                 | —               | Override the default DOM element with a custom render function.                           |
+| `children`                     | `ReactNode \| ((props) => ReactNode)`               | —               | The children of the component.                                                            |
+
+## Composition
+
+The Date Picker is composed of the root `DatePicker` component plus `DatePickerGroup`, `DatePickerTrigger`, and `DatePickerPopover`. It can be combined with shared field components (`FieldLabel`, `FieldDescription`, `FieldError`) for a complete form control.
+
+```
+DatePicker                                                  — Root container. Manages date state, popover open state, and ARIA context.
+├── FieldLabel                                              — Visible label.
+├── DatePickerGroup                                         — Groups the date input and trigger button.
+│   ├── DateInput                                           — Wraps editable segments in a styled input area.
+│   │   └── DateSegment                                     — Individual editable segment (day, month, year).
+│   └── DatePickerTrigger                                   — Calendar icon button that opens the popover.
+└── DatePickerPopover                                       — Floating popover containing the calendar.
+    └── Calendar                                            — The calendar grid for date selection.
+        ├── CalendarHeader                                  — Month/year navigation row.
+        │   ├── NavButton (previous)                        — Previous month button.
+        │   ├── CalendarHeading                             — Current month/year label.
+        │   └── NavButton (next)                            — Next month button.
+        ├── CalendarGrid                                    — The week grid container.
+        │   ├── CalendarGridHeader                          — Day-of-week header row.
+        │   └── CalendarGridBody                            — Date cell rows.
+        │       └── CalendarCell                            — Individual date cell.
+```
+
+- Use `DatePicker` as the root. It provides the date value, validation state, and popover open state to all children.
+- Use `FieldLabel` to label the field. Pair it with `aria-labelledby` for accessibility.
+- Use `DatePickerGroup` to wrap the `DateInput` and `DatePickerTrigger`.
+- Use `DateInput` to render the segment group. It accepts a render function that receives each `segment` and returns a `DateSegment`.
+- Use `DateSegment` inside `DateInput` to render each editable part of the date. It handles focus, typing, and arrow-key incrementing.
+- Use `DatePickerTrigger` for the calendar icon button that opens the popover.
+- Use `DatePickerPopover` as the floating container for the calendar.
+- Use `Calendar` and its sub-components inside the popover to render the date selection grid.
+- Use `FieldDescription` for helper text. It is automatically announced by screen readers.
+- Use `FieldError` for validation messages. It is linked via `aria-errormessage` when `invalid` is set.
 
 ## Accessibility
 
@@ -140,3 +414,6 @@ Extends `HTMLDivElement` props.
 - Month navigation buttons support keyboard interaction
 - Uses standard `<button>` elements for all interactive controls
 - Focus is managed to allow closing the calendar without mouse input
+- Built on `react-aria-components` which follows WAI-ARIA authoring practices
+- Date segments are individually editable and accessible via keyboard
+- Validation errors are announced to screen readers via `aria-describedby`
