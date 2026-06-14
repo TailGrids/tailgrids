@@ -62,5 +62,23 @@
     "[Toast](/components/toast)",
     "[Toggle](/components/toggle)",
     "[Tooltip](/components/tooltip)"
-  ]
+  ],
+  "badges": {
+    "/components/button": "updated",
+    "/components/button-group": "updated",
+    "/components/calendar": "new",
+    "/components/date-field": "new",
+    "/components/date-picker": "updated",
+    "/components/description": "new",
+    "/components/field": "updated",
+    "/components/input": "updated",
+    "/components/input-group": "updated",
+    "/components/number-field": "new",
+    "/components/range-calendar": "new",
+    "/components/social-button": "updated",
+    "/components/text-area": "updated",
+    "/components/text-field": "new",
+    "/components/time-field": "new",
+    "/components/time-picker": "new"
+  }
 }

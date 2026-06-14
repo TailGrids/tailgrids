@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/utils/cn";
 import { ChevronRight } from "@tailgrids/icons";
 import type * as PageTree from "fumadocs-core/page-tree";
 import {
@@ -7,12 +8,28 @@ import {
   SidebarFolderContent,
   SidebarFolderLink,
   SidebarFolderTrigger,
+  SidebarItem,
   SidebarSeparator
 } from "fumadocs-ui/components/layout/sidebar";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
+
+function SidebarBadge({ type }: { type: "new" | "updated" }) {
+  return (
+    <span
+      className={cn(
+        "ml-auto rounded-full px-2 text-[11px] font-medium ",
+        type === "new"
+          ? "bg-emerald-50 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400"
+          : "bg-badge-blue-background text-badge-blue-text"
+      )}
+    >
+      {type === "new" ? "New" : "Updated"}
+    </span>
+  );
+}
 
 /** Recursively checks whether any page inside a folder matches the current path */
 function isFolderActive(item: PageTree.Folder, pathname: string): boolean {
@@ -60,6 +77,20 @@ export function CustomSeparator({ item }: { item: PageTree.Separator }) {
   return <SidebarSeparator>{item.name}</SidebarSeparator>;
 }
 
+export function CustomItem({ item }: { item: PageTree.Item }) {
+  const badge =
+    typeof item.description === "string" &&
+    (item.description === "new" || item.description === "updated")
+      ? item.description
+      : undefined;
+  return (
+    <SidebarItem href={item.url} external={item.external} icon={item.icon}>
+      {item.name}
+      {badge && <SidebarBadge type={badge} />}
+    </SidebarItem>
+  );
+}
+
 export function TocBanner() {
   return (
     <div className="mt-6 p-1.5 pb-3 bg-[#f3f4f6] rounded-xl dark:bg-[#111827]">
@@ -81,7 +112,8 @@ export function TocBanner() {
 
       <div className="px-1.5 mt-3">
         <p className="text-sm text-[#374151] -tracking-[0.2px] dark:text-[#ffffffcc]">
-          Access 600+ blocks, components and templates - built for speed, consistency, and scale.
+          Access 600+ blocks, components and templates - built for speed,
+          consistency, and scale.
         </p>
 
         <Link
