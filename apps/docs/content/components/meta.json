@@ -73,6 +73,7 @@
     "/components/field": "updated",
     "/components/input": "updated",
     "/components/input-group": "updated",
+    "/components/popover": "updated",
     "/components/number-field": "new",
     "/components/range-calendar": "new",
     "/components/social-button": "updated",

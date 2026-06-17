@@ -5,11 +5,11 @@ description: A React popover component that displays a floating panel anchored t
 
 import { ComponentPreview } from "@/components/component-preview";
 import PopoverActionsPreview from "@/components/preview/popover/popover-actions-preview";
-import PopoverControlledPreview from "@/components/preview/popover/popover-controlled-preview";
 import PopoverDefaultPreview from "@/components/preview/popover/popover-default-preview";
-import PopoverLinkPreview from "@/components/preview/popover/popover-link-preview";
+import PopoverPreview from "@/components/preview/popover/popover-preview";
 import PopoverPlacementPreview from "@/components/preview/popover/popover-placement-preview";
 import PopoverSimplePreview from "@/components/preview/popover/popover-simple-preview";
+import PopoverCustomAnchorPreview from "@/components/preview/popover/popover-custom-anchor-preview";
 import { getFileContent } from "@/utils/get-file-content";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
@@ -17,19 +17,17 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 React Popover components display floating content anchored to a trigger element. They are commonly used for contextual information, settings panels, and inline actions that don’t require full navigation.
 
-This Popover component is built with React and styled using Tailwind CSS. It uses Floating UI for positioning and provides accessible focus and keyboard handling.
+This Popover component is built with React and styled using Tailwind CSS. It uses React Aria Components for positioning and provides accessible focus and keyboard handling.
 
 <ComponentPreview
   codeSnippet={getFileContent(
-    "/src/components/preview/popover/popover-default-preview.tsx"
+    "/src/components/preview/popover/popover-preview.tsx"
   )}
 >
-  <PopoverDefaultPreview />
+  <PopoverPreview />
 </ComponentPreview>
 
 ## Installation
-
-The Popover component relies on the `@floating-ui/react` library.
 
 <Accordions defaultValue="CLI">
 <Accordion title="CLI">
@@ -45,7 +43,7 @@ npx @tailgrids/cli add popover
 Install the required dependency:
 
 ```npm
-npm i @floating-ui/react
+npm i react-aria-components
 ```
 
 Copy and paste the following component code into your project.
@@ -65,57 +63,19 @@ Copy and paste the following component code into your project.
 Import the component parts and combine them according to your requirements.
 
 ```tsx
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverHeading,
-  PopoverDescription,
-  PopoverClose
-} from "@/components/tailgrids/core/popover";
+import { Button } from "@/components/tailgrids/core/button";
+import { OverlayWrapper } from "@/components/tailgrids/core/overlay";
+import { Popover, PopoverArrow } from "@/components/tailgrids/core/popover";
 
 export default function PopoverAnatomy() {
   return (
-    <Popover>
-      <PopoverTrigger />
-      <PopoverContent>
-        <PopoverHeading />
-        <PopoverDescription />
-        <PopoverClose />
-      </PopoverContent>
-    </Popover>
-  );
-}
-```
-
-## Usage
-
-Import the popover components and wrap a trigger with content.
-
-```tsx
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverHeading,
-  PopoverDescription,
-  PopoverClose
-} from "@/components/tailgrids/core/popover";
-
-export default function PopoverExample() {
-  return (
-    <Popover>
-      <PopoverTrigger>Open Popover</PopoverTrigger>
-
-      <PopoverContent>
-        <PopoverHeading>Popover Title</PopoverHeading>
-        <PopoverDescription>
-          This is a short description inside the popover.
-        </PopoverDescription>
-
-        <PopoverClose className="mt-4 text-sm underline">Close</PopoverClose>
-      </PopoverContent>
-    </Popover>
+    <OverlayWrapper>
+      <Button />
+      <Popover>
+        // Content goes here
+        <PopoverArrow />
+      </Popover>
+    </OverlayWrapper>
   );
 }
 ```
@@ -124,17 +84,43 @@ export default function PopoverExample() {
 
 ### Default
 
-Basic popover with heading and description.
+Wrap the `Popover` component within the `OverlayWrapper` and use `Button` as the trigger for an uncontrolled popover.
 
 <ComponentPreview
   codeSnippet={getFileContent(
-    "/src/components/preview/popover/popover-simple-preview.tsx"
+    "/src/components/preview/popover/popover-default-preview.tsx"
   )}
 >
-  <PopoverSimplePreview />
+  <PopoverDefaultPreview />
 </ComponentPreview>
 
-### With Button
+### Custom Anchor
+
+Pass a custom trigger element using the `triggerRef` prop.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/popover/popover-custom-anchor-preview.tsx"
+  )}
+  highlightLines={[17, 22]}
+>
+  <PopoverCustomAnchorPreview />
+</ComponentPreview>
+
+### Custom Placement
+
+Change the popover position using the `placement` prop.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/popover/popover-placement-preview.tsx"
+  )}
+  noPaddingOnPreviewForLaptop
+>
+  <PopoverPlacementPreview />
+</ComponentPreview>
+
+### With Action
 
 Popover content with action buttons.
 
@@ -146,100 +132,67 @@ Popover content with action buttons.
   <PopoverActionsPreview />
 </ComponentPreview>
 
-### With Link
-
-Popover content with a link.
-
-<ComponentPreview
-  codeSnippet={getFileContent(
-    "/src/components/preview/popover/popover-link-preview.tsx"
-  )}
->
-  <PopoverLinkPreview />
-</ComponentPreview>
-
-### Controlled Open State
-
-Control the open state using React state.
-
-<ComponentPreview
-  codeSnippet={getFileContent(
-    "/src/components/preview/popover/popover-controlled-preview.tsx"
-  )}
->
-  <PopoverControlledPreview />
-</ComponentPreview>
-
-### Custom Placement
-
-Change the popover position relative to the trigger.
-
-<ComponentPreview
-  codeSnippet={getFileContent(
-    "/src/components/preview/popover/popover-placement-preview.tsx"
-  )}
->
-  <PopoverPlacementPreview />
-</ComponentPreview>
-
-Note: Uses `FloatingArrow` for accurate arrow positioning. Supports both controlled and uncontrolled states. Automatically flips, shifts, and offsets using Floating UI middleware. `asChild` allows integrating with custom buttons (Radix-style).
-
 ## API Reference
 
 ### Popover
 
-| Prop           | Type                         | Default    | Description                             |
-| -------------- | ---------------------------- | ---------- | --------------------------------------- |
-| `initialOpen`  | `boolean`                    | `false`    | Initial uncontrolled open state         |
-| `open`         | `boolean`                    | –          | Controlled open state                   |
-| `onOpenChange` | `(open: boolean) => void`    | –          | Called when open state changes          |
-| `placement`    | `Placement` (`@floating-ui`) | `"bottom"` | Position of popover relative to trigger |
-| `modal`        | `boolean`                    | `false`    | Trap focus while open                   |
+| Prop                           | Type                                                | Default         | Description                                                                               |
+| :----------------------------- | :-------------------------------------------------- | :-------------- | :---------------------------------------------------------------------------------------- |
+| `placement`                    | `Placement`                                         | `"bottom"`      | The placement of the popover relative to its anchor element.                              |
+| `offset`                       | `number`                                            | `8`             | Additional offset along the main axis between the popover and anchor.                     |
+| `crossOffset`                  | `number`                                            | `0`             | Additional offset along the cross axis between the popover and anchor.                    |
+| `containerPadding`             | `number`                                            | `12`            | Padding between the popover and its surrounding container.                                |
+| `arrowBoundaryOffset`          | `number`                                            | `0`             | Minimum distance the arrow's edge from the edge of the overlay.                           |
+| `maxHeight`                    | `number`                                            | —               | Maximum height of the popover. Defaults to available viewport height.                     |
+| `shouldFlip`                   | `boolean`                                           | `true`          | Whether to flip orientation when there is insufficient room.                              |
+| `shouldUpdatePosition`         | `boolean`                                           | `true`          | Whether to update position automatically.                                                 |
+| `isKeyboardDismissDisabled`    | `boolean`                                           | `false`         | Whether pressing Escape to close is disabled.                                             |
+| `isNonModal`                   | `boolean`                                           | —               | Whether elements outside the popover may be interacted with by assistive tech.            |
+| `shouldCloseOnInteractOutside` | `(element: Element) => boolean`                     | —               | Filter interactions outside the popover that should not dismiss it.                       |
+| `isOpen`                       | `boolean`                                           | —               | Whether the overlay is open (controlled).                                                 |
+| `defaultOpen`                  | `boolean`                                           | —               | Whether the overlay is open by default (uncontrolled).                                    |
+| `onOpenChange`                 | `(isOpen: boolean) => void`                         | —               | Handler called when the overlay's open state changes.                                     |
+| `isEntering`                   | `boolean`                                           | —               | Whether the popover is performing an entry animation.                                     |
+| `isExiting`                    | `boolean`                                           | —               | Whether the popover is performing an exit animation.                                      |
+| `triggerRef`                   | `RefObject<Element \| null>`                        | —               | Ref for the element the popover positions relative to.                                    |
+| `scrollRef`                    | `RefObject<Element \| null>`                        | —               | Ref for the scrollable region within the overlay.                                         |
+| `arrowRef`                     | `RefObject<Element \| null>`                        | —               | Ref for the popover arrow element.                                                        |
+| `boundaryElement`              | `Element`                                           | `document.body` | Element that serves as the positioning boundary.                                          |
+| `trigger`                      | `string`                                            | —               | Name of the component that triggered the popover (reflected as `data-trigger` attribute). |
+| `aria-label`                   | `string`                                            | —               | Defines a string value that labels the current element.                                   |
+| `aria-labelledby`              | `string`                                            | —               | Identifies the element (or elements) that labels the current element.                     |
+| `aria-describedby`             | `string`                                            | —               | Identifies the element (or elements) that describes the object.                           |
+| `aria-details`                 | `string`                                            | —               | Identifies the element (or elements) that provide a detailed, extended description.       |
+| `slot`                         | `string \| null`                                    | —               | Slot name to receive props from a parent component.                                       |
+| `id`                           | `string`                                            | —               | The element's unique identifier.                                                          |
+| `className`                    | `string \| ((props: PopoverRenderProps) => string)` | —               | Custom class for the popover element.                                                     |
+| `style`                        | `CSSProperties \| ((props) => CSSProperties)`       | —               | Inline style for the element.                                                             |
+| `render`                       | `DOMRenderFunction`                                 | —               | Override the default DOM element with a custom render function.                           |
+| `children`                     | `ReactNode \| ((props) => ReactNode)`               | —               | The children of the component.                                                            |
 
-### PopoverTrigger
+### PopoverArrow
 
-Wraps the clickable element that toggles the popover.
-
-| Prop      | Type      | Default | Description                    |
-| --------- | --------- | ------- | ------------------------------ |
-| `asChild` | `boolean` | `false` | Use any element as the trigger |
-
-### PopoverContent
-
-Floating panel element that contains the popover UI.
-
-| Prop    | Type                        | Description                                             |
-| ------- | --------------------------- | ------------------------------------------------------- |
-| `style` | `React.CSSProperties`       | Inline style merged with floating-ui positioning styles |
-| `ref`   | `React.Ref<HTMLDivElement>` | Used internally for positioning                         |
-
-### PopoverHeading
-
-Registers itself as the `aria-labelledby` for the popover.
-
-| Prop        | Type              | Description                 |
-| ----------- | ----------------- | --------------------------- |
-| `children`  | `React.ReactNode` | The content of the heading. |
-| `className` | `string`          | Optional CSS classes.       |
-
-### PopoverDescription
-
-Registers itself as the `aria-describedby` for the popover.
-
-| Prop        | Type              | Description                     |
-| ----------- | ----------------- | ------------------------------- |
-| `children`  | `React.ReactNode` | The content of the description. |
-| `className` | `string`          | Optional CSS classes.           |
-
-### PopoverClose
-
-A convenience button that closes the popover when clicked.
-
-| Prop        | Type                                | Description               |
-| ----------- | ----------------------------------- | ------------------------- |
-| `children`  | `React.ReactNode`                   | The button label/content. |
-| `className` | `string`                            | Optional CSS classes.     |
-| `onClick`   | `(event: React.MouseEvent) => void` | Optional click handler.   |
+| Prop           | Type                                                     | Default                     | Description                                                                                |
+| :------------- | :------------------------------------------------------- | :-------------------------- | :----------------------------------------------------------------------------------------- |
+| `className`    | `string \| ((props: OverlayArrowRenderProps) => string)` | `"react-aria-OverlayArrow"` | Custom class for the arrow element.                                                        |
+| `style`        | `CSSProperties \| ((props) => CSSProperties)`            | —                           | Inline style for the element.                                                              |
+| `children`     | `ReactNode \| ((props) => ReactNode)`                    | —                           | The children of the component. Override the default SVG triangle to render a custom arrow. |
+| `id`           | `string`                                                 | —                           | The element's unique identifier.                                                           |
+| `slot`         | `string`                                                 | —                           | Slot name to receive props from a parent component.                                        |
+| `render`       | `DOMRenderFunction`                                      | —                           | Override the default DOM element with a custom render function.                            |
+| `dir`          | `string`                                                 | —                           | The text direction (e.g. `"ltr"` or `"rtl"`) for the element.                              |
+| `hidden`       | `boolean`                                                | —                           | Whether the element is hidden from the accessibility tree.                                 |
+| `inert`        | `boolean`                                                | —                           | Whether the element is inert (non-interactive and hidden from assistive tech).             |
+| `lang`         | `string`                                                 | —                           | The BCP47 language tag for the element.                                                    |
+| `translate`    | `"yes" \| "no"`                                          | —                           | Whether the page content should be translated by the browser.                              |
+| `role`         | `React.AriaRole`                                         | —                           | The ARIA role for the element.                                                             |
+| `tabIndex`     | `number`                                                 | —                           | The tab index of the element.                                                              |
+| `title`        | `string`                                                 | —                           | The title attribute, providing advisory information for the element.                       |
+| `onClick`      | `React.MouseEventHandler<HTMLDivElement>`                | —                           | Handler called when the element is clicked.                                                |
+| `onMouseEnter` | `React.MouseEventHandler<HTMLDivElement>`                | —                           | Handler called when the pointer enters the element.                                        |
+| `onMouseLeave` | `React.MouseEventHandler<HTMLDivElement>`                | —                           | Handler called when the pointer leaves the element.                                        |
+| `onFocus`      | `React.FocusEventHandler<HTMLDivElement>`                | —                           | Handler called when the element receives focus.                                            |
+| `onBlur`       | `React.FocusEventHandler<HTMLDivElement>`                | —                           | Handler called when the element loses focus.                                               |
 
 ## Accessibility
 

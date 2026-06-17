@@ -570,16 +570,18 @@ export const REGISTRIES: Registry[] = [
   {
     id: "popover",
     name: "Popover",
-    description: "A popover component with multiple variants.",
+    description:
+      "A popover component that displays content in a floating container.",
     type: "component",
-    exampleCount: 5,
+    exampleCount: 4,
     files: [
       {
         type: "core",
         path: "/core/popover.tsx"
       }
     ],
-    dependencies: ["@floating-ui/react"]
+    dependencies: ["react-aria-components"],
+    requires: ["button", "overlay"]
   },
   {
     id: "progress",

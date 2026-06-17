@@ -1,24 +1,20 @@
 "use client";
 
-import {
-  Popover,
-  PopoverContent,
-  PopoverDescription,
-  PopoverHeading,
-  PopoverTrigger
-} from "@/registry/core/popover";
+import { Button } from "@/registry/core/button";
+import { OverlayWrapper } from "@/registry/core/overlay";
+import { Popover } from "@/registry/core/popover";
 
 export default function PopoverSimplePreview() {
   return (
-    <Popover>
-      <PopoverTrigger>Options</PopoverTrigger>
-      <PopoverContent>
-        <PopoverHeading>Popover Title</PopoverHeading>
-        <PopoverDescription>
-          Lorem ipsum dolor sit amet, consectetur piscing elispendisse vel velit
-          lorem.
-        </PopoverDescription>
-      </PopoverContent>
-    </Popover>
+    <OverlayWrapper>
+      <Button variant="ghost" appearance="outline">
+        Show Info
+      </Button>
+      <Popover className="min-w-64">
+        <p className="text-sm text-text-100">
+          A minimal popover with just a single line of text content.
+        </p>
+      </Popover>
+    </OverlayWrapper>
   );
 }

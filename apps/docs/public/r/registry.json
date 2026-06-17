@@ -604,10 +604,13 @@
     {
       "name": "popover",
       "type": "registry:ui",
-      "description": "A popover component with multiple variants.",
-      "registryDependencies": [],
+      "description": "A popover component that displays content in a floating container.",
+      "registryDependencies": [
+        "button",
+        "overlay"
+      ],
       "dependencies": [
-        "@floating-ui/react"
+        "react-aria-components"
       ],
       "files": [
         {
