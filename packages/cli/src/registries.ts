@@ -46,7 +46,7 @@ export const REGISTRIES: Registry[] = [
     ],
     dependencies: ["react-aria-components"],
     exampleCount: 3,
-    requires: ["button"]
+    requires: ["overlay", "dialog"]
   },
   {
     id: "aspect-ratio",
@@ -334,14 +334,15 @@ export const REGISTRIES: Registry[] = [
     description:
       "A dialog component that display a modal overlay above the main page content.",
     type: "component",
-    exampleCount: 8,
+    exampleCount: 9,
     files: [
       {
         type: "core",
         path: "/core/dialog.tsx"
       }
     ],
-    dependencies: ["react-aria-components", "@tailgrids/icons"]
+    dependencies: ["react-aria-components", "@tailgrids/icons"],
+    requires: ["button", "overlay"]
   },
   {
     id: "drawer",
@@ -551,6 +552,20 @@ export const REGISTRIES: Registry[] = [
       }
     ],
     exampleCount: 5
+  },
+  {
+    id: "overlay",
+    name: "Overlay",
+    description: "A component for displaying content in a floating container.",
+    type: "component",
+    files: [
+      {
+        type: "core",
+        path: "/core/overlay.tsx"
+      }
+    ],
+    dependencies: ["react-aria-components"],
+    exampleCount: 3
   },
   {
     id: "pagination",

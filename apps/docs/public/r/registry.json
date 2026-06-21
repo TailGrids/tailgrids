@@ -42,7 +42,8 @@
       "type": "registry:ui",
       "description": "A modal dialog that interrupts the user with important content and expects a response.",
       "registryDependencies": [
-        "button"
+        "overlay",
+        "dialog"
       ],
       "dependencies": [
         "react-aria-components"
@@ -351,7 +352,10 @@
       "name": "dialog",
       "type": "registry:ui",
       "description": "A dialog component that display a modal overlay above the main page content.",
-      "registryDependencies": [],
+      "registryDependencies": [
+        "button",
+        "overlay"
+      ],
       "dependencies": [
         "react-aria-components",
         "@tailgrids/icons"
@@ -579,6 +583,21 @@
       "files": [
         {
           "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/otp-input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "overlay",
+      "type": "registry:ui",
+      "description": "A component for displaying content in a floating container.",
+      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "files": [
+        {
+          "path": "https://raw.githubusercontent.com/TailGrids/tailgrids/refs/heads/main/apps/docs/src/registry/core/overlay.tsx",
           "type": "registry:ui"
         }
       ]
