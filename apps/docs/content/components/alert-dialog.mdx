@@ -1,9 +1,9 @@
 ---
 title: React Alert Dialog Components
-description: A React alert dialog component built with Tailwind CSS. Show confirmation modals for actions like delete or logout with accessible dialogs, focus control, and keyboard support.
+description: A React alert dialog component built with Tailwind CSS and React Aria Components. Show confirmation modals for actions like delete or logout with accessible focus and keyboard support.
 ---
 
-import AlertDialogCustomPreview from "@/components/preview/alert-dialog/alert-dialog-custom-preview";
+import AlertDialogControlledPreview from "@/components/preview/alert-dialog/alert-dialog-controlled-preview";
 import AlertDialogDestructivePreview from "@/components/preview/alert-dialog/alert-dialog-destructive-preview";
 import AlertDialogPreview from "@/components/preview/alert-dialog/alert-dialog-preview";
 import { getFileContent } from "@/utils/get-file-content";
@@ -11,11 +11,11 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 # Alert Dialog
 
-The React Alert Dialog component shows a modal that asks users to confirm an important action. It is used for actions like deleting data, logging out, or making permanent changes.
+The React Alert Dialog component shows a modal window on top of the page to ask users to confirm an important action. It is used for actions like deleting data, logging out, or making permanent changes.
 
-It blocks the screen until the user takes action, such as confirming or canceling. For example, users must confirm before deleting an account or removing a file.
+It opens as an overlay and blocks interaction with the background until the user takes action. For example, users must confirm before deleting an account or removing a file.
 
-Built with React Aria Components and styled using Tailwind CSS. It supports keyboard navigation, focus management, and accessible modal interactions.
+Built with React and `react-aria-components`, and styled using Tailwind CSS. It supports keyboard navigation, focus management, and accessible modal behavior.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -30,6 +30,7 @@ Built with React Aria Components and styled using Tailwind CSS. It supports keyb
 <Accordions defaultValue="CLI">
 <Accordion title="CLI">
 Install the component using the Tailgrids CLI.
+
 ```npm
 npx @tailgrids/cli add alert-dialog
 ```
@@ -37,7 +38,7 @@ npx @tailgrids/cli add alert-dialog
 </Accordion>
 
 <Accordion title="Manual">
-Install the required dependencies:
+The Alert Dialog component relies on the `react-aria-components` library. Install the required dependencies:
 
 ```npm
 npm i react-aria-components
@@ -56,45 +57,47 @@ Copy and paste the following component code into your project.
 
 ## Anatomy
 
-Import the component and its sub-components.
+Wrap the `AlertDialog` component with `Backdrop` to create a complete alert dialog experience with backdrop behavior.
 
 ```tsx
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger
-} from "@/components/ui/alert-dialog";
+"use client";
 
-export default () => (
-  <AlertDialog>
-    <AlertDialogTrigger>Delete Account</AlertDialogTrigger>
-    <AlertDialogContent>
-      <AlertDialogHeader>
-        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-        <AlertDialogDescription>
-          This action cannot be undone.
-        </AlertDialogDescription>
-      </AlertDialogHeader>
-      <AlertDialogFooter>
-        <AlertDialogCancel>Cancel</AlertDialogCancel>
-        <AlertDialogAction>Delete</AlertDialogAction>
-      </AlertDialogFooter>
-    </AlertDialogContent>
-  </AlertDialog>
-);
+import { AlertDialog } from "@/registry/core/alert-dialog";
+import { Button } from "@/registry/core/button";
+import {
+  DialogClose,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle
+} from "@/registry/core/dialog";
+import { OverlayWrapper } from "@/registry/core/overlay";
+
+export default function AlertDialogPreview() {
+  return (
+    <OverlayWrapper>
+      <Button />
+
+      <AlertDialog>
+        <DialogHeader>
+          <DialogTitle />
+          <DialogDescription />
+        </DialogHeader>
+
+        <DialogFooter>
+          <DialogClose />
+        </DialogFooter>
+      </AlertDialog>
+    </OverlayWrapper>
+  );
+}
 ```
 
 ## Examples
 
 ### Basic
 
-A simple confirmation dialog for common user actions.
+Wrap the `AlertDialog` component with `OverlayWrapper` to create a basic alert dialog component.
 
 <ComponentPreview
   codeSnippet={getFileContent(
@@ -104,35 +107,37 @@ A simple confirmation dialog for common user actions.
   <AlertDialogPreview />
 </ComponentPreview>
 
-### Destructive
+### Controlled
 
-Use a destructive style for actions that result in data loss or permanent changes.
+Use the `isOpen` and `onOpenChange` props to control the open state of the alert dialog.
+
+<ComponentPreview
+  codeSnippet={getFileContent(
+    "/src/components/preview/alert-dialog/alert-dialog-controlled-preview.tsx"
+  )}
+  highlightLines={[20]}
+>
+  <AlertDialogControlledPreview />
+</ComponentPreview>
+
+### Autofocus
+
+Pass `autoFocus` to desired elements to automatically focus them when the alert dialog opens.
 
 <ComponentPreview
   codeSnippet={getFileContent(
     "/src/components/preview/alert-dialog/alert-dialog-destructive-preview.tsx"
   )}
+  highlightWords={["autoFocus"]}
 >
   <AlertDialogDestructivePreview />
-</ComponentPreview>
-
-### Custom Actions
-
-Customize the button labels and styles to match the specific context of the alert.
-
-<ComponentPreview
-  codeSnippet={getFileContent(
-    "/src/components/preview/alert-dialog/alert-dialog-custom-preview.tsx"
-  )}
->
-  <AlertDialogCustomPreview />
 </ComponentPreview>
 
 ## API Reference
 
 ### AlertDialog
 
-Root component that manages the dialog state.
+The root component that wraps all the content and provides alert dialog behavior and accessibility features.
 
 | Prop           | Type                        | Default | Description                        |
 | :------------- | :-------------------------- | :------ | :--------------------------------- |
@@ -140,87 +145,25 @@ Root component that manages the dialog state.
 | `isOpen`       | `boolean`                   | -       | Controlled open state              |
 | `defaultOpen`  | `boolean`                   | -       | Uncontrolled default open state    |
 | `onOpenChange` | `(isOpen: boolean) => void` | -       | Called when the open state changes |
+| `className`    | `string`                    | -       | Additional CSS classes             |
 
-### AlertDialogTrigger
+## Composition
 
-The button element that opens the dialog when pressed.
+The Alert Dialog should be composed the same as `Dialog` without the `Backdrop` component.
 
-| Prop        | Type              | Default | Description                  |
-| :---------- | :---------------- | :------ | :--------------------------- |
-| `children`  | `React.ReactNode` | -       | The trigger label or element |
-| `className` | `string`          | -       | Additional CSS classes       |
+```
+OverlayWrapper                  — A stateful wrapper that manages the open state of the alert dialog and backdrop.
+└── Button                      — The trigger button that opens the alert dialog.
+    └── AriaDialog              — The dialog panel with `alertdialog` role and accessible behavior.
+        └── children            — Content of the dialog.
+```
 
-### AlertDialogContent
-
-The main dialog panel. Wraps `Modal` and `Dialog` from react-aria-components.
-
-| Prop               | Type                                                                    | Default | Description                                                       |
-| :----------------- | :---------------------------------------------------------------------- | :------ | :---------------------------------------------------------------- |
-| `children`         | `React.ReactNode` \| `(opts: { close: () => void }) => React.ReactNode` | -       | Content of the dialog. Supports render props for `close()` access |
-| `overlayClassName` | `string`                                                                | -       | Additional CSS classes for the overlay backdrop                   |
-| `className`        | `string`                                                                | -       | Additional CSS classes for the dialog panel                       |
-
-### AlertDialogHeader
-
-A semantic container for the title and description at the top of the dialog.
-
-| Prop        | Type              | Default | Description            |
-| :---------- | :---------------- | :------ | :--------------------- |
-| `children`  | `React.ReactNode` | -       | Header content         |
-| `className` | `string`          | -       | Additional CSS classes |
-
-### AlertDialogTitle
-
-The dialog title. Uses react-aria's `Heading` with `slot="title"` for proper ARIA labelling.
-
-| Prop        | Type              | Default | Description            |
-| :---------- | :---------------- | :------ | :--------------------- |
-| `children`  | `React.ReactNode` | -       | Title text             |
-| `className` | `string`          | -       | Additional CSS classes |
-
-### AlertDialogDescription
-
-A paragraph for supplementary text that describes the alert's purpose.
-
-| Prop        | Type              | Default | Description            |
-| :---------- | :---------------- | :------ | :--------------------- |
-| `children`  | `React.ReactNode` | -       | Description text       |
-| `className` | `string`          | -       | Additional CSS classes |
-
-### AlertDialogFooter
-
-An action bar at the bottom of the dialog for buttons and actions.
-
-| Prop        | Type              | Default | Description                           |
-| :---------- | :---------------- | :------ | :------------------------------------ |
-| `children`  | `React.ReactNode` | -       | Footer content (buttons, links, etc.) |
-| `className` | `string`          | -       | Additional CSS classes                |
-
-### AlertDialogAction
-
-The primary action button. Styled as a primary button by default.
-
-| Prop        | Type              | Default | Description                    |
-| :---------- | :---------------- | :------ | :----------------------------- |
-| `children`  | `React.ReactNode` | -       | Action button label or content |
-| `className` | `string`          | -       | Additional CSS classes         |
-
-### AlertDialogCancel
-
-A button with `slot="close"` that automatically closes the dialog without taking action.
-
-| Prop        | Type              | Default | Description                    |
-| :---------- | :---------------- | :------ | :----------------------------- |
-| `children`  | `React.ReactNode` | -       | Cancel button label or content |
-| `className` | `string`          | -       | Additional CSS classes         |
-
-See [Modal](https://react-aria.adobe.com/Modal) reference for more information.
+- Follow the same composition as `Dialog` without the `Backdrop` component.
+- Use `DialogHeader`, `DialogTitle`, `DialogDescription` and other `Dialog` sub-components to structure the content of the alert dialog.
 
 ## Accessibility
 
-- **Focus management:** The alert dialog keeps focus within it while open and returns focus to the trigger when it closes.
-- **Keyboard support:** Users can press the `Escape` key to close the dialog and press `Enter` to confirm the primary action.
-- **Trigger behavior:** Users can open the alert dialog using a trigger and interact with actions using the mouse or keyboard.
-- **Screen reader support:** Screen readers announce the dialog as an alert, so users understand that immediate action is required.
-- **ARIA labeling:** Use `AlertDialogTitle` and `AlertDialogDescription` to describe the purpose and impact of the action clearly.
-- **Action clarity:** Provide clear labels for actions like confirm and cancel so users understand the outcome before proceeding.
+- **Dialog role:** The `AlertDialog` component renders with `role="alertdialog"` by default.
+- **Focus management:** The alert dialog keeps focus while open and returns focus to the trigger when it closes.
+- **Outside click and Keyboard support:** Closing the dialog by clicking outside and `Escape` key is disabled by default. Can be enabled with `isDismissable` and `isKeyboardDismissDisabled` props.
+- **Screen reader support:** Screen readers announce the dialog as an alertdialog, so users understand that immediate action is required.

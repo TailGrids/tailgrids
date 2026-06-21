@@ -87,6 +87,7 @@ export const componentImages: Record<string, StaticImageData> = {
   "navigation-menu": NavigationMenuImage,
   "number-field": InputImage, // Fallback
   "otp-input": OtpInputImage,
+  overlay: DialogImage, // Fallback
   pagination: PaginationImage,
   popover: PopoverImage,
   progress: ProgressImage,

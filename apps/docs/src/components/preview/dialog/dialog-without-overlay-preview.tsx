@@ -1,25 +1,24 @@
 "use client";
 
-import { buttonStyles } from "@/registry/core/button";
+import { Button, buttonStyles } from "@/registry/core/button";
 import {
   Dialog,
   DialogBody,
   DialogClose,
-  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
-  DialogTrigger
+  DialogTitle
 } from "@/registry/core/dialog";
+import { OverlayWrapper } from "@/registry/core/overlay";
 import { CheckCircle1 } from "@tailgrids/icons";
 
 export default function DialogWithoutOverlayPreview() {
   return (
-    <Dialog>
-      <DialogTrigger className={buttonStyles()}>Complete Order</DialogTrigger>
+    <OverlayWrapper>
+      <Button className={buttonStyles()}>Complete Order</Button>
 
-      <DialogContent showCloseButton={false} className="max-w-sm">
+      <Dialog showCloseButton={false} className="max-w-sm">
         <DialogHeader>
           <div className="flex flex-col items-center gap-3 text-center">
             <span className="flex size-12 items-center justify-center rounded-full bg-success-500/10 text-success-500">
@@ -58,7 +57,7 @@ export default function DialogWithoutOverlayPreview() {
             Continue Shopping
           </DialogClose>
         </DialogFooter>
-      </DialogContent>
-    </Dialog>
+      </Dialog>
+    </OverlayWrapper>
   );
 }

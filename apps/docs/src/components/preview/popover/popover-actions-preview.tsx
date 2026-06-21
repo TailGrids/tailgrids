@@ -1,33 +1,33 @@
 "use client";
 
-import {
-  Popover,
-  PopoverClose,
-  PopoverContent,
-  PopoverDescription,
-  PopoverHeading,
-  PopoverTrigger
-} from "@/registry/core/popover";
+import { Button } from "@/registry/core/button";
+import { OverlayWrapper } from "@/registry/core/overlay";
+import { Popover, PopoverArrow } from "@/registry/core/popover";
+import { Trash1 } from "@tailgrids/icons";
 
 export default function PopoverActionsPreview() {
   return (
-    <Popover>
-      <PopoverTrigger>Open Popover</PopoverTrigger>
-      <PopoverContent>
-        <PopoverHeading>Popover Title</PopoverHeading>
-        <PopoverDescription className="mb-6">
-          Lorem ipsum dolor sit amet, consectetur piscing elispendisse vel velit
-          lorem.
-        </PopoverDescription>
-        <div className="flex gap-3">
-          <PopoverClose className="rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white-100 hover:bg-primary-700">
-            Yes! got it
-          </PopoverClose>
-          <PopoverClose className="px-4 py-2 border border-stroke text-sm text-text-50 font-medium rounded-md hover:bg-background-soft-100 dark:border-dark-3 dark:hover:bg-background-soft-500">
-            Learn more
-          </PopoverClose>
+    <OverlayWrapper>
+      <Button variant="primary">Item Actions</Button>
+      <Popover className="min-w-64">
+        <PopoverArrow />
+        <h3 className="text-sm font-semibold text-title-50">
+          Manage this item
+        </h3>
+        <p className="mt-1 text-xs text-text-100">
+          Choose an action to perform on the selected record.
+        </p>
+
+        <div className="mt-6 flex items-center justify-end gap-2">
+          <Button size="sm" appearance="outline" className="text-text-100">
+            Cancel
+          </Button>
+          <Button size="sm" variant="danger">
+            <Trash1 size={16} />
+            Delete
+          </Button>
         </div>
-      </PopoverContent>
-    </Popover>
+      </Popover>
+    </OverlayWrapper>
   );
 }

@@ -1,8 +1,8 @@
 "use client";
 
+import { AlertDialog } from "@/registry/core/alert-dialog";
 import { Button } from "@/registry/core/button";
 import {
-  Dialog,
   DialogDescription,
   DialogFooter,
   DialogHeader,
@@ -10,14 +10,14 @@ import {
 } from "@/registry/core/dialog";
 import { useState } from "react";
 
-export default function DialogControlledPreview() {
+export default function AlertDialogControlledPreview() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="flex h-100 w-full items-center justify-center p-10 dark:bg-black/20">
       <Button onClick={() => setIsOpen(true)}>Open</Button>
 
-      <Dialog isOpen={isOpen} onOpenChange={setIsOpen}>
+      <AlertDialog isOpen={isOpen} onOpenChange={setIsOpen}>
         <DialogHeader>
           <DialogTitle>Unlock Pro Insights</DialogTitle>
           <DialogDescription>
@@ -25,9 +25,9 @@ export default function DialogControlledPreview() {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button onClick={() => setIsOpen(false)}>Close</Button>
+          <Button onClick={() => setIsOpen(false)}>Proceed</Button>
         </DialogFooter>
-      </Dialog>
+      </AlertDialog>
     </div>
   );
 }

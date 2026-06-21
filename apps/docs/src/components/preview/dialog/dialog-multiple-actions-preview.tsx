@@ -1,18 +1,16 @@
 "use client";
 
-import { buttonStyles } from "@/registry/core/button";
+import { Button, buttonStyles } from "@/registry/core/button";
 import {
   Dialog,
   DialogBody,
   DialogClose,
-  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogOverlay,
-  DialogTitle,
-  DialogTrigger
+  DialogTitle
 } from "@/registry/core/dialog";
+import { Backdrop, OverlayWrapper } from "@/registry/core/overlay";
 import {
   Envelope1,
   FileTextMultiple,
@@ -21,12 +19,10 @@ import {
 
 export default function DialogMultipleActionsPreview() {
   return (
-    <Dialog>
-      <DialogTrigger className={buttonStyles({ size: "sm" })}>
-        Share Document
-      </DialogTrigger>
-      <DialogOverlay>
-        <DialogContent className="w-md">
+    <OverlayWrapper>
+      <Button className={buttonStyles({ size: "sm" })}>Share Document</Button>
+      <Backdrop>
+        <Dialog className="w-md">
           <DialogHeader>
             <DialogTitle>Share This Document</DialogTitle>
             <DialogDescription>
@@ -92,8 +88,8 @@ export default function DialogMultipleActionsPreview() {
               Cancel
             </DialogClose>
           </DialogFooter>
-        </DialogContent>
-      </DialogOverlay>
-    </Dialog>
+        </Dialog>
+      </Backdrop>
+    </OverlayWrapper>
   );
 }

@@ -248,7 +248,7 @@ export function CodeBlock({
   }, [hasLineHighlight, uid, lineBg, lineBorder]);
 
   return (
-    <div id={uid} className="w-full">
+    <div id={uid} className="min-w-max">
       {highlightCss && <style>{highlightCss}</style>}
       <SyntaxHighlighter
         showLineNumbers={showLineNumbers}

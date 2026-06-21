@@ -10,7 +10,6 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/registry/core/dialog";
-
 import { Backdrop, OverlayWrapper } from "@/registry/core/overlay";
 
 export default function DialogPreview() {

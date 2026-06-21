@@ -1,69 +1,39 @@
-"use client";
-
 import { cn } from "@/utils/cn";
 import { Close } from "@tailgrids/icons";
-import { type ComponentProps } from "react";
+import type { ComponentProps } from "react";
 import {
   Button as AriaButton,
-  type ButtonProps as AriaButtonProps,
   Dialog as AriaDialog,
-  type DialogProps as AriaDialogProps,
-  DialogTrigger as AriaDialogTrigger,
-  type DialogTriggerProps as AriaDialogTriggerProps,
+  Modal as AriaModal,
   Heading,
-  type HeadingProps,
-  Modal,
-  ModalOverlay,
-  type ModalOverlayProps
+  type DialogProps as AriaDialogProps,
+  type HeadingProps
 } from "react-aria-components";
+import { Button, ButtonProps } from "./button";
+import { Description, DescriptionProps } from "./description";
 
-export interface DialogProps extends AriaDialogTriggerProps {}
-
-export function Dialog(props: DialogProps) {
-  return <AriaDialogTrigger {...props} />;
-}
-
-export interface DialogTriggerProps extends AriaButtonProps {}
-
-export function DialogTrigger({ className, ...props }: DialogTriggerProps) {
-  return <AriaButton className={cn("outline-none", className)} {...props} />;
-}
-
-export interface DialogOverlayProps extends ModalOverlayProps {
-  className?: string;
-}
-
-export function DialogOverlay({
-  className,
-  isDismissable = true,
-  ...props
-}: DialogOverlayProps) {
-  return (
-    <ModalOverlay
-      className={cn(
-        "fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-opacity duration-200 data-entering:opacity-0 data-exiting:opacity-0",
-        className
-      )}
-      isDismissable={isDismissable}
-      {...props}
-    />
-  );
-}
-
-export interface DialogContentProps extends AriaDialogProps {
-  modalProps?: ComponentProps<typeof Modal>;
+export interface DialogProps extends AriaDialogProps {
+  isOpen?: boolean;
+  defaultOpen?: boolean;
+  onOpenChange?: (isOpen: boolean) => void;
   showCloseButton?: boolean;
-  className?: string;
 }
 
-export function DialogContent({
-  children,
+export function Dialog({
+  isOpen,
+  defaultOpen,
+  onOpenChange,
   className,
   showCloseButton = true,
+  children,
   ...props
-}: DialogContentProps) {
+}: DialogProps) {
   return (
-    <Modal className="w-fit">
+    <AriaModal
+      isOpen={isOpen}
+      defaultOpen={defaultOpen}
+      onOpenChange={onOpenChange}
+    >
       <AriaDialog
         className={cn(
           "w-full max-w-140 max-sm:max-w-[calc(100%-2rem)] p-6 border border-base-100 bg-background-100 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl shadow-lg outline-none",
@@ -87,7 +57,7 @@ export function DialogContent({
           </>
         )}
       </AriaDialog>
-    </Modal>
+    </AriaModal>
   );
 }
 
@@ -120,19 +90,10 @@ export function DialogTitle({ className, ...props }: DialogTitleProps) {
   );
 }
 
-export interface DialogDescriptionProps extends ComponentProps<"p"> {}
+export interface DialogDescriptionProps extends DescriptionProps {}
 
-export function DialogDescription({
-  className,
-  ...props
-}: DialogDescriptionProps) {
-  return (
-    <p
-      data-slot="dialog-description"
-      className={cn("text-sm text-text-100", className)}
-      {...props}
-    />
-  );
+export function DialogDescription({ ...props }: DialogDescriptionProps) {
+  return <Description {...props} />;
 }
 
 export interface DialogBodyProps extends ComponentProps<"div"> {}
@@ -153,7 +114,6 @@ export interface DialogFooterProps extends ComponentProps<"div"> {
 
 export function DialogFooter({
   className,
-  showCloseButton = false,
   children,
   ...props
 }: DialogFooterProps) {
@@ -166,24 +126,13 @@ export function DialogFooter({
       )}
       {...props}
     >
-      {showCloseButton && (
-        <DialogClose className="inline-flex h-10 items-center justify-center rounded-lg border border-base-100 bg-background-100 px-4 text-sm font-medium text-title-50 outline-none transition hover:bg-background-soft-50 focus-visible:ring-2 focus-visible:ring-primary-500">
-          Close
-        </DialogClose>
-      )}
       {children}
     </div>
   );
 }
 
-export interface DialogCloseProps extends AriaButtonProps {}
+export interface DialogCloseProps extends Omit<ButtonProps, "slot"> {}
 
-export function DialogClose({ className, ...props }: DialogCloseProps) {
-  return (
-    <AriaButton
-      slot="close"
-      className={cn("outline-none", className)}
-      {...props}
-    />
-  );
+export function DialogClose({ ...props }: DialogCloseProps) {
+  return <Button slot="close" {...props} />;
 }

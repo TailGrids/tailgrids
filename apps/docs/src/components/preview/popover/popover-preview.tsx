@@ -4,17 +4,16 @@ import { Button } from "@/registry/core/button";
 import { OverlayWrapper } from "@/registry/core/overlay";
 import { Popover, PopoverArrow } from "@/registry/core/popover";
 
-export default function PopoverDefaultPreview() {
+export default function PopoverPreview() {
   return (
     <OverlayWrapper>
       <Button appearance="outline">Open Popover</Button>
-      <Popover className="max-w-xs">
-        <h2 className="text-base font-semibold text-title-50">Heads up!</h2>
-        <p className="mt-1 text-sm text-text-100">
-          Popovers are great for showing small bits of context without
-          navigating away from the current page.
-        </p>
+      <Popover>
         <PopoverArrow />
+        <h2 className="text-lg font-semibold">Popover Title</h2>
+        <p className="text-sm text-muted-foreground">
+          This is a popover with heading and description.
+        </p>
       </Popover>
     </OverlayWrapper>
   );
