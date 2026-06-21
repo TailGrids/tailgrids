@@ -1,5 +1,11 @@
 # @tailgrids/cli
 
+## 1.4.2
+
+### Patch Changes
+
+- Fix new component installation issue
+
 ## 1.4.1
 
 ### Patch Changes
