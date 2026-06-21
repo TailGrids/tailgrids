@@ -1,30 +1,26 @@
 "use client";
 
-import { buttonStyles } from "@/registry/core/button";
+import { Button, buttonStyles } from "@/registry/core/button";
 import {
   Dialog,
   DialogBody,
   DialogClose,
-  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogOverlay,
-  DialogTitle,
-  DialogTrigger
+  DialogTitle
 } from "@/registry/core/dialog";
 import { Input } from "@/registry/core/input";
 import { Label } from "@/registry/core/label";
+import { Backdrop, OverlayWrapper } from "@/registry/core/overlay";
 
 export default function DialogWithoutClosePreview() {
   return (
-    <Dialog>
-      <DialogTrigger className={buttonStyles({ appearance: "outline" })}>
-        Share
-      </DialogTrigger>
+    <OverlayWrapper>
+      <Button className={buttonStyles({ appearance: "outline" })}>Share</Button>
 
-      <DialogOverlay>
-        <DialogContent showCloseButton={false} className="w-sm">
+      <Backdrop>
+        <Dialog showCloseButton={false} className="w-sm">
           <DialogHeader>
             <DialogTitle>Share link</DialogTitle>
             <DialogDescription>
@@ -52,8 +48,8 @@ export default function DialogWithoutClosePreview() {
               Close
             </DialogClose>
           </DialogFooter>
-        </DialogContent>
-      </DialogOverlay>
-    </Dialog>
+        </Dialog>
+      </Backdrop>
+    </OverlayWrapper>
   );
 }

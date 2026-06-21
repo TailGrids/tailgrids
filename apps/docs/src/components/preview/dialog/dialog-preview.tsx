@@ -1,25 +1,25 @@
 "use client";
 
-import { buttonStyles } from "@/registry/core/button";
+import { Button } from "@/registry/core/button";
 import {
   Dialog,
   DialogBody,
   DialogClose,
-  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogOverlay,
-  DialogTitle,
-  DialogTrigger
+  DialogTitle
 } from "@/registry/core/dialog";
+
+import { Backdrop, OverlayWrapper } from "@/registry/core/overlay";
 
 export default function DialogPreview() {
   return (
-    <Dialog>
-      <DialogTrigger className={buttonStyles()}>Open Dialog</DialogTrigger>
-      <DialogOverlay>
-        <DialogContent className="w-sm">
+    <OverlayWrapper>
+      <Button>Open Dialog</Button>
+
+      <Backdrop>
+        <Dialog className="w-sm">
           <DialogHeader>
             <DialogTitle>Dialog Title</DialogTitle>
             <DialogDescription>
@@ -35,17 +35,13 @@ export default function DialogPreview() {
             </p>
           </DialogBody>
           <DialogFooter>
-            <DialogClose
-              className={buttonStyles({ appearance: "outline", size: "sm" })}
-            >
+            <DialogClose autoFocus appearance="outline">
               Cancel
             </DialogClose>
-            <DialogClose className={buttonStyles({ size: "sm" })}>
-              Confirm
-            </DialogClose>
+            <Button>Confirm</Button>
           </DialogFooter>
-        </DialogContent>
-      </DialogOverlay>
-    </Dialog>
+        </Dialog>
+      </Backdrop>
+    </OverlayWrapper>
   );
 }
