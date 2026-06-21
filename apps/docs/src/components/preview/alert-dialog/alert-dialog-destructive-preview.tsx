@@ -1,41 +1,38 @@
 "use client";
 
+import { AlertDialog } from "@/registry/core/alert-dialog";
+import { Button } from "@/registry/core/button";
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger
-} from "@/registry/core/alert-dialog";
-import { buttonStyles } from "@/registry/core/button";
+  DialogClose,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle
+} from "@/registry/core/dialog";
+import { OverlayWrapper } from "@/registry/core/overlay";
 
 export default function AlertDialogDestructivePreview() {
   return (
-    <AlertDialog>
-      <AlertDialogTrigger className={buttonStyles({ variant: "danger" })}>
-        Delete Account
-      </AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Delete Account</AlertDialogTitle>
-          <AlertDialogDescription>
+    <OverlayWrapper>
+      <Button variant="danger">Delete Account</Button>
+
+      <AlertDialog>
+        <DialogHeader>
+          <DialogTitle>Delete Account</DialogTitle>
+          <DialogDescription>
             Are you sure you want to delete your account? This action is
             permanent and all your data will be lost.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction
-            className={buttonStyles({ variant: "danger", size: "sm" })}
-          >
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <DialogClose appearance="outline" autoFocus>
+            Cancel
+          </DialogClose>
+          <Button variant="danger" size="sm">
             Delete
-          </AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
+          </Button>
+        </DialogFooter>
+      </AlertDialog>
+    </OverlayWrapper>
   );
 }
