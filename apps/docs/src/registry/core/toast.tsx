@@ -7,7 +7,13 @@ import {
   XmarkCircle
 } from "@tailgrids/icons";
 import { cva, type VariantProps } from "class-variance-authority";
-import { Avatar } from "./avatar";
+import {
+  Avatar,
+  AvatarBadge,
+  AvatarFallback,
+  AvatarImage,
+  AvatarStatus
+} from "./avatar";
 import { Button } from "./button";
 import { linkStyles } from "./link";
 
@@ -117,7 +123,7 @@ type AvatarToastProps = {
   name: string;
   description: string;
   image?: string;
-  status: "none" | "online" | "offline" | "busy";
+  status: AvatarStatus;
   time: string;
 };
 
@@ -130,13 +136,11 @@ export function AvatarToast({
 }: AvatarToastProps) {
   return (
     <div className="bg-background-100 relative flex min-w-89.5 items-start gap-4 rounded-lg border border-base-200 p-5 shadow-sm">
-      <Avatar
-        src={image}
-        alt={"Image of " + name}
-        status={status}
-        fallback={name.charAt(0)}
-        size={"lg"}
-      />
+      <Avatar size="lg">
+        <AvatarImage src={image} alt={`Image of ${name}`} />
+        <AvatarFallback>{name.charAt(0)}</AvatarFallback>
+        <AvatarBadge status={status} size="lg" />
+      </Avatar>
 
       <div>
         <h4 className="text-sm font-semibold text-title-50">{name}</h4>

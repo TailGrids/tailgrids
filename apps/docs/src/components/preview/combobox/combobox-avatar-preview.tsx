@@ -1,6 +1,6 @@
 "use client";
 
-import { Avatar } from "@/registry/core/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/core/avatar";
 import {
   Combobox,
   ComboboxContent,
@@ -52,13 +52,25 @@ export default function ComboboxAvatarPreview() {
         <ComboboxContent>
           <ComboboxList>
             {users.map(user => (
-              <ComboboxItem key={user.id} id={user.id} textValue={user.name}>
-                <Avatar
-                  src={user.avatar}
-                  alt={user.name}
-                  fallback={user.name.charAt(0)}
-                  label={{ title: user.name, subtitle: user.email }}
-                />
+              <ComboboxItem
+                key={user.id}
+                id={user.id}
+                textValue={user.name}
+                className="pl-3"
+              >
+                <figure className="flex justify-start items-center gap-2">
+                  <Avatar size="lg">
+                    <AvatarImage
+                      src={user.avatar}
+                      alt={`Image of ${user.name}`}
+                    />
+                    <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                  <figcaption>
+                    <p className="text-sm font-medium">{user.name}</p>
+                    <p className="text-xs text-gray-500">{user.email}</p>
+                  </figcaption>
+                </figure>
               </ComboboxItem>
             ))}
           </ComboboxList>

@@ -2,11 +2,12 @@ import {
   Avatar,
   AvatarFallback,
   AvatarGroup,
+  AvatarGroupCount,
   AvatarImage
 } from "@/registry/core/avatar";
 import { teamMembersGroup } from "./data";
 
-export default function AvatarGroupPreview() {
+export default function AvatarGroupWithCountPreview() {
   return (
     <AvatarGroup aria-label="Team members">
       {teamMembersGroup.map((member, index) => (
@@ -20,6 +21,7 @@ export default function AvatarGroupPreview() {
           </AvatarFallback>
         </Avatar>
       ))}
+      <AvatarGroupCount>5+</AvatarGroupCount>
     </AvatarGroup>
   );
 }

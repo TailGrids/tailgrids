@@ -7,12 +7,12 @@ const aspectRatioStyles = cva("relative w-full overflow-hidden", {
     ratio: {
       square: "aspect-square",
       video: "aspect-video",
-      "4/3": "aspect-[4/3]",
-      "3/4": "aspect-[3/4]",
-      "21/9": "aspect-[21/9]",
-      "9/16": "aspect-[9/16]",
-      "3/2": "aspect-[3/2]",
-      "2/3": "aspect-[2/3]"
+      "4/3": "aspect-4/3",
+      "3/4": "aspect-3/4",
+      "21/9": "aspect-21/9",
+      "9/16": "aspect-9/16",
+      "3/2": "aspect-3/2",
+      "2/3": "aspect-2/3"
     }
   },
   defaultVariants: {
