@@ -68,14 +68,14 @@ export const REGISTRIES: Registry[] = [
     name: "Avatar",
     description: "An image element with a fallback for representing a user.",
     type: "component",
-    exampleCount: 4,
+    exampleCount: 6,
     files: [
       {
         type: "core",
         path: "/core/avatar.tsx"
       }
     ],
-    dependencies: ["class-variance-authority"]
+    dependencies: ["@base-ui/react"]
   },
   {
     id: "badge",

@@ -1,6 +1,11 @@
 "use client";
 
-import { Avatar } from "@/registry/core/avatar";
+import {
+  Avatar,
+  AvatarBadge,
+  AvatarFallback,
+  AvatarImage
+} from "@/registry/core/avatar";
 import { buttonStyles } from "@/registry/core/button";
 import {
   Drawer,
@@ -25,13 +30,14 @@ export default function DrawerProfilePreview() {
       <DrawerContent side="bottom" className="sm:max-w-md sm:mx-auto">
         <DrawerHeader className="text-center sm:text-center">
           <div className="mx-auto mb-4 flex justify-center">
-            <Avatar
-              src="/docs/images/avatar/avatar-2.webp"
-              alt="Jane Doe"
-              fallback="JD"
-              size="xxl"
-              status="online"
-            />
+            <Avatar size="xxl">
+              <AvatarImage
+                src="/docs/images/avatar/avatar-2.webp"
+                alt="Ahmed Tusar"
+              />
+              <AvatarFallback>AT</AvatarFallback>
+              <AvatarBadge status="online" size="xxl" />
+            </Avatar>
           </div>
           <DrawerTitle className="text-xl">Ahmed Tusar</DrawerTitle>
           <DrawerDescription>Software Engineer</DrawerDescription>

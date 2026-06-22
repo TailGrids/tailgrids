@@ -14,7 +14,7 @@ export default function AvatarPreview() {
           alt="Johurul Haque"
         />
         <AvatarFallback>J</AvatarFallback>
-        <AvatarBadge status="online" size="lg" />
+        <AvatarBadge status="online" size="lg" ping />
       </Avatar>
     </div>
   );

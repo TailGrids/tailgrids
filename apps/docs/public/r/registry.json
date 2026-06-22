@@ -76,7 +76,7 @@
       "description": "An image element with a fallback for representing a user.",
       "registryDependencies": [],
       "dependencies": [
-        "class-variance-authority"
+        "@base-ui/react"
       ],
       "files": [
         {

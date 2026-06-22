@@ -1,6 +1,6 @@
 "use client";
 
-import { Avatar } from "@/registry/core/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/core/avatar";
 import { Badge } from "@/registry/core/badge";
 import { Checkbox } from "@/registry/core/checkbox";
 import { Pagination } from "@/registry/core/pagination";
@@ -109,11 +109,10 @@ export default function TableUserManagementPreview() {
 
               <TableCell>
                 <div className="flex items-center gap-3">
-                  <Avatar
-                    size="sm"
-                    src={item.avatar}
-                    fallback={item.name.charAt(0)}
-                  />
+                  <Avatar size="sm">
+                    <AvatarImage src={item.avatar} alt={item.name} />
+                    <AvatarFallback>{item.name.charAt(0)}</AvatarFallback>
+                  </Avatar>
                   <span className="font-medium text-title-50 whitespace-nowrap">
                     {item.name}
                   </span>

@@ -1,4 +1,10 @@
-import { Avatar } from "@/registry/core/avatar";
+import {
+  Avatar,
+  AvatarBadge,
+  AvatarFallback,
+  AvatarImage,
+  AvatarStatus
+} from "@/registry/core/avatar";
 import { List } from "@/registry/core/list";
 
 const users = [
@@ -12,7 +18,7 @@ const users = [
     name: "Johurul Haque",
     email: "haque@pimjo.com",
     avatar: "/docs/images/avatar/avatar-2.webp",
-    status: "away"
+    status: "busy"
   },
   {
     name: "Niaj Morshed",
@@ -26,33 +32,24 @@ const users = [
     avatar: "/docs/images/avatar/avatar-4.webp",
     status: "online"
   }
-];
+] as const;
 
 export default function ListUsersPreview() {
   return (
     <List className="max-w-70">
       {users.map((user, index) => (
         <li key={index}>
-          <div className="relative">
-            <Avatar
-              src={user.avatar}
-              alt={user.name}
-              fallback={user.name.charAt(0)}
-            />
-            <span
-              className={`absolute bottom-0 right-0 size-3 rounded-full border-2 border-white-100 ${
-                user.status === "online"
-                  ? "bg-success-500"
-                  : user.status === "offline"
-                    ? "bg-alert-danger-button-background"
-                    : "bg-warning-500"
-              }`}
-            />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-medium text-title-50">{user.name}</span>
-            <span className="text-sm text-text-200">{user.email}</span>
-          </div>
+          <figure className="flex justify-start items-center gap-2 w-full">
+            <Avatar size="md">
+              <AvatarImage src={user.avatar} alt={user.name} />
+              <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+              <AvatarBadge status={user.status as AvatarStatus} />
+            </Avatar>
+            <figcaption>
+              <p className="text-sm font-medium">{user.name}</p>
+              <p className="text-xs text-gray-500">{user.email}</p>
+            </figcaption>
+          </figure>
         </li>
       ))}
     </List>

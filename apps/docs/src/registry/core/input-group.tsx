@@ -1,11 +1,11 @@
 "use client";
 
-import { Input, InputProps } from "@/registry/core/input";
-import { TextArea, TextAreaProps } from "@/registry/core/text-area";
 import { cn } from "@/utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
 import { ComponentProps } from "react";
 import { Button, ButtonProps } from "./button";
+import { Input, InputProps } from "./input";
+import { TextArea, TextAreaProps } from "./text-area";
 
 export interface InputGroupProps extends ComponentProps<"div"> {}
 
