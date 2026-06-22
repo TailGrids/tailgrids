@@ -82,8 +82,6 @@ export function AvatarImage({ className, ...props }: AvatarImageProps) {
   );
 }
 
-Avatar.Image = AvatarImage;
-
 export interface AvatarFallbackProps extends AvatarPrimitive.Fallback.Props {}
 
 export function AvatarFallback({ className, ...props }: AvatarFallbackProps) {
@@ -98,8 +96,6 @@ export function AvatarFallback({ className, ...props }: AvatarFallbackProps) {
     />
   );
 }
-
-Avatar.Fallback = AvatarFallback;
 
 export interface AvatarBadgeProps extends React.ComponentProps<"span"> {
   status?: AvatarStatus;
@@ -141,8 +137,6 @@ export function AvatarBadge({
     </span>
   );
 }
-
-Avatar.Badge = AvatarBadge;
 
 export function AvatarGroup({
   className,
