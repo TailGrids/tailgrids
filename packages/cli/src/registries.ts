@@ -29,8 +29,7 @@ export const REGISTRIES: Registry[] = [
       }
     ],
     dependencies: ["class-variance-authority", "@tailgrids/icons"],
-    exampleCount: 3,
-    requires: ["button"]
+    exampleCount: 5
   },
   {
     id: "alert-dialog",

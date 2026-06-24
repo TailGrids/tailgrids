@@ -1,189 +1,210 @@
 import { cn } from "@/utils/cn";
-import { Xmark2x } from "@tailgrids/icons";
-import { cva } from "class-variance-authority";
-import { useState } from "react";
-import { Button } from "./button";
+import {
+  CheckCircle1,
+  InfoCircle,
+  InfoTriangle,
+  Xmark
+} from "@tailgrids/icons";
+import { cva, type VariantProps } from "class-variance-authority";
+import { createContext, use } from "react";
+import { Heading, HeadingProps } from "react-aria-components";
 
-const wrapperStyles = cva(
-  "relative w-full max-w-4xl rounded-lg border px-5 py-4",
+const AlertContext = createContext<{ status: AlertStatus }>({
+  status: "default"
+});
+
+// Alert
+
+const alertStyles = cva(
+  "relative w-full flex items-start gap-3 max-w-4xl rounded-lg border px-5 py-4",
   {
     variants: {
-      variant: {
+      status: {
+        default: "border-alert-default-border bg-alert-default-background",
         success: "border-alert-success-border bg-alert-success-background",
         warning: "border-alert-warning-border bg-alert-warning-background",
-        danger: "border-alert-danger-border bg-alert-danger-background",
-        info: "border-alert-info-border bg-alert-info-background",
-        gray: "border-alert-default-border bg-alert-default-background"
+        error: "border-alert-danger-border bg-alert-danger-background",
+        info: "border-alert-info-border bg-alert-info-background"
       }
+    },
+    defaultVariants: {
+      status: "default"
     }
   }
 );
 
-const iconWrapperStyles = cva(
+export type AlertStatus = NonNullable<
+  VariantProps<typeof alertStyles>["status"]
+>;
+
+export interface AlertProps extends React.ComponentProps<"div"> {
+  status?: AlertStatus;
+}
+
+export function Alert({
+  className,
+  status = "default",
+  children,
+  ...props
+}: AlertProps) {
+  return (
+    <AlertContext.Provider value={{ status }}>
+      <div
+        data-slot="alert"
+        data-status={status}
+        role="alert"
+        className={cn(alertStyles({ status }), className)}
+        {...props}
+      >
+        {children}
+      </div>
+    </AlertContext.Provider>
+  );
+}
+
+Alert.displayName = "Alert";
+
+// Alert Indicator
+
+const indicatorStyles = cva(
   "flex size-7 items-center justify-center rounded-lg [&>svg]:size-4 text-white-100",
   {
     variants: {
-      variant: {
+      status: {
+        default: "bg-alert-default-icon-background",
         success: "bg-alert-success-icon-background",
         warning: "bg-alert-warning-icon-background",
-        danger: "bg-alert-danger-icon-background",
-        info: "bg-alert-info-icon-background",
-        gray: "bg-alert-default-icon-background"
+        error: "bg-alert-danger-icon-background",
+        info: "bg-alert-info-icon-background"
       }
+    },
+    defaultVariants: {
+      status: "default"
     }
   }
 );
 
-const titleStyles = cva("font-semibold", {
-  variants: {
-    variant: {
-      success: "text-alert-success-title",
-      warning: "text-alert-warning-title",
-      danger: "text-alert-danger-title",
-      info: "text-alert-info-title",
-      gray: "text-alert-default-title"
-    }
-  }
-});
+export interface AlertIndicatorProps extends React.ComponentProps<"span"> {}
 
-const messageStyles = cva("text-sm", {
-  variants: {
-    variant: {
-      success: "text-alert-success-description",
-      warning: "text-alert-warning-description",
-      danger: "text-alert-danger-description",
-      info: "text-alert-info-description",
-      gray: "text-alert-default-description"
-    }
-  }
-});
+export function AlertIndicator({
+  className,
+  children,
+  ...props
+}: AlertIndicatorProps) {
+  const { status } = use(AlertContext);
 
-const closeButtonStyles = cva(
-  "absolute top-3 right-3 flex items-center justify-center p-1",
-  {
-    variants: {
-      variant: {
-        success: "text-alert-success-close-icon",
-        warning: "text-alert-warning-close-icon",
-        danger: "text-alert-danger-close-icon",
-        info: "text-alert-info-close-icon",
-        gray: "text-alert-default-close-icon"
-      }
+  const loadIcon = () => {
+    switch (status) {
+      case "success":
+        return <CheckCircle1 aria-hidden="true" focusable="false" />;
+      case "warning":
+        return <InfoTriangle aria-hidden="true" focusable="false" />;
+      case "error":
+        return <Xmark aria-hidden="true" focusable="false" />;
+      case "info":
+      default:
+        return <InfoCircle aria-hidden="true" focusable="false" />;
     }
-  }
-);
-
-const primaryButtonStyles = cva("text-white-100", {
-  variants: {
-    variant: {
-      success:
-        "bg-alert-success-button-background hover:bg-alert-success-button-hover-background",
-      danger:
-        "bg-alert-danger-button-background hover:bg-alert-danger-button-hover-background",
-      info: "bg-alert-info-button-background hover:bg-alert-info-button-hover-background",
-      warning:
-        "bg-alert-warning-button-background hover:bg-alert-warning-button-hover-background",
-      gray: "bg-alert-default-button-background hover:bg-alert-default-button-hover-background"
-    }
-  }
-});
-
-type PropsType = {
-  title?: string;
-  message: string;
-  variant?: "success" | "danger" | "info" | "warning" | "gray";
-  icon?: React.ReactNode;
-  actions?: {
-    primary?: {
-      label: string;
-      onClick: () => void;
-    };
-    secondary?: {
-      label: string;
-    };
   };
-  open?: boolean;
-  onClose?: () => void;
-};
-
-export default function Alert({
-  title,
-  message,
-  variant = "success",
-  icon,
-  open = true,
-  onClose,
-  actions
-}: PropsType) {
-  const [visible, setVisible] = useState(open);
-
-  const handleClose = () => {
-    setVisible(false);
-    onClose?.();
-
-    setTimeout(() => {
-      setVisible(true);
-    }, 5000);
-  };
-
-  if (!visible) return null;
 
   return (
-    <div className={wrapperStyles({ variant })}>
-      <button
-        onClick={handleClose}
-        className={closeButtonStyles({
-          variant
-        })}
-        aria-label="Close alert"
-      >
-        <Xmark2x />
-      </button>
+    <span
+      data-slot="alert-indicator"
+      data-status={status}
+      aria-hidden="true"
+      role="presentation"
+      className={cn(indicatorStyles({ status }), className)}
+      {...props}
+    >
+      {children ?? loadIcon()}
+    </span>
+  );
+}
 
-      <div className="grid grid-cols-[auto_1fr] items-center gap-x-3 gap-y-3.5">
-        {icon && <div className={iconWrapperStyles({ variant })}>{icon}</div>}
+AlertIndicator.displayName = "AlertIndicator";
 
-        {title && <h4 className={titleStyles({ variant })}>{title}</h4>}
+// Alert Content
 
-        <p
-          className={messageStyles({
-            variant,
-            className: cn(title ? "col-span-full" : "font-medium")
-          })}
-        >
-          {message}
-        </p>
-      </div>
+export interface AlertContentProps extends React.ComponentProps<"div"> {}
 
-      {(actions?.primary || actions?.secondary) && (
-        <div className="mt-5 flex gap-3">
-          {actions?.primary && (
-            <Button
-              size="xs"
-              className={cn("px-4.5", primaryButtonStyles({ variant }))}
-              variant={getVariant(variant)}
-              onClick={actions.primary.onClick}
-            >
-              {actions.primary.label}
-            </Button>
-          )}
+export function AlertContent({ className, ...props }: AlertContentProps) {
+  return (
+    <div
+      data-slot="alert-content"
+      className={cn("flex-1 flex flex-col items-start gap-1", className)}
+      {...props}
+    />
+  );
+}
 
-          {actions?.secondary && (
-            <Button size="xs" appearance="outline" onClick={handleClose}>
-              {actions.secondary.label}
-            </Button>
-          )}
-        </div>
+AlertContent.displayName = "AlertContent";
+
+// Alert Title
+
+const titleStyles = cva("font-semibold leading-6 tracking-[-0.2px]", {
+  variants: {
+    status: {
+      default: "text-alert-default-title",
+      success: "text-alert-success-title",
+      warning: "text-alert-warning-title",
+      error: "text-alert-danger-title",
+      info: "text-alert-info-title"
+    }
+  },
+  defaultVariants: {
+    status: "default"
+  }
+});
+
+export interface AlertTitleProps extends HeadingProps {}
+
+export function AlertTitle({
+  className,
+  children,
+  level = 4,
+  ...props
+}: AlertTitleProps) {
+  const { status } = use(AlertContext);
+
+  return (
+    <Heading
+      data-slot="alert-title"
+      data-status={status}
+      level={level}
+      className={cn(titleStyles({ status }), className)}
+      {...props}
+    >
+      {children}
+    </Heading>
+  );
+}
+
+AlertTitle.displayName = "AlertTitle";
+
+// Alert Description
+
+export interface AlertDescriptionProps extends React.ComponentProps<"div"> {}
+
+export function AlertDescription({
+  className,
+  children,
+  ...props
+}: AlertDescriptionProps) {
+  const { status } = use(AlertContext);
+
+  return (
+    <div
+      data-slot="alert-description"
+      data-status={status}
+      className={cn(
+        "text-sm leading-5 tracking-[-0.2px] text-text-100",
+        className
       )}
+      {...props}
+    >
+      {children}
     </div>
   );
 }
 
-function getVariant(variant: string) {
-  switch (variant) {
-    case "success":
-      return "success";
-    case "danger":
-      return "danger";
-  }
-}
+AlertDescription.displayName = "AlertDescription";

@@ -23,9 +23,7 @@
       "name": "alert",
       "type": "registry:ui",
       "description": "Dismissible alert component with multiple variants, and action buttons.",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": [],
       "dependencies": [
         "class-variance-authority",
         "@tailgrids/icons"
