@@ -1,25 +1,31 @@
 "use client";
 
-import Alert from "@/registry/core/alert";
-import { Xmark2x } from "@tailgrids/icons";
+import {
+  Alert,
+  AlertContent,
+  AlertDescription,
+  AlertIndicator,
+  AlertTitle
+} from "@/registry/core/alert";
+import { Button } from "@/registry/core/button";
 export default function AlertActionsPreview() {
   return (
     <div className="flex flex-col gap-6 w-full">
-      <Alert
-        variant="danger"
-        title="Delete Account"
-        message="This action cannot be undone. This will permanently delete your account."
-        icon={<Xmark2x />}
-        actions={{
-          primary: {
-            label: "Delete",
-            onClick: () => console.log("Deleted")
-          },
-          secondary: {
-            label: "Cancel"
-          }
-        }}
-      />
+      <Alert status="info">
+        <AlertIndicator />
+        <AlertContent>
+          <AlertTitle>Settings</AlertTitle>
+          <AlertDescription>
+            Your changes have been saved successfully.
+          </AlertDescription>
+
+          <div className="flex items-center gap-2 mt-2">
+            <Button appearance="outline" size="xs">
+              Undo
+            </Button>
+          </div>
+        </AlertContent>
+      </Alert>
     </div>
   );
 }

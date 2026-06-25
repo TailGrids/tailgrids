@@ -7,16 +7,20 @@ import {
   AlertIndicator,
   AlertTitle
 } from "@/registry/core/alert";
+import { Sparkle } from "@tailgrids/icons";
 
-export function AlertPreview() {
+export default function AlertCustomIconPreview() {
   return (
     <div className="flex flex-col gap-6 w-full">
       <Alert status="success">
-        <AlertIndicator />
+        <AlertIndicator>
+          <Sparkle />
+        </AlertIndicator>
+
         <AlertContent>
-          <AlertTitle>Success</AlertTitle>
+          <AlertTitle>New features available</AlertTitle>
           <AlertDescription>
-            Your changes have been saved successfully.
+            We just shipped dark mode and keyboard shortcuts. Give them a try.
           </AlertDescription>
         </AlertContent>
       </Alert>

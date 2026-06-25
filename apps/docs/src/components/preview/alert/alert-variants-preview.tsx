@@ -1,50 +1,66 @@
 "use client";
 
-import Alert from "@/registry/core/alert";
 import {
-  CheckCircle1,
-  InfoCircle,
-  InfoTriangle,
-  Xmark2x
-} from "@tailgrids/icons";
+  Alert,
+  AlertContent,
+  AlertDescription,
+  AlertIndicator,
+  AlertTitle
+} from "@/registry/core/alert";
 
 export default function AlertVariantsPreview() {
   return (
     <div className="flex flex-col gap-6 w-full">
-      <Alert
-        variant="success"
-        title="Success"
-        message="Your changes have been saved successfully."
-        icon={<CheckCircle1 />}
-      />
+      <Alert>
+        <AlertIndicator />
+        <AlertContent>
+          <AlertTitle>Default</AlertTitle>
+          <AlertDescription>
+            This is a default alert. It provides general information to the
+            user.
+          </AlertDescription>
+        </AlertContent>
+      </Alert>
 
-      <Alert
-        variant="danger"
-        title="Error"
-        message="There was a problem processing your request. Please try again."
-        icon={<Xmark2x />}
-      />
+      <Alert status="success">
+        <AlertIndicator />
+        <AlertContent>
+          <AlertTitle>Success</AlertTitle>
+          <AlertDescription>
+            Your changes have been saved successfully.
+          </AlertDescription>
+        </AlertContent>
+      </Alert>
 
-      <Alert
-        variant="warning"
-        title="Warning"
-        message="Your subscription will expire in 3 days. Please renew to continue."
-        icon={<InfoTriangle />}
-      />
+      <Alert status="warning">
+        <AlertIndicator />
+        <AlertContent>
+          <AlertTitle>Warning</AlertTitle>
+          <AlertDescription>
+            Your subscription will expire in 3 days. Please renew to continue.
+          </AlertDescription>
+        </AlertContent>
+      </Alert>
 
-      <Alert
-        variant="info"
-        title="Information"
-        message="A new software update is available. See what's new."
-        icon={<InfoCircle />}
-      />
+      <Alert status="error">
+        <AlertIndicator />
+        <AlertContent>
+          <AlertTitle>Error</AlertTitle>
+          <AlertDescription>
+            There was a problem processing your request. Please try again.
+          </AlertDescription>
+        </AlertContent>
+      </Alert>
 
-      <Alert
-        variant="gray"
-        title="Neutral"
-        message="This is a neutral alert for general information."
-        icon={<InfoCircle />}
-      />
+      <Alert status="info">
+        <AlertIndicator />
+        <AlertContent>
+          <AlertTitle>Information</AlertTitle>
+          <AlertDescription>
+            A new software update is available. See what&apos;s new.
+          </AlertDescription>
+        </AlertContent>
+      </Alert>
     </div>
   );
 }
