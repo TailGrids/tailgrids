@@ -36,7 +36,7 @@ export default function AlertBasicPreview() {
         <AlertContent className="flex-row justify-between">
           <AlertTitle>Your account settings have been updated.</AlertTitle>
 
-          <button>
+          <button type="button" aria-label="Dismiss">
             <Xmark2x className="h-lh" />
           </button>
         </AlertContent>

@@ -22,10 +22,11 @@
     {
       "name": "alert",
       "type": "registry:ui",
-      "description": "Dismissible alert component with multiple variants, and action buttons.",
+      "description": "A component to display important messages to the user, with support for different variants.",
       "registryDependencies": [],
       "dependencies": [
         "class-variance-authority",
+        "react-aria-components",
         "@tailgrids/icons"
       ],
       "files": [

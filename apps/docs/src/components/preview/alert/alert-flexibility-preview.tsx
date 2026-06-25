@@ -10,7 +10,7 @@ import {
 import { Button } from "@/registry/core/button";
 import { RefreshCircle3Clockwise, Xmark2x } from "@tailgrids/icons";
 
-export default function AlertBannerPreview() {
+export default function AlertFlexibilityPreview() {
   return (
     <div className="flex flex-col gap-6 w-full">
       <Alert status="info">
@@ -20,7 +20,7 @@ export default function AlertBannerPreview() {
         <AlertContent className="flex-row justify-between">
           <AlertTitle>Your account settings have been updated.</AlertTitle>
 
-          <button>
+          <button type="button" aria-label="Dismiss">
             <Xmark2x className="h-lh" />
           </button>
         </AlertContent>

@@ -20,7 +20,7 @@ export const REGISTRIES: Registry[] = [
     id: "alert",
     name: "Alert",
     description:
-      "Dismissible alert component with multiple variants, and action buttons.",
+      "A component to display important messages to the user, with support for different variants.",
     type: "component",
     files: [
       {
@@ -28,7 +28,11 @@ export const REGISTRIES: Registry[] = [
         path: "/core/alert.tsx"
       }
     ],
-    dependencies: ["class-variance-authority", "@tailgrids/icons"],
+    dependencies: [
+      "class-variance-authority",
+      "react-aria-components",
+      "@tailgrids/icons"
+    ],
     exampleCount: 5
   },
   {
