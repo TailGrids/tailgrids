@@ -86,7 +86,7 @@ export function CodeBlockTab({
   return (
     <UnstyledTabs.TabsContent
       className={cn(
-        "outline-none mt-0 [&_figure]:my-0 [&_figure]:rounded-[1.25rem] [&_figure]:shadow-terminal",
+        "outline-none mt-0 [&_figure]:my-0 [&_figure]:rounded-[1.25rem] [&_figure>div]:top-4.25 [&_figure_button[aria-label='Copy_Text']]:h-3.25",
         className
       )}
       {...props}
