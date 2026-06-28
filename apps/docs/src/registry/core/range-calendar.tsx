@@ -69,7 +69,7 @@ const rangeCalendarHeaderStyles = cva(
   "mb-3 flex flex-wrap items-center gap-2 px-1 sm:mb-4 sm:flex-nowrap"
 );
 
-type RangeCalendarHeaderProps = ComponentProps<"header">;
+export interface RangeCalendarHeaderProps extends ComponentProps<"header"> {}
 
 export function RangeCalendarHeader({
   className,
@@ -133,7 +133,7 @@ export function RangeCalendarHeading({
   return (
     <AriaHeading
       {...props}
-      className={cn("min-w-0 flex-1 text-center", className)}
+      className={cn("min-w-0 flex-1 text-title-50 text-center", className)}
     />
   );
 }
@@ -162,7 +162,7 @@ type RangeCalendarGridHeaderProps = Omit<
 };
 
 const rangeCalendarGridHeaderCellStyles = cva(
-  "table-grid-header-cell pb-2 text-center text-[0.7rem] font-medium uppercase tracking-[0.16em] text-text-100 sm:text-xs"
+  "table-grid-header-cell pb-2 text-center text-[0.7rem] bg-background-50 font-medium uppercase tracking-[0.16em] text-text-100 sm:text-xs"
 );
 
 export function RangeCalendarGridHeader({
@@ -238,7 +238,10 @@ export function RangeCalendarCell({
   ...props
 }: RangeCalendarCellProps) {
   return (
-    <AriaCalendarCell {...props} className="group p-0 outline-none">
+    <AriaCalendarCell
+      {...props}
+      className="group p-0 outline-none bg-background-50"
+    >
       {({
         formattedDate,
         isDisabled,
@@ -380,7 +383,7 @@ export function RangeCalendarYearPicker({ className }: YearPickerProps) {
             iconOnly: false,
             size: "sm"
           }),
-          "h-10 min-w-20 justify-between rounded-full border border-base-100 bg-white-100 px-3 text-sm font-medium text-title-50 hover:bg-white-100 hover:text-title-50 focus:ring-button-primary-focus-ring sm:min-w-24 sm:h-11",
+          "h-10 min-w-20 justify-between rounded-full border border-base-100 bg-background-100 px-3 text-sm font-medium text-title-50 hover:bg-background-soft-200 hover:text-title-50 focus:ring-button-primary-focus-ring sm:min-w-24 sm:h-11",
           className
         )}
       >
@@ -427,7 +430,7 @@ export function RangeCalendarYearPicker({ className }: YearPickerProps) {
               id={String(year)}
               textValue={String(year)}
               className={cn(
-                "flex w-full justify-between rounded-md px-3 py-2 text-left text-sm outline-hidden cursor-pointer data-[selected=true]:bg-dropdown-hover-background data-[selected=true]:text-title-50 data-[focused=true]:bg-dropdown-hover-background data-[focused=true]:text-title-50 hover:bg-dropdown-hover-background"
+                "flex w-full justify-between text-text-50 rounded-md px-3 py-2 text-left text-sm outline-hidden cursor-pointer data-[selected=true]:bg-dropdown-hover-background data-[selected=true]:text-title-50 data-[focused=true]:bg-dropdown-hover-background data-[focused=true]:text-title-50 hover:bg-dropdown-hover-background"
               )}
             >
               {year}

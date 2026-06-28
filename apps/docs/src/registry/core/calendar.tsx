@@ -28,7 +28,9 @@ import {
   Popover,
   useLocale,
   type CalendarCellProps as AriaCalendarCellProps,
+  type CalendarGridHeaderProps as AriaCalendarGridHeaderProps,
   type CalendarProps as AriaCalendarProps,
+  type HeadingProps as AriaHeadingProps,
   type DateValue
 } from "react-aria-components";
 
@@ -66,7 +68,7 @@ export function Calendar<T extends DateValue>({
 
 const calendarHeaderStyles = cva("mb-4 flex items-center gap-2 px-1");
 
-type CalendarHeaderProps = ComponentProps<"header">;
+export interface CalendarHeaderProps extends ComponentProps<"header"> {}
 
 export function CalendarHeader({ className, ...props }: CalendarHeaderProps) {
   return (
@@ -76,9 +78,9 @@ export function CalendarHeader({ className, ...props }: CalendarHeaderProps) {
   );
 }
 
-type NavButtonProps = ComponentProps<typeof AriaButton> & {
+export interface NavButtonProps extends ComponentProps<typeof AriaButton> {
   slot: "previous" | "next";
-};
+}
 
 export function NavButton({ slot, className, ...props }: NavButtonProps) {
   const { direction } = useLocale();
@@ -114,9 +116,9 @@ export function NavButton({ slot, className, ...props }: NavButtonProps) {
   );
 }
 
-type YearPickerProps = {
+export interface YearPickerProps {
   className?: string;
-};
+}
 
 export function CalendarYearPicker({ className }: YearPickerProps) {
   const state = useContext(CalendarStateContext);
@@ -199,7 +201,7 @@ export function CalendarYearPicker({ className }: YearPickerProps) {
             iconOnly: false,
             size: "sm"
           }),
-          "h-10 min-w-24 justify-between rounded-full border border-base-100 bg-white-100 px-3 text-sm font-medium text-title-50 hover:bg-white-100 hover:text-title-50 focus:ring-button-primary-focus-ring sm:h-11",
+          "h-10 min-w-24 justify-between rounded-full border border-base-100 bg-background-100 px-3 text-sm font-medium text-title-50 hover:bg-background-100 hover:text-title-50 focus:ring-button-primary-focus-ring sm:h-11",
           className
         )}
       >
@@ -246,7 +248,7 @@ export function CalendarYearPicker({ className }: YearPickerProps) {
               id={String(year)}
               textValue={String(year)}
               className={cn(
-                "flex w-full justify-between rounded-md px-3 py-2 text-left text-sm outline-hidden",
+                "flex w-full text-text-50 justify-between rounded-md px-3 py-2 text-left text-sm outline-hidden",
                 "data-[selected=true]:bg-dropdown-hover-background data-[selected=true]:text-title-50",
                 "data-[focused=true]:bg-dropdown-hover-background data-[focused=true]:text-title-50"
               )}
@@ -262,7 +264,9 @@ export function CalendarYearPicker({ className }: YearPickerProps) {
 
 const calendarGridStyles = cva("w-full border-collapse border-spacing-0");
 
-type CalendarGridProps = ComponentProps<typeof AriaCalendarGrid>;
+export interface CalendarGridProps extends ComponentProps<
+  typeof AriaCalendarGrid
+> {}
 
 export function CalendarGrid({ className, ...props }: CalendarGridProps) {
   return (
@@ -273,25 +277,30 @@ export function CalendarGrid({ className, ...props }: CalendarGridProps) {
   );
 }
 
-type CalendarGridBodyProps = ComponentProps<typeof AriaCalendarGridBody>;
+export interface CalendarGridBodyProps extends ComponentProps<
+  typeof AriaCalendarGridBody
+> {}
 
 export function CalendarGridBody({ ...props }: CalendarGridBodyProps) {
   return <AriaCalendarGridBody {...props} />;
 }
 
-type CalendarHeadingProps = ComponentProps<typeof AriaHeading>;
+export interface CalendarHeadingProps extends AriaHeadingProps {}
 
 export function CalendarHeading({ className, ...props }: CalendarHeadingProps) {
   return (
-    <AriaHeading {...props} className={cn("flex-1 text-center", className)} />
+    <AriaHeading
+      {...props}
+      className={cn("flex-1 text-title-50 text-center", className)}
+    />
   );
 }
 
-export type { DateValue };
-
 const calendarGridHeaderCellStyles = cva(
-  "table-grid-header-cell pb-2 text-center text-[0.7rem] font-medium uppercase tracking-[0.16em] text-text-100 sm:text-xs"
+  "table-grid-header-cell pb-2 text-center text-[0.7rem] font-medium uppercase tracking-[0.16em] bg-background-50 text-text-100 sm:text-xs"
 );
+
+export interface CalendarGridHeaderProps extends AriaCalendarGridHeaderProps {}
 
 export function CalendarGridHeader({ className }: { className?: string }) {
   return (
@@ -308,7 +317,7 @@ export function CalendarGridHeader({ className }: { className?: string }) {
 }
 
 const calendarCellButtonStyles = cva(
-  "flex size-10 items-center justify-center rounded-full text-sm font-medium text-title-50 outline-none transition forced-color-adjust-none [-webkit-tap-highlight-color:transparent] hover:bg-datepicker-selected-hover-background data-[outside-month=true]:pointer-events-none data-[outside-month=true]:text-text-200 data-[disabled=true]:cursor-not-allowed group-[&[data-disabled=true]:not([data-outside-month]):not([data-today])]:text-text-100 group-[[data-unavailable=true]:not([data-today=true])]:text-text-100 group-data-[today=true]:bg-datepicker-selected-background/90 group-data-[today=true]:text-white data-[selected=true]:bg-datepicker-selected-background data-[selected=true]:text-white-100 data-[pressed=true]:scale-95 data-[focus-visible=true]:ring-2 data-[focus-visible=true]:ring-button-primary-focus-ring data-[focus-visible=true]:ring-offset-2 data-[focus-visible=true]:ring-offset-background-50 sm:size-11 [&[data-disabled=true]:not([data-outside-month])]:line-through group-data-[today=true]:hover:bg-datepicker-selected-background/90"
+  "flex size-10 items-center justify-center rounded-full text-sm font-medium text-title-50 outline-none transition forced-color-adjust-none [-webkit-tap-highlight-color:transparent] hover:bg-datepicker-selected-hover-background group-data-[outside-month=true]:pointer-events-none group-data-[outside-month=true]:text-text-200 group-data-[disabled=true]:cursor-not-allowed group-[&[data-disabled=true]:not([data-outside-month]):not([data-today])]:text-text-100 group-[[data-unavailable=true]:not([data-today=true])]:text-text-100 group-data-[today=true]:bg-datepicker-selected-background/90 group-data-[today=true]:text-white data-[selected=true]:bg-datepicker-selected-background data-[selected=true]:text-white-100 group-data-[pressed=true]:scale-95 data-[focus-visible=true]:ring-2 group-data-[focus-visible=true]:ring-button-primary-focus-ring group-data-[focus-visible=true]:ring-offset-2 group-data-[focus-visible=true]:ring-offset-background-50 sm:size-11 [&[data-disabled=true]:not([data-outside-month])]:line-through group-data-[today=true]:hover:bg-datepicker-selected-background/90"
 );
 
 interface CalendarCellProps extends Omit<
@@ -337,7 +346,10 @@ export function CalendarCell({
   ...props
 }: CalendarCellProps) {
   return (
-    <AriaCalendarCell {...props} className="group p-0 outline-none">
+    <AriaCalendarCell
+      {...props}
+      className="group p-0 outline-none bg-background-50"
+    >
       {({
         formattedDate,
         isDisabled,
@@ -360,3 +372,5 @@ export function CalendarCell({
     </AriaCalendarCell>
   );
 }
+
+export type { DateValue };
