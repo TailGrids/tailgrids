@@ -1,5 +1,11 @@
 # @tailgrids/icons
 
+## 2.0.1
+
+### Patch Changes
+
+- Fixed typo
+
 ## 2.0.0
 
 ### Major Changes
